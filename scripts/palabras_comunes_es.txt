@@ -1,0 +1,149 @@
+# Palabras del castellano (y jerga de chat) que NUNCA deben tratarse como
+# nombre propio, aunque coincidan con el nombre de contacto de un participante.
+# Una por linea, en minusculas y sin tildes. Comentarios con '#'.
+# Sirve para MPF y para MPD: es vocabulario general, no del organismo.
+
+# --- estructura de la lengua ---
+esta este esto estos estas ese esa eso esos esas aquel aquella aquello
+para pero porque pues como cuando donde cual cuales quien quienes cuanto cuanta
+todo toda todos todas otro otra otros otras mismo misma mucho mucha muchos muchas
+poco poca pocos pocas algo alguien alguna algunas alguno algunos nada nadie ninguno ninguna
+cada entre sobre desde hasta hacia segun sin con contra durante mediante salvo
+tras ante bajo tambien tampoco solo sola solamente siempre nunca jamas
+ahora luego despues antes mientras aun aunque entonces asi ademas incluso
+donde adonde acaso quizas tal vez talvez capaz
+ella ellas ellos usted ustedes nosotros nosotras vosotros
+suyo suya suyos suyas nuestro nuestra mio mia tuyo tuya
+aqui alli ahi alla arriba abajo adelante atras cerca lejos dentro fuera afuera adentro
+muy mas menos tanto tanta demasiado bastante casi apenas recien
+si no ni que se le lo la los las un una unos unas del al por
+
+# --- verbos frecuentes ---
+dice dicen dijo dije dijeron decir digo diga
+hace hacen hizo hacer hago haga hacia hecho hecha hechos
+tiene tienen tuvo tener tengo tenga tenia tenian tenes tenian
+puede pueden pudo poder puedo pueda podia podes podria podrian
+sabe saben sabia saber sepa sabes sabemos
+quiere quieren quiso querer quiero
+llega llegan llego llegar llegue
+manda mandan mando mandar mande
+pasa pasan paso pasar pase
+queda quedan quedo quedar quede
+sale salen salio salir salga
+viene vienen vino venir venga
+pone ponen puso poner ponga
+deja dejan dejo dejar deje
+lleva llevan llevo llevar
+toma toman tomo tomar
+sigue siguen siguio seguir
+cuesta cuestan costo costar
+vale valen valio valer
+espera esperan espero esperar
+piensa piensan penso pensar
+mira miran miro mirar
+busca buscan busco buscar
+abre abren abrio abrir
+cierra cierran cerro cerrar
+entra entran entro entrar
+carga cargan cargo cargar
+manda entrega entregan entrego entregar
+firma firman firmo firmar
+anota anotan anoto anotar anotarse
+rinde rinden rindio rendir rindiendo
+estudia estudian estudio estudiar
+aprueba aprueban aprobo aprobar
+recibe reciben recibio recibir recibi
+avisa avisan aviso avisar
+confirma confirman confirmo confirmar
+verifica verifican verifico verificar
+consulta consultan consulto consultar
+responde responden respondio responder
+pregunta preguntan pregunto preguntar
+sube suben subio subir
+baja bajan bajo bajar
+completa completan completo completar
+escribe escriben escribio escribir
+lee leen leyo leer
+figura figuran figuro figurar
+sirve sirven sirvio servir
+vence vencen vencio vencer
+inicia inician inicio iniciar
+termina terminan termino terminar
+comienza comienzan comenzo comenzar
+existe existen existio existir
+falta faltan falto faltar
+importa importan importo importar
+necesita necesitan necesito necesitar
+depende dependen dependio depender
+corresponde corresponden correspondio corresponder
+permite permiten permitio permitir
+requiere requieren requirio requerir
+aparece aparecen aparecio aparecer
+funciona funcionan funciono funcionar
+
+# --- sustantivos y adjetivos frecuentes ---
+gente chicos chicas amigos amigas familia
+hombre mujer persona personas
+casa trabajo laboral empleo sueldo cargo cargos puesto puestos
+dia dias semana semanas mes meses ano anos hora horas minuto minutos
+manana tarde noche mediodia madrugada
+lunes martes miercoles jueves viernes sabado domingo
+enero febrero marzo abril mayo junio julio agosto septiembre setiembre
+octubre noviembre diciembre
+lugar lugares parte partes lado lados forma formas modo modos
+cosa cosas tema temas caso casos punto puntos vez veces
+final finales inicio principio comienzo
+nombre apellido edad
+mail correo telefono celular numero numeros
+foto fotos imagen imagenes video videos audio audios nota notas
+mensaje mensajes msj grupo grupos chat link links pagina paginas
+sistema pagina web plataforma campus aula
+archivo archivos documento documentos papel papeles copia copias
+carpeta formulario planilla ficha
+titulo titulos certificado certificados constancia constancias analitico
+secundario terciario universitario universidad facultad carrera carreras
+estudiante estudiantes alumno alumna alumnos alumnas egresado egresada
+abogado abogada abogados abogadas escribano procurador
+examen examenes prueba pruebas parcial evaluacion evaluaciones
+temario materia materias tema unidad unidades bolilla bolillas
+ley leyes codigo codigos articulo articulos norma normas reglamento reglamentos
+constitucion decreto resolucion resoluciones acordada fallo fallos jurisprudencia
+derecho derechos penal civil comercial laboral administrativo procesal
+juridico juridica juridicos juridicas judicial judiciales
+justicia juzgado juzgados fiscalia fiscalias defensoria defensorias
+tribunal tribunales camara camaras corte
+concurso concursos vacante vacantes cupo cupos sorteo
+inscripcion inscripciones legajo tramite tramites turno turnos
+puntaje puntajes nota notas orden merito listado listados
+sede sedes direccion direcciones zona zonas region regiones
+provincia provincias ciudad ciudades barrio capital federal nacion nacional
+salud educacion economia gestion administracion integracion comunicacion
+informacion informe informes detalle detalles dato datos duda dudas
+consulta consultas respuesta respuestas pregunta preguntas
+ayuda apoyo aporte aportes material materiales apunte apuntes resumen resumenes
+clase clases curso cursos taller talleres capacitacion capacitaciones
+canal universo mundo vida suerte exito exitos animo fuerza
+color colores blanco blanca negro negra verde azul rojo roja amarillo gris
+rosa celeste violeta marron naranja
+madre padre mama papa hijo hija hermano hermana
+mate agua comida
+feliz felices contento contenta triste tranquilo tranquila
+bueno buena buenos buenas malo mala mejor peor
+grande chico chica chicos grandes largo corto
+nuevo nueva nuevos nuevas viejo vieja
+primero primera segundo segunda tercero tercera cuarto quinto ultimo ultima
+uno dos tres cuatro cinco seis siete ocho nueve diez once doce quince veinte treinta
+cien mil
+verdad mentira realidad
+licenciado licenciada profesor profesora doctor doctora
+publico publica publicos publicas privado privada
+oficial oficiales original originales legalizado legalizada digital digitales
+presencial virtual online remoto
+gracias favor perdon disculpa disculpas
+hola chau buenas saludos abrazo besos
+claro obvio igual parecido distinto diferente
+alas mander asociados consorcios escolar comercial angeles gloria mercedes
+clara clarita luna vera cruz marco mama male more diez pato lola
+china chino chica chico negrita popi
+lean lea leelo leete leerlo
+rosario campos caro cara caros caras mora franco francos

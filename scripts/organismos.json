@@ -1,0 +1,18 @@
+{
+  "MPF": {
+    "nombre": "Ministerio Público Fiscal de la Nación",
+    "prefijo_id": "mpf",
+    "convocatoria": "2026",
+    "entradas": ["input/mpf/*.txt"],
+    "dominios_oficiales": ["mpf.gob.ar"],
+    "marcadores_rol_organizador": ["JUP", "Nexo", "NEXO"]
+  },
+  "MPD": {
+    "nombre": "Ministerio Público de la Defensa",
+    "prefijo_id": "mpd",
+    "convocatoria": "2026",
+    "entradas": ["input/mpd/*.txt"],
+    "dominios_oficiales": ["mpd.gov.ar", "mpd.gob.ar"],
+    "marcadores_rol_organizador": ["JUP", "Nexo", "NEXO"]
+  }
+}

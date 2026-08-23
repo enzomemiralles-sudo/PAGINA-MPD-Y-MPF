@@ -1,0 +1,6 @@
+# Exports crudos de WhatsApp: contienen datos personales sin anonimizar.
+input/
+# Mapeo autor real -> autor_hash. Nunca se publica.
+private/
+__pycache__/
+*.pyc
