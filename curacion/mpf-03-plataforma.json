@@ -1,0 +1,144 @@
+[
+  {
+    "id": "mpf-030",
+    "categoria": "plataforma y problemas técnicos",
+    "pregunta_canonica": "No me llega el mail de confirmación. ¿Qué hago?",
+    "clusters": [
+      "mpf-c031",
+      "mpf-c133"
+    ],
+    "respuesta": "El correo es automático y en los días de mayor demanda demora. Antes de rehacer nada, conviene revisar spam y correo no deseado, verificar que la dirección cargada esté bien escrita, y confirmar en la plataforma si el perfil ya figura como inscripto: si figura, la inscripción está hecha aunque el mail no haya llegado. Sobre los avisos posteriores del concurso, en el chat convivieron dos criterios: que todo llega por mail y que hay que entrar al perfil en la página porque no llega nada.",
+    "confianza": "media",
+    "motivo_confianza": "El diagnóstico de saturación y la indicación de revisar spam vienen de la organización. Sobre si los avisos llegan o no por mail hubo afirmaciones opuestas de participantes.",
+    "respuestas_contradictorias": [
+      "Todo se avisa por mail: llega el correo con la confirmación y después con la fecha de examen.",
+      "Al mail no llega nada: hay que entrar al perfil en la página del Ministerio Público."
+    ],
+    "vigencia": "permanente",
+    "respaldo": [
+      "El mail es automático y con la alta demanda puede tardar en llegar. Fíjate en spam o correo no deseado",
+      "Entonces debe ser que el sistema se encuentra saturado. Te aconsejo esperar y ver la parte de spam o correos no deseados",
+      "nada llega al mail, tienen que entrar a la página",
+      "Verificaste que el correo este bien cargado?"
+    ]
+  },
+  {
+    "id": "mpf-031",
+    "categoria": "plataforma y problemas técnicos",
+    "pregunta_canonica": "La página está lenta o no me deja avanzar. ¿Es un problema mío?",
+    "clusters": [
+      "mpf-c176",
+      "mpf-c219",
+      "mpf-c257",
+      "mpf-c062"
+    ],
+    "respuesta": "En los picos de inscripción el sistema se satura y responde lento o falla al guardar. La indicación de la organización fue esperar un rato y volver a intentar, sin rehacer el trámite entero, y no dejar la inscripción para las últimas horas del plazo. También se reportaron fallas de la página en los días de sorteo, por la misma razón.",
+    "confianza": "alta",
+    "motivo_confianza": "Diagnóstico repetido por la organización durante los días de mayor demanda, coincidente con lo que reportaban los participantes.",
+    "respuestas_contradictorias": [],
+    "vigencia": "permanente",
+    "respaldo": [
+      "Si, puede ser que funcione lenta por todas las personas que se inscriben",
+      "Te lo toma igual, debe ser porque la pagina esta saturada",
+      "Si no podes ahora, hacelo en un rato. Recordá que tenés hasta el 30 de dic asi que no se maten por entrar todos ahora",
+      "Debe ser error de la pagina. Cuando hay sorteos presenta muchas fallas debido al alto caudal de personas entrando"
+    ]
+  },
+  {
+    "id": "mpf-032",
+    "categoria": "plataforma y problemas técnicos",
+    "pregunta_canonica": "Cargué el CV pero el sistema sigue diciendo que falta. ¿Por qué?",
+    "clusters": [
+      "mpf-c208",
+      "mpf-c247",
+      "mpf-c211"
+    ],
+    "respuesta": "Es el error más frecuente de la carga y tiene que ver con el doble guardado. El CV se adjunta en Antecedentes → Datos personales, al final de la pantalla, y hay que apretar guardar dos veces: una en el apartado donde se adjunta el archivo y otra al volver a la pantalla de datos personales. Si falta el segundo guardado, el archivo no queda asociado y la inscripción sigue reclamándolo.",
+    "confianza": "alta",
+    "motivo_confianza": "La organización explicó el mismo mecanismo a varias personas distintas y resolvió el problema en cada caso.",
+    "respuestas_contradictorias": [],
+    "vigencia": "permanente",
+    "respaldo": [
+      "Tenes que ir a Antecedentes - Datos personales, ir abajo de todo y cargar tu CV, es importante tocar guardar en las dos intasncias",
+      "Fijate que le des a la opción guardar tanto en el apartado del cv como en el apartado de los datos",
+      "Aparte de darle a guardar cuando pones adjuntar CV, tenés que darle guardar también cuando volves a la página de los datos"
+    ]
+  },
+  {
+    "id": "mpf-033",
+    "categoria": "plataforma y problemas técnicos",
+    "pregunta_canonica": "¿Con qué usuario y contraseña entro a rendir el examen?",
+    "clusters": [
+      "mpf-c051",
+      "mpf-c013",
+      "mpf-c352",
+      "mpf-c097",
+      "mpf-c140"
+    ],
+    "respuesta": "Se entra con el mismo correo con el que se hizo el registro en el sistema del MPF, y la contraseña es el número de DNI. El acceso al aula donde se rinde es el campus del ingreso democrático (https://id-webcampus.mpf.gob.ar/). Si no se recuerda la contraseña del perfil de inscripción, la opción de olvidé mi contraseña reenvía un correo para recuperarla.",
+    "confianza": "media",
+    "motivo_confianza": "Lo afirmaron varias personas que ya habían rendido, de forma coincidente, y figura en el correo de citación. No hay una confirmación explícita de la organización.",
+    "respuestas_contradictorias": [],
+    "vigencia": "permanente",
+    "respaldo": [
+      "Tenés que ingresar con el mail con el que te registraste en el sistema y la contraseña es tu número de Dni",
+      "En el mail dice q la contraseña es tu dni",
+      "el mail con el q ingresaste y tu dni de contraseña",
+      "pone que te olvidaste y re encía un mail para recuperarla sin problemas!"
+    ]
+  },
+  {
+    "id": "mpf-034",
+    "categoria": "plataforma y problemas técnicos",
+    "pregunta_canonica": "Perdí el mail con la fecha y el link del examen. ¿Cómo entro?",
+    "clusters": [
+      "mpf-c112",
+      "mpf-c323",
+      "mpf-c086",
+      "mpf-c067",
+      "mpf-c146"
+    ],
+    "respuesta": "El link para rendir viene en el correo de citación, pero no es la única puerta: se puede entrar directamente al campus del ingreso democrático con el correo de registro y el DNI como contraseña, y el examen aparece habilitado a la hora asignada. Si tampoco se recuerda la fecha, en el chat se indicó escribir al correo de concursos del organismo para pedir la información.",
+    "confianza": "media",
+    "motivo_confianza": "Reconstruido a partir de respuestas de participantes que atravesaron la situación; no hubo una respuesta de la organización sobre el procedimiento formal.",
+    "respuestas_contradictorias": [],
+    "vigencia": "permanente",
+    "respaldo": [
+      "En el mail donde te informan la fecha de examen está el link para ingresar a rendir",
+      "no te mandan ningún link, entras con el mail donde te mandaron la fecha en la que rendis",
+      "Deberían consultar enviando un email al correo de concursos"
+    ]
+  },
+  {
+    "id": "mpf-035",
+    "categoria": "plataforma y problemas técnicos",
+    "pregunta_canonica": "No puedo ingresar al campus el día del examen. ¿A quién recurro?",
+    "clusters": [
+      "mpf-c285",
+      "mpf-c122"
+    ],
+    "respuesta": "En el grupo circuló un teléfono de soporte del organismo y varias personas confirmaron que llamando resolvieron el problema de acceso y las guiaron para entrar a rendir. El número no se reproduce acá porque fue compartido entre participantes y conviene tomarlo del canal oficial de la convocatoria.",
+    "confianza": "requiere_verificacion",
+    "motivo_confianza": "El dato de contacto circuló entre participantes y fue removido al anonimizar. Hay que reponerlo desde la convocatoria oficial antes de publicarlo.",
+    "respuestas_contradictorias": [],
+    "vigencia": "atada_a_convocatoria",
+    "respaldo": [
+      "Los que no pueden ingresar al campus por el examen. Llamen a ese número que te atienden muy bien y te guían para entrar al examen",
+      "Los que no les llegaba el mail o no podían unirse, lo solucionaron llamando a ese número?"
+    ]
+  },
+  {
+    "id": "mpf-036",
+    "categoria": "plataforma y problemas técnicos",
+    "pregunta_canonica": "Ya tenía usuario de un concurso anterior. ¿Puedo cambiar el mail asociado?",
+    "clusters": [
+      "mpf-c013"
+    ],
+    "respuesta": "",
+    "confianza": "requiere_verificacion",
+    "motivo_confianza": "Se preguntó varias veces, sobre todo por parte de quienes habían rendido en años anteriores y ya no tenían acceso a la casilla con la que se habían registrado. No hubo respuesta en el chat.",
+    "respuestas_contradictorias": [],
+    "vigencia": "permanente",
+    "respaldo": []
+  }
+]

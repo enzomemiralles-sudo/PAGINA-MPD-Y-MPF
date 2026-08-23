@@ -36,6 +36,9 @@ scripts/              el pipeline
 |---|---|---|
 | 0 — preproceso | `scripts/fase0_preproceso.py` | `data/<prefijo>/mensajes.jsonl`, `descartados.jsonl`, `reporte-fase0.json` |
 | 1 — detección y clustering | `scripts/fase1_deteccion.py` | `data/<prefijo>/preguntas.jsonl`, `clusters.json`, `clusters.md`, `reporte-fase1.json` |
+| 2a — hilos y respuestas | `scripts/fase2_hilos.py` | `data/<prefijo>/hilos.json`, `hilos.md`, `roles.json` |
+| 2b — curación | *manual, sobre `hilos.md`* | `curacion/<prefijo>-*.json` |
+| 3 — entregables | `scripts/fase3_entregables.py` | `output/<prefijo>-faq.json`, `<prefijo>-faq.md`, `verificar.md`, `informe.md` |
 
 ```bash
 python3 scripts/fase1_deteccion.py --organismo MPD --umbral 0.42 --umbral-fusion 0.62
@@ -64,6 +67,49 @@ mezclan medio chat. La segunda pasada de fusión sigue la misma regla.
 El vocabulario de dominio vive en `scripts/lexico_es.json` (lemas, frases
 multipalabra, señales y categorías). Es castellano del trámite, no del organismo:
 sirve igual para MPF y MPD.
+
+### Cómo reconstruye los hilos
+
+El export de iOS no trae el metadato de cita, así que la fase 2a arma el hilo por
+proximidad: mensajes posteriores del mismo grupo, dentro de una ventana de 40
+mensajes y 90 minutos, de otro autor, que no sean a su vez otra pregunta. Cada
+candidato se puntúa por solapamiento léxico con la duda, cercanía en el hilo y
+rol de quien respondió. El rol sale de `marcadores_rol_organizador` en
+`organismos.json` cruzado contra el mapeo privado de autores; al output sólo sale
+el rol, nunca el nombre.
+
+### La curación es el único paso manual
+
+Las fases 0, 1, 2a y 3 son scripts. La 2b no: alguien tiene que leer
+`data/<prefijo>/hilos.md` y escribir las respuestas en prosa. Eso vive en
+`curacion/<prefijo>-NN-<tema>.json`, con este formato:
+
+```json
+{
+  "id": "mpf-001",
+  "categoria": "inscripción y trámite",
+  "pregunta_canonica": "...",
+  "clusters": ["mpf-c007", "mpf-c022"],
+  "respuesta": "...",
+  "confianza": "alta | media | requiere_verificacion",
+  "motivo_confianza": "...",
+  "respuestas_contradictorias": ["...", "..."],
+  "vigencia": "permanente | atada_a_convocatoria",
+  "respaldo": ["fragmento textual de un mensaje", "otro fragmento"]
+}
+```
+
+`frecuencia`, `variantes` y `mensajes_fuente` no se escriben a mano: los calcula
+la fase 3 a partir de los clusters citados.
+
+### Por qué existe el campo `respaldo`
+
+Es el control contra la invención. Cada fragmento tiene que aparecer textualmente
+en algún mensaje del chat: la fase 3 lo busca y **falla la build** si no lo
+encuentra. Una respuesta redactada sobre algo que nadie dijo no llega a
+publicarse. De paso, esos fragmentos son los que resuelven `mensajes_fuente`,
+así que cada afirmación de la FAQ queda trazada hasta los mensajes que la
+sostienen.
 
 ## Anonimización
 

@@ -1,0 +1,112 @@
+[
+{
+  "id": "mpf-058",
+  "categoria": "fechas, sede y logística",
+  "pregunta_canonica": "¿Cuándo se rinde el examen?",
+  "clusters": ["mpf-c061", "mpf-c026", "mpf-c112", "mpf-c284"],
+  "respuesta": "Los exámenes se toman dentro de un período general fijado por la convocatoria, y a cada persona se le asigna un día y una hora dentro de ese período. En la convocatoria del concurso N° 412 el período fue del 2 de marzo al 30 de abril de 2026, con asignación por orden alfabético de apellido. Las fechas concretas cambian en cada convocatoria y hay que tomarlas de la resolución vigente.",
+  "confianza": "requiere_verificacion",
+  "motivo_confianza": "El esquema de período general con fecha asignada se mantiene, pero las fechas puntuales son de la convocatoria 2026 y caducan.",
+  "respuestas_contradictorias": [],
+  "vigencia": "atada_a_convocatoria",
+  "respaldo": [
+    "Los examenes se dan entre el 2 de marzo y el 30 de abril segun vaya informando el MPF",
+    "Especificamente del 2 de marzo al 30 de abril",
+    "Los examenes serán del 2/3 al 30/4 y serán en días específcos que se les avisará por mail",
+    "La fecha de los exámenes es entre el 2 de marzo y el 30 de abril. Se asigna la fecha por orden de apellido"
+  ]
+},
+{
+  "id": "mpf-059",
+  "categoria": "fechas, sede y logística",
+  "pregunta_canonica": "¿Qué jurisdicciones entran en esta convocatoria? ¿Y si la mía no está?",
+  "clusters": ["mpf-c107", "mpf-c113", "mpf-c135", "mpf-c102", "mpf-c127"],
+  "respuesta": "Cada convocatoria abre un conjunto determinado de jurisdicciones, con períodos de inscripción escalonados por zona, y sólo aparecen en el sistema las que están con inscripción abierta en ese momento. En la convocatoria 2025/2026 el primer tramo fue CABA y GBA, y localidades como La Plata tuvieron su propio período en febrero. Si una localidad no figura, es porque no está incluida o porque todavía no se abrió su tramo: hay que esperar a la convocatoria o al tramo correspondiente.",
+  "confianza": "requiere_verificacion",
+  "motivo_confianza": "El mecanismo de tramos por zona es estable, pero qué jurisdicciones entran y cuándo depende enteramente de cada convocatoria.",
+  "respuestas_contradictorias": [],
+  "vigencia": "atada_a_convocatoria",
+  "respaldo": [
+    "Aún no hay fecha. Las inscripciones actuales son para las jurisdicciones de CABA y AMBA.",
+    "Las fechas de inscripción son por zonas. Si en las inscripciones abiertas en esta fecha hay alguna localidad que te interese, anotate ahora",
+    "ahí solo aparecen los de inscripción abierta que es esta etapa donde te anotas",
+    "El llamado es para CABA y GBA"
+  ]
+},
+{
+  "id": "mpf-060",
+  "categoria": "fechas, sede y logística",
+  "pregunta_canonica": "¿Cuántas vacantes hay? ¿Cuándo se hacen los sorteos?",
+  "clusters": ["mpf-c023", "mpf-c090", "mpf-c132", "mpf-c295", "mpf-c290"],
+  "respuesta": "No hay un número de vacantes fijado de antemano ni un calendario de sorteos. Aprobar el examen incorpora a un listado, y los sorteos se hacen cuando efectivamente se genera una vacante en una dependencia: puede haber cuatro sorteos en un mes o uno solo, según la necesidad de las fiscalías. Por eso tampoco hay forma de anticipar cuánto se espera entre aprobar y ser sorteado.",
+  "confianza": "media",
+  "motivo_confianza": "La organización explicó el criterio de forma consistente y admitió no tener el número de sorteos ni un listado oficial de vacantes.",
+  "respuestas_contradictorias": [],
+  "vigencia": "permanente",
+  "respaldo": [
+    "Las vacantes se van a ir abriendo. La importancia que tiene rendir estos exámenes es poder entrar en el listado del cual se eligen (por sorteo) las personas a cubrir esas vacantes",
+    "A veces hacen 4 sorteos en 1 mez y a veces 1 solo",
+    "Y depende mucho la necesidad de las fiscalías y juzgados",
+    "No, se sortean cuando haya vacantes",
+    "Las vacantes se abren durante el año, y a medida que surgen se van realizando sorteos entre quienes aprobaron el examen para llamarlos a entrevistas"
+  ]
+},
+{
+  "id": "mpf-061",
+  "categoria": "fechas, sede y logística",
+  "pregunta_canonica": "¿Dónde se publican los sorteos?",
+  "clusters": ["mpf-c091", "mpf-c390", "mpf-c1469"],
+  "respuesta": "Las actas de sorteo y las novedades de cada concurso se publican en la sección de Ingreso Democrático del sitio del organismo, y además llega un aviso por correo cuando se realiza un sorteo. En las actas figuran los identificadores de postulante, no los números de DNI. No apareció en el chat un calendario anticipado de sorteos por localidad: se publican una vez hechos.",
+  "confianza": "media",
+  "motivo_confianza": "Reconstruido a partir de respuestas de participantes que siguieron los sorteos y compartieron las actas publicadas; no hubo confirmación de la organización.",
+  "respuestas_contradictorias": [],
+  "vigencia": "permanente",
+  "respaldo": [
+    "Te llega un mail de que se realizo un sorteo y ahi ves quien salio",
+    "En el acta del sorteo salen los id, no los dni",
+    "Tengo entendido que tenés que entrar al link y descargar los sorteos."
+  ]
+},
+{
+  "id": "mpf-062",
+  "categoria": "fechas, sede y logística",
+  "pregunta_canonica": "¿Cómo se hace el sorteo?",
+  "clusters": ["mpf-c399", "mpf-c094", "mpf-c385"],
+  "respuesta": "",
+  "confianza": "requiere_verificacion",
+  "motivo_confianza": "Es uno de los puntos más discutidos y peor documentados del chat. La organización dijo que los sorteos se hacen por lotería nacional y de forma pública; participantes con más seguimiento sostuvieron que se ejecutan por sistema interno a pedido de la fiscalía que tiene la vacante, y que el universo sorteado no siempre son todos los aprobados sino quienes cumplen un perfil adicional que pide el fiscal. Ninguna versión se apoyó en el reglamento.",
+  "respuestas_contradictorias": [
+    "Los sorteos se realizan por lotería nacional y públicamente.",
+    "El sorteo lo ejecuta el sistema interno del organismo cuando una fiscalía pide cubrir una vacante.",
+    "No se sortea entre todos los aprobados: a veces se filtra antes por un perfil adicional que pide la fiscalía y el sorteo se hace entre quienes lo cumplen."
+  ],
+  "vigencia": "permanente",
+  "respaldo": [
+    "Los sorteos se realizan por lotería nacional y públicamente",
+    "Técnicamente es algo q se hace por sistema interno",
+    "El sorteo no se hace entre todos los participantes. A veces piden un requisito adicional",
+    "Primero tiene que darse una vacante y la fiscalía en cuestión le pide a la Procuración que realice un sorteo"
+  ]
+},
+{
+  "id": "mpf-063",
+  "categoria": "fechas, sede y logística",
+  "pregunta_canonica": "¿Qué es el identificador de postulante y de dónde sale?",
+  "clusters": ["mpf-c030", "mpf-c398", "mpf-c335"],
+  "respuesta": "",
+  "confianza": "requiere_verificacion",
+  "motivo_confianza": "Convivieron explicaciones incompatibles sobre qué número se sortea. Se dijo que el identificador es el DNI, que es un número distinto que el sistema genera al abrirse una vacante, y que lo sorteado son los últimos dígitos del DNI. Ninguna se confirmó, y el correo de comprobante muestra dos números distintos —de inscripción y de aspirante— que nadie terminó de distinguir.",
+  "respuestas_contradictorias": [
+    "El identificador es el propio número de DNI.",
+    "El DNI es el identificador inicial, pero cuando se genera una vacante el sistema crea otro ID distinto para el sorteo.",
+    "Lo que se sortea son los últimos tres dígitos del DNI."
+  ],
+  "vigencia": "permanente",
+  "respaldo": [
+    "El ID, en un principio es tu DNI, pero cuando se genera una vacante, ahí, por sistema, se genera otro ID para realizar el sorteo",
+    "Es decir, con tu mismo dni, va a hacerse un ID, que no es coincidente con el número de dni, es otro hecho x sistema",
+    "El DNI funcionaria como un ID para vos y saber que estás en la lista definitiva, ENTIENDO",
+    "En el mail de comprobante de inscripción figura numero de inscripción y de aspirante. Cual sera?"
+  ]
+}
+]

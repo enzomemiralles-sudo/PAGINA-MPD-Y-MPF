@@ -1,0 +1,260 @@
+[
+{
+  "id": "mpf-015",
+  "categoria": "requisitos y documentación",
+  "pregunta_canonica": "¿Qué requisitos hay que cumplir para anotarse? ¿Hay límite de edad?",
+  "clusters": ["mpf-c017", "mpf-c036", "mpf-c204", "mpf-c224"],
+  "respuesta": "Para el agrupamiento técnico administrativo los requisitos son dos: ser mayor de 18 años y tener el secundario completo. No hay límite máximo de edad, y no hace falta ninguna formación ni conocimiento previo específico. Ser menor de 18 al momento de inscribirse excluye, aun cuando se cumplan los 18 poco después.",
+  "confianza": "alta",
+  "motivo_confianza": "Respondido de forma idéntica y repetida por la organización durante todo el período, sin ninguna respuesta en contra.",
+  "respuestas_contradictorias": [],
+  "vigencia": "permanente",
+  "respaldo": [
+    "No hay límite de edad",
+    "Ser mayor de 18 años, no hay límite de edad",
+    "Es para todos los mayores de 18 con titulo secundario",
+    "No. Solo mayores de 18",
+    "No es necesario conocimiento previos"
+  ]
+},
+{
+  "id": "mpf-016",
+  "categoria": "requisitos y documentación",
+  "pregunta_canonica": "¿Hay que ser abogado/a o estudiante de derecho?",
+  "clusters": ["mpf-c012", "mpf-c123", "mpf-c221", "mpf-c166"],
+  "respuesta": "Para técnico administrativo no. Se puede inscribir cualquier persona mayor de 18 años con secundario completo, sin importar qué carrera estudie o si no estudia ninguna. Sí es distinto el agrupamiento técnico jurídico, que está dirigido a abogados y abogadas recibidas. Tener título universitario o estar cursando una carrera no es un requisito, pero sí suma como antecedente en el legajo.",
+  "confianza": "alta",
+  "motivo_confianza": "Respondido muchas veces por la organización, en los mismos términos, a lo largo de todo el chat.",
+  "respuestas_contradictorias": [],
+  "vigencia": "permanente",
+  "respaldo": [
+    "No es para abogados, es para todos! Podes inscribirte sin problemas",
+    "Sí, no es necesario ser abogado",
+    "No importa! Los requisitos solo piden mayoría de edad y tener titulo secundario",
+    "tec. admin es para no recibidos tec jurídico es para recibidos"
+  ]
+},
+{
+  "id": "mpf-017",
+  "categoria": "requisitos y documentación",
+  "pregunta_canonica": "Para técnico jurídico, ¿piden matrícula?",
+  "clusters": ["mpf-c093", "mpf-c1302"],
+  "respuesta": "En el grupo se respondió que para técnico jurídico hay que ser abogado o abogada y que al inscribirse el sistema pide el número de matrícula.",
+  "confianza": "requiere_verificacion",
+  "motivo_confianza": "La única respuesta disponible viene de la organización pero está formulada como algo que se tiene entendido, no como dato confirmado, y no hay una segunda fuente en el chat.",
+  "respuestas_contradictorias": [],
+  "vigencia": "permanente",
+  "respaldo": [
+    "Tengo entendió que para técnico jurídico es necesario contar con matricula, mismo al inscribirte al examen te pide el numero",
+    "No porque te piden N° de matricula!"
+  ]
+},
+{
+  "id": "mpf-018",
+  "categoria": "requisitos y documentación",
+  "pregunta_canonica": "¿Qué documento del secundario hay que subir: el título o el analítico?",
+  "clusters": ["mpf-c001", "mpf-c245", "mpf-c252"],
+  "respuesta": "",
+  "confianza": "requiere_verificacion",
+  "motivo_confianza": "El punto más consultado del chat y uno de los peor resueltos. La organización dijo tanto que el único documento válido es el analítico y que el diploma no sirve para validar, como que alcanza con poner el título. Participantes agregaron que hay que adjuntar ambos. Los tres criterios convivieron sin resolverse.",
+  "respuestas_contradictorias": [
+    "El único documento que sirve es el analítico; el diploma no sirve para validar.",
+    "Alcanza con subir el título secundario tal como lo entregó la escuela.",
+    "Hay que adjuntar los dos documentos, analítico y título."
+  ],
+  "vigencia": "permanente",
+  "respaldo": [
+    "El único titulo que sirve es el analítico, el diploma no sirve para validar",
+    "Tenes que poner el título nada más, si no está legalizado no hay problema",
+    "Claro, el analítico del secundario, pensé que preguntabas eso, tenés que adjuntar ambos, analítico y título",
+    "si , tenes que acreditar toda documentación que te piden, incluido el requisito de tener el secundario completo por ende el título"
+  ]
+},
+{
+  "id": "mpf-019",
+  "categoria": "requisitos y documentación",
+  "pregunta_canonica": "¿El título secundario tiene que estar legalizado?",
+  "clusters": ["mpf-c035", "mpf-c219"],
+  "respuesta": "",
+  "confianza": "requiere_verificacion",
+  "motivo_confianza": "Respuestas incompatibles dentro del mismo hilo y de la misma organización: que no hace falta legalizarlo, y que hay que llevarlo a legalizar al Ministerio de Educación. Es un trámite con costo y demora, así que la diferencia no es menor.",
+  "respuestas_contradictorias": [
+    "No hace falta que esté legalizado; se puede subir tal cual, aunque legalizarlo es recomendable.",
+    "Hay que llevar el título al Ministerio de Educación de CABA o de la provincia y legalizarlo."
+  ],
+  "vigencia": "permanente",
+  "respaldo": [
+    "Tenes que poner el título nada más, si no está legalizado no hay problema. De igual manera es recomendable legalizarlo y subirlo",
+    "Tenes que agarrar el título secundario e ir al ministerio de educación, ya sea de CABA o provincia y legalizarlo",
+    "Podes legalizarlo en cualquier Ministerio",
+    "en principio debería ser legalizado, pero si todavía no lo tienen lo pueden subir igual"
+  ]
+},
+{
+  "id": "mpf-020",
+  "categoria": "requisitos y documentación",
+  "pregunta_canonica": "Todavía no tengo el título en mano. ¿Sirve el certificado de título en trámite?",
+  "clusters": ["mpf-c093", "mpf-c161", "mpf-c212", "mpf-c872"],
+  "respuesta": "Sí. El certificado de título en trámite sirve para inscribirse mientras el título definitivo no esté emitido, y es el mismo documento que se usa para anotarse al CBC. Se pide en la secretaría de la escuela donde se cursó. Si el título sale antes del examen, se puede reemplazar por el original.",
+  "confianza": "media",
+  "motivo_confianza": "Coincidieron la organización y participantes, pero la respuesta de la organización está formulada como algo que se tiene entendido.",
+  "respuestas_contradictorias": [],
+  "vigencia": "permanente",
+  "respaldo": [
+    "El certificado de título en trámite te sirve momentáneamente",
+    "Tengo entendido que puede realizar la inscripción igual con el certificado de titulo en tramite, es el mismo que se utiliza para inscribirse al CBC",
+    "Certificación de titulo en trámite. Lo podés pedir a secretaria en la escuela a la que hayas ido",
+    "Es necesario llenar la información del secundario y subir el título o certicafo de título en trámite"
+  ]
+},
+{
+  "id": "mpf-021",
+  "categoria": "requisitos y documentación",
+  "pregunta_canonica": "Estoy cursando una carrera universitaria. ¿Qué cargo en la sección de educación?",
+  "clusters": ["mpf-c009", "mpf-c059", "mpf-c028", "mpf-c196"],
+  "respuesta": "La carga se hace por ítems separados y el orden importa: primero se completa el secundario con su documentación respaldatoria, y recién después se agrega un segundo ítem con la carrera universitaria, respaldado con la constancia de alumno regular. El sistema pide tener completo el nivel secundario antes de habilitar el universitario. Cargar el universitario no reemplaza al secundario: el secundario es el requisito y hay que subirlo igual, aunque ya se tenga un título de grado.",
+  "confianza": "alta",
+  "motivo_confianza": "Respondido de forma consistente por la organización en varios hilos distintos.",
+  "respuestas_contradictorias": [],
+  "vigencia": "permanente",
+  "respaldo": [
+    "Tenes que subir el analítico del secundario completo y luego la constancia de alumno regular para la carrera universitaria",
+    "Para subir la educación universitaria primero te pide que completes la secundaria",
+    "Tenes que crear un item con el secundario completo y luego podes agregar otro item de universitario con el certificado",
+    "Subir el secundario es primordial, la carrera también les aconsejamos que lo suban pero no es obligatorio"
+  ]
+},
+{
+  "id": "mpf-022",
+  "categoria": "requisitos y documentación",
+  "pregunta_canonica": "¿Hay que subir el certificado de antecedentes penales?",
+  "clusters": ["mpf-c003", "mpf-c109", "mpf-c121"],
+  "respuesta": "En la instancia de inscripción no es obligatorio. Quien ya lo tiene puede adjuntarlo en el apartado Otros antecedentes, y quien no lo tiene puede inscribirse igual y tramitarlo más adelante. Según lo que se respondió en el grupo, se pide después, al momento de ingresar efectivamente a trabajar.",
+  "confianza": "alta",
+  "motivo_confianza": "Aclaración general de la organización, repetida durante todo el período de inscripción y sin respuestas en contra.",
+  "respuestas_contradictorias": [],
+  "vigencia": "permanente",
+  "respaldo": [
+    "No es obligatorio el certificado de antecedentes. Recomendamos realizarlo mas adelatne",
+    "No es necesario el certificado en esta instancia de inscripción, es opcional tranquila!",
+    "En esta instancia no es obligatorio cargar el certificado de antecedentes penales, pero si lo tienen pueden subirlo en \"Otros antecedentes\"",
+    "No hace falta cargarlos! Te lo piden luego para ingresar a trabajar si eventualmente quedás en una Fiscalía"
+  ]
+},
+{
+  "id": "mpf-023",
+  "categoria": "requisitos y documentación",
+  "pregunta_canonica": "¿El CV es obligatorio? ¿Va con foto?",
+  "clusters": ["mpf-c014", "mpf-c240", "mpf-c075"],
+  "respuesta": "El CV no es excluyente, pero la organización recomendó subirlo siempre, y con foto. No se mencionó ningún formato ni plantilla obligatoria. Un detalle práctico que causó muchos problemas: el sistema pide guardar dos veces, una en el apartado donde se adjunta el CV y otra al volver a la pantalla de datos personales; si falta el segundo guardado, la inscripción sigue reclamando el CV.",
+  "confianza": "alta",
+  "motivo_confianza": "El carácter no obligatorio y la recomendación de subirlo los repitió la organización varias veces; el problema del doble guardado también lo explicó la organización a distintas personas.",
+  "respuestas_contradictorias": [],
+  "vigencia": "permanente",
+  "respaldo": [
+    "Es importante NO excluyente, podes añadir tus experiencias laborales optativamente",
+    "No es obligatorio pero es recomendable subirlo",
+    "Nosotros recomendamos con foto",
+    "Aparte de darle a guardar cuando pones adjuntar CV, tenés que darle guardar también cuando volves a la página de los datos"
+  ]
+},
+{
+  "id": "mpf-024",
+  "categoria": "requisitos y documentación",
+  "pregunta_canonica": "¿Qué campos del formulario son obligatorios?",
+  "clusters": ["mpf-c075", "mpf-c167"],
+  "respuesta": "Los campos obligatorios son los que aparecen marcados con asterisco rojo. Todo lo demás es opcional: si el carácter rojo no está, no hace falta completarlo. Los datos que sí hay que llenar sí o sí están en Antecedentes → Datos personales.",
+  "confianza": "alta",
+  "motivo_confianza": "Criterio simple y verificable en la propia pantalla, explicado varias veces por la organización.",
+  "respuestas_contradictorias": [],
+  "vigencia": "permanente",
+  "respaldo": [
+    "No es necesario, solo los items con * rojo son obligatorios",
+    "Si te aparece el carácter en rojo es un campo obligatorio, lo tenés que completar",
+    "Los obligatorios son los datos de antecedentes - datos personales. todos los que tengan un * rojo son los obligatorios, el resto opcional"
+  ]
+},
+{
+  "id": "mpf-025",
+  "categoria": "requisitos y documentación",
+  "pregunta_canonica": "¿Qué se puede cargar en capacitaciones?",
+  "clusters": ["mpf-c103", "mpf-c251", "mpf-c049"],
+  "respuesta": "Se pueden incluir certificados de cursos, incluidos los de herramientas informáticas como Excel y Word, y cualquier capacitación relevante, propia de la facultad o externa. La recomendación fue destacar las más pertinentes al puesto. Un curso todavía en marcha, sin certificado emitido, se puede mencionar en el CV hasta conseguir el comprobante.",
+  "confianza": "alta",
+  "motivo_confianza": "Respondido por la organización de manera consistente en varios hilos.",
+  "respuestas_contradictorias": [],
+  "vigencia": "permanente",
+  "respaldo": [
+    "en la sección de capacitaciones podes incluir certificados de cursos de Excel, Word y cualquier capacitación relevante de la facultad",
+    "Lo podés sumar al CV hasta que consigas el certificado correspondiente"
+  ]
+},
+{
+  "id": "mpf-026",
+  "categoria": "requisitos y documentación",
+  "pregunta_canonica": "¿Cómo acredito la experiencia laboral? ¿Y si trabajé sin registrar?",
+  "clusters": ["mpf-c032", "mpf-c199", "mpf-c248", "mpf-c181"],
+  "respuesta": "La sección de experiencia laboral no es obligatoria y adjuntar comprobantes tampoco. Para quien quiera acreditarla, sirve toda documentación que pruebe la relación de dependencia: recibo de sueldo, alta de AFIP, certificación de servicios, o un certificado laboral firmado por alguien con poder en la empresa. No se exige que el certificado esté dirigido al MPF; los antecedentes emitidos para otra institución también valen. Para el trabajo no registrado, lo que se sugirió en el grupo fue dejarlo mencionado en el CV, ya que no hay documentación que lo respalde.",
+  "confianza": "media",
+  "motivo_confianza": "El carácter opcional y la validez de los certificados los confirmó la organización; el listado concreto de documentos que sirven lo aportó un participante y no fue confirmado punto por punto.",
+  "respuestas_contradictorias": [],
+  "vigencia": "permanente",
+  "respaldo": [
+    "Buen día! No, no es obligatorio esa parte",
+    "Toda documentación que acredite que trabajaste en relacióm de depende cia es válida",
+    "Recibo d sueldo... alta de afip... certificacion de servicios de afip... carta certificada de un jefe con firma apoderada",
+    "No son obligatorios pero podes presentarlos igual si no dice para el MPF",
+    "Yo te diría que lo cargues en el cv"
+  ]
+},
+{
+  "id": "mpf-027",
+  "categoria": "requisitos y documentación",
+  "pregunta_canonica": "¿En qué formato hay que subir los archivos?",
+  "clusters": ["mpf-c210", "mpf-c191"],
+  "respuesta": "La organización respondió que es indistinto, que se acepta tanto foto como PDF, y recomendó PDF. Entre participantes circuló un criterio más específico: la foto de perfil en JPG y el resto de la documentación en PDF. Si el archivo no sube, el problema suele ser el peso: conviene comprimirlo o escanearlo en un PDF más liviano. Los documentos en papel se pueden escanear en una fotocopiadora o con la app de escaneo del propio teléfono, siempre que se lean con claridad.",
+  "confianza": "media",
+  "motivo_confianza": "La organización dijo que el formato es indistinto y participantes sostuvieron un criterio más estricto. Ninguna de las dos versiones cita el instructivo oficial.",
+  "respuestas_contradictorias": [
+    "El formato es indistinto: se acepta foto o PDF.",
+    "La foto va en JPG y todo el resto de la documentación en PDF."
+  ],
+  "vigencia": "permanente",
+  "respaldo": [
+    "Puede ser en formato foto o PDF, es indistinto eso!",
+    "En la opción que quieras, te recomiendo pdf",
+    "La foto va en formato jpg,todo el resto en pdf",
+    "Si llevas los documentos físicos a una fotocopiadora los podes escanear, incluso se puede hacer desde algunos telefonos celulares también",
+    "De última escanea todo en un pdf donde se distinga, la única aclaración que hicieron es que se pueda distinguir."
+  ]
+},
+{
+  "id": "mpf-028",
+  "categoria": "requisitos y documentación",
+  "pregunta_canonica": "¿Hay cupo por discapacidad o cupo trans? ¿Cómo funciona?",
+  "clusters": ["mpf-c047", "mpf-c167"],
+  "respuesta": "Según lo respondido por la organización, tanto el cupo laboral trans como el de personas con discapacidad tienen sorteos exclusivos, separados del sorteo general. No se explicó en el chat cómo se acredita la condición ni en qué momento del trámite se declara.",
+  "confianza": "requiere_verificacion",
+  "motivo_confianza": "Hay una sola respuesta de la organización, sin detalle del procedimiento, y en el resto del hilo sólo hay conjeturas de participantes sobre fechas y ventajas.",
+  "respuestas_contradictorias": [],
+  "vigencia": "permanente",
+  "respaldo": [
+    "tanto el cupo trans, como el cupo de personas con discapacidad, tienen el personal, ósea que se realizan sorteos puramente exclusivos"
+  ]
+},
+{
+  "id": "mpf-029",
+  "categoria": "requisitos y documentación",
+  "pregunta_canonica": "¿Qué se verifica de lo que cargué?",
+  "clusters": ["mpf-c178", "mpf-c281"],
+  "respuesta": "Según lo respondido por la organización, la verificación en esta etapa se limita a los dos requisitos excluyentes: ser mayor de 18 y tener el secundario completo. Quien los cumple queda habilitado a rendir. Por eso los motivos habituales de no figurar en el listado son no haber cargado la documentación obligatoria o no cumplir el requisito de edad.",
+  "confianza": "media",
+  "motivo_confianza": "Explicado por la organización en dos hilos distintos, en términos generales y sin cita del reglamento.",
+  "respuestas_contradictorias": [],
+  "vigencia": "permanente",
+  "respaldo": [
+    "Normalmente una vez que realizas la inscripción solo verifican que tengas +18 y el secundario completo, que es algo que verifican ellos",
+    "El motivo puede ser que no se haya cargado la documentación obligatoria o que no cumplas con los requisitos de edad mínima para participar del sorteo"
+  ]
+}
+]

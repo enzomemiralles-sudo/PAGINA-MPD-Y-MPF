@@ -1,0 +1,173 @@
+[
+  {
+    "id": "mpf-064",
+    "categoria": "resultados y orden de mérito",
+    "pregunta_canonica": "¿Qué diferencia hay entre la lista provisoria y la lista definitiva?",
+    "clusters": [
+      "mpf-c006",
+      "mpf-c142",
+      "mpf-c085",
+      "mpf-c071",
+      "mpf-c283",
+      "mpf-c286"
+    ],
+    "respuesta": "Según la explicación de la organización, ambas listas son de personas inscriptas, no de aprobadas. La provisoria se publica para que cada quien verifique que figura y pueda reclamar si hay un error u omisión; la definitiva es el listado cerrado de inscriptos al concurso, ya con las correcciones hechas, y es la que habilita a rendir. Estar en la lista no significa haber aprobado nada todavía: significa cumplir los requisitos para presentarse al examen.",
+    "confianza": "media",
+    "motivo_confianza": "La organización fue clara y lo repitió, pero circuló en paralelo otra definición entre participantes que asocia las listas al resultado del examen, y esa confusión se sostuvo durante meses.",
+    "respuestas_contradictorias": [
+      "Las dos listas son de inscriptos: la provisoria para corregir errores, la definitiva es el listado cerrado que habilita a rendir.",
+      "La lista provisoria significa que se aprobó y la definitiva que se quedó apto para el sorteo."
+    ],
+    "vigencia": "permanente",
+    "respaldo": [
+      "La provisoria es para revisar que efectivamente estén en el listado de inscriptos al concurso, en caso de que haya algún error u omisión se pueda corregir. La definitiva es el listado cerrado de los inscriptos al concurso",
+      "Estar en el listado quiere decir que cumplis con los requisitos mínimos para participar en los exámenes",
+      "Lista Provisoria: podés rendir. (Aprobaste)",
+      "La definitiva es para rendir el examen"
+    ]
+  },
+  {
+    "id": "mpf-065",
+    "categoria": "resultados y orden de mérito",
+    "pregunta_canonica": "No aparezco en la lista. ¿Qué pasó?",
+    "clusters": [
+      "mpf-c281",
+      "mpf-c141",
+      "mpf-c137",
+      "mpf-c298"
+    ],
+    "respuesta": "Antes de dar por hecho que no se figura, conviene revisar cómo se busca: el listado está separado por la letra inicial del apellido y hay que seleccionar la letra correspondiente. Si efectivamente no aparece, los motivos que dio la organización son no haber cargado la documentación obligatoria o no cumplir el requisito de edad. Un dato mal escrito que no sea el apellido —por ejemplo, la falta de un segundo nombre— no afecta.",
+    "confianza": "media",
+    "motivo_confianza": "Los motivos los dio la organización; el detalle de la búsqueda por letra lo aportaron participantes y resolvió la mayoría de los casos reportados.",
+    "respuestas_contradictorias": [],
+    "vigencia": "permanente",
+    "respaldo": [
+      "El motivo puede ser que no se haya cargado la documentación obligatoria o que no cumplas con los requisitos de edad mínima para participar del sorteo",
+      "No, tienen que ingresar a la pagina, seleccionar la primer letra de su apellido y buscar que figuren",
+      "Arriba figuran las letras que comienza tu apellido",
+      "No pasa nada"
+    ]
+  },
+  {
+    "id": "mpf-066",
+    "categoria": "resultados y orden de mérito",
+    "pregunta_canonica": "¿Cuándo salen las notas? ¿Dan nota numérica o sólo aprobado/desaprobado?",
+    "clusters": [
+      "mpf-c008",
+      "mpf-c348",
+      "mpf-c381",
+      "mpf-c069",
+      "mpf-c077",
+      "mpf-c317"
+    ],
+    "respuesta": "",
+    "confianza": "requiere_verificacion",
+    "motivo_confianza": "Conviven dos versiones sobre el momento y una tercera sobre la forma. Se dijo que la plataforma devuelve la nota apenas se termina el examen, y también que los resultados recién se publican cuando terminaron de rendir todas las camadas, con estimaciones de mayo o junio. Sobre la forma, hay quienes reportaron nota numérica sobre 100 y quienes esperaban sólo aprobado o desaprobado.",
+    "respuestas_contradictorias": [
+      "Al terminar el examen la plataforma devuelve la nota automáticamente.",
+      "Las notas se publican recién cuando terminan de rendir todas las personas, no antes."
+    ],
+    "vigencia": "permanente",
+    "respaldo": [
+      "Si es igual que el año pasado terminas el examen y te da la nota automaticamente",
+      "No, se publican cuando se terminan de tomar todos los exámenes",
+      "No, cuando se terminen de tomar todos. Hay gente que rinde en mayo",
+      "hice el examen 412 y aprobe con 100/100"
+    ]
+  },
+  {
+    "id": "mpf-067",
+    "categoria": "resultados y orden de mérito",
+    "pregunta_canonica": "¿Cuál es la nota mínima para aprobar?",
+    "clusters": [
+      "mpf-c324"
+    ],
+    "respuesta": "",
+    "confianza": "requiere_verificacion",
+    "motivo_confianza": "Se preguntó varias veces con cuántas respuestas correctas se aprueba cada parte y no hubo respuesta de la organización. La única cifra que circuló, 70 puntos, la aportó un participante sin citar fuente.",
+    "respuestas_contradictorias": [],
+    "vigencia": "permanente",
+    "respaldo": [
+      "con que saquen 70 ya pueden quedar, porque con eso aprueban y es a sorteo entre aprobados"
+    ]
+  },
+  {
+    "id": "mpf-068",
+    "categoria": "resultados y orden de mérito",
+    "pregunta_canonica": "¿Hay que aprobar las dos partes por separado?",
+    "clusters": [
+      "mpf-c348"
+    ],
+    "respuesta": "",
+    "confianza": "requiere_verificacion",
+    "motivo_confianza": "La pregunta quedó planteada sin respuesta: se consultó si la nota es única o si hay que aprobar teórico y práctico por separado, y nadie con información lo respondió.",
+    "respuestas_contradictorias": [],
+    "vigencia": "permanente",
+    "respaldo": [
+      "Las notas son por separado digamos tengo que aprobar ambas partes (teoría y práctica)"
+    ]
+  },
+  {
+    "id": "mpf-069",
+    "categoria": "resultados y orden de mérito",
+    "pregunta_canonica": "Necesito una constancia de que rendí para presentar en el trabajo. ¿Dan certificado?",
+    "clusters": [
+      "mpf-c089",
+      "mpf-c110",
+      "mpf-c151"
+    ],
+    "respuesta": "",
+    "confianza": "requiere_verificacion",
+    "motivo_confianza": "Consulta repetida durante toda la etapa de exámenes, por parte de gente que necesitaba justificar la ausencia laboral. Varias personas dijeron haberla pedido por correo y ninguna confirmó haberla recibido; en el grupo se llegó a dudar de que exista.",
+    "respuestas_contradictorias": [],
+    "vigencia": "permanente",
+    "respaldo": [
+      "Che, alguien que haya pedido la constancia de examen por mail , se las enviaron ?",
+      "No aun nada",
+      "Entiendo q no, pq no es una capacitación (por ejemplo)"
+    ]
+  },
+  {
+    "id": "mpf-070",
+    "categoria": "resultados y orden de mérito",
+    "pregunta_canonica": "¿Qué son las impugnaciones y las recusaciones?",
+    "clusters": [
+      "mpf-c131",
+      "mpf-c263",
+      "mpf-c299"
+    ],
+    "respuesta": "Son dos cosas distintas. La recusación aparece en el formulario de inscripción y es el mecanismo para pedir que se aparte a alguien del tribunal evaluador; si no se recusó a nadie, que figure sin ingresos es lo esperable. Las impugnaciones son una etapa posterior del concurso: se publica una resolución de impugnaciones junto con la lista definitiva de postulantes, y no figurar entre ellas simplemente significa que no hubo nada que corregir en el propio legajo.",
+    "confianza": "media",
+    "motivo_confianza": "La definición de recusación la dio la organización; el funcionamiento de la etapa de impugnaciones se reconstruye de respuestas de participantes y de las resoluciones que circularon.",
+    "respuestas_contradictorias": [],
+    "vigencia": "permanente",
+    "respaldo": [
+      "La recusación es un procedimiento legal de apartar a una persona de X tramite",
+      "No recursaste a nadie, así que esta bien",
+      "Ahí te aparece si recusas a alguien del tribunal evaluador",
+      "Por que seguro a vos no te tenían que corregir nada"
+    ]
+  },
+  {
+    "id": "mpf-071",
+    "categoria": "resultados y orden de mérito",
+    "pregunta_canonica": "¿Se arma un orden de mérito con las notas?",
+    "clusters": [
+      "mpf-c388",
+      "mpf-c008"
+    ],
+    "respuesta": "",
+    "confianza": "requiere_verificacion",
+    "motivo_confianza": "Se preguntó reiteradamente si el ingreso se define por nota o por sorteo entre aprobados, y las respuestas fueron todas conjeturas de participantes, incluidas afirmaciones opuestas sobre si la nota influye o no en la selección posterior. La organización no respondió este punto.",
+    "respuestas_contradictorias": [
+      "Al sorteo entran todos los aprobados sin importar la nota; la nota puede pesar recién en la entrevista.",
+      "Se sortea primero entre quienes sacaron las notas más altas."
+    ],
+    "vigencia": "permanente",
+    "respaldo": [
+      "Ya habían dicho que para el sorteo participaban todos son importar la nota",
+      "yo creo que primero se sortean a los que sacaron 100",
+      "Conozco gente q entró aprobando pero con nota baja"
+    ]
+  }
+]

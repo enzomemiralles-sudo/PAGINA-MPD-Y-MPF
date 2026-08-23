@@ -1,0 +1,136 @@
+[
+  {
+    "id": "mpf-052",
+    "categoria": "temario y material de estudio",
+    "pregunta_canonica": "¿De dónde se estudia? ¿Dónde está el material?",
+    "clusters": [
+      "mpf-c002",
+      "mpf-c020",
+      "mpf-c105",
+      "mpf-c278",
+      "mpf-c076",
+      "mpf-c081",
+      "mpf-c171",
+      "mpf-c275"
+    ],
+    "respuesta": "El material oficial lo publica el propio Ministerio Público Fiscal en el apartado Documentos del sitio de Ingreso Democrático: ahí está la bibliografía sobre la que se toma el examen. La agrupación que administraba el grupo mantenía además una carpeta de Drive con ese mismo material reordenado por temas y con modelos de examen, pensada para facilitar el estudio. Lo que se evalúa sale de la documentación publicada por el organismo; no hay un temario paralelo ni contenidos exclusivos de terceros.",
+    "confianza": "alta",
+    "motivo_confianza": "Respondido decenas de veces por la organización con la misma indicación, durante los ocho meses del chat.",
+    "respuestas_contradictorias": [],
+    "vigencia": "permanente",
+    "respaldo": [
+      "La pagina del MPF tiend la bibliografia",
+      "Podes encontrarlo en nuestro Drive o en la parte de documentos de la página del MPF",
+      "El material de estudio se encuentran en nuestro Driva o en la página del MPF en documentos",
+      "El material lo dan ellos. Nosotros se los acercamos desde el Drive",
+      "Todo el material de estudio pueden verlo en el apartado de documentos o en nuestro Drive"
+    ]
+  },
+  {
+    "id": "mpf-053",
+    "categoria": "temario y material de estudio",
+    "pregunta_canonica": "¿Qué temas entran en la parte teórica?",
+    "clusters": [
+      "mpf-c043",
+      "mpf-c028",
+      "mpf-c162",
+      "mpf-c153",
+      "mpf-c053"
+    ],
+    "respuesta": "Los ejes que se mencionaron son historia argentina y latinoamericana, formación cívica y cultura general del país, Constitución Nacional, códigos y leyes básicas, y derechos humanos, incluida la Convención Americana sobre Derechos Humanos. Quienes rindieron en 2026 reportaron que en la práctica cayó poco de historia y mucho de Constitución, leyes y funcionamiento del sistema de justicia. Conviene tomar el reparto de temas del material oficial y no de esos relatos, que describen un examen puntual.",
+    "confianza": "media",
+    "motivo_confianza": "Los ejes generales los dio la organización; el peso relativo de cada tema surge de relatos de quienes rindieron y varía entre fechas de examen.",
+    "respuestas_contradictorias": [],
+    "vigencia": "permanente",
+    "respaldo": [
+      "Es sobre historia y cultura general de la Argentina y conocimientos prácticos sobre derecho",
+      "El primer examen te hacen pregunta de historia y generales del país con conocimientos teóricos",
+      "Hacen preguntas sobre historia general de la argentina y lo basico de la ley",
+      "Me tomaron casi nada de historia, todo sobre constitución y leyes"
+    ]
+  },
+  {
+    "id": "mpf-054",
+    "categoria": "temario y material de estudio",
+    "pregunta_canonica": "¿Sirven los modelos de examen para practicar?",
+    "clusters": [
+      "mpf-c058",
+      "mpf-c173",
+      "mpf-c113",
+      "mpf-c100"
+    ],
+    "respuesta": "",
+    "confianza": "requiere_verificacion",
+    "motivo_confianza": "Punto abiertamente en disputa dentro del grupo. La organización desaconsejó estudiar de los modelos por considerarlos engañosos y recomendó ir a la bibliografía, mientras que varias personas que rindieron dijeron que la mayoría de las preguntas del teórico eran las mismas del modelo. Ambas posiciones se sostuvieron con firmeza.",
+    "respuestas_contradictorias": [
+      "Los modelos son engañosos: es preferible estudiar de la bibliografía oficial y no guiarse por ellos.",
+      "El modelo de examen sirve: de las 20 preguntas del teórico, buena parte eran las mismas del modelo."
+    ],
+    "vigencia": "permanente",
+    "respaldo": [
+      "Los modelos son engañosos por eso no los recomendamos y es preferible estudiar de la bibliografia",
+      "No te conviene guiarte por ese tipo de modelos de examen",
+      "te recomiendo estudiar del modelo de examen, de las 20 preguntas que me hicieron 15 fácil eran las mismas de ahi",
+      "habia muchas preguntas del modelo de examen que subieron aca",
+      "Podes utilizar los modelos de examen que subimos al Drive!"
+    ]
+  },
+  {
+    "id": "mpf-055",
+    "categoria": "temario y material de estudio",
+    "pregunta_canonica": "¿Cómo me preparo para la parte práctica? ¿Hay tutoriales?",
+    "clusters": [
+      "mpf-c241",
+      "mpf-c296",
+      "mpf-c294",
+      "mpf-c326"
+    ],
+    "respuesta": "No existen videos ni tutoriales oficiales del organismo para la parte práctica. Lo que se recomendó en el grupo fue practicar directamente sobre los sitios donde después hay que buscar —el del MPF y el de la Corte Suprema— usando los fallos que aparecen en los modelos, y familiarizarse con los buscadores de cada sitio antes del día del examen. La agrupación dio además charlas de preparación, presenciales y grabadas.",
+    "confianza": "media",
+    "motivo_confianza": "La inexistencia de material oficial la confirmó la organización; las estrategias de preparación son recomendaciones de participantes y de las charlas del grupo.",
+    "respuestas_contradictorias": [],
+    "vigencia": "permanente",
+    "respaldo": [
+      "No hay videos oficiales",
+      "Es esencial que aprendan a buscar los puntos claves de los fallos",
+      "Cualquier cosa podes ir navegando sobre las páginas de la CSJN y el MPF que te va a re ayudar",
+      "Podes buscar en youtube un tutorial, no hace falta necesariamente que sea de nexo"
+    ]
+  },
+  {
+    "id": "mpf-056",
+    "categoria": "temario y material de estudio",
+    "pregunta_canonica": "¿Hay un listado oficial de fallos para estudiar?",
+    "clusters": [
+      "mpf-c280",
+      "mpf-c268"
+    ],
+    "respuesta": "No. La organización respondió que no existe un listado oficial de fallos: la parte práctica no evalúa haber leído determinados fallos sino saber encontrarlos, y todo el material disponible es el publicado en el apartado de documentos del organismo.",
+    "confianza": "media",
+    "motivo_confianza": "Respuesta directa de la organización, en dos hilos, sin contradicción.",
+    "respuestas_contradictorias": [],
+    "vigencia": "permanente",
+    "respaldo": [
+      "No hay un listado oficial",
+      "Todo el material esta en nuestro Drive y también en el apartado de Documentos"
+    ]
+  },
+  {
+    "id": "mpf-057",
+    "categoria": "temario y material de estudio",
+    "pregunta_canonica": "¿Hace falta hacer algún curso pago para prepararse?",
+    "clusters": [
+      "mpf-c303",
+      "mpf-c104"
+    ],
+    "respuesta": "No hay ningún curso obligatorio ni exigencia de estudios previos para presentarse. La organización respondió que no conocía cursos específicos y que, aunque puedan ser un recurso útil, no son necesarios: lo que se toma es el material publicado por el organismo.",
+    "confianza": "media",
+    "motivo_confianza": "Respondido por la organización, sin contradicción, aunque en términos generales.",
+    "respuestas_contradictorias": [],
+    "vigencia": "permanente",
+    "respaldo": [
+      "No conozco ningún curso por el momento, de igual manera, si bien es un buen recurso, no es obligatorio tener estudios previos",
+      "Para técnico administrativo no hay q hacer ninguna materia o curso, lo q hay q rendir es el material q hay en la carpeta"
+    ]
+  }
+]

@@ -1,0 +1,331 @@
+[
+  {
+    "id": "mpf-037",
+    "categoria": "formato y modalidad del examen",
+    "pregunta_canonica": "¿El examen es presencial o virtual?",
+    "clusters": [
+      "mpf-c010",
+      "mpf-c018",
+      "mpf-c025"
+    ],
+    "respuesta": "Es virtual y se rinde desde casa, por la plataforma del organismo, en la fecha y hora que se asignan por correo. No se rinde con cámara encendida ni hace falta que la computadora tenga cámara: el examen se completa en el sitio. Todo el proceso, de la inscripción al examen, es online.",
+    "confianza": "alta",
+    "motivo_confianza": "Respondido decenas de veces por la organización con la misma fórmula, y confirmado después por quienes efectivamente rindieron.",
+    "respuestas_contradictorias": [],
+    "vigencia": "permanente",
+    "respaldo": [
+      "No es con cámara encendida, suben el examen en la página y lo completas en la fecha que te indican",
+      "Si, es virtual desde tu casa! Te llega un link por mail el día del examen",
+      "Es todo virtual",
+      "No piden cámara",
+      "Si. Todo el proceso es virtual"
+    ]
+  },
+  {
+    "id": "mpf-038",
+    "categoria": "formato y modalidad del examen",
+    "pregunta_canonica": "¿Puedo rendir desde el celular o una tablet?",
+    "clusters": [
+      "mpf-c010",
+      "mpf-c150",
+      "mpf-c213"
+    ],
+    "respuesta": "No: hay que rendir desde una computadora. La parte práctica obliga a abrir otra pestaña para buscar información mientras se responde, y en celular o tablet eso no funciona bien.",
+    "confianza": "media",
+    "motivo_confianza": "Lo indicó la organización y lo repitieron participantes con experiencia, pero no se citó una prohibición formal del reglamento.",
+    "respuestas_contradictorias": [],
+    "vigencia": "permanente",
+    "respaldo": [
+      "no, no necesitas ninguno en especial, pero si hay que rendir desde una computadora",
+      "Fijate de hacerlo con compu, ni celu ni tablet",
+      "Dijeron que no ni celu no tablet",
+      "Necesitas si o si abrir otra pestaña en el practico para buscar los fallos/informacion que te pidan"
+    ]
+  },
+  {
+    "id": "mpf-039",
+    "categoria": "formato y modalidad del examen",
+    "pregunta_canonica": "¿Cuántos exámenes son y qué evalúa cada uno?",
+    "clusters": [
+      "mpf-c048",
+      "mpf-c041",
+      "mpf-c162",
+      "mpf-c099"
+    ],
+    "respuesta": "Son dos evaluaciones y se rinden el mismo día, una después de la otra: una teórica y una práctica. La teórica es de opción múltiple, sobre historia argentina y latinoamericana, formación cívica, Constitución Nacional y nociones básicas de derecho. La práctica evalúa búsqueda de información jurídica: encontrar un fallo, una resolución o un informe en los sitios oficiales y responder sobre lo encontrado. Es el mismo examen para todas las personas inscriptas al mismo agrupamiento.",
+    "confianza": "alta",
+    "motivo_confianza": "La estructura de dos partes la explicó la organización desde el inicio y la confirmaron después quienes rindieron.",
+    "respuestas_contradictorias": [],
+    "vigencia": "permanente",
+    "respaldo": [
+      "Es un examen teórico y otro más práctico de búsqueda de fallos y demás",
+      "Es el mismo examen para todos. Consta de una primera parte teorica y una segunda practica",
+      "Se realizan 2 exámenes de opción múltiple de manera virtual. 1 teórico y otro más práctico",
+      "Son el mismo dia"
+    ]
+  },
+  {
+    "id": "mpf-040",
+    "categoria": "formato y modalidad del examen",
+    "pregunta_canonica": "¿Cuántas preguntas tiene cada parte y cuánto tiempo dan?",
+    "clusters": [
+      "mpf-c016",
+      "mpf-c050",
+      "mpf-c037",
+      "mpf-c186",
+      "mpf-c346",
+      "mpf-c057",
+      "mpf-c064"
+    ],
+    "respuesta": "La estructura que reportaron de forma coincidente quienes rindieron es: 20 preguntas de opción múltiple en la parte teórica, con 30 minutos, y 3 consignas en la parte práctica, con 15 minutos. Sobre la ventana total hubo un cambio durante la convocatoria: los primeros correos de citación indicaban 45 minutos y después se comunicó que la plataforma queda habilitada una hora, dentro de la cual se acomodan ambas partes. Ese cambio rigió para quienes rindieron a partir de ese momento.",
+    "confianza": "media",
+    "motivo_confianza": "Las cantidades y los tiempos por parte los reportaron muchas personas que ya habían rendido, de forma coincidente, pero la duración total cambió a mitad de convocatoria y en el chat conviven las dos versiones.",
+    "respuestas_contradictorias": [
+      "El examen dura 45 minutos en total, según el correo de citación.",
+      "La plataforma queda habilitada una hora completa para las dos partes."
+    ],
+    "vigencia": "atada_a_convocatoria",
+    "respaldo": [
+      "La teoría 20 preguntas, la práctica son 3",
+      "20 teoricos en 30 min y 3 practicas en 15 min",
+      "20 preguntas en 30 minutos",
+      "En el mail decía 45 minutos en total",
+      "una hora completa entre practico y teorico",
+      "1hora es. Ayer lo cambiaron. Rige para los que rinden de acá en adelante."
+    ]
+  },
+  {
+    "id": "mpf-041",
+    "categoria": "formato y modalidad del examen",
+    "pregunta_canonica": "Si entro más tarde de la hora asignada, ¿pierdo tiempo de examen?",
+    "clusters": [
+      "mpf-c030",
+      "mpf-c037",
+      "mpf-c066"
+    ],
+    "respuesta": "Sí. La ventana de examen es fija: empieza a la hora de la citación y se cierra a la hora indicada, sin importar cuándo se ingrese. Quien entra tarde tiene menos tiempo para resolver, no más plazo al final. Además, una vez iniciado un cuestionario el reloj de esa parte corre aunque se cambie a la otra, así que conviene terminar una antes de pasar a la siguiente.",
+    "confianza": "media",
+    "motivo_confianza": "Coincidieron varias personas que rindieron y una cita del instructivo que circuló en el grupo; no hubo respuesta de la organización.",
+    "respuestas_contradictorias": [],
+    "vigencia": "permanente",
+    "respaldo": [
+      "No, es una hora apartir de la hora que te citaron ellos. Si entras 10:50 vas a tener 10 minutos para los 2.",
+      "Si entras tarde vas a tener menos tiempo para realizar lo",
+      "Está disponible entre las 13:00 y las 14:00, independientemente del momento en que lo inicies se cierra a las 14.",
+      "Una vez iniciado un examen el tiempo comienza a correr, si cambia de cuestionario sin finalizar el primero el tiempo sigue corriendo para este"
+    ]
+  },
+  {
+    "id": "mpf-042",
+    "categoria": "formato y modalidad del examen",
+    "pregunta_canonica": "¿En qué orden conviene rendir el teórico y el práctico?",
+    "clusters": [
+      "mpf-c041",
+      "mpf-c044"
+    ],
+    "respuesta": "El sistema permite elegir con cuál empezar, pero la recomendación que circuló entre quienes ya habían rendido fue hacer primero el teórico completo y recién después abrir el práctico, justamente porque el reloj de una parte sigue corriendo si se salta a la otra sin cerrarla. Al terminar el teórico hay que finalizar ese intento y pasar al práctico; recién cuando ambos están completos se envía todo.",
+    "confianza": "media",
+    "motivo_confianza": "Recomendación práctica de participantes que rindieron, coincidente entre varios; no fue confirmada por la organización.",
+    "respuestas_contradictorias": [],
+    "vigencia": "permanente",
+    "respaldo": [
+      "Si, es mejor realizar el teórico primero y terminarlo para luego continuar con el práctico.",
+      "Si ya hiciste todo, pone terminar. Si te falta la práctica, apreta \"práctica \"",
+      "Deberá entonces comenzar y terminar unos de los exámenes y lueg"
+    ]
+  },
+  {
+    "id": "mpf-043",
+    "categoria": "formato y modalidad del examen",
+    "pregunta_canonica": "¿Puedo volver atrás y corregir una respuesta?",
+    "clusters": [
+      "mpf-c034"
+    ],
+    "respuesta": "Sí, mientras quede tiempo. Al enviar el cuestionario el sistema muestra el listado de respuestas y permite seleccionar cuál revisar. La sugerencia práctica que circuló fue anotar aparte el número de las preguntas dudosas para volver rápido a ellas. Si el tiempo se termina, ya no se puede corregir.",
+    "confianza": "media",
+    "motivo_confianza": "Relato coincidente de participantes que rindieron; sin confirmación de la organización.",
+    "respuestas_contradictorias": [],
+    "vigencia": "permanente",
+    "respaldo": [
+      "Podes enviar y después te aparece la cantidad de respuestas y podes seleccionar cuál queres corregir",
+      "si te sobra tiempo si podes controlar, sino no pero se guarda igual"
+    ]
+  },
+  {
+    "id": "mpf-044",
+    "categoria": "formato y modalidad del examen",
+    "pregunta_canonica": "¿Cómo es exactamente la parte práctica?",
+    "clusters": [
+      "mpf-c005",
+      "mpf-c068",
+      "mpf-c237",
+      "mpf-c308",
+      "mpf-c088",
+      "mpf-c087",
+      "mpf-c126"
+    ],
+    "respuesta": "Son tres consignas de búsqueda. Cada una pide localizar algo concreto —un fallo, una resolución, un informe, la ubicación de una dependencia— en los sitios oficiales, y después responder por opción múltiple sobre lo encontrado. Las páginas que se usaron fueron la del propio Ministerio Público Fiscal, la de la Corte Suprema y la del Poder Judicial de la Nación; el mapa de dependencias del MPF apareció en varias consignas. No hay que memorizar fallos: lo que se evalúa es saber buscarlos. Lo que sí advirtieron quienes rindieron es que el tiempo es corto y los documentos son largos, así que la habilidad concreta es ir al punto exacto que pide la consigna en lugar de leer el documento entero.",
+    "confianza": "alta",
+    "motivo_confianza": "Descripción coincidente entre la organización y numerosos relatos de personas que ya habían rendido, a lo largo de toda la etapa de exámenes.",
+    "respuestas_contradictorias": [],
+    "vigencia": "permanente",
+    "respaldo": [
+      "Es mas tipo practico. consiste en búsqueda de resoluciones, jurisprudencia y en base a eso responder las preguntas",
+      "El práctico es buscar fallos. Son 3 ejercicios de ese tipo.",
+      "El fallo lo tenés que buscar en la página del MPF o de corte suprema",
+      "Me tocó buscar en el mapa de fiscalias de la página del MPF",
+      "En el examen no van a tener tiempo de leer cada fallo, cuando yo rendí me dieron un fallo de 110 hojas",
+      "Es q lo q se evalua. Es q se sepa buscar el fallo"
+    ]
+  },
+  {
+    "id": "mpf-045",
+    "categoria": "formato y modalidad del examen",
+    "pregunta_canonica": "¿La parte práctica toma manejo de Word o herramientas informáticas?",
+    "clusters": [
+      "mpf-c134",
+      "mpf-c311",
+      "mpf-c197"
+    ],
+    "respuesta": "",
+    "confianza": "requiere_verificacion",
+    "motivo_confianza": "El material de estudio anunciaba una evaluación de herramientas informáticas básicas y la organización describió consignas de redacción en procesador de texto, pero quienes efectivamente rindieron en 2026 reportaron sólo búsqueda de documentos y opción múltiple. Las dos versiones se sostuvieron en paralelo durante toda la convocatoria.",
+    "respuestas_contradictorias": [
+      "Incluye manejo de herramientas informáticas: escribir una oración cambiando tipo de letra, color o subrayado, además de la búsqueda.",
+      "La parte práctica fue únicamente búsqueda de fallos, resoluciones e informes, respondida por opción múltiple; no hubo ejercicio de Word ni de tipeo."
+    ],
+    "vigencia": "requiere_verificacion",
+    "respaldo": [
+      "Tenes un examen que quizás te pide que escribas una oración usando una palabra que ellos te ponen en rojo o en negrita",
+      "Te hacen preguntas sobre el funcionamiento de las herramientas y búsqueda de jurisprudencia",
+      "La prueba informática suele ser redactar una oración en word cambiando el tipo de letra, color, subrayado; buscar la ubicación de alguna fiscalía",
+      "El práctico también es un examen virtual de opción múltiple",
+      "Eran 3 preguntas para buscar , una sentencia de un fallo, un informe y una jurisdiccion"
+    ]
+  },
+  {
+    "id": "mpf-046",
+    "categoria": "formato y modalidad del examen",
+    "pregunta_canonica": "En el multiple choice, ¿se puede marcar más de una opción?",
+    "clusters": [
+      "mpf-c301"
+    ],
+    "respuesta": "No. Cada pregunta admite una sola opción correcta y el sistema no deja marcar más de una.",
+    "confianza": "media",
+    "motivo_confianza": "Respondido por la organización de forma directa, en una sola oportunidad.",
+    "respuestas_contradictorias": [],
+    "vigencia": "permanente",
+    "respaldo": [
+      "es de 1 opción la respuesta, no podes elegir mas de 1"
+    ]
+  },
+  {
+    "id": "mpf-047",
+    "categoria": "formato y modalidad del examen",
+    "pregunta_canonica": "¿Cómo me entero de la fecha y la hora del examen?",
+    "clusters": [
+      "mpf-c004",
+      "mpf-c170",
+      "mpf-c138",
+      "mpf-c307",
+      "mpf-c045",
+      "mpf-c061"
+    ],
+    "respuesta": "Llega por correo electrónico, a la casilla con la que se hizo el registro, con una o dos semanas de anticipación. El correo indica día, hora y el enlace de acceso. La fecha no se elige: se asigna, y el criterio que se usó en la convocatoria 2026 fue el orden alfabético del apellido dentro del período general de exámenes.",
+    "confianza": "media",
+    "motivo_confianza": "La organización confirmó el aviso por mail y la asignación por apellido, y lo corroboraron quienes recibieron la citación. Convive con una afirmación aislada de que cada persona podía elegir cuándo rendir dentro del rango de fechas, que el resto del chat desmiente.",
+    "respuestas_contradictorias": [
+      "La fecha se asigna por orden alfabético de apellido y llega por mail.",
+      "Dentro del rango de fechas cada persona entra y rinde cuando quiere."
+    ],
+    "vigencia": "permanente",
+    "respaldo": [
+      "Mas adelante les van a mandar un mail con las fechas!",
+      "Va a llegar un mail con 1 o 2 semanas de anticipación",
+      "La fecha de los exámenes es entre el 2 de marzo y el 30 de abril. Se asigna la fecha por orden de apellido",
+      "asignan una en específico por la inicial de apellido",
+      "las fechas no se eligen",
+      "no se elige gente, ustedes entre ese RANGO DE FECHAS entran y rinden el examen cuando quieran!!"
+    ]
+  },
+  {
+    "id": "mpf-048",
+    "categoria": "formato y modalidad del examen",
+    "pregunta_canonica": "¿El examen aparece antes de la hora? ¿Conviene entrar antes?",
+    "clusters": [
+      "mpf-c363",
+      "mpf-c375",
+      "mpf-c364"
+    ],
+    "respuesta": "El examen se habilita automáticamente a la hora exacta de la citación, no antes. Se puede entrar al campus con anticipación y esperar, pero el cuestionario recién aparece a horario; si ya se estaba dentro, alcanza con actualizar la página.",
+    "confianza": "media",
+    "motivo_confianza": "Confirmado de forma coincidente por varias personas el mismo día de sus exámenes; sin respuesta de la organización.",
+    "respuestas_contradictorias": [],
+    "vigencia": "permanente",
+    "respaldo": [
+      "Si! Te aparece automáticamente a esa hora",
+      "Aparece justo a horario",
+      "Se abre únicamente a la hora exacta",
+      "No te deja entrar hasta la fecha y hora de tú examen"
+    ]
+  },
+  {
+    "id": "mpf-049",
+    "categoria": "formato y modalidad del examen",
+    "pregunta_canonica": "¿Qué tan difícil es el examen?",
+    "clusters": [
+      "mpf-c096",
+      "mpf-c149",
+      "mpf-c320",
+      "mpf-c052"
+    ],
+    "respuesta": "Las opiniones de quienes rindieron coinciden en que el contenido no es de gran complejidad, pero que la dificultad real está en dos cosas: el tiempo, que es ajustado, y la redacción de las opciones del multiple choice, donde una palabra cambia el sentido de la respuesta. Sobre la parte práctica las impresiones se dividen entre quienes la resolvieron sin problemas y quienes no llegaron a encontrar lo que pedía la consigna.",
+    "confianza": "media",
+    "motivo_confianza": "Son valoraciones subjetivas de participantes, no un dato del concurso. Se incluyen porque fue una de las consultas más repetidas.",
+    "respuestas_contradictorias": [],
+    "vigencia": "permanente",
+    "respaldo": [
+      "Yo lo hice el año pasado y no es muy complejo",
+      "No es tan difícil , solo que tenés que leer porque una mínima palabra te confunde",
+      "no se confíen, porque es un examen muy largo y con poco tiempo, por lo cual no te da espacio a buscar las respuestas",
+      "Los choice son tramposos o te hacen confiarte"
+    ]
+  },
+  {
+    "id": "mpf-050",
+    "categoria": "formato y modalidad del examen",
+    "pregunta_canonica": "Cuando termino, ¿cómo sé que se envió bien?",
+    "clusters": [
+      "mpf-c044",
+      "mpf-c367",
+      "mpf-c1310"
+    ],
+    "respuesta": "",
+    "confianza": "requiere_verificacion",
+    "motivo_confianza": "Varias personas preguntaron, apenas terminado el examen, cómo confirmar que las dos partes habían quedado enviadas, y si había algún comprobante. Las únicas respuestas fueron de otros participantes describiendo qué botón habían apretado, sin una confirmación del sistema.",
+    "respuestas_contradictorias": [],
+    "vigencia": "permanente",
+    "respaldo": [
+      "yo iba a preguntar lo mismo salís y se guarda todo",
+      "Yo puse guardar y cerrar"
+    ]
+  },
+  {
+    "id": "mpf-051",
+    "categoria": "formato y modalidad del examen",
+    "pregunta_canonica": "No voy a poder rendir el día que me asignaron. ¿Se puede reprogramar?",
+    "clusters": [
+      "mpf-c034",
+      "mpf-c193"
+    ],
+    "respuesta": "",
+    "confianza": "requiere_verificacion",
+    "motivo_confianza": "Se preguntó más de una vez, por trabajo o por imposibilidad de conexión. La única respuesta en el chat fue de un participante diciendo que la fecha es única y no se cambia, sin ningún respaldo. Es un punto a chequear contra el reglamento.",
+    "respuestas_contradictorias": [],
+    "vigencia": "permanente",
+    "respaldo": [
+      "Es una fecha única y no hay cambio, imposible",
+      "No puedo rendir porque en el trabajo tengo una reunión a esa hora, te vuelven a tomar en algún momento?"
+    ]
+  }
+]

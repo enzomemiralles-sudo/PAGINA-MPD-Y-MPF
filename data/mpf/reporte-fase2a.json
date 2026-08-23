@@ -1,0 +1,11 @@
+{
+  "organismo": "MPF",
+  "clusters": 1481,
+  "clusters_sin_candidatos": 62,
+  "clusters_con_respuesta_organizacion": 552,
+  "roles": {
+    "participante": 986,
+    "organizacion": 15,
+    "referente": 21
+  }
+}

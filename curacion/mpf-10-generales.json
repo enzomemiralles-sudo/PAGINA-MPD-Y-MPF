@@ -1,0 +1,62 @@
+[
+{
+  "id": "mpf-084",
+  "categoria": "dudas generales sobre el ingreso democrático",
+  "pregunta_canonica": "¿Qué es el ingreso democrático y para qué puestos es?",
+  "clusters": ["mpf-c160", "mpf-c078", "mpf-c072"],
+  "respuesta": "Es el mecanismo de ingreso al Ministerio Público Fiscal por concurso abierto y público, con examen y sorteo, para los agrupamientos administrativos y de apoyo. No es un concurso para ser fiscal ni para cargos jurisdiccionales. Los agrupamientos que aparecieron en el chat son técnico administrativo, técnico jurídico —para abogados y abogadas— y auxiliar, y cada uno se convoca por separado.",
+  "confianza": "media",
+  "motivo_confianza": "Reconstruido a partir de respuestas de la organización dispersas en varios hilos; ninguna define el régimen en términos generales.",
+  "respuestas_contradictorias": [],
+  "vigencia": "permanente",
+  "respaldo": [
+    "No, es solo para sectores administrativos",
+    "este examen es para el puesto de técnico administrativo",
+    "Para estos tres tipos, los requisitos son los mismos, tener mas de 18 años y haber terminado el secundario",
+    "Actualmente no piden un puesto puntual. Es un sorteo para las áreas administrativas!"
+  ]
+},
+{
+  "id": "mpf-085",
+  "categoria": "dudas generales sobre el ingreso democrático",
+  "pregunta_canonica": "¿Este examen sirve para el Poder Judicial de la provincia o para la Suprema Corte bonaerense?",
+  "clusters": ["mpf-c046", "mpf-c155", "mpf-c157", "mpf-c261"],
+  "respuesta": "No: son concursos distintos, de organismos distintos. El ingreso democrático del Ministerio Público Fiscal es nacional y no tiene relación con el examen de idoneidad de la Suprema Corte de la Provincia de Buenos Aires ni con los del Poder Judicial provincial, que tienen su propia inscripción, su propio temario y sus propias fechas. Anotarse a uno no afecta ni habilita al otro.",
+  "confianza": "media",
+  "motivo_confianza": "Lo aclararon participantes con conocimiento de ambos procesos, de forma coincidente; la organización no respondió sobre los concursos provinciales por estar fuera de su alcance.",
+  "respuestas_contradictorias": [],
+  "vigencia": "permanente",
+  "respaldo": [
+    "Una cosa es el mpf nación y otra el poder judicial DE LA PROVINCIA DE BUENOS AIRES",
+    "Son distintos exámenes",
+    "Este es para el ministerio público fiscal"
+  ]
+},
+{
+  "id": "mpf-086",
+  "categoria": "dudas generales sobre el ingreso democrático",
+  "pregunta_canonica": "¿Hay que tener contactos para entrar?",
+  "clusters": ["mpf-c334", "mpf-c096"],
+  "respuesta": "",
+  "confianza": "requiere_verificacion",
+  "motivo_confianza": "Fue un tema recurrente y no tiene una respuesta verificable en el chat: conviven testimonios de que se entra sin conocer a nadie y sospechas sobre el mecanismo de sorteo, todas anecdóticas. La única respuesta institucional sobre el punto es que los sorteos se hacen públicamente, que a su vez está en discusión.",
+  "respuestas_contradictorias": [],
+  "vigencia": "permanente",
+  "respaldo": [
+    "Yo he viste gente sin contactos entrar",
+    "es una loteria y siempre hay alguien que conoce a alguien en la fila"
+  ]
+},
+{
+  "id": "mpf-087",
+  "categoria": "dudas generales sobre el ingreso democrático",
+  "pregunta_canonica": "¿El personal está sindicalizado? ¿Hay gremio?",
+  "clusters": ["mpf-c339"],
+  "respuesta": "",
+  "confianza": "requiere_verificacion",
+  "motivo_confianza": "Se preguntó y nadie respondió.",
+  "respuestas_contradictorias": [],
+  "vigencia": "permanente",
+  "respaldo": []
+}
+]

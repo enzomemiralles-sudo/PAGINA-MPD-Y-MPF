@@ -1,0 +1,161 @@
+[
+  {
+    "id": "mpf-072",
+    "categoria": "después del examen",
+    "pregunta_canonica": "Aprobé el examen. ¿Qué sigue?",
+    "clusters": [
+      "mpf-c038",
+      "mpf-c175",
+      "mpf-c096",
+      "mpf-c033",
+      "mpf-c080",
+      "mpf-c270"
+    ],
+    "respuesta": "Aprobar no adjudica un cargo: incorpora al listado de personas habilitadas para los sorteos. A partir de ahí el circuito es: cuando se genera una vacante en una dependencia se sortea entre quienes aprobaron, a quienes salen sorteadas se las convoca a una entrevista presencial, y quien es seleccionado ingresa a trabajar con un período a prueba antes de quedar efectivo. El examen funciona como filtro previo al sorteo, no como concurso de oposición que ordene por puntaje.",
+    "confianza": "media",
+    "motivo_confianza": "El circuito general lo describieron la organización y varios participantes de forma coincidente, pero los detalles de cada etapa se discutieron sin acuerdo y sin cita del reglamento.",
+    "respuestas_contradictorias": [],
+    "vigencia": "permanente",
+    "respaldo": [
+      "una vez sorteados son llamados a una entrevista presencial, pasada la entrevista entra a trabajar a prueba y luego quedas efectivo",
+      "Exacto, solo aquellos que aprueben el examen entran a los sorteos",
+      "Una vez aprobado el examen quedas en la lista de sorteos. Ahí es cuestión de suerte de cuando salgas sorteada",
+      "Las vacantes se abren durante el año, y a medida que surgen se van realizando sorteos entre quienes aprobaron el examen para llamarlos a entrevistas"
+    ]
+  },
+  {
+    "id": "mpf-073",
+    "categoria": "después del examen",
+    "pregunta_canonica": "Salí sorteado/a. ¿Qué tengo que hacer?",
+    "clusters": [
+      "mpf-c033",
+      "mpf-c106",
+      "mpf-c1475"
+    ],
+    "respuesta": "",
+    "confianza": "requiere_verificacion",
+    "motivo_confianza": "Varias personas preguntaron qué pasos seguir tras salir sorteadas —si había que mandar CV, presentarse en la dependencia o esperar— y no obtuvieron una respuesta con respaldo. Las únicas contestaciones fueron experiencias sueltas: alguien que mandó el CV y no fue llamado, alguien que se presentó en persona.",
+    "respuestas_contradictorias": [],
+    "vigencia": "permanente",
+    "respaldo": [
+      "Hola chicos sali sorteado",
+      "Yo mandé el cv y hasta ahora no me llamaron",
+      "Ponele, salieron 10 y de esos 10, él pide los cv"
+    ]
+  },
+  {
+    "id": "mpf-074",
+    "categoria": "después del examen",
+    "pregunta_canonica": "¿Cómo es la entrevista?",
+    "clusters": [
+      "mpf-c027"
+    ],
+    "respuesta": "El único relato de primera mano disponible la describe como una entrevista laboral común: sin preguntas puntuales sobre el organismo ni sobre el contenido del examen, con una explicación de en qué consiste el trabajo y de la situación de la dependencia. Es presencial.",
+    "confianza": "requiere_verificacion",
+    "motivo_confianza": "Se apoya en una sola experiencia personal, de alguien que además había rendido en una convocatoria anterior. No hay respuesta de la organización ni segunda fuente.",
+    "respuestas_contradictorias": [],
+    "vigencia": "permanente",
+    "respaldo": [
+      "Bien, como cualquier otra entrevista de trabajo no me pregunto nada puntual del mpf, me explico de que se trataba el trabajo",
+      "Yo tuve una entrevista en la fiscalia n° 2, pero hice el examen hace 2 años"
+    ]
+  },
+  {
+    "id": "mpf-075",
+    "categoria": "después del examen",
+    "pregunta_canonica": "¿Qué tareas hace un técnico administrativo?",
+    "clusters": [
+      "mpf-c021",
+      "mpf-c078"
+    ],
+    "respuesta": "Según la descripción de la organización, las tareas incluyen registro y digitalización de escritos y oficios, apoyo a las fiscalías en cuestiones de recursos humanos, contables e informáticas, y manejo de expedientes y documentación. Es un agrupamiento administrativo y de apoyo técnico, no un cargo con funciones jurisdiccionales.",
+    "confianza": "media",
+    "motivo_confianza": "Descripción dada una vez por la organización, coherente con lo que publica la convocatoria, pero sin cita textual del documento oficial.",
+    "respuestas_contradictorias": [],
+    "vigencia": "permanente",
+    "respaldo": [
+      "Las tareas de un tecnico administrativo pueden ser; registro, digitalización de escritos y oficios), apoyo a fiscalías en temas de recursos humanos, contables, informáticos, y manejo de expedientes y documentación",
+      "este examen es para el puesto de técnico administrativo"
+    ]
+  },
+  {
+    "id": "mpf-076",
+    "categoria": "después del examen",
+    "pregunta_canonica": "¿Cuánto se cobra?",
+    "clusters": [
+      "mpf-c029",
+      "mpf-c243",
+      "mpf-c380"
+    ],
+    "respuesta": "",
+    "confianza": "requiere_verificacion",
+    "motivo_confianza": "La organización dijo expresamente no tener información oficial y dio un rango aproximado. La referencia verificable que circuló es la escala salarial que el propio organismo publica en su sección de transparencia activa, donde el cargo sería equiparable a la categoría Auxiliar; los montos cambian con cada actualización paritaria, así que cualquier cifra concreta caduca. En el grupo también se advirtió que las cifras que devuelven los buscadores para este puesto son poco confiables.",
+    "respuestas_contradictorias": [],
+    "vigencia": "atada_a_convocatoria",
+    "respaldo": [
+      "No tenemos información oficial, pero calculo que entre 1 y 2m",
+      "No con exactitud, pero ronda entre 1m y 2m",
+      "Actualmente la convocatoria que se encuentra abierta es Tecnico administrativo. (En la escala salarial es equiparable a la categoría de \"Auxiliar\")",
+      "estos son los sueldos brutos",
+      "Recomiendo ver fuentes, es irreal ese número para el puesto y los requisitos"
+    ]
+  },
+  {
+    "id": "mpf-077",
+    "categoria": "después del examen",
+    "pregunta_canonica": "¿Cuál es el horario de trabajo?",
+    "clusters": [
+      "mpf-c180",
+      "mpf-c338",
+      "mpf-c314"
+    ],
+    "respuesta": "",
+    "confianza": "requiere_verificacion",
+    "motivo_confianza": "Se dieron tres respuestas distintas, dos de ellas de la propia organización: horario de oficina de mañana y tarde, jornada de 7:30 a 13:30 de lunes a viernes, y estimaciones de participantes de entre 7 y 9 horas diarias. No hay una fuente que zanje el punto.",
+    "respuestas_contradictorias": [
+      "Horario de oficina, mañana y tarde.",
+      "De 7:30 a 13:30, de lunes a viernes.",
+      "Entre 7 y 9 horas diarias según la dependencia."
+    ],
+    "vigencia": "permanente",
+    "respaldo": [
+      "Horario de oficina, mañana y tarde tengo entendido",
+      "Suele ser de 7.30 a 13.30 lu a vie",
+      "De 7 a 9 horas , dependiendo donde arranca tipo 7 u 8 am"
+    ]
+  },
+  {
+    "id": "mpf-078",
+    "categoria": "después del examen",
+    "pregunta_canonica": "¿El cargo es en relación de dependencia o por monotributo?",
+    "clusters": [
+      "mpf-c336",
+      "mpf-c205"
+    ],
+    "respuesta": "La única respuesta que hubo indica que en las fiscalías se trabaja en relación de dependencia, pero está formulada como algo que se tiene entendido y no fue confirmada por la organización.",
+    "confianza": "requiere_verificacion",
+    "motivo_confianza": "Respuesta única, de un participante, sin respaldo documental. La pregunta sobre el tipo de contrato al ingresar se hizo más de una vez y no obtuvo respuesta de la organización.",
+    "respuestas_contradictorias": [],
+    "vigencia": "permanente",
+    "respaldo": [
+      "tengo entendido que todos en la fiscalia estan en relación de dependencia"
+    ]
+  },
+  {
+    "id": "mpf-079",
+    "categoria": "después del examen",
+    "pregunta_canonica": "¿Los abogados y abogadas pueden seguir ejerciendo con este cargo?",
+    "clusters": [
+      "mpf-c123"
+    ],
+    "respuesta": "En el grupo se citó el artículo 58 de la ley orgánica, sobre incompatibilidades, según el cual quienes integran el Ministerio Público Fiscal no pueden ejercer la abogacía ni representar a terceros en juicio, salvo en asuntos propios o de familiares directos. La versión resumida que circuló fue que quien trabaja en el Estado no puede ejercer por fuera.",
+    "confianza": "media",
+    "motivo_confianza": "Se citó la norma por su número y contenido, lo que permite verificarla, pero la cita llegó recortada en el chat y conviene leer el texto completo del artículo antes de publicarlo.",
+    "respuestas_contradictorias": [],
+    "vigencia": "permanente",
+    "respaldo": [
+      "Los integrantes del Ministerio Público Fiscal de la Nación no podrán ejercer la abogacía ni la representación de terceros en juicio, salvo en los asuntos propios",
+      "nadie que trabaje en el estado puede ejercer por fuera"
+    ]
+  }
+]

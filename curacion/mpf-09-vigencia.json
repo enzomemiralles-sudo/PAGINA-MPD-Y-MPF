@@ -1,0 +1,74 @@
+[
+{
+  "id": "mpf-080",
+  "categoria": "vigencia de notas y exámenes anteriores",
+  "pregunta_canonica": "Ya rendí y aprobé en una convocatoria anterior. ¿Me sirve o tengo que rendir de nuevo?",
+  "clusters": ["mpf-c201", "mpf-c073", "mpf-c136"],
+  "respuesta": "",
+  "confianza": "requiere_verificacion",
+  "motivo_confianza": "La organización respondió que los listados se renuevan cada dos años y que hay que volver a rendir, incluso para quienes aprobaron y nunca fueron llamados. Pero en el chat circularon también una vigencia de tres años y la cita de una resolución según la cual los exámenes rendidos en 2024 caducan el 31 de julio de 2028, que no encaja con ninguna de las dos. El plazo exacto y desde cuándo se cuenta no quedaron establecidos.",
+  "respuestas_contradictorias": [
+    "El examen y el listado tienen vigencia de dos años; después hay que volver a rendir.",
+    "La vigencia es de tres años.",
+    "Los resultados de los exámenes rendidos en 2024 caducan el 31 de julio de 2028."
+  ],
+  "vigencia": "permanente",
+  "respaldo": [
+    "No, no sigue vigente, los listados se renuevan cada 2 años. Por lo que deberás rendir nuevamente los exámenes",
+    "el examen tiene vigencia por 2 años y se realizan varios sorteos",
+    "La gente que se postulo antes y no salió sorteada tiene que volver a rendir el examen",
+    "Entiendo que son 3 años de validez, el examen y tendrías que mirar en la vigencia de los listados",
+    "Los resultados de los exámenes rendidos en el año 2024 (Resolución SC 3194/23) caducarán el 31 de julio de 2028."
+  ]
+},
+{
+  "id": "mpf-081",
+  "categoria": "vigencia de notas y exámenes anteriores",
+  "pregunta_canonica": "¿Quiénes quedan eximidos de rendir?",
+  "clusters": ["mpf-c073", "mpf-c155"],
+  "respuesta": "",
+  "confianza": "requiere_verificacion",
+  "motivo_confianza": "Aparece una categoría de personas eximidas en los listados y nadie de la organización explicó qué la define. Las únicas explicaciones vinieron de participantes y no coinciden entre sí: quienes ya integran el organismo, o quienes ya salieron sorteadas.",
+  "respuestas_contradictorias": [
+    "Las personas eximidas son las que ya forman parte del MPF y por eso entran al sorteo sin rendir.",
+    "Son las personas que ya salieron sorteadas en instancias anteriores."
+  ],
+  "vigencia": "permanente",
+  "respaldo": [
+    "la gente eximida es la gente que ingresa al sorteo pero no rindió el examen por ya formar parte del mpf",
+    "Las personas eximidas son aquellas que no tuvieron que rendir o participar del concurso",
+    "La nueva lista que acaban de enviar son las personas eximidas debido a que ya salieron sorteadas?"
+  ]
+},
+{
+  "id": "mpf-082",
+  "categoria": "vigencia de notas y exámenes anteriores",
+  "pregunta_canonica": "¿Qué son las excepciones y quién cuenta como estudiante avanzado?",
+  "clusters": ["mpf-c379"],
+  "respuesta": "",
+  "confianza": "requiere_verificacion",
+  "motivo_confianza": "Se preguntó dos veces qué significan las excepciones del comunicado y a partir de qué punto de la carrera alguien es estudiante avanzado. Las respuestas remitieron a la página y a un criterio que varía según la facultad, sin precisar cuál.",
+  "respuestas_contradictorias": [],
+  "vigencia": "atada_a_convocatoria",
+  "respaldo": [
+    "Las excepciones son estudiantes avanzados que tengas las materias que establecieron en el comunicado antes de anotarse y los abogados",
+    "Pq hay un criterio según la facultad q estés"
+  ]
+},
+{
+  "id": "mpf-083",
+  "categoria": "vigencia de notas y exámenes anteriores",
+  "pregunta_canonica": "Si no salgo sorteado/a en dos años, ¿tengo que volver a rendir?",
+  "clusters": ["mpf-c350", "mpf-c033"],
+  "respuesta": "Sí. Según lo respondido por la organización, quienes aprobaron y no fueron sorteados durante la vigencia del listado tienen que volver a inscribirse y rendir en la convocatoria siguiente. Mientras el listado está vigente no hay que hacer nada: se participa automáticamente de todos los sorteos que se realicen en ese período.",
+  "confianza": "media",
+  "motivo_confianza": "Respondido por la organización en dos hilos distintos con el mismo criterio, aunque el plazo exacto de vigencia quedó en discusión.",
+  "respuestas_contradictorias": [],
+  "vigencia": "permanente",
+  "respaldo": [
+    "La gente que se postulo antes y no salió sorteada tiene que volver a rendir el examen",
+    "No, el examen tiene vigencia por 2 años y se realizan varios sorteos",
+    "Tenés q volver a anotarte en la próxima convocatoria"
+  ]
+}
+]

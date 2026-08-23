@@ -1,0 +1,293 @@
+[
+  {
+    "id": "mpf-001",
+    "categoria": "inscripción y trámite",
+    "pregunta_canonica": "¿Dónde y cómo me inscribo al ingreso democrático del MPF?",
+    "clusters": [
+      "mpf-c007",
+      "mpf-c022",
+      "mpf-c039",
+      "mpf-c116",
+      "mpf-c190",
+      "mpf-c232",
+      "mpf-c164",
+      "mpf-c065",
+      "mpf-c070",
+      "mpf-c101"
+    ],
+    "respuesta": "La inscripción es exclusivamente por internet, en el sitio de Ingreso Democrático del Ministerio Público Fiscal (https://www.mpf.gob.ar/Ingresodemocratico/). Son dos pasos distintos: primero hay que registrarse y crear un usuario, y recién después inscribirse al concurso. Una vez dentro del sistema, el camino es Concursos → Con inscripción abierta → seleccionar el concurso → bajar hasta el final de la página → botón Inscribirse, y ahí se habilitan las jurisdicciones para elegir. Registrarse y cargar los datos personales no equivale a estar inscripto: si no se completó el paso de Inscribirse, la postulación no quedó hecha.",
+    "confianza": "alta",
+    "motivo_confianza": "Circuito descrito de forma consistente y repetida por la organización que administraba el grupo, coincidente entre respuestas de distintas fechas.",
+    "respuestas_contradictorias": [],
+    "vigencia": "permanente",
+    "respaldo": [
+      "Tenes que registrarte en la pagina del MPF y ahí vas a poder realizar la inscripción",
+      "Tenes que ir a concursos - con inscripción abierta, seleccionas la única opción, vas abajo de todo, pones inscribirse",
+      "Tenes que ir abajo de todo, tocar inscribirme y ahí te permite seleccionar",
+      "Los datos son un paso previo para la inscripcion"
+    ]
+  },
+  {
+    "id": "mpf-002",
+    "categoria": "inscripción y trámite",
+    "pregunta_canonica": "Al registrarme me pide datos de abogado/a y no soy abogado/a. ¿Qué pasa?",
+    "clusters": [
+      "mpf-c209"
+    ],
+    "respuesta": "Es un error de link, no un requisito. Cuando el formulario de registro pide número de matrícula o datos de abogado/a, se está entrando por la puerta equivocada del sitio. El acceso correcto para el ingreso democrático es https://www.mpf.gob.ar/Ingresodemocratico/.",
+    "confianza": "alta",
+    "motivo_confianza": "Aclaración general publicada por la organización del grupo ante un problema reportado por varias personas.",
+    "respuestas_contradictorias": [],
+    "vigencia": "permanente",
+    "respaldo": [
+      "aquellos que tengan el problema que al registrase les pide que ingrese sus datos de ABOGADO/A es porque están entrando al link equivocado"
+    ]
+  },
+  {
+    "id": "mpf-003",
+    "categoria": "inscripción y trámite",
+    "pregunta_canonica": "¿Hasta cuándo hay tiempo para inscribirse? ¿Hay horario límite?",
+    "clusters": [
+      "mpf-c019",
+      "mpf-c024",
+      "mpf-c083",
+      "mpf-c074",
+      "mpf-c193",
+      "mpf-c092",
+      "mpf-c095",
+      "mpf-c244"
+    ],
+    "respuesta": "El plazo se define en cada convocatoria y se cuenta por días completos, no por franja horaria: la inscripción está abierta desde las 00:00 del primer día hasta el final del último día, ambos inclusive. En la convocatoria de CABA y GBA (concurso N° 412) el período fue del 15 al 30 de diciembre de 2025, y para La Plata del 9 al 13 de febrero de 2026. Las fechas concretas hay que confirmarlas siempre contra la resolución de la convocatoria vigente.",
+    "confianza": "requiere_verificacion",
+    "motivo_confianza": "Las fechas corresponden a la convocatoria 2025/2026 y caducan. Lo que sí se mantiene entre convocatorias es el criterio de que no hay franja horaria y el último día cuenta completo.",
+    "respuestas_contradictorias": [],
+    "vigencia": "atada_a_convocatoria",
+    "respaldo": [
+      "hasta el 30/12 tenes tiempo",
+      "no hay franja horaria para eso,si hay fecha límite que arranca desde hoy 15/12 hasta el 30/12",
+      "La inscripción de la plata es entre el 9 y el 13 de febrero de 2026",
+      "mañana inclusive!"
+    ]
+  },
+  {
+    "id": "mpf-004",
+    "categoria": "inscripción y trámite",
+    "pregunta_canonica": "¿Me puedo inscribir a más de una jurisdicción o localidad?",
+    "clusters": [
+      "mpf-c040",
+      "mpf-c200",
+      "mpf-c218",
+      "mpf-c011",
+      "mpf-c079"
+    ],
+    "respuesta": "Sí. Al momento de inscribirse el sistema muestra las jurisdicciones incluidas en esa convocatoria y se pueden marcar todas las que interesen, sin límite. Cuál conviene marcar es una decisión personal: la recomendación que circuló en el grupo fue elegir según dónde a cada quien le sirva efectivamente trabajar. Inscribirse en varias jurisdicciones no implica rendir varias veces: el examen es uno solo.",
+    "confianza": "alta",
+    "motivo_confianza": "Respondido varias veces por la organización, sin respuestas en contra.",
+    "respuestas_contradictorias": [],
+    "vigencia": "permanente",
+    "respaldo": [
+      "Podes anotarte a tantas zonas como lo desees",
+      "Las mas convenientes para vos, o lo que te interese. Si queres todo, todo. Es una elección personal tuya",
+      "Te podías inscribir en todas las que quisieras"
+    ]
+  },
+  {
+    "id": "mpf-005",
+    "categoria": "inscripción y trámite",
+    "pregunta_canonica": "Ya me inscribí y quiero agregar o cambiar jurisdicciones. ¿Tengo que cancelar la inscripción?",
+    "clusters": [
+      "mpf-c040",
+      "mpf-c189",
+      "mpf-c017"
+    ],
+    "respuesta": "",
+    "confianza": "requiere_verificacion",
+    "motivo_confianza": "La organización dio tres indicaciones distintas sobre el mismo punto en fechas cercanas: cancelar e inscribirse de nuevo, editar con el ícono de lápiz sin cancelar, y volver a inscribirse sin cancelar nada. No hay forma de resolverlo con el material del chat.",
+    "respuestas_contradictorias": [
+      "Hay que cancelar la inscripción y hacerla de nuevo, seleccionando las localidades que se quieran.",
+      "Se puede modificar sin cancelar la inscripción, con el ícono de lápiz que aparece al lado.",
+      "No hace falta cancelar: alcanza con realizar la inscripción nuevamente."
+    ],
+    "vigencia": "permanente",
+    "respaldo": [
+      "Tenes que cancelar la inscripción 6 hacerla devuelta, seleccionando las localidades que quieras",
+      "Podes modificarlo sin cancelar la inscripción",
+      "No es necesario cancelar, simplemente realiza al inscripción nuevamente, debería dejarte",
+      "No te aparece un lápiz al lado de la inscripción?"
+    ]
+  },
+  {
+    "id": "mpf-006",
+    "categoria": "inscripción y trámite",
+    "pregunta_canonica": "¿Se eligen fiscalías o jurisdicciones?",
+    "clusters": [
+      "mpf-c115",
+      "mpf-c259",
+      "mpf-c042"
+    ],
+    "respuesta": "La respuesta de la organización fue que en estas convocatorias no se concursa por fiscalía sino por jurisdicción: al inscribirse se seleccionan jurisdicciones, no dependencias puntuales. Conviene tenerlo en cuenta porque el formulario muestra un listado de fiscalías concursadas que suele leerse como si fueran opciones a elegir una por una.",
+    "confianza": "media",
+    "motivo_confianza": "La organización fue clara y consistente, pero varias respuestas de participantes en el mismo hilo afirmaron lo contrario, y la pantalla de inscripción parece dar pie a la confusión.",
+    "respuestas_contradictorias": [
+      "En estas convocatorias no se eligen fiscalías, sino jurisdicciones.",
+      "Se pueden elegir varias fiscalías: al inscribirse el sistema deja seleccionar las que se quieran."
+    ],
+    "vigencia": "permanente",
+    "respaldo": [
+      "En estas convocatorias no se eligen por fiscalías, sino por jurisdicciones",
+      "Solo podés seleccionar jurisdicciones al inscribirte al concurso",
+      "Se pueden elegir varias, a la hora de inscribirse te deja seleccionar las que desees"
+    ]
+  },
+  {
+    "id": "mpf-007",
+    "categoria": "inscripción y trámite",
+    "pregunta_canonica": "Al inscribirme me pregunta si quiero participar en sorteos de vacantes NO permanentes. ¿Qué conviene poner?",
+    "clusters": [
+      "mpf-c063",
+      "mpf-c060",
+      "mpf-c195"
+    ],
+    "respuesta": "Los cargos no permanentes son los que cubren licencias o vacaciones por un tiempo determinado; cuando ese período termina, termina el contrato. La opción es acumulativa, no excluyente: quien la deja marcada participa también de los sorteos de vacantes no permanentes, y quien quiere concursar únicamente por vacantes permanentes tiene que dejarla sin marcar. En el grupo circuló la recomendación de marcarla igual, con el argumento de que muchas vacantes no permanentes terminan volviéndose permanentes, pero eso es una opinión de participantes, no una regla del concurso.",
+    "confianza": "media",
+    "motivo_confianza": "La definición de vacante no permanente y el efecto de la opción los explicó la organización; la recomendación de marcarla sí es opinión de participantes.",
+    "respuestas_contradictorias": [],
+    "vigencia": "permanente",
+    "respaldo": [
+      "Claro, los cargos no permanentes son para cubrir licencias o vacaciones por un tiempo determinado",
+      "Exacto, si sólo querés permanente dejalo destildado",
+      "Si querés vacante permanente únicamente está bien que pongas no",
+      "Es para tener la posibilidad de TAMBIÉN quedar en vacantes no permanentes"
+    ]
+  },
+  {
+    "id": "mpf-008",
+    "categoria": "inscripción y trámite",
+    "pregunta_canonica": "¿Cómo sé que quedé efectivamente inscripto/a?",
+    "clusters": [
+      "mpf-c242",
+      "mpf-c133",
+      "mpf-c165",
+      "mpf-c214",
+      "mpf-c277"
+    ],
+    "respuesta": "Al terminar todos los pasos llega un correo de comprobante de inscripción al concurso, con el número de inscripción. Ese mail es la confirmación: si llegó, la inscripción está hecha. El envío es automático y en los días de mayor demanda puede demorar, así que conviene revisar la carpeta de spam o correo no deseado antes de rehacer el trámite. En la propia plataforma también se puede verificar el estado entrando a la pestaña de inscripciones, donde figura el concurso al que se anotó.",
+    "confianza": "alta",
+    "motivo_confianza": "Confirmado repetidamente por la organización a lo largo de todo el período de inscripción.",
+    "respuestas_contradictorias": [],
+    "vigencia": "permanente",
+    "respaldo": [
+      "Una vez terminados todos los pasos que se detallan en el instructivo. Te deberá estar llegando el mail de confirmación de inscripción al concurso.",
+      "Nono, si les llegó el mail de confirmación ya están inscriptos",
+      "El mail es automático y con la alta demanda puede tardar en llegar. Fíjate en spam o correo no deseado",
+      "Si van a la pestaña de inscripciones les va a aparecer el concurso"
+    ]
+  },
+  {
+    "id": "mpf-009",
+    "categoria": "inscripción y trámite",
+    "pregunta_canonica": "Después de inscribirme, ¿puedo seguir cargando o corrigiendo datos?",
+    "clusters": [
+      "mpf-c128",
+      "mpf-c196",
+      "mpf-c217",
+      "mpf-c397"
+    ],
+    "respuesta": "Sí. Los datos personales, los antecedentes y los archivos adjuntos se pueden modificar y completar después de haber quedado inscripto, entrando al perfil en la plataforma. La recomendación de la organización fue tener todo cargado igual, sin dejarlo para último momento.",
+    "confianza": "media",
+    "motivo_confianza": "Respondido por la organización varias veces en términos generales, sin precisión sobre hasta qué momento del proceso se admiten cambios.",
+    "respuestas_contradictorias": [],
+    "vigencia": "permanente",
+    "respaldo": [
+      "Si, pueden modificar los datos sin problema",
+      "con los datos personales no se preocupen que pueden modificarlos en cualquier momento",
+      "Exacto. Te piden tus antecedentes en educación. Es recomendable que ya tengan cargado todo!"
+    ]
+  },
+  {
+    "id": "mpf-010",
+    "categoria": "inscripción y trámite",
+    "pregunta_canonica": "¿Puedo hacer la inscripción desde el celular?",
+    "clusters": [
+      "mpf-c801",
+      "mpf-c232"
+    ],
+    "respuesta": "Conviene hacerla desde una computadora. Varias personas reportaron que en el celular y en tablets el formulario se traba o directamente no aparece la opción de inscribirse. Como alternativa, se sugirió activar en el navegador del teléfono la opción de ver la página en formato de computadora.",
+    "confianza": "media",
+    "motivo_confianza": "Recomendación de la organización a partir de problemas reportados por participantes; no es una restricción formal del sistema.",
+    "respuestas_contradictorias": [],
+    "vigencia": "permanente",
+    "respaldo": [
+      "si y recomiendo desde una computadora porque en el celular a veces inscribirte la opción no aparece",
+      "Te recomiendo que desde el cel pongas la opción de \"formato computadora\" y pruebes nuevamente, a veces en el formato de Cel trae problemas"
+    ]
+  },
+  {
+    "id": "mpf-011",
+    "categoria": "inscripción y trámite",
+    "pregunta_canonica": "¿Puedo anotarme al mismo tiempo a técnico administrativo y a técnico jurídico?",
+    "clusters": [
+      "mpf-c021",
+      "mpf-c094"
+    ],
+    "respuesta": "Sí, siempre que ambas convocatorias estén abiertas y se cumplan los requisitos de cada una. En la práctica, durante la convocatoria 2025/2026 sólo estuvo abierta la inscripción a técnico administrativo, y las de técnico jurídico y auxiliar se abrieron después. Cada agrupamiento es un concurso distinto, con su propia inscripción.",
+    "confianza": "media",
+    "motivo_confianza": "La organización confirmó que se puede concursar en ambos, pero la disponibilidad efectiva dependía de qué convocatoria estuviera abierta en cada momento.",
+    "respuestas_contradictorias": [],
+    "vigencia": "atada_a_convocatoria",
+    "respaldo": [
+      "Podes anotarte para ambos, pero por el momento se va a abrir la inscripción para técnico administrativo",
+      "Podes inscribirte tanto para Técnico administrativo y jurídico",
+      "Podes inscribirte en los 2 sin problemas"
+    ]
+  },
+  {
+    "id": "mpf-012",
+    "categoria": "inscripción y trámite",
+    "pregunta_canonica": "¿Tengo que vivir en la jurisdicción a la que me anoto?",
+    "clusters": [
+      "mpf-c230",
+      "mpf-c025"
+    ],
+    "respuesta": "Según las respuestas del grupo, se puede concursar por las jurisdicciones que se quieran con independencia del domicilio que figure en el DNI. No apareció ninguna respuesta de la organización que fijara una exigencia de domicilio.",
+    "confianza": "requiere_verificacion",
+    "motivo_confianza": "Sólo respondieron participantes, sin respaldo de la organización ni cita del reglamento. Es un punto que conviene chequear contra las bases de la convocatoria.",
+    "respuestas_contradictorias": [],
+    "vigencia": "permanente",
+    "respaldo": [
+      "buenas! Podes concursar para las localidades que vos quieras",
+      "Independientemente de donde tengas domicilio"
+    ]
+  },
+  {
+    "id": "mpf-013",
+    "categoria": "inscripción y trámite",
+    "pregunta_canonica": "¿Puedo inscribirme si tengo familiares que trabajan en el Poder Judicial o en el Ministerio Público?",
+    "clusters": [
+      "mpf-c269",
+      "mpf-c233"
+    ],
+    "respuesta": "",
+    "confianza": "requiere_verificacion",
+    "motivo_confianza": "Nadie respondió. El formulario de inscripción incluye una pregunta sobre vínculos familiares dentro del sistema y varias personas consultaron qué implica, sin obtener respuesta en el grupo.",
+    "respuestas_contradictorias": [],
+    "vigencia": "permanente",
+    "respaldo": []
+  },
+  {
+    "id": "mpf-014",
+    "categoria": "inscripción y trámite",
+    "pregunta_canonica": "Me inscribí pero no voy a poder presentarme. ¿Cómo me doy de baja?",
+    "clusters": [
+      "mpf-c859"
+    ],
+    "respuesta": "",
+    "confianza": "requiere_verificacion",
+    "motivo_confianza": "Se preguntó cómo darse de baja o si alcanzaba con no presentarse, y nadie respondió. Otra persona que sí intentó darse de baja del concurso escribió que no encontraba en la página cómo hacerlo.",
+    "respuestas_contradictorias": [],
+    "vigencia": "permanente",
+    "respaldo": [
+      "Esto me respondieron en el mail. Cómo me doy de baja. No encuentro en la página como hacerlo."
+    ]
+  }
+]
