@@ -35,6 +35,35 @@ scripts/              el pipeline
 | Fase | Script | Salida |
 |---|---|---|
 | 0 — preproceso | `scripts/fase0_preproceso.py` | `data/<prefijo>/mensajes.jsonl`, `descartados.jsonl`, `reporte-fase0.json` |
+| 1 — detección y clustering | `scripts/fase1_deteccion.py` | `data/<prefijo>/preguntas.jsonl`, `clusters.json`, `clusters.md`, `reporte-fase1.json` |
+
+```bash
+python3 scripts/fase1_deteccion.py --organismo MPD --umbral 0.42 --umbral-fusion 0.62
+```
+
+### Cómo detecta una duda
+
+Solo cuentan las **señales fuertes**: signo de pregunta, un marcador explícito
+("alguien sabe", "una consulta", "quería saber", "no entiendo") o un
+interrogativo como primera palabra. Las señales débiles ("hay que", "se puede",
+"es necesario") se registran pero no alcanzan solas: en castellano abren tanto
+una pregunta como una respuesta, y usarlas de disparador llenaba el corpus de
+falsos positivos. Se descartan además los mensajes de coordinación del grupo
+("¿hay grupo para los que rinden el 1/4?") y los pegados largos de la web.
+
+### Cómo agrupa
+
+tf-idf con coseno, sin dependencias externas. Los lemas de dominio pesan más que
+una palabra cualquiera (`refuerzo=1.6`) porque son los que dicen de qué trata la
+duda, y cada mensaje se recorta a sus 12 términos más fuertes para que un planteo
+largo no se diluya. El agrupamiento es **por líder**, no por componentes conexas:
+un mensaje entra al cluster si se parece al líder, no a un miembro cualquiera —
+si no, A~B y B~C terminan arrastrando a C junto a A y salen clusters gigantes que
+mezclan medio chat. La segunda pasada de fusión sigue la misma regla.
+
+El vocabulario de dominio vive en `scripts/lexico_es.json` (lemas, frases
+multipalabra, señales y categorías). Es castellano del trámite, no del organismo:
+sirve igual para MPF y MPD.
 
 ## Anonimización
 

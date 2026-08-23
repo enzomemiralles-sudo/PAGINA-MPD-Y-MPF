@@ -1,0 +1,167 @@
+{
+  "organismo": "MPF",
+  "mensajes_analizados": 13248,
+  "preguntas_detectadas": 2835,
+  "descartes_deteccion": {
+    "sin_senal": 9561,
+    "sin_contenido": 689,
+    "coordinacion": 146,
+    "pegado_largo": 17
+  },
+  "clusters": 1481,
+  "umbral": 0.42,
+  "umbral_fusion": 0.62,
+  "clusters_por_categoria": {
+    "dudas generales sobre el ingreso democrático": 384,
+    "formato y modalidad del examen": 332,
+    "requisitos y documentación": 184,
+    "plataforma y problemas técnicos": 148,
+    "fechas, sede y logística": 122,
+    "inscripción y trámite": 114,
+    "temario y material de estudio": 86,
+    "resultados y orden de mérito": 72,
+    "después del examen": 30,
+    "vigencia de notas y exámenes anteriores": 9
+  },
+  "preguntas_por_categoria": {
+    "formato y modalidad del examen": 687,
+    "requisitos y documentación": 496,
+    "dudas generales sobre el ingreso democrático": 434,
+    "plataforma y problemas técnicos": 286,
+    "fechas, sede y logística": 254,
+    "inscripción y trámite": 218,
+    "temario y material de estudio": 201,
+    "resultados y orden de mérito": 172,
+    "después del examen": 72,
+    "vigencia de notas y exámenes anteriores": 15
+  },
+  "distribucion_tamano": {
+    "25+": 11,
+    "10-24": 22,
+    "5-9": 36,
+    "2-4": 336,
+    "1 (unica)": 1076
+  },
+  "top_20": [
+    {
+      "id": "mpf-c001",
+      "frecuencia": 66,
+      "categoria": "requisitos y documentación",
+      "lider": "Donde subo el título secundario?"
+    },
+    {
+      "id": "mpf-c002",
+      "frecuencia": 55,
+      "categoria": "temario y material de estudio",
+      "lider": "lo del drive son resúmenes?"
+    },
+    {
+      "id": "mpf-c003",
+      "frecuencia": 43,
+      "categoria": "requisitos y documentación",
+      "lider": "Una consulta antecedentes penales hay que subir?"
+    },
+    {
+      "id": "mpf-c004",
+      "frecuencia": 39,
+      "categoria": "formato y modalidad del examen",
+      "lider": "Y cuando es la fecha para rendir?"
+    },
+    {
+      "id": "mpf-c005",
+      "frecuencia": 34,
+      "categoria": "formato y modalidad del examen",
+      "lider": "Esa es la página para buscar en el examen práctico?"
+    },
+    {
+      "id": "mpf-c006",
+      "frecuencia": 34,
+      "categoria": "resultados y orden de mérito",
+      "lider": "Ya está la lista definitiva?"
+    },
+    {
+      "id": "mpf-c007",
+      "frecuencia": 33,
+      "categoria": "plataforma y problemas técnicos",
+      "lider": "Hola , alguien tiene el link de inscripción?"
+    },
+    {
+      "id": "mpf-c008",
+      "frecuencia": 33,
+      "categoria": "resultados y orden de mérito",
+      "lider": "te mandan nota o solo te dicen aprobado/desaprobado?"
+    },
+    {
+      "id": "mpf-c009",
+      "frecuencia": 30,
+      "categoria": "requisitos y documentación",
+      "lider": "donde debería adjuntar la constancia de alumno regular?"
+    },
+    {
+      "id": "mpf-c010",
+      "frecuencia": 26,
+      "categoria": "formato y modalidad del examen",
+      "lider": "Una consulta el examen es virtual?"
+    },
+    {
+      "id": "mpf-c011",
+      "frecuencia": 25,
+      "categoria": "fechas, sede y logística",
+      "lider": "hola! soy de La Plata...me conviene anotarme a la convocatoria de quilmes ? y si rindo bien despues ya me pued"
+    },
+    {
+      "id": "mpf-c012",
+      "frecuencia": 23,
+      "categoria": "requisitos y documentación",
+      "lider": "Hola hay q ser estudiante de abogacia?"
+    },
+    {
+      "id": "mpf-c013",
+      "frecuencia": 21,
+      "categoria": "plataforma y problemas técnicos",
+      "lider": "Hiciste usuario y contraseña?"
+    },
+    {
+      "id": "mpf-c014",
+      "frecuencia": 21,
+      "categoria": "requisitos y documentación",
+      "lider": "Ah hay que subir un cv ? También"
+    },
+    {
+      "id": "mpf-c015",
+      "frecuencia": 20,
+      "categoria": "requisitos y documentación",
+      "lider": "En que parte pide ? 🤔\nNo la vi"
+    },
+    {
+      "id": "mpf-c016",
+      "frecuencia": 20,
+      "categoria": "formato y modalidad del examen",
+      "lider": "Hola yo rindo mañana cuantas preguntas son de teoría y cuantas de práctica aprox? Es la misma cantidad que el "
+    },
+    {
+      "id": "mpf-c017",
+      "frecuencia": 19,
+      "categoria": "requisitos y documentación",
+      "lider": "Desde 18 años hasta que edad?"
+    },
+    {
+      "id": "mpf-c018",
+      "frecuencia": 18,
+      "categoria": "formato y modalidad del examen",
+      "lider": "Hola buenas tardes consulta alguien sabe cómo son los exámenes presencial o virtual ??"
+    },
+    {
+      "id": "mpf-c019",
+      "frecuencia": 17,
+      "categoria": "inscripción y trámite",
+      "lider": "Hasta que día hay tiempo para inscribirse ?"
+    },
+    {
+      "id": "mpf-c020",
+      "frecuencia": 16,
+      "categoria": "temario y material de estudio",
+      "lider": "Hola el material de estudio esta en el link??"
+    }
+  ]
+}
