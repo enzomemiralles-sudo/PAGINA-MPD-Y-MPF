@@ -2,7 +2,7 @@
 
 import { useId, useState } from "react";
 import { captura as t } from "@/content/landing";
-import { suscribirAlerta } from "@/app/acciones";
+import { suscribirAlerta } from "@/lib/acciones/alertas";
 import type { Organismo } from "@/lib/tipos";
 
 /**

@@ -1,5 +1,5 @@
 import { cierre as t } from "@/content/landing";
-import { CapturaEmail } from "./CapturaEmail";
+import { CapturaEmail } from "@/components/landing/CapturaEmail";
 import { Revelar } from "@/components/marca/Revelar";
 
 export function Cierre() {

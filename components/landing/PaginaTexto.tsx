@@ -1,5 +1,5 @@
-import { Fondo } from "./Fondo";
-import { Cabecera } from "./Cabecera";
+import { Fondo } from "@/components/landing/Fondo";
+import { Cabecera } from "@/components/landing/Cabecera";
 
 /** Envoltorio de las páginas de sólo texto: legales y contacto. */
 export function PaginaTexto({
