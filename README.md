@@ -22,13 +22,25 @@ alcanza con sumar una entrada con su `prefijo_id`, `entradas` y `convocatoria`.
 
 ## Estructura
 
+El repo tiene dos mitades. La de arriba es el pipeline que fabrica las FAQs; la
+de abajo es el material con el que se arma la página:
+
 ```
 input/<prefijo>/      exports crudos            (gitignored, con datos personales)
 private/<prefijo>/    mapeo autor -> autor_hash (gitignored)
 data/<prefijo>/       intermedios anonimizados
 output/               entregables publicables
 scripts/              el pipeline
+curacion/             las respuestas escritas a mano (fase 2b)
+
+referencia/           cómo tiene que verse la página
+material/             el contenido que publica: FAQ del MPF + las dos guías del MPD
+marca/                logotipo y assets gráficos de Nexo
 ```
+
+Cada una de esas tres carpetas tiene su propio `README.md` con qué va adentro y
+de dónde sale. El contenido del MPF entra a `material/` desde `output/`, o sea
+que el pipeline alimenta a la página y no al revés.
 
 ## Fases
 
