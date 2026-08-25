@@ -24,12 +24,22 @@ Verificado en Chromium: sin errores de consola, sin respuestas ≥400, sin
 desbordamiento horizontal a 375px, y como máximo 6 `backdrop-filter` por
 pantalla — justo en el presupuesto.
 
+## Despliegue
+
+- Rama `main` creada desde la rama de trabajo. Es la que Vercel tiene que
+  construir.
+- **Falta un paso manual:** poner `main` como rama por defecto del repo. Hoy
+  la rama por defecto es `claude/mpf-faq-extraction-8nqr6i`, que sólo tiene el
+  pipeline de Python: sin `package.json`, el build de producción de Vercel
+  falla. Se cambia en Settings → General → Default branch del repo, o bien en
+  Vercel, Settings → Git → Production Branch.
+- El build es determinista: 8 builds en frío seguidos en verde, entre local y
+  clon limpio. Antes fallaba de manera intermitente, ver la nota de abajo.
+- Falta el proyecto de Supabase. Las migraciones están listas para correr y
+  `.env.example` dice qué va en cada variable. El sitio anda sin ninguna.
+
 ## Pendiente
 
-- **Desplegar en Vercel y crear el proyecto de Supabase.** Es lo único del
-  Bloque 1 que no puedo hacer desde acá: hacen falta credenciales. Las
-  migraciones están listas para correr y `.env.example` dice qué va en cada
-  variable.
 - Bloque 2: auth por magic link, registro con perfil, panel `/admin`.
 
 ## Decisiones
@@ -78,6 +88,16 @@ tenía escrito a `.6s` mientras su propio sistema de movimiento decía 700ms.
   Motor de corrección propio, Bloque 4.
 
 ### De implementación
+
+- **Las Server Actions viven en `lib/`, no en `app/`.** Con el action en
+  `app/acciones.ts` importado desde un componente cliente de `components/`, el
+  build en frío fallaba una de cada varias veces con "Could not find the module
+  CapturaEmail.tsx#CapturaEmail in the React Client Manifest". Ese import cruza
+  el límite del App Router. Los componentes cliente que entran a un server
+  component se importan además siempre por el alias `@/`: el mismo archivo con
+  dos especificadores distintos puede terminar con dos claves en el manifiesto.
+  Un build que falla a veces rompe un deploy cada tantos pushes, así que no
+  alcanzaba con reintentar.
 
 - **El sistema de diseño queda en CSS, no en utilidades de Tailwind.** Son 350
   líneas de CSS a medida —máscaras, blend modes, keyframes, ejes variables— y
