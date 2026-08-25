@@ -1,0 +1,83 @@
+/* ============================================================
+   TOKENS — portados de referencia/landing-preview.html
+   Cinco valores se apartan del preview y están marcados CORRECCIÓN.
+   El motivo de cada uno está en PLAN.md §4.
+   ============================================================ */
+:root {
+  --tinta: #08090a;
+  --tinta-alta: #101216;
+  --papel: #f4f2ed;
+
+  /* CORRECCIÓN 1 — el preview usa .55 y .35. A .35 el texto daba 2,93:1
+     contra --tinta y lo usa, entre otros, el aviso legal del pie.
+     .70 y .50 dan 8,78:1 y 4,90:1 y conservan los dos niveles de jerarquía. */
+  --papel-tenue: rgba(244, 242, 237, 0.7);
+  --papel-débil: rgba(244, 242, 237, 0.5);
+
+  --linea: rgba(244, 242, 237, 0.1);
+  --linea-fuerte: rgba(244, 242, 237, 0.2);
+  --ok: #4ade80;
+  /* CORRECCIÓN 5 — el rojo del preview (#E5484D) da 4,47:1 sobre el vidrio de
+     Nexo, que es la superficie más clara del sistema. Sube lo mínimo para
+     llegar a 4,62:1 en el peor caso; a ojo es el mismo rojo. Lo encontró
+     tests/contraste.test.ts, no una revisión a mano. */
+  --error: #e64d52;
+
+  /* piel dual */
+  --acento: #f4f2ed;
+  --acento-texto: #f4f2ed;
+  --acento-2: transparent;
+  --superficie: rgba(244, 242, 237, 0.03);
+  --mancha-a: #059249;
+  --mancha-b: #0088c4;
+  --relleno: linear-gradient(135deg, #059249, #0088c4);
+  --ancho-titulo: 118;
+  --ancho-h2: 112;
+  --ital-h2: 0;
+
+  /* CORRECCIÓN 2 — --acento-2 vale transparent en dual y en na, así que
+     var(--acento-2,#F58220) no cae al fallback: la variable está definida.
+     Eso dejaba invisibles tres eyebrows y el anillo de "marcada" del
+     simulador. Marcar para revisar es funcional, no decorativo, así que
+     tiene token propio. El naranja sigue siendo exclusivo de Nexo. */
+  --marca-revisar: #c8a27a;
+
+  /* movimiento */
+  --sal: cubic-bezier(0.22, 1, 0.36, 1);
+  --suave: cubic-bezier(0.4, 0, 0.2, 1);
+  --t-micro: 150ms;
+  --t-elem: 420ms;
+  --t-sec: 700ms;
+
+  --cinta-op: 0.62;
+}
+
+html[data-marca="nexo"] {
+  --acento: #059249;
+  --acento-texto: #53b384;
+  --acento-2: #f58220;
+  --marca-revisar: #f58220;
+  --superficie: rgba(31, 72, 56, 0.3);
+  --mancha-a: #059249;
+  --mancha-b: #0d6b3c;
+  --relleno: linear-gradient(135deg, #059249, #0d7a3d);
+  --ancho-titulo: 76;
+  --ancho-h2: 76;
+  --ital-h2: 1;
+  --cinta-op: 0.16;
+}
+
+html[data-marca="na"] {
+  --acento: #0059ba;
+  --acento-texto: #00b9ae;
+  --acento-2: transparent;
+  --marca-revisar: #7fb2e8;
+  --superficie: rgba(0, 136, 196, 0.07);
+  --mancha-a: #0059ba;
+  --mancha-b: #00b9ae;
+  --relleno: linear-gradient(135deg, #0059ba, #0088c4, #00b9ae);
+  --ancho-titulo: 104;
+  --ancho-h2: 100;
+  --ital-h2: 0;
+  --cinta-op: 0.16;
+}

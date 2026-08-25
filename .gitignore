@@ -4,3 +4,14 @@ input/
 private/
 __pycache__/
 *.pyc
+
+# --- app web ---
+node_modules/
+.next/
+out/
+.vercel/
+next-env.d.ts
+*.tsbuildinfo
+.env
+.env.local
+.env*.local
