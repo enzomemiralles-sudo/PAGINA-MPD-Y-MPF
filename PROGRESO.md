@@ -133,6 +133,10 @@ Tres colores se corrigieron por números, no por gusto:
   Ojo con una consecuencia: de las tres reglas de diferenciación entre puertas
   que tenía la landing —naranja sólo en Nexo, color plano contra degradé,
   itálica condensada sólo en Nexo— queda sin la primera. Las otras dos alcanzan.
+- **El logotipo de Nueva Abogacía entra solo.** `LogoNuevaAbogacia` detecta si
+  existe `public/logos/nueva-abogacia.png`: si está, lo sirve por `next/image`
+  leyendo el ancho y el alto del encabezado IHDR del PNG; si no, dibuja el
+  marcador provisorio. Cuando se agregue el archivo no hay que tocar código.
 - **Los logos van a color.** El PNG de Nexo es una silueta blanca con alfa, así
   que se usa como máscara y se pinta con `--logo-nexo`: blanco sobre oscuro,
   verde de marca (`#065D3B`) sobre claro. Nada de filtros de escala de grises.
