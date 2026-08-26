@@ -24,7 +24,22 @@ Verificado en Chromium: sin errores de consola, sin respuestas ≥400, sin
 desbordamiento horizontal a 375px, y como máximo 6 `backdrop-filter` por
 pantalla — justo en el presupuesto.
 
-## Despliegue
+## Despliegue — EN VIVO
+
+**https://peron-delta.vercel.app** sirve la landing desde el commit `c35214d`.
+
+Verificado contra producción: las cuatro rutas responden 200 y una inexistente
+da 404, cada ruta trae su contenido, los bundles de JS y CSS cargan, las dos
+imágenes de `marca/` y el optimizador de `next/image` responden, las fuentes
+autohospedadas por `next/font` cargan, y las cinco correcciones de contraste
+están en el CSS servido.
+
+La interactividad —conmutador de las tres puertas, la pregunta de muestra, la
+Server Action de alertas con su consentimiento, y 375px sin desborde— se
+verificó en local sobre el mismo commit: Chromium no puede tunelizar HTTPS por
+el proxy de la sesión, así que contra producción sólo llega curl.
+
+## Cómo se llegó
 
 - Rama `main` creada desde la rama de trabajo. Es la que Vercel tiene que
   construir.
