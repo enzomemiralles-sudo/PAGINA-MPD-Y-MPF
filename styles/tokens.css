@@ -45,6 +45,12 @@ html[data-superficie="oscura"] {
   --tarjeta: rgba(244, 242, 237, 0.04);
   --sobre-acento: #08090a;
   --sobre-acento-2: #08090a;
+  /* El marcador de "revisar" es funcional, no de marca: el mismo en las tres
+     pieles. Antes era el naranja de Nexo, que ya no existe en la paleta. */
+  --marca-revisar: #c8a27a;
+  /* Los logos van a color. Sobre oscuro, la versión en blanco de Nexo; sobre
+     claro, su verde de marca (7,12:1 sobre papel). */
+  --logo-nexo: #f4f2ed;
 
   /* Nombres viejos que usa el CSS de la landing. */
   --papel-tenue: var(--texto-tenue);
@@ -64,6 +70,8 @@ html[data-superficie="clara"] {
   --tarjeta: #ffffff;
   --sobre-acento: #ffffff;
   --sobre-acento-2: #08090a;
+  --marca-revisar: #8f6533;
+  --logo-nexo: #065d3b;
 
   --papel-tenue: var(--texto-tenue);
   --papel-débil: var(--texto-debil);
@@ -81,7 +89,6 @@ html[data-marca="dual"] {
   --acento: #f4f2ed;
   --acento-texto: #f4f2ed;
   --acento-2: transparent;
-  --marca-revisar: #c8a27a;
   --superficie: rgba(244, 242, 237, 0.03);
   --mancha-a: #059249;
   --mancha-b: #0088c4;
@@ -97,7 +104,6 @@ html[data-marca="neutro"] {
   --acento: var(--texto);
   --acento-texto: var(--texto);
   --acento-2: transparent;
-  --marca-revisar: #8f6533;
   --superficie: var(--tarjeta);
   --mancha-a: #8a8987;
   --mancha-b: #c9c7c2;
@@ -111,8 +117,9 @@ html[data-marca="neutro"] {
 
 /* ---------- Nexo ---------- */
 html[data-marca="nexo"] {
-  --acento-2: #f58220;
-  --marca-revisar: #f58220;
+  /* Nexo es todo verde. El naranja salió de la paleta: --acento-2 es ahora un
+     segundo verde y el marcador de revisar dejó de ser un color de marca. */
+  --acento-2: #16a85b;
   --ancho-titulo: 76;
   --ancho-h2: 76;
   --ital-h2: 1;
@@ -131,11 +138,12 @@ html[data-marca="nexo"][data-superficie="clara"] {
      y para fondo de botón con letra blanca (7,96:1). */
   --acento: #065d3b;
   --acento-texto: #065d3b;
-  --acento-2: #fc7502;
-  --marca-revisar: #b15201;
+  --acento-2: #0a7f4f;
+  /* Sobre este verde la letra va blanca (5,05:1); con tinta no llegaba. */
+  --sobre-acento-2: #ffffff;
   --superficie: var(--tarjeta);
   --mancha-a: #065d3b;
-  --mancha-b: #fc7502;
+  --mancha-b: #0a7f4f;
   --relleno: linear-gradient(135deg, #065d3b, #0a7f4f);
 }
 
@@ -152,7 +160,6 @@ html[data-marca="na"][data-superficie="oscura"] {
   /* La tinta sobre este azul da 2,98:1. La letra va clara: 5,98:1. */
   --sobre-acento: #f4f2ed;
   --acento-texto: #00b9ae;
-  --marca-revisar: #7fb2e8;
   --superficie: rgba(0, 136, 196, 0.07);
   --mancha-a: #0059ba;
   --mancha-b: #00b9ae;
@@ -164,7 +171,6 @@ html[data-marca="na"][data-superficie="clara"] {
   --acento: #0b3fd0;
   --acento-texto: #0b3fd0;
   --acento-2: #00b894;
-  --marca-revisar: #0b3fd0;
   --superficie: var(--tarjeta);
   --mancha-a: #0b3fd0;
   --mancha-b: #00b894;

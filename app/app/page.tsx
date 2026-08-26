@@ -1,6 +1,6 @@
+import { LogoNexo } from "@/components/marca/LogoNexo";
 import type { Metadata } from "next";
 import { redirect } from "next/navigation";
-import Image from "next/image";
 import { crearClienteServidor } from "@/lib/supabase/server";
 import { traerPerfil } from "@/lib/perfil";
 import { AplicarPiel } from "@/components/marca/AplicarPiel";
@@ -36,7 +36,7 @@ export default async function App() {
         <div className="env app-nav">
           <div className="app-marca">
             {perfil.marca === "nexo" && cfg ? (
-              <Image src={cfg.logo} alt={cfg.nombre} width={560} height={137} priority />
+              <LogoNexo alto={18} />
             ) : (
               <>
                 <LogoNuevaAbogacia conCartel={false} />

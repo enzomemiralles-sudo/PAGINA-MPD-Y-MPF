@@ -63,9 +63,19 @@ describe("el espejo de tokens coincide con el CSS", () => {
     return css.match(re)?.[1]?.trim() ?? null;
   };
 
+  // --marca-revisar dejó de ser un color de marca: vive en el bloque de
+  // superficie y es el mismo en las tres pieles.
+  for (const superficie of ["oscura", "clara"] as const) {
+    it(`superficie ${superficie}: --marca-revisar`, () => {
+      const enCss = leerEnBloque(`html\\[data-superficie="${superficie}"\\]`, "marca-revisar");
+      const piel = PIELES[`${superficie}/${superficie === "oscura" ? "dual" : "neutro"}`]!;
+      expect(normalizar(enCss ?? "")).toBe(normalizar(piel["marca-revisar"]));
+    });
+  }
+
   for (const { superficie, marca, donde } of COMBOS) {
     const piel = PIELES[`${superficie}/${marca}`]!;
-    for (const token of ["acento", "acento-texto", "marca-revisar"] as const) {
+    for (const token of ["acento", "acento-texto"] as const) {
       it(`${donde}: --${token}`, () => {
         // El valor puede estar en el bloque combinado o en el de la marca sola.
         const combinado = leerEnBloque(

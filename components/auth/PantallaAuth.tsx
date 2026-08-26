@@ -1,5 +1,6 @@
-import Image from "next/image";
+import { LogoNexo } from "@/components/marca/LogoNexo";
 import { Tarjeta } from "@/components/marca/Tarjeta";
+import { CintaFondo } from "@/components/marca/CintaFondo";
 import { LogoNuevaAbogacia } from "@/components/marca/LogoNuevaAbogacia";
 import { pieLogos } from "@/content/auth";
 
@@ -16,11 +17,12 @@ export function PantallaAuth({
 }) {
   return (
     <>
+      <CintaFondo />
       <main className="auth-pantalla">
         <Tarjeta className={`auth-caja${ancha ? " perfil-caja" : ""}`}>{children}</Tarjeta>
 
         <div className="auth-firma" aria-label={pieLogos.ayuda}>
-          <Image src="/logos/nexo.png" alt="Nexo Derecho" width={560} height={137} priority />
+          <LogoNexo alto={16} />
           <span className="sep-v" aria-hidden="true" />
           <LogoNuevaAbogacia conCartel={false} />
         </div>

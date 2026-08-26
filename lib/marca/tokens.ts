@@ -64,12 +64,12 @@ export const PIELES: Record<string, Piel> = {
   "oscura/nexo": {
     ...OSCURA,
     superficie: "rgba(31,72,56,0.3)",
-    acento: "#059249", "acento-texto": "#53B384", "acento-2": "#F58220", "marca-revisar": "#F58220",
+    acento: "#059249", "acento-texto": "#53B384", "acento-2": "#16A85B", "marca-revisar": "#C8A27A",
   },
   "oscura/na": {
     ...OSCURA,
     superficie: "rgba(0,136,196,0.07)",
-    acento: "#0059BA", "acento-texto": "#00B9AE", "acento-2": null, "marca-revisar": "#7FB2E8",
+    acento: "#0059BA", "acento-texto": "#00B9AE", "acento-2": null, "marca-revisar": "#C8A27A",
     "sobre-acento": "#F4F2ED",
   },
   "clara/neutro": {
@@ -81,12 +81,13 @@ export const PIELES: Record<string, Piel> = {
   "clara/nexo": {
     ...CLARA,
     superficie: "#FFFFFF",
-    acento: "#065D3B", "acento-texto": "#065D3B", "acento-2": "#FC7502", "marca-revisar": "#B15201",
+    acento: "#065D3B", "acento-texto": "#065D3B", "acento-2": "#0A7F4F", "marca-revisar": "#8F6533",
+    "sobre-acento-2": "#FFFFFF",
   },
   "clara/na": {
     ...CLARA,
     superficie: "#FFFFFF",
-    acento: "#0B3FD0", "acento-texto": "#0B3FD0", "acento-2": "#00B894", "marca-revisar": "#0B3FD0",
+    acento: "#0B3FD0", "acento-texto": "#0B3FD0", "acento-2": "#00B894", "marca-revisar": "#8F6533",
   },
 };
 

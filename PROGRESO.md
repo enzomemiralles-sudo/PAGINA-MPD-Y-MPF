@@ -123,6 +123,24 @@ Tres colores se corrigieron por números, no por gusto:
 3. **La letra sobre el azul de NA en la landing oscura.** Daba 2,98:1 con la
    tinta. Ahora es clara: 5,98:1. Ya estaba mal antes de esta etapa.
 
+## Ajustes de marca
+
+- **Nexo es todo verde.** El naranja salió de la paleta: `--acento-2` pasa a ser
+  un segundo verde (`#16A85B` en oscuro, `#0A7F4F` en claro) y el marcador de
+  «revisar» dejó de ser un color de marca — vive en el bloque de superficie y es
+  el mismo en las tres pieles. No queda ningún `#F58220` ni `#FC7502` en el
+  código.
+  Ojo con una consecuencia: de las tres reglas de diferenciación entre puertas
+  que tenía la landing —naranja sólo en Nexo, color plano contra degradé,
+  itálica condensada sólo en Nexo— queda sin la primera. Las otras dos alcanzan.
+- **Los logos van a color.** El PNG de Nexo es una silueta blanca con alfa, así
+  que se usa como máscara y se pinta con `--logo-nexo`: blanco sobre oscuro,
+  verde de marca (`#065D3B`) sobre claro. Nada de filtros de escala de grises.
+- **La cinta argentina es el fondo del ingreso.** Sobre negro se compone con
+  `mix-blend-mode: screen`; sobre papel eso no sirve porque el JPEG trae el
+  negro pegado, así que se la enmascara consigo misma por luminancia y quedan
+  sólo las franjas con su color real.
+
 ## Pendiente
 
 - Etapa (c): modal de datos y columnas nuevas en `profiles`.

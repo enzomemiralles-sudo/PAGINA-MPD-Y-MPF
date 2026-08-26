@@ -148,12 +148,24 @@ p { color: var(--papel-tenue); }
 }
 .nav { display: flex; align-items: center; justify-content: space-between; gap: 1rem; height: 64px; }
 .marcas { display: flex; align-items: center; gap: 0.85rem; min-width: 0; }
-.marcas img { height: 19px; width: auto; display: block; }
+.marcas .logo-nexo { --logo-alto: 19px; }
+
+/* El logotipo pintado por máscara: el PNG es una silueta blanca con alfa. */
+.logo-nexo {
+  display: block;
+  height: var(--logo-alto, 19px);
+  aspect-ratio: 560 / 137;
+  background-color: var(--logo-nexo);
+  -webkit-mask: url("/logos/nexo.png") no-repeat center / contain;
+  mask: url("/logos/nexo.png") no-repeat center / contain;
+  transition: background-color var(--t-sec) var(--suave);
+  flex-shrink: 0;
+}
 .sep-v { width: 1px; height: 22px; background: var(--linea-fuerte); }
 .na-mark { display: flex; align-items: center; gap: 0.45rem; }
 .na-circ {
   width: 26px; height: 26px; border-radius: 50%;
-  background: linear-gradient(135deg, #0059ba, #00b9ae);
+  background: linear-gradient(135deg, #0b3fd0, #00846b);
   display: grid; place-items: center; font-size: 0.72rem;
   font-variation-settings: "wdth" 100, "wght" 800; color: #fff; letter-spacing: -0.02em;
 }
@@ -377,10 +389,11 @@ p { color: var(--papel-tenue); }
 .pie-links a { color: var(--papel-tenue); }
 .nota-prov {
   margin-top: 2rem; padding: 1rem 1.15rem; border-radius: 10px;
-  background: rgba(245, 130, 32, 0.07); box-shadow: inset 0 0 0 1px rgba(245, 130, 32, 0.25);
-  font-size: 0.8rem; color: var(--papel-tenue); line-height: 1.6;
+  background: color-mix(in srgb, var(--marca-revisar) 10%, transparent);
+  box-shadow: inset 0 0 0 1px color-mix(in srgb, var(--marca-revisar) 32%, transparent);
+  font-size: 0.8rem; color: var(--texto-tenue); line-height: 1.6;
 }
-.nota-prov b { color: #f58220; font-variation-settings: "wdth" 100, "wght" 700; }
+.nota-prov b { color: var(--marca-revisar); font-variation-settings: "wdth" 100, "wght" 700; }
 
 /* ============ CINTA ARGENTINA ============ */
 .cinta-wrap { position: absolute; top: 0; left: 0; right: 0; height: 112vh; min-height: 640px; z-index: 1; pointer-events: none; overflow: hidden; }
@@ -542,10 +555,8 @@ html[data-superficie="oscura"] .tarjeta-app { box-shadow: inset 0 0 0 1px var(--
   color: var(--acento-texto); text-decoration: underline; text-underline-offset: 2px;
 }
 
-.auth-firma { display: flex; align-items: center; justify-content: center; gap: 1.1rem; opacity: 0.6; }
-html[data-superficie="clara"] .auth-firma { filter: grayscale(1) invert(1); }
-html[data-superficie="oscura"] .auth-firma { filter: grayscale(1); }
-.auth-firma img { height: 15px; width: auto; display: block; }
+.auth-firma { display: flex; align-items: center; justify-content: center; gap: 1.1rem; }
+.auth-firma .logo-nexo { --logo-alto: 16px; }
 .auth-firma .sep-v { height: 16px; background: var(--borde-fuerte); }
 .auth-firma .na-circ { width: 21px; height: 21px; font-size: 0.6rem; }
 
@@ -588,8 +599,7 @@ body { transition: background var(--t-sec) var(--suave), color var(--t-sec) var(
 }
 .app-nav { display: flex; align-items: center; justify-content: space-between; gap: 1rem; height: 60px; }
 .app-marca { display: flex; align-items: center; gap: 0.6rem; min-width: 0; }
-.app-marca img { height: 18px; width: auto; display: block; }
-html[data-superficie="clara"] .app-marca img { filter: invert(1); }
+.app-marca .logo-nexo { --logo-alto: 18px; }
 .app-marca .nombre {
   font-size: 0.9rem; font-variation-settings: "wdth" 100, "wght" 600;
   color: var(--texto); white-space: nowrap;
@@ -604,3 +614,51 @@ html[data-superficie="clara"] .app-marca img { filter: invert(1); }
   transition: font-variation-settings var(--t-sec) var(--suave);
 }
 html[data-marca="nexo"] .app-cuerpo h1 { --h2-estilo: italic; }
+
+/* ============================================================
+   LA CINTA COMO FONDO DE LAS PANTALLAS DE INGRESO
+   Sobre negro la cinta se compone con mix-blend-mode: screen. Sobre papel eso
+   no sirve: el JPEG trae el negro pegado. Se la enmascara consigo misma por
+   luminancia, así el negro cae y quedan sólo las franjas con su color real.
+   ============================================================ */
+.cinta-fondo { position: fixed; inset: 0; z-index: 0; pointer-events: none; overflow: hidden; }
+.cinta-fondo::before {
+  content: "";
+  position: absolute; inset: -8% -6%;
+  background-image: url("/marca/cinta-argentina.jpg");
+  background-size: cover;
+  background-position: 72% 58%;
+  -webkit-mask-image: url("/marca/cinta-argentina.jpg");
+  mask-image: url("/marca/cinta-argentina.jpg");
+  -webkit-mask-size: cover; mask-size: cover;
+  -webkit-mask-position: 72% 58%; mask-position: 72% 58%;
+  -webkit-mask-repeat: no-repeat; mask-repeat: no-repeat;
+  -webkit-mask-source-type: luminance;
+  mask-mode: luminance;
+  opacity: 0.65;
+  animation: cintaDeriva 38s var(--suave) infinite alternate;
+}
+/* Sobre oscuro la cinta ya sabe componerse sola: vuelve el screen. */
+html[data-superficie="oscura"] .cinta-fondo::before {
+  -webkit-mask-image: none; mask-image: none;
+  mix-blend-mode: screen;
+  opacity: 0.62;
+}
+/* Deja limpio el centro, donde va la tarjeta. */
+.cinta-fondo::after {
+  content: ""; position: absolute; inset: 0;
+  background: radial-gradient(ellipse 46% 42% at 50% 50%,
+    var(--fondo) 0%, color-mix(in srgb, var(--fondo) 82%, transparent) 48%, transparent 74%);
+}
+/* En el celular la tarjeta ocupa casi todo el ancho: si la viñeta es la misma,
+   la cinta no se ve. Se achica y se corre, para que asome arriba y al costado. */
+@media (max-width: 640px) {
+  .cinta-fondo::before { background-position: 62% 46%; -webkit-mask-position: 62% 46%; mask-position: 62% 46%; opacity: 0.8; }
+  .cinta-fondo::after {
+    background: radial-gradient(ellipse 62% 26% at 50% 52%,
+      var(--fondo) 0%, color-mix(in srgb, var(--fondo) 70%, transparent) 55%, transparent 85%);
+  }
+}
+@media (prefers-reduced-motion: reduce) {
+  .cinta-fondo::before { animation: none; }
+}

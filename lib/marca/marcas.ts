@@ -30,7 +30,7 @@ export const MARCAS_CONFIG: Record<ConfigMarca["id"], ConfigMarca> = {
     nombreCorto: "Nexo",
     logo: "/logos/nexo.png",
     para: "Para estudiantes de Derecho",
-    muestra: { primario: "#065D3B", acento: "#FC7502" },
+    muestra: { primario: "#065D3B", acento: "#0A7F4F" },
   },
   na: {
     id: "na",

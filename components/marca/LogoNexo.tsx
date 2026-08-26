@@ -1,14 +1,15 @@
-import Image from "next/image";
-
-export function LogoNexo() {
+/**
+ * El logotipo va a color: el archivo es una silueta blanca con alfa, así que
+ * se usa como máscara y se pinta con --logo-nexo. Sobre oscuro queda la
+ * versión en blanco; sobre claro, el verde de marca.
+ */
+export function LogoNexo({ alto = 19 }: { alto?: number }) {
   return (
-    <Image
-      src="/marca/nexo-logotipo-blanco.png"
-      alt="Nexo Derecho"
-      width={560}
-      height={137}
-      priority
-      style={{ height: 19, width: "auto" }}
+    <span
+      className="logo-nexo"
+      role="img"
+      aria-label="Nexo Derecho"
+      style={{ "--logo-alto": `${alto}px` } as React.CSSProperties}
     />
   );
 }
