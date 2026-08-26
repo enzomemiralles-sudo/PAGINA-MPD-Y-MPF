@@ -88,12 +88,43 @@ navegador es el ruteo del middleware, la pantalla y las validaciones que corren
 antes de tocar Supabase. El viaje real —crear cuenta, entrar, el correo de
 recuperación, Google— queda pendiente de que existan las variables.
 
+## Etapa (b) — selección de perfil y temas: hecha
+
+**La app logueada es clara; la landing sigue oscura.** Eso partió el sistema en
+dos ejes independientes en `<html>`:
+
+- `data-superficie` = `oscura` | `clara` → fondo, texto, bordes, tarjeta
+- `data-marca` = `dual` | `neutro` | `nexo` | `na` → los acentos
+
+Hacían falta los dos porque la misma marca necesita acentos distintos en cada
+superficie: el verde `#065D3B` da 7,12:1 sobre papel y 2,50:1 sobre negro.
+
+- `lib/marca/marcas.ts`: un solo archivo con nombre, logo, para quién es y los
+  textos que nombran a la organización. Ningún componente pregunta de qué marca
+  se trata.
+- `/elegir-perfil`: tres tarjetas, neutra, guarda `tipo_perfil` y `marca` y
+  cambia la piel antes de navegar, para que no sea un salto seco.
+- Migración `0003`: extiende `profiles` con `tipo_perfil`, los campos del modal,
+  `fecha_aceptacion` y `onboarding_completado`. `perfil` se renombra a `marca`,
+  y `nombre`/`apellido` pasan a nullable porque la fila nace en la selección de
+  perfil, antes del modal.
+- El middleware manda a `/elegir-perfil` a quien tiene sesión y no eligió marca.
+- 118 tests de contraste, cubriendo las seis combinaciones de superficie y marca.
+
+Tres colores se corrigieron por números, no por gusto:
+
+1. **El degradé del botón de Nueva Abogacía.** Con `#00B894` en la punta, la
+   letra blanca daba 2,54:1 sobre ese extremo. El degradé del botón termina en
+   `#00846B` (4,65:1); el turquesa brillante sigue como `--acento-2` para
+   detalles.
+2. **`--marca-revisar` sobre claro.** El naranja de marca no puede ser texto
+   sobre papel (2,44:1): baja a `#B15201` (4,60:1). Como fondo de botón el
+   naranja de marca no cambia.
+3. **La letra sobre el azul de NA en la landing oscura.** Daba 2,98:1 con la
+   tinta. Ahora es clara: 5,98:1. Ya estaba mal antes de esta etapa.
+
 ## Pendiente
 
-- Etapa (b): selección de perfil y sistema de temas. **Bloqueada** hasta saber
-  si la app logueada es de fondo oscuro o claro: los primarios propuestos
-  (`#065D3B` y `#0B3FD0`) dan 2,50:1 sobre el fondo actual y 7,96:1 sobre
-  blanco, o sea que están pensados para tema claro.
 - Etapa (c): modal de datos y columnas nuevas en `profiles`.
 - Etapa (d): pantalla «Mi perfil».
 - Bloque 2: auth por magic link, registro con perfil, panel `/admin`.

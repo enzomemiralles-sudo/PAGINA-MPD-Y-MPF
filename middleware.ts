@@ -11,12 +11,15 @@ import { actualizarSesion } from "@/lib/supabase/middleware";
  */
 const PUBLICAS = ["/", "/legales", "/contacto", "/ingresar", "/auth"];
 
+/** Con sesión pero sin marca elegida, todo lleva acá. */
+const ELEGIR = "/elegir-perfil";
+
 function esPublica(pathname: string) {
   return PUBLICAS.some((p) => (p === "/" ? pathname === "/" : pathname.startsWith(p)));
 }
 
 export async function middleware(request: NextRequest) {
-  const { respuesta, usuario, configurado } = await actualizarSesion(request);
+  const { respuesta, usuario, configurado, cliente } = await actualizarSesion(request);
   const { pathname } = request.nextUrl;
 
   if (esPublica(pathname)) {
@@ -41,7 +44,32 @@ export async function middleware(request: NextRequest) {
     return NextResponse.redirect(destino);
   }
 
-  // El ruteo por perfil y onboarding entra en las etapas (b) y (c).
+  // Con sesión, la marca decide a dónde puede ir. La lee de profiles: es la
+  // única fuente: la cookie o el localStorage se pueden falsear.
+  if (!cliente) return respuesta;
+
+  const { data } = await cliente
+    .from("profiles")
+    .select("marca")
+    .eq("user_id", usuario.id)
+    .maybeSingle();
+
+  const tieneMarca = !!data?.marca;
+
+  if (!tieneMarca && pathname !== ELEGIR) {
+    const destino = request.nextUrl.clone();
+    destino.pathname = ELEGIR;
+    destino.search = "";
+    return NextResponse.redirect(destino);
+  }
+  if (tieneMarca && pathname === ELEGIR) {
+    const destino = request.nextUrl.clone();
+    destino.pathname = "/app";
+    destino.search = "";
+    return NextResponse.redirect(destino);
+  }
+
+  // El corte por onboarding_completado entra en la etapa (c).
   return respuesta;
 }
 

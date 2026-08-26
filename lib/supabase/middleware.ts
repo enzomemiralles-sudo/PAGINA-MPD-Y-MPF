@@ -16,7 +16,8 @@ export async function actualizarSesion(request: NextRequest) {
 
   // Sin Supabase configurado no hay sesión posible. El sitio público sigue
   // andando; lo protegido lo resuelve el middleware.
-  if (!url || !key) return { respuesta, usuario: null, configurado: false as const };
+  if (!url || !key)
+    return { respuesta, usuario: null, configurado: false as const, cliente: null };
 
   const supabase = createServerClient(url, key, {
     cookies: {
@@ -31,5 +32,5 @@ export async function actualizarSesion(request: NextRequest) {
 
   // getUser, no getSession: getUser valida el token contra Supabase.
   const { data } = await supabase.auth.getUser();
-  return { respuesta, usuario: data.user, configurado: true as const };
+  return { respuesta, usuario: data.user, configurado: true as const, cliente: supabase };
 }

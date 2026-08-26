@@ -1,32 +1,87 @@
 /* ============================================================
-   TOKENS — portados de referencia/landing-preview.html
-   Cinco valores se apartan del preview y están marcados CORRECCIÓN.
-   El motivo de cada uno está en PLAN.md §4.
+   TOKENS
+   Dos ejes independientes en <html>:
+
+     data-superficie = "oscura" | "clara"   -> fondo, texto, bordes, tarjeta
+     data-marca      = "dual" | "neutro" | "nexo" | "na"  -> los acentos
+
+   La landing es oscura; la app, detrás del login, es clara. La misma marca
+   necesita acentos distintos en cada superficie: el verde #065D3B se lee
+   perfecto sobre papel (7,12:1) y desaparece sobre negro (2,50:1).
+
+   Cinco valores de la landing se apartan del preview y están marcados
+   CORRECCIÓN. El motivo de cada uno está en PLAN.md §4.
    ============================================================ */
+
 :root {
+  /* Constantes de las que se derivan las dos superficies. */
   --tinta: #08090a;
   --tinta-alta: #101216;
   --papel: #f4f2ed;
-
-  /* CORRECCIÓN 1 — el preview usa .55 y .35. A .35 el texto daba 2,93:1
-     contra --tinta y lo usa, entre otros, el aviso legal del pie.
-     .70 y .50 dan 8,78:1 y 4,90:1 y conservan los dos niveles de jerarquía. */
-  --papel-tenue: rgba(244, 242, 237, 0.7);
-  --papel-débil: rgba(244, 242, 237, 0.5);
-
-  --linea: rgba(244, 242, 237, 0.1);
-  --linea-fuerte: rgba(244, 242, 237, 0.2);
   --ok: #4ade80;
-  /* CORRECCIÓN 5 — el rojo del preview (#E5484D) da 4,47:1 sobre el vidrio de
-     Nexo, que es la superficie más clara del sistema. Sube lo mínimo para
-     llegar a 4,62:1 en el peor caso; a ojo es el mismo rojo. Lo encontró
-     tests/contraste.test.ts, no una revisión a mano. */
   --error: #e64d52;
 
-  /* piel dual */
+  /* Movimiento: no depende de la superficie ni de la marca. */
+  --sal: cubic-bezier(0.22, 1, 0.36, 1);
+  --suave: cubic-bezier(0.4, 0, 0.2, 1);
+  --t-micro: 150ms;
+  --t-elem: 420ms;
+  --t-sec: 700ms;
+}
+
+/* ---------- superficie oscura: la landing ---------- */
+:root,
+html[data-superficie="oscura"] {
+  --fondo: var(--tinta);
+  --texto: var(--papel);
+
+  /* CORRECCIÓN 1 — el preview usa .55 y .35. A .35 el texto daba 2,93:1
+     contra el fondo y lo usa, entre otros, el aviso legal del pie. */
+  --texto-tenue: rgba(244, 242, 237, 0.7);
+  --texto-debil: rgba(244, 242, 237, 0.5);
+
+  --borde: rgba(244, 242, 237, 0.1);
+  --borde-fuerte: rgba(244, 242, 237, 0.2);
+  --tarjeta: rgba(244, 242, 237, 0.04);
+  --sobre-acento: #08090a;
+  --sobre-acento-2: #08090a;
+
+  /* Nombres viejos que usa el CSS de la landing. */
+  --papel-tenue: var(--texto-tenue);
+  --papel-débil: var(--texto-debil);
+  --linea: var(--borde);
+  --linea-fuerte: var(--borde-fuerte);
+}
+
+/* ---------- superficie clara: la app ---------- */
+html[data-superficie="clara"] {
+  --fondo: var(--papel);
+  --texto: var(--tinta);
+  --texto-tenue: rgba(8, 9, 10, 0.75);
+  --texto-debil: rgba(8, 9, 10, 0.62);
+  --borde: rgba(8, 9, 10, 0.12);
+  --borde-fuerte: rgba(8, 9, 10, 0.22);
+  --tarjeta: #ffffff;
+  --sobre-acento: #ffffff;
+  --sobre-acento-2: #08090a;
+
+  --papel-tenue: var(--texto-tenue);
+  --papel-débil: var(--texto-debil);
+  --linea: var(--borde);
+  --linea-fuerte: var(--borde-fuerte);
+}
+
+/* ============================================================
+   ACENTOS POR MARCA — cambian con la superficie
+   ============================================================ */
+
+/* ---------- dual: la landing sin puerta elegida ---------- */
+:root,
+html[data-marca="dual"] {
   --acento: #f4f2ed;
   --acento-texto: #f4f2ed;
   --acento-2: transparent;
+  --marca-revisar: #c8a27a;
   --superficie: rgba(244, 242, 237, 0.03);
   --mancha-a: #059249;
   --mancha-b: #0088c4;
@@ -34,65 +89,87 @@
   --ancho-titulo: 118;
   --ancho-h2: 112;
   --ital-h2: 0;
-
-  /* CORRECCIÓN 2 — --acento-2 vale transparent en dual y en na, así que
-     var(--acento-2,#F58220) no cae al fallback: la variable está definida.
-     Eso dejaba invisibles tres eyebrows y el anillo de "marcada" del
-     simulador. Marcar para revisar es funcional, no decorativo, así que
-     tiene token propio. El naranja sigue siendo exclusivo de Nexo. */
-  --marca-revisar: #c8a27a;
-
-  /* movimiento */
-  --sal: cubic-bezier(0.22, 1, 0.36, 1);
-  --suave: cubic-bezier(0.4, 0, 0.2, 1);
-  --t-micro: 150ms;
-  --t-elem: 420ms;
-  --t-sec: 700ms;
-
   --cinta-op: 0.62;
 }
 
+/* ---------- neutro: ingreso y selección de perfil ---------- */
 html[data-marca="neutro"] {
-  --acento: #f4f2ed;
-  --acento-texto: #f4f2ed;
+  --acento: var(--texto);
+  --acento-texto: var(--texto);
   --acento-2: transparent;
-  --marca-revisar: #c8a27a;
-  --superficie: rgba(244, 242, 237, 0.03);
-  --mancha-a: #f4f2ed;
-  --mancha-b: #8a8987;
-  --relleno: linear-gradient(135deg, #f4f2ed, #c9c7c2);
+  --marca-revisar: #8f6533;
+  --superficie: var(--tarjeta);
+  --mancha-a: #8a8987;
+  --mancha-b: #c9c7c2;
+  --relleno: linear-gradient(135deg, #3a3a38, #6b6b68);
+  --sobre-acento: var(--fondo);
   --ancho-titulo: 112;
   --ancho-h2: 108;
   --ital-h2: 0;
   --cinta-op: 0;
 }
 
+/* ---------- Nexo ---------- */
 html[data-marca="nexo"] {
-  --acento: #059249;
-  --acento-texto: #53b384;
   --acento-2: #f58220;
   --marca-revisar: #f58220;
-  --superficie: rgba(31, 72, 56, 0.3);
-  --mancha-a: #059249;
-  --mancha-b: #0d6b3c;
-  --relleno: linear-gradient(135deg, #059249, #0d7a3d);
   --ancho-titulo: 76;
   --ancho-h2: 76;
   --ital-h2: 1;
   --cinta-op: 0.16;
 }
+html[data-marca="nexo"][data-superficie="oscura"] {
+  --acento: #059249;
+  --acento-texto: #53b384;
+  --superficie: rgba(31, 72, 56, 0.3);
+  --mancha-a: #059249;
+  --mancha-b: #0d6b3c;
+  --relleno: linear-gradient(135deg, #059249, #0d7a3d);
+}
+html[data-marca="nexo"][data-superficie="clara"] {
+  /* El verde de marca. Sobre papel llega a 7,12:1, así que sirve para texto
+     y para fondo de botón con letra blanca (7,96:1). */
+  --acento: #065d3b;
+  --acento-texto: #065d3b;
+  --acento-2: #fc7502;
+  --marca-revisar: #b15201;
+  --superficie: var(--tarjeta);
+  --mancha-a: #065d3b;
+  --mancha-b: #fc7502;
+  --relleno: linear-gradient(135deg, #065d3b, #0a7f4f);
+}
 
+/* ---------- Nueva Abogacía ---------- */
 html[data-marca="na"] {
-  --acento: #0059ba;
-  --acento-texto: #00b9ae;
   --acento-2: transparent;
+  --ancho-titulo: 104;
+  --ancho-h2: 100;
+  --ital-h2: 0;
+  --cinta-op: 0.16;
+}
+html[data-marca="na"][data-superficie="oscura"] {
+  --acento: #0059ba;
+  /* La tinta sobre este azul da 2,98:1. La letra va clara: 5,98:1. */
+  --sobre-acento: #f4f2ed;
+  --acento-texto: #00b9ae;
   --marca-revisar: #7fb2e8;
   --superficie: rgba(0, 136, 196, 0.07);
   --mancha-a: #0059ba;
   --mancha-b: #00b9ae;
   --relleno: linear-gradient(135deg, #0059ba, #0088c4, #00b9ae);
-  --ancho-titulo: 104;
-  --ancho-h2: 100;
-  --ital-h2: 0;
-  --cinta-op: 0.16;
+}
+html[data-marca="na"][data-superficie="clara"] {
+  /* El degradé azul -> turquesa sale del isotipo. Va en el botón principal y
+     en detalles; nunca de fondo de un bloque grande. */
+  --acento: #0b3fd0;
+  --acento-texto: #0b3fd0;
+  --acento-2: #00b894;
+  --marca-revisar: #0b3fd0;
+  --superficie: var(--tarjeta);
+  --mancha-a: #0b3fd0;
+  --mancha-b: #00b894;
+  /* El degradé del botón oscurece el extremo turquesa: con #00B894 la letra
+     blanca daba 2,54:1 sobre esa punta. Así el botón entero llega a 4,65:1.
+     El turquesa brillante sigue siendo --acento-2 para detalles chicos. */
+  --relleno: linear-gradient(135deg, #0b3fd0, #00846b);
 }
