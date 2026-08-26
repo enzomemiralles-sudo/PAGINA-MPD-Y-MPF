@@ -28,11 +28,19 @@ pantalla — justo en el presupuesto.
 
 - Rama `main` creada desde la rama de trabajo. Es la que Vercel tiene que
   construir.
-- **Falta un paso manual:** poner `main` como rama por defecto del repo. Hoy
-  la rama por defecto es `claude/mpf-faq-extraction-8nqr6i`, que sólo tiene el
-  pipeline de Python: sin `package.json`, el build de producción de Vercel
-  falla. Se cambia en Settings → General → Default branch del repo, o bien en
-  Vercel, Settings → Git → Production Branch.
+- Rama por defecto del repo: ya es `main`.
+- **Falta un paso manual, y no es el de GitHub.** Cambiar la rama por defecto
+  del repo NO cambia la Production Branch de Vercel: Vercel la guarda aparte,
+  tomada en el momento del import. Hoy sigue apuntando a
+  `claude/mpf-faq-extraction-8nqr6i`, así que todo push a `main` se despliega
+  como Preview y producción quedó clavada en `55b7182`, el commit que sólo
+  tiene Python. De ahí el 404 de peron-delta.vercel.app.
+  Se arregla en Vercel → Settings → Git → Production Branch → `main`.
+- El build en Vercel **funciona**: el commit `9ff4fc5` compiló con estado
+  success. Lo que falta es promoverlo, no arreglarlo.
+- Los Preview tienen Deployment Protection activa: responden 302 hacia
+  `vercel.com/sso-api`. Se abren estando logueado en Vercel, pero no se pueden
+  verificar desde afuera sin un bypass token.
 - El build es determinista: 8 builds en frío seguidos en verde, entre local y
   clon limpio. Antes fallaba de manera intermitente, ver la nota de abajo.
 - Falta el proyecto de Supabase. Las migraciones están listas para correr y
