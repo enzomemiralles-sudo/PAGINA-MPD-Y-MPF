@@ -2,7 +2,7 @@ import type { Metadata, Viewport } from "next";
 import { Archivo, JetBrains_Mono } from "next/font/google";
 import { meta } from "@/content/legales";
 import { MarcaProvider } from "@/components/marca/MarcaProvider";
-import { ConmutadorPuerta } from "@/components/marca/ConmutadorPuerta";
+import { CromoGlobal } from "@/components/marca/CromoGlobal";
 import { PieLegal } from "@/components/landing/PieLegal";
 import "./globals.css";
 
@@ -36,9 +36,8 @@ export default function RootLayout({ children }: { children: React.ReactNode }) 
       <body>
         <MarcaProvider>
           {children}
-          <ConmutadorPuerta />
+          <CromoGlobal pie={<PieLegal />} />
         </MarcaProvider>
-        <PieLegal />
       </body>
     </html>
   );

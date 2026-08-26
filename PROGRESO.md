@@ -70,8 +70,32 @@ el proxy de la sesión, así que contra producción sólo llega curl.
 - Falta el proyecto de Supabase. Las migraciones están listas para correr y
   `.env.example` dice qué va en cada variable. El sitio anda sin ninguna.
 
+## Etapa (a) — auth y login: hecha
+
+- `middleware.ts` refresca la sesión en cada request y protege las rutas. La
+  landing, los legales y el contacto quedan **públicos a propósito**: la landing
+  existe para captar el mail de gente que todavía no tiene cuenta.
+- `/ingresar` con Google arriba, divisor «o», mail y contraseña, alternado a
+  registro, y recuperación en `/ingresar/recuperar` + `/ingresar/nueva-clave`.
+- Piel `neutro`: el ingreso no usa color de ninguna de las dos marcas. El
+  conmutador de puertas no se muestra ahí ni dentro de la app.
+- Errores traducidos: mail inválido, contraseña corta, claves que no coinciden,
+  credenciales, usuario ya registrado, mail sin confirmar, demasiados intentos.
+- 99 tests de contraste (la piel neutra sumó 23 pares).
+
+**Sin probar contra Supabase:** no hay proyecto todavía. Lo verificado en
+navegador es el ruteo del middleware, la pantalla y las validaciones que corren
+antes de tocar Supabase. El viaje real —crear cuenta, entrar, el correo de
+recuperación, Google— queda pendiente de que existan las variables.
+
 ## Pendiente
 
+- Etapa (b): selección de perfil y sistema de temas. **Bloqueada** hasta saber
+  si la app logueada es de fondo oscuro o claro: los primarios propuestos
+  (`#065D3B` y `#0B3FD0`) dan 2,50:1 sobre el fondo actual y 7,96:1 sobre
+  blanco, o sea que están pensados para tema claro.
+- Etapa (c): modal de datos y columnas nuevas en `profiles`.
+- Etapa (d): pantalla «Mi perfil».
 - Bloque 2: auth por magic link, registro con perfil, panel `/admin`.
 
 ## Decisiones

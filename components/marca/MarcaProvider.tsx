@@ -1,6 +1,7 @@
 "use client";
 
 import { createContext, useCallback, useContext, useEffect, useState } from "react";
+import { usePathname } from "next/navigation";
 import { MARCAS, type Marca } from "@/lib/marca/tokens";
 
 const CLAVE = "nexo-na:puerta";
@@ -16,8 +17,13 @@ function esMarca(v: string | null): v is Marca {
   return v !== null && (MARCAS as readonly string[]).includes(v);
 }
 
+/** Rutas que siempre se ven neutras, sin importar la puerta elegida. */
+const NEUTRAS = ["/ingresar"];
+
 export function MarcaProvider({ children }: { children: React.ReactNode }) {
   const [marca, setMarca] = useState<Marca>("dual");
+  const ruta = usePathname();
+  const forzada: Marca | null = NEUTRAS.some((r) => ruta?.startsWith(r)) ? "neutro" : null;
 
   // El valor guardado se lee después del primer render: el HTML del servidor
   // sale siempre en "dual" y así no hay desajuste de hidratación.
@@ -31,8 +37,8 @@ export function MarcaProvider({ children }: { children: React.ReactNode }) {
   }, []);
 
   useEffect(() => {
-    document.documentElement.setAttribute("data-marca", marca);
-  }, [marca]);
+    document.documentElement.setAttribute("data-marca", forzada ?? marca);
+  }, [marca, forzada]);
 
   const cambiar = useCallback((m: Marca) => {
     setMarca(m);
@@ -43,5 +49,5 @@ export function MarcaProvider({ children }: { children: React.ReactNode }) {
     }
   }, []);
 
-  return <MarcaCtx.Provider value={{ marca, cambiar }}>{children}</MarcaCtx.Provider>;
+  return <MarcaCtx.Provider value={{ marca: forzada ?? marca, cambiar }}>{children}</MarcaCtx.Provider>;
 }

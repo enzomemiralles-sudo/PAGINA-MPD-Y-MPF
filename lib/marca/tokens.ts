@@ -4,7 +4,7 @@
  * Si tocás tokens.css y no tocás esto, el test deja de decir la verdad:
  * tests/contraste.test.ts verifica que los dos archivos coincidan.
  */
-export const MARCAS = ["dual", "nexo", "na"] as const;
+export const MARCAS = ["dual", "neutro", "nexo", "na"] as const;
 export type Marca = (typeof MARCAS)[number];
 
 export const BASE = {
@@ -20,7 +20,8 @@ export const BASE = {
 } as const;
 
 export const PIELES: Record<Marca, { acento: string; "acento-texto": string; "marca-revisar": string; superficie: string }> = {
-  dual: { acento: "#F4F2ED", "acento-texto": "#F4F2ED", "marca-revisar": "#C8A27A", superficie: "rgba(244,242,237,0.03)" },
+  dual:   { acento: "#F4F2ED", "acento-texto": "#F4F2ED", "marca-revisar": "#C8A27A", superficie: "rgba(244,242,237,0.03)" },
+  neutro: { acento: "#F4F2ED", "acento-texto": "#F4F2ED", "marca-revisar": "#C8A27A", superficie: "rgba(244,242,237,0.03)" },
   nexo: { acento: "#059249", "acento-texto": "#53B384", "marca-revisar": "#F58220", superficie: "rgba(31,72,56,0.3)" },
   na:   { acento: "#0059BA", "acento-texto": "#00B9AE", "marca-revisar": "#7FB2E8", superficie: "rgba(0,136,196,0.07)" },
 };

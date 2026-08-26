@@ -52,6 +52,21 @@
   --cinta-op: 0.62;
 }
 
+html[data-marca="neutro"] {
+  --acento: #f4f2ed;
+  --acento-texto: #f4f2ed;
+  --acento-2: transparent;
+  --marca-revisar: #c8a27a;
+  --superficie: rgba(244, 242, 237, 0.03);
+  --mancha-a: #f4f2ed;
+  --mancha-b: #8a8987;
+  --relleno: linear-gradient(135deg, #f4f2ed, #c9c7c2);
+  --ancho-titulo: 112;
+  --ancho-h2: 108;
+  --ital-h2: 0;
+  --cinta-op: 0;
+}
+
 html[data-marca="nexo"] {
   --acento: #059249;
   --acento-texto: #53b384;

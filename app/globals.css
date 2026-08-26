@@ -464,3 +464,93 @@ h1, h2 { text-wrap: balance; }
   .txt-largo { display: none; }
   .txt-corto { display: inline; }
 }
+
+/* ============================================================
+   INGRESO — pantalla neutra. Sin color de ninguna de las dos
+   marcas: es el momento previo a que la persona elija cuál usa.
+   ============================================================ */
+.auth-pantalla {
+  min-height: 100dvh;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  gap: 2rem;
+  padding: 2rem 1.25rem 1.5rem;
+  position: relative;
+  z-index: 2;
+}
+.auth-caja { width: 100%; max-width: 25rem; padding: 1.75rem 1.5rem; }
+@media (min-width: 480px) { .auth-caja { padding: 2.25rem 2rem; } }
+.auth-caja h1 {
+  font-size: clamp(1.5rem, 6vw, 1.9rem);
+  line-height: 1.15;
+  letter-spacing: -0.02em;
+  font-variation-settings: "wdth" 100, "wght" 700;
+}
+.auth-bajada { font-size: 0.88rem; margin-top: 0.6rem; line-height: 1.5; }
+
+.auth-form { display: flex; flex-direction: column; gap: 0.9rem; margin-top: 1.6rem; }
+.campo { display: flex; flex-direction: column; gap: 0.4rem; }
+.campo label { font-size: 0.8rem; color: var(--papel-tenue); }
+.campo .opcional { color: var(--papel-débil); font-weight: 400; }
+.campo input {
+  width: 100%;
+  padding: 0.75rem 0.9rem;
+  border-radius: 10px;
+  border: none;
+  background: rgba(244, 242, 237, 0.05);
+  box-shadow: inset 0 0 0 1px var(--linea-fuerte);
+  color: var(--papel);
+  font-family: inherit;
+  font-size: 0.95rem;
+}
+.campo input::placeholder { color: var(--papel-débil); }
+.campo input:focus-visible { box-shadow: inset 0 0 0 1px var(--acento-texto); outline: none; }
+.campo input[aria-invalid="true"] { box-shadow: inset 0 0 0 1px var(--error); }
+
+.auth-divisor {
+  display: flex; align-items: center; gap: 0.9rem;
+  margin: 1.4rem 0; color: var(--papel-débil); font-size: 0.78rem;
+}
+.auth-divisor::before, .auth-divisor::after {
+  content: ""; flex: 1; height: 1px; background: var(--linea);
+}
+
+.btn-google {
+  width: 100%;
+  background: var(--papel);
+  color: var(--tinta);
+  gap: 0.7rem;
+}
+.btn-google:hover:not(:disabled) { opacity: 0.9; transform: translateY(-1px); }
+.btn-google svg { flex-shrink: 0; }
+
+.auth-error {
+  margin-top: 1rem; padding: 0.7rem 0.85rem; border-radius: 10px;
+  background: rgba(230, 77, 82, 0.09); box-shadow: inset 0 0 0 1px rgba(230, 77, 82, 0.3);
+  color: var(--papel); font-size: 0.85rem; line-height: 1.5;
+}
+.auth-aviso {
+  margin-top: 1rem; padding: 0.7rem 0.85rem; border-radius: 10px;
+  background: rgba(74, 222, 128, 0.08); box-shadow: inset 0 0 0 1px rgba(74, 222, 128, 0.28);
+  color: var(--papel); font-size: 0.85rem; line-height: 1.5;
+}
+.auth-olvide { margin-top: 0.2rem; font-size: 0.82rem; text-align: right; }
+.auth-pie-caja {
+  margin-top: 1.5rem; padding-top: 1.2rem; border-top: 1px solid var(--linea);
+  font-size: 0.85rem; color: var(--papel-tenue); text-align: center;
+}
+.auth-alternar {
+  background: none; border: none; padding: 0; cursor: pointer; font: inherit;
+  color: var(--acento-texto); text-decoration: underline; text-underline-offset: 2px;
+}
+
+/* Firma institucional: los dos logos, chicos y apagados. */
+.auth-firma {
+  display: flex; align-items: center; justify-content: center; gap: 1.1rem;
+  opacity: 0.6; filter: grayscale(1);
+}
+.auth-firma img { height: 15px; width: auto; display: block; }
+.auth-firma .sep-v { height: 16px; }
+.auth-firma .na-circ { width: 21px; height: 21px; font-size: 0.6rem; }
