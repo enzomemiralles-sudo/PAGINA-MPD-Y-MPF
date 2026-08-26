@@ -5,8 +5,9 @@ import { crearClienteServidor } from "@/lib/supabase/server";
 import { traerPerfil } from "@/lib/perfil";
 import { AplicarPiel } from "@/components/marca/AplicarPiel";
 import { Tarjeta } from "@/components/marca/Tarjeta";
-import { LogoNuevaAbogacia } from "@/components/marca/LogoNuevaAbogacia";
-import { configDe, textosDe } from "@/lib/marca/marcas";
+import { CabeceraApp } from "@/components/app/CabeceraApp";
+import { ModalDatos } from "@/components/app/ModalDatos";
+import { textosDe } from "@/lib/marca/marcas";
 
 export const metadata: Metadata = { title: "Tu cuenta — Nexo Derecho × Nueva Abogacía" };
 export const dynamic = "force-dynamic";
@@ -25,34 +26,13 @@ export default async function App() {
   const perfil = await traerPerfil();
   if (!perfil?.marca) redirect("/elegir-perfil");
 
-  const cfg = configDe(perfil.marca);
   const textos = textosDe(perfil.marca);
 
   return (
     <>
       <AplicarPiel marca={perfil.marca} superficie="clara" />
 
-      <header className="app-cabecera">
-        <div className="env app-nav">
-          <div className="app-marca">
-            {perfil.marca === "nexo" && cfg ? (
-              <LogoNexo alto={18} />
-            ) : (
-              <>
-                <LogoNuevaAbogacia conCartel={false} />
-                <span className="nombre">{cfg?.nombre}</span>
-              </>
-            )}
-          </div>
-          <div className="app-acciones">
-            <form action="/auth/salir" method="post">
-              <button className="btn btn-s" type="submit">
-                Cerrar sesión
-              </button>
-            </form>
-          </div>
-        </div>
-      </header>
+      <CabeceraApp marca={perfil.marca} />
 
       <main className="env app-cuerpo">
         <h1>{textos.bienvenida}</h1>
@@ -64,21 +44,21 @@ export default async function App() {
 
         <Tarjeta className="tarjeta" style={{ marginTop: "2rem", maxWidth: "34rem" }}>
           <p style={{ color: "var(--texto-tenue)", lineHeight: 1.6 }}>
-            Lo que sigue: el modal «Contanos un poco más» y la pantalla «Mi perfil».
+            Acá va a vivir el contenido: los simulacros, la normativa y las guías. Mientras tanto,
+            tus datos los podés ver y cambiar en «Mi perfil».
           </p>
-          <div className="hero-btns" style={{ marginTop: "1.2rem", justifyContent: "flex-start" }}>
-            <button className="btn btn-acento" type="button">
-              Botón principal
-            </button>
-            <button className="btn btn-a" type="button">
-              Con degradé
-            </button>
-            <button className="btn btn-s" type="button">
-              Secundario
-            </button>
-          </div>
         </Tarjeta>
       </main>
+
+      {/* La primera vez se abre solo. Se puede cerrar y completar después. */}
+      {perfil.tipo_perfil && !perfil.onboarding_completado ? (
+        <ModalDatos
+          tipo={perfil.tipo_perfil}
+          org={textos.corto}
+          legal={textos.legalGuarda}
+          bajada={textos.modalBajada}
+        />
+      ) : null}
     </>
   );
 }

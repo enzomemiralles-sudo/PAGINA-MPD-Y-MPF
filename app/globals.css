@@ -662,3 +662,54 @@ html[data-superficie="oscura"] .cinta-fondo::before {
 @media (prefers-reduced-motion: reduce) {
   .cinta-fondo::before { animation: none; }
 }
+
+/* ---------- modal «Contanos un poco más» ---------- */
+.modal {
+  border: none; padding: 0; background: transparent;
+  width: min(34rem, calc(100vw - 2rem));
+  max-width: none;
+  max-height: calc(100dvh - 2rem);
+  /* El margin auto es lo que centra un dialog modal. Sin esto queda pegado
+     al borde izquierdo y estirado a lo alto. */
+  margin: auto;
+  color: var(--texto);
+}
+.modal::backdrop { background: rgba(8, 9, 10, 0.62); }
+.modal-caja {
+  background: var(--tarjeta); border-radius: 16px;
+  box-shadow: inset 0 0 0 1px var(--borde), 0 18px 50px rgba(8, 9, 10, 0.22);
+  padding: 1.5rem 1.35rem 1.6rem;
+  max-height: calc(100dvh - 2rem); overflow-y: auto;
+}
+@media (min-width: 480px) { .modal-caja { padding: 1.9rem 1.8rem 2rem; } }
+.modal-encabezado { display: flex; align-items: flex-start; justify-content: space-between; gap: 1rem; }
+.modal-encabezado h2 {
+  font-size: clamp(1.3rem, 5vw, 1.6rem); line-height: 1.2; letter-spacing: -0.02em;
+  font-variation-settings: "wdth" 100, "wght" 700; font-style: normal; color: var(--texto);
+}
+.modal-cerrar {
+  background: none; border: none; cursor: pointer; font-size: 1.1rem; line-height: 1;
+  color: var(--texto-tenue); padding: 0.35rem; border-radius: 8px; flex-shrink: 0;
+}
+.modal-cerrar:hover { color: var(--texto); background: color-mix(in srgb, var(--texto) 6%, transparent); }
+.modal-bajada { font-size: 0.88rem; margin-top: 0.5rem; line-height: 1.5; color: var(--texto-tenue); }
+.campos-perfil { display: flex; flex-direction: column; gap: 0.9rem; margin-top: 1.5rem; }
+.legal-modal {
+  font-size: 0.74rem; line-height: 1.55; color: var(--texto-tenue);
+  margin-top: 1.6rem; padding-top: 1.1rem; border-top: 1px solid var(--borde);
+}
+.modal-aclaracion { font-size: 0.78rem; color: var(--texto-debil); margin-top: 0.5rem; line-height: 1.45; }
+.modal-guardar { width: 100%; margin-top: 1.2rem; }
+
+/* ---------- Mi perfil ---------- */
+.titulo-bloque {
+  font-size: 0.72rem; letter-spacing: 0.09em; text-transform: uppercase;
+  font-family: var(--fuente-mono), ui-monospace, monospace;
+  font-variation-settings: normal; font-style: normal;
+  color: var(--texto-debil); margin-bottom: 1rem;
+}
+.datos-cuenta { display: grid; gap: 0.15rem 1rem; grid-template-columns: 1fr; }
+@media (min-width: 520px) { .datos-cuenta { grid-template-columns: 11rem 1fr; gap: 0.6rem 1rem; } }
+.datos-cuenta dt { font-size: 0.82rem; color: var(--texto-tenue); }
+.datos-cuenta dd { font-size: 0.92rem; color: var(--texto); margin-bottom: 0.7rem; }
+@media (min-width: 520px) { .datos-cuenta dd { margin-bottom: 0; } }

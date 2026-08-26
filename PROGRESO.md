@@ -145,10 +145,30 @@ Tres colores se corrigieron por números, no por gusto:
   negro pegado, así que se la enmascara consigo misma por luminancia y quedan
   sólo las franjas con su color real.
 
+## Etapas (c) y (d) — modal de datos y «Mi perfil»: hechas
+
+- **El modal «Contanos un poco más»** se abre solo la primera vez sobre `/app`.
+  Es un `<dialog>` nativo: trae foco atrapado y Esc sin código extra. Se puede
+  cerrar; quien lo cierre lo completa después desde «Mi perfil», y vuelve a
+  aparecer al entrar hasta que acepte.
+- **Los campos salen de un solo lugar** (`content/onboarding.ts`) y los usan el
+  modal y «Mi perfil», así que no hay dos listas que se puedan desincronizar.
+  Estudiante lleva la lista del modal, que es la que elegiste: año de ingreso
+  desde el CBC, cómo conoció a la organización y si trabaja en el ámbito
+  jurídico. Abogado y «otro» llevan los mismos campos entre sí.
+- **La validación es la pedida:** todos los campos se pueden dejar vacíos y un
+  campo vacío se guarda como `null`, no como cadena vacía. Lo único obligatorio
+  es el checkbox: mientras no esté tildado el botón queda deshabilitado.
+- **La fecha de aceptación no se pisa.** Al guardar de nuevo desde «Mi perfil»
+  se conserva la primera: vale cuándo aceptó, no cuándo editó.
+- **«Mi perfil»** muestra el correo, el perfil elegido, la fecha de aceptación
+  como dato —no como checkbox editable—, los campos cargados y editables, y
+  cerrar sesión. Si alguien nunca aceptó, ahí también se le pide.
+- El texto legal nombra a la organización según la marca y «escribiéndonos» es
+  un enlace a nexoderecho@gmail.com.
+
 ## Pendiente
 
-- Etapa (c): modal de datos y columnas nuevas en `profiles`.
-- Etapa (d): pantalla «Mi perfil».
 - Bloque 2: auth por magic link, registro con perfil, panel `/admin`.
 
 ## Decisiones
