@@ -38,6 +38,15 @@ pantalla — justo en el presupuesto.
   Se arregla en Vercel → Settings → Git → Production Branch → `main`.
 - El build en Vercel **funciona**: el commit `9ff4fc5` compiló con estado
   success. Lo que falta es promoverlo, no arreglarlo.
+- **`vercel.json` fija el framework.** El proyecto de Vercel se importó cuando
+  la rama por defecto sólo tenía el pipeline de Python: sin `package.json` a la
+  vista, Vercel no detectó Next.js y guardó el preset "Other". Con ese preset el
+  build termina en success pero no produce nada servible, y todas las URLs del
+  deployment dan 404 — que es exactamente lo que pasaba. `vercel.json` tiene
+  precedencia sobre los ajustes del panel, así que declara el framework, el
+  install y el build sin depender de la UI.
+- Ojo con las URLs: `peron.vercel.app` es de otra persona (un sitio sobre Juan
+  Domingo Perón). El dominio del proyecto es `peron-delta.vercel.app`.
 - Los Preview tienen Deployment Protection activa: responden 302 hacia
   `vercel.com/sso-api`. Se abren estando logueado en Vercel, pero no se pueden
   verificar desde afuera sin un bypass token.
