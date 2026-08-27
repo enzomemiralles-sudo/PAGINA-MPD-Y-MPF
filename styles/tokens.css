@@ -1,6 +1,8 @@
 /* ============================================================
    TOKENS
-   Dos ejes independientes en <html>:
+   Dos ejes independientes. Normalmente van en <html>, pero cualquier
+   elemento puede declararlos: así una pantalla puede traer su piel puesta
+   desde el servidor y verse bien aunque el JavaScript no haya corrido.
 
      data-superficie = "oscura" | "clara"   -> fondo, texto, bordes, tarjeta
      data-marca      = "dual" | "neutro" | "nexo" | "na"  -> los acentos
@@ -31,7 +33,8 @@
 
 /* ---------- superficie oscura: la landing ---------- */
 :root,
-html[data-superficie="oscura"] {
+html[data-superficie="oscura"],
+[data-superficie="oscura"] {
   --fondo: var(--tinta);
   --texto: var(--papel);
 
@@ -60,7 +63,8 @@ html[data-superficie="oscura"] {
 }
 
 /* ---------- superficie clara: la app ---------- */
-html[data-superficie="clara"] {
+html[data-superficie="clara"],
+[data-superficie="clara"] {
   --fondo: var(--papel);
   --texto: var(--tinta);
   --texto-tenue: rgba(8, 9, 10, 0.75);
@@ -85,7 +89,8 @@ html[data-superficie="clara"] {
 
 /* ---------- dual: la landing sin puerta elegida ---------- */
 :root,
-html[data-marca="dual"] {
+html[data-marca="dual"],
+[data-marca="dual"] {
   --acento: #f4f2ed;
   --acento-texto: #f4f2ed;
   --acento-2: transparent;
@@ -100,7 +105,8 @@ html[data-marca="dual"] {
 }
 
 /* ---------- neutro: ingreso y selección de perfil ---------- */
-html[data-marca="neutro"] {
+html[data-marca="neutro"],
+[data-marca="neutro"] {
   --acento: var(--texto);
   --acento-texto: var(--texto);
   --acento-2: transparent;
@@ -116,7 +122,8 @@ html[data-marca="neutro"] {
 }
 
 /* ---------- Nexo ---------- */
-html[data-marca="nexo"] {
+html[data-marca="nexo"],
+[data-marca="nexo"] {
   /* Nexo es todo verde. El naranja salió de la paleta: --acento-2 es ahora un
      segundo verde y el marcador de revisar dejó de ser un color de marca. */
   --acento-2: #16a85b;
@@ -125,7 +132,8 @@ html[data-marca="nexo"] {
   --ital-h2: 1;
   --cinta-op: 0.16;
 }
-html[data-marca="nexo"][data-superficie="oscura"] {
+html[data-marca="nexo"][data-superficie="oscura"],
+[data-marca="nexo"][data-superficie="oscura"] {
   --acento: #059249;
   --acento-texto: #53b384;
   --superficie: rgba(31, 72, 56, 0.3);
@@ -133,7 +141,8 @@ html[data-marca="nexo"][data-superficie="oscura"] {
   --mancha-b: #0d6b3c;
   --relleno: linear-gradient(135deg, #059249, #0d7a3d);
 }
-html[data-marca="nexo"][data-superficie="clara"] {
+html[data-marca="nexo"][data-superficie="clara"],
+[data-marca="nexo"][data-superficie="clara"] {
   /* El verde de marca. Sobre papel llega a 7,12:1, así que sirve para texto
      y para fondo de botón con letra blanca (7,96:1). */
   --acento: #065d3b;
@@ -148,14 +157,16 @@ html[data-marca="nexo"][data-superficie="clara"] {
 }
 
 /* ---------- Nueva Abogacía ---------- */
-html[data-marca="na"] {
+html[data-marca="na"],
+[data-marca="na"] {
   --acento-2: transparent;
   --ancho-titulo: 104;
   --ancho-h2: 100;
   --ital-h2: 0;
   --cinta-op: 0.16;
 }
-html[data-marca="na"][data-superficie="oscura"] {
+html[data-marca="na"][data-superficie="oscura"],
+[data-marca="na"][data-superficie="oscura"] {
   --acento: #0059ba;
   /* La tinta sobre este azul da 2,98:1. La letra va clara: 5,98:1. */
   --sobre-acento: #f4f2ed;
@@ -165,7 +176,8 @@ html[data-marca="na"][data-superficie="oscura"] {
   --mancha-b: #00b9ae;
   --relleno: linear-gradient(135deg, #0059ba, #0088c4, #00b9ae);
 }
-html[data-marca="na"][data-superficie="clara"] {
+html[data-marca="na"][data-superficie="clara"],
+[data-marca="na"][data-superficie="clara"] {
   /* El degradé azul -> turquesa sale del isotipo. Va en el botón principal y
      en detalles; nunca de fondo de un bloque grande. */
   --acento: #0b3fd0;

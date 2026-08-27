@@ -58,8 +58,13 @@ describe("contraste AA", () => {
 describe("el espejo de tokens coincide con el CSS", () => {
   const normalizar = (v: string) => v.toLowerCase().replace(/\s+/g, "");
 
+  /**
+   * Busca un token dentro del bloque que declara ese selector. El [^{]* del
+   * medio existe porque un selector puede venir agrupado con otros por coma:
+   * `html[data-marca="nexo"], [data-marca="nexo"] { … }`.
+   */
   const leerEnBloque = (selector: string, token: string): string | null => {
-    const re = new RegExp(`${selector}\\s*\\{[^}]*?--${token}:\\s*([^;]+);`, "s");
+    const re = new RegExp(`${selector}[^{]*\\{[^}]*?--${token}:\\s*([^;]+);`, "s");
     return css.match(re)?.[1]?.trim() ?? null;
   };
 

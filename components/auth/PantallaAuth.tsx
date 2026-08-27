@@ -16,7 +16,10 @@ export function PantallaAuth({
   ancha?: boolean;
 }) {
   return (
-    <>
+    // La piel va en este marco, no sólo en <html>: así el ingreso se ve bien
+    // aunque el script del head no haya corrido. El marco pinta el fondo, la
+    // cinta va encima y el contenido arriba de todo.
+    <div className="auth-marco" data-superficie="clara" data-marca="neutro">
       <CintaFondo />
       <main className="auth-pantalla">
         <Tarjeta className={`auth-caja${ancha ? " perfil-caja" : ""}`}>{children}</Tarjeta>
@@ -27,6 +30,6 @@ export function PantallaAuth({
           <LogoNuevaAbogacia conCartel={false} />
         </div>
       </main>
-    </>
+    </div>
   );
 }

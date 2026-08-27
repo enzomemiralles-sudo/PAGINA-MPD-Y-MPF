@@ -1,5 +1,6 @@
 "use server";
 
+import { cookies } from "next/headers";
 import { revalidatePath } from "next/cache";
 import { z } from "zod";
 import { crearClienteServidor } from "@/lib/supabase/server";
@@ -32,6 +33,17 @@ export async function elegirPerfil(tipo: TipoPerfil): Promise<ResultadoPerfil> {
     .upsert({ user_id: sesion.user.id, tipo_perfil: parseo.data, marca }, { onConflict: "user_id" });
 
   if (error) return { ok: false, error: "No pudimos guardar tu perfil. Probá de nuevo." };
+
+  // Sólo para que el primer pintado de /app salga con la piel correcta. La
+  // fuente de verdad sigue siendo la fila en profiles: si la cookie miente,
+  // <AplicarPiel> la corrige apenas responde el servidor.
+  const galletas = await cookies();
+  galletas.set("marca", marca, {
+    path: "/",
+    maxAge: 60 * 60 * 24 * 365,
+    sameSite: "lax",
+    httpOnly: false,
+  });
 
   revalidatePath("/app");
   return { ok: true, marca };

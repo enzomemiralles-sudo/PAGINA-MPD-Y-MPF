@@ -4,6 +4,7 @@ import { meta } from "@/content/legales";
 import { MarcaProvider } from "@/components/marca/MarcaProvider";
 import { CromoGlobal } from "@/components/marca/CromoGlobal";
 import { PieLegal } from "@/components/landing/PieLegal";
+import { PIEL_INICIAL } from "@/components/marca/pielInicial";
 import "./globals.css";
 
 const archivo = Archivo({
@@ -33,6 +34,9 @@ export const viewport: Viewport = {
 export default function RootLayout({ children }: { children: React.ReactNode }) {
   return (
     <html lang="es-AR" data-marca="dual" data-superficie="oscura" className={`${archivo.variable} ${mono.variable}`}>
+      {/* Antes del <body>: React lo iza al <head> y corre antes del primer
+          pintado, así no hay salto de oscuro a claro al entrar al ingreso. */}
+      <script dangerouslySetInnerHTML={{ __html: PIEL_INICIAL }} />
       <body>
         <MarcaProvider>
           {children}

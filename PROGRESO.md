@@ -167,6 +167,29 @@ Tres colores se corrigieron por números, no por gusto:
 - El texto legal nombra a la organización según la marca y «escribiéndonos» es
   un enlace a nexoderecho@gmail.com.
 
+## La piel del ingreso ya no depende de JavaScript
+
+Se encontró mirando producción: el servidor mandaba
+`<html data-superficie="oscura">` para **todas** las rutas y un script lo
+corregía después. O sea, el ingreso salía oscuro y saltaba a claro. Sin
+JavaScript se quedaba oscuro para siempre.
+
+Arreglado en dos capas:
+
+1. **Los tokens de superficie se pueden declarar en cualquier elemento**, no
+   sólo en `<html>`. El marco de las pantallas de ingreso trae
+   `data-superficie="clara"` puesto desde el servidor, así que se ve bien
+   aunque el script no corra nunca.
+2. **El script que fija la piel se mudó al `<head>`.** Un script en el head
+   corre antes del primer pintado por definición; en el cuerpo, con SSR en
+   streaming, el navegador puede llegar a pintar antes. Además lee una cookie
+   `marca` que se escribe al elegir perfil, para que `/app` también salga
+   pintado bien de entrada. La fuente de verdad sigue siendo `profiles`:
+   `<AplicarPiel>` corrige la cookie si miente, y al cerrar sesión se borra.
+
+De paso: al darle fondo propio al marco se tapaba la cinta. El fondo va en el
+marco, la cinta encima y el contenido arriba de todo.
+
 ## Las migraciones están probadas contra Postgres real
 
 `supabase/pruebas/correr.sh` levanta un PostgreSQL descartable, replica lo que
