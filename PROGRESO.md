@@ -167,6 +167,28 @@ Tres colores se corrigieron por números, no por gusto:
 - El texto legal nombra a la organización según la marca y «escribiéndonos» es
   un enlace a nexoderecho@gmail.com.
 
+## Las migraciones están probadas contra Postgres real
+
+`supabase/pruebas/correr.sh` levanta un PostgreSQL descartable, replica lo que
+Supabase trae en un proyecto nuevo —roles `anon`/`authenticated`/`service_role`,
+los privilegios por defecto sobre `public`, el esquema `auth` y `auth.uid()`— y
+corre las tres migraciones. Después ataca la base con roles reales.
+
+Replicar los privilegios por defecto es lo que hace que la prueba valga: en
+Supabase **las tablas nuevas nacen con GRANT para `anon` y `authenticated`**, y
+lo que restringe es RLS. Sin eso, la prueba diría que todo está protegido sin
+haber probado nada.
+
+Resultado: las tres migraciones corren limpias y los nueve ataques dan lo
+esperado. `anon` no puede leer `respuesta_correcta` ni con `select *`; no ve
+ninguna fila de `alertas` pero sí puede insertar; una persona ve sólo su perfil
+y sus intentos, y editar el perfil de otra afecta cero filas; `service_role` sí
+lee la respuesta, que es quien corrige.
+
+**Lo que sigue sin probarse es el viaje por HTTP**: crear cuenta, el correo de
+confirmación, Google. Eso necesita el proyecto de Supabase, que va atado a una
+cuenta y no se puede crear desde acá.
+
 ## Pendiente
 
 - Bloque 2: auth por magic link, registro con perfil, panel `/admin`.
