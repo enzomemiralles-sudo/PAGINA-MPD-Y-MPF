@@ -32,13 +32,16 @@ https://peron-delta.vercel.app
    contenido y pegalo ahí.
 4. **Run** (o `Ctrl`/`Cmd` + `Enter`).
 
-Tiene que decir **Success**. Si decís que sí y no ves error, ya está: se
-crearon las 10 tablas, las políticas de seguridad y la vista que protege las
-respuestas correctas.
+Tiene que decir **Success**. Con eso quedaron las 10 tablas, las políticas de
+seguridad y la vista que protege las respuestas correctas.
 
-> **Si algo falla a la mitad:** abrí `supabase/reiniciar.sql`, pegalo, apretá
-> Run, y volvé a pegar `instalar.sql` desde cero. Está hecho para eso y lo
-> probamos: se puede reintentar todas las veces que haga falta.
+> **Si te dio error, o si ya lo habías intentado antes:** volvé a pegar este
+> mismo archivo y apretá Run de nuevo. Está hecho para poder correrse las veces
+> que haga falta: lo que ya existe lo saltea en vez de fallar. Lo probamos
+> corriéndolo cuatro veces seguidas.
+>
+> Sólo si aun así no sale, está `supabase/reiniciar.sql`, que borra todo para
+> empezar de cero. Es el último recurso, no el primero.
 
 **No corras además los archivos de `supabase/migrations/` por separado.**
 `instalar.sql` ya los contiene a los tres, en orden.

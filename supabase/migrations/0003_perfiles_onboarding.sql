@@ -13,39 +13,57 @@
 --  3. Los campos de estudiante son los del modal, no los del modelo original.
 -- ============================================================
 
-create type tipo_perfil_usuario as enum ('abogado', 'estudiante', 'otro');
-create type conocio_por as enum ('recomendacion', 'redes', 'aula', 'otro');
-create type trabajo_juridico as enum ('no', 'estudio', 'juzgado', 'ministerio_publico', 'otro');
+do $$ begin
+  create type tipo_perfil_usuario as enum ('abogado', 'estudiante', 'otro');
+exception when duplicate_object then null;
+end $$;
+do $$ begin
+  create type conocio_por as enum ('recomendacion', 'redes', 'aula', 'otro');
+exception when duplicate_object then null;
+end $$;
+do $$ begin
+  create type trabajo_juridico as enum ('no', 'estudio', 'juzgado', 'ministerio_publico', 'otro');
+exception when duplicate_object then null;
+end $$;
 
 alter table profiles
   alter column nombre drop not null,
   alter column apellido drop not null;
 
-alter table profiles rename column perfil to marca;
+-- El rename sólo si todavía no se hizo.
+do $$ begin
+  if exists (
+    select 1 from information_schema.columns
+     where table_schema = 'public' and table_name = 'profiles' and column_name = 'perfil'
+  ) then
+    alter table profiles rename column perfil to marca;
+  end if;
+end $$;
+
 alter table profiles alter column marca drop not null;
 
 alter table profiles
-  add column tipo_perfil tipo_perfil_usuario,
+  add column if not exists tipo_perfil tipo_perfil_usuario,
 
   -- abogado / profesional
-  add column anio_egreso smallint check (anio_egreso between 1950 and 2100),
-  add column fuero text,
-  add column matriculado boolean,
-  add column area_ejercicio text,
+  add column if not exists anio_egreso smallint check (anio_egreso between 1950 and 2100),
+  add column if not exists fuero text,
+  add column if not exists matriculado boolean,
+  add column if not exists area_ejercicio text,
 
   -- estudiante
-  add column anio_ingreso smallint check (anio_ingreso between 1950 and 2100),
-  add column como_conocio conocio_por,
-  add column trabaja_juridico trabajo_juridico,
+  add column if not exists anio_ingreso smallint check (anio_ingreso between 1950 and 2100),
+  add column if not exists como_conocio conocio_por,
+  add column if not exists trabaja_juridico trabajo_juridico,
 
   -- comunes, opcionales
-  add column dni text,
-  add column telefono text,
+  add column if not exists dni text,
+  add column if not exists telefono text,
 
   -- aceptación de condiciones: lo único obligatorio del modal
-  add column fecha_aceptacion timestamptz,
-  add column onboarding_completado boolean not null default false,
-  add column updated_at timestamptz not null default now();
+  add column if not exists fecha_aceptacion timestamptz,
+  add column if not exists onboarding_completado boolean not null default false,
+  add column if not exists updated_at timestamptz not null default now();
 
 -- consent_datos ya existía y es el checkbox de condiciones. La fecha se guarda
 -- aparte porque hay que poder decir cuándo se aceptó, no sólo que se aceptó.
@@ -64,6 +82,7 @@ begin
 end;
 $$;
 
+drop trigger if exists profiles_updated_at on profiles;
 create trigger profiles_updated_at
   before update on profiles
   for each row execute function tocar_updated_at();
