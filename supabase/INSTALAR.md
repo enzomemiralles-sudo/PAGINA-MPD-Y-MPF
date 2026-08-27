@@ -48,42 +48,70 @@ seguridad y la vista que protege las respuestas correctas.
 
 ---
 
-## Paso 3 · Copiar las claves a Vercel
+## Paso 3 · Presentarle la base al sitio
 
-Son tres valores. Están en Supabase, en **Project Settings** (el engranaje
-abajo a la izquierda) → **API**.
+Hasta acá tenés dos cosas que no se conocen entre sí: la base de datos que
+acabás de crear en Supabase, y el sitio que ya está andando en Vercel. Este
+paso es presentarlas.
 
-En paneles más nuevos la sección puede llamarse **API Keys** y los nombres
-cambian un poco. Lo que buscás es esto:
+El sitio necesita tres datos para hablarle a la base: **dónde está**, una
+**llave para entrar como visitante** y una **llave de dueño** que usa sólo el
+servidor. Esos tres datos no se escriben en el código —quedarían publicados en
+GitHub— sino en un tablero aparte de Vercel que se llama *Environment
+Variables*. Son como notitas privadas que el sitio lee al arrancar.
 
-| Lo que copiás | Cómo se llama en Supabase | Cómo se llama en Vercel |
+### 3·A — Buscar los tres datos en Supabase
+
+En Supabase, abajo a la izquierda hay un engranaje: **Project Settings**.
+Adentro, buscá **API** (en paneles nuevos puede decir **API Keys**).
+
+Ahí vas a ver, en este orden:
+
+- **Project URL** — algo como `https://abcdefgh.supabase.co`. Es la dirección
+  de tu base.
+- **La llave de visitante** — un texto larguísimo. Según la versión del panel
+  dice `anon`, `public` o `publishable`. Cualquiera de esas es la que va: son
+  la misma cosa con nombres distintos según cuándo se creó el proyecto.
+- **La llave de dueño** — dice `service_role` o `secret`, y viene tapada con un
+  botón *Reveal* o un ojito. Hacé clic para verla.
+
+Al lado de cada una hay un botón de copiar. Vas a copiar de a una.
+
+> ⚠️ **La llave de dueño no se comparte.** La de visitante es pública: viaja al
+> navegador de cualquiera que entre al sitio, y por eso la base está protegida
+> con reglas que la limitan. La de dueño saltea todas esas reglas. No la pegues
+> en un chat —tampoco en uno conmigo—, ni en el código, ni en ningún casillero
+> cuyo nombre empiece con `NEXT_PUBLIC_`.
+
+### 3·B — Pegarlos en Vercel
+
+Ahora en **vercel.com**, entrá al proyecto **peron** → **Settings** →
+**Environment Variables**.
+
+Vas a ver un formulario con dos casilleros: uno para el **nombre** (*Key* o
+*Name*) y otro para el **valor** (*Value*). Cargás uno, apretás **Save**, y el
+formulario se vacía para el siguiente. **Son cuatro veces.**
+
+| # | En el casillero del nombre | En el casillero del valor |
 |---|---|---|
-| La dirección del proyecto | **Project URL** | `NEXT_PUBLIC_SUPABASE_URL` |
-| La clave pública | **anon** / **public** / **publishable** | `NEXT_PUBLIC_SUPABASE_ANON_KEY` |
-| La clave secreta | **service_role** / **secret** | `SUPABASE_SERVICE_ROLE_KEY` |
+| 1 | `NEXT_PUBLIC_SUPABASE_URL` | la Project URL |
+| 2 | `NEXT_PUBLIC_SUPABASE_ANON_KEY` | la llave de visitante |
+| 3 | `SUPABASE_SERVICE_ROLE_KEY` | la llave de dueño |
+| 4 | `NEXT_PUBLIC_SITIO_URL` | `https://peron-delta.vercel.app` |
 
-> ⚠️ **La tercera es la peligrosa.** La `service_role` saltea toda la
-> seguridad: quien la tenga puede leer y borrar cualquier cosa. Nunca la
-> pegues en un chat, en el código, ni en una variable que empiece con
-> `NEXT_PUBLIC_`. Va sólo en Vercel, en el casillero que dice
-> `SUPABASE_SERVICE_ROLE_KEY`.
+El nombre se escribe **exactamente así**, en mayúsculas y con los guiones
+bajos. Si te comés una letra, el sitio no lo encuentra. La cuarta no sale de
+Supabase: es la dirección de tu propio sitio, y sirve para que los enlaces que
+llegan por mail vuelvan al lugar correcto.
 
-Ahora en **Vercel** → proyecto **peron** → **Settings** → **Environment
-Variables**. Agregá las tres, más una cuarta:
+Si te pregunta en qué entornos aplicarla (*Production*, *Preview*,
+*Development*), dejá los tres tildados.
 
-| Name | Value |
-|---|---|
-| `NEXT_PUBLIC_SUPABASE_URL` | la Project URL |
-| `NEXT_PUBLIC_SUPABASE_ANON_KEY` | la clave pública |
-| `SUPABASE_SERVICE_ROLE_KEY` | la clave secreta |
-| `NEXT_PUBLIC_SITIO_URL` | `https://peron-delta.vercel.app` |
-
-Dejá tildados los tres entornos (Production, Preview, Development) si te lo
-pregunta.
-
-**Después de guardarlas hay que volver a desplegar**, si no el sitio sigue
-andando con la versión vieja: **Deployments** → el de más arriba → menú `⋯` →
-**Redeploy**.
+> **Falta un último clic, y es el que más se olvida.** Vercel no aplica las
+> variables nuevas al sitio que ya está publicado: hay que volver a
+> desplegarlo. Andá a **Deployments**, buscá el de más arriba, abrí el menú
+> `⋯` y elegí **Redeploy**. Sin esto, seguís viendo la versión vieja y parece
+> que nada funcionó.
 
 ---
 
