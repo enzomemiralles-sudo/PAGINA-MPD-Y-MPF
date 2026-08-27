@@ -74,8 +74,11 @@ comment on column profiles.marca is
    poder cambiarla sin tocar el tipo de perfil.';
 
 -- updated_at al día sin depender de que el código se acuerde.
+-- search_path fijo: el linter de Supabase marca toda funcion que no lo tenga.
+-- Con la ruta vacia, `now()` sigue resolviendo porque pg_catalog esta siempre
+-- implicito, y nadie puede colar un `now()` propio en un esquema que este antes.
 create or replace function tocar_updated_at()
-returns trigger language plpgsql as $$
+returns trigger language plpgsql set search_path = '' as $$
 begin
   new.updated_at = now();
   return new;

@@ -5,6 +5,13 @@ Esto se hace una sola vez. Son cuatro pasos y no hace falta saber programar.
 Al terminar, la gente va a poder crear cuenta y entrar en
 https://peron-delta.vercel.app
 
+> **Para el despliegue que ya está andando, los pasos 1, 2 y 3 están hechos.**
+> El proyecto vive en la region `sa-east-1`, las diez tablas estan instaladas
+> con sus dieciseis politicas, y la URL y la clave publica quedaron en
+> `.env.production`. Lo que falta es el paso 4. Los cuatro pasos siguen escritos
+> completos porque son las instrucciones para levantar el sitio de cero: otro
+> entorno, otra cuenta, o rehacerlo si algun dia hay que empezar de nuevo.
+
 ---
 
 ## Paso 1 · Crear el proyecto
@@ -56,9 +63,20 @@ paso es presentarlas.
 
 El sitio necesita tres datos para hablarle a la base: **dónde está**, una
 **llave para entrar como visitante** y una **llave de dueño** que usa sólo el
-servidor. Esos tres datos no se escriben en el código —quedarían publicados en
-GitHub— sino en un tablero aparte de Vercel que se llama *Environment
-Variables*. Son como notitas privadas que el sitio lee al arrancar.
+servidor.
+
+Los dos primeros son públicos por diseño: viajan al navegador de cualquiera que
+entre al sitio. Lo que protege la base no es esconderlos, sino las políticas RLS
+y los permisos por columna. Por eso en este repo viven en `.env.production`, que
+sí se commitea. El tercero, la llave de dueño, saltea todas esas reglas y por eso
+**no está en el repo ni tiene que estarlo**: va en un tablero aparte de Vercel
+que se llama *Environment Variables*. Hoy no hace falta —ningún código la usa
+todavía—; la va a necesitar el simulador, para leer las respuestas correctas sin
+mandarlas al navegador.
+
+Un valor cargado en ese tablero le gana al archivo, porque Vercel lo inyecta como
+variable real del proceso y Next.js no pisa lo que ya existe. Mover las dos
+públicas al panel, si preferís tenerlas ahí, no requiere tocar código.
 
 ### 3·A — Buscar los tres datos en Supabase
 
