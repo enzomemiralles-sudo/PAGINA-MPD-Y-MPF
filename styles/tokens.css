@@ -51,9 +51,10 @@ html[data-superficie="oscura"],
   /* El marcador de "revisar" es funcional, no de marca: el mismo en las tres
      pieles. Antes era el naranja de Nexo, que ya no existe en la paleta. */
   --marca-revisar: #c8a27a;
-  /* Los logos van a color. Sobre oscuro, la versión en blanco de Nexo; sobre
-     claro, su verde de marca (7,12:1 sobre papel). */
-  --logo-nexo: #f4f2ed;
+  /* Los logos van a color. El verde de marca en las dos superficies: sobre
+     oscuro da 4,95:1 contra el fondo y sobre claro 7,12:1 contra el papel.
+     Los dos pasan holgados el 3:1 que pide un elemento gráfico. */
+  --logo-nexo: #059249;
 
   /* Nombres viejos que usa el CSS de la landing. */
   --papel-tenue: var(--texto-tenue);

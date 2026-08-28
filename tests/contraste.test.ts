@@ -45,6 +45,31 @@ describe("contraste AA", () => {
     }
   }
 
+  /**
+   * El logotipo no es texto, así que el umbral que le corresponde es el 3:1
+   * de los elementos gráficos, no el 4,5:1 de lectura. Va acá igual porque es
+   * lo primero que se ve de la marca: si queda apagado sobre su fondo, no se
+   * lee que dice Nexo.
+   */
+  it("el logotipo de Nexo se distingue de su fondo en las dos superficies", () => {
+    const AA_GRAFICO = 3;
+    for (const superficie of ["oscura", "clara"] as const) {
+      const re = new RegExp(
+        `html\\[data-superficie="${superficie}"\\][^{]*\\{[^}]*?--logo-nexo:\\s*([^;]+);`,
+        "s",
+      );
+      const color = css.match(re)?.[1]?.trim();
+      expect(color, `falta --logo-nexo en la superficie ${superficie}`).toBeTruthy();
+
+      const piel = PIELES[`${superficie}/${superficie === "oscura" ? "dual" : "neutro"}`]!;
+      const fondo = resolver(piel.fondo, [0, 0, 0]);
+      const r = contraste(resolver(color!, fondo), fondo);
+      expect(r, `${color} sobre ${superficie} da ${r.toFixed(2)}:1`).toBeGreaterThanOrEqual(
+        AA_GRAFICO,
+      );
+    }
+  });
+
   it("cada stop del gradiente del titular llega a AA", () => {
     const fondo = resolver(PIELES["oscura/dual"]!.fondo, [0, 0, 0]);
     for (const stop of STOPS_BRILLO) {

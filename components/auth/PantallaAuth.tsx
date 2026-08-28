@@ -27,7 +27,7 @@ export function PantallaAuth({
         <div className="auth-firma" aria-label={pieLogos.ayuda}>
           <LogoNexo alto={16} />
           <span className="sep-v" aria-hidden="true" />
-          <LogoNuevaAbogacia conCartel={false} />
+          <LogoNuevaAbogacia />
         </div>
       </main>
     </div>

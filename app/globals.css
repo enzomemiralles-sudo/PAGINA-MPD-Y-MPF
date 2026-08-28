@@ -162,17 +162,6 @@ p { color: var(--papel-tenue); }
   flex-shrink: 0;
 }
 .sep-v { width: 1px; height: 22px; background: var(--linea-fuerte); }
-.na-mark { display: flex; align-items: center; gap: 0.45rem; }
-.na-circ {
-  width: 26px; height: 26px; border-radius: 50%;
-  background: linear-gradient(135deg, #0b3fd0, #00846b);
-  display: grid; place-items: center; font-size: 0.72rem;
-  font-variation-settings: "wdth" 100, "wght" 800; color: #fff; letter-spacing: -0.02em;
-}
-.prov {
-  font-size: 0.5rem; letter-spacing: 0.14em; color: var(--papel-débil);
-  border: 1px solid var(--linea); padding: 0.12rem 0.3rem; border-radius: 3px;
-}
 .links { display: none; gap: 1.6rem; }
 @media (min-width: 960px) { .links { display: flex; } }
 .links a { color: var(--papel-tenue); font-size: 0.85rem; transition: color 0.2s; }
@@ -186,96 +175,53 @@ p { color: var(--papel-tenue); }
 }
 .links a:hover::after, .pie-links a:hover::after { transform: scaleX(1); }
 
-/* ============ CONMUTADOR DE PUERTA ============ */
-.puertas {
-  position: fixed; bottom: 1rem; left: 50%; transform: translateX(-50%); z-index: 50;
-  display: flex; gap: 0.25rem; padding: 0.3rem; border-radius: 999px;
-  background: rgba(16, 18, 22, 0.92); backdrop-filter: blur(12px);
-  box-shadow: inset 0 0 0 1px var(--linea-fuerte), 0 8px 30px rgba(0, 0, 0, 0.5);
-}
-.puertas button {
-  background: none; border: none; color: var(--papel-débil); cursor: pointer;
-  padding: 0.42rem 0.85rem; border-radius: 999px;
-  font-family: var(--fuente-mono), monospace; font-size: 0.62rem;
-  letter-spacing: 0.1em; text-transform: uppercase; transition: all 0.3s;
-}
-.puertas button[aria-pressed="true"] { background: var(--relleno); color: #fff; }
-.puertas .lbl {
-  color: var(--papel-débil); font-family: var(--fuente-mono), monospace;
-  font-size: 0.55rem; letter-spacing: 0.12em; text-transform: uppercase;
-  padding: 0.42rem 0.5rem 0.42rem 0.75rem; align-self: center;
-}
-
 /* ============ HERO ============ */
 .hero { padding: 3.5rem 0 1.5rem; text-align: center; display: flex; flex-direction: column; align-items: center; }
 @media (min-width: 768px) { .hero { padding: 5.5rem 0 2rem; } }
-.hero p.bajada { margin: 1.8rem auto 0; max-width: 35rem; font-size: 1rem; line-height: 1.6; }
-.hero-btns { display: flex; gap: 0.7rem; margin-top: 2rem; flex-wrap: wrap; justify-content: center; }
-.hero .micro { margin-top: 1.1rem; color: var(--papel-débil); }
 
-/* ============ PREGUNTA (FIRMA) ============ */
-.pregunta { max-width: 44rem; margin: 2.8rem auto 0; padding: 1.4rem; text-align: left; }
-@media (min-width: 768px) { .pregunta { padding: 1.9rem; } }
-.pregunta .enunciado {
-  font-size: 1.06rem; line-height: 1.45; font-variation-settings: "wdth" 100, "wght" 500;
-  margin: 0.9rem 0 1.2rem; color: var(--papel);
+/* La maqueta viene pegada al hero: es la foto del producto, no una sección
+   aparte. Antes las separaba la tarjeta de la pregunta; sacada esa, el
+   padding entero de sección dejaba al titular colgando solo en la pantalla. */
+.hero + .sec { padding-top: 3rem; }
+@media (min-width: 768px) { .hero + .sec { padding-top: 4rem; } }
+
+/* El titular se corta a mano, pero sólo cuando la pantalla da el ancho.
+   Medido en la propia tipografía: el renglón más largo —«para preparar tu
+   ingreso»— ocupa 13,14 px por cada px de tamaño de letra. Con el titular
+   tope de 5,1rem (81,6px) eso son 1072px, y el contenedor da 1152px recién
+   a partir de 1120px de ventana. Antes de ahí los renglones se cortarían
+   solos y quedarían desparejos, así que hasta ese ancho el texto fluye con
+   `balance` y el navegador reparte. */
+.hero-linea { display: inline; }
+@media (min-width: 1160px) {
+  .hero-linea { display: block; }
+  .hero-titulo { text-wrap: initial; }
 }
-.opciones { display: flex; flex-direction: column; gap: 0.5rem; border: none; }
-.op {
-  display: flex; align-items: flex-start; gap: 0.75rem; padding: 0.8rem 0.9rem;
-  border-radius: 10px; cursor: pointer; background: rgba(244, 242, 237, 0.02);
-  box-shadow: inset 0 0 0 1px var(--linea); font-size: 0.92rem; line-height: 1.42;
-  transition: background var(--t-micro) var(--suave), box-shadow var(--t-micro) var(--suave),
-              transform var(--t-micro) var(--suave);
+
+/* El titular tiene su propia escala porque el trozo que no puede partirse
+   —«al Ministerio Público», 10,99px de ancho por px de letra— es más ancho
+   que el de cualquier otro título. Con los 8,5vw generales la línea se salía
+   de los márgenes hasta los 600px de ventana: 8vw y un piso de 1,8rem la
+   dejan entrando en todo el rango, con 4px de holgura en el peor caso
+   (320px de ventana). Si se parte, el degradado se corta al medio de la
+   palabra. */
+.hero-titulo {
+  /* El segundo término es el tope de verdad: como el trozo no puede partirse,
+     la letra nunca puede pasar de un onceavo del ancho útil. Sin eso, en
+     pantallas angostas la línea se sale de los márgenes en vez de achicarse. */
+  font-size: min(clamp(1.8rem, 8vw, 5.1rem), calc((100vw - 2.5rem) / 11));
+  text-wrap: balance;
 }
-.op:hover { background: rgba(244, 242, 237, 0.05); }
-.op:not(.bloq):hover { transform: translateX(3px); }
-.op input { margin: 0; position: absolute; opacity: 0; width: 1px; height: 1px; }
-.op .letra {
-  font-family: var(--fuente-mono), monospace; font-size: 0.72rem; color: var(--papel-débil);
-  flex-shrink: 0; margin-top: 0.15rem; width: 1rem;
-}
-.op:has(input:focus-visible) { outline: 2px solid var(--acento-texto); outline-offset: 3px; }
-.op.correcta { box-shadow: inset 0 0 0 1.5px var(--ok); background: rgba(74, 222, 128, 0.08); }
-.op.correcta .letra { color: var(--ok); }
-.op.incorrecta { box-shadow: inset 0 0 0 1.5px var(--error); background: rgba(230, 77, 82, 0.08); }
-.op.incorrecta .letra { color: var(--error); }
-.op.bloq { cursor: default; }
-.revelado { max-height: 0; opacity: 0; overflow: hidden; transition: max-height 0.45s ease, opacity 0.35s ease, margin 0.45s ease; }
-.revelado.on { max-height: 520px; opacity: 1; margin-top: 1.1rem; }
-.veredicto { font-variation-settings: "wdth" 100, "wght" 700; font-size: 0.95rem; margin-bottom: 0.5rem; }
+.hero-titulo .brillo { white-space: nowrap; }
+
+.hero p.bajada { margin: 1.8rem auto 0; max-width: 38rem; font-size: 1rem; line-height: 1.6; }
+.hero-btns { display: flex; gap: 0.7rem; margin-top: 2rem; flex-wrap: wrap; justify-content: center; }
+
+/* La cita de la norma, debajo de la pregunta de la maqueta. */
 .cita {
   display: inline-block; margin-top: 0.9rem; padding: 0.4rem 0.7rem; border-radius: 6px;
   background: rgba(244, 242, 237, 0.04); box-shadow: inset 0 0 0 1px var(--linea); color: var(--acento-texto);
 }
-.mas {
-  display: inline-flex; align-items: center; gap: 0.4rem; margin-top: 1rem;
-  font-size: 0.88rem; font-variation-settings: "wdth" 100, "wght" 600;
-  transition: gap var(--t-micro) var(--suave);
-}
-.mas:hover { gap: 0.7rem; }
-.revelado > * { opacity: 0; transform: translate3d(0, 8px, 0); transition: opacity 380ms var(--sal), transform 380ms var(--sal); }
-.revelado.on > * { opacity: 1; transform: none; }
-.revelado.on > *:nth-child(1) { transition-delay: 60ms; }
-.revelado.on > *:nth-child(2) { transition-delay: 140ms; }
-.revelado.on > *:nth-child(3) { transition-delay: 220ms; }
-.revelado.on > *:nth-child(4) { transition-delay: 300ms; }
-
-/* ============ FRANJA ESTADO ============ */
-.estado { border-top: 1px solid var(--linea); border-bottom: 1px solid var(--linea); background: rgba(16, 18, 22, 0.5); }
-.estado .fila {
-  display: flex; align-items: center; justify-content: space-between; gap: 1rem; height: 44px;
-  font-family: var(--fuente-mono), monospace; font-size: 0.66rem; letter-spacing: 0.08em;
-  text-transform: uppercase; color: var(--papel-tenue);
-}
-.estado .fila + .fila { border-top: 1px solid var(--linea); }
-.estado .org { color: var(--papel); white-space: nowrap; }
-.estado .st { flex: 1; text-align: center; display: none; }
-@media (min-width: 768px) { .estado .st { display: block; } }
-.estado .acc { color: var(--acento-texto); white-space: nowrap; }
-.punto { display: inline-block; width: 6px; height: 6px; border-radius: 50%; margin-right: 0.45rem; vertical-align: middle; }
-.punto.espera { background: var(--papel-débil); }
-.punto.listo { background: var(--ok); }
 
 /* ============ MAQUETA SIMULADOR ============ */
 .maqueta { border-radius: 16px; overflow: hidden; box-shadow: inset 0 0 0 1px var(--linea); background: rgba(16, 18, 22, 0.92); }

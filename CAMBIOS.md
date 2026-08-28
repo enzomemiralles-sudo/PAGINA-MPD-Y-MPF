@@ -8,20 +8,20 @@
 ## TANDA 1 · Limpieza de la pestaña de muestra
 > Todo esto es sacar y reemplazar. No requiere diseño nuevo. Debería salir en una sola sesión.
 
-- [ ] **M-01** Sacar la barra flotante inferior de puertas (Ambas / Nexo / Nueva Abogacía / "Puerta"). El conmutador de marca desaparece de la interfaz; el sistema de pieles queda en el código pero no se expone al usuario.
-- [ ] **M-02** Sacar la etiqueta "provisorio" al lado del logo de Nueva Abogacía. El logo actual es el definitivo.
-- [ ] **M-03** El logotipo de Nexo del encabezado va en **verde Nexo `#059249`**, no en blanco.
-- [ ] **M-04** Titular nuevo: **"Todo lo que necesitás para preparar tu ingreso al Ministerio Público"**. El efecto de gradiente animado se mantiene solo sobre "Ministerio Público".
-- [ ] **M-05** El titular tiene que quedar **visualmente equilibrado**: los renglones de largo parejo, sin líneas huérfanas de una sola palabra. Usar `text-wrap: balance` y ajustar los saltos manualmente si hace falta.
-- [ ] **M-06** Bajada nueva: **"Prepará tu examen con simuladores de exámenes, un asistente para responder todas tus dudas, la normativa ordenada y todo lo que necesitás saber para la inscripción en un solo lugar."**
-- [ ] **M-07** Sacar el botón "Ver los simulacros". Queda solo "Empezar gratis".
-- [ ] **M-08** "Empezar gratis" redirige a `/crear-perfil`.
-- [ ] **M-09** Sacar la línea "Sin costo · sin publicidad · Nexo Derecho + Nueva Abogacía".
-- [ ] **M-10** Sacar **toda** la tarjeta de la pregunta real ("La autonomía funcional y autarquía financiera…"), incluida su lógica de respuesta.
-- [ ] **M-11** Sacar **toda** la franja de estado de concursos (MPD sin convocatoria / MPF examen disponible).
-- [ ] **M-12** Sacar la sección "El puntaje del MPD castiga el error" y su tarjeta "Cómo se evalúa". El contenido no se pierde: se reformula dentro de la pestaña Simulador (ver S-14).
-- [ ] **M-13** Sacar la sección "Cada respuesta, con la norma al lado".
-- [ ] **M-14** Sacar del pie el botón de Instagram y el de WhatsApp.
+- [x] **M-01** Sacar la barra flotante inferior de puertas (Ambas / Nexo / Nueva Abogacía / "Puerta"). El conmutador de marca desaparece de la interfaz; el sistema de pieles queda en el código pero no se expone al usuario.
+- [x] **M-02** Sacar la etiqueta "provisorio" al lado del logo de Nueva Abogacía. El logo actual es el definitivo.
+- [x] **M-03** El logotipo de Nexo del encabezado va en **verde Nexo `#059249`**, no en blanco.
+- [x] **M-04** Titular nuevo: **"Todo lo que necesitás para preparar tu ingreso al Ministerio Público"**. El efecto de gradiente animado se mantiene solo sobre "Ministerio Público".
+- [x] **M-05** El titular tiene que quedar **visualmente equilibrado**: los renglones de largo parejo, sin líneas huérfanas de una sola palabra. Usar `text-wrap: balance` y ajustar los saltos manualmente si hace falta.
+- [x] **M-06** Bajada nueva: **"Prepará tu examen con simuladores de exámenes, un asistente para responder todas tus dudas, la normativa ordenada y todo lo que necesitás saber para la inscripción en un solo lugar."**
+- [x] **M-07** Sacar el botón "Ver los simulacros". Queda solo "Empezar gratis".
+- [x] **M-08** "Empezar gratis" redirige a `/crear-perfil`.
+- [x] **M-09** Sacar la línea "Sin costo · sin publicidad · Nexo Derecho + Nueva Abogacía".
+- [x] **M-10** Sacar **toda** la tarjeta de la pregunta real ("La autonomía funcional y autarquía financiera…"), incluida su lógica de respuesta.
+- [x] **M-11** Sacar **toda** la franja de estado de concursos (MPD sin convocatoria / MPF examen disponible).
+- [x] **M-12** Sacar la sección "El puntaje del MPD castiga el error" y su tarjeta "Cómo se evalúa". El contenido no se pierde: se reformula dentro de la pestaña Simulador (ver S-14).
+- [x] **M-13** Sacar la sección "Cada respuesta, con la norma al lado".
+- [x] **M-14** Sacar del pie el botón de Instagram y el de WhatsApp.
 
 ---
 

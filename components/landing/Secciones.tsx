@@ -1,6 +1,4 @@
 import {
-  puntajeSeccion,
-  normaSeccion,
   asistenteSeccion,
   inscripcionSeccion,
   gratisSeccion,
@@ -18,84 +16,6 @@ function Titulo({ lineas }: { lineas: readonly string[] }) {
         </span>
       ))}
     </h2>
-  );
-}
-
-export function SeccionPuntaje() {
-  const t = puntajeSeccion;
-  return (
-    <section className="env sec">
-      <div className="dos">
-        <Revelar indice={0}>
-          <span className="eyebrow mono">{t.eyebrow}</span>
-          <Titulo lineas={t.titulo} />
-          <p style={{ marginTop: "1.4rem", fontSize: ".97rem" }}>{t.texto}</p>
-          <div className="chips">
-            {t.chips.map((c) => (
-              <span className="chip" key={c}>
-                {c}
-              </span>
-            ))}
-          </div>
-        </Revelar>
-
-        <Revelar indice={1}>
-          <Vidrio className="tarjeta">
-            <span className="eyebrow mono">{t.tarjetaEyebrow}</span>
-            <ul className="lista" style={{ marginTop: "1.1rem" }}>
-              {t.items.map((i) => (
-                <li key={i.n}>
-                  <span className="n">{i.n}</span>
-                  <span>
-                    <b>{i.titulo}</b> {i.texto}
-                  </span>
-                </li>
-              ))}
-            </ul>
-          </Vidrio>
-        </Revelar>
-      </div>
-    </section>
-  );
-}
-
-export function SeccionNorma() {
-  const t = normaSeccion;
-  return (
-    <section className="env sec" id="norma">
-      <div className="dos">
-        <Revelar indice={0}>
-          <Vidrio className="tarjeta">
-            <span className="eyebrow mono">{t.tarjetaEyebrow}</span>
-            <p style={{ marginTop: "1rem", fontSize: ".9rem", color: "var(--papel)", lineHeight: 1.5 }}>
-              {t.enunciado}
-            </p>
-            <div className="maq-op ok" style={{ marginTop: ".8rem" }}>
-              {t.opcion}
-            </div>
-            <p style={{ fontSize: ".85rem", marginTop: ".9rem", lineHeight: 1.55 }}>
-              {t.explicacionAntes}
-              <b style={{ color: "var(--papel)" }}>{t.explicacionDestacado}</b>
-              {t.explicacionDespues}
-            </p>
-            <span className="cita mono">{t.cita}</span>
-          </Vidrio>
-        </Revelar>
-
-        <Revelar indice={1}>
-          <span className="eyebrow mono">{t.eyebrow}</span>
-          <Titulo lineas={t.titulo} />
-          <p style={{ marginTop: "1.4rem", fontSize: ".97rem" }}>{t.texto}</p>
-          <div className="chips">
-            {t.chips.map((c) => (
-              <span className="chip" key={c}>
-                {c}
-              </span>
-            ))}
-          </div>
-        </Revelar>
-      </div>
-    </section>
   );
 }
 

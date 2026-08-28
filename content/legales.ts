@@ -5,12 +5,12 @@ export const pie = {
     { href: "/legales/terminos", texto: "Términos" },
     { href: "/legales/privacidad", texto: "Privacidad" },
     { href: "/contacto", texto: "Contacto" },
-    { href: "https://instagram.com", texto: "Instagram", externo: true },
-    { href: "https://wa.me", texto: "WhatsApp", externo: true },
   ],
-  notaProvisoriaTitulo: "Marcador provisorio.",
+  // El logo de Nueva Abogacía ya es el definitivo, así que de la nota queda
+  // sólo la parte que sigue siendo cierta: el criterio de revisión.
+  notaProvisoriaTitulo: "Cómo se cargan las preguntas.",
   notaProvisoriaTexto:
-    " El logo de Nueva Abogacía es temporal hasta tener el vectorial. Ninguna pregunta se publica sin revisar a mano: una respuesta mal cargada le enseña algo falso a alguien que se juega un puesto de trabajo.",
+    " Ninguna se publica sin revisar a mano: una respuesta mal cargada le enseña algo falso a alguien que se juega un puesto de trabajo.",
 } as const;
 
 export const meta = {

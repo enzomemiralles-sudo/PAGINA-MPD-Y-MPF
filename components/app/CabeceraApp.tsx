@@ -16,7 +16,7 @@ export function CabeceraApp({ marca, enPerfil = false }: { marca: Marca; enPerfi
             <LogoNexo alto={18} />
           ) : (
             <>
-              <LogoNuevaAbogacia conCartel={false} alto={20} />
+              <LogoNuevaAbogacia alto={20} />
               <span className="nombre">{cfg?.nombre}</span>
             </>
           )}

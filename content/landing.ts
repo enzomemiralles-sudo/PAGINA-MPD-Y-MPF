@@ -6,75 +6,24 @@
 export const nav = {
   links: [
     { href: "#simulador", texto: "Simulador" },
-    { href: "#norma", texto: "Recursos" },
     { href: "#inscripcion", texto: "Inscripción" },
     { href: "#asistente", texto: "Asistente" },
   ],
   cta: "Empezar gratis",
-  // SUPUESTO: /registro llega en el Bloque 2. Hoy el único destino real es la
-  // captura de mail, que es literalmente cómo se empieza: dejás el mail y te
-  // avisamos. Cuando exista el registro, se cambia acá y en ningún otro lado.
-  ctaHref: "/#avisame",
-} as const;
-
-export const conmutador = {
-  etiqueta: "Puerta",
-  ayuda: "Elegí la puerta de entrada",
-  // abrev se usa por debajo de 560px: "Nueva Abogacía" no entra en la píldora.
-  opciones: [
-    { id: "dual", texto: "Ambas", abrev: "Ambas" },
-    { id: "nexo", texto: "Nexo", abrev: "Nexo" },
-    { id: "na", texto: "Nueva Abogacía", abrev: "NA" },
-  ],
+  ctaHref: "/crear-perfil",
 } as const;
 
 export const hero = {
-  titulo: "Todo para rendir el ingreso al",
-  tituloBrillo: "Ministerio Público.",
-  bajadaAntes: "Te acompañamos con simuladores de exámenes reales, la normativa ordenada y respuestas a tus dudas, para el cargo de ",
-  bajadaDestacado: "técnico administrativo",
-  bajadaDespues: " en el MPD y el MPF. Gratis, siempre.",
+  // El titular se corta a mano. Los tres renglones quedan de 21, 24 y 21
+  // caracteres: el «al» va con la última línea justamente para emparejarlos.
+  // Dejarlo al navegador partía «para preparar tu ingreso al» en dos.
+  titulo: ["Todo lo que necesitás", "para preparar tu ingreso"],
+  tituloAntesBrillo: "al ",
+  tituloBrillo: "Ministerio Público",
+  bajada:
+    "Prepará tu examen con simuladores de exámenes, un asistente para responder todas tus dudas, la normativa ordenada y todo lo que necesitás saber para la inscripción en un solo lugar.",
   ctaPrimario: "Empezar gratis",
-  ctaSecundario: "Ver los simulacros",
-  micro: "Sin costo · sin publicidad · Nexo Derecho + Nueva Abogacía",
-  ctaPrimarioHref: "/#avisame",
-} as const;
-
-export const preguntaFirma = {
-  eyebrow: "Pregunta real · MPD · Técnico administrativo",
-  enunciado:
-    "La autonomía funcional y autarquía financiera del Ministerio Público de la Defensa surge del:",
-  leyenda: "Elegí una opción",
-  opciones: [
-    { id: "a", texto: "Reglamento del Consejo de la Magistratura." },
-    { id: "b", texto: "Art. 120 de la Constitución Nacional." },
-    { id: "c", texto: "Reglamento para la Justicia Nacional." },
-  ],
-  correcta: "b",
-  veredictoBien: "Correcta.",
-  veredictoMal: "No es esa.",
-  explicacion:
-    "El artículo 120 de la Constitución Nacional define al Ministerio Público como un órgano independiente, con autonomía funcional y autarquía financiera. Las otras dos opciones son normas de rango inferior: un reglamento no puede ser la fuente de una garantía institucional que la propia Constitución establece.",
-  cita: "Constitución Nacional, art. 120",
-  masPlantilla: (n: number) => `Hay ${n} preguntas más como esta →`,
-} as const;
-
-export const franjaEstado = {
-  etiquetas: {
-    sin_convocatoria: "Sin convocatoria publicada",
-    convocatoria_abierta: "Convocatoria publicada",
-    inscripcion_abierta: "Inscripción abierta",
-    fecha_confirmada: "Fecha de examen confirmada",
-    finalizado: "Examen 2026 disponible",
-  },
-  acciones: {
-    sin_convocatoria: "Avisame →",
-    convocatoria_abierta: "Ver convocatoria →",
-    inscripcion_abierta: "Cómo inscribirse →",
-    fecha_confirmada: "Prepararme →",
-    finalizado: "Practicar →",
-  },
-  organismos: { mpd: "MPD", mpf: "MPF" },
+  ctaPrimarioHref: "/crear-perfil",
 } as const;
 
 export const maqueta = {
@@ -108,36 +57,6 @@ export const maqueta = {
   marcadas: [4, 9, 17],
   activa: 24,
   total: 50,
-} as const;
-
-export const puntajeSeccion = {
-  eyebrow: "Estrategia",
-  titulo: ["El puntaje del MPD", "castiga el error."],
-  texto:
-    "Una respuesta correcta suma 10 puntos, pero una incorrecta resta 10, y dejarla en blanco no resta nada. Contestar al azar no es neutral: es una apuesta con valor esperado negativo. Nuestro simulador te muestra el puntaje real mientras rendís, no la cantidad de aciertos, para que practiques la decisión de cuándo conviene dejar una en blanco.",
-  chips: ["+10 correcta", "−10 incorrecta", "0 en blanco", "60 para aprobar"],
-  tarjetaEyebrow: "Cómo se evalúa · MPD",
-  items: [
-    { n: "01", titulo: "Conocimientos teóricos.", texto: "100 puntos máximo, 60 para aprobar. Suma 10 la correcta, resta 10 la incorrecta, la que dejás sin responder no suma ni resta." },
-    { n: "02", titulo: "Conocimientos informáticos.", texto: "Se parte del puntaje máximo de 100 y se descuentan 5 puntos por cada error. También se aprueba con 60." },
-    { n: "03", titulo: "La consecuencia práctica.", texto: "Si dudás entre dos opciones conviene arriesgar; si no tenés idea, dejala en blanco. El simulador te muestra las dos cuentas al terminar." },
-  ],
-} as const;
-
-export const normaSeccion = {
-  eyebrow: "Fundamento",
-  titulo: ["Cada respuesta,", "con la norma al lado."],
-  texto:
-    "Toda pregunta corregida viene con la explicación de por qué esa opción es la correcta y por qué las otras no, citando el artículo exacto. No memorizás una letra: entendés la regla y aprendés dónde buscarla.",
-  chips: ["Ley 27.149", "Ley 27.148", "Constitución Nacional", "Reglamentos de concurso"],
-  tarjetaEyebrow: "Corrección",
-  enunciado: "Es causa para disponer la cesantía de Funcionarios/as y/o Empleados/as del MPD:",
-  opcion: "a · Sentencia condenatoria firme por delito doloso.",
-  explicacionAntes: "La clave está en dos palabras: ",
-  explicacionDestacado: "firme y doloso",
-  explicacionDespues:
-    ". Una sentencia que todavía puede recurrirse no habilita la cesantía, y el delito culposo tampoco alcanza.",
-  cita: "Ley 27.149 · Régimen jurídico del MPD",
 } as const;
 
 export const asistenteSeccion = {
