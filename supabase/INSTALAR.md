@@ -51,7 +51,12 @@ seguridad y la vista que protege las respuestas correctas.
 > empezar de cero. Es el último recurso, no el primero.
 
 **No corras además los archivos de `supabase/migrations/` por separado.**
-`instalar.sql` ya los contiene a los tres, en orden.
+`instalar.sql` ya los contiene a todos, en orden.
+
+> **Si ya lo habías corrido antes, corrélo otra vez.** Cada vez que sumamos una
+> tabla nueva, `instalar.sql` la trae. Ahora trae `consultas`, que es donde caen
+> los mensajes del formulario de contacto: sin ella el formulario valida, dice
+> que salió bien y no guarda nada. Correrlo de nuevo no rompe lo que ya está.
 
 ---
 

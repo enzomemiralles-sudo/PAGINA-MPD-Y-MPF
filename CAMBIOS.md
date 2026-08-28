@@ -46,14 +46,14 @@
 ## TANDA 3 · Legales y contacto
 > Es pegar contenido. Rápido y sin riesgo. Los textos completos están en `content/legales/`.
 
-- [ ] **L-01** Renombrar el enlace "Términos" a **"Términos y Condiciones"**. Ruta `/terminos-y-condiciones`.
-- [ ] **L-02** Reemplazar el contenido por el texto completo provisto. Fecha de última actualización visible arriba.
-- [ ] **L-03** Renombrar "Privacidad" a **"Política de Privacidad"**. Ruta `/politica-de-privacidad`.
-- [ ] **L-04** Reemplazar el contenido por el texto completo provisto.
-- [ ] **L-05** Rehacer la página **Contacto** con el contenido nuevo: encabezado, mails de las dos organizaciones, Instagram como botones visuales (`@nexoderecho` y `@nueva.abogacia`, nunca URLs largas) y formulario.
-- [ ] **L-06** Formulario de contacto: nombre y apellido, correo, motivo (Información general / Ingreso Democrático / Simulador de examen / Material de estudio / Problemas técnicos / Otra consulta), mensaje. Guarda en tabla `consultas` y manda aviso por Resend.
-- [ ] **L-07** Falta el mail de Nueva Abogacía. Dejar `[PENDIENTE]` visible en el código, no inventar una dirección.
-- [ ] **L-08** Las tres páginas legales usan la piel `dual`, tipografía de lectura cómoda y ancho máximo de 68 caracteres por línea.
+- [x] **L-01** Renombrar el enlace "Términos" a **"Términos y Condiciones"**. Ruta `/terminos-y-condiciones`.
+- [x] **L-02** Reemplazar el contenido por el texto completo provisto. Fecha de última actualización visible arriba.
+- [x] **L-03** Renombrar "Privacidad" a **"Política de Privacidad"**. Ruta `/politica-de-privacidad`.
+- [x] **L-04** Reemplazar el contenido por el texto completo provisto.
+- [x] **L-05** Rehacer la página **Contacto** con el contenido nuevo: encabezado, mails de las dos organizaciones, Instagram como botones visuales (`@nexoderecho` y `@nueva.abogacia`, nunca URLs largas) y formulario.
+- [x] **L-06** Formulario de contacto: nombre y apellido, correo, motivo (Información general / Ingreso Democrático / Simulador de examen / Material de estudio / Problemas técnicos / Otra consulta), mensaje. Guarda en tabla `consultas` y manda aviso por Resend.
+- [x] **L-07** Falta el mail de Nueva Abogacía. Dejar `[PENDIENTE]` visible en el código, no inventar una dirección. → llegó: `abogacianueva@gmail.com`, ya no hay marcador.
+- [x] **L-08** Las tres páginas legales usan la piel `dual`, tipografía de lectura cómoda y ancho máximo de 68 caracteres por línea.
 
 ---
 
@@ -155,7 +155,7 @@ Criterio: la muestra es **visual, dinámica, atractiva, demostrativa**. Menos te
 - [ ] **B-01** Los **dos ejemplos de parte práctica y parte teórica** mencionados no llegaron. Bloquean S-04 y S-06.
 - [ ] **B-02** **Metodología completa del examen de tipeo del MPD**: duración, cantidad de caracteres, criterio de error, umbral de aprobación. Bloquea S-06.
 - [ ] **B-03** **Manual y preguntero del MPF**. Bloquea S-03 y la carga del simulador del MPF.
-- [ ] **B-04** **Mail de Nueva Abogacía**. Bloquea L-07.
+- [x] **B-04** **Mail de Nueva Abogacía**. Bloquea L-07. → `abogacianueva@gmail.com`
 - [ ] **B-05** **Capturas reales del simulador** para la muestra. Bloquea toda la Tanda 7, y por eso va última.
 - [ ] **B-06** Tiempos y criterios de evaluación de ambos exámenes, para cargar en `exams`.
 

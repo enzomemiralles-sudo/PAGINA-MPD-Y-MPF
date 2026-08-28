@@ -1,29 +1,50 @@
 import type { Metadata } from "next";
-import { contacto as t } from "@/content/paginas";
+import { contacto as t } from "@/content/contacto";
 import { PaginaTexto } from "@/components/landing/PaginaTexto";
-import { Vidrio } from "@/components/marca/Vidrio";
+import { FormularioContacto } from "@/components/landing/FormularioContacto";
 
 export const metadata: Metadata = { title: `${t.titulo} — Nexo Derecho × Nueva Abogacía` };
 
 export default function Contacto() {
   return (
-    <PaginaTexto titulo={t.titulo} bajada={t.bajada}>
-      <ul className="lista" style={{ marginTop: "2rem" }}>
-        {t.vias.map((v) => (
-          <li key={v.que}>
-            <span className="n">·</span>
-            <span>
-              <b>{v.que}</b> {v.como} —{" "}
-              <a href={v.href} target="_blank" rel="noopener noreferrer">
-                {v.texto}
-              </a>
-            </span>
-          </li>
-        ))}
-      </ul>
-      <Vidrio className="tarjeta" as="aside">
-        <p style={{ fontSize: ".9rem", lineHeight: 1.6 }}>{t.errata}</p>
-      </Vidrio>
+    <PaginaTexto titulo={t.encabezado}>
+      <p className="contacto-destacado">{t.destacado}</p>
+      <p>{t.bajada}</p>
+
+      <section>
+        <h2>{t.escribinos}</h2>
+        <ul className="contacto-correos">
+          {t.correos.map((c) => (
+            <li key={c.mail}>
+              <span className="organizacion">{c.organizacion}</span>
+              <a href={`mailto:${c.mail}`}>{c.mail}</a>
+            </li>
+          ))}
+        </ul>
+      </section>
+
+      <section>
+        <h2>{t.redes}</h2>
+        <p>{t.redesTexto}</p>
+        <div className="contacto-redes">
+          {t.instagram.map((r) => (
+            <a
+              key={r.arroba}
+              className="btn btn-s"
+              href={r.href}
+              target="_blank"
+              rel="noopener noreferrer"
+            >
+              {r.arroba}
+            </a>
+          ))}
+        </div>
+      </section>
+
+      <section>
+        <h2>{t.formulario.titulo}</h2>
+        <FormularioContacto />
+      </section>
     </PaginaTexto>
   );
 }

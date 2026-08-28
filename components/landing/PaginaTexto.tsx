@@ -1,7 +1,13 @@
 import { Fondo } from "@/components/landing/Fondo";
 import { Cabecera } from "@/components/landing/Cabecera";
 
-/** Envoltorio de las páginas de sólo texto: legales y contacto. */
+/**
+ * Envoltorio de las páginas de sólo texto: legales y contacto.
+ *
+ * El ancho de la prosa se mide en `ch`, no en `rem`: la regla es de 68
+ * caracteres por renglón, y en `rem` ese número cambia con cada ajuste de
+ * tipografía. En `ch` se cumple sola.
+ */
 export function PaginaTexto({
   titulo,
   bajada,
@@ -15,32 +21,68 @@ export function PaginaTexto({
     <>
       <Fondo />
       <Cabecera />
-      <main className="env sec" style={{ maxWidth: "44rem" }}>
-        <h1 style={{ fontSize: "clamp(2rem,6vw,3.2rem)" }}>{titulo}</h1>
-        {bajada ? <p style={{ marginTop: "1.4rem", fontSize: ".97rem" }}>{bajada}</p> : null}
+      <main className="env sec pagina-texto">
+        <h1>{titulo}</h1>
+        {bajada ? <p className="pagina-texto-fecha">{bajada}</p> : null}
         {children}
       </main>
     </>
   );
 }
 
-export function BloquesTexto({
+type Bloque = {
+  readonly h: string;
+  readonly p: readonly string[];
+  readonly lista?: readonly string[];
+};
+
+/**
+ * El cuerpo de un documento legal, tal como sale de content/legales.generado.ts.
+ *
+ * Las claves son las que produce scripts/legales_a_ts.py y el orden de acá es
+ * el orden del documento: entradilla, secciones, firma.
+ */
+export function DocumentoLegal({
+  entradilla,
   bloques,
+  firma,
 }: {
-  bloques: readonly { readonly h: string; readonly p: readonly string[] }[];
+  entradilla: readonly string[];
+  bloques: readonly Bloque[];
+  firma: readonly string[];
 }) {
   return (
     <>
+      {entradilla.map((t) => (
+        <p key={t}>{t}</p>
+      ))}
+
       {bloques.map((b) => (
-        <section key={b.h} style={{ marginTop: "2.5rem" }}>
-          <h2 style={{ fontSize: "1.3rem" }}>{b.h}</h2>
+        <section key={b.h}>
+          <h2>{b.h}</h2>
           {b.p.map((t) => (
-            <p key={t} style={{ marginTop: ".9rem", fontSize: ".95rem", lineHeight: 1.65 }}>
-              {t}
-            </p>
+            <p key={t}>{t}</p>
           ))}
+          {b.lista ? (
+            <ul>
+              {b.lista.map((t) => (
+                <li key={t}>{t}</li>
+              ))}
+            </ul>
+          ) : null}
         </section>
       ))}
+
+      {firma.length ? (
+        <p className="pagina-texto-firma">
+          {firma.map((t, i) => (
+            <span key={t}>
+              {i === 0 ? <b>{t}</b> : t}
+              {i < firma.length - 1 ? <br /> : null}
+            </span>
+          ))}
+        </p>
+      ) : null}
     </>
   );
 }

@@ -12,7 +12,7 @@ Si necesitás información sobre Ingreso Democrático, tenés dudas sobre la pla
 ✉️ nexoderecho@gmail.com
 
 **Nueva Abogacía**
-✉️ [PENDIENTE — falta el mail de Nueva Abogacía. No inventar una dirección.]
+✉️ abogacianueva@gmail.com
 
 ### Seguinos en Instagram
 

@@ -56,8 +56,12 @@ a { color: var(--acento-texto); text-decoration: none; }
 /* ============ LAYOUT ============ */
 .env { width: 100%; max-width: 72rem; margin: 0 auto; padding: 0 1.25rem; position: relative; z-index: 2; }
 section { position: relative; z-index: 2; }
-.sec { padding: 4.5rem 0; }
-@media (min-width: 768px) { .sec { padding: 7rem 0; } }
+
+/* Todo lo que se combina con .env declara su aire vertical con `padding-block`
+   y no con la forma corta. Con `padding: 4.5rem 0` el 0 pisaba el costado que
+   pone .env, y en pantallas angostas el texto quedaba pegado al borde. */
+.sec { padding-block: 4.5rem; }
+@media (min-width: 768px) { .sec { padding-block: 7rem; } }
 
 /* ============ TIPOGRAFÍA ============ */
 h1 {
@@ -176,8 +180,8 @@ p { color: var(--papel-tenue); }
 .links a:hover::after, .pie-links a:hover::after { transform: scaleX(1); }
 
 /* ============ HERO ============ */
-.hero { padding: 3.5rem 0 1.5rem; text-align: center; display: flex; flex-direction: column; align-items: center; }
-@media (min-width: 768px) { .hero { padding: 5.5rem 0 2rem; } }
+.hero { padding-block: 3.5rem 1.5rem; text-align: center; display: flex; flex-direction: column; align-items: center; }
+@media (min-width: 768px) { .hero { padding-block: 5.5rem 2rem; } }
 
 /* La maqueta viene pegada al hero: es la foto del producto, no una sección
    aparte. Antes las separaba la tarjeta de la pregunta; sacada esa, el
@@ -327,6 +331,80 @@ p { color: var(--papel-tenue); }
 .captura-msg.error { color: var(--error); }
 .consentimiento { display: flex; gap: 0.6rem; align-items: flex-start; margin-top: 1.1rem; font-size: 0.8rem; color: var(--papel-tenue); text-align: left; line-height: 1.5; }
 .consentimiento input { margin-top: 0.2rem; accent-color: var(--acento); flex-shrink: 0; }
+
+/* ============ PÁGINAS DE TEXTO ============ */
+/* Legales y contacto. Lectura larga: el cuerpo crece y respira más que en el
+   resto del sitio, y el renglón se corta a 68 caracteres, que es donde el ojo
+   deja de perder la línea al volver. En `ch` la regla se cumple sola aunque
+   cambie el tamaño de la letra. */
+.pagina-texto { max-width: 72ch; }
+.pagina-texto h1 { font-size: clamp(1.9rem, 5vw, 2.9rem); line-height: 1.08; }
+.pagina-texto h2 {
+  font-size: 1.16rem; line-height: 1.3; margin-top: 2.6rem;
+  font-variation-settings: "wdth" 100, "wght" 680; font-style: normal;
+}
+.pagina-texto p { margin-top: 1rem; font-size: 1rem; line-height: 1.75; max-width: 68ch; }
+.pagina-texto ul {
+  margin: 1rem 0 0; padding-left: 1.15rem; max-width: 68ch;
+  display: flex; flex-direction: column; gap: 0.5rem;
+}
+.pagina-texto li { color: var(--papel-tenue); font-size: 1rem; line-height: 1.65; }
+.pagina-texto li::marker { color: var(--acento-texto); }
+.pagina-texto-fecha {
+  margin-top: 1.2rem; font-family: var(--fuente-mono), monospace;
+  font-size: 0.8rem; letter-spacing: 0.04em; color: var(--papel-débil);
+}
+.pagina-texto-firma {
+  margin-top: 3.5rem; padding-top: 1.6rem; border-top: 1px solid var(--linea);
+  font-size: 0.92rem;
+}
+.pagina-texto-firma b { color: var(--papel); font-variation-settings: "wdth" 100, "wght" 680; }
+
+/* ---- contacto ---- */
+.contacto-destacado {
+  margin-top: 1.4rem; color: var(--papel);
+  font-size: 1.08rem; font-variation-settings: "wdth" 100, "wght" 600;
+}
+.contacto-correos {
+  list-style: none; margin: 1.1rem 0 0; padding: 0;
+  display: flex; flex-direction: column; gap: 0.9rem;
+}
+.contacto-correos li { display: flex; flex-direction: column; gap: 0.15rem; }
+.contacto-correos .organizacion {
+  font-family: var(--fuente-mono), monospace; font-size: 0.68rem;
+  letter-spacing: 0.11em; text-transform: uppercase; color: var(--papel-débil);
+}
+.contacto-correos a { color: var(--acento-texto); font-size: 1.02rem; overflow-wrap: anywhere; }
+.contacto-redes { display: flex; flex-wrap: wrap; gap: 0.6rem; margin-top: 1.2rem; }
+
+.contacto-form { display: flex; flex-direction: column; gap: 1.1rem; margin-top: 1.4rem; max-width: 34rem; }
+.contacto-form .btn { align-self: flex-start; }
+.contacto-form select,
+.contacto-form textarea {
+  width: 100%; font: inherit; color: var(--papel);
+  background: rgba(244, 242, 237, 0.04);
+  border: 1px solid var(--linea-fuerte); border-radius: 10px;
+  padding: 0.7rem 0.8rem;
+}
+.contacto-form textarea { resize: vertical; min-height: 8rem; line-height: 1.6; }
+.contacto-form select:focus-visible,
+.contacto-form textarea:focus-visible {
+  outline: 2px solid var(--acento-texto); outline-offset: 2px;
+}
+.contacto-form [aria-invalid="true"] { border-color: var(--error); }
+.contacto-form-pie { font-size: 0.86rem; color: var(--papel-débil); }
+
+.contacto-listo {
+  margin-top: 1.4rem; padding: 1.4rem 1.5rem; border-radius: 14px; max-width: 34rem;
+  background: rgba(244, 242, 237, 0.04);
+  box-shadow: inset 0 0 0 1px var(--linea-fuerte);
+  display: flex; flex-direction: column; align-items: flex-start; gap: 0.2rem;
+}
+.contacto-listo-titulo {
+  color: var(--acento-texto); font-variation-settings: "wdth" 100, "wght" 680;
+  font-size: 1.02rem;
+}
+.contacto-listo .btn { margin-top: 0.9rem; }
 
 /* ============ PIE ============ */
 .pie { border-top: 1px solid var(--linea); padding: 3rem 0 6rem; margin-top: 2rem; }
@@ -560,7 +638,7 @@ body { transition: background var(--t-sec) var(--suave), color var(--t-sec) var(
 }
 .app-acciones { display: flex; align-items: center; gap: 0.5rem; }
 .app-acciones .btn { padding: 0.55rem 0.9rem; font-size: 0.82rem; }
-.app-cuerpo { padding: 2.5rem 0 4rem; }
+.app-cuerpo { padding-block: 2.5rem 4rem; }
 .app-cuerpo h1 {
   font-size: clamp(1.7rem, 5vw, 2.4rem); line-height: 1.1; letter-spacing: -0.025em;
   font-variation-settings: "wdth" var(--ancho-titulo), "wght" 700;

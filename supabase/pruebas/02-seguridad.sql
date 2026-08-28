@@ -36,3 +36,15 @@ update profiles set dni = '00000000' where user_id = '22222222-2222-2222-2222-22
 reset role; set role service_role;
 select respuesta_correcta from questions;
 reset role;
+\echo ''
+\echo '=== 10 · anon deja una consulta de contacto (tiene que ANDAR) ==='
+set role anon;
+insert into consultas (nombre, email, motivo, mensaje)
+  values ('Quien Sea', 'quien@ejemplo.org', 'tecnico', 'No me llega el mail de confirmación.');
+\echo ''
+\echo '=== 11 · anon intenta leer las consultas (tiene que dar PERMISO DENEGADO) ==='
+select count(*) from consultas;
+\echo ''
+\echo '=== 12 · anon intenta borrarlas (tiene que dar PERMISO DENEGADO) ==='
+delete from consultas;
+reset role;

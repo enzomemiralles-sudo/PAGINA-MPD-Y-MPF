@@ -2,8 +2,8 @@ export const pie = {
   aviso:
     "Iniciativa independiente de Nexo Derecho y Nueva Abogacía. Sin vínculo institucional con el Ministerio Público de la Defensa ni con el Ministerio Público Fiscal. Verificá siempre la información oficial en las fuentes de cada organismo.",
   links: [
-    { href: "/legales/terminos", texto: "Términos" },
-    { href: "/legales/privacidad", texto: "Privacidad" },
+    { href: "/terminos-y-condiciones", texto: "Términos y Condiciones" },
+    { href: "/politica-de-privacidad", texto: "Política de Privacidad" },
     { href: "/contacto", texto: "Contacto" },
   ],
   // El logo de Nueva Abogacía ya es el definitivo, así que de la nota queda

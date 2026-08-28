@@ -12,5 +12,6 @@ se resume, no se "mejora".** Cualquier corrección la decide quien lo redactó.
 Estos archivos son **la fuente**, no la página. Todavía no los lee ningún
 componente: eso es la tanda 3. Están acá para que el texto no viva en un chat.
 
-`contacto.md` incluye el marcador `[PENDIENTE]` del mail de Nueva Abogacía
-(B-04). No se completa con una dirección inventada.
+El mail de Nueva Abogacía —que era el pendiente B-04— llegó:
+`abogacianueva@gmail.com`. Está en `contacto.md` y en `content/contacto.ts`,
+que es de donde lo lee la página.

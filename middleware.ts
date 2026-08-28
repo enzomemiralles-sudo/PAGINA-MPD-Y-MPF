@@ -9,7 +9,16 @@ import { actualizarSesion } from "@/lib/supabase/middleware";
  * Si la mandáramos al login, se apaga el motor de captación. Los legales y el
  * contacto son públicos por lo que son.
  */
-const PUBLICAS = ["/", "/legales", "/contacto", "/ingresar", "/crear-perfil", "/auth"];
+const PUBLICAS = [
+  "/",
+  "/terminos-y-condiciones",
+  "/politica-de-privacidad",
+  "/legales", // las direcciones viejas, que redirigen a las de arriba
+  "/contacto",
+  "/ingresar",
+  "/crear-perfil",
+  "/auth",
+];
 
 /** Las dos puertas de entrada: con sesión ya no tienen sentido. */
 const PUERTAS = ["/ingresar", "/crear-perfil"];
