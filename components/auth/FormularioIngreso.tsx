@@ -5,23 +5,25 @@ import { useRouter } from "next/navigation";
 import Link from "next/link";
 import { ingresar, registrar } from "@/lib/acciones/auth";
 import { ingreso as t, errores } from "@/content/auth";
-import { BotonGoogle } from "./BotonGoogle";
 
 type Modo = "ingresar" | "registro";
 
 export function FormularioIngreso({
   volverA,
   errorInicial,
+  modoInicial = "ingresar",
 }: {
   volverA?: string;
   errorInicial?: string;
+  /** /crear-perfil abre en alta; /ingresar, en ingreso. Se alterna igual. */
+  modoInicial?: Modo;
 }) {
   const router = useRouter();
   const idMail = useId();
   const idClave = useId();
   const idClave2 = useId();
 
-  const [modo, setModo] = useState<Modo>("ingresar");
+  const [modo, setModo] = useState<Modo>(modoInicial);
   const [email, setEmail] = useState("");
   const [clave, setClave] = useState("");
   const [claveRepetir, setClaveRepetir] = useState("");
@@ -71,11 +73,25 @@ export function FormularioIngreso({
       <h1>{esRegistro ? t.tituloRegistro : t.titulo}</h1>
       <p className="auth-bajada">{t.bajada}</p>
 
+      {/* «Continuar con Google» está apagado a propósito. Andar requiere dar de
+          alta credenciales en Google Cloud Console y configurar el proveedor en
+          Supabase Auth, y no queremos esa dependencia externa para lanzar: con
+          correo y contraseña alcanza.
+
+          Para volver a prenderlo, tres cosas:
+            1. configurar el proveedor Google en Supabase → Authentication →
+               Sign In / Providers, con las credenciales de Google Cloud;
+            2. `import { BotonGoogle } from "./BotonGoogle";` acá arriba;
+            3. descomentar el bloque de abajo.
+          El componente, la acción `ingresarConGoogle` y los textos siguen en el
+          repo sin tocar, así que no hay nada más que escribir.
+
       <div style={{ marginTop: "1.6rem" }}>
         <BotonGoogle volverA={volverA} onError={setError} />
       </div>
 
       <div className="auth-divisor">{t.divisor}</div>
+      */}
 
       <form className="auth-form" onSubmit={enviar} noValidate>
         <div className="campo">

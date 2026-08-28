@@ -3,8 +3,11 @@
 export const ingreso = {
   titulo: "Ingresá a tu cuenta",
   tituloRegistro: "Creá tu cuenta",
-  bajada: "Todo el material del ingreso democrático, en un solo lugar.",
+  bajada: "Prepará tu examen de ingreso democrático en un solo lugar.",
 
+  // Los dos textos del ingreso con Google. El botón está apagado —ver el
+  // comentario en FormularioIngreso— pero los textos y el componente siguen
+  // acá para que reactivarlo sea descomentar y nada más.
   google: "Continuar con Google",
   divisor: "o",
 

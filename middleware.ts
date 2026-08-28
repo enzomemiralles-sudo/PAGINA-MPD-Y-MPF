@@ -9,7 +9,10 @@ import { actualizarSesion } from "@/lib/supabase/middleware";
  * Si la mandáramos al login, se apaga el motor de captación. Los legales y el
  * contacto son públicos por lo que son.
  */
-const PUBLICAS = ["/", "/legales", "/contacto", "/ingresar", "/auth"];
+const PUBLICAS = ["/", "/legales", "/contacto", "/ingresar", "/crear-perfil", "/auth"];
+
+/** Las dos puertas de entrada: con sesión ya no tienen sentido. */
+const PUERTAS = ["/ingresar", "/crear-perfil"];
 
 /** Con sesión pero sin marca elegida, todo lleva acá. */
 const ELEGIR = "/elegir-perfil";
@@ -26,7 +29,7 @@ export async function middleware(request: NextRequest) {
     // Con sesión, el login no tiene sentido: adentro. Salvo nueva-clave, a la
     // que se llega justamente CON sesión desde el enlace del correo: rebotarla
     // dejaría a la persona sin poder cambiar la contraseña.
-    if (usuario && pathname.startsWith("/ingresar") && pathname !== "/ingresar/nueva-clave") {
+    if (usuario && PUERTAS.some((p) => pathname.startsWith(p)) && pathname !== "/ingresar/nueva-clave") {
       const destino = request.nextUrl.clone();
       destino.pathname = "/app";
       destino.search = "";

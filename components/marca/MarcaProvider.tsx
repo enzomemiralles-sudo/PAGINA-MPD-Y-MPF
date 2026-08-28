@@ -22,7 +22,7 @@ function esMarca(v: string | null): v is Marca {
  * neutras por diseño, o porque la marca sale del perfil guardado. Acá el
  * proveedor no toca nada — si lo hiciera, pisaría el valor bueno.
  */
-const PIEL_DEL_SERVIDOR = ["/ingresar", "/elegir-perfil", "/app", "/mi-perfil"];
+const PIEL_DEL_SERVIDOR = ["/ingresar", "/crear-perfil", "/elegir-perfil", "/app", "/mi-perfil"];
 
 export function MarcaProvider({ children }: { children: React.ReactNode }) {
   const [marca, setMarca] = useState<Marca>("dual");

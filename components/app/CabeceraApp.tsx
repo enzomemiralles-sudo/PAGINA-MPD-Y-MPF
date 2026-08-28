@@ -1,12 +1,24 @@
+"use client";
+
 import Link from "next/link";
+import { usePathname } from "next/navigation";
 import { LogoNexo } from "@/components/marca/LogoNexo";
 import { LogoNuevaAbogacia } from "@/components/marca/LogoNuevaAbogacia";
 import { configDe } from "@/lib/marca/marcas";
 import { miPerfil as t } from "@/content/onboarding";
 import type { Marca } from "@/lib/marca/tokens";
 
-export function CabeceraApp({ marca, enPerfil = false }: { marca: Marca; enPerfil?: boolean }) {
+/**
+ * La cabecera de las pantallas con sesión. Se monta una sola vez, en el layout
+ * del grupo (sesion).
+ *
+ * Es cliente por una sola razón: la acción de la derecha cambia según dónde
+ * estés —«Mi perfil» en todos lados, «Volver» cuando ya estás en él— y eso
+ * necesita la ruta. La marca sigue viniendo del servidor, del perfil.
+ */
+export function CabeceraApp({ marca }: { marca: Marca }) {
   const cfg = configDe(marca);
+  const enPerfil = (usePathname() ?? "").startsWith("/mi-perfil");
 
   return (
     <header className="app-cabecera">

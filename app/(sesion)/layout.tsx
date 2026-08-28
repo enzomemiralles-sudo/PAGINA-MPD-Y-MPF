@@ -1,0 +1,33 @@
+import { redirect } from "next/navigation";
+import { traerPerfil } from "@/lib/perfil";
+import { AplicarPiel } from "@/components/marca/AplicarPiel";
+import { CabeceraApp } from "@/components/app/CabeceraApp";
+
+export const dynamic = "force-dynamic";
+
+/**
+ * El marco de todo lo que se ve con sesión iniciada.
+ *
+ * La cabecera —con «Mi perfil» siempre a la vista— y la piel de la marca viven
+ * acá y no en cada página: son lo mismo en todas, y repetirlas garantizaba que
+ * tarde o temprano una pantalla nueva se olvidara de ponerlas.
+ *
+ * Los dos cortes también son de acá: sin sesión no se entra, y con sesión pero
+ * sin marca elegida se va a elegirla. El middleware ya hace ambos, pero un
+ * layout que asume una marca que puede no existir se rompe solo, así que lo
+ * comprueba de nuevo. `traerPerfil` está memoizado por request: esta consulta
+ * y la de la página son una sola.
+ */
+export default async function LayoutSesion({ children }: { children: React.ReactNode }) {
+  const perfil = await traerPerfil();
+  if (!perfil) redirect("/ingresar");
+  if (!perfil.marca) redirect("/elegir-perfil");
+
+  return (
+    <>
+      <AplicarPiel marca={perfil.marca} superficie="clara" />
+      <CabeceraApp marca={perfil.marca} />
+      {children}
+    </>
+  );
+}

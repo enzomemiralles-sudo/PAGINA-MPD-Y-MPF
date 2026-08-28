@@ -2,9 +2,7 @@ import type { Metadata } from "next";
 import { redirect } from "next/navigation";
 import { crearClienteServidor } from "@/lib/supabase/server";
 import { traerPerfil } from "@/lib/perfil";
-import { AplicarPiel } from "@/components/marca/AplicarPiel";
 import { Tarjeta } from "@/components/marca/Tarjeta";
-import { CabeceraApp } from "@/components/app/CabeceraApp";
 import { FormularioMiPerfil } from "@/components/app/FormularioMiPerfil";
 import { textosDe } from "@/lib/marca/marcas";
 import { miPerfil as t } from "@/content/onboarding";
@@ -45,8 +43,6 @@ export default async function MiPerfil() {
 
   return (
     <>
-      <AplicarPiel marca={perfil.marca} superficie="clara" />
-      <CabeceraApp marca={perfil.marca} enPerfil />
 
       <main className="env app-cuerpo" style={{ maxWidth: "40rem" }}>
         <h1>{t.titulo}</h1>

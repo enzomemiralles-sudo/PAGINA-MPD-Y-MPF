@@ -79,6 +79,50 @@ describe("contraste AA", () => {
   });
 });
 
+/**
+ * Qué rutas van en superficie clara está escrito en tres lugares —el script del
+ * <head>, el proveedor de marca y el envoltorio del ingreso— y no hay forma de
+ * unificarlos: uno es una cadena que corre antes de React, otro es cliente y
+ * otro es servidor. Lo que sí se puede es exigir que digan lo mismo.
+ *
+ * Esto existe porque al agregar /crear-perfil quedó fuera de dos de las tres
+ * listas: el proveedor pasaba <html> a oscuro y, como el script de <AplicarPiel>
+ * no corre en las navegaciones de cliente, la pestaña principal salía oscura.
+ */
+describe("las rutas de superficie clara coinciden en los tres lugares", () => {
+  const leer = (ruta: string) => readFileSync(resolve(__dirname, "..", ruta), "utf8");
+
+  const rutasDe = (texto: string, re: RegExp) =>
+    (texto.match(re)?.[1] ?? "").split("|").map((r) => r.trim()).filter(Boolean).sort();
+
+  it("el script del <head> y el proveedor listan las mismas", () => {
+    const enScript = rutasDe(
+      leer("components/marca/pielInicial.ts"),
+      /var clara=\/\^\\\\\/\(([^)]+)\)/,
+    );
+    const enProveedor = (leer("components/marca/MarcaProvider.tsx")
+      .match(/const PIEL_DEL_SERVIDOR = \[([^\]]+)\]/)?.[1] ?? "")
+      .split(",")
+      .map((s) => s.trim().replace(/^"\//, "").replace(/"$/, ""))
+      .filter(Boolean)
+      .sort();
+
+    expect(enScript.length, "no se pudo leer la lista del script").toBeGreaterThan(0);
+    expect(enProveedor.length, "no se pudo leer la lista del proveedor").toBeGreaterThan(0);
+    expect(enScript).toEqual(enProveedor);
+  });
+
+  it("toda ruta con pantalla de ingreso está entre las claras", () => {
+    const enScript = rutasDe(
+      leer("components/marca/pielInicial.ts"),
+      /var clara=\/\^\\\\\/\(([^)]+)\)/,
+    );
+    for (const ruta of ["ingresar", "crear-perfil", "elegir-perfil", "app", "mi-perfil"]) {
+      expect(enScript, `falta ${ruta}`).toContain(ruta);
+    }
+  });
+});
+
 /** Si alguien toca tokens.css y no el espejo, esto lo caza. */
 describe("el espejo de tokens coincide con el CSS", () => {
   const normalizar = (v: string) => v.toLowerCase().replace(/\s+/g, "");

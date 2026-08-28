@@ -33,8 +33,6 @@ export function SeleccionPerfil() {
   return (
     <>
       <h1>{t.titulo}</h1>
-      <p className="auth-bajada">{t.bajada}</p>
-
       <div className="perfil-lista">
         {t.opciones.map((o) => {
           const cfg = MARCAS_CONFIG[MARCA_DE_PERFIL[o.id]];
@@ -47,7 +45,7 @@ export function SeleccionPerfil() {
               disabled={eligiendo !== null}
             >
               <span className="etiqueta">{o.etiqueta}</span>
-              <span className="quien">{cfg.para}</span>
+              <span className="quien">{o.quien}</span>
               <span className="perfil-muestra" aria-hidden="true">
                 <i style={{ background: cfg.muestra.primario }} />
                 <i style={{ background: cfg.muestra.acento }} />

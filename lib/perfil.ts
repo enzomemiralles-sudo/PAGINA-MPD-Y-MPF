@@ -1,3 +1,4 @@
+import { cache } from "react";
 import { crearClienteServidor } from "@/lib/supabase/server";
 import type { Marca } from "@/lib/marca/tokens";
 import type { TipoPerfil } from "@/lib/marca/marcas";
@@ -23,8 +24,14 @@ const COLUMNAS =
   "user_id, tipo_perfil, marca, onboarding_completado, fecha_aceptacion, anio_egreso, " +
   "jurisdiccion, matriculado, area_ejercicio, anio_ingreso, como_conocio, trabaja_juridico, dni, telefono";
 
-/** El perfil de quien está en sesión, o null si no hay sesión o no hay fila. */
-export async function traerPerfil(): Promise<Perfil | null> {
+/**
+ * El perfil de quien está en sesión, o null si no hay sesión o no hay fila.
+ *
+ * Va envuelto en `cache` porque desde que la cabecera vive en el layout hay
+ * dos llamadas por request —el layout necesita la marca, la página necesita el
+ * resto— y sin esto serían dos consultas idénticas a la base.
+ */
+export const traerPerfil = cache(async function traerPerfil(): Promise<Perfil | null> {
   const sb = await crearClienteServidor();
   if (!sb) return null;
 
@@ -38,4 +45,4 @@ export async function traerPerfil(): Promise<Perfil | null> {
     .maybeSingle();
 
   return (data as Perfil | null) ?? null;
-}
+});

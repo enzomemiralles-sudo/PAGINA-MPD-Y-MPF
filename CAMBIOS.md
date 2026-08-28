@@ -31,15 +31,15 @@
 **Recorrido definitivo:**
 `/` pestaña de muestra (pública, muestra las herramientas) → botón "Empezar gratis" → `/crear-perfil` → al terminar, **directo a la pestaña principal ya personalizada**.
 
-- [ ] **F-01** Al completar el perfil, redirigir **directo a la pestaña principal**. Eliminar la pantalla intermedia de "Bienvenido, este es tu perfil".
-- [ ] **F-02** "Mi perfil" pasa al **encabezado, siempre visible**, en todas las pantallas con sesión iniciada.
-- [ ] **F-03** La pestaña de muestra es pública y no cambia según el perfil. La personalización arranca recién después de crear el perfil.
-- [ ] **P-01** Texto de la pantalla de crear perfil: cambiar "Todo el material de ingreso democrático, en un solo lugar" por **"Prepará tu examen de ingreso democrático en un solo lugar"**.
-- [ ] **P-02** **"Continuar con Google" no funciona.** Dos caminos: configurar el proveedor de Google en Supabase Auth (requiere credenciales de Google Cloud Console) o quitar el botón por ahora. **Recomendación: quitarlo.** El magic link alcanza para lanzar y el OAuth de Google agrega una dependencia externa que no necesitamos el día 1. Si se quita, dejarlo comentado con una nota para reactivarlo después.
-- [ ] **P-03** Quitar la frase "Elegís una vez. Después lo podés cambiar desde mi perfil".
-- [ ] **P-04** En la opción **Estudiantes de derecho**, el subtítulo dice **"Para estudiantes"**.
-- [ ] **P-05** En la opción **Otro perfil**, el subtítulo dice **"Para otra ocupación"** (hoy dice "para abogados y abogadas", que es incorrecto).
-- [ ] **P-06** Sacar el marcador provisorio del pie de esa pantalla.
+- [x] **F-01** Al completar el perfil, redirigir **directo a la pestaña principal**. Eliminar la pantalla intermedia de "Bienvenido, este es tu perfil".
+- [x] **F-02** "Mi perfil" pasa al **encabezado, siempre visible**, en todas las pantallas con sesión iniciada.
+- [x] **F-03** La pestaña de muestra es pública y no cambia según el perfil. La personalización arranca recién después de crear el perfil.
+- [x] **P-01** Texto de la pantalla de crear perfil: cambiar "Todo el material de ingreso democrático, en un solo lugar" por **"Prepará tu examen de ingreso democrático en un solo lugar"**.
+- [x] **P-02** **"Continuar con Google" no funciona.** Dos caminos: configurar el proveedor de Google en Supabase Auth (requiere credenciales de Google Cloud Console) o quitar el botón por ahora. **Recomendación: quitarlo.** El magic link alcanza para lanzar y el OAuth de Google agrega una dependencia externa que no necesitamos el día 1. Si se quita, dejarlo comentado con una nota para reactivarlo después.
+- [x] **P-03** Quitar la frase "Elegís una vez. Después lo podés cambiar desde mi perfil".
+- [x] **P-04** En la opción **Estudiantes de derecho**, el subtítulo dice **"Para estudiantes"**.
+- [x] **P-05** En la opción **Otro perfil**, el subtítulo dice **"Para otra ocupación"** (hoy dice "para abogados y abogadas", que es incorrecto).
+- [x] **P-06** Sacar el marcador provisorio del pie de esa pantalla.
 
 ---
 

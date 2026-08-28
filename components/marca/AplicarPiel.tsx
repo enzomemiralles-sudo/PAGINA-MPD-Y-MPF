@@ -1,9 +1,19 @@
+"use client";
+
+import { useEffect } from "react";
 import type { Marca } from "@/lib/marca/tokens";
 
 /**
- * Fija la piel antes de que la página pinte, para que no se vea un parpadeo de
- * la piel anterior. Es un componente de servidor: el valor ya viene resuelto
- * de la base, así que no hace falta JavaScript de cliente para decidirlo.
+ * Fija la piel de la pantalla: la marca y la superficie.
+ *
+ * Hace lo mismo dos veces, y las dos hacen falta:
+ *
+ * - El `<script>` corre en la carga inicial, antes de que la página pinte, y
+ *   evita el parpadeo de la piel anterior.
+ * - El efecto corre en las navegaciones de cliente, donde el script **no** se
+ *   ejecuta: React no corre lo que llega por dangerouslySetInnerHTML durante
+ *   una transición. Sin esto, entrar a la app desde otra pantalla dejaba los
+ *   atributos de la anterior, y la pestaña principal salía oscura.
  */
 export function AplicarPiel({
   marca,
@@ -12,6 +22,13 @@ export function AplicarPiel({
   marca: Marca;
   superficie: "oscura" | "clara";
 }) {
-  const html = `document.documentElement.setAttribute('data-marca','${marca}');document.documentElement.setAttribute('data-superficie','${superficie}')`;
+  useEffect(() => {
+    document.documentElement.setAttribute("data-marca", marca);
+    document.documentElement.setAttribute("data-superficie", superficie);
+  }, [marca, superficie]);
+
+  const html =
+    `document.documentElement.setAttribute('data-marca','${marca}');` +
+    `document.documentElement.setAttribute('data-superficie','${superficie}')`;
   return <script dangerouslySetInnerHTML={{ __html: html }} />;
 }

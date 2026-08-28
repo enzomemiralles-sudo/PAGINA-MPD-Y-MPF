@@ -1,16 +1,41 @@
-import { redirect } from "next/navigation";
+import type { Metadata } from "next";
+import { Suspense } from "react";
+import { PantallaAuth } from "@/components/auth/PantallaAuth";
+import { FormularioIngreso } from "@/components/auth/FormularioIngreso";
+import { errores } from "@/content/auth";
+
+export const metadata: Metadata = { title: "Creá tu perfil — Nexo Derecho × Nueva Abogacía" };
+
+const MENSAJES: Record<string, string> = {
+  google: errores.google,
+  enlace: errores.generico,
+};
 
 /**
- * Puente hasta la tanda 2.
+ * Donde empieza el recorrido: «Empezar gratis» trae acá.
  *
- * M-08 manda «Empezar gratis» a /crear-perfil, pero la pantalla que va a vivir
- * acá es de la tanda siguiente. Sin esta ruta el botón principal de la portada
- * daría 404, así que por ahora deriva al ingreso, que es donde hoy empieza el
- * recorrido de verdad.
- *
- * Cuando F-01 y P-01..P-06 definan la pantalla, este archivo se reemplaza por
- * ella y no hay que tocar ningún enlace.
+ * Es la misma pantalla que /ingresar, abierta en alta en vez de en ingreso.
+ * Son dos puertas al mismo lugar porque son dos intenciones distintas —crear
+ * una cuenta o volver a la tuya— y el botón de la portada dice «Empezar
+ * gratis», no «Ingresar». Quien ya tiene cuenta alterna con un clic.
  */
-export default function CrearPerfil() {
-  redirect("/ingresar");
+export default async function CrearPerfil({
+  searchParams,
+}: {
+  searchParams: Promise<{ volver?: string; error?: string }>;
+}) {
+  const { volver, error } = await searchParams;
+  const volverA = volver?.startsWith("/") && !volver.startsWith("//") ? volver : undefined;
+
+  return (
+    <PantallaAuth>
+      <Suspense>
+        <FormularioIngreso
+          modoInicial="registro"
+          volverA={volverA}
+          errorInicial={error ? MENSAJES[error] : undefined}
+        />
+      </Suspense>
+    </PantallaAuth>
+  );
 }
