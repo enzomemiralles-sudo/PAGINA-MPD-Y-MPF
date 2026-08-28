@@ -1,0 +1,577 @@
+[
+  {
+    "fuente": "mpf-preguntero-nexo",
+    "organismo": "mpf",
+    "seccion": "teorico",
+    "orden": 1,
+    "enunciado": "La competencia federal:",
+    "tipo": "multiple_choice",
+    "opciones": [
+      {
+        "clave": "a",
+        "texto": "Alcanza todas las causas salvo que las provincias definan lo contrario."
+      },
+      {
+        "clave": "b",
+        "texto": "Se encuentra expresamente asignada por normas de la Constitución Nacional y leyes dictadas por el Congreso de la Nación."
+      },
+      {
+        "clave": "c",
+        "texto": "Se encuentra definida por el Ministerio de Justicia, de acuerdo a los criterios determinados por el Poder Ejecutivo Nacional."
+      }
+    ],
+    "respuesta_correcta": "b",
+    "confianza": "media",
+    "revisada": false
+  },
+  {
+    "fuente": "mpf-preguntero-nexo",
+    "organismo": "mpf",
+    "seccion": "teorico",
+    "orden": 2,
+    "enunciado": "¿Qué diferencia existe respecto de los alcances territoriales que tienen los distintos códigos de procedimiento que rigen en el país?",
+    "tipo": "multiple_choice",
+    "opciones": [
+      {
+        "clave": "a",
+        "texto": "Los códigos de procedimiento nacionales rigen exclusivamente en el territorio de la Ciudad Autónoma de Buenos Aires y los provinciales en el territorio de cada provincia."
+      },
+      {
+        "clave": "b",
+        "texto": "No existe tal diferencia, ya que los códigos de procedimiento rigen del mismo modo en todo el territorio nacional."
+      },
+      {
+        "clave": "c",
+        "texto": "Los códigos de procedimiento nacionales rigen en todo el territorio para causas federales y, en la Ciudad Autónoma de Buenos Aires para la justicia nacional, los provinciales son de aplicación en el territorio de cada provincia."
+      }
+    ],
+    "respuesta_correcta": "c",
+    "confianza": "media",
+    "revisada": false
+  },
+  {
+    "fuente": "mpf-preguntero-nexo",
+    "organismo": "mpf",
+    "seccion": "teorico",
+    "orden": 3,
+    "enunciado": "Para fomentar la inmigración europea, durante los últimos años del siglo XIX se dictaron las leyes de:",
+    "tipo": "multiple_choice",
+    "opciones": [
+      {
+        "clave": "a",
+        "texto": "Vivienda, Promoción de la navegación y Aduanas."
+      },
+      {
+        "clave": "b",
+        "texto": "Vivienda, Sufragio secreto y obligatorio y Libertad de asociación sindical."
+      },
+      {
+        "clave": "c",
+        "texto": "Educación laica, gratuita y obligatoria, Matrimonio Civil y Registro Civil."
+      }
+    ],
+    "respuesta_correcta": "a",
+    "confianza": "media",
+    "revisada": false
+  },
+  {
+    "fuente": "mpf-preguntero-nexo",
+    "organismo": "mpf",
+    "seccion": "teorico",
+    "orden": 4,
+    "enunciado": "¿Qué nuevo actor emergió en el espacio político en el marco de la transición a la democracia durante la década de 1980?",
+    "tipo": "multiple_choice",
+    "opciones": [
+      {
+        "clave": "a",
+        "texto": "Los organismos de Derechos Humanos."
+      },
+      {
+        "clave": "b",
+        "texto": "Los partidos políticos."
+      },
+      {
+        "clave": "c",
+        "texto": "Los sindicatos."
+      }
+    ],
+    "respuesta_correcta": "a",
+    "confianza": "media",
+    "revisada": false
+  },
+  {
+    "fuente": "mpf-preguntero-nexo",
+    "organismo": "mpf",
+    "seccion": "teorico",
+    "orden": 5,
+    "enunciado": "El asesinato de José Ignacio Rucci en 1973 significó:",
+    "tipo": "multiple_choice",
+    "opciones": [
+      {
+        "clave": "a",
+        "texto": "El cierre del ciclo de violencia política iniciado en 1970 con el asesinato de Pedro Eugenio Aramburu."
+      },
+      {
+        "clave": "b",
+        "texto": "La ruptura definitiva entre los sectores de la derecha y la izquierda peronistas."
+      },
+      {
+        "clave": "c",
+        "texto": "La fractura de la Unión Obrera Metalúrgica."
+      }
+    ],
+    "respuesta_correcta": "b",
+    "confianza": "media",
+    "revisada": false
+  },
+  {
+    "fuente": "mpf-preguntero-nexo",
+    "organismo": "mpf",
+    "seccion": "teorico",
+    "orden": 6,
+    "enunciado": "Es posible sustituir a un miembro del Ministerio Público Fiscal de la Nación:",
+    "tipo": "multiple_choice",
+    "opciones": [
+      {
+        "clave": "a",
+        "texto": "en caso de recusación y excusación."
+      },
+      {
+        "clave": "b",
+        "texto": "nunca es posible la sustitución de sus integrantes."
+      },
+      {
+        "clave": "c",
+        "texto": "ninguna de las opciones anteriores es correcta."
+      }
+    ],
+    "respuesta_correcta": "a",
+    "confianza": "media",
+    "revisada": false
+  },
+  {
+    "fuente": "mpf-preguntero-nexo",
+    "organismo": "mpf",
+    "seccion": "teorico",
+    "orden": 7,
+    "enunciado": "¿Qué propone la nueva estructura del Ministerio Publico Fiscal en el marco de la implementación del sistema acusatorio?",
+    "tipo": "multiple_choice",
+    "opciones": [
+      {
+        "clave": "a",
+        "texto": "La organización de las fiscalías a partir de un diseño en reflejo al del Poder Judicial."
+      },
+      {
+        "clave": "b",
+        "texto": "Un modelo de organización dinámico en función de las necesidades de cada jurisdicción."
+      },
+      {
+        "clave": "c",
+        "texto": "La creación de una única Unidad Fiscal Centralizada que actúa frente a todos los órganos jurisdiccionales."
+      }
+    ],
+    "respuesta_correcta": "b",
+    "confianza": "media",
+    "revisada": false
+  },
+  {
+    "fuente": "mpf-preguntero-nexo",
+    "organismo": "mpf",
+    "seccion": "teorico",
+    "orden": 8,
+    "enunciado": "La Convención Americana sobre Derechos Humanos entiende a la persona como:",
+    "tipo": "multiple_choice",
+    "opciones": [
+      {
+        "clave": "a",
+        "texto": "Todo ser humano."
+      },
+      {
+        "clave": "b",
+        "texto": "Mayor de 18 años."
+      },
+      {
+        "clave": "c",
+        "texto": "Ciudadano de un Estado."
+      }
+    ],
+    "respuesta_correcta": "a",
+    "confianza": "media",
+    "revisada": false
+  },
+  {
+    "fuente": "mpf-preguntero-nexo",
+    "organismo": "mpf",
+    "seccion": "teorico",
+    "orden": 9,
+    "enunciado": "Según la Constitución Nacional:",
+    "tipo": "multiple_choice",
+    "opciones": [
+      {
+        "clave": "a",
+        "texto": "los derechos y garantías sancionados son absolutos y no admiten ningún tipo de restricción."
+      },
+      {
+        "clave": "b",
+        "texto": "los derechos y garantías reconocidos en el cuerpo constitucional ceden inevitablemente ante las necesidades del Estado."
+      },
+      {
+        "clave": "c",
+        "texto": "los derechos y garantías sancionados no pueden ser alterados por las leyes que los reglamentan."
+      }
+    ],
+    "respuesta_correcta": "c",
+    "confianza": "media",
+    "revisada": false
+  },
+  {
+    "fuente": "mpf-preguntero-nexo",
+    "organismo": "mpf",
+    "seccion": "teorico",
+    "orden": 10,
+    "enunciado": "Los auxiliares fiscales:",
+    "tipo": "multiple_choice",
+    "opciones": [
+      {
+        "clave": "a",
+        "texto": "Asisten a todas las audiencias y litigan en todas las causas a cargo del fiscal."
+      },
+      {
+        "clave": "b",
+        "texto": "Realizan sus actividades sin las instrucciones y por fuera de la supervisión de los fiscales."
+      },
+      {
+        "clave": "c",
+        "texto": "Actúan bajo las instrucciones, supervisión y responsabilidad de los magistrados del Ministerio Público Fiscal."
+      }
+    ],
+    "respuesta_correcta": "c",
+    "confianza": "media",
+    "revisada": false
+  },
+  {
+    "fuente": "mpf-preguntero-nexo",
+    "organismo": "mpf",
+    "seccion": "teorico",
+    "orden": 11,
+    "enunciado": "Según la Convención Americana de Derechos Humanos, durante el proceso de investigación de un delito, toda persona imputada tiene derecho a:",
+    "tipo": "multiple_choice",
+    "opciones": [
+      {
+        "clave": "a",
+        "texto": "la comunicación previa y detallada de la acusación formulada."
+      },
+      {
+        "clave": "b",
+        "texto": "impulsar la investigación para dinamizar los tiempos procesales."
+      },
+      {
+        "clave": "c",
+        "texto": "obtener su absolución cuando el proceso judicial exceda los cuatro años de duración."
+      }
+    ],
+    "respuesta_correcta": "a",
+    "confianza": "media",
+    "revisada": false
+  },
+  {
+    "fuente": "mpf-preguntero-nexo",
+    "organismo": "mpf",
+    "seccion": "teorico",
+    "orden": 12,
+    "enunciado": "Las jurisdicciones en que se divide la estructura interna del Ministerio Público Fiscal de la Nación:",
+    "tipo": "multiple_choice",
+    "opciones": [
+      {
+        "clave": "a",
+        "texto": "Se ajustan a criterios de conveniencia como la densidad poblacional, la comunicación o cercanía interprovincial y la cantidad de causas tramitadas."
+      },
+      {
+        "clave": "b",
+        "texto": "Coinciden en todos los casos con los límites provinciales."
+      },
+      {
+        "clave": "c",
+        "texto": "No reflejan de ningún modo la distribución territorial del Poder Judicial de la Nación."
+      }
+    ],
+    "respuesta_correcta": "a",
+    "confianza": "media",
+    "revisada": false
+  },
+  {
+    "fuente": "mpf-preguntero-nexo",
+    "organismo": "mpf",
+    "seccion": "teorico",
+    "orden": 13,
+    "enunciado": "Con la presentación de la demanda:",
+    "tipo": "multiple_choice",
+    "opciones": [
+      {
+        "clave": "a",
+        "texto": "Se inicia un proceso judicial."
+      },
+      {
+        "clave": "b",
+        "texto": "Comienza la etapa de alegatos."
+      },
+      {
+        "clave": "c",
+        "texto": "Culmina la etapa probatoria."
+      }
+    ],
+    "respuesta_correcta": "a",
+    "confianza": "media",
+    "revisada": false
+  },
+  {
+    "fuente": "mpf-preguntero-nexo",
+    "organismo": "mpf",
+    "seccion": "teorico",
+    "orden": 14,
+    "enunciado": "El derecho de peticionar a las autoridades:",
+    "tipo": "multiple_choice",
+    "opciones": [
+      {
+        "clave": "a",
+        "texto": "No se encuentra estipulado en nuestra carta magna."
+      },
+      {
+        "clave": "b",
+        "texto": "Está garantizado por la Constitución Nacional."
+      },
+      {
+        "clave": "c",
+        "texto": "Fue implementado por una resolución del Ministerio del Interior."
+      }
+    ],
+    "respuesta_correcta": "b",
+    "confianza": "media",
+    "revisada": false
+  },
+  {
+    "fuente": "mpf-preguntero-nexo",
+    "organismo": "mpf",
+    "seccion": "teorico",
+    "orden": 15,
+    "enunciado": "¿Según qué teoría del Estado es posible a través de la intervención combinar el crecimiento económico con un reparto equitativo de los resultados de ese crecimiento?",
+    "tipo": "multiple_choice",
+    "opciones": [
+      {
+        "clave": "a",
+        "texto": "Estado Federal."
+      },
+      {
+        "clave": "b",
+        "texto": "Estado Liberal."
+      },
+      {
+        "clave": "c",
+        "texto": "Estado de Bienestar."
+      }
+    ],
+    "respuesta_correcta": "c",
+    "confianza": "media",
+    "revisada": false
+  },
+  {
+    "fuente": "mpf-preguntero-nexo",
+    "organismo": "mpf",
+    "seccion": "teorico",
+    "orden": 16,
+    "enunciado": "Los tratados internacionales sobre Derechos Humanos incorporados en el art. 75 inc. 22 a la Constitución Nacional:",
+    "tipo": "multiple_choice",
+    "opciones": [
+      {
+        "clave": "a",
+        "texto": "tienen jerarquía constitucional, superior a las leyes, y deben interpretarse de manera complementaria de los derechos y garantías por ella reconocidos."
+      },
+      {
+        "clave": "b",
+        "texto": "tienen jerarquía inferior a las leyes pero señalan orientaciones deseables para la Constitución."
+      },
+      {
+        "clave": "c",
+        "texto": "tienen jerarquía superior a las leyes y a la Constitución Nacional por tratarse de normas de aplicación internacional."
+      }
+    ],
+    "respuesta_correcta": "a",
+    "confianza": "media",
+    "revisada": false
+  },
+  {
+    "fuente": "mpf-preguntero-nexo",
+    "organismo": "mpf",
+    "seccion": "teorico",
+    "orden": 17,
+    "enunciado": "El artículo 14 de la Constitución Nacional protege:",
+    "tipo": "multiple_choice",
+    "opciones": [
+      {
+        "clave": "a",
+        "texto": "Los derechos judiciales."
+      },
+      {
+        "clave": "b",
+        "texto": "Los derechos económicos."
+      },
+      {
+        "clave": "c",
+        "texto": "Los derechos civiles."
+      }
+    ],
+    "respuesta_correcta": "c",
+    "confianza": "media",
+    "revisada": false
+  },
+  {
+    "fuente": "mpf-preguntero-nexo",
+    "organismo": "mpf",
+    "seccion": "teorico",
+    "orden": 18,
+    "enunciado": "Según la Constitución Nacional, corresponde al jefe de gabinete:",
+    "tipo": "multiple_choice",
+    "opciones": [
+      {
+        "clave": "a",
+        "texto": "enviar al Congreso los proyectos de ley de ministerios y de presupuesto nacional."
+      },
+      {
+        "clave": "b",
+        "texto": "disponer la intervención federal a una provincia o a la ciudad de Buenos Aires."
+      },
+      {
+        "clave": "c",
+        "texto": "presidir la cámara de senadores, aunque no tiene voto sino en el caso que haya empate en la votación."
+      }
+    ],
+    "respuesta_correcta": "a",
+    "confianza": "media",
+    "revisada": false
+  },
+  {
+    "fuente": "mpf-preguntero-nexo",
+    "organismo": "mpf",
+    "seccion": "teorico",
+    "orden": 19,
+    "enunciado": "Si el delito es de acción pública, acción penal es iniciada de oficio por:",
+    "tipo": "multiple_choice",
+    "opciones": [
+      {
+        "clave": "a",
+        "texto": "El Ministerio Público Fiscal."
+      },
+      {
+        "clave": "b",
+        "texto": "La querella."
+      },
+      {
+        "clave": "c",
+        "texto": "El juez."
+      }
+    ],
+    "respuesta_correcta": "a",
+    "confianza": "media",
+    "revisada": false
+  },
+  {
+    "fuente": "mpf-preguntero-nexo",
+    "organismo": "mpf",
+    "seccion": "teorico",
+    "orden": 20,
+    "enunciado": "Aunque las diferentes formas de violencia contra la mujer generalmente aparecen de manera concomitante, entre estos ¿de qué modo específico se ejerce violencia",
+    "tipo": "multiple_choice",
+    "opciones": [
+      {
+        "clave": "a",
+        "texto": "Humillando o atentando públicamente contra la dignidad de aquellas."
+      },
+      {
+        "clave": "b",
+        "texto": "Sustrayéndoles indebidamente sus instrumentos de trabajo."
+      },
+      {
+        "clave": "c",
+        "texto": "Exigiendoles obediencia y sumisión."
+      }
+    ],
+    "respuesta_correcta": "a",
+    "confianza": "media",
+    "revisada": false
+  },
+  {
+    "fuente": "mpf-preguntero-nexo",
+    "organismo": "mpf",
+    "seccion": "practico",
+    "orden": 21,
+    "enunciado": "Realice una búsqueda web a través de la página del Ministerio Público Fiscal u otros sitios que considere convenientes y ubique dónde se encuentra la Sede Fiscal Descentralizada de Caleta Olivia. Luego responda la siguiente consigna: ¿A qué jurisdicción del MPF pertenece?",
+    "tipo": "multiple_choice",
+    "opciones": [
+      {
+        "clave": "a",
+        "texto": "Córdoba."
+      },
+      {
+        "clave": "b",
+        "texto": "Tierra del Fuego."
+      },
+      {
+        "clave": "c",
+        "texto": "Comodoro Rivadavia."
+      }
+    ],
+    "respuesta_correcta": "c",
+    "confianza": "media",
+    "revisada": false
+  },
+  {
+    "fuente": "mpf-preguntero-nexo",
+    "organismo": "mpf",
+    "seccion": "practico",
+    "orden": 22,
+    "enunciado": "Realice una búsqueda web a través de la página del Ministerio Público Fiscal u otros sitios que considere convenientes y ubique dónde se encuentra la Fiscalía Federal de Junín. Luego responda la siguiente consigna: ¿A qué jurisdicción del MPF pertenece?",
+    "tipo": "multiple_choice",
+    "opciones": [
+      {
+        "clave": "a",
+        "texto": "La Pampa."
+      },
+      {
+        "clave": "b",
+        "texto": "La Plata."
+      },
+      {
+        "clave": "c",
+        "texto": "Mar del Plata."
+      }
+    ],
+    "respuesta_correcta": "b",
+    "confianza": "media",
+    "revisada": false
+  },
+  {
+    "fuente": "mpf-preguntero-nexo",
+    "organismo": "mpf",
+    "seccion": "practico",
+    "orden": 23,
+    "enunciado": "Dentro del fallo de la Corte Suprema de Justicia de la Nación “Albarracín Nieves, Jorge Washington s/ medidas precautorias”, en su considerando 19° la Corte afirma que:",
+    "tipo": "multiple_choice",
+    "opciones": [
+      {
+        "clave": "a",
+        "texto": "El consentimiento informado puede ser omitido por los profesionales de la salud si el tratamiento resulta beneficioso para el paciente."
+      },
+      {
+        "clave": "b",
+        "texto": "No resultaría constitucionalmente justificada una resolución judicial que autorizara a someter a una persona adulta a un tratamiento en contra de su voluntad."
+      },
+      {
+        "clave": "c",
+        "texto": "Como el paciente no se encontraba en condiciones de expresarse por sí misma, su cónyuge es quien tiene la potestad de expresar su consentimiento."
+      }
+    ],
+    "respuesta_correcta": "b",
+    "confianza": "media",
+    "revisada": false
+  }
+]

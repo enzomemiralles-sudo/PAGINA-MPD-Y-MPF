@@ -1,0 +1,4177 @@
+[
+  {
+    "fuente": "mpf-modelos-manual",
+    "organismo": "mpf",
+    "seccion": "practico",
+    "orden": 1,
+    "enunciado": "En el falo Itzcovich, Mabel c/ ANSES s/ reajustes varios (fa lo Itzcovich) la Corte Suprema de Justicia de la Nación:",
+    "tipo": "multiple_choice",
+    "opciones": [
+      {
+        "clave": "a",
+        "texto": "Declaró la constitucionalidad de la ley 24.463 de Solidaridad Previsional sancionada en 1995."
+      },
+      {
+        "clave": "b",
+        "texto": "Declaró la plena participación y legitimidad de la Corte Suprema para resolver todos los litigios vinculados a la materia previsional."
+      },
+      {
+        "clave": "c",
+        "texto": "Declaró la inconstitucionalidad del art. 19 de la ley 24.463 de Solidaridad Previsional por establecer la competencia ordinaria de la Corte Suprema en estos casos."
+      }
+    ],
+    "respuesta_correcta": "c",
+    "confianza": "media",
+    "revisada": false
+  },
+  {
+    "fuente": "mpf-modelos-manual",
+    "organismo": "mpf",
+    "seccion": "practico",
+    "orden": 2,
+    "enunciado": "En el fallo calvo y pesini , rocío c/ cordoba prov. de s/amparo la corte:",
+    "tipo": "multiple_choice",
+    "opciones": [
+      {
+        "clave": "a",
+        "texto": "Se declaró incompetente por considerar que los litigios pronviciales son de absoluta potestad de sus organismos."
+      },
+      {
+        "clave": "b",
+        "texto": "Declaró la competencia originaria y la inc. del art 15 de la ley 7625 de la provincia de córdoba por exigir la nac. argentina para ingresar como persona permanente en un hospital público."
+      },
+      {
+        "clave": "c",
+        "texto": "Resolvió en concordancia con lo dispuesto en la ley de la prov. de córdoba al considerar que el personal de salud de los hospitales públicos debe ser de nacionalidad argentina."
+      }
+    ],
+    "respuesta_correcta": "b",
+    "confianza": "media",
+    "revisada": false
+  },
+  {
+    "fuente": "mpf-modelos-manual",
+    "organismo": "mpf",
+    "seccion": "practico",
+    "orden": 3,
+    "enunciado": "Realice una búsqueda web a través de la página del MPF y encuentre la Resolución PGN 2636/15 que adecua la organización del MPF a los lineamientos de la ley orgánica del MPF. Responda: ¿En qué se convirtió el programa de acceso a la justicia?",
+    "tipo": "multiple_choice",
+    "opciones": [
+      {
+        "clave": "a",
+        "texto": "En la dirección general de acceso a la justicia."
+      },
+      {
+        "clave": "b",
+        "texto": "En la fiscalía general de acceso a la justicia."
+      },
+      {
+        "clave": "c",
+        "texto": "En la unidad fiscal especializada de acceso a la justicia."
+      }
+    ],
+    "respuesta_correcta": "a",
+    "confianza": "media",
+    "revisada": false
+  },
+  {
+    "fuente": "mpf-modelos-manual",
+    "organismo": "mpf",
+    "seccion": "practico",
+    "orden": 4,
+    "enunciado": "Búsqueda web: Fallo Bahamondez, Marcelo s/ medida cautelar, la CSJN",
+    "tipo": "multiple_choice",
+    "opciones": [
+      {
+        "clave": "a",
+        "texto": "hizo lugar al pronunciamiento apelado, en cuanto la libertad de una persona adulta de tomar decisiones se encuentra limitada por el interés público."
+      },
+      {
+        "clave": "b",
+        "texto": "se declaró incompetente por considerar que la decisión sobre el propio cuerpo no es materia justiciable."
+      },
+      {
+        "clave": "c",
+        "texto": "Consideró que no existió en el caso ningún interés público relevante que justificara la restricción en la libertad personal del nombrado"
+      }
+    ],
+    "respuesta_correcta": "c",
+    "confianza": "media",
+    "revisada": false
+  },
+  {
+    "fuente": "mpf-modelos-manual",
+    "organismo": "mpf",
+    "seccion": "practico",
+    "orden": 5,
+    "enunciado": "Realice una búsqueda web a través de la página del MPF u otros sitios que considere pertinentes y encuentre la Resolución PGN 914/12 que crea a la Procuraduría de Criminalidad Económica y Lavado de Activos (PROCELAC). Luego responda: Según la Resolución mencionada, ¿cuál de las siguientes oficinas pertenece al área operativa de PROCELAC?",
+    "tipo": "multiple_choice",
+    "opciones": [
+      {
+        "clave": "a",
+        "texto": "Mercado de Capitales."
+      },
+      {
+        "clave": "b",
+        "texto": "Análisis Criminal."
+      },
+      {
+        "clave": "c",
+        "texto": "Trata de Personas."
+      }
+    ],
+    "respuesta_correcta": "a",
+    "confianza": "media",
+    "revisada": false
+  },
+  {
+    "fuente": "mpf-modelos-manual",
+    "organismo": "mpf",
+    "seccion": "practico",
+    "orden": 6,
+    "enunciado": "Realice una búsqueda web y marque la opción correcta en el siguiente ejercicio de opción múltiple: En el fallo Kot, Samuel S.R.L., s/recurso de hábeas corpus la Corte Suprema de Justicia de la Nación:",
+    "tipo": "multiple_choice",
+    "opciones": [
+      {
+        "clave": "i",
+        "texto": "Circunscribió la protección de los derechos humanos a los ataques que provienen de la autoridad y sostuvo que en ningún caso procede cuando la restricción ilegítima es causada por actos de particulares."
+      },
+      {
+        "clave": "ii",
+        "texto": "Amplió la esfera de acción del recurso de amparo al establecerse que también es viable deducirlo cuando la violación de un derecho provenga de un particular."
+      },
+      {
+        "clave": "iii",
+        "texto": "Consideró legítima la restricción por parte de los obreros, ya que la ley les otorga la facultad de recurrir por sí mismos a actos para defender lo que estimen su derecho."
+      }
+    ],
+    "respuesta_correcta": "ii",
+    "confianza": "media",
+    "revisada": false
+  },
+  {
+    "fuente": "mpf-modelos-manual",
+    "organismo": "mpf",
+    "seccion": "practico",
+    "orden": 7,
+    "enunciado": "Realice una búsqueda web y marque la opción correcta en el siguiente ejercicio de opción múltiple: En el fallo Siri, Ángel, s/interpone recurso de hábeas corpus la Corte Suprema de Justicia de la Nación:",
+    "tipo": "multiple_choice",
+    "opciones": [
+      {
+        "clave": "i",
+        "texto": "Confirmó la sentencia de la Cámara de Apelaciones argumentado que la no existencia de una base normativa para la actuación jurisdiccional solo es admisible en condiciones vitalmente extremas."
+      },
+      {
+        "clave": "ii",
+        "texto": "Revocó la sentencia de la Cámara de Apelaciones ordenándole a la autoridad policial el cese de la restricción impuesta en tanto las garantías individuales existen y protegen a los individuos por el sólo hecho de estar consagradas en la Constitución Nacional."
+      },
+      {
+        "clave": "iii",
+        "texto": "Consideró que la solicitud efectuada era improcedente porque no se había violado la libertad física de ninguna persona y que, en consecuencia, la medida no resultaba contraria a los derechos y garantías constitucionales."
+      }
+    ],
+    "respuesta_correcta": "ii",
+    "confianza": "media",
+    "revisada": false
+  },
+  {
+    "fuente": "mpf-modelos-manual",
+    "organismo": "mpf",
+    "seccion": "practico",
+    "orden": 8,
+    "enunciado": "En el fallo Indalia PONZETTI DE BALBIN c/ Editorial Atlántida S.A. s/ daños y perjuicios la CSJN:",
+    "tipo": "multiple_choice",
+    "opciones": [
+      {
+        "clave": "i",
+        "texto": "Admitió el recurso y confirmó la sentencia, ya que en el caso se trata de establecer los límites jurídicos del derecho de información en relación directa con el derecho de la privacidad o intimidad (art 19 CN)."
+      },
+      {
+        "clave": "ii",
+        "texto": "Rechazó el recurso extraordinario, porque consideró que en el caso se encuentra en juego el derecho constitucional de publicar las ideas por la prensa sin censura previa (art 14CN)."
+      },
+      {
+        "clave": "iii",
+        "texto": "Admitió el recurso y confirmo la sentencia, porque en caso se debe privilegiar el derecho a la privacidad o intimidad de una persona pública como el ex presidente de la nación."
+      }
+    ],
+    "respuesta_correcta": "i",
+    "confianza": "media",
+    "revisada": false
+  },
+  {
+    "fuente": "mpf-modelos-manual",
+    "organismo": "mpf",
+    "seccion": "practico",
+    "orden": 9,
+    "enunciado": "Realice una búsqueda web a través de la página del MPF u otros sitios que considere pertinentes y encuentre la Resolución PGN 208/13 que crea a la Procuraduría de Narcocriminalidad (PROCUNAR). Luego responda: según la Resolución mencionada, ¿cuál de las siguientes oficinas pertenece al área operativa de PROCUNAR?",
+    "tipo": "multiple_choice",
+    "opciones": [
+      {
+        "clave": "i",
+        "texto": "Información e investigaciones."
+      },
+      {
+        "clave": "ii",
+        "texto": "Mercado de capitales."
+      },
+      {
+        "clave": "iii",
+        "texto": "Lavado de activos."
+      }
+    ],
+    "respuesta_correcta": "i",
+    "confianza": "media",
+    "revisada": false
+  },
+  {
+    "fuente": "mpf-modelos-manual",
+    "organismo": "mpf",
+    "seccion": "practico",
+    "orden": 10,
+    "enunciado": "En el fallo - Transexual c/ Inspección General de Justicia s/recurso de hecho la Corte Suprema de Justicia de la Nación:",
+    "tipo": "multiple_choice",
+    "opciones": [
+      {
+        "clave": "i",
+        "texto": "Desestimó el recurso por no considerarlo una cuestión federal, ya que se trata de la interpretación inconstitucional de normas no federales."
+      },
+      {
+        "clave": "ii",
+        "texto": "Resolvió de conformidad con el art. 33, segunda parte, ap. 1°, del Código Civil y sostuvo que el fin útil que debe perseguir una asociación civil debe serlo no sólo para sus integrantes, sino para la comunidad en la cual se refleja el actuar de sus entidades."
+      },
+      {
+        "clave": "iii",
+        "texto": "Declaró procedente el recurso, consagrando el derecho a la igualdad y de asociarse pacíficamente, en atención a las obligaciones que tiene el Estado conforme al art. 75 inc. 22 de la Constitución Nacional."
+      }
+    ],
+    "respuesta_correcta": "ii",
+    "confianza": "media",
+    "revisada": false
+  },
+  {
+    "fuente": "mpf-modelos-manual",
+    "organismo": "mpf",
+    "seccion": "practico",
+    "orden": 11,
+    "enunciado": "En el fallo Asociación Lucha por la Identidad Travesti-Transexual c/ Inspección General de Justicia s/ recurso de hecho la Corte Suprema de Justicia de la Nación:",
+    "tipo": "multiple_choice",
+    "opciones": [
+      {
+        "clave": "i",
+        "texto": "Resolvió de conformidad con el art 33, segunda parte, ap. 1°, del Código Civil y sostuvo que el fin útil que debe perseguir una asociación civil debe serlo no solo para sus integrantes, sino para comunidad en la cual se refleja el actuar de sus entidades."
+      },
+      {
+        "clave": "ii",
+        "texto": "Desestimó el recurso por no considerarlo una cuestión federal, ya que se trata de la interpretación inconstitucional de normas no federales."
+      },
+      {
+        "clave": "iii",
+        "texto": "Declaró precedente el recurso, consagrando el derecho a la igualdad y de asociarse pacíficamente, en atención a las obligaciones que tiene el Estado conforme al art. 75 inc 22 de la CN."
+      }
+    ],
+    "respuesta_correcta": "iii",
+    "confianza": "media",
+    "revisada": false
+  },
+  {
+    "fuente": "mpf-modelos-manual",
+    "organismo": "mpf",
+    "seccion": "teorico",
+    "orden": 12,
+    "enunciado": "¿Cuál de estos es un órgano judicial de la Justicia Federal Penal?",
+    "tipo": "multiple_choice",
+    "opciones": [
+      {
+        "clave": "a",
+        "texto": "Cámara Nacional de Casación."
+      },
+      {
+        "clave": "b",
+        "texto": "Cámara Nacional de Apelaciones del Trabajo."
+      },
+      {
+        "clave": "c",
+        "texto": "Tribunal Oral en lo Criminal Federal."
+      }
+    ],
+    "respuesta_correcta": "c",
+    "confianza": "media",
+    "revisada": false
+  },
+  {
+    "fuente": "mpf-modelos-manual",
+    "organismo": "mpf",
+    "seccion": "teorico",
+    "orden": 13,
+    "enunciado": "Según la clasificación de los derechos, la vivienda:",
+    "tipo": "multiple_choice",
+    "opciones": [
+      {
+        "clave": "a",
+        "texto": "Es un derecho económico, social y cultural."
+      },
+      {
+        "clave": "b",
+        "texto": "Es un derecho de los pueblos."
+      },
+      {
+        "clave": "c",
+        "texto": "Es un derecho político."
+      }
+    ],
+    "respuesta_correcta": "a",
+    "confianza": "media",
+    "revisada": false
+  },
+  {
+    "fuente": "mpf-modelos-manual",
+    "organismo": "mpf",
+    "seccion": "teorico",
+    "orden": 14,
+    "enunciado": "Cuando se encuentran afectados intereses colectivos:",
+    "tipo": "multiple_choice",
+    "opciones": [
+      {
+        "clave": "a",
+        "texto": "El MPF no puede impulsar acción."
+      },
+      {
+        "clave": "b",
+        "texto": "Puede intervenir el MPF como órgano encargado de promover la actuación de la justicia."
+      },
+      {
+        "clave": "c",
+        "texto": "Únicamente pueden accionar los afectados individualmente."
+      }
+    ],
+    "respuesta_correcta": "b",
+    "confianza": "media",
+    "revisada": false
+  },
+  {
+    "fuente": "mpf-modelos-manual",
+    "organismo": "mpf",
+    "seccion": "teorico",
+    "orden": 15,
+    "enunciado": "Las jurisdicciones en que se divide la estructura interna del MPFN:",
+    "tipo": "multiple_choice",
+    "opciones": [
+      {
+        "clave": "a",
+        "texto": "Se ajustan a criterios de conveniencia como la densidad poblacional, la comunicación o cercanía interprovincial y la cantidad de causas tramitadas."
+      },
+      {
+        "clave": "b",
+        "texto": "Coinciden con los límites provinciales."
+      },
+      {
+        "clave": "c",
+        "texto": "No reflejan de ningún modo la distribución territorial del PJN."
+      }
+    ],
+    "respuesta_correcta": "a",
+    "confianza": "media",
+    "revisada": false
+  },
+  {
+    "fuente": "mpf-modelos-manual",
+    "organismo": "mpf",
+    "seccion": "teorico",
+    "orden": 16,
+    "enunciado": "¿Cuál de estas situaciones se encuentra prohibida por la CN?",
+    "tipo": "multiple_choice",
+    "opciones": [
+      {
+        "clave": "a",
+        "texto": "Que ingresen a nuestra casa con una orden judicial."
+      },
+      {
+        "clave": "b",
+        "texto": "Que seamos condenados por un delito."
+      },
+      {
+        "clave": "c",
+        "texto": "Que revisen nuestra correspondencia."
+      }
+    ],
+    "respuesta_correcta": "c",
+    "confianza": "media",
+    "revisada": false
+  },
+  {
+    "fuente": "mpf-modelos-manual",
+    "organismo": "mpf",
+    "seccion": "teorico",
+    "orden": 17,
+    "enunciado": "Cuando se cuestione la vigencia de la CN o de los instrumentos internacionales de DDHH en los que la República es parte, el MPF:",
+    "tipo": "multiple_choice",
+    "opciones": [
+      {
+        "clave": "a",
+        "texto": "Puede intervenir en los casos presentados en cualquier tribunal federal del país o nacional con competencia sobre la CABA, cuando no haya transferido dicha competencia y según las circunstancias e importancia del asunto."
+      },
+      {
+        "clave": "b",
+        "texto": "De ninguna manera puede intervenir en los casos presentados en cualquier tribunal federal del país o nacional con competencia sobre CABA."
+      },
+      {
+        "clave": "c",
+        "texto": "Ninguna de las dos opciones es correcta."
+      }
+    ],
+    "respuesta_correcta": "a",
+    "confianza": "media",
+    "revisada": false
+  },
+  {
+    "fuente": "mpf-modelos-manual",
+    "organismo": "mpf",
+    "seccion": "teorico",
+    "orden": 18,
+    "enunciado": "La jefatura de Gabinete:",
+    "tipo": "multiple_choice",
+    "opciones": [
+      {
+        "clave": "a",
+        "texto": "Es un órgano unipersonal del P.E."
+      },
+      {
+        "clave": "b",
+        "texto": "Es un órgano extra poder al igual que el MP."
+      },
+      {
+        "clave": "c",
+        "texto": "Es un órgano colegiado que forma parte del PL."
+      }
+    ],
+    "respuesta_correcta": "a",
+    "confianza": "media",
+    "revisada": false
+  },
+  {
+    "fuente": "mpf-modelos-manual",
+    "organismo": "mpf",
+    "seccion": "teorico",
+    "orden": 19,
+    "enunciado": "Los oficios son:",
+    "tipo": "multiple_choice",
+    "opciones": [
+      {
+        "clave": "a",
+        "texto": "Medios de comunicación escrita entre las partes de un proceso para informar el cumplimiento de actos procesales."
+      },
+      {
+        "clave": "b",
+        "texto": "Medios de comunicación escrita entre las partes autorizadas para informar las providencias judiciales."
+      },
+      {
+        "clave": "c",
+        "texto": "Medios de comunicación escrita cursados por jueces, secretarios o letrados, entre otras cuestiones, para requerir informes."
+      }
+    ],
+    "respuesta_correcta": "c",
+    "confianza": "media",
+    "revisada": false
+  },
+  {
+    "fuente": "mpf-modelos-manual",
+    "organismo": "mpf",
+    "seccion": "teorico",
+    "orden": 20,
+    "enunciado": "Qué sectores se vieron beneficiados con las políticas del presidente Julio A. Roca?",
+    "tipo": "multiple_choice",
+    "opciones": [
+      {
+        "clave": "a",
+        "texto": "Los sectores populares."
+      },
+      {
+        "clave": "b",
+        "texto": "Los sectores terratenientes y el capital extranjero."
+      },
+      {
+        "clave": "c",
+        "texto": "La burguesía nacional."
+      }
+    ],
+    "respuesta_correcta": "b",
+    "confianza": "media",
+    "revisada": false
+  },
+  {
+    "fuente": "mpf-modelos-manual",
+    "organismo": "mpf",
+    "seccion": "teorico",
+    "orden": 21,
+    "enunciado": "Los y las fiscales pueden disponer de la acción penal pública:",
+    "tipo": "multiple_choice",
+    "opciones": [
+      {
+        "clave": "a",
+        "texto": "Si el delito apareciera como un episodio en contexto de violencia doméstica."
+      },
+      {
+        "clave": "b",
+        "texto": "En caso de un delito motivado por razones discriminatorias."
+      },
+      {
+        "clave": "c",
+        "texto": "Según conciliación."
+      }
+    ],
+    "respuesta_correcta": "c",
+    "confianza": "media",
+    "revisada": false
+  },
+  {
+    "fuente": "mpf-modelos-manual",
+    "organismo": "mpf",
+    "seccion": "teorico",
+    "orden": 22,
+    "enunciado": "Entre los principios que rigen el sistema acusatorio se encuentra:",
+    "tipo": "multiple_choice",
+    "opciones": [
+      {
+        "clave": "a",
+        "texto": "La publicidad."
+      },
+      {
+        "clave": "b",
+        "texto": "La complejidad."
+      },
+      {
+        "clave": "c",
+        "texto": "La burocratización."
+      }
+    ],
+    "respuesta_correcta": "a",
+    "confianza": "media",
+    "revisada": false
+  },
+  {
+    "fuente": "mpf-modelos-manual",
+    "organismo": "mpf",
+    "seccion": "teorico",
+    "orden": 23,
+    "enunciado": "El consejo de la magistratura:",
+    "tipo": "multiple_choice",
+    "opciones": [
+      {
+        "clave": "a",
+        "texto": "Es el órgano que tiene a su cargo la selección de los Magistrados del PJN."
+      },
+      {
+        "clave": "b",
+        "texto": "Es un órgano dependiente del MJ y DH y está encargado de su administración."
+      },
+      {
+        "clave": "c",
+        "texto": "Es el órgano titular del MPF."
+      }
+    ],
+    "respuesta_correcta": "a",
+    "confianza": "media",
+    "revisada": false
+  },
+  {
+    "fuente": "mpf-modelos-manual",
+    "organismo": "mpf",
+    "seccion": "teorico",
+    "orden": 24,
+    "enunciado": "¿A quiénes se encuentran los Estados comprometidos a garantizarles el libre y pleno ejercicio de los derechos y libertades reconocidos en la Convención Americana sobre DH?",
+    "tipo": "multiple_choice",
+    "opciones": [
+      {
+        "clave": "a",
+        "texto": "A las personas nacidas en su territorio."
+      },
+      {
+        "clave": "i",
+        "texto": "A toda persona que esté sujeta a su jurisdicción."
+      },
+      {
+        "clave": "ii",
+        "texto": "Solamente a sus ciudadanos."
+      }
+    ],
+    "respuesta_correcta": "i",
+    "confianza": "media",
+    "revisada": false
+  },
+  {
+    "fuente": "mpf-modelos-manual",
+    "organismo": "mpf",
+    "seccion": "teorico",
+    "orden": 25,
+    "enunciado": "¿Cómo se denomina el dictamen que eleva la acusación fiscal en materia penal, de acuerdo con el Código Procesal Penal de la Nación?",
+    "tipo": "multiple_choice",
+    "opciones": [
+      {
+        "clave": "a",
+        "texto": "Excepción u oposición."
+      },
+      {
+        "clave": "b",
+        "texto": "Auto de sobreseimiento."
+      },
+      {
+        "clave": "c",
+        "texto": "Requerimiento de elevación a juicio."
+      }
+    ],
+    "respuesta_correcta": "c",
+    "confianza": "media",
+    "revisada": false
+  },
+  {
+    "fuente": "mpf-modelos-manual",
+    "organismo": "mpf",
+    "seccion": "teorico",
+    "orden": 26,
+    "enunciado": "¿Qué carácter se le dio al Código Procesal Penal aprobado en 2019?",
+    "tipo": "multiple_choice",
+    "opciones": [
+      {
+        "clave": "a",
+        "texto": "Confederado"
+      },
+      {
+        "clave": "b",
+        "texto": "Federal"
+      },
+      {
+        "clave": "c",
+        "texto": "Central"
+      }
+    ],
+    "respuesta_correcta": "b",
+    "confianza": "media",
+    "revisada": false
+  },
+  {
+    "fuente": "mpf-modelos-manual",
+    "organismo": "mpf",
+    "seccion": "teorico",
+    "orden": 27,
+    "enunciado": "El nuevo CPP Federal permite:",
+    "tipo": "multiple_choice",
+    "opciones": [
+      {
+        "clave": "a",
+        "texto": "Ordenar los expedientes escritos para llevar un registro más exhaustivo de los casos."
+      },
+      {
+        "clave": "b",
+        "texto": "Concentrar esfuerzos y estrategias de fiscales en delitos de impacto social y de interés público."
+      },
+      {
+        "clave": "c",
+        "texto": "Diversificar estrategias de fiscales en delitos de bajo impacto."
+      }
+    ],
+    "respuesta_correcta": "b",
+    "confianza": "media",
+    "revisada": false
+  },
+  {
+    "fuente": "mpf-modelos-manual",
+    "organismo": "mpf",
+    "seccion": "teorico",
+    "orden": 28,
+    "enunciado": "La UCR se constituyó en el marco de:",
+    "tipo": "multiple_choice",
+    "opciones": [
+      {
+        "clave": "a",
+        "texto": "La oposición a un gobierno conservador."
+      },
+      {
+        "clave": "b",
+        "texto": "La oposición a un golpe militar."
+      },
+      {
+        "clave": "c",
+        "texto": "La oposición a un gobierno fascista."
+      }
+    ],
+    "respuesta_correcta": "a",
+    "confianza": "media",
+    "revisada": false
+  },
+  {
+    "fuente": "mpf-modelos-manual",
+    "organismo": "mpf",
+    "seccion": "teorico",
+    "orden": 29,
+    "enunciado": "El derecho de peticionar a las autoridades:",
+    "tipo": "multiple_choice",
+    "opciones": [
+      {
+        "clave": "a",
+        "texto": "No se encuentra estipulado en nuestra carta magna."
+      },
+      {
+        "clave": "b",
+        "texto": "Está garantizado por la CN."
+      },
+      {
+        "clave": "c",
+        "texto": "Fue implementado por la Resolución del Ministerio del Interior."
+      }
+    ],
+    "respuesta_correcta": "b",
+    "confianza": "media",
+    "revisada": false
+  },
+  {
+    "fuente": "mpf-modelos-manual",
+    "organismo": "mpf",
+    "seccion": "teorico",
+    "orden": 30,
+    "enunciado": "La postura neutral de Argentina frente a la 2da GM:",
+    "tipo": "multiple_choice",
+    "opciones": [
+      {
+        "clave": "a",
+        "texto": "Fue cuestionada tanto por los sectores más nacionalistas como por los terratenientes y comerciantes vinculados al comercio exterior."
+      },
+      {
+        "clave": "b",
+        "texto": "Permitió que a partir de 1941 el país libremente suscribiera pactos económicos con el Eje."
+      },
+      {
+        "clave": "c",
+        "texto": "No fue cuestionada bajo ningún aspecto y promovió un sentimiento de unidad nacional."
+      }
+    ],
+    "respuesta_correcta": "a",
+    "confianza": "media",
+    "revisada": false
+  },
+  {
+    "fuente": "mpf-modelos-manual",
+    "organismo": "mpf",
+    "seccion": "teorico",
+    "orden": 31,
+    "enunciado": "¿Qué implicaron las medidas económicas adoptadas por la última dictadura militar?",
+    "tipo": "multiple_choice",
+    "opciones": [
+      {
+        "clave": "a",
+        "texto": "La promoción de la industria nacional."
+      },
+      {
+        "clave": "b",
+        "texto": "El auge de la producción por sustitución de importaciones."
+      },
+      {
+        "clave": "c",
+        "texto": "El fin de las políticas de intervención estatal."
+      }
+    ],
+    "respuesta_correcta": "c",
+    "confianza": "media",
+    "revisada": false
+  },
+  {
+    "fuente": "mpf-modelos-manual",
+    "organismo": "mpf",
+    "seccion": "teorico",
+    "orden": 32,
+    "enunciado": "Los auxiliares fiscales:",
+    "tipo": "multiple_choice",
+    "opciones": [
+      {
+        "clave": "a",
+        "texto": "Actúan bajo las instrucciones, supervisión y responsabilidad de los magistrados de MPF."
+      },
+      {
+        "clave": "b",
+        "texto": "Realizan sus actividades sin las instrucciones y por fuera de la supervisión de los fiscales."
+      },
+      {
+        "clave": "c",
+        "texto": "Asisten a todas las audiencias y litigan en todas las causas a cargo del fiscal."
+      }
+    ],
+    "respuesta_correcta": "a",
+    "confianza": "media",
+    "revisada": false
+  },
+  {
+    "fuente": "mpf-modelos-manual",
+    "organismo": "mpf",
+    "seccion": "teorico",
+    "orden": 33,
+    "enunciado": "El sistema argentino posee un doble orden judicial:",
+    "tipo": "multiple_choice",
+    "opciones": [
+      {
+        "clave": "a",
+        "texto": "El MJ y DH y las justicias provinciales."
+      },
+      {
+        "clave": "b",
+        "texto": "La justicia federal y las justicias provinciales junto a la de CABA."
+      },
+      {
+        "clave": "c",
+        "texto": "La justicia federal y la justicia de la CABA."
+      }
+    ],
+    "respuesta_correcta": "b",
+    "confianza": "media",
+    "revisada": false
+  },
+  {
+    "fuente": "mpf-modelos-manual",
+    "organismo": "mpf",
+    "seccion": "teorico",
+    "orden": 34,
+    "enunciado": "¿Qué modelo de justicia supone la puesta en vigencia del Código Procesal Penal Federal?",
+    "tipo": "multiple_choice",
+    "opciones": [
+      {
+        "clave": "a",
+        "texto": "El de un proceso exclusivamente por escrito."
+      },
+      {
+        "clave": "b",
+        "texto": "El de un proceso basado en la oralidad."
+      },
+      {
+        "clave": "c",
+        "texto": "El de la burocracia estatal."
+      }
+    ],
+    "respuesta_correcta": "b",
+    "confianza": "media",
+    "revisada": false
+  },
+  {
+    "fuente": "mpf-modelos-manual",
+    "organismo": "mpf",
+    "seccion": "teorico",
+    "orden": 35,
+    "enunciado": "El pueblo se representa a sí mismo:",
+    "tipo": "multiple_choice",
+    "opciones": [
+      {
+        "clave": "a",
+        "texto": "En una democracia parlamentaria."
+      },
+      {
+        "clave": "b",
+        "texto": "En una democracia directa."
+      },
+      {
+        "clave": "c",
+        "texto": "En una democracia representativa."
+      }
+    ],
+    "respuesta_correcta": "b",
+    "confianza": "media",
+    "revisada": false
+  },
+  {
+    "fuente": "mpf-modelos-manual",
+    "organismo": "mpf",
+    "seccion": "teorico",
+    "orden": 36,
+    "enunciado": "Según la CN:",
+    "tipo": "multiple_choice",
+    "opciones": [
+      {
+        "clave": "a",
+        "texto": "Una obra pertenece a su autor/a por siempre."
+      },
+      {
+        "clave": "b",
+        "texto": "Una obra pertenece a toda persona que la utiliza en vistas del bien común."
+      },
+      {
+        "clave": "c",
+        "texto": "Una obra pertenece a su autor/a por el término que determine la ley."
+      }
+    ],
+    "respuesta_correcta": "c",
+    "confianza": "media",
+    "revisada": false
+  },
+  {
+    "fuente": "mpf-modelos-manual",
+    "organismo": "mpf",
+    "seccion": "teorico",
+    "orden": 37,
+    "enunciado": "Los/as fiscales que forman parte del MPF representan los intereses:",
+    "tipo": "multiple_choice",
+    "opciones": [
+      {
+        "clave": "a",
+        "texto": "Generales del Estado."
+      },
+      {
+        "clave": "b",
+        "texto": "Generales de la Sociedad."
+      },
+      {
+        "clave": "c",
+        "texto": "Especiales de la CABA y de cada una de las provincias."
+      }
+    ],
+    "respuesta_correcta": "b",
+    "confianza": "media",
+    "revisada": false
+  },
+  {
+    "fuente": "mpf-modelos-manual",
+    "organismo": "mpf",
+    "seccion": "teorico",
+    "orden": 38,
+    "enunciado": "¿Cuál es la diferencia entre el ámbito de aplicación de la justicia federal y la justicia ordinaria?",
+    "tipo": "multiple_choice",
+    "opciones": [
+      {
+        "clave": "a",
+        "texto": "No existe ninguna diferencia de aplicación entre ambas y sus competencias son equivalentes."
+      },
+      {
+        "clave": "b",
+        "texto": "La primera se encarga de los delitos que afectan al interés de todo el Estado y la segunda entiende el tratamiento de los delitos comunes."
+      },
+      {
+        "clave": "c",
+        "texto": "La primera se encarga de todos los delitos penales, mientras que la segunda entiende en el tratamiento de causas civiles y comerciales exclusivamente."
+      }
+    ],
+    "respuesta_correcta": "b",
+    "confianza": "media",
+    "revisada": false
+  },
+  {
+    "fuente": "mpf-modelos-manual",
+    "organismo": "mpf",
+    "seccion": "teorico",
+    "orden": 39,
+    "enunciado": "Según la ley 26485 de protección integral para prevenir, sancionar y erradicar la violencia contra las mujeres en los ámbitos en que desarrollen sus relaciones interpersonales, puede adoptar medidas preventivas urgentes;",
+    "tipo": "multiple_choice",
+    "opciones": [
+      {
+        "clave": "a",
+        "texto": "El fiscal a cargo."
+      },
+      {
+        "clave": "b",
+        "texto": "Sólo el juez competente."
+      },
+      {
+        "clave": "c",
+        "texto": "Cualquier juez, aunque no tenga competencia."
+      }
+    ],
+    "respuesta_correcta": "b",
+    "confianza": "media",
+    "revisada": false
+  },
+  {
+    "fuente": "mpf-modelos-manual",
+    "organismo": "mpf",
+    "seccion": "teorico",
+    "orden": 40,
+    "enunciado": "Según el art 14 bis de la CN:",
+    "tipo": "multiple_choice",
+    "opciones": [
+      {
+        "clave": "a",
+        "texto": "Los trabajadores pueden gozar de organización sindical libre y democrática."
+      },
+      {
+        "clave": "b",
+        "texto": "Los trabajadores pueden asociarse gremialmente siempre que tengan la autorización del empleador."
+      },
+      {
+        "clave": "c",
+        "texto": "Los trabajadores gozarán de descanso y vacaciones pagas según resultados."
+      }
+    ],
+    "respuesta_correcta": "a",
+    "confianza": "media",
+    "revisada": false
+  },
+  {
+    "fuente": "mpf-modelos-manual",
+    "organismo": "mpf",
+    "seccion": "teorico",
+    "orden": 41,
+    "enunciado": "La creación de las Procuradurías y unidades fiscales responde:",
+    "tipo": "multiple_choice",
+    "opciones": [
+      {
+        "clave": "a",
+        "texto": "El cumplimiento de compromisos internacionales asumidos por la Rep. Arg. En diversos documentos sobre DDHH."
+      },
+      {
+        "clave": "b",
+        "texto": "Al objetivo de generar una efectiva red de colaboración y asistencia estratégica entre los magistrados del MPF, especialmente en el abordaje de los fenómenos criminales de mayor complejidad y relevancia social."
+      },
+      {
+        "clave": "c",
+        "texto": "La necesidad de imitar el modo en que se organizan los Ministerios Públicos de los países centrales."
+      }
+    ],
+    "respuesta_correcta": "b",
+    "confianza": "media",
+    "revisada": false
+  },
+  {
+    "fuente": "mpf-modelos-manual",
+    "organismo": "mpf",
+    "seccion": "teorico",
+    "orden": 42,
+    "enunciado": "La competencia federal:",
+    "tipo": "multiple_choice",
+    "opciones": [
+      {
+        "clave": "a",
+        "texto": "Alcanza todas las causas salvo que las provincias definan lo contrario."
+      },
+      {
+        "clave": "b",
+        "texto": "Se encuentra defendida por el Ministerio de Justicia, de acuerdo a los criterios determinados por el PEN."
+      },
+      {
+        "clave": "c",
+        "texto": "Se encuentra expresamente asignada por normas de la CN y leyes dictadas por el Congreso de la Nación."
+      }
+    ],
+    "respuesta_correcta": "c",
+    "confianza": "media",
+    "revisada": false
+  },
+  {
+    "fuente": "mpf-modelos-manual",
+    "organismo": "mpf",
+    "seccion": "teorico",
+    "orden": 43,
+    "enunciado": "En la convención Americana de DH se menciona un modo concreto que tienen los estados parte de hacer efectivos los derechos y libertades en ella reconocidos, ¿Cuál es?",
+    "tipo": "multiple_choice",
+    "opciones": [
+      {
+        "clave": "a",
+        "texto": "Participar de las reuniones internacionales a las que fueran invitados."
+      },
+      {
+        "clave": "b",
+        "texto": "Una declaración de buena voluntad internacional."
+      },
+      {
+        "clave": "c",
+        "texto": "La adopción de medidas legislativas de derecho interno."
+      }
+    ],
+    "respuesta_correcta": "c",
+    "confianza": "media",
+    "revisada": false
+  },
+  {
+    "fuente": "mpf-modelos-manual",
+    "organismo": "mpf",
+    "seccion": "teorico",
+    "orden": 44,
+    "enunciado": "El nuevo código Procesal Penal Federal el rol de los jueces y fiscales esta:",
+    "tipo": "multiple_choice",
+    "opciones": [
+      {
+        "clave": "a",
+        "texto": "Bien diferenciado."
+      },
+      {
+        "clave": "b",
+        "texto": "Identificado el uno con el otro."
+      },
+      {
+        "clave": "c",
+        "texto": "Confundido entre ellos."
+      }
+    ],
+    "respuesta_correcta": "a",
+    "confianza": "media",
+    "revisada": false
+  },
+  {
+    "fuente": "mpf-modelos-manual",
+    "organismo": "mpf",
+    "seccion": "teorico",
+    "orden": 45,
+    "enunciado": "El presidente de la cámara de senadores:",
+    "tipo": "multiple_choice",
+    "opciones": [
+      {
+        "clave": "a",
+        "texto": "Vota siempre como uno más de los senadores."
+      },
+      {
+        "clave": "b",
+        "texto": "No vota nunca."
+      },
+      {
+        "clave": "c",
+        "texto": "Vota solamente en una circunstancia específica."
+      }
+    ],
+    "respuesta_correcta": "c",
+    "confianza": "media",
+    "revisada": false
+  },
+  {
+    "fuente": "mpf-modelos-manual",
+    "organismo": "mpf",
+    "seccion": "teorico",
+    "orden": 46,
+    "enunciado": "A fines de la década del 90 y comienzos de la década del 2000 aparecieron los siguientes actores en la escena político-social:",
+    "tipo": "multiple_choice",
+    "opciones": [
+      {
+        "clave": "a",
+        "texto": "Los movimientos ecologistas."
+      },
+      {
+        "clave": "b",
+        "texto": "Los organismos de derechos humanos."
+      },
+      {
+        "clave": "c",
+        "texto": "Los movimientos de desocupados."
+      }
+    ],
+    "respuesta_correcta": "c",
+    "confianza": "media",
+    "revisada": false
+  },
+  {
+    "fuente": "mpf-modelos-manual",
+    "organismo": "mpf",
+    "seccion": "teorico",
+    "orden": 47,
+    "enunciado": "El artículo 14 CN protege:",
+    "tipo": "multiple_choice",
+    "opciones": [
+      {
+        "clave": "a",
+        "texto": "Los derechos económicos."
+      },
+      {
+        "clave": "b",
+        "texto": "Los derechos judiciales."
+      },
+      {
+        "clave": "c",
+        "texto": "Los derechos civiles."
+      }
+    ],
+    "respuesta_correcta": "c",
+    "confianza": "media",
+    "revisada": false
+  },
+  {
+    "fuente": "mpf-modelos-manual",
+    "organismo": "mpf",
+    "seccion": "teorico",
+    "orden": 48,
+    "enunciado": "¿Qué diferencia existe respecto de los alcances territoriales que tienen los distintos códigos de procedimiento que rigen en el país?",
+    "tipo": "multiple_choice",
+    "opciones": [
+      {
+        "clave": "a",
+        "texto": "Los códigos de procedimiento nacionales rigen en todo el territorio para causas federales y, en la CABA para la justicia nacional, los provinciales son de aplicación en territorio de cada provincia."
+      },
+      {
+        "clave": "b",
+        "texto": "Los códigos de procedimiento nacionales rigen exclusivamente en el territorio de la CABA y los provinciales en el territorio de cada provincia."
+      },
+      {
+        "clave": "c",
+        "texto": "No existe tal diferencia, ya que los códigos de procedimiento se rigen del mismo modo en todo el territorio nacional."
+      }
+    ],
+    "respuesta_correcta": "a",
+    "confianza": "media",
+    "revisada": false
+  },
+  {
+    "fuente": "mpf-modelos-manual",
+    "organismo": "mpf",
+    "seccion": "teorico",
+    "orden": 49,
+    "enunciado": "¿Por qué Perón fue obligado a renunciar a sus cargos de Secretario de Trabajo, Ministro de Guerra y Vicepresidente de la Nación y enviado a la Isla Martín García en 1945?",
+    "tipo": "multiple_choice",
+    "opciones": [
+      {
+        "clave": "a",
+        "texto": "Porque su imagen e influencia política había crecido considerablemente alentando con ellos las disputas dentro de las FFAA."
+      },
+      {
+        "clave": "b",
+        "texto": "Porque desde la Secretaría de Trabajo había otorgado beneficios sociales a los trabajadores y la burguesía se opuso rotundamente."
+      },
+      {
+        "clave": "c",
+        "texto": "Por realizar un intento de Golpe de Estado durante la presidencia de Farrell."
+      }
+    ],
+    "respuesta_correcta": "a",
+    "confianza": "media",
+    "revisada": false
+  },
+  {
+    "fuente": "mpf-modelos-manual",
+    "organismo": "mpf",
+    "seccion": "teorico",
+    "orden": 50,
+    "enunciado": "De acuerdo con la CN, la Jefatura de Gobierno de la CABA es un cargo:",
+    "tipo": "multiple_choice",
+    "opciones": [
+      {
+        "clave": "a",
+        "texto": "Vitalicio."
+      },
+      {
+        "clave": "b",
+        "texto": "Electivo."
+      },
+      {
+        "clave": "c",
+        "texto": "Transitorio."
+      }
+    ],
+    "respuesta_correcta": "b",
+    "confianza": "media",
+    "revisada": false
+  },
+  {
+    "fuente": "mpf-modelos-manual",
+    "organismo": "mpf",
+    "seccion": "teorico",
+    "orden": 51,
+    "enunciado": "El trámite de un recurso jerárquico:",
+    "tipo": "multiple_choice",
+    "opciones": [
+      {
+        "clave": "a",
+        "texto": "Rige el principio pro administrado."
+      },
+      {
+        "clave": "b",
+        "texto": "No existen plazos previstos por la Ley."
+      },
+      {
+        "clave": "c",
+        "texto": "No es posible presentar una solicitud de pronto despacho."
+      }
+    ],
+    "respuesta_correcta": "a",
+    "confianza": "media",
+    "revisada": false
+  },
+  {
+    "fuente": "mpf-modelos-manual",
+    "organismo": "mpf",
+    "seccion": "teorico",
+    "orden": 52,
+    "enunciado": "Los “considerandos” hacen referencia a:",
+    "tipo": "multiple_choice",
+    "opciones": [
+      {
+        "clave": "a",
+        "texto": "Cada una de las partes en que se estructura un fallo o dictamen."
+      },
+      {
+        "clave": "b",
+        "texto": "Cada uno de los fundamentos que preceden y sirven de apoyo al acto administrativo."
+      },
+      {
+        "clave": "c",
+        "texto": "Cada una de las decisiones que se toman en el acto administrativo."
+      }
+    ],
+    "respuesta_correcta": "b",
+    "confianza": "media",
+    "revisada": false
+  },
+  {
+    "fuente": "mpf-modelos-manual",
+    "organismo": "mpf",
+    "seccion": "teorico",
+    "orden": 53,
+    "enunciado": "Qué derecho se encuentra tutelado en la CN:",
+    "tipo": "multiple_choice",
+    "opciones": [
+      {
+        "clave": "a",
+        "texto": "El derecho a un ambiente sano y equilibrado."
+      },
+      {
+        "clave": "b",
+        "texto": "El derecho a una vivienda ecológica."
+      },
+      {
+        "clave": "c",
+        "texto": "El derecho a una economía sustentable."
+      }
+    ],
+    "respuesta_correcta": "a",
+    "confianza": "media",
+    "revisada": false
+  },
+  {
+    "fuente": "mpf-modelos-manual",
+    "organismo": "mpf",
+    "seccion": "teorico",
+    "orden": 54,
+    "enunciado": "La UFEM:",
+    "tipo": "multiple_choice",
+    "opciones": [
+      {
+        "clave": "a",
+        "texto": "Actúa exclusivamente frente a la comisión de delitos contra la integridad sexual."
+      },
+      {
+        "clave": "b",
+        "texto": "Actúa en casos de trata con fines de explotación sexual."
+      },
+      {
+        "clave": "c",
+        "texto": "Actúa ante cualquier manifestación de violencia de género."
+      }
+    ],
+    "respuesta_correcta": "c",
+    "confianza": "media",
+    "revisada": false
+  },
+  {
+    "fuente": "mpf-modelos-manual",
+    "organismo": "mpf",
+    "seccion": "teorico",
+    "orden": 55,
+    "enunciado": "Frente a una condena de muerte, ¿qué alternativa tiene el condenado de conformidad con la Convención Americana de DH?",
+    "tipo": "multiple_choice",
+    "opciones": [
+      {
+        "clave": "a",
+        "texto": "La solicitud de amnistía."
+      },
+      {
+        "clave": "b",
+        "texto": "Ninguna de las dos opciones anteriores es correcta."
+      },
+      {
+        "clave": "c",
+        "texto": "El pedido de excarcelación."
+      }
+    ],
+    "respuesta_correcta": "b",
+    "confianza": "media",
+    "revisada": false
+  },
+  {
+    "fuente": "mpf-modelos-manual",
+    "organismo": "mpf",
+    "seccion": "teorico",
+    "orden": 56,
+    "enunciado": "En nuestro país:",
+    "tipo": "multiple_choice",
+    "opciones": [
+      {
+        "clave": "a",
+        "texto": "Sólo los partidos políticos pueden presentar candidatos para ocupar los distintos cargos electivos."
+      },
+      {
+        "clave": "b",
+        "texto": "Cualquier puede presentar candidatos para ocupar los distintos cargos electivos."
+      },
+      {
+        "clave": "c",
+        "texto": "Exclusivamente las asociaciones civiles pueden presentar candidatos para ocupar cargos electivos."
+      }
+    ],
+    "respuesta_correcta": "a",
+    "confianza": "media",
+    "revisada": false
+  },
+  {
+    "fuente": "mpf-modelos-manual",
+    "organismo": "mpf",
+    "seccion": "teorico",
+    "orden": 57,
+    "enunciado": "La consolidación del Estado argentino trajo aparejada la incipiente conformación de un sistema de partidos políticos. ¿A partir de cuándo y por qué se produjo?",
+    "tipo": "multiple_choice",
+    "opciones": [
+      {
+        "clave": "a",
+        "texto": "La consolidación del Estado argentino trajo aparejada la incipiente conformación de un sistema de partidos políticos. ¿A partir de cuándo y por qué se produjo?"
+      },
+      {
+        "clave": "b",
+        "texto": "Tras la fallida revolución de 1890 como un intento de las clases en ascenso de participar en la vida política y la posterior reacción de la clase conservadora por no perder el poder."
+      },
+      {
+        "clave": "c",
+        "texto": "Tras la Ley de Residencia y la participación de los inmigrantes en la política nacional. d) Tras los enfrentamientos entre Buenos Aires y las provincias por la recaudación proveniente del puerto de Buenos Aires."
+      }
+    ],
+    "respuesta_correcta": "b",
+    "confianza": "media",
+    "revisada": false
+  },
+  {
+    "fuente": "mpf-modelos-manual",
+    "organismo": "mpf",
+    "seccion": "teorico",
+    "orden": 58,
+    "enunciado": "La firma de un acto administrativo:",
+    "tipo": "multiple_choice",
+    "opciones": [
+      {
+        "clave": "a",
+        "texto": "Siempre genera efectos jurídicos inmediatos."
+      },
+      {
+        "clave": "b",
+        "texto": "Le otorga validez."
+      },
+      {
+        "clave": "c",
+        "texto": "Ninguna de las dos opciones es correcta."
+      }
+    ],
+    "respuesta_correcta": "b",
+    "confianza": "media",
+    "revisada": false
+  },
+  {
+    "fuente": "mpf-modelos-manual",
+    "organismo": "mpf",
+    "seccion": "teorico",
+    "orden": 59,
+    "enunciado": "Entre estos derechos, ¿cuál les debe garantizar el Estado a las mujeres?",
+    "tipo": "multiple_choice",
+    "opciones": [
+      {
+        "clave": "a",
+        "texto": "Una mayor remuneración por los servicios que preste de acuerdo con su función."
+      },
+      {
+        "clave": "b",
+        "texto": "El acceso a servicios de asistencia para las víctimas de violencia."
+      },
+      {
+        "clave": "c",
+        "texto": "La jornada laboral reducida en todos los casos que tengan niños a su cargo."
+      }
+    ],
+    "respuesta_correcta": "b",
+    "confianza": "media",
+    "revisada": false
+  },
+  {
+    "fuente": "mpf-modelos-manual",
+    "organismo": "mpf",
+    "seccion": "teorico",
+    "orden": 60,
+    "enunciado": "Si depende de instancia privada, la acción penal es iniciada por:",
+    "tipo": "multiple_choice",
+    "opciones": [
+      {
+        "clave": "a",
+        "texto": "El fiscal."
+      },
+      {
+        "clave": "b",
+        "texto": "La querella."
+      },
+      {
+        "clave": "c",
+        "texto": "El juez."
+      }
+    ],
+    "respuesta_correcta": "b",
+    "confianza": "media",
+    "revisada": false
+  },
+  {
+    "fuente": "mpf-modelos-manual",
+    "organismo": "mpf",
+    "seccion": "teorico",
+    "orden": 61,
+    "enunciado": "Cuando menciona las garantías judiciales, la Convención Americana Sobre DH establece un principio según el cual, toda persona tiene derecho a ser oída por un juez o tribunal competente, con las debidas garantías y dentro de:",
+    "tipo": "multiple_choice",
+    "opciones": [
+      {
+        "clave": "a",
+        "texto": "Un plazo razonable (Está en el art 8.1)."
+      },
+      {
+        "clave": "b",
+        "texto": "Los dos años de iniciado el proceso."
+      },
+      {
+        "clave": "c",
+        "texto": "El tiempo que la ley local determine."
+      }
+    ],
+    "respuesta_correcta": "a",
+    "confianza": "media",
+    "revisada": false
+  },
+  {
+    "fuente": "mpf-modelos-manual",
+    "organismo": "mpf",
+    "seccion": "teorico",
+    "orden": 62,
+    "enunciado": "La competencia federal:",
+    "tipo": "multiple_choice",
+    "opciones": [
+      {
+        "clave": "a",
+        "texto": "Alcanza a todas las causas salvo que las provincias definan lo contrario."
+      },
+      {
+        "clave": "b",
+        "texto": "Se encuentra definida por el Ministerio de Justicia, de acuerdo con los criterios determinados por el PEN."
+      },
+      {
+        "clave": "c",
+        "texto": "Se encuentra expresamente asignada por normas de la CN y leyes dictadas por el Congreso de la Nación."
+      }
+    ],
+    "respuesta_correcta": "c",
+    "confianza": "media",
+    "revisada": false
+  },
+  {
+    "fuente": "mpf-modelos-manual",
+    "organismo": "mpf",
+    "seccion": "teorico",
+    "orden": 63,
+    "enunciado": "Entre estos derechos, ¿Cuál debe garantizar el Estado a las mujeres?",
+    "tipo": "multiple_choice",
+    "opciones": [
+      {
+        "clave": "a",
+        "texto": "Una mayor remuneración por los servicios que preste de acuerdo a su función."
+      },
+      {
+        "clave": "b",
+        "texto": "El acceso a servicios de asistencia para las víctimas de violencia."
+      },
+      {
+        "clave": "c",
+        "texto": "La jornada laboral reducida en todos los casos que tengan niños a su cargo."
+      }
+    ],
+    "respuesta_correcta": "b",
+    "confianza": "media",
+    "revisada": false
+  },
+  {
+    "fuente": "mpf-modelos-manual",
+    "organismo": "mpf",
+    "seccion": "teorico",
+    "orden": 64,
+    "enunciado": "¿Que sostiene la CN que puede ocurrir si un acto privado ofende el orden público?",
+    "tipo": "multiple_choice",
+    "opciones": [
+      {
+        "clave": "a",
+        "texto": "Los jueces podrán juzgarlo."
+      },
+      {
+        "clave": "b",
+        "texto": "La persona pierde sus fueros."
+      },
+      {
+        "clave": "c",
+        "texto": "Será pasible de sanción penal."
+      }
+    ],
+    "respuesta_correcta": "a",
+    "confianza": "media",
+    "revisada": false
+  },
+  {
+    "fuente": "mpf-modelos-manual",
+    "organismo": "mpf",
+    "seccion": "teorico",
+    "orden": 65,
+    "enunciado": "El principio funcional de organización dinámica del MPF supone que:",
+    "tipo": "multiple_choice",
+    "opciones": [
+      {
+        "clave": "a",
+        "texto": "La autoridad procurará la solución de los conflictos con la finalidad de restablecer la armonía entre sus protagonistas y la paz social."
+      },
+      {
+        "clave": "b",
+        "texto": "El/la Procurador/a General de la Nación velará por la eficiente e idónea administración de la información, recursos y bienes públicos."
+      },
+      {
+        "clave": "c",
+        "texto": "La estructura del organismo se regirá por criterios de flexibilidad y dinamismo, en miras de atender las necesidades que la complejidad y conflictividad social le demanden."
+      }
+    ],
+    "respuesta_correcta": "c",
+    "confianza": "media",
+    "revisada": false
+  },
+  {
+    "fuente": "mpf-modelos-manual",
+    "organismo": "mpf",
+    "seccion": "teorico",
+    "orden": 66,
+    "enunciado": "¿Qué nuevo actor emergió en el espacio político en el marco de la transición a la democracia?",
+    "tipo": "multiple_choice",
+    "opciones": [
+      {
+        "clave": "a",
+        "texto": "Los organismos de DDHH."
+      },
+      {
+        "clave": "b",
+        "texto": "Los partidos políticos."
+      },
+      {
+        "clave": "c",
+        "texto": "Los sindicatos."
+      }
+    ],
+    "respuesta_correcta": "a",
+    "confianza": "media",
+    "revisada": false
+  },
+  {
+    "fuente": "mpf-modelos-manual",
+    "organismo": "mpf",
+    "seccion": "teorico",
+    "orden": 67,
+    "enunciado": "¿Que supone que los ciudadanos pueden hacer todo lo que no está prohibido por ley?",
+    "tipo": "multiple_choice",
+    "opciones": [
+      {
+        "clave": "a",
+        "texto": "Que cualquiera puede peticionar a las autoridades."
+      },
+      {
+        "clave": "b",
+        "texto": "Que todos somos iguales ante la ley."
+      },
+      {
+        "clave": "c",
+        "texto": "Que las personas gozan de libertades individuales y tienen derecho a la intimidad."
+      }
+    ],
+    "respuesta_correcta": "c",
+    "confianza": "media",
+    "revisada": false
+  },
+  {
+    "fuente": "mpf-modelos-manual",
+    "organismo": "mpf",
+    "seccion": "teorico",
+    "orden": 68,
+    "enunciado": "El senado de la Nación:",
+    "tipo": "multiple_choice",
+    "opciones": [
+      {
+        "clave": "a",
+        "texto": "Necesita del acuerdo de la cámara de diputados para el nombramiento del Procurador General de la Nación."
+      },
+      {
+        "clave": "b",
+        "texto": "Nombra directamente al Procurador General de la Nación."
+      },
+      {
+        "clave": "c",
+        "texto": "Debe prestar su acuerdo para el nombramiento del Procurador General de la Nación."
+      }
+    ],
+    "respuesta_correcta": "c",
+    "confianza": "media",
+    "revisada": false
+  },
+  {
+    "fuente": "mpf-modelos-manual",
+    "organismo": "mpf",
+    "seccion": "teorico",
+    "orden": 69,
+    "enunciado": "¿A través de que mecanismo es posible que los ciudadanos soliciten información a los funcionarios públicos?",
+    "tipo": "multiple_choice",
+    "opciones": [
+      {
+        "clave": "a",
+        "texto": "Entrevista privada."
+      },
+      {
+        "clave": "b",
+        "texto": "Interrogatorio policial."
+      },
+      {
+        "clave": "c",
+        "texto": "Audiencias públicas."
+      }
+    ],
+    "respuesta_correcta": "c",
+    "confianza": "media",
+    "revisada": false
+  },
+  {
+    "fuente": "mpf-modelos-manual",
+    "organismo": "mpf",
+    "seccion": "teorico",
+    "orden": 70,
+    "enunciado": "¿Cuáles eran las características de los trabajadores inmigrantes que llegaron al país como producto de las políticas de inmigración promovidas a fines del S XIX?",
+    "tipo": "multiple_choice",
+    "opciones": [
+      {
+        "clave": "a",
+        "texto": "Eran trabajadores industriales provenientes de Inglaterra, Francia y Alemania."
+      },
+      {
+        "clave": "b",
+        "texto": "Eran empresarios españoles e italianos en su mayoría que venían a instalar sus industrias en el país."
+      },
+      {
+        "clave": "c",
+        "texto": "Eran trabajadores que traían consigo su experiencia politica. sindical y laboral."
+      }
+    ],
+    "respuesta_correcta": "c",
+    "confianza": "media",
+    "revisada": false
+  },
+  {
+    "fuente": "mpf-modelos-manual",
+    "organismo": "mpf",
+    "seccion": "teorico",
+    "orden": 71,
+    "enunciado": "¿Cuál de los siguientes hechos se incorporó como delito al Código Penal de la Nación?",
+    "tipo": "multiple_choice",
+    "opciones": [
+      {
+        "clave": "a",
+        "texto": "Bullying escolar."
+      },
+      {
+        "clave": "b",
+        "texto": "violencia laboral."
+      },
+      {
+        "clave": "c",
+        "texto": "crimen de odio."
+      }
+    ],
+    "respuesta_correcta": "c",
+    "confianza": "media",
+    "revisada": false
+  },
+  {
+    "fuente": "mpf-modelos-manual",
+    "organismo": "mpf",
+    "seccion": "teorico",
+    "orden": 72,
+    "enunciado": "Los códigos de fondo son dictados por:",
+    "tipo": "multiple_choice",
+    "opciones": [
+      {
+        "clave": "a",
+        "texto": "Legislatura Provincial."
+      },
+      {
+        "clave": "b",
+        "texto": "El congreso Nacional."
+      },
+      {
+        "clave": "c",
+        "texto": "El Poder Ejecutivo."
+      }
+    ],
+    "respuesta_correcta": "b",
+    "confianza": "media",
+    "revisada": false
+  },
+  {
+    "fuente": "mpf-modelos-manual",
+    "organismo": "mpf",
+    "seccion": "teorico",
+    "orden": 73,
+    "enunciado": "Frente a la acusación de una persona, la CADH garantiza:",
+    "tipo": "multiple_choice",
+    "opciones": [
+      {
+        "clave": "a",
+        "texto": "Que deba ser oída por un juez que asigne el Poder Ejecutivo."
+      },
+      {
+        "clave": "b",
+        "texto": "Que deba ser oída por cualquier persona dentro de la administración de justicia."
+      },
+      {
+        "clave": "c",
+        "texto": "Que deba ser oída por un juez o tribunal competente, independiente e imparcial."
+      }
+    ],
+    "respuesta_correcta": "c",
+    "confianza": "media",
+    "revisada": false
+  },
+  {
+    "fuente": "mpf-modelos-manual",
+    "organismo": "mpf",
+    "seccion": "teorico",
+    "orden": 74,
+    "enunciado": "La consolidación del Estado argentino trajo aparejada la incipiente conformación de un sistema de partidos políticos. ¿A partir de cuándo y por qué se produjo?",
+    "tipo": "multiple_choice",
+    "opciones": [
+      {
+        "clave": "a",
+        "texto": "Tras la ley de Residencia y la participación de los inmigrantes en la política nacional."
+      },
+      {
+        "clave": "b",
+        "texto": "Tras la fallida revolución de 1890 como un intento de las clases en ascenso de participar en la vida política y la posterior reacción de la clase conservadora por no perder el poder confisca."
+      },
+      {
+        "clave": "c",
+        "texto": "Tras los enfrentamientos entre Buenos Aires y las provincias por la recaudación proveniente del puerto de Buenos Aires."
+      }
+    ],
+    "respuesta_correcta": "b",
+    "confianza": "media",
+    "revisada": false
+  },
+  {
+    "fuente": "mpf-modelos-manual",
+    "organismo": "mpf",
+    "seccion": "teorico",
+    "orden": 75,
+    "enunciado": "Según la CN:",
+    "tipo": "multiple_choice",
+    "opciones": [
+      {
+        "clave": "a",
+        "texto": "La confiscación de bienes queda borrada para siempre del Código Penal argentino."
+      },
+      {
+        "clave": "b",
+        "texto": "La confiscación de bienes queda bajo la órbita de las decisiones del Congreso."
+      },
+      {
+        "clave": "c",
+        "texto": "La confiscación de bienes sólo es válida ante un delito grave."
+      }
+    ],
+    "respuesta_correcta": "a",
+    "confianza": "media",
+    "revisada": false
+  },
+  {
+    "fuente": "mpf-modelos-manual",
+    "organismo": "mpf",
+    "seccion": "teorico",
+    "orden": 76,
+    "enunciado": "Las grandes olas inmigratorias de fines del siglo XIX y comienzos del siglo XX:",
+    "tipo": "multiple_choice",
+    "opciones": [
+      {
+        "clave": "a",
+        "texto": "Consiguieron aumentar y concentrar la población urbana en Buenos Aires y alrededores proporcionando grandes cantidades de mano de obra disponible para el modelo agroexportador."
+      },
+      {
+        "clave": "b",
+        "texto": "No pudieron ingresar al país dadas las estrictas leyes de ingreso y de residencia establecidas por la legislación vigente."
+      },
+      {
+        "clave": "c",
+        "texto": "Consiguieron desplegar su influencia sobre la vasta superficie disponible con baja densidad en el territorio nacional."
+      }
+    ],
+    "respuesta_correcta": "a",
+    "confianza": "media",
+    "revisada": false
+  },
+  {
+    "fuente": "mpf-modelos-manual",
+    "organismo": "mpf",
+    "seccion": "teorico",
+    "orden": 77,
+    "enunciado": "¿Que propone la nueva estructura del MPF en el marco de la implementación del sistema acusatorio?",
+    "tipo": "multiple_choice",
+    "opciones": [
+      {
+        "clave": "a",
+        "texto": "La organización de las fiscalías a partir de un diseño en reflejo del Poder Judicial."
+      },
+      {
+        "clave": "b",
+        "texto": "La creación de una única Unidad Fiscal Centralizada que actúa frente a todos los órganos jurisdiccionales."
+      },
+      {
+        "clave": "c",
+        "texto": "Un modelo de organización dinámico en función de las necesidades de cada jurisdicción."
+      }
+    ],
+    "respuesta_correcta": "c",
+    "confianza": "media",
+    "revisada": false
+  },
+  {
+    "fuente": "mpf-modelos-manual",
+    "organismo": "mpf",
+    "seccion": "teorico",
+    "orden": 78,
+    "enunciado": "¿Por qué motivos económicos se dieron los levantamientos independentistas en Hispanoamérica?",
+    "tipo": "multiple_choice",
+    "opciones": [
+      {
+        "clave": "a",
+        "texto": "La integración monetaria de Hispanoamérica y el rechazo del libre mercado europeo."
+      },
+      {
+        "clave": "b",
+        "texto": "La presión impositiva, la consolidación de una burguesía comercial y las demandas del librecambismo."
+      },
+      {
+        "clave": "c",
+        "texto": "El alto desempleo en las zonas urbanas y el reclamo de intervención para solucionar esta problemática."
+      }
+    ],
+    "respuesta_correcta": "b",
+    "confianza": "media",
+    "revisada": false
+  },
+  {
+    "fuente": "mpf-modelos-manual",
+    "organismo": "mpf",
+    "seccion": "teorico",
+    "orden": 79,
+    "enunciado": "Las obras e invenciones:",
+    "tipo": "multiple_choice",
+    "opciones": [
+      {
+        "clave": "a",
+        "texto": "Están reglamentadas por la CN (Art 17)."
+      },
+      {
+        "clave": "b",
+        "texto": "No tienen legislación porque pertenecen a todas las personas."
+      },
+      {
+        "clave": "c",
+        "texto": "Pertenecen al ámbito interior de las personas."
+      }
+    ],
+    "respuesta_correcta": "a",
+    "confianza": "media",
+    "revisada": false
+  },
+  {
+    "fuente": "mpf-modelos-manual",
+    "organismo": "mpf",
+    "seccion": "teorico",
+    "orden": 80,
+    "enunciado": "¿De qué se encarga la Unidad Estratégica Especial para la implementación del Sistema Penal Acusatorio (UNISA)?",
+    "tipo": "multiple_choice",
+    "opciones": [
+      {
+        "clave": "a",
+        "texto": "Promueve acciones institucionales necesarias para la adecuación del MPF al nuevo Código Procesal Penal Federal."
+      },
+      {
+        "clave": "b",
+        "texto": "Verifica el diseño e instrumentación de los objetivos y tratamientos impuestos a quienes ejecutan una condena en prisión."
+      },
+      {
+        "clave": "c",
+        "texto": "Dispone la realización de investigaciones preliminares en casos de violaciones masivas y sistemáticas de los derechos humanos que hayan tenido lugar durante el terrorismo de Estado."
+      }
+    ],
+    "respuesta_correcta": "a",
+    "confianza": "media",
+    "revisada": false
+  },
+  {
+    "fuente": "mpf-modelos-manual",
+    "organismo": "mpf",
+    "seccion": "teorico",
+    "orden": 81,
+    "enunciado": "En ningún caso los fiscales pueden prescindir de la acusación:",
+    "tipo": "multiple_choice",
+    "opciones": [
+      {
+        "clave": "a",
+        "texto": "Por conversión de la acción."
+      },
+      {
+        "clave": "b",
+        "texto": "Si el imputado es un funcionario y el delito fue cometido en ejercicio o en razón de su cargo."
+      },
+      {
+        "clave": "c",
+        "texto": "Según criterio de oportunidad."
+      }
+    ],
+    "respuesta_correcta": "b",
+    "confianza": "media",
+    "revisada": false
+  },
+  {
+    "fuente": "mpf-modelos-manual",
+    "organismo": "mpf",
+    "seccion": "teorico",
+    "orden": 82,
+    "enunciado": "¿Mediante qué instrumento la autoridad competente manda o decreta que se publique algo para que adquiera carácter público y notorio?",
+    "tipo": "multiple_choice",
+    "opciones": [
+      {
+        "clave": "a",
+        "texto": "oficio."
+      },
+      {
+        "clave": "b",
+        "texto": "sentencia."
+      },
+      {
+        "clave": "c",
+        "texto": "edicto."
+      }
+    ],
+    "respuesta_correcta": "c",
+    "confianza": "media",
+    "revisada": false
+  },
+  {
+    "fuente": "mpf-modelos-manual",
+    "organismo": "mpf",
+    "seccion": "teorico",
+    "orden": 83,
+    "enunciado": "¿Qué función cumple la Cámara de Casación Penal?",
+    "tipo": "multiple_choice",
+    "opciones": [
+      {
+        "clave": "a",
+        "texto": "Actúa como revisor de las Cámaras Federales de Apelaciones y de las sentencias dictadas por los Tribunales Orales en lo Criminal Federal de todo el país."
+      },
+      {
+        "clave": "b",
+        "texto": "Actúa como tribunal de primera instancia, por lo cual dicta sentencias que posteriormente podrán ser apeladas ante las Cámaras Federales de Apelaciones."
+      },
+      {
+        "clave": "c",
+        "texto": "Actúa como tribunal superior de justicia de la Nación y sus sentencias son inapelables."
+      }
+    ],
+    "respuesta_correcta": "a",
+    "confianza": "media",
+    "revisada": false
+  },
+  {
+    "fuente": "mpf-modelos-manual",
+    "organismo": "mpf",
+    "seccion": "teorico",
+    "orden": 84,
+    "enunciado": "¿Qué teoría del Estado es posible, a través la intervención, combinar el crecimiento económico con un reparto equitativo de los resultados de ese crecimiento?",
+    "tipo": "multiple_choice",
+    "opciones": [
+      {
+        "clave": "a",
+        "texto": "Estado liberal."
+      },
+      {
+        "clave": "b",
+        "texto": "Estado de bienestar."
+      },
+      {
+        "clave": "c",
+        "texto": "Estado federal."
+      }
+    ],
+    "respuesta_correcta": "b",
+    "confianza": "media",
+    "revisada": false
+  },
+  {
+    "fuente": "mpf-modelos-manual",
+    "organismo": "mpf",
+    "seccion": "teorico",
+    "orden": 85,
+    "enunciado": "El nuevo Código Procesal Penal Federal permite:",
+    "tipo": "multiple_choice",
+    "opciones": [
+      {
+        "clave": "a",
+        "texto": "Ordenar de manera más precisa los expedientes escritos para llevar un registro más exhaustivo de los casos."
+      },
+      {
+        "clave": "b",
+        "texto": "Concentrar los esfuerzos y estrategias de fiscales en delitos de impacto social y de interés público."
+      },
+      {
+        "clave": "c",
+        "texto": "Diversificar los esfuerzos y estrategias de fiscales en múltiples delitos de bajo impacto social."
+      }
+    ],
+    "respuesta_correcta": "b",
+    "confianza": "media",
+    "revisada": false
+  },
+  {
+    "fuente": "mpf-modelos-manual",
+    "organismo": "mpf",
+    "seccion": "teorico",
+    "orden": 86,
+    "enunciado": "En los procesos de nulidad de matrimonio:",
+    "tipo": "multiple_choice",
+    "opciones": [
+      {
+        "clave": "a",
+        "texto": "Intervienen los fiscales en materia no penal."
+      },
+      {
+        "clave": "b",
+        "texto": "Intervienen los fiscales en materia penal."
+      },
+      {
+        "clave": "c",
+        "texto": "No pueden intervenir los fiscales."
+      }
+    ],
+    "respuesta_correcta": "a",
+    "confianza": "media",
+    "revisada": false
+  },
+  {
+    "fuente": "mpf-modelos-manual",
+    "organismo": "mpf",
+    "seccion": "teorico",
+    "orden": 87,
+    "enunciado": "La acción de amparo puede:",
+    "tipo": "multiple_choice",
+    "opciones": [
+      {
+        "clave": "a",
+        "texto": "Interponerse ante cualquier tipo de lesión a los derechos y garantías constitucionales."
+      },
+      {
+        "clave": "b",
+        "texto": "Solicitar solamente el particular damnificado."
+      },
+      {
+        "clave": "c",
+        "texto": "Tener como resultado la declaración de inconstitucionalidad."
+      }
+    ],
+    "respuesta_correcta": "c",
+    "confianza": "media",
+    "revisada": false
+  },
+  {
+    "fuente": "mpf-modelos-manual",
+    "organismo": "mpf",
+    "seccion": "teorico",
+    "orden": 88,
+    "enunciado": "¿De qué manera se manifiesta la violencia contra las mujeres?",
+    "tipo": "multiple_choice",
+    "opciones": [
+      {
+        "clave": "a",
+        "texto": "Solamente a través del daño físico."
+      },
+      {
+        "clave": "b",
+        "texto": "A través de daños y agresiones psicológicas, sexuales, económicas, físicas y simbólicas."
+      },
+      {
+        "clave": "c",
+        "texto": "Únicamente a través de agresiones físicas y sexuales."
+      }
+    ],
+    "respuesta_correcta": "b",
+    "confianza": "media",
+    "revisada": false
+  },
+  {
+    "fuente": "mpf-modelos-manual",
+    "organismo": "mpf",
+    "seccion": "teorico",
+    "orden": 89,
+    "enunciado": "La postura neutral de la argentina frente a la 2da guerra:",
+    "tipo": "multiple_choice",
+    "opciones": [
+      {
+        "clave": "a",
+        "texto": "Fue cuestionada."
+      },
+      {
+        "clave": "b",
+        "texto": "No fue cuestionada."
+      },
+      {
+        "clave": "c",
+        "texto": "Permitió que a partir de 1941 el país libremente suscribiera pactos económicos con el eje."
+      }
+    ],
+    "respuesta_correcta": "a",
+    "confianza": "media",
+    "revisada": false
+  },
+  {
+    "fuente": "mpf-modelos-manual",
+    "organismo": "mpf",
+    "seccion": "teorico",
+    "orden": 90,
+    "enunciado": "Ante la Corte Suprema de Justicia de la Nación seleccione una:",
+    "tipo": "multiple_choice",
+    "opciones": [
+      {
+        "clave": "a",
+        "texto": "No interviene el procurador general de la nación sino los procuradores fiscales ante la corte suprema de justicia de la nación argentina."
+      },
+      {
+        "clave": "b",
+        "texto": "Interviene de manera indirecta a través de los fiscales de distrito."
+      },
+      {
+        "clave": "c",
+        "texto": "Interviene el procurador de manera directa a través de los procuradores fiscales."
+      }
+    ],
+    "respuesta_correcta": "c",
+    "confianza": "media",
+    "revisada": false
+  },
+  {
+    "fuente": "mpf-modelos-manual",
+    "organismo": "mpf",
+    "seccion": "teorico",
+    "orden": 91,
+    "enunciado": "Las normas sociales son:",
+    "tipo": "multiple_choice",
+    "opciones": [
+      {
+        "clave": "a",
+        "texto": "Características especiales de las sociedades contemporáneas producto de su complejidad tecnológica."
+      },
+      {
+        "clave": "b",
+        "texto": "Resultado natural de la evolución biológica de la especie humana."
+      },
+      {
+        "clave": "c",
+        "texto": "Resultado del conflicto entre la necesidad de organización y la lucha de los sectores sociales por imponer sus intereses al resto de la sociedad."
+      }
+    ],
+    "respuesta_correcta": "c",
+    "confianza": "media",
+    "revisada": false
+  },
+  {
+    "fuente": "mpf-modelos-manual",
+    "organismo": "mpf",
+    "seccion": "teorico",
+    "orden": 92,
+    "enunciado": "A qué se llamó la \"Semana Trágica\"",
+    "tipo": "multiple_choice",
+    "opciones": [
+      {
+        "clave": "a",
+        "texto": "A la semana de protestas sociales y represión policial desatados a partir de la sanción de la Ley de Residencia."
+      },
+      {
+        "clave": "b",
+        "texto": "A los hechos de protestas sociales y violencia estatal que se produjeron a partir de la represión policial a las manifestaciones obreras."
+      },
+      {
+        "clave": "c",
+        "texto": "A los hechos de violencia callejera y anarquía que se produjeron tras el derrocamiento de Yrigoyen en 1930."
+      }
+    ],
+    "respuesta_correcta": "b",
+    "confianza": "media",
+    "revisada": false
+  },
+  {
+    "fuente": "mpf-modelos-manual",
+    "organismo": "mpf",
+    "seccion": "teorico",
+    "orden": 93,
+    "enunciado": "En un estado de Derecho:",
+    "tipo": "multiple_choice",
+    "opciones": [
+      {
+        "clave": "a",
+        "texto": "La Ley suprema es la Constitución Nacional."
+      },
+      {
+        "clave": "b",
+        "texto": "La Ley suprema es la Justicia."
+      },
+      {
+        "clave": "c",
+        "texto": "La Ley suprema es el Orden Social."
+      }
+    ],
+    "respuesta_correcta": "a",
+    "confianza": "media",
+    "revisada": false
+  },
+  {
+    "fuente": "mpf-modelos-manual",
+    "organismo": "mpf",
+    "seccion": "teorico",
+    "orden": 94,
+    "enunciado": "La Convención Americana sobre Derechos Humanos entiende a la persona como:",
+    "tipo": "multiple_choice",
+    "opciones": [
+      {
+        "clave": "a",
+        "texto": "Ciudadano de un Estado."
+      },
+      {
+        "clave": "b",
+        "texto": "Todo ser humano."
+      },
+      {
+        "clave": "c",
+        "texto": "Mayor de 18 años."
+      }
+    ],
+    "respuesta_correcta": "b",
+    "confianza": "media",
+    "revisada": false
+  },
+  {
+    "fuente": "mpf-modelos-manual",
+    "organismo": "mpf",
+    "seccion": "teorico",
+    "orden": 95,
+    "enunciado": "¿Cuál de estas características es propia de la forma Republicana de Gobierno?",
+    "tipo": "multiple_choice",
+    "opciones": [
+      {
+        "clave": "a",
+        "texto": "Indivisibilidad de poder."
+      },
+      {
+        "clave": "b",
+        "texto": "Publicidad de los actos de Gobierno."
+      },
+      {
+        "clave": "c",
+        "texto": "Estabilidad política sostenida por cargos vitalicios."
+      }
+    ],
+    "respuesta_correcta": "b",
+    "confianza": "media",
+    "revisada": false
+  },
+  {
+    "fuente": "mpf-modelos-manual",
+    "organismo": "mpf",
+    "seccion": "teorico",
+    "orden": 96,
+    "enunciado": "La Constitución Nacional se reforma:",
+    "tipo": "multiple_choice",
+    "opciones": [
+      {
+        "clave": "a",
+        "texto": "Si la Corte Suprema de Justicia de la Nación dicta la inconstitucionalidad de una norma."
+      },
+      {
+        "clave": "b",
+        "texto": "Cada 20 años por iniciativa del Poder Ejecutivo."
+      },
+      {
+        "clave": "c",
+        "texto": "Por una Convención Constituyente convocada al efecto."
+      }
+    ],
+    "respuesta_correcta": "c",
+    "confianza": "media",
+    "revisada": false
+  },
+  {
+    "fuente": "mpf-modelos-manual",
+    "organismo": "mpf",
+    "seccion": "teorico",
+    "orden": 97,
+    "enunciado": "En un sistema ACUSATORIO investigan:",
+    "tipo": "multiple_choice",
+    "opciones": [
+      {
+        "clave": "a",
+        "texto": "Los jueces."
+      },
+      {
+        "clave": "b",
+        "texto": "Los fiscales."
+      },
+      {
+        "clave": "c",
+        "texto": "Los diputados."
+      }
+    ],
+    "respuesta_correcta": "b",
+    "confianza": "media",
+    "revisada": false
+  },
+  {
+    "fuente": "mpf-modelos-manual",
+    "organismo": "mpf",
+    "seccion": "teorico",
+    "orden": 98,
+    "enunciado": "En un sistema INQUISITIVO investigan:",
+    "tipo": "multiple_choice",
+    "opciones": [
+      {
+        "clave": "a",
+        "texto": "Los diputados."
+      },
+      {
+        "clave": "b",
+        "texto": "Los jueces."
+      },
+      {
+        "clave": "c",
+        "texto": "Los fiscales."
+      }
+    ],
+    "respuesta_correcta": "b",
+    "confianza": "media",
+    "revisada": false
+  },
+  {
+    "fuente": "mpf-modelos-manual",
+    "organismo": "mpf",
+    "seccion": "teorico",
+    "orden": 99,
+    "enunciado": "Las unidades fiscales son:",
+    "tipo": "multiple_choice",
+    "opciones": [
+      {
+        "clave": "a",
+        "texto": "Monolíticas y estables."
+      },
+      {
+        "clave": "b",
+        "texto": "Dinámicas y flexibles."
+      },
+      {
+        "clave": "c",
+        "texto": "Ninguna de las dos opciones es correcta."
+      }
+    ],
+    "respuesta_correcta": "b",
+    "confianza": "media",
+    "revisada": false
+  },
+  {
+    "fuente": "mpf-modelos-manual",
+    "organismo": "mpf",
+    "seccion": "teorico",
+    "orden": 100,
+    "enunciado": "El informe final de la Comisión Nacional sobre Desaparición de Personas fue construido fundamentalmente sobre la base de:",
+    "tipo": "multiple_choice",
+    "opciones": [
+      {
+        "clave": "a",
+        "texto": "Pruebas provistas por la justicia."
+      },
+      {
+        "clave": "b",
+        "texto": "Testimonios de arrepentidos."
+      },
+      {
+        "clave": "c",
+        "texto": "Testimonios de sobrevivientes de los centros clandestinos de detención y familiares de las víctimas."
+      }
+    ],
+    "respuesta_correcta": "c",
+    "confianza": "media",
+    "revisada": false
+  },
+  {
+    "fuente": "mpf-modelos-manual",
+    "organismo": "mpf",
+    "seccion": "teorico",
+    "orden": 101,
+    "enunciado": "El informe final de la Comisión Nacional sobre Desaparición de Personas fue construido fundamentalmente sobre la base de:",
+    "tipo": "multiple_choice",
+    "opciones": [
+      {
+        "clave": "a",
+        "texto": "Pruebas provistas por la justicia."
+      },
+      {
+        "clave": "b",
+        "texto": "Testimonios de arrepentidos."
+      },
+      {
+        "clave": "c",
+        "texto": "Testimonios de sobrevivientes de los centros clandestinos de detención y familiares de las víctimas."
+      }
+    ],
+    "respuesta_correcta": "c",
+    "confianza": "media",
+    "revisada": false
+  },
+  {
+    "fuente": "mpf-modelos-manual",
+    "organismo": "mpf",
+    "seccion": "teorico",
+    "orden": 102,
+    "enunciado": "Las facultades legislativas que en circunstancias excepcionales puede ejercer el poder ejecutivo son:",
+    "tipo": "multiple_choice",
+    "opciones": [
+      {
+        "clave": "a",
+        "texto": "Suspenden las que tienen que ser del congreso."
+      },
+      {
+        "clave": "b",
+        "texto": "Tienen que ser ratificadas por la corte suprema de Justicia de la Nación."
+      },
+      {
+        "clave": "c",
+        "texto": "Requieren de una delegación del poder legislativo."
+      }
+    ],
+    "respuesta_correcta": "c",
+    "confianza": "media",
+    "revisada": false
+  },
+  {
+    "fuente": "mpf-modelos-manual",
+    "organismo": "mpf",
+    "seccion": "teorico",
+    "orden": 103,
+    "enunciado": "¿Cuál es la excepción que se encuentra enunciada en la Constitución Nacional con respecto al derecho a la propiedad privada?",
+    "tipo": "multiple_choice",
+    "opciones": [
+      {
+        "clave": "a",
+        "texto": "La confiscación de bienes."
+      },
+      {
+        "clave": "b",
+        "texto": "La expropiación por causa de utilidad pública."
+      },
+      {
+        "clave": "c",
+        "texto": "La usurpación de inmuebles."
+      }
+    ],
+    "respuesta_correcta": "b",
+    "confianza": "media",
+    "revisada": false
+  },
+  {
+    "fuente": "mpf-modelos-manual",
+    "organismo": "mpf",
+    "seccion": "teorico",
+    "orden": 104,
+    "enunciado": "La Ley Nacional de Identidad de género (ley N.° 26743) contempla el derecho de las personas:",
+    "tipo": "multiple_choice",
+    "opciones": [
+      {
+        "clave": "a",
+        "texto": "Ser tratadas de acuerdo con el nombre y el sexo consignados en el documento de identidad."
+      },
+      {
+        "clave": "b",
+        "texto": "Ser identificadas en el documento de identidad con el sexo asignado al nacer, sin posibilidad de modificar el nombre."
+      },
+      {
+        "clave": "c",
+        "texto": "Ser tratadas conforme la identidad de género autopercibida, aun cuando no se haya practicado una rectificación en el documento de identidad."
+      }
+    ],
+    "respuesta_correcta": "c",
+    "confianza": "media",
+    "revisada": false
+  },
+  {
+    "fuente": "mpf-modelos-manual",
+    "organismo": "mpf",
+    "seccion": "teorico",
+    "orden": 105,
+    "enunciado": "¿Cuáles son los elementos específicos del acto administrativo?",
+    "tipo": "multiple_choice",
+    "opciones": [
+      {
+        "clave": "a",
+        "texto": "Competencia, voluntad, objeto, y forma."
+      },
+      {
+        "clave": "b",
+        "texto": "Discernimiento, intención y libertad."
+      },
+      {
+        "clave": "c",
+        "texto": "Tipicidad, antijuricidad, culpabilidad, punibilidad"
+      }
+    ],
+    "respuesta_correcta": "a",
+    "confianza": "media",
+    "revisada": false
+  },
+  {
+    "fuente": "mpf-modelos-manual",
+    "organismo": "mpf",
+    "seccion": "teorico",
+    "orden": 106,
+    "enunciado": "La necesidad de una reforma constitucional:",
+    "tipo": "multiple_choice",
+    "opciones": [
+      {
+        "clave": "a",
+        "texto": "Debe ser declarada por el presidente de la Nación."
+      },
+      {
+        "clave": "b",
+        "texto": "Debe ser declarada por el Congreso de la Nación."
+      },
+      {
+        "clave": "c",
+        "texto": "Debe ser declarada por los habitantes de la Nación."
+      }
+    ],
+    "respuesta_correcta": "b",
+    "confianza": "media",
+    "revisada": false
+  },
+  {
+    "fuente": "mpf-modelos-manual",
+    "organismo": "mpf",
+    "seccion": "teorico",
+    "orden": 107,
+    "enunciado": "El Modelo acusatorio del Código Procesal Penal Federal se prevé que, desde su formalización, la investigación preparatoria dure:",
+    "tipo": "multiple_choice",
+    "opciones": [
+      {
+        "clave": "a",
+        "texto": "Lo que requiera el juez."
+      },
+      {
+        "clave": "b",
+        "texto": "No más de 5 años y en caso de delitos complejos hasta 10 años."
+      },
+      {
+        "clave": "c",
+        "texto": "No más de 1 año y en caso de delitos complejos hasta 3 años."
+      }
+    ],
+    "respuesta_correcta": "c",
+    "confianza": "media",
+    "revisada": false
+  },
+  {
+    "fuente": "mpf-modelos-manual",
+    "organismo": "mpf",
+    "seccion": "teorico",
+    "orden": 108,
+    "enunciado": "¿Cuál fue la medida que tomó el gobierno militar respecto de los sindicatos con posterioridad al derrocamiento de Perón?",
+    "tipo": "multiple_choice",
+    "opciones": [
+      {
+        "clave": "a",
+        "texto": "Intervenir sobre la totalidad de la estructura sindical."
+      },
+      {
+        "clave": "b",
+        "texto": "Liberar la conducción sindical a la dirigencia peronista, pero intervenir sobre el valor de los salarios."
+      },
+      {
+        "clave": "c",
+        "texto": "Romper el vínculo con la CGT, que seguía en poder del peronismo."
+      }
+    ],
+    "respuesta_correcta": "a",
+    "confianza": "media",
+    "revisada": false
+  },
+  {
+    "fuente": "mpf-modelos-manual",
+    "organismo": "mpf",
+    "seccion": "teorico",
+    "orden": 109,
+    "enunciado": "¿Cuál de estos no es un elemento definitorio del delito de femicidio?",
+    "tipo": "multiple_choice",
+    "opciones": [
+      {
+        "clave": "a",
+        "texto": "Odio racial."
+      },
+      {
+        "clave": "b",
+        "texto": "Víctima mujer."
+      },
+      {
+        "clave": "c",
+        "texto": "Violencia de género."
+      }
+    ],
+    "respuesta_correcta": "a",
+    "confianza": "media",
+    "revisada": false
+  },
+  {
+    "fuente": "mpf-modelos-manual",
+    "organismo": "mpf",
+    "seccion": "teorico",
+    "orden": 110,
+    "enunciado": "Con respecto a los partidos políticos, la Constitución Nacional:",
+    "tipo": "multiple_choice",
+    "opciones": [
+      {
+        "clave": "a",
+        "texto": "Elimina la competencia para la postulación de candidatos a cargos electivos."
+      },
+      {
+        "clave": "b",
+        "texto": "Garantiza la representación de las minorías."
+      },
+      {
+        "clave": "c",
+        "texto": "Prohíbe la difusión de ideas opositoras."
+      }
+    ],
+    "respuesta_correcta": "b",
+    "confianza": "media",
+    "revisada": false
+  },
+  {
+    "fuente": "mpf-modelos-manual",
+    "organismo": "mpf",
+    "seccion": "teorico",
+    "orden": 111,
+    "enunciado": "¿Qué órgano quedó a cargo de la investigación de los delitos?",
+    "tipo": "multiple_choice",
+    "opciones": [
+      {
+        "clave": "a",
+        "texto": "Los tribunales provinciales."
+      },
+      {
+        "clave": "b",
+        "texto": "El Ministerio Público Fiscal de la Nación."
+      },
+      {
+        "clave": "c",
+        "texto": "El Ministerio de Justicia de la Nación."
+      }
+    ],
+    "respuesta_correcta": "b",
+    "confianza": "media",
+    "revisada": false
+  },
+  {
+    "fuente": "mpf-modelos-manual",
+    "organismo": "mpf",
+    "seccion": "teorico",
+    "orden": 112,
+    "enunciado": "Con la presentación de la demanda:",
+    "tipo": "multiple_choice",
+    "opciones": [
+      {
+        "clave": "a",
+        "texto": "Culmina la etapa probatoria."
+      },
+      {
+        "clave": "b",
+        "texto": "Se inicia un proceso judicial."
+      },
+      {
+        "clave": "c",
+        "texto": "Comienza la etapa de alegatos"
+      }
+    ],
+    "respuesta_correcta": "b",
+    "confianza": "media",
+    "revisada": false
+  },
+  {
+    "fuente": "mpf-modelos-manual",
+    "organismo": "mpf",
+    "seccion": "teorico",
+    "orden": 113,
+    "enunciado": "¿Cuál de los siguientes mecanismos pertenece a formas de participación popular en el proceso de toma de decisiones políticas?",
+    "tipo": "multiple_choice",
+    "opciones": [
+      {
+        "clave": "a",
+        "texto": "Consulta popular."
+      },
+      {
+        "clave": "b",
+        "texto": "Convenios colectivos de trabajo."
+      },
+      {
+        "clave": "c",
+        "texto": "Asamblea legislativa."
+      }
+    ],
+    "respuesta_correcta": "a",
+    "confianza": "media",
+    "revisada": false
+  },
+  {
+    "fuente": "mpf-modelos-manual",
+    "organismo": "mpf",
+    "seccion": "teorico",
+    "orden": 114,
+    "enunciado": "De acuerdo a la Constitución Nacional:",
+    "tipo": "multiple_choice",
+    "opciones": [
+      {
+        "clave": "a",
+        "texto": "Los trabajadores tienen derecho a participar de las ganancias de la empresa."
+      },
+      {
+        "clave": "b",
+        "texto": "Los trabajadores no tienen derecho a colaborar con la dirección de la empresa."
+      },
+      {
+        "clave": "c",
+        "texto": "Los trabajadores tienen derecho a reclamar la dirección de la empresa."
+      }
+    ],
+    "respuesta_correcta": "a",
+    "confianza": "media",
+    "revisada": false
+  },
+  {
+    "fuente": "mpf-modelos-manual",
+    "organismo": "mpf",
+    "seccion": "teorico",
+    "orden": 115,
+    "enunciado": "El objetivo de un proceso judicial es:",
+    "tipo": "multiple_choice",
+    "opciones": [
+      {
+        "clave": "a",
+        "texto": "Que se emita un dictamen de improcedencia."
+      },
+      {
+        "clave": "b",
+        "texto": "Su preclusión."
+      },
+      {
+        "clave": "c",
+        "texto": "Obtener una sentencia."
+      }
+    ],
+    "respuesta_correcta": "c",
+    "confianza": "media",
+    "revisada": false
+  },
+  {
+    "fuente": "mpf-modelos-manual",
+    "organismo": "mpf",
+    "seccion": "teorico",
+    "orden": 116,
+    "enunciado": "¿Qué forma de organización política hace referencia un gobierno en el cual el poder recae sobre una misma institución o persona?",
+    "tipo": "multiple_choice",
+    "opciones": [
+      {
+        "clave": "a",
+        "texto": "Totalitarismo."
+      },
+      {
+        "clave": "b",
+        "texto": "Absolutismo."
+      },
+      {
+        "clave": "c",
+        "texto": "Aristocracia."
+      }
+    ],
+    "respuesta_correcta": "b",
+    "confianza": "media",
+    "revisada": false
+  },
+  {
+    "fuente": "mpf-modelos-manual",
+    "organismo": "mpf",
+    "seccion": "teorico",
+    "orden": 117,
+    "enunciado": "¿En qué condiciones políticas se produjo la guerra de Malvinas?",
+    "tipo": "multiple_choice",
+    "opciones": [
+      {
+        "clave": "a",
+        "texto": "conflictos internacionales."
+      },
+      {
+        "clave": "b",
+        "texto": "inestabilidad del régimen militar argentino."
+      },
+      {
+        "clave": "c",
+        "texto": "lucha armada"
+      }
+    ],
+    "respuesta_correcta": "b",
+    "confianza": "media",
+    "revisada": false
+  },
+  {
+    "fuente": "mpf-modelos-manual",
+    "organismo": "mpf",
+    "seccion": "teorico",
+    "orden": 118,
+    "enunciado": "Los desafíos que se presentaron entre los años posteriores a la formación de la primera junta criolla y la declaración de la independencia fueron:",
+    "tipo": "multiple_choice",
+    "opciones": [
+      {
+        "clave": "a",
+        "texto": "establecer una forma de vinculación férrea entre todos los estados libres de américa."
+      },
+      {
+        "clave": "b",
+        "texto": "el intento de construir un orden político que reemplazara el viejo sistema colonial."
+      },
+      {
+        "clave": "c",
+        "texto": "ninguna de las anteriores."
+      }
+    ],
+    "respuesta_correcta": "b",
+    "confianza": "media",
+    "revisada": false
+  },
+  {
+    "fuente": "mpf-modelos-manual",
+    "organismo": "mpf",
+    "seccion": "teorico",
+    "orden": 119,
+    "enunciado": "Para fomentar la inmigración europea, durante los últimos años del siglo XIX se dictaron las leyes de:",
+    "tipo": "multiple_choice",
+    "opciones": [
+      {
+        "clave": "a",
+        "texto": "Vivienda, promoción de la navegación y aduanas."
+      },
+      {
+        "clave": "b",
+        "texto": "Educación laica, gratuita y obligatoria. Matrimonio civil y registro civil."
+      },
+      {
+        "clave": "c",
+        "texto": "vivienda. sufragio secreto y obligatorio y libertad de asociación sindical."
+      }
+    ],
+    "respuesta_correcta": "b",
+    "confianza": "media",
+    "revisada": false
+  },
+  {
+    "fuente": "mpf-modelos-manual",
+    "organismo": "mpf",
+    "seccion": "teorico",
+    "orden": 120,
+    "enunciado": "En la asamblea del año XIII:",
+    "tipo": "multiple_choice",
+    "opciones": [
+      {
+        "clave": "a",
+        "texto": "Se trazaron los límites geográficos de la argentina."
+      },
+      {
+        "clave": "b",
+        "texto": "se sancionó una constitución para las provincias unidas."
+      },
+      {
+        "clave": "c",
+        "texto": "Se firmó un tratado con el imperio de Brasil. d) Ninguna es correcta."
+      }
+    ],
+    "respuesta_correcta": "c",
+    "confianza": "media",
+    "revisada": false
+  },
+  {
+    "fuente": "mpf-modelos-manual",
+    "organismo": "mpf",
+    "seccion": "teorico",
+    "orden": 121,
+    "enunciado": "El pueblo se representa en su mismo:",
+    "tipo": "multiple_choice",
+    "opciones": [
+      {
+        "clave": "a",
+        "texto": "En una democracia parlamentaria."
+      },
+      {
+        "clave": "b",
+        "texto": "En una democracia directa."
+      },
+      {
+        "clave": "c",
+        "texto": "En una democracia indirecta."
+      }
+    ],
+    "respuesta_correcta": "b",
+    "confianza": "media",
+    "revisada": false
+  },
+  {
+    "fuente": "mpf-modelos-manual",
+    "organismo": "mpf",
+    "seccion": "teorico",
+    "orden": 122,
+    "enunciado": "¿Qué carácter se le dio al nuevo Código?",
+    "tipo": "multiple_choice",
+    "opciones": [
+      {
+        "clave": "a",
+        "texto": "Central."
+      },
+      {
+        "clave": "b",
+        "texto": "Confederado."
+      },
+      {
+        "clave": "c",
+        "texto": "Federal."
+      }
+    ],
+    "respuesta_correcta": "c",
+    "confianza": "media",
+    "revisada": false
+  },
+  {
+    "fuente": "mpf-modelos-manual",
+    "organismo": "mpf",
+    "seccion": "teorico",
+    "orden": 123,
+    "enunciado": "Los objetivos del segundo plan quinquenal fueron:",
+    "tipo": "multiple_choice",
+    "opciones": [
+      {
+        "clave": "a",
+        "texto": "Desarrollo simultáneo del sector industrial y agrícola."
+      },
+      {
+        "clave": "b",
+        "texto": "El desarrollo de la industrialización por sustitución de importaciones a través del subsidio estatal."
+      },
+      {
+        "clave": "c",
+        "texto": "El aumento de las inversiones extranjeras, el desarrollo de la industria pesada y el aumento de la producción agrícola."
+      }
+    ],
+    "respuesta_correcta": "c",
+    "confianza": "media",
+    "revisada": false
+  },
+  {
+    "fuente": "mpf-modelos-manual",
+    "organismo": "mpf",
+    "seccion": "teorico",
+    "orden": 124,
+    "enunciado": "La consolidación del estado argentino trajo aparejada la incipiente conformación de un sistema de partidos políticos. ¿A partir de cuándo y por qué?",
+    "tipo": "multiple_choice",
+    "opciones": [
+      {
+        "clave": "a",
+        "texto": "Tras enfrentamientos entre bs as y las prov por la recaudación proveniente del puerto de buenos aires."
+      },
+      {
+        "clave": "b",
+        "texto": "Tras la fallida revolución de 1890 como intento de clases en ascenso de participar en la política y la posterior reacción de la clase conservadora por no perder el poder."
+      },
+      {
+        "clave": "c",
+        "texto": "Tras la ley de residencia y la participación de los inmigrantes en la política nacional."
+      }
+    ],
+    "respuesta_correcta": "b",
+    "confianza": "media",
+    "revisada": false
+  },
+  {
+    "fuente": "mpf-modelos-manual",
+    "organismo": "mpf",
+    "seccion": "teorico",
+    "orden": 125,
+    "enunciado": "¿Qué define una norma como ley?",
+    "tipo": "multiple_choice",
+    "opciones": [
+      {
+        "clave": "a",
+        "texto": "su arraigo en la costumbre."
+      },
+      {
+        "clave": "b",
+        "texto": "su sanción y promulgación por el Estado."
+      },
+      {
+        "clave": "c",
+        "texto": "su apego a valores éticos o religiosos."
+      }
+    ],
+    "respuesta_correcta": "b",
+    "confianza": "media",
+    "revisada": false
+  },
+  {
+    "fuente": "mpf-modelos-manual",
+    "organismo": "mpf",
+    "seccion": "teorico",
+    "orden": 126,
+    "enunciado": "En el caso del nombramiento de los jueces de la Corte Suprema de Justicia de la Nación Argentina:",
+    "tipo": "multiple_choice",
+    "opciones": [
+      {
+        "clave": "a",
+        "texto": "El acuerdo del senado es facultativo."
+      },
+      {
+        "clave": "b",
+        "texto": "El congreso en sus dos cámaras debe acordar sobre la propuesta presidencial."
+      },
+      {
+        "clave": "c",
+        "texto": "El senado debe dar su acuerdo con la propuesta presidencial."
+      }
+    ],
+    "respuesta_correcta": "c",
+    "confianza": "media",
+    "revisada": false
+  },
+  {
+    "fuente": "mpf-modelos-manual",
+    "organismo": "mpf",
+    "seccion": "teorico",
+    "orden": 127,
+    "enunciado": "Entre los principios que rigen el sistema acusatorio se encuentra:",
+    "tipo": "multiple_choice",
+    "opciones": [
+      {
+        "clave": "a",
+        "texto": "La simplicidad."
+      },
+      {
+        "clave": "b",
+        "texto": "El secreto."
+      },
+      {
+        "clave": "c",
+        "texto": "La diversificación."
+      }
+    ],
+    "respuesta_correcta": "a",
+    "confianza": "media",
+    "revisada": false
+  },
+  {
+    "fuente": "mpf-modelos-manual",
+    "organismo": "mpf",
+    "seccion": "teorico",
+    "orden": 128,
+    "enunciado": "En el trámite de un recurso jerárquico:",
+    "tipo": "multiple_choice",
+    "opciones": [
+      {
+        "clave": "a",
+        "texto": "No existen plazos previstos por ley."
+      },
+      {
+        "clave": "b",
+        "texto": "No es posible presentar una solicitud de pronto despacho."
+      },
+      {
+        "clave": "c",
+        "texto": "Rige el principio pro administrado."
+      }
+    ],
+    "respuesta_correcta": "c",
+    "confianza": "media",
+    "revisada": false
+  },
+  {
+    "fuente": "mpf-modelos-manual",
+    "organismo": "mpf",
+    "seccion": "teorico",
+    "orden": 129,
+    "enunciado": "El acuerdo de San Nicolás de los Arroyos firmado en 1852:",
+    "tipo": "multiple_choice",
+    "opciones": [
+      {
+        "clave": "a",
+        "texto": "Nombró como Director Provisorio de la Confederación a Justo José de Urquiza."
+      },
+      {
+        "clave": "b",
+        "texto": "Anuló el Pacto Federal de 1831."
+      },
+      {
+        "clave": "c",
+        "texto": "Declaró la independencia de la Banda Oriental."
+      }
+    ],
+    "respuesta_correcta": "a",
+    "confianza": "media",
+    "revisada": false
+  },
+  {
+    "fuente": "mpf-modelos-manual",
+    "organismo": "mpf",
+    "seccion": "teorico",
+    "orden": 130,
+    "enunciado": "El principio funcional de unidad de actuación del Ministerio Público Fiscal supone que:",
+    "tipo": "multiple_choice",
+    "opciones": [
+      {
+        "clave": "a",
+        "texto": "Los funcionarios del Ministerio Público Fiscal procederán de manera descentralizada, presentándose a sí mismos."
+      },
+      {
+        "clave": "b",
+        "texto": "El Ministerio Público Fiscal es único e indivisible y estará plenamente representado en la actuación de cada uno de sus funcionarios."
+      },
+      {
+        "clave": "c",
+        "texto": "El Ministerio Público Fiscal no es una organización jerárquica."
+      }
+    ],
+    "respuesta_correcta": "b",
+    "confianza": "media",
+    "revisada": false
+  },
+  {
+    "fuente": "mpf-modelos-manual",
+    "organismo": "mpf",
+    "seccion": "teorico",
+    "orden": 131,
+    "enunciado": "El Consejo de la Magistratura:",
+    "tipo": "multiple_choice",
+    "opciones": [
+      {
+        "clave": "a",
+        "texto": "Es el órgano que tiene a su cargo la selección de los Magistrados del Poder Judicial de la Nación."
+      },
+      {
+        "clave": "b",
+        "texto": "Es un órgano dependiente del Ministerio de Justicia y está encargado de su administración."
+      },
+      {
+        "clave": "c",
+        "texto": "Es el órgano titular del Ministerio Público Fiscal de la Nación."
+      }
+    ],
+    "respuesta_correcta": "a",
+    "confianza": "media",
+    "revisada": false
+  },
+  {
+    "fuente": "mpf-modelos-manual",
+    "organismo": "mpf",
+    "seccion": "teorico",
+    "orden": 132,
+    "enunciado": "Juan Manuel de Rosas, Facundo Quiroga y Estanislao López eran:",
+    "tipo": "multiple_choice",
+    "opciones": [
+      {
+        "clave": "a",
+        "texto": "Caudillos que representaban los intereses políticos de su región y que expresaban las diferencias internas del federalismo."
+      },
+      {
+        "clave": "b",
+        "texto": "Famosos guachos matreros de la literatura argentina."
+      },
+      {
+        "clave": "c",
+        "texto": "Caudillos al frente de la Guerra del Paraguay."
+      }
+    ],
+    "respuesta_correcta": "a",
+    "confianza": "media",
+    "revisada": false
+  },
+  {
+    "fuente": "mpf-modelos-manual",
+    "organismo": "mpf",
+    "seccion": "teorico",
+    "orden": 133,
+    "enunciado": "Las personas menores de edad:",
+    "tipo": "multiple_choice",
+    "opciones": [
+      {
+        "clave": "a",
+        "texto": "Deberán realizar la solicitud de rectificación registral del sexo a través de sus representantes legales, manifestando de manera expresa su conformidad."
+      },
+      {
+        "clave": "b",
+        "texto": "No es obligatorio que cuenten con asistencia de parte del abogado del niño para solicitar la rectificación registral del sexo."
+      },
+      {
+        "clave": "c",
+        "texto": "Podrán prescindir de sus representantes legales para solicitar la rectificación registral del sexo."
+      }
+    ],
+    "respuesta_correcta": "a",
+    "confianza": "media",
+    "revisada": false
+  },
+  {
+    "fuente": "mpf-modelos-manual",
+    "organismo": "mpf",
+    "seccion": "teorico",
+    "orden": 134,
+    "enunciado": "Las presidencias de Bartolomé Mitre, Domingo Faustino Sarmiento y Nicolás Avellaneda se orientaron a:",
+    "tipo": "multiple_choice",
+    "opciones": [
+      {
+        "clave": "a",
+        "texto": "Fortalecer la provincia de Buenos Aires."
+      },
+      {
+        "clave": "b",
+        "texto": "Consolidar la Constitución Nacional."
+      },
+      {
+        "clave": "c",
+        "texto": "Consolidar el Estado Nacional."
+      }
+    ],
+    "respuesta_correcta": "c",
+    "confianza": "media",
+    "revisada": false
+  },
+  {
+    "fuente": "mpf-modelos-manual",
+    "organismo": "mpf",
+    "seccion": "teorico",
+    "orden": 135,
+    "enunciado": "La prórroga de sesiones legislativas:",
+    "tipo": "multiple_choice",
+    "opciones": [
+      {
+        "clave": "a",
+        "texto": "Debe estar siempre limitada en sus atribuciones."
+      },
+      {
+        "clave": "b",
+        "texto": "Transforma en extraordinarias a las sesiones ordinarias."
+      },
+      {
+        "clave": "c",
+        "texto": "Solamente extiende el periodo ordinario de sesiones."
+      }
+    ],
+    "respuesta_correcta": "c",
+    "confianza": "media",
+    "revisada": false
+  },
+  {
+    "fuente": "mpf-modelos-manual",
+    "organismo": "mpf",
+    "seccion": "teorico",
+    "orden": 136,
+    "enunciado": "Las provincias:",
+    "tipo": "multiple_choice",
+    "opciones": [
+      {
+        "clave": "a",
+        "texto": "Tienen una Constitución propia dictada por el Estado Nacional."
+      },
+      {
+        "clave": "b",
+        "texto": "Dictan su propia Constitución conforme a la Constitución Nacional."
+      },
+      {
+        "clave": "c",
+        "texto": "Dictan su propia Constitución con independencia de la Constitución Nacional."
+      }
+    ],
+    "respuesta_correcta": "b",
+    "confianza": "media",
+    "revisada": false
+  },
+  {
+    "fuente": "mpf-modelos-manual",
+    "organismo": "mpf",
+    "seccion": "teorico",
+    "orden": 137,
+    "enunciado": "La violencia contra la mujer es una manifestación:",
+    "tipo": "multiple_choice",
+    "opciones": [
+      {
+        "clave": "a",
+        "texto": "De la especificidad cultural y la riqueza de cada nación."
+      },
+      {
+        "clave": "b",
+        "texto": "De relaciones de poder históricamente desiguales entre el hombre y la mujer."
+      },
+      {
+        "clave": "c",
+        "texto": "De un fenómeno intrafamiliar que afecta exclusivamente al ámbito privado."
+      }
+    ],
+    "respuesta_correcta": "b",
+    "confianza": "media",
+    "revisada": false
+  },
+  {
+    "fuente": "mpf-modelos-manual",
+    "organismo": "mpf",
+    "seccion": "teorico",
+    "orden": 138,
+    "enunciado": "Las modificaciones que introdujo el Código Procesal Penal Federal dispusieron el pase a un sistema:",
+    "tipo": "multiple_choice",
+    "opciones": [
+      {
+        "clave": "a",
+        "texto": "Continental."
+      },
+      {
+        "clave": "b",
+        "texto": "Acusatorio."
+      },
+      {
+        "clave": "c",
+        "texto": "Inquisitivo."
+      }
+    ],
+    "respuesta_correcta": "b",
+    "confianza": "media",
+    "revisada": false
+  },
+  {
+    "fuente": "mpf-modelos-manual",
+    "organismo": "mpf",
+    "seccion": "teorico",
+    "orden": 139,
+    "enunciado": "Los Códigos de forma son:",
+    "tipo": "multiple_choice",
+    "opciones": [
+      {
+        "clave": "a",
+        "texto": "Normas de procedimiento para cada código de fondo."
+      },
+      {
+        "clave": "b",
+        "texto": "Ordenanzas municipales que regulan la administración de justicia local."
+      },
+      {
+        "clave": "c",
+        "texto": "Leyes de derecho común dictadas por el Congreso Nacional."
+      }
+    ],
+    "respuesta_correcta": "a",
+    "confianza": "media",
+    "revisada": false
+  },
+  {
+    "fuente": "mpf-modelos-manual",
+    "organismo": "mpf",
+    "seccion": "teorico",
+    "orden": 140,
+    "enunciado": "Según la Constitución Nacional, en las elecciones los candidatos:",
+    "tipo": "multiple_choice",
+    "opciones": [
+      {
+        "clave": "a",
+        "texto": "No deben hacer públicos sus proyectos hasta el día de la elección."
+      },
+      {
+        "clave": "b",
+        "texto": "Pueden hacer campaña de manera individual."
+      },
+      {
+        "clave": "c",
+        "texto": "Deben postularse a través de los partidos políticos."
+      }
+    ],
+    "respuesta_correcta": "c",
+    "confianza": "media",
+    "revisada": false
+  },
+  {
+    "fuente": "mpf-modelos-manual",
+    "organismo": "mpf",
+    "seccion": "teorico",
+    "orden": 141,
+    "enunciado": "Según la Convención Internacional sobre la Eliminación de todas las formas de Discriminación contra la Mujer (CEDAW), los Estados están obligados a:",
+    "tipo": "multiple_choice",
+    "opciones": [
+      {
+        "clave": "a",
+        "texto": "Las dos opciones anteriores son correctas."
+      },
+      {
+        "clave": "b",
+        "texto": "Tomar distintas medidas (legislativas o de otro carácter) que prohíban la discriminación contra la mujer."
+      },
+      {
+        "clave": "c",
+        "texto": "Adoptar medidas legislativas que protejan la integridad física de las mujeres."
+      }
+    ],
+    "respuesta_correcta": "a",
+    "confianza": "media",
+    "revisada": false
+  },
+  {
+    "fuente": "mpf-modelos-manual",
+    "organismo": "mpf",
+    "seccion": "teorico",
+    "orden": 142,
+    "enunciado": "Según la Constitución Nacional, el Presidente de la Nación podrá:",
+    "tipo": "multiple_choice",
+    "opciones": [
+      {
+        "clave": "a",
+        "texto": "Emitir decretos por razones de necesidad y urgencia, y decretos у delegados."
+      },
+      {
+        "clave": "b",
+        "texto": "Emitir disposiciones legislativas en receso del Congreso Nacional."
+      },
+      {
+        "clave": "c",
+        "texto": "Sancionar leyes en tanto haya sido electo por la mayoría absoluta del electorado y cuente con mayoría en ambas Cámaras."
+      }
+    ],
+    "respuesta_correcta": "a",
+    "confianza": "media",
+    "revisada": false
+  },
+  {
+    "fuente": "mpf-modelos-manual",
+    "organismo": "mpf",
+    "seccion": "teorico",
+    "orden": 143,
+    "enunciado": "¿En qué circunstancias fue conmemorado el Centenario de la Revolución de Mayo?",
+    "tipo": "multiple_choice",
+    "opciones": [
+      {
+        "clave": "a",
+        "texto": "Bajo estado de sitio declarado ante el temor del estallido social."
+      },
+      {
+        "clave": "b",
+        "texto": "En un clima de algarabía resultante de la caída del gobierno conservador de Figueroa Alcorta."
+      },
+      {
+        "clave": "c",
+        "texto": "En el contexto de una prosperidad creciente y progreso paratodos los sectores de la población."
+      }
+    ],
+    "respuesta_correcta": "c",
+    "confianza": "media",
+    "revisada": false
+  },
+  {
+    "fuente": "mpf-modelos-manual",
+    "organismo": "mpf",
+    "seccion": "teorico",
+    "orden": 144,
+    "enunciado": "El golpe de Estado que destituyó a Yrigoyen en 1930 se produjo en el contexto internacional de:",
+    "tipo": "multiple_choice",
+    "opciones": [
+      {
+        "clave": "a",
+        "texto": "Crisis del Estado liberal luego de la crisis económica de 1929."
+      },
+      {
+        "clave": "b",
+        "texto": "El auge del nazismo y comienzos de la Segunda Guerra Mundial."
+      },
+      {
+        "clave": "c",
+        "texto": "Prosperidad económica en el período de entreguerras impulsado por la reconstrucción de Europa."
+      }
+    ],
+    "respuesta_correcta": "a",
+    "confianza": "media",
+    "revisada": false
+  },
+  {
+    "fuente": "mpf-modelos-manual",
+    "organismo": "mpf",
+    "seccion": "teorico",
+    "orden": 145,
+    "enunciado": "¿Qué efecto político tuvo la crisis de 1929 en nuestro país?",
+    "tipo": "multiple_choice",
+    "opciones": [
+      {
+        "clave": "a",
+        "texto": "Fortaleció la democracia."
+      },
+      {
+        "clave": "b",
+        "texto": "Provocó el retorno al poder del conservadurismo."
+      },
+      {
+        "clave": "c",
+        "texto": "Afianzó los gobiernos radicales."
+      }
+    ],
+    "respuesta_correcta": "b",
+    "confianza": "media",
+    "revisada": false
+  },
+  {
+    "fuente": "mpf-modelos-manual",
+    "organismo": "mpf",
+    "seccion": "teorico",
+    "orden": 146,
+    "enunciado": "Específicamente, la Constitución Nacional protege a:",
+    "tipo": "multiple_choice",
+    "opciones": [
+      {
+        "clave": "a",
+        "texto": "Los consumidores y usuarios."
+      },
+      {
+        "clave": "b",
+        "texto": "Los agentes de salud."
+      },
+      {
+        "clave": "c",
+        "texto": "Los proveedores de materia prima."
+      }
+    ],
+    "respuesta_correcta": "a",
+    "confianza": "media",
+    "revisada": false
+  },
+  {
+    "fuente": "mpf-modelos-manual",
+    "organismo": "mpf",
+    "seccion": "teorico",
+    "orden": 147,
+    "enunciado": "Se conoce bajo el nombre de \"desarrollismo\" a:",
+    "tipo": "multiple_choice",
+    "opciones": [
+      {
+        "clave": "a",
+        "texto": "La política económica implementada por Arturo Frondizi durante su presidencia."
+      },
+      {
+        "clave": "b",
+        "texto": "El programa político-económico del segundo gobierno peronista entre 1973 y 1976."
+      },
+      {
+        "clave": "c",
+        "texto": "La ideología dominante en las élites intelectuales del país y América Latina entre 1960 y 1970."
+      }
+    ],
+    "respuesta_correcta": "a",
+    "confianza": "media",
+    "revisada": false
+  },
+  {
+    "fuente": "mpf-modelos-manual",
+    "organismo": "mpf",
+    "seccion": "teorico",
+    "orden": 148,
+    "enunciado": "¿En cuál de estos documentos internacionales sobre derechos humanos se proclaman derechos en relación con la orientación sexual y la identidad de género?",
+    "tipo": "multiple_choice",
+    "opciones": [
+      {
+        "clave": "a",
+        "texto": "Principio de Yogyakarta."
+      },
+      {
+        "clave": "b",
+        "texto": "Reglas de Brasilia."
+      },
+      {
+        "clave": "c",
+        "texto": "Convención de Viena."
+      }
+    ],
+    "respuesta_correcta": "a",
+    "confianza": "media",
+    "revisada": false
+  },
+  {
+    "fuente": "mpf-modelos-manual",
+    "organismo": "mpf",
+    "seccion": "teorico",
+    "orden": 149,
+    "enunciado": "¿Cuál de estas afirmaciones no corresponde al MPF?",
+    "tipo": "multiple_choice",
+    "opciones": [
+      {
+        "clave": "a",
+        "texto": "Goza de autonomía funcional."
+      },
+      {
+        "clave": "b",
+        "texto": "Es un órgano extrapoder."
+      },
+      {
+        "clave": "c",
+        "texto": "Ejerce el control del Poder Judicial."
+      }
+    ],
+    "respuesta_correcta": "c",
+    "confianza": "media",
+    "revisada": false
+  },
+  {
+    "fuente": "mpf-modelos-manual",
+    "organismo": "mpf",
+    "seccion": "teorico",
+    "orden": 150,
+    "enunciado": "Los titulares de las procuradurías: Seleccione una:",
+    "tipo": "multiple_choice",
+    "opciones": [
+      {
+        "clave": "a",
+        "texto": "Actuarán exclusivamente en un ámbito territorial determinado respecto de los casos y fenómenos referidos a su temática."
+      },
+      {
+        "clave": "b",
+        "texto": "Actuarán en todo el territorio nacional respecto de los casos y fenomenos referidos a su temática."
+      },
+      {
+        "clave": "c",
+        "texto": "Ninguna de las dos opciones anteriores es correcta."
+      }
+    ],
+    "respuesta_correcta": "b",
+    "confianza": "media",
+    "revisada": false
+  },
+  {
+    "fuente": "mpf-modelos-manual",
+    "organismo": "mpf",
+    "seccion": "teorico",
+    "orden": 151,
+    "enunciado": "Las invasiones inglesas de 1806 y 1807 al Virreinato de la Plata y la invasión napoleónica a España propiciaron en el continente americano:",
+    "tipo": "multiple_choice",
+    "opciones": [
+      {
+        "clave": "a",
+        "texto": "el inicio de una revolución política que luego se transformó en una revolución de independencia."
+      },
+      {
+        "clave": "b",
+        "texto": "Inestabilidad económica."
+      },
+      {
+        "clave": "c",
+        "texto": "El proceso por la disputa del territorio entre ingleses y franceses."
+      }
+    ],
+    "respuesta_correcta": "a",
+    "confianza": "media",
+    "revisada": false
+  },
+  {
+    "fuente": "mpf-modelos-manual",
+    "organismo": "mpf",
+    "seccion": "teorico",
+    "orden": 152,
+    "enunciado": "¿Qué significa que los ciudadanos tengan el derecho de iniciativa popular?",
+    "tipo": "multiple_choice",
+    "opciones": [
+      {
+        "clave": "a",
+        "texto": "Qué el poder legislativo en ese momento se suspende y queda a cargo de los ciudadanos."
+      },
+      {
+        "clave": "b",
+        "texto": "Que todo ciudadano tiene un derecho individual de presentar un proyecto de ley ante la Cámara de diputados."
+      },
+      {
+        "clave": "c",
+        "texto": "Que existe un mecanismo por medio del cual la ciudadanía participa de modo activo en el procedimiento legislativo."
+      }
+    ],
+    "respuesta_correcta": "c",
+    "confianza": "media",
+    "revisada": false
+  },
+  {
+    "fuente": "mpf-modelos-manual",
+    "organismo": "mpf",
+    "seccion": "teorico",
+    "orden": 153,
+    "enunciado": "Según la Constitución Nacional, el presidente de la nación podrá:",
+    "tipo": "multiple_choice",
+    "opciones": [
+      {
+        "clave": "a",
+        "texto": "Emitir decretos por razones de necesidad y urgencia y decretos delegados."
+      },
+      {
+        "clave": "b",
+        "texto": "Emitir disposiciones legislativas en los periodos de receso del Congreso Nacional."
+      },
+      {
+        "clave": "c",
+        "texto": "Sancionar leyes en tanto haya sido electo por la mayoría absoluta del electorado y cuente con mayoría en ambas cámaras."
+      }
+    ],
+    "respuesta_correcta": "a",
+    "confianza": "media",
+    "revisada": false
+  },
+  {
+    "fuente": "mpf-modelos-manual",
+    "organismo": "mpf",
+    "seccion": "teorico",
+    "orden": 154,
+    "enunciado": "Durante la segunda presidencia de Yrigoyen:",
+    "tipo": "multiple_choice",
+    "opciones": [
+      {
+        "clave": "a",
+        "texto": "Se estableció el derecho al sueldo anual complementario."
+      },
+      {
+        "clave": "b",
+        "texto": "Se estableció la jornada laboral de 8 horas."
+      },
+      {
+        "clave": "c",
+        "texto": "Se estableció el derecho a las vacaciones."
+      }
+    ],
+    "respuesta_correcta": "b",
+    "confianza": "media",
+    "revisada": false
+  },
+  {
+    "fuente": "mpf-modelos-manual",
+    "organismo": "mpf",
+    "seccion": "teorico",
+    "orden": 155,
+    "enunciado": "Ante la creciente protesta social encabezada por el movimiento obrero a comienzos del siglo XX, el régimen oligárquico:",
+    "tipo": "multiple_choice",
+    "opciones": [
+      {
+        "clave": "a",
+        "texto": "Dictó la Ley de Educación Pública que determina la escuela laica, gratuita y obligatoria, creó reformatorios y consolidó el sistema penitenciario"
+      },
+      {
+        "clave": "b",
+        "texto": "Dictó la Ley de Residencia y la Ley de Defensa Social denominadas “Leyes represivas”"
+      },
+      {
+        "clave": "c",
+        "texto": "Suprimió el derecho de huelga y prohibió a los extranjeros adoptar la nacionalidad argentina"
+      }
+    ],
+    "respuesta_correcta": "b",
+    "confianza": "media",
+    "revisada": false
+  },
+  {
+    "fuente": "mpf-modelos-manual",
+    "organismo": "mpf",
+    "seccion": "teorico",
+    "orden": 156,
+    "enunciado": "Los derechos humanos:",
+    "tipo": "multiple_choice",
+    "opciones": [
+      {
+        "clave": "a",
+        "texto": "Son inherentes a la persona humana"
+      },
+      {
+        "clave": "b",
+        "texto": "Dependen de su reconocimiento por el Estado"
+      },
+      {
+        "clave": "c",
+        "texto": "Están acotados a la cultura de una persona"
+      }
+    ],
+    "respuesta_correcta": "a",
+    "confianza": "media",
+    "revisada": false
+  },
+  {
+    "fuente": "mpf-modelos-manual",
+    "organismo": "mpf",
+    "seccion": "teorico",
+    "orden": 157,
+    "enunciado": "¿En qué condiciones se produjo la Guerra de Malvinas?",
+    "tipo": "multiple_choice",
+    "opciones": [
+      {
+        "clave": "a",
+        "texto": "Conflictos internacionales"
+      },
+      {
+        "clave": "b",
+        "texto": "Inestabilidad del régimen militar argentino"
+      },
+      {
+        "clave": "c",
+        "texto": "Lucha armada"
+      }
+    ],
+    "respuesta_correcta": "b",
+    "confianza": "media",
+    "revisada": false
+  },
+  {
+    "fuente": "mpf-modelos-manual",
+    "organismo": "mpf",
+    "seccion": "teorico",
+    "orden": 158,
+    "enunciado": "El tipo de violencia sexual contenido en el art. 5 de la Ley N° 26485:",
+    "tipo": "multiple_choice",
+    "opciones": [
+      {
+        "clave": "a",
+        "texto": "No exige convivencia"
+      },
+      {
+        "clave": "b",
+        "texto": "Excluye la esclavitud"
+      },
+      {
+        "clave": "c",
+        "texto": "que se produzca acceso carnal"
+      }
+    ],
+    "respuesta_correcta": "a",
+    "confianza": "media",
+    "revisada": false
+  },
+  {
+    "fuente": "mpf-modelos-manual",
+    "organismo": "mpf",
+    "seccion": "teorico",
+    "orden": 159,
+    "enunciado": "¿Qué carácter se le dio al nuevo Código Procesal Penal aprobado en 2019?",
+    "tipo": "multiple_choice",
+    "opciones": [
+      {
+        "clave": "a",
+        "texto": "Confederado"
+      },
+      {
+        "clave": "b",
+        "texto": "Federal"
+      },
+      {
+        "clave": "c",
+        "texto": "Central"
+      }
+    ],
+    "respuesta_correcta": "b",
+    "confianza": "media",
+    "revisada": false
+  },
+  {
+    "fuente": "mpf-modelos-manual",
+    "organismo": "mpf",
+    "seccion": "teorico",
+    "orden": 160,
+    "enunciado": "¿Cómo se denomina el tipo de violencia contra las mujeres que se ejerce en las organizaciones e instituciones públicas?",
+    "tipo": "multiple_choice",
+    "opciones": [
+      {
+        "clave": "a",
+        "texto": "Violencia organizacional contra las mujeres"
+      },
+      {
+        "clave": "b",
+        "texto": "violencia institucional contra las mujeres"
+      },
+      {
+        "clave": "c",
+        "texto": "violencia sindical contra las mujeres"
+      }
+    ],
+    "respuesta_correcta": "b",
+    "confianza": "media",
+    "revisada": false
+  },
+  {
+    "fuente": "mpf-modelos-manual",
+    "organismo": "mpf",
+    "seccion": "teorico",
+    "orden": 161,
+    "enunciado": "En 1880 durante la presidencia de Nicolás Avellaneda, se tomó una medida que resolvía una de las principales contradicciones que se venían arrastrando desde 1810 ¿Cuál fué?",
+    "tipo": "multiple_choice",
+    "opciones": [
+      {
+        "clave": "a",
+        "texto": "La unificación de la Confederación y Buenos Aires"
+      },
+      {
+        "clave": "b",
+        "texto": "La federalización de Buenos Aires"
+      },
+      {
+        "clave": "c",
+        "texto": "La eliminación del sistema de caudillismo"
+      }
+    ],
+    "respuesta_correcta": "b",
+    "confianza": "media",
+    "revisada": false
+  },
+  {
+    "fuente": "mpf-modelos-manual",
+    "organismo": "mpf",
+    "seccion": "teorico",
+    "orden": 162,
+    "enunciado": "Frente a la acusación de una persona, la Convención Americana de DH garantiza:",
+    "tipo": "multiple_choice",
+    "opciones": [
+      {
+        "clave": "a",
+        "texto": "Que deba ser oída por un juez o tribunal competente, independiente e imparcial"
+      },
+      {
+        "clave": "b",
+        "texto": "Que deba ser oída por un juez que le asigne el PE"
+      },
+      {
+        "clave": "c",
+        "texto": "Que deba ser oída por cualquier persona dentro de la administración de justicia"
+      }
+    ],
+    "respuesta_correcta": "a",
+    "confianza": "media",
+    "revisada": false
+  },
+  {
+    "fuente": "mpf-modelos-manual",
+    "organismo": "mpf",
+    "seccion": "teorico",
+    "orden": 163,
+    "enunciado": "¿Qué rol cumplen los jueces en el nuevo Código Procesal Penal Federal?",
+    "tipo": "multiple_choice",
+    "opciones": [
+      {
+        "clave": "i",
+        "texto": "Garantizan que se cumpla la ley durante el procedimiento penal, además de controlar que se respeten las garantías constitucionales"
+      },
+      {
+        "clave": "ii",
+        "texto": "Tienen a cargo la dirección exclusiva de los casos, definen estrategias de investigación y pueden armar equipos de trabajo multidisciplinarios con diferentes áreas especializadas"
+      },
+      {
+        "clave": "iii",
+        "texto": "Promueven la acción penal contra los autores y partícipes de un hecho criminal"
+      }
+    ],
+    "respuesta_correcta": "i",
+    "confianza": "media",
+    "revisada": false
+  },
+  {
+    "fuente": "mpf-modelos-manual",
+    "organismo": "mpf",
+    "seccion": "teorico",
+    "orden": 164,
+    "enunciado": "El nuevo Código Procesal Penal Federal permite:",
+    "tipo": "multiple_choice",
+    "opciones": [
+      {
+        "clave": "a",
+        "texto": "Ordenar de manera más precisa los expedientes escritos para llevar un registro más exhaustivo de los casos."
+      },
+      {
+        "clave": "b",
+        "texto": "Concentrar los esfuerzos y estrategias de fiscales en delitos de impacto social y de interés público."
+      },
+      {
+        "clave": "c",
+        "texto": "Diversificar los esfuerzos y estrategias de fiscales en múltiples delitos de bajo impacto social."
+      }
+    ],
+    "respuesta_correcta": "b",
+    "confianza": "media",
+    "revisada": false
+  },
+  {
+    "fuente": "mpf-modelos-manual",
+    "organismo": "mpf",
+    "seccion": "teorico",
+    "orden": 165,
+    "enunciado": "La Unión Cívica Radical se constituyó en el marco de:",
+    "tipo": "multiple_choice",
+    "opciones": [
+      {
+        "clave": "a",
+        "texto": "La oposición a un gobierno conservador."
+      },
+      {
+        "clave": "b",
+        "texto": "La oposición a un golpe militar."
+      },
+      {
+        "clave": "c",
+        "texto": "La oposición a un gobierno fascista."
+      }
+    ],
+    "respuesta_correcta": "a",
+    "confianza": "media",
+    "revisada": false
+  },
+  {
+    "fuente": "mpf-modelos-manual",
+    "organismo": "mpf",
+    "seccion": "teorico",
+    "orden": 166,
+    "enunciado": "El nuevo Código Procesal Penal Federal permite:",
+    "tipo": "multiple_choice",
+    "opciones": [
+      {
+        "clave": "a",
+        "texto": "Ordenar de manera más precisa los expedientes escritos para llevar un registro más exhaustivo de los casos."
+      },
+      {
+        "clave": "b",
+        "texto": "Concentrar los esfuerzos y estrategias de fiscales en delitos de impacto social y de interés público."
+      },
+      {
+        "clave": "c",
+        "texto": "Diversificar los esfuerzos y estrategias de fiscales en múltiples delitos de bajo impacto social."
+      }
+    ],
+    "respuesta_correcta": "b",
+    "confianza": "media",
+    "revisada": false
+  },
+  {
+    "fuente": "mpf-modelos-manual",
+    "organismo": "mpf",
+    "seccion": "teorico",
+    "orden": 167,
+    "enunciado": "¿Qué nuevo actor emergió en el espacio político en el marco de la transición a la democracia?",
+    "tipo": "multiple_choice",
+    "opciones": [
+      {
+        "clave": "a",
+        "texto": "Los organismos de Derechos Humanos."
+      },
+      {
+        "clave": "b",
+        "texto": "Los partidos políticos."
+      },
+      {
+        "clave": "c",
+        "texto": "Los sindicatos."
+      }
+    ],
+    "respuesta_correcta": "a",
+    "confianza": "media",
+    "revisada": false
+  }
+]

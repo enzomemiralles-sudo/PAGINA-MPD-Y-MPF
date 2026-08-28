@@ -181,7 +181,7 @@ No entra historia, ni educación cívica, ni derecho procesal penal. Eso es del 
 
 *Al estudiar el Régimen Jurídico: el PDF oficial trae entre paréntesis los textos anteriores de cada artículo. Leé el vigente.*
 
-> *Son tres textos y entran completos. Empezá por el Régimen Jurídico —es el estatuto del personal: categorías, ingreso, ascensos, derechos y deberes— y por eso es donde más se pierde gente; acordate de leer el texto vigente y no los anteriores que el PDF trae entre paréntesis. Después la Ley 27.149, con atención a la estructura del organismo y las funciones. La Constitución, repasando el art. 120 y la parte dogmática. Leelos enteros al menos una vez antes de empezar a resumir. **\[HUECO — link al material de Nexo\]***
+> *Son tres textos y entran completos. Empezá por el Régimen Jurídico —es el estatuto del personal: categorías, ingreso, ascensos, derechos y deberes— y por eso es donde más se pierde gente; acordate de leer el texto vigente y no los anteriores que el PDF trae entre paréntesis. Después la Ley 27.149, con atención a la estructura del organismo y las funciones. La Constitución, repasando el art. 120 y la parte dogmática. Leelos enteros al menos una vez antes de empezar a resumir. **[El material de estudio de Nexo está acá](https://drive.google.com/drive/folders/1Cetf622l_4iwmPdSGYq56LtfNGVsFNpk).***
 >
 
 ## Resultados, orden de mérito e impugnación

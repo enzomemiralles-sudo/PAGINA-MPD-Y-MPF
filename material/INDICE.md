@@ -16,9 +16,29 @@ Estados: 🔴 falta · 🟡 convertido a JSON · 🟠 en el repo, sin publicar �
 | `mpffaq.md` | MPF | 87 preguntas frecuentes, salidas del pipeline de WhatsApp | 🟠 |
 | `mpd-inscripcion.md` | MPD | Guía completa de inscripción y examen, 15 secciones | 🟠 |
 | `mpd-preguntas.md` | MPD | 15 respuestas para los grupos de WhatsApp | 🟠 |
+| `metodologia/mpd-formato-examen.md` | MPD | Estructura, puntaje y reglas del tipeo | 🟡 |
+| `metodologia/mpf-formato-examen.md` | MPF | Estructura, temario y bibliografía | 🟡 |
+| `preguntas/json/mpf-modelos-manual.json` | MPF | 167 preguntas con respuesta | 🟡 |
+| `preguntas/json/mpf-preguntero-nexo.json` | MPF | 23 preguntas con respuesta | 🟡 |
+| `preguntas/json/mpd-examen-caba.json` | MPD | 10 preguntas de un examen real | 🟡 |
 
-Las tres son de proceso, no de estudio: explican cómo inscribirse y cómo es el
-examen. **Ninguna contiene preguntas de examen con su respuesta correcta.**
+**200 preguntas convertidas**, cada una con sus tres opciones y su respuesta.
+Ninguna está cargada todavía: falta el script que las suba y falta la revisión
+de `preguntas/REVISAR.md`.
+
+### De dónde sale la respuesta correcta
+
+De ningún lado escrito: en los dos documentos de Nexo está **resaltada en
+verde**, con un rectángulo dibujado detrás del renglón. `scripts/preguntas_pdf.py`
+la deduce de la superposición geométrica entre cada línea y esos rectángulos, y
+verifica que cada pregunta termine con exactamente un resaltado y tres opciones.
+
+Eso vuelve el JSON regenerable: si aparece una versión corregida de un PDF, se
+reemplaza en `preguntas/crudo/` y se corre el script de nuevo.
+
+```bash
+python3 scripts/preguntas_pdf.py
+```
 
 ### Detalle de `mpffaq.md`
 
@@ -47,15 +67,15 @@ Ordenado por lo que bloquea, no por organismo.
 
 ### Bloquea el simulador
 
-| Qué | Organismo | Por qué bloquea |
+| Qué | Organismo | Estado |
 |---|---|---|
-| Preguntero con respuestas correctas | MPD | Sin esto no hay qué simular. La tabla `questions` está vacía. |
-| Preguntero con respuestas correctas | MPF | Ídem. |
-| Metodología de tipeo | MPD | El TA tiene una instancia de tipeo que no se puede evaluar sin sus reglas. |
-| Práctico de ejemplo | MPF | El formato de la instancia práctica. |
+| Preguntas con respuesta correcta | MPF | ✅ 190 |
+| Preguntas con respuesta correcta | MPD | ✅ 10 |
+| Reglas de puntaje y tipeo | MPD | ✅ completas y verificadas contra un examen real |
+| Reglas de puntaje | MPF | 🔴 **no están publicadas.** El documento oficial no dice cuánto suma, cuánto resta ni el mínimo |
+| Más preguntas del MPD | MPD | 🔴 diez alcanzan para un examen, no para practicar |
 
-Además falta escribir el cargador: hoy no hay ningún script que meta preguntas
-en Supabase. `scripts/` es sólo el pipeline de FAQs.
+Falta el cargador: ningún script sube preguntas a Supabase todavía.
 
 ### Bloquea el asistente
 
@@ -67,9 +87,14 @@ en Supabase. `scripts/` es sólo el pipeline de FAQs.
 
 | Qué | Organismo | Estado |
 |---|---|---|
-| Carpeta de material de estudio | MPD | **Tenemos el link.** Drive, *MATERIAL DE ESTUDIO*, de nexoderecho@gmail.com |
-| Carpeta de material de estudio | MPF | Falta el link |
-| Manual de inscripción | MPF | Falta |
+| Carpeta de material de estudio | MPD | ✅ [MATERIAL DE ESTUDIO](https://drive.google.com/drive/folders/1Cetf622l_4iwmPdSGYq56LtfNGVsFNpk) — ya enlazada desde `mpd-inscripcion.md` |
+| Carpeta de material de estudio | MPF | ✅ [MATERIAL DE ESTUDIO](https://drive.google.com/drive/folders/1IzjQ4Y0rMe_JEMD0w8qaAB3fauCFNPHq) — seis carpetas, una por eje del examen |
+| Manual de inscripción | MPF | 🔴 falta |
+
+La del MPF está ordenada por los mismos ejes que evalúa el examen: GENERO,
+MINISTERIO PUBLICO FISCAL, HISTORIA ARGENTINA, FORMACION ETICA Y CIUDADANA,
+SISTEMA CONSTITUCIONAL y NUEVO CODIGO PENAL PROCESAL FEDERAL. Sirve como
+taxonomía para etiquetar las preguntas por tema.
 
 ### Marca
 
