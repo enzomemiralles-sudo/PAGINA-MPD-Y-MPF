@@ -1,0 +1,1507 @@
+[
+  {
+    "fuente": "mpd-guia-preguntas",
+    "organismo": "mpd",
+    "seccion": "teorico",
+    "orden": 1,
+    "enunciado": "El/la sometido/a procedimiento sancionatorio será considerado/a inocente:",
+    "tipo": "multiple_choice",
+    "opciones": [
+      {
+        "clave": "a",
+        "texto": "Hasta que una resolución firme declare su responsabilidad."
+      },
+      {
+        "clave": "b",
+        "texto": "Siempre que la opinión unánime de todos los integrantes de la dependencia en la que presta funciones sea positiva en cuanto a su persona."
+      },
+      {
+        "clave": "c",
+        "texto": "Hasta el momento previo a prestar declaración en dicho procedimiento sancionatorio."
+      }
+    ],
+    "respuesta_correcta": "a",
+    "confianza": "alta",
+    "revisada": false,
+    "corroborada_por": [
+      "mpd-examen-caba"
+    ]
+  },
+  {
+    "fuente": "mpd-guia-preguntas",
+    "organismo": "mpd",
+    "seccion": "teorico",
+    "orden": 2,
+    "enunciado": "La relación de empleo del agente con el MInisterio Público de la Defensa concluye, entre otras, en las siguientes hipótesis:",
+    "tipo": "multiple_choice",
+    "opciones": [
+      {
+        "clave": "a",
+        "texto": "Ambas son correctas."
+      },
+      {
+        "clave": "b",
+        "texto": "Renuncia aceptada."
+      },
+      {
+        "clave": "c",
+        "texto": "Cesantía o exoneración."
+      }
+    ],
+    "respuesta_correcta": "a",
+    "confianza": "media",
+    "revisada": false
+  },
+  {
+    "fuente": "mpd-guia-preguntas",
+    "organismo": "mpd",
+    "seccion": "teorico",
+    "orden": 3,
+    "enunciado": "Es causa para imponer la exoneración de Funcionarios/as y/o Empleados del Ministerio Público de la Defensa la siguiente:",
+    "tipo": "multiple_choice",
+    "opciones": [
+      {
+        "clave": "a",
+        "texto": "Sentencia condenatoria firme por delito que afectare la imagen de la República Argentina en el exterior."
+      },
+      {
+        "clave": "b",
+        "texto": "Sentencia condenatoria firme por delito que afectare la imagen del Poder Judicial de la Nación."
+      },
+      {
+        "clave": "c",
+        "texto": "Sentencia condenatoria firme por delito que afectare la imagen del Ministerio Público de la Defensa."
+      }
+    ],
+    "respuesta_correcta": "c",
+    "confianza": "media",
+    "revisada": false
+  },
+  {
+    "fuente": "mpd-guia-preguntas",
+    "organismo": "mpd",
+    "seccion": "teorico",
+    "orden": 4,
+    "enunciado": "El personal del MInisterio Público de la Defensa tiene derecho a la retribución de sus servicios:",
+    "tipo": "multiple_choice",
+    "opciones": [
+      {
+        "clave": "a",
+        "texto": "De conformidad con la calificación promedio que surja a su respecto de la votación anónima de todos los integrantes de la dependencia en la que presta funciones."
+      },
+      {
+        "clave": "b",
+        "texto": "Con arreglo a las escalas establecidas y en función de sus respectivas categorías de revista."
+      },
+      {
+        "clave": "c",
+        "texto": "De conformidad con la calificación que otorgue a su respecto en forma mensual el/la titular de la dependencia en la que presta funciones."
+      }
+    ],
+    "respuesta_correcta": "b",
+    "confianza": "media",
+    "revisada": false
+  },
+  {
+    "fuente": "mpd-guia-preguntas",
+    "organismo": "mpd",
+    "seccion": "teorico",
+    "orden": 5,
+    "enunciado": "Todo/a Magistrado/a y/o agente que acredite con la certificación correspondiente que concurrió a donar sangre, tendrá derecho a:",
+    "tipo": "multiple_choice",
+    "opciones": [
+      {
+        "clave": "a",
+        "texto": "La justificación de su inasistencia laboral de ese día y del siguiente."
+      },
+      {
+        "clave": "b",
+        "texto": "Una licencia especial de dos horas al inicio de dicho día laboral."
+      },
+      {
+        "clave": "c",
+        "texto": "La justificación de su inasistencia laboral de ese día."
+      }
+    ],
+    "respuesta_correcta": "c",
+    "confianza": "media",
+    "revisada": false
+  },
+  {
+    "fuente": "mpd-guia-preguntas",
+    "organismo": "mpd",
+    "seccion": "teorico",
+    "orden": 6,
+    "enunciado": "El Defensor General de la Nación:",
+    "tipo": "multiple_choice",
+    "opciones": [
+      {
+        "clave": "a",
+        "texto": "Envía propuestas a la Corte Suprema de Justicia de la Nación para el dictado de leyes para la eficaz prestación del servicio."
+      },
+      {
+        "clave": "b",
+        "texto": "Dicta los reglamentos generales necesarios para la eficaz prestación del servicio."
+      },
+      {
+        "clave": "c",
+        "texto": "Solicita a la Procuración General de la Nación la reglamentación de casos puntuales para la correcta prestación del servicio."
+      }
+    ],
+    "respuesta_correcta": "b",
+    "confianza": "media",
+    "revisada": false
+  },
+  {
+    "fuente": "mpd-guia-preguntas",
+    "organismo": "mpd",
+    "seccion": "teorico",
+    "orden": 7,
+    "enunciado": "El Defensor General de la Nación tiene como deber:",
+    "tipo": "multiple_choice",
+    "opciones": [
+      {
+        "clave": "a",
+        "texto": "Ejercer ante la Corte Suprema de Justicia de la Nación las facultades del Ministerio Público de la Defensa."
+      },
+      {
+        "clave": "b",
+        "texto": "Ejercer ante la Justicia Ordinaria las facultades del Ministerio Público de la Defensa."
+      },
+      {
+        "clave": "c",
+        "texto": "Ejercer ante el Consejo de la Magistratura las facultades del Ministerio Público de la Defensa."
+      }
+    ],
+    "respuesta_correcta": "a",
+    "confianza": "media",
+    "revisada": false
+  },
+  {
+    "fuente": "mpd-guia-preguntas",
+    "organismo": "mpd",
+    "seccion": "teorico",
+    "orden": 8,
+    "enunciado": "En todas las causas en que actúan los Defensores Públicos:",
+    "tipo": "multiple_choice",
+    "opciones": [
+      {
+        "clave": "a",
+        "texto": "Los jueces regulan los honorarios por su actuación conforme las tasas vigentes emitidas por el INDEC en forma mensual, no pudiendo superar el salario mínimo vital y móvil."
+      },
+      {
+        "clave": "b",
+        "texto": "Los jueces no regulan honorarios por su actuación por las condiciones de vulnerabilidad de su representado."
+      },
+      {
+        "clave": "c",
+        "texto": "Los jueces regulan los honorarios por su actuación, de acuerdo con los aranceles vigentes para abogados y procuradores."
+      }
+    ],
+    "respuesta_correcta": "c",
+    "confianza": "media",
+    "revisada": false
+  },
+  {
+    "fuente": "mpd-guia-preguntas",
+    "organismo": "mpd",
+    "seccion": "teorico",
+    "orden": 9,
+    "enunciado": "No podrán desempeñarse en una misma dependencia:",
+    "tipo": "multiple_choice",
+    "opciones": [
+      {
+        "clave": "a",
+        "texto": "Dos cónyuges o personas que mantengan una unión convivencial."
+      },
+      {
+        "clave": "b",
+        "texto": "Dos personas que hayan cursado estudios secundarios en el mismo establecimiento."
+      },
+      {
+        "clave": "c",
+        "texto": "Dos extranjeros."
+      }
+    ],
+    "respuesta_correcta": "a",
+    "confianza": "alta",
+    "revisada": false,
+    "corroborada_por": [
+      "mpd-examen-caba"
+    ]
+  },
+  {
+    "fuente": "mpd-guia-preguntas",
+    "organismo": "mpd",
+    "seccion": "teorico",
+    "orden": 10,
+    "enunciado": "Los Defensores Públicos Oficiales deberán:",
+    "tipo": "multiple_choice",
+    "opciones": [
+      {
+        "clave": "a",
+        "texto": "Patrocinar a las personas sin recursos en sus trámites judiciales sólo en aquellos casos en los que estiman que les asiste razón."
+      },
+      {
+        "clave": "b",
+        "texto": "Contestar las consultas que les formulen personas carentes de recursos."
+      },
+      {
+        "clave": "c",
+        "texto": "Intervenir en los expedientes sólo cuando ya no han sido designados por el juez."
+      }
+    ],
+    "respuesta_correcta": "b",
+    "confianza": "media",
+    "revisada": false
+  },
+  {
+    "fuente": "mpd-guia-preguntas",
+    "organismo": "mpd",
+    "seccion": "teorico",
+    "orden": 11,
+    "enunciado": "El Ministerio Público de la Defensa debe ser consultado:",
+    "tipo": "multiple_choice",
+    "opciones": [
+      {
+        "clave": "a",
+        "texto": "En oportunidad de analizarse y debatirse proyectos de ley o reglamentación de su incumbencia."
+      },
+      {
+        "clave": "b",
+        "texto": "En oportunidad de analizar y debatirse el presupuesto nacional para el período de curso."
+      },
+      {
+        "clave": "c",
+        "texto": "En oportunidad de nombrarse un nuevo miembro de la Corte Suprema de Justicia de la Nación."
+      }
+    ],
+    "respuesta_correcta": "a",
+    "confianza": "alta",
+    "revisada": false,
+    "corroborada_por": [
+      "mpd-examen-caba"
+    ]
+  },
+  {
+    "fuente": "mpd-guia-preguntas",
+    "organismo": "mpd",
+    "seccion": "teorico",
+    "orden": 12,
+    "enunciado": "El/la Magistrado/a deberá considerar las indicaciones de su defendido/a:",
+    "tipo": "multiple_choice",
+    "opciones": [
+      {
+        "clave": "a",
+        "texto": "Siempre, si su defendido/a fuera abogado/a."
+      },
+      {
+        "clave": "b",
+        "texto": "Siempre, si la posición de su defendido/a contara con el aval del juez de la causa."
+      },
+      {
+        "clave": "c",
+        "texto": "Pero manteniendo siempre su independencia técnica para la solución del caso que resulte más beneficiosa para el/ la imputado/a."
+      }
+    ],
+    "respuesta_correcta": "c",
+    "confianza": "media",
+    "revisada": false
+  },
+  {
+    "fuente": "mpd-guia-preguntas",
+    "organismo": "mpd",
+    "seccion": "teorico",
+    "orden": 13,
+    "enunciado": "El Ministerio Público de la Defensa se relaciona con el Poder Ejecutivo:",
+    "tipo": "multiple_choice",
+    "opciones": [
+      {
+        "clave": "a",
+        "texto": "A través de la Corte Suprema de Justicia de la Nación."
+      },
+      {
+        "clave": "b",
+        "texto": "A través del Ministerio de Justicia y Derechos Humanos de la Nación."
+      },
+      {
+        "clave": "c",
+        "texto": "A través de la Procuración General de la Nación."
+      }
+    ],
+    "respuesta_correcta": "b",
+    "confianza": "media",
+    "revisada": false
+  },
+  {
+    "fuente": "mpd-guia-preguntas",
+    "organismo": "mpd",
+    "seccion": "teorico",
+    "orden": 14,
+    "enunciado": "El Defensor/a General de la Nación no podrá imponer sanciones disciplinarias a Magistrados/as, Funcionarios/as y Empleados/as del Ministerio Público de la Defensa:",
+    "tipo": "multiple_choice",
+    "opciones": [
+      {
+        "clave": "a",
+        "texto": "Fuera de las establecidas en la Constitución Nacional."
+      },
+      {
+        "clave": "b",
+        "texto": "Fuera de las establecidas en el Código Penal."
+      },
+      {
+        "clave": "c",
+        "texto": "Fuera de las establecidas en el Régimen Jurídico respectivo."
+      }
+    ],
+    "respuesta_correcta": "c",
+    "confianza": "media",
+    "revisada": false
+  },
+  {
+    "fuente": "mpd-guia-preguntas",
+    "organismo": "mpd",
+    "seccion": "teorico",
+    "orden": 15,
+    "enunciado": "El Defensor General de la Nación deberá asegurar:",
+    "tipo": "multiple_choice",
+    "opciones": [
+      {
+        "clave": "a",
+        "texto": "La autarquía financiera del Ministerio Público de la Defensa administrando un presupuesto de recursos y gastos atendido con cargo al Tesoro Nacional y con recursos propios."
+      },
+      {
+        "clave": "b",
+        "texto": "La contratación de estudios contables externos para que se encarguen del manejo administrativo financiero de la institución."
+      },
+      {
+        "clave": "c",
+        "texto": "La delegación del manejo administrativo financiero de la institución en la Procuración General de la Nación."
+      }
+    ],
+    "respuesta_correcta": "a",
+    "confianza": "media",
+    "revisada": false
+  },
+  {
+    "fuente": "mpd-guia-preguntas",
+    "organismo": "mpd",
+    "seccion": "teorico",
+    "orden": 16,
+    "enunciado": "Los/las Magistrados/as podrán ser pasibles de la sanción de apercibimiento cuando:",
+    "tipo": "multiple_choice",
+    "opciones": [
+      {
+        "clave": "a",
+        "texto": "Brinden un trato sospechoso a sus defendidos/as y/o representados/as y a las partes procesales, víctimas y testigos en el proceso."
+      },
+      {
+        "clave": "b",
+        "texto": "Brinden un trato excesivamente respetuoso a sus defendidos/as y/o representados/as."
+      },
+      {
+        "clave": "c",
+        "texto": "Se comporten de manera indecorosa, afectando la imagen del Ministerio Público de la Defensa."
+      }
+    ],
+    "respuesta_correcta": "c",
+    "confianza": "media",
+    "revisada": false
+  },
+  {
+    "fuente": "mpd-guia-preguntas",
+    "organismo": "mpd",
+    "seccion": "teorico",
+    "orden": 17,
+    "enunciado": "Constituyen recursos propios del Ministerio Público de la Defensa:",
+    "tipo": "multiple_choice",
+    "opciones": [
+      {
+        "clave": "a",
+        "texto": "Los honorarios regulados por la actuación del Ministerio Público de la Defensa."
+      },
+      {
+        "clave": "b",
+        "texto": "El dinero que ingresa en concepto de tasa de justicia."
+      },
+      {
+        "clave": "c",
+        "texto": "Lo ingresado en concepto de ayuda económica y financiera del Programa de Estímulo dependiente del Consejo de la Magistratura."
+      }
+    ],
+    "respuesta_correcta": "a",
+    "confianza": "alta",
+    "revisada": false,
+    "corroborada_por": [
+      "mpd-examen-caba"
+    ]
+  },
+  {
+    "fuente": "mpd-guia-preguntas",
+    "organismo": "mpd",
+    "seccion": "teorico",
+    "orden": 18,
+    "enunciado": "El Órgano Nacional de Revisión de Salud Mental, creado por la Ley 26.657 y su reglamentación en el ámbito del Ministerio Público de la Defensa, tiene como función:",
+    "tipo": "multiple_choice",
+    "opciones": [
+      {
+        "clave": "a",
+        "texto": "Proteger los derechos humanos de los usuarios de los servicios de salud mental."
+      },
+      {
+        "clave": "b",
+        "texto": "Proteger los derechos humanos de las personas privadas de su libertad."
+      },
+      {
+        "clave": "c",
+        "texto": "Proteger los derechos humanos de los menores."
+      }
+    ],
+    "respuesta_correcta": "a",
+    "confianza": "media",
+    "revisada": false
+  },
+  {
+    "fuente": "mpd-guia-preguntas",
+    "organismo": "mpd",
+    "seccion": "teorico",
+    "orden": 19,
+    "enunciado": "El Defensor General de la Nación deberá:",
+    "tipo": "multiple_choice",
+    "opciones": [
+      {
+        "clave": "a",
+        "texto": "Elevar un informe anual, y por escrito, a la Auditoría General de la Nación, sobre el desempeño de las funciones asignadas al Ministerio Público."
+      },
+      {
+        "clave": "b",
+        "texto": "Elevar un informe anual, y por escrito, a la Corte Suprema de Justicia de la Nación, sobre el desempeño de las funciones asignadas al Ministerio Público."
+      },
+      {
+        "clave": "c",
+        "texto": "Remitir anualmente un informe detallado a la Comisión Bicameral de lo actuado por los órganos bajo su competencia."
+      }
+    ],
+    "respuesta_correcta": "c",
+    "confianza": "media",
+    "revisada": false
+  },
+  {
+    "fuente": "mpd-guia-preguntas",
+    "organismo": "mpd",
+    "seccion": "teorico",
+    "orden": 20,
+    "enunciado": "El imputado que sea asistido por un Defensor Público Oficial en causa penal:",
+    "tipo": "multiple_choice",
+    "opciones": [
+      {
+        "clave": "a",
+        "texto": "Debe solventar la defensa, siempre que cuente con medios suficientes."
+      },
+      {
+        "clave": "b",
+        "texto": "Debe solventar la defensa, en caso de absolución y de contar con los medios suficientes."
+      },
+      {
+        "clave": "c",
+        "texto": "Debe solventar la defensa, en caso de condena, si cuenta con medios suficientes."
+      }
+    ],
+    "respuesta_correcta": "c",
+    "confianza": "media",
+    "revisada": false
+  },
+  {
+    "fuente": "mpd-guia-preguntas",
+    "organismo": "mpd",
+    "seccion": "teorico",
+    "orden": 21,
+    "enunciado": "El Defensor General de la Nación podrá:",
+    "tipo": "multiple_choice",
+    "opciones": [
+      {
+        "clave": "a",
+        "texto": "Presidir las sesiones del Senado."
+      },
+      {
+        "clave": "b",
+        "texto": "Designar a los miembros de la Corte Suprema de Justicia de la Nación."
+      },
+      {
+        "clave": "c",
+        "texto": "Patrocinar y asistir técnicamente ante los organismos internacionales, en los casos que corresponda, por sí o por delegación en un magistrado del Ministerio Público de la Defensa, conforme la reglamentación específica que regule ese accionar."
+      }
+    ],
+    "respuesta_correcta": "c",
+    "confianza": "media",
+    "revisada": false
+  },
+  {
+    "fuente": "mpd-guia-preguntas",
+    "organismo": "mpd",
+    "seccion": "teorico",
+    "orden": 22,
+    "enunciado": "El Procurador General de la Nación y el Defensor General de la Nación son:",
+    "tipo": "multiple_choice",
+    "opciones": [
+      {
+        "clave": "a",
+        "texto": "Representantes del pueblo de la Nación."
+      },
+      {
+        "clave": "b",
+        "texto": "Empleados jerarquizados de la Nación."
+      },
+      {
+        "clave": "c",
+        "texto": "Autoridades de la Nación."
+      }
+    ],
+    "respuesta_correcta": "c",
+    "confianza": "media",
+    "revisada": false
+  },
+  {
+    "fuente": "mpd-guia-preguntas",
+    "organismo": "mpd",
+    "seccion": "teorico",
+    "orden": 23,
+    "enunciado": "Los Jueces y Tribunales pueden imponer a los miembros del Ministerio Público de la Defensa:",
+    "tipo": "multiple_choice",
+    "opciones": [
+      {
+        "clave": "a",
+        "texto": "Las mismas sanciones disciplinarias que determinan las leyes para el personal jerárquico del Poder Judicial de la Nación por faltas cometidas contra su autoridad o decoro."
+      },
+      {
+        "clave": "b",
+        "texto": "Las mismas sanciones disciplinarias que determinan las leyes para los litigantes por faltas cometidas contra su autoridad o decoro."
+      },
+      {
+        "clave": "c",
+        "texto": "Las mismas sanciones disciplinarias que determinan las leyes para los Ministros del Poder Ejecutivo Nacional por faltas cometidas contra su autoridad o decoro."
+      }
+    ],
+    "respuesta_correcta": "b",
+    "confianza": "media",
+    "revisada": false
+  },
+  {
+    "fuente": "mpd-guia-preguntas",
+    "organismo": "mpd",
+    "seccion": "teorico",
+    "orden": 24,
+    "enunciado": "El Ministerio Público tiene por función:",
+    "tipo": "multiple_choice",
+    "opciones": [
+      {
+        "clave": "a",
+        "texto": "Promover la actuación de la justicia en defensa de la legalidad y de los intereses generales de la sociedad."
+      },
+      {
+        "clave": "b",
+        "texto": "Dictar los reglamentos relacionados con la organización judicial y todos aquellos que sean necesarios para asegurar la independencia de los jueces y la eficaz prestación de los servicios de justicia."
+      },
+      {
+        "clave": "c",
+        "texto": "Conocer y decidir en todas las causas que versen sobre puntos regidos por la Constitución, y por las leyes de la Nación."
+      }
+    ],
+    "respuesta_correcta": "a",
+    "confianza": "media",
+    "revisada": false
+  },
+  {
+    "fuente": "mpd-guia-preguntas",
+    "organismo": "mpd",
+    "seccion": "teorico",
+    "orden": 25,
+    "enunciado": "Se podrá imponer apercibimiento a Funcionarios/as y Empleados/as por:",
+    "tipo": "multiple_choice",
+    "opciones": [
+      {
+        "clave": "a",
+        "texto": "Inasistencia reiterada e injustificada al lugar de trabajo."
+      },
+      {
+        "clave": "b",
+        "texto": "Incumplimiento reiterado e injustificado del horario de trabajo dispuesto de común acuerdo entre los empleados de la dependencia."
+      },
+      {
+        "clave": "c",
+        "texto": "Inasistencia al lugar de trabajo, aun cuando solo se registre en una única oportunidad."
+      }
+    ],
+    "respuesta_correcta": "a",
+    "confianza": "media",
+    "revisada": false
+  },
+  {
+    "fuente": "mpd-guia-preguntas",
+    "organismo": "mpd",
+    "seccion": "teorico",
+    "orden": 26,
+    "enunciado": "La designación de los funcionarios, empleados administrativos y de maestranza del Ministerio Público de la Defensa se efectuará por el Defensor General:",
+    "tipo": "multiple_choice",
+    "opciones": [
+      {
+        "clave": "a",
+        "texto": "Conforme su criterio, previo asesoramiento de la Oficina de Recursos Humanos."
+      },
+      {
+        "clave": "b",
+        "texto": "A propuesta del agente que generó la vacante y de acuerdo a lo que establezca la pertinente reglamentación."
+      },
+      {
+        "clave": "c",
+        "texto": "A propuesta de los respectivos Defensores Públicos."
+      }
+    ],
+    "respuesta_correcta": "c",
+    "confianza": "media",
+    "revisada": false
+  },
+  {
+    "fuente": "mpd-guia-preguntas",
+    "organismo": "mpd",
+    "seccion": "teorico",
+    "orden": 27,
+    "enunciado": "El Ministerio Público de la Defensa se relaciona con el Poder Legislativo:",
+    "tipo": "multiple_choice",
+    "opciones": [
+      {
+        "clave": "a",
+        "texto": "Mediante una Comisión Bicameral cuya composición y funciones fijará el Congreso Nacional."
+      },
+      {
+        "clave": "b",
+        "texto": "Mediante un representante en el Consejo de la Magistratura designado por el Procurador General de la Nación."
+      },
+      {
+        "clave": "c",
+        "texto": "Mediante el Ministro de Justicia por intermedio de expedientes internos."
+      }
+    ],
+    "respuesta_correcta": "a",
+    "confianza": "alta",
+    "revisada": false,
+    "corroborada_por": [
+      "mpd-examen-caba"
+    ]
+  },
+  {
+    "fuente": "mpd-guia-preguntas",
+    "organismo": "mpd",
+    "seccion": "teorico",
+    "orden": 28,
+    "enunciado": "No podrán ser nombrados/as funcionarios/as o empleados del Ministerio Público de Defensa quienes:",
+    "tipo": "multiple_choice",
+    "opciones": [
+      {
+        "clave": "a",
+        "texto": "Hayan revistado en los cinco años anteriores al ingreso, en alguna fuerza de seguridad."
+      },
+      {
+        "clave": "b",
+        "texto": "Hayan sido separados/as de un empleo público anterior por mal desempeño fehacientemente comprobado."
+      },
+      {
+        "clave": "c",
+        "texto": "Ejerzan la docencia universitaria."
+      }
+    ],
+    "respuesta_correcta": "b",
+    "confianza": "media",
+    "revisada": false
+  },
+  {
+    "fuente": "mpd-guia-preguntas",
+    "organismo": "mpd",
+    "seccion": "teorico",
+    "orden": 29,
+    "enunciado": "El Defensor General de la Nación deberá:",
+    "tipo": "multiple_choice",
+    "opciones": [
+      {
+        "clave": "a",
+        "texto": "Controlar las funciones administrativas públicas."
+      },
+      {
+        "clave": "b",
+        "texto": "Promover y ejecutar políticas para facilitar el acceso a la justicia de los sectores vulnerables."
+      },
+      {
+        "clave": "c",
+        "texto": "Autorizar al Poder Ejecutivo para declarar la guerra o hacer la paz."
+      }
+    ],
+    "respuesta_correcta": "b",
+    "confianza": "media",
+    "revisada": false
+  },
+  {
+    "fuente": "mpd-guia-preguntas",
+    "organismo": "mpd",
+    "seccion": "teorico",
+    "orden": 30,
+    "enunciado": "Las designaciones y promociones de funcionarios/as y empleados/as en las defensorías cuya titularidad se encuentre definitivamente vacante, serán realizadas por:",
+    "tipo": "multiple_choice",
+    "opciones": [
+      {
+        "clave": "a",
+        "texto": "El Ministerio de Justicia y Derechos Humanos, teniendo en cuenta la planta de personal de la dependencia."
+      },
+      {
+        "clave": "b",
+        "texto": "El/la Defensora General de la nación, teniendo en cuenta la planta de personal de la dependencia."
+      },
+      {
+        "clave": "c",
+        "texto": "La Corte Suprema de Justicia de la Nación, teniendo en cuenta la planta de personal de la dependencia."
+      }
+    ],
+    "respuesta_correcta": "b",
+    "confianza": "media",
+    "revisada": false
+  },
+  {
+    "fuente": "mpd-guia-preguntas",
+    "organismo": "mpd",
+    "seccion": "teorico",
+    "orden": 31,
+    "enunciado": "Los/las Defensores/as Públicos en ejercicio de sus funciones deberán:",
+    "tipo": "multiple_choice",
+    "opciones": [
+      {
+        "clave": "a",
+        "texto": "Residir en el lugar que le fije la máxima autoridad del organismo."
+      },
+      {
+        "clave": "b",
+        "texto": "Residir en el lugar en dónde cumplan sus tareas o dentro de un radio de pronta comunicación que no dificulte el adecuado desempeño de su función."
+      },
+      {
+        "clave": "c",
+        "texto": "Residir en la Ciudad Autónoma de Buenos Aires."
+      }
+    ],
+    "respuesta_correcta": "b",
+    "confianza": "media",
+    "revisada": false
+  },
+  {
+    "fuente": "mpd-guia-preguntas",
+    "organismo": "mpd",
+    "seccion": "teorico",
+    "orden": 32,
+    "enunciado": "El Defensor General de la Nación deberá asegurar:",
+    "tipo": "multiple_choice",
+    "opciones": [
+      {
+        "clave": "a",
+        "texto": "La contratación de estudios contables externos para que se encarguen del manejo administrativo-financiero de la institución."
+      },
+      {
+        "clave": "b",
+        "texto": "La delegación del manejo administrativo-financiero de la institución en la Procuración General de la Nación."
+      },
+      {
+        "clave": "c",
+        "texto": "La autarquía financiera del Ministerio Público de la Defensa administrando un presupuesto de recursos atendido con cargo al Tesoro Nacional y con recursos propios."
+      }
+    ],
+    "respuesta_correcta": "c",
+    "confianza": "media",
+    "revisada": false
+  },
+  {
+    "fuente": "mpd-guia-preguntas",
+    "organismo": "mpd",
+    "seccion": "teorico",
+    "orden": 33,
+    "enunciado": "La defensoría General de la Nación es:",
+    "tipo": "multiple_choice",
+    "opciones": [
+      {
+        "clave": "a",
+        "texto": "La sede de actuación de todos los defensores públicos de la Ciudad Autónoma de Buenos Aires."
+      },
+      {
+        "clave": "b",
+        "texto": "La sede de actuación del Defensor General de la Nación."
+      },
+      {
+        "clave": "c",
+        "texto": "La sede de actuación de los curadores y tutores públicos."
+      }
+    ],
+    "respuesta_correcta": "b",
+    "confianza": "media",
+    "revisada": false
+  },
+  {
+    "fuente": "mpd-guia-preguntas",
+    "organismo": "mpd",
+    "seccion": "teorico",
+    "orden": 34,
+    "enunciado": "Los/las defensores/as Públicos en ejercicio de sus funciones deberán:",
+    "tipo": "multiple_choice",
+    "opciones": [
+      {
+        "clave": "a",
+        "texto": "No afiliarse a partidos o agrupaciones políticas ni militar activamente en ellos, sin previa autorización expresa del/de la presidente/a de la Corte Suprema de Justicia de la Nación."
+      },
+      {
+        "clave": "b",
+        "texto": "Afiliarse al partido político que haya obtenido mayor cantidad de votos en las últimas elecciones."
+      },
+      {
+        "clave": "c",
+        "texto": "No afiliarse a partidos o agrupaciones políticas ni militar activamente en ellos sin previa autorización expresa del/de la Defensor/a General de la Nación."
+      }
+    ],
+    "respuesta_correcta": "c",
+    "confianza": "media",
+    "revisada": false
+  },
+  {
+    "fuente": "mpd-guia-preguntas",
+    "organismo": "mpd",
+    "seccion": "teorico",
+    "orden": 35,
+    "enunciado": "Según lo prescripto por el régimen jurídico del Ministerio Público de la Defensa, la Ordenanza:",
+    "tipo": "multiple_choice",
+    "opciones": [
+      {
+        "clave": "a",
+        "texto": "Es la persona responsable de las entrevistas a los defendidos."
+      },
+      {
+        "clave": "b",
+        "texto": "Es la persona responsable del tránsito de los expedientes y la documentación entre la Defensoría General de la Nación, las defensorías y otras oficinas, juzgados y tribunales."
+      },
+      {
+        "clave": "c",
+        "texto": "Es la persona responsable de concurrir a las audiencias en los tribunales."
+      }
+    ],
+    "respuesta_correcta": "b",
+    "confianza": "media",
+    "revisada": false
+  },
+  {
+    "fuente": "mpd-guia-preguntas",
+    "organismo": "mpd",
+    "seccion": "teorico",
+    "orden": 36,
+    "enunciado": "Un expediente se identifica por:",
+    "tipo": "multiple_choice",
+    "opciones": [
+      {
+        "clave": "a",
+        "texto": "El color asignado a la carátula."
+      },
+      {
+        "clave": "b",
+        "texto": "Su número y nombre del demandante y del demandado."
+      },
+      {
+        "clave": "c",
+        "texto": "La fecha que fue iniciado y recepción del juzgado."
+      }
+    ],
+    "respuesta_correcta": "b",
+    "confianza": "media",
+    "revisada": false
+  },
+  {
+    "fuente": "mpd-guia-preguntas",
+    "organismo": "mpd",
+    "seccion": "teorico",
+    "orden": 37,
+    "enunciado": "La Defensoría General de la Nación en materia penal:",
+    "tipo": "multiple_choice",
+    "opciones": [
+      {
+        "clave": "a",
+        "texto": "Asume la defensa de toda persona imputada de un delito, aunque haya designado abogado particular."
+      },
+      {
+        "clave": "b",
+        "texto": "Asume la defensa de toda persona imputada de un delito, siempre que no designe abogado particular."
+      },
+      {
+        "clave": "c",
+        "texto": "Asume la defensa de toda persona imputada de un delito, siempre que sea inocente."
+      }
+    ],
+    "respuesta_correcta": "b",
+    "confianza": "media",
+    "revisada": false
+  },
+  {
+    "fuente": "mpd-guia-preguntas",
+    "organismo": "mpd",
+    "seccion": "teorico",
+    "orden": 38,
+    "enunciado": "Dentro del ámbito de responsabilidad del cargo de Ordenanza:",
+    "tipo": "multiple_choice",
+    "opciones": [
+      {
+        "clave": "a",
+        "texto": "Es responsable por el contenido de los expedientes y de la documentación que se traslada."
+      },
+      {
+        "clave": "b",
+        "texto": "Es responsable que el Tribunal correspondiente retire los expedientes de la dependencia, debiendo supervisar el efectivo traslado de los mismos."
+      },
+      {
+        "clave": "c",
+        "texto": "Es responsable del oportuno, cuidado y confidencial traslado de expedientes y documentación."
+      }
+    ],
+    "respuesta_correcta": "c",
+    "confianza": "media",
+    "revisada": false
+  },
+  {
+    "fuente": "mpd-guia-preguntas",
+    "organismo": "mpd",
+    "seccion": "teorico",
+    "orden": 39,
+    "enunciado": "Teniendo en cuenta que las dependencias reciben diariamente a personas en general, y poseen carpetas internas de documentación ¿Qué resulta esencial para el buen desarrollo de la tarea de defensa?",
+    "tipo": "multiple_choice",
+    "opciones": [
+      {
+        "clave": "a",
+        "texto": "La disponibilidad de espacios amplios en las oficinas."
+      },
+      {
+        "clave": "b",
+        "texto": "La prolijidad del lugar de trabajo (oficina, Defensoría, etc)."
+      },
+      {
+        "clave": "c",
+        "texto": "Contar con una empresa de limpieza para mantener el orden en la oficina."
+      }
+    ],
+    "respuesta_correcta": "b",
+    "confianza": "media",
+    "revisada": false
+  },
+  {
+    "fuente": "mpd-guia-preguntas",
+    "organismo": "mpd",
+    "seccion": "teorico",
+    "orden": 40,
+    "enunciado": "La autonomía funcional y autarquía financiera del Ministerio Público de la Defensa surge del:",
+    "tipo": "multiple_choice",
+    "opciones": [
+      {
+        "clave": "a",
+        "texto": "Reglamento del Consejo de la Magistratura."
+      },
+      {
+        "clave": "b",
+        "texto": "Art. 120 de la Constitución Nacional."
+      },
+      {
+        "clave": "c",
+        "texto": "Reglamento para la Justicia Nacional."
+      }
+    ],
+    "respuesta_correcta": "b",
+    "confianza": "media",
+    "revisada": false
+  },
+  {
+    "fuente": "mpd-guia-preguntas",
+    "organismo": "mpd",
+    "seccion": "teorico",
+    "orden": 41,
+    "enunciado": "Conforme el Régimen Jurídico del Ministerio Público de la Defensa, una de las funciones de Ordenanza es:",
+    "tipo": "multiple_choice",
+    "opciones": [
+      {
+        "clave": "a",
+        "texto": "Mantener el orden general y la limpieza en la dependencia de la DGN en que se encuentra asignado."
+      },
+      {
+        "clave": "b",
+        "texto": "Recepcionar y evacuar las consultas de las personas que concurren a la dependencia en que se encuentra asignado."
+      },
+      {
+        "clave": "c",
+        "texto": "Participar en la contratación de una empresa de limpieza para la dependencia en que se encuentra asignado."
+      }
+    ],
+    "respuesta_correcta": "a",
+    "confianza": "media",
+    "revisada": false
+  },
+  {
+    "fuente": "mpd-guia-preguntas",
+    "organismo": "mpd",
+    "seccion": "teorico",
+    "orden": 42,
+    "enunciado": "El Ministerio Público de la Defensa de la Nación es:",
+    "tipo": "multiple_choice",
+    "opciones": [
+      {
+        "clave": "a",
+        "texto": "Una institución que vela por la defensa de las fronteras del país."
+      },
+      {
+        "clave": "b",
+        "texto": "Una institución de defensa y protección de derechos humanos."
+      },
+      {
+        "clave": "c",
+        "texto": "Una institución que se encarga de proteger el territorio nacional."
+      }
+    ],
+    "respuesta_correcta": "b",
+    "confianza": "media",
+    "revisada": false
+  },
+  {
+    "fuente": "mpd-guia-preguntas",
+    "organismo": "mpd",
+    "seccion": "teorico",
+    "orden": 43,
+    "enunciado": "Cada proceso judicial se documenta en:",
+    "tipo": "multiple_choice",
+    "opciones": [
+      {
+        "clave": "a",
+        "texto": "Uno o varios expedientes."
+      },
+      {
+        "clave": "b",
+        "texto": "Sólo archivos digitales en formato de Word."
+      },
+      {
+        "clave": "c",
+        "texto": "Hojas de uso borrador."
+      }
+    ],
+    "respuesta_correcta": "a",
+    "confianza": "media",
+    "revisada": false
+  },
+  {
+    "fuente": "mpd-guia-preguntas",
+    "organismo": "mpd",
+    "seccion": "teorico",
+    "orden": 44,
+    "enunciado": "El desempeño de personas en el Ministerio Público de la Defensa en carácter de meritorios rentados/as:",
+    "tipo": "multiple_choice",
+    "opciones": [
+      {
+        "clave": "a",
+        "texto": "Queda librado al criterio del titular de la dependencia en la que se lo designa."
+      },
+      {
+        "clave": "b",
+        "texto": "Está expresamente prohibido."
+      },
+      {
+        "clave": "c",
+        "texto": "Está permitido sólo si en la dependencia en la que se lo designa existe una sobrecarga de tareas."
+      }
+    ],
+    "respuesta_correcta": "b",
+    "confianza": "media",
+    "revisada": false
+  },
+  {
+    "fuente": "mpd-guia-preguntas",
+    "organismo": "mpd",
+    "seccion": "teorico",
+    "orden": 45,
+    "enunciado": "Es causa para disponer la cesantía de Funcionarios/as y/o Empleados/as del Ministerio Público de la Defensa, la siguiente:",
+    "tipo": "multiple_choice",
+    "opciones": [
+      {
+        "clave": "a",
+        "texto": "Sentencia condenatoria firme por delito doloso."
+      },
+      {
+        "clave": "b",
+        "texto": "Sentencia condenatoria por delito doloso o culposo, aún cuando la sentencia no se encuentre firme."
+      },
+      {
+        "clave": "c",
+        "texto": "Sentencia condenatoria por delito culposo."
+      }
+    ],
+    "respuesta_correcta": "a",
+    "confianza": "media",
+    "revisada": false
+  },
+  {
+    "fuente": "mpd-guia-preguntas",
+    "organismo": "mpd",
+    "seccion": "teorico",
+    "orden": 46,
+    "enunciado": "Los postulantes a ocupar el cargo de Defensor surgen de:",
+    "tipo": "multiple_choice",
+    "opciones": [
+      {
+        "clave": "a",
+        "texto": "Una terna que se realiza mediante concurso público de oposición y antecedentes."
+      },
+      {
+        "clave": "b",
+        "texto": "La designación directa efectuada por el Poder Ejecutivo respecto de un ciudadano."
+      },
+      {
+        "clave": "c",
+        "texto": "Una terna que sugiere el Consejo de la Magistratura luego de elaborar un análisis de los integrantes de su planta permanente para ejercer el cargo."
+      }
+    ],
+    "respuesta_correcta": "a",
+    "confianza": "media",
+    "revisada": false
+  },
+  {
+    "fuente": "mpd-guia-preguntas",
+    "organismo": "mpd",
+    "seccion": "teorico",
+    "orden": 47,
+    "enunciado": "A los efectos de asegurar su autarquía financiera, el Ministerio Público:",
+    "tipo": "multiple_choice",
+    "opciones": [
+      {
+        "clave": "a",
+        "texto": "Contará con crédito presupuestario propio , el que será atendido sólo con recursos específicos."
+      },
+      {
+        "clave": "b",
+        "texto": "No contará con crédito presupuestario propio."
+      },
+      {
+        "clave": "c",
+        "texto": "Contará con crédito presupuestario propio, el que será atendido con cargo al Tesoro Nacional y con recursos propios."
+      }
+    ],
+    "respuesta_correcta": "c",
+    "confianza": "media",
+    "revisada": false
+  },
+  {
+    "fuente": "mpd-guia-preguntas",
+    "organismo": "mpd",
+    "seccion": "teorico",
+    "orden": 48,
+    "enunciado": "El/la agente que fuera designado/a o electo/a para el desempeño de los cargos electivos o representativos en asociaciones sindicales con personería gremial, tendrá derecho a:",
+    "tipo": "multiple_choice",
+    "opciones": [
+      {
+        "clave": "a",
+        "texto": "El agente tiene vedado el ejercicio de actividades gremiales."
+      },
+      {
+        "clave": "b",
+        "texto": "Una licencia por el término que dure el mandato, con goce de haberes."
+      },
+      {
+        "clave": "c",
+        "texto": "Una licencia por el término que dure el mandato, sin goce de haberes, con la posibilidad excepcional de que el/la Defensor/a General de la Nación la conceda con goce de haberes si se reunieran ciertas condiciones."
+      }
+    ],
+    "respuesta_correcta": "c",
+    "confianza": "media",
+    "revisada": false
+  },
+  {
+    "fuente": "mpd-guia-preguntas",
+    "organismo": "mpd",
+    "seccion": "teorico",
+    "orden": 49,
+    "enunciado": "Cuando un magistrado actúe en cumplimiento de indicaciones emanadas del Defensor General de la Nación:",
+    "tipo": "multiple_choice",
+    "opciones": [
+      {
+        "clave": "a",
+        "texto": "Sólo podrá dejar a salvo su opinión personal en causas penales."
+      },
+      {
+        "clave": "b",
+        "texto": "Podrá dejar a salvo su opinión personal."
+      },
+      {
+        "clave": "c",
+        "texto": "No podrá dejar a salvo su opinión personal."
+      }
+    ],
+    "respuesta_correcta": "b",
+    "confianza": "media",
+    "revisada": false
+  },
+  {
+    "fuente": "mpd-guia-preguntas",
+    "organismo": "mpd",
+    "seccion": "teorico",
+    "orden": 50,
+    "enunciado": "El Ministerio Público de la Defensa posee una organización:",
+    "tipo": "multiple_choice",
+    "opciones": [
+      {
+        "clave": "a",
+        "texto": "Jerárquica."
+      },
+      {
+        "clave": "b",
+        "texto": "Horizontal."
+      },
+      {
+        "clave": "c",
+        "texto": "Descentralizada."
+      }
+    ],
+    "respuesta_correcta": "a",
+    "confianza": "media",
+    "revisada": false
+  },
+  {
+    "fuente": "mpd-guia-preguntas",
+    "organismo": "mpd",
+    "seccion": "teorico",
+    "orden": 51,
+    "enunciado": "En caso de incumplimiento de los deberes a su cargo, el Procurador General de la Nación y el Defensor General de la Nación, podrán imponer a los magistrados que componen el Ministerio Público Fiscal y el Ministerio Público de la Defensa, respectivamente, las siguientes sanciones disciplinarias:",
+    "tipo": "multiple_choice",
+    "opciones": [
+      {
+        "clave": "a",
+        "texto": "Suspensión por término de 72 horas."
+      },
+      {
+        "clave": "b",
+        "texto": "Exoneración directa."
+      },
+      {
+        "clave": "c",
+        "texto": "Multa de hasta el veinte por ciento (20 %) de sus remuneraciones mensuales."
+      }
+    ],
+    "respuesta_correcta": "c",
+    "confianza": "media",
+    "revisada": false
+  },
+  {
+    "fuente": "mpd-guia-preguntas",
+    "organismo": "mpd",
+    "seccion": "teorico",
+    "orden": 52,
+    "enunciado": "El Ministerio Público:",
+    "tipo": "multiple_choice",
+    "opciones": [
+      {
+        "clave": "a",
+        "texto": "Recibe instrucciones del Poder Ejecutivo Nacional."
+      },
+      {
+        "clave": "b",
+        "texto": "Recibe instrucciones de los jueces."
+      },
+      {
+        "clave": "c",
+        "texto": "Ejerce su función sin sujeción a instrucciones o directivas emanadas de órganos ajenos a su estructura."
+      }
+    ],
+    "respuesta_correcta": "c",
+    "confianza": "alta",
+    "revisada": false,
+    "corroborada_por": [
+      "mpd-examen-caba"
+    ]
+  },
+  {
+    "fuente": "mpd-guia-preguntas",
+    "organismo": "mpd",
+    "seccion": "teorico",
+    "orden": 53,
+    "enunciado": "Los aspirantes a ingresar como personal del MPD deberán:",
+    "tipo": "multiple_choice",
+    "opciones": [
+      {
+        "clave": "a",
+        "texto": "Ser mayor de 21 años."
+      },
+      {
+        "clave": "b",
+        "texto": "Ser mayor de 18 años."
+      },
+      {
+        "clave": "c",
+        "texto": "Ser mayor de 16 años."
+      }
+    ],
+    "respuesta_correcta": "b",
+    "confianza": "media",
+    "revisada": false
+  },
+  {
+    "fuente": "mpd-guia-preguntas",
+    "organismo": "mpd",
+    "seccion": "teorico",
+    "orden": 54,
+    "enunciado": "Los magistrados del Ministerio Público gozan de estabilidad en su empleo:",
+    "tipo": "multiple_choice",
+    "opciones": [
+      {
+        "clave": "a",
+        "texto": "Por un periodo de 10 años renovable por otros 10."
+      },
+      {
+        "clave": "b",
+        "texto": "Toda la vida, sin limitación."
+      },
+      {
+        "clave": "c",
+        "texto": "Mientras dure su buena conducta, hasta los 75 años de edad."
+      }
+    ],
+    "respuesta_correcta": "c",
+    "confianza": "media",
+    "revisada": false
+  },
+  {
+    "fuente": "mpd-guia-preguntas",
+    "organismo": "mpd",
+    "seccion": "teorico",
+    "orden": 55,
+    "enunciado": "El Defensor General de la Nación es el jefe máximo del Ministerio Público de la Defensa, no podrá imponer sanciones disciplinarias a magistrados, funcionarios y empleados del Ministerio Público de la Defensa:",
+    "tipo": "multiple_choice",
+    "opciones": [
+      {
+        "clave": "a",
+        "texto": "Fuera de las establecidas en la Constitución Nacional."
+      },
+      {
+        "clave": "b",
+        "texto": "Fuera de las establecidas en el Código Penal."
+      },
+      {
+        "clave": "c",
+        "texto": "Fuera de las establecidas en el régimen jurídico respectivo."
+      }
+    ],
+    "respuesta_correcta": "c",
+    "confianza": "media",
+    "revisada": false
+  },
+  {
+    "fuente": "mpd-guia-preguntas",
+    "organismo": "mpd",
+    "seccion": "teorico",
+    "orden": 56,
+    "enunciado": "Los magistrados del Ministerio Público sólo podrán ser removidos de sus cargos:",
+    "tipo": "multiple_choice",
+    "opciones": [
+      {
+        "clave": "a",
+        "texto": "Por el tribunal de enjuiciamiento contemplado en la Ley Orgánica del Ministerio Público de la Defensa de la Nación."
+      },
+      {
+        "clave": "b",
+        "texto": "Por el Consejo de la Magistratura."
+      },
+      {
+        "clave": "c",
+        "texto": "Por opinión conjunta del Defensor General de la Nación y del Procurador General de la Nación."
+      }
+    ],
+    "respuesta_correcta": "a",
+    "confianza": "alta",
+    "revisada": false,
+    "corroborada_por": [
+      "mpd-examen-caba"
+    ]
+  },
+  {
+    "fuente": "mpd-guia-preguntas",
+    "organismo": "mpd",
+    "seccion": "teorico",
+    "orden": 57,
+    "enunciado": "Los/las Defensores/as Públicos/as en ejercicio de sus funciones deberán:",
+    "tipo": "multiple_choice",
+    "opciones": [
+      {
+        "clave": "a",
+        "texto": "Observar en todo momento una conducta melindrosa, que no afecte la dignidad del Ministerio Público de la Defensa."
+      },
+      {
+        "clave": "b",
+        "texto": "Observar en todo momento una conducta cautelosa, que no afecte la dignidad del Ministerio Público de la Defensa."
+      },
+      {
+        "clave": "c",
+        "texto": "Observar en todo momento una conducta recta, digna y decorosa, que no afecte la dignidad del Ministerio Público de la Defensa."
+      }
+    ],
+    "respuesta_correcta": "c",
+    "confianza": "alta",
+    "revisada": false,
+    "corroborada_por": [
+      "mpd-examen-caba"
+    ]
+  },
+  {
+    "fuente": "mpd-guia-preguntas",
+    "organismo": "mpd",
+    "seccion": "teorico",
+    "orden": 58,
+    "enunciado": "Las permutas entre el personal de las distintas dependencias se produce:",
+    "tipo": "multiple_choice",
+    "opciones": [
+      {
+        "clave": "a",
+        "texto": "Con la mera conformidad de los/as agentes involucrados."
+      },
+      {
+        "clave": "b",
+        "texto": "Con la mera conformidad de los titulares de las dependencias en las cuales los/as agentes involucrados prestan funciones."
+      },
+      {
+        "clave": "c",
+        "texto": "Con la previa autorización expresa del/de la Defensor/a General de la Nación."
+      }
+    ],
+    "respuesta_correcta": "c",
+    "confianza": "alta",
+    "revisada": false,
+    "corroborada_por": [
+      "mpd-examen-caba"
+    ]
+  },
+  {
+    "fuente": "mpd-guia-preguntas",
+    "organismo": "mpd",
+    "seccion": "teorico",
+    "orden": 59,
+    "enunciado": "La licencia con goce de haberes para rendir examen podrá ser acordada:",
+    "tipo": "multiple_choice",
+    "opciones": [
+      {
+        "clave": "a",
+        "texto": "Hasta un máximo de veinte días laborales por año calendario, en períodos de hasta cinco días."
+      },
+      {
+        "clave": "b",
+        "texto": "Hasta un máximo de diez materias por año calendario, en período de hasta cinco días."
+      },
+      {
+        "clave": "c",
+        "texto": "En períodos de dos horas diarias en horario laboral, en oficinas especialmente adaptadas para ello, en periodos de hasta cinco días por materia."
+      }
+    ],
+    "respuesta_correcta": "a",
+    "confianza": "alta",
+    "revisada": false,
+    "corroborada_por": [
+      "mpd-examen-caba"
+    ]
+  }
+]

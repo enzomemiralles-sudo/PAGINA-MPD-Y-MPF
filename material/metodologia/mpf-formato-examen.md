@@ -16,10 +16,32 @@ La evaluación es **virtual**, en una plataforma del MPF, y tiene dos partes:
 
 La duración exacta la fija cada convocatoria.
 
-**El puntaje no está publicado.** El documento oficial no dice cuánto suma una
+### El puntaje: lo que sabemos y lo que decidimos
+
+**El MPF no publica su puntaje.** El documento oficial no dice cuánto suma una
 correcta, si la incorrecta resta, ni cuál es el mínimo. Es la diferencia grande
-con el MPD, donde está todo escrito. Hasta que aparezca, el simulador del MPF no
-puede prometer un puntaje comparable al real.
+con el MPD, donde está todo escrito y además verificado contra un examen real.
+
+**Decisión: el simulador del MPF usa la escala del MPD.**
+
+| | |
+|---|---|
+| Respuesta correcta | +10 |
+| Respuesta incorrecta | −10 |
+| Sin responder | 0 |
+| Mínimo para aprobar | 60 de 100 |
+
+Es la escala del otro organismo aplicada acá, no un dato del examen del MPF.
+Se elige porque es la única referencia real que existe para un ingreso
+democrático, y porque **la propiedad que más importa se conserva**: que la
+incorrecta reste tanto como suma la correcta, y que por lo tanto convenga dejar
+en blanco antes que arriesgar. Un simulador sin descuento enseñaría a jugar mal
+sea cual sea la escala verdadera.
+
+Lo que **no** hay que hacer es presentarlo como el puntaje oficial del MPF. En
+pantalla tiene que quedar claro que la escala es orientativa. Cuando el MPF
+publique la suya, se cambian los números del examen en la base y listo: el motor
+no cambia.
 
 ## Qué entra
 

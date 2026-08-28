@@ -7,13 +7,25 @@
     "enunciado": "No podrán desempeñarse en una misma dependencia:",
     "tipo": "multiple_choice",
     "opciones": [
-      { "clave": "a", "texto": "dos cónyuges o personas que mantengan una unión convivencial." },
-      { "clave": "b", "texto": "dos personas que hayan cursado estudios secundarios en el mismo establecimiento." },
-      { "clave": "c", "texto": "dos extranjeros." }
+      {
+        "clave": "a",
+        "texto": "dos cónyuges o personas que mantengan una unión convivencial."
+      },
+      {
+        "clave": "b",
+        "texto": "dos personas que hayan cursado estudios secundarios en el mismo establecimiento."
+      },
+      {
+        "clave": "c",
+        "texto": "dos extranjeros."
+      }
     ],
     "respuesta_correcta": "a",
-    "confianza": "media",
-    "revisada": false
+    "confianza": "alta",
+    "revisada": false,
+    "corroborada_por": [
+      "mpd-guia-preguntas"
+    ]
   },
   {
     "fuente": "mpd-examen-caba",
@@ -23,13 +35,25 @@
     "enunciado": "Los/las Defensores/as Públicos/as en ejercicio de sus funciones deberán:",
     "tipo": "multiple_choice",
     "opciones": [
-      { "clave": "a", "texto": "observar en todo momento una conducta melindrosa, que no afecte la dignidad del Ministerio Público de la Defensa." },
-      { "clave": "b", "texto": "observar en todo momento una conducta cautelosa, que no afecte la dignidad del Ministerio Público de la Defensa." },
-      { "clave": "c", "texto": "observar en todo momento una conducta recta, digna y decorosa, que no afecte la dignidad del Ministerio Público de la Defensa." }
+      {
+        "clave": "a",
+        "texto": "observar en todo momento una conducta melindrosa, que no afecte la dignidad del Ministerio Público de la Defensa."
+      },
+      {
+        "clave": "b",
+        "texto": "observar en todo momento una conducta cautelosa, que no afecte la dignidad del Ministerio Público de la Defensa."
+      },
+      {
+        "clave": "c",
+        "texto": "observar en todo momento una conducta recta, digna y decorosa, que no afecte la dignidad del Ministerio Público de la Defensa."
+      }
     ],
     "respuesta_correcta": "c",
-    "confianza": "media",
-    "revisada": false
+    "confianza": "alta",
+    "revisada": false,
+    "corroborada_por": [
+      "mpd-guia-preguntas"
+    ]
   },
   {
     "fuente": "mpd-examen-caba",
@@ -39,13 +63,25 @@
     "enunciado": "El Ministerio Público:",
     "tipo": "multiple_choice",
     "opciones": [
-      { "clave": "a", "texto": "ejerce sus funciones sin sujeción a instrucciones o directivas emanadas de órganos ajenos a su estructura." },
-      { "clave": "b", "texto": "recibe instrucciones de los jueces." },
-      { "clave": "c", "texto": "recibe instrucciones del Poder Ejecutivo Nacional." }
+      {
+        "clave": "a",
+        "texto": "ejerce sus funciones sin sujeción a instrucciones o directivas emanadas de órganos ajenos a su estructura."
+      },
+      {
+        "clave": "b",
+        "texto": "recibe instrucciones de los jueces."
+      },
+      {
+        "clave": "c",
+        "texto": "recibe instrucciones del Poder Ejecutivo Nacional."
+      }
     ],
     "respuesta_correcta": "a",
-    "confianza": "media",
-    "revisada": false
+    "confianza": "alta",
+    "revisada": false,
+    "corroborada_por": [
+      "mpd-guia-preguntas"
+    ]
   },
   {
     "fuente": "mpd-examen-caba",
@@ -55,13 +91,25 @@
     "enunciado": "Los magistrados del Ministerio Público sólo podrán ser removidos de sus cargos:",
     "tipo": "multiple_choice",
     "opciones": [
-      { "clave": "a", "texto": "por el Tribunal de Enjuiciamiento contemplado en la Ley Orgánica del Ministerio Público de la Defensa de la Nación." },
-      { "clave": "b", "texto": "por la opinión conjunta del Defensor General de la Nación y del Procurador General de la Nación." },
-      { "clave": "c", "texto": "por el Consejo de la Magistratura." }
+      {
+        "clave": "a",
+        "texto": "por el Tribunal de Enjuiciamiento contemplado en la Ley Orgánica del Ministerio Público de la Defensa de la Nación."
+      },
+      {
+        "clave": "b",
+        "texto": "por la opinión conjunta del Defensor General de la Nación y del Procurador General de la Nación."
+      },
+      {
+        "clave": "c",
+        "texto": "por el Consejo de la Magistratura."
+      }
     ],
     "respuesta_correcta": "a",
-    "confianza": "media",
-    "revisada": false
+    "confianza": "alta",
+    "revisada": false,
+    "corroborada_por": [
+      "mpd-guia-preguntas"
+    ]
   },
   {
     "fuente": "mpd-examen-caba",
@@ -71,13 +119,25 @@
     "enunciado": "El Ministerio Público de la Defensa debe ser consultado:",
     "tipo": "multiple_choice",
     "opciones": [
-      { "clave": "a", "texto": "en oportunidad de analizarse y debatirse el presupuesto nacional para el período en curso." },
-      { "clave": "b", "texto": "en oportunidad de analizarse y debatirse proyectos de ley o reglamentación de su incumbencia." },
-      { "clave": "c", "texto": "en oportunidad de nombrarse un nuevo miembro de la Corte Suprema de Justicia de la Nación." }
+      {
+        "clave": "a",
+        "texto": "en oportunidad de analizarse y debatirse el presupuesto nacional para el período en curso."
+      },
+      {
+        "clave": "b",
+        "texto": "en oportunidad de analizarse y debatirse proyectos de ley o reglamentación de su incumbencia."
+      },
+      {
+        "clave": "c",
+        "texto": "en oportunidad de nombrarse un nuevo miembro de la Corte Suprema de Justicia de la Nación."
+      }
     ],
     "respuesta_correcta": "b",
-    "confianza": "media",
-    "revisada": false
+    "confianza": "alta",
+    "revisada": false,
+    "corroborada_por": [
+      "mpd-guia-preguntas"
+    ]
   },
   {
     "fuente": "mpd-examen-caba",
@@ -87,13 +147,25 @@
     "enunciado": "Constituyen recursos propios del Ministerio Público de la Defensa:",
     "tipo": "multiple_choice",
     "opciones": [
-      { "clave": "a", "texto": "Lo ingresado en concepto de ayuda económica y financiera del Programa de Estímulo dependiente del Consejo de la Magistratura." },
-      { "clave": "b", "texto": "El dinero que ingresa en concepto de tasa de justicia." },
-      { "clave": "c", "texto": "Los honorarios regulados por la actuación del Ministerio Público de la Defensa." }
+      {
+        "clave": "a",
+        "texto": "Lo ingresado en concepto de ayuda económica y financiera del Programa de Estímulo dependiente del Consejo de la Magistratura."
+      },
+      {
+        "clave": "b",
+        "texto": "El dinero que ingresa en concepto de tasa de justicia."
+      },
+      {
+        "clave": "c",
+        "texto": "Los honorarios regulados por la actuación del Ministerio Público de la Defensa."
+      }
     ],
     "respuesta_correcta": "c",
-    "confianza": "media",
-    "revisada": false
+    "confianza": "alta",
+    "revisada": false,
+    "corroborada_por": [
+      "mpd-guia-preguntas"
+    ]
   },
   {
     "fuente": "mpd-examen-caba",
@@ -103,13 +175,25 @@
     "enunciado": "Las permutas entre el personal de las distintas dependencias se produce:",
     "tipo": "multiple_choice",
     "opciones": [
-      { "clave": "a", "texto": "con la mera conformidad de los/as agentes involucrados." },
-      { "clave": "b", "texto": "con la mera conformidad de los titulares de las dependencias en las cuales los/as agentes involucrados prestan funciones." },
-      { "clave": "c", "texto": "con la previa autorización expresa del/de la Defensor/a General de la Nación." }
+      {
+        "clave": "a",
+        "texto": "con la mera conformidad de los/as agentes involucrados."
+      },
+      {
+        "clave": "b",
+        "texto": "con la mera conformidad de los titulares de las dependencias en las cuales los/as agentes involucrados prestan funciones."
+      },
+      {
+        "clave": "c",
+        "texto": "con la previa autorización expresa del/de la Defensor/a General de la Nación."
+      }
     ],
     "respuesta_correcta": "c",
-    "confianza": "media",
-    "revisada": false
+    "confianza": "alta",
+    "revisada": false,
+    "corroborada_por": [
+      "mpd-guia-preguntas"
+    ]
   },
   {
     "fuente": "mpd-examen-caba",
@@ -119,13 +203,25 @@
     "enunciado": "El Ministerio Público de la Defensa se relaciona con el Poder Legislativo:",
     "tipo": "multiple_choice",
     "opciones": [
-      { "clave": "a", "texto": "mediante el Ministro de Justicia por intermedio de expedientes internos." },
-      { "clave": "b", "texto": "mediante un representante en el Consejo de la Magistratura designado por el Procurador General de la Nación." },
-      { "clave": "c", "texto": "mediante una Comisión Bicameral cuya composición y funciones fijará el Congreso Nacional." }
+      {
+        "clave": "a",
+        "texto": "mediante el Ministro de Justicia por intermedio de expedientes internos."
+      },
+      {
+        "clave": "b",
+        "texto": "mediante un representante en el Consejo de la Magistratura designado por el Procurador General de la Nación."
+      },
+      {
+        "clave": "c",
+        "texto": "mediante una Comisión Bicameral cuya composición y funciones fijará el Congreso Nacional."
+      }
     ],
     "respuesta_correcta": "c",
-    "confianza": "media",
-    "revisada": false
+    "confianza": "alta",
+    "revisada": false,
+    "corroborada_por": [
+      "mpd-guia-preguntas"
+    ]
   },
   {
     "fuente": "mpd-examen-caba",
@@ -135,13 +231,25 @@
     "enunciado": "La licencia con goce de haberes para rendir examen podrá ser acordada:",
     "tipo": "multiple_choice",
     "opciones": [
-      { "clave": "a", "texto": "hasta un máximo de veinte días laborales por año calendario, en períodos de hasta cinco días." },
-      { "clave": "b", "texto": "hasta un máximo de diez materias por año calendario, en períodos de hasta cinco días." },
-      { "clave": "c", "texto": "en períodos de dos horas diarias en horario laboral, en oficinas especialmente adaptadas para ello, en períodos de hasta cinco días por materia." }
+      {
+        "clave": "a",
+        "texto": "hasta un máximo de veinte días laborales por año calendario, en períodos de hasta cinco días."
+      },
+      {
+        "clave": "b",
+        "texto": "hasta un máximo de diez materias por año calendario, en períodos de hasta cinco días."
+      },
+      {
+        "clave": "c",
+        "texto": "en períodos de dos horas diarias en horario laboral, en oficinas especialmente adaptadas para ello, en períodos de hasta cinco días por materia."
+      }
     ],
     "respuesta_correcta": "a",
-    "confianza": "media",
-    "revisada": false
+    "confianza": "alta",
+    "revisada": false,
+    "corroborada_por": [
+      "mpd-guia-preguntas"
+    ]
   },
   {
     "fuente": "mpd-examen-caba",
@@ -151,12 +259,24 @@
     "enunciado": "El/la sometido/a procedimiento sancionatorio será considerado/a inocente:",
     "tipo": "multiple_choice",
     "opciones": [
-      { "clave": "a", "texto": "hasta el momento previo a prestar declaración en dicho procedimiento sancionatorio." },
-      { "clave": "b", "texto": "siempre que la opinión unánime de todos los integrantes de la dependencia en la que presta funciones sea positiva en cuanto a su persona." },
-      { "clave": "c", "texto": "hasta que una resolución firme declare su responsabilidad." }
+      {
+        "clave": "a",
+        "texto": "hasta el momento previo a prestar declaración en dicho procedimiento sancionatorio."
+      },
+      {
+        "clave": "b",
+        "texto": "siempre que la opinión unánime de todos los integrantes de la dependencia en la que presta funciones sea positiva en cuanto a su persona."
+      },
+      {
+        "clave": "c",
+        "texto": "hasta que una resolución firme declare su responsabilidad."
+      }
     ],
     "respuesta_correcta": "c",
-    "confianza": "media",
-    "revisada": false
+    "confianza": "alta",
+    "revisada": false,
+    "corroborada_por": [
+      "mpd-guia-preguntas"
+    ]
   }
 ]

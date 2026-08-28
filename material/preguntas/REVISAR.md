@@ -41,13 +41,19 @@ acusatorio se encuentra:»*, con **publicidad** en una y **simplicidad** en la
 otra. Las dos son defendibles según cómo se enumeren los principios. Conviene
 quedarse con una sola versión o citar la norma en la explicación.
 
-## 4. Las respuestas del MPD son las que marcó quien rindió
+## 4. Las respuestas del MPD quedaron cruzadas
 
-`mpd-examen-caba` sale de la captura de un examen real, y lo que está marcado es
-**la opción que eligió esa persona**, no una clave de corrección publicada. Las
-diez parecen correctas contra la Ley 27.149 y el Régimen Jurídico, pero eso es
-una lectura, no una fuente. Van con `confianza: media` hasta que alguien las
-confirme.
+Ya no es un pendiente: **las diez preguntas de `mpd-examen-caba` aparecen las
+diez en `mpd-guia-preguntas`, y en las diez la opción que marcó quien rindió es
+la misma que marca la guía.** Dos fuentes independientes —un examen real y el
+documento de Nexo— diciendo lo mismo.
+
+Por eso esas diez pasaron a `confianza: alta` y llevan `corroborada_por`. Las
+otras 49 de la guía siguen en `media`: son la palabra de una sola fuente, que
+es lo normal, no un problema.
+
+El cruce lo hace `scripts/preguntas_pdf.py` solo, cada vez que corre. Si mañana
+aparece otro examen capturado, corrobora más preguntas sin que nadie toque nada.
 
 ## 5. Las de búsqueda web no se pueden simular tal cual
 

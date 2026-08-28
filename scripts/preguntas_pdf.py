@@ -1,18 +1,24 @@
 #!/usr/bin/env python3
 """Convierte los pregunteros en PDF a JSON cargable.
 
-La respuesta correcta no está escrita en ninguno de los dos documentos de Nexo:
-está **resaltada**, con un rectángulo verde que el procesador de texto dibuja
-detrás del renglón. Así que el parser no busca una marca textual sino la
-superposición geométrica entre cada línea y esos rectángulos. Es la única
-señal disponible, y es fiable: cada pregunta termina con exactamente un
-resaltado.
+La respuesta correcta no está escrita en ninguno de los documentos de Nexo. Está
+marcada visualmente, y de dos maneras distintas según el archivo:
 
-Los dos documentos tienen estructura distinta y por eso hay dos lectores:
+- **Resaltada**: un rectángulo verde dibujado detrás del renglón. El parser no
+  busca una marca textual —no hay— sino la superposición geométrica entre cada
+  línea y esos rectángulos.
+- **En verde**: el texto de la opción correcta va en color, no en negro.
 
-- `mpf-preguntero-nexo.pdf`: el enunciado va en negrita y no está numerado.
-- `mpf-modelos-manual.pdf`: el enunciado va numerado ("16)") en su propio
-  renglón y sin negrita, y el archivo trae dos secciones.
+En los dos casos la señal se puede verificar: cada pregunta tiene que terminar
+con exactamente tres opciones y una sola marcada.
+
+Cada documento arma la pregunta distinto, y por eso hay tres lectores:
+
+- `mpf-preguntero-nexo.pdf`: enunciado en negrita, sin numerar, resaltado.
+- `mpf-modelos-manual.pdf`: enunciado numerado en su propio renglón, sin
+  negrita, resaltado, y el archivo trae dos secciones.
+- `mpd-guia-preguntas.pdf`: enunciado numerado en negrita cursiva, correcta en
+  verde.
 
 Uso:
     python3 scripts/preguntas_pdf.py
@@ -39,6 +45,9 @@ DESTINO = Path("material/preguntas/json")
 # tonos distintos porque los archivos se escribieron en momentos distintos.
 VERDES = [(0.4157, 0.6588, 0.3098), (0.576, 0.765, 0.49), (0.576, 0.769, 0.49)]
 TOLERANCIA_COLOR = 0.03
+
+# El verde con el que la guía del MPD escribe la opción correcta.
+VERDE_TEXTO = 0x4AA921
 
 # Un renglón de continuación cae a ~14.5 pt del anterior; entre bloques hay más.
 # Hace falta porque la negrita sola miente: en el preguntero hay un renglón de
@@ -84,6 +93,10 @@ def renglones(ruta: Path):
                     "texto": texto,
                     "negrita": any(
                         s["flags"] & 16 or "bold" in s["font"].lower() for s in linea["spans"]
+                    ),
+                    "cursiva": any("Italic" in s["font"] for s in linea["spans"]),
+                    "verde": any(
+                        s["color"] == VERDE_TEXTO for s in linea["spans"] if s["text"].strip()
                     ),
                     "resaltada": resaltada,
                     "pagina": pag.number + 1,
@@ -223,6 +236,35 @@ def leer_manual(ruta: Path) -> list[dict]:
     return a.preguntas
 
 
+def leer_guia_mpd(ruta: Path) -> list[dict]:
+    """Enunciados numerados en negrita, opción correcta escrita en verde."""
+    a = Armador()
+    ultimo = 0
+    for ln in renglones(ruta):
+        t = ln["texto"]
+        mn, mo = NUMERO.match(t), OPCION.match(t)
+        # El enunciado va en negrita y numerado. La cursiva no sirve de señal:
+        # casi todos los enunciados la tienen pero alguno no, y el que no la
+        # tiene quedaría pegado como texto de la opción anterior. El número
+        # creciente descarta que un año o un porcentaje abra una pregunta.
+        if mn and not mo and ln["negrita"] and int(mn.group(1)) > ultimo:
+            ultimo = int(mn.group(1))
+            a.abrir(numero=ultimo, enunciado=mn.group(2).strip(),
+                    seccion="teorico", pagina=ln["pagina"])
+            continue
+        if a.actual is None:
+            continue
+        if mo:
+            ok, t = a.marcador_valido(mo, t)
+            if ok:
+                a.opcion_nueva(mo.group(1), mo.group(2), ln["verde"])
+                continue
+        a.seguir(t, ln["verde"])
+
+    a.cerrar_pregunta()
+    return a.preguntas
+
+
 def normalizar(s: str) -> str:
     s = unicodedata.normalize("NFKD", s.lower())
     s = "".join(c for c in s if not unicodedata.combining(c))
@@ -262,6 +304,34 @@ def verificar(registros: list[dict]) -> list[str]:
     return problemas
 
 
+def corroborar(registros: list[dict]) -> int:
+    """Sube a `alta` la confianza de lo que dicen dos fuentes distintas.
+
+    Una respuesta marcada por una sola fuente es la palabra de esa fuente. Cuando
+    dos documentos independientes —la guía de Nexo y la captura de un examen
+    real, por ejemplo— coinciden en el enunciado y en el texto de la correcta,
+    deja de ser una lectura y pasa a estar cruzada.
+    """
+    subidas = 0
+    for grupo in duplicados(registros).values():
+        fuentes = {r["fuente"] for r in grupo}
+        if len(fuentes) < 2:
+            continue
+        textos = [
+            normalizar(next((o["texto"] for o in r["opciones"]
+                             if o["clave"] == r["respuesta_correcta"]), ""))
+            for r in grupo
+        ]
+        if all(difflib.SequenceMatcher(None, a, b).ratio() >= 0.85
+               for a in textos for b in textos):
+            for r in grupo:
+                if r["confianza"] != "alta":
+                    r["confianza"] = "alta"
+                    subidas += 1
+                r["corroborada_por"] = sorted(fuentes - {r["fuente"]})
+    return subidas
+
+
 def duplicados(registros: list[dict]) -> dict[str, list[dict]]:
     grupos = defaultdict(list)
     for r in registros:
@@ -274,8 +344,9 @@ def main() -> int:
     trabajos = [
         ("mpf-preguntero-nexo.pdf", leer_preguntero, "mpf", "mpf-preguntero-nexo"),
         ("mpf-modelos-manual.pdf", leer_manual, "mpf", "mpf-modelos-manual"),
+        ("mpd-guia-preguntas.pdf", leer_guia_mpd, "mpd", "mpd-guia-preguntas"),
     ]
-    todos = []
+    por_archivo: dict[str, list[dict]] = {}
     for archivo, lector, organismo, nombre in trabajos:
         ruta = CRUDO / archivo
         if not ruta.exists():
@@ -285,19 +356,24 @@ def main() -> int:
             a_registro(p, nombre, organismo, i)
             for i, p in enumerate(lector(ruta), 1)
         ]
+        por_archivo[nombre] = registros
+        print(f"{nombre}: {len(registros)} preguntas")
+        for p in verificar(registros):
+            print(f"    ⚠ {p}")
+
+    # Los transcriptos a mano entran al cruce aunque no salgan de un parser.
+    a_mano = DESTINO / "mpd-examen-caba.json"
+    if a_mano.exists():
+        por_archivo["mpd-examen-caba"] = json.loads(a_mano.read_text(encoding="utf-8"))
+
+    todos = [r for rs in por_archivo.values() for r in rs]
+    print(f"\ncorroboradas por otra fuente: {corroborar(todos)}")
+
+    for nombre, registros in por_archivo.items():
         salida = DESTINO / f"{nombre}.json"
         salida.write_text(json.dumps(registros, ensure_ascii=False, indent=2) + "\n",
                           encoding="utf-8")
-        problemas = verificar(registros)
-        print(f"{nombre}: {len(registros)} preguntas -> {salida}")
-        for p in problemas:
-            print(f"    ⚠ {p}")
-        todos.extend(registros)
-
-    # Los cargados a mano se suman al control de duplicados aunque no salgan de acá.
-    manual = DESTINO / "mpd-examen-caba.json"
-    if manual.exists():
-        todos.extend(json.loads(manual.read_text(encoding="utf-8")))
+        print(f"  -> {salida}")
 
     reps = duplicados(todos)
     conflictos = 0

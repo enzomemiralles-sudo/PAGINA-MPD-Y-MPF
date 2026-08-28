@@ -67,21 +67,32 @@ Ordenado por lo que bloquea, no por organismo.
 
 ### Bloquea el simulador
 
+Ya nada. Todo lo que necesita está.
+
 | Qué | Organismo | Estado |
 |---|---|---|
 | Preguntas con respuesta correcta | MPF | ✅ 190 |
-| Preguntas con respuesta correcta | MPD | ✅ 10 |
-| Reglas de puntaje y tipeo | MPD | ✅ completas y verificadas contra un examen real |
-| Reglas de puntaje | MPF | 🔴 **no están publicadas.** El documento oficial no dice cuánto suma, cuánto resta ni el mínimo |
-| Más preguntas del MPD | MPD | 🔴 diez alcanzan para un examen, no para practicar |
+| Preguntas con respuesta correcta | MPD | ✅ 59 |
+| Reglas de puntaje y tipeo | MPD | ✅ del instructivo, confirmadas contra un examen real |
+| Reglas de puntaje | MPF | ✅ decididas: se usa la escala del MPD, declarada como orientativa |
 
-Falta el cargador: ningún script sube preguntas a Supabase todavía.
+Falta el cargador: ningún script sube preguntas a Supabase todavía. Eso es
+código, no material.
 
 ### Bloquea el asistente
 
-| Qué | Organismo | Por qué bloquea |
+| Qué | Organismo | Estado |
 |---|---|---|
-| Export de WhatsApp del grupo | MPD | La FAQ del MPD **no es un documento que se escriba**: sale del pipeline, igual que la del MPF. Falta la materia prima, no el texto. No existe `data/mpd/`. |
+| Export de WhatsApp del grupo | MPD | 🔴 **no existe todavía**, y no es un olvido |
+
+El grupo del MPD **todavía no tiene conversación**: se va a llenar cuando salgan
+las fechas y la gente empiece a preguntar. Hasta entonces no hay corpus, y el
+pipeline no tiene de dónde sacar nada.
+
+La consecuencia práctica: **el asistente arranca sabiendo del MPF y no del MPD.**
+Eso hay que decirlo en pantalla en vez de dejar que alguien pregunte por el MPD
+y reciba una respuesta inventada o vacía. La cautela acá es la funcionalidad,
+no una limitación que haya que disimular.
 
 ### Bloquea la biblioteca
 
@@ -89,7 +100,7 @@ Falta el cargador: ningún script sube preguntas a Supabase todavía.
 |---|---|---|
 | Carpeta de material de estudio | MPD | ✅ [MATERIAL DE ESTUDIO](https://drive.google.com/drive/folders/1Cetf622l_4iwmPdSGYq56LtfNGVsFNpk) — ya enlazada desde `mpd-inscripcion.md` |
 | Carpeta de material de estudio | MPF | ✅ [MATERIAL DE ESTUDIO](https://drive.google.com/drive/folders/1IzjQ4Y0rMe_JEMD0w8qaAB3fauCFNPHq) — seis carpetas, una por eje del examen |
-| Manual de inscripción | MPF | 🔴 falta |
+| Manual de inscripción | MPF | ⏸ se sale sin él; se actualiza después |
 
 La del MPF está ordenada por los mismos ejes que evalúa el examen: GENERO,
 MINISTERIO PUBLICO FISCAL, HISTORIA ARGENTINA, FORMACION ETICA Y CIUDADANA,

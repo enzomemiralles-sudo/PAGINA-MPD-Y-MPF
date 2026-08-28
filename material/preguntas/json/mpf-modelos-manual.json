@@ -796,8 +796,11 @@
       }
     ],
     "respuesta_correcta": "a",
-    "confianza": "media",
-    "revisada": false
+    "confianza": "alta",
+    "revisada": false,
+    "corroborada_por": [
+      "mpf-preguntero-nexo"
+    ]
   },
   {
     "fuente": "mpf-modelos-manual",
@@ -1046,8 +1049,11 @@
       }
     ],
     "respuesta_correcta": "c",
-    "confianza": "media",
-    "revisada": false
+    "confianza": "alta",
+    "revisada": false,
+    "corroborada_por": [
+      "mpf-preguntero-nexo"
+    ]
   },
   {
     "fuente": "mpf-modelos-manual",
@@ -1196,8 +1202,11 @@
       }
     ],
     "respuesta_correcta": "a",
-    "confianza": "media",
-    "revisada": false
+    "confianza": "alta",
+    "revisada": false,
+    "corroborada_por": [
+      "mpf-preguntero-nexo"
+    ]
   },
   {
     "fuente": "mpf-modelos-manual",
@@ -1546,8 +1555,11 @@
       }
     ],
     "respuesta_correcta": "c",
-    "confianza": "media",
-    "revisada": false
+    "confianza": "alta",
+    "revisada": false,
+    "corroborada_por": [
+      "mpf-preguntero-nexo"
+    ]
   },
   {
     "fuente": "mpf-modelos-manual",
@@ -2346,8 +2358,11 @@
       }
     ],
     "respuesta_correcta": "b",
-    "confianza": "media",
-    "revisada": false
+    "confianza": "alta",
+    "revisada": false,
+    "corroborada_por": [
+      "mpf-preguntero-nexo"
+    ]
   },
   {
     "fuente": "mpf-modelos-manual",
@@ -2796,8 +2811,11 @@
       }
     ],
     "respuesta_correcta": "b",
-    "confianza": "media",
-    "revisada": false
+    "confianza": "alta",
+    "revisada": false,
+    "corroborada_por": [
+      "mpf-preguntero-nexo"
+    ]
   },
   {
     "fuente": "mpf-modelos-manual",
