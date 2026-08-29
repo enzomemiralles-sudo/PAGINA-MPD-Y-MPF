@@ -553,6 +553,12 @@ comment on view questions_public is
 -- cerrado es cada pregunta, con revisada = false, que es donde tiene que
 -- estar el freno.
 -- ============================================================
+--
+-- Los cuatro quedan en la MISMA escala: máximo 100, se aprueba con 60. El
+-- instructivo del MPD dice «Máximo 100», así que el MPF, que usa su escala,
+-- reparte los 100 entre las preguntas que trae: veinte a cinco puntos cada
+-- una. Con +10 el máximo habría dado 200 y el mínimo de 60 no querría decir
+-- lo mismo en los dos organismos.
 insert into exams (
   concurso_id, titulo, instancia, modalidad,
   duracion_minutos, cantidad_preguntas,
@@ -563,7 +569,7 @@ select c.id, v.titulo, v.instancia::instancia_examen, v.modalidad::modalidad_exa
        v.duracion, v.cantidad, v.correcta, v.incorrecta, 0,
        v.inicial, 60, 'practica'::tipo_examen, true, true
 from (values
-  ('mpf', 'Examen teórico',            'teorico',  'multiple_choice', 30, 20,  10, -10,   0),
+  ('mpf', 'Examen teórico',            'teorico',  'multiple_choice', 30, 20,   5,  -5,   0),
   -- SUPUESTO: el MPF no publica cuántos ejercicios trae el práctico. Diez de
   -- los que hay. Se corrige con un update, no tocando código (S-13).
   ('mpf', 'Examen práctico',           'practico', 'investigacion',   15, 10,  10, -10,   0),

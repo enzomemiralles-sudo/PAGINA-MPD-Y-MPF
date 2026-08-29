@@ -33,6 +33,9 @@ type Piel = {
   "marca-revisar": string;
   "sobre-acento": string;
   "sobre-acento-2": string;
+  /** Verde y rojo funcionales: correcta / incorrecta. No son de marca. */
+  ok: string;
+  error: string;
 };
 
 const OSCURA = {
@@ -43,6 +46,8 @@ const OSCURA = {
   tarjeta: "rgba(244,242,237,0.04)",
   "sobre-acento": "#08090A",
   "sobre-acento-2": "#08090A",
+  ok: "#4ADE80",
+  error: "#E64D52",
 } as const;
 
 const CLARA = {
@@ -53,6 +58,11 @@ const CLARA = {
   tarjeta: "#FFFFFF",
   "sobre-acento": "#FFFFFF",
   "sobre-acento-2": "#08090A",
+  // Los de la superficie oscura son claros a propósito y sobre papel no
+  // llegan ni a 2:1. Acá van sus versiones oscuras, que es lo que hace
+  // legible «correcta / incorrecta» en la pantalla de resultados.
+  ok: "#14713A",
+  error: "#B3261E",
 } as const;
 
 export const PIELES: Record<string, Piel> = {
@@ -92,7 +102,9 @@ export const PIELES: Record<string, Piel> = {
 };
 
 /** Colores que pintan texto. */
-export const TOKENS_DE_TEXTO = ["texto", "texto-tenue", "texto-debil", "acento-texto", "marca-revisar"] as const;
+export const TOKENS_DE_TEXTO = [
+  "texto", "texto-tenue", "texto-debil", "acento-texto", "marca-revisar", "ok", "error",
+] as const;
 
 /** Fondos sobre los que puede caer texto. */
 export const TOKENS_DE_FONDO = ["fondo", "tarjeta", "superficie"] as const;

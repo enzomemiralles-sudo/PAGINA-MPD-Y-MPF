@@ -33,3 +33,14 @@ select c.organismo, e.instancia, e.modalidad, e.duracion_minutos, e.cantidad_pre
 \echo ''
 \echo '=== correr 0005 dos veces no duplica exámenes (tienen que seguir siendo 4) ==='
 select count(*) as exams from exams;
+
+\echo ''
+\echo '=== las preguntas cargadas, por examen (correr dos veces no duplica) ==='
+select c.organismo, e.instancia, e.modalidad, count(q.id) as preguntas
+  from exams e
+  join concursos c on c.id = e.concurso_id
+  left join questions q on q.exam_id = e.id
+ group by 1,2,3 order by 1,2;
+\echo ''
+\echo '=== ninguna pregunta de examen entra publicada: revisada tiene que ser false ==='
+select q.revisada, q.tipo, count(*) from questions q group by 1,2 order by 1,2;

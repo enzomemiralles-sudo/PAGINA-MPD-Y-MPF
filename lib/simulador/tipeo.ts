@@ -43,7 +43,7 @@ export type ComparacionTipeo = {
 };
 
 /**
- * Distancia de edición (Levenshtein) entre dos textos.
+ * Distancia de edición (Levenshtein) entre dos secuencias.
  *
  * No alcanza con comparar posición por posición: un carácter de más al
  * principio correría todo el resto y contaría como error cada letra que
@@ -51,28 +51,64 @@ export type ComparacionTipeo = {
  * cuenta las operaciones —agregar, borrar, cambiar—, que es lo que una
  * persona sensata llamaría «errores».
  *
+ * Es genérica porque se usa igual sobre caracteres y sobre palabras, que son
+ * las dos unidades de error posibles mientras no sepamos cuál usa el examen.
+ *
  * Va por filas y no por matriz completa: con textos de mil caracteres la
  * matriz entera son un millón de celdas y no hacen falta.
  */
-export function distanciaDeEdicion(a: string, b: string): number {
-  if (a === b) return 0;
+function distancia<T>(a: ArrayLike<T>, b: ArrayLike<T>): number {
   if (a.length === 0) return b.length;
   if (b.length === 0) return a.length;
 
-  const anterior = new Array<number>(b.length + 1);
-  const actual = new Array<number>(b.length + 1);
-  for (let j = 0; j <= b.length; j += 1) anterior[j] = j;
+  let anterior = Array.from({ length: b.length + 1 }, (_, j) => j);
 
   for (let i = 1; i <= a.length; i += 1) {
-    actual[0] = i;
+    const actual = [i];
     for (let j = 1; j <= b.length; j += 1) {
       const costo = a[i - 1] === b[j - 1] ? 0 : 1;
-      actual[j] = Math.min(actual[j - 1] + 1, anterior[j] + 1, anterior[j - 1] + costo);
+      actual.push(Math.min(actual[j - 1]! + 1, anterior[j]! + 1, anterior[j - 1]! + costo));
     }
-    for (let j = 0; j <= b.length; j += 1) anterior[j] = actual[j];
+    anterior = actual;
   }
 
-  return anterior[b.length];
+  return anterior[b.length]!;
+}
+
+/** La distancia entre dos textos, contada por caracteres. */
+export function distanciaDeEdicion(a: string, b: string): number {
+  return a === b ? 0 : distancia(a, b);
+}
+
+/**
+ * Los errores cometidos hasta acá, sin contar lo que todavía no se escribió.
+ *
+ * Hace falta porque durante el examen la distancia contra el texto entero no
+ * informa nada: quien copió el 19% y se equivocó una vez ve «865 errores»,
+ * que son los caracteres que le faltan. Verdadero al entregar, inútil
+ * mientras se escribe.
+ *
+ * Se resuelve comparando contra el prefijo del original que mejor encaje. La
+ * última fila de la matriz ya trae, para cada prefijo, su distancia: una sola
+ * pasada da todas y alcanza con quedarse con la menor. Al terminar el texto,
+ * ese mínimo es la distancia completa, así que el número no salta al final.
+ */
+export function erroresHastaAca(esperado: string, escrito: string): number {
+  const a = escrito.replace(/^\n+|\n+$/g, "");
+  const b = esperado.replace(/^\n+|\n+$/g, "");
+  if (a.length === 0) return 0;
+  if (b.length === 0) return a.length;
+
+  let anterior = Array.from({ length: b.length + 1 }, (_, j) => j);
+  for (let i = 1; i <= a.length; i += 1) {
+    const actual = [i];
+    for (let j = 1; j <= b.length; j += 1) {
+      const costo = a[i - 1] === b[j - 1] ? 0 : 1;
+      actual.push(Math.min(actual[j - 1]! + 1, anterior[j]! + 1, anterior[j - 1]! + costo));
+    }
+    anterior = actual;
+  }
+  return Math.min(...anterior);
 }
 
 /** Separa en palabras conservando la puntuación pegada, que también se evalúa. */
@@ -99,7 +135,7 @@ export function compararTipeo(
 
   const errores =
     unidad === "palabra"
-      ? distanciaDeEdicionDe(palabras(a), palabras(b))
+      ? distancia(palabras(a), palabras(b))
       : distanciaDeEdicion(a, b);
 
   return {
@@ -108,25 +144,4 @@ export function compararTipeo(
     esperados: a.length,
     escritos: b.length,
   };
-}
-
-/** La misma distancia, sobre listas de palabras en vez de caracteres. */
-function distanciaDeEdicionDe(a: readonly string[], b: readonly string[]): number {
-  if (a.length === 0) return b.length;
-  if (b.length === 0) return a.length;
-
-  const anterior = new Array<number>(b.length + 1);
-  const actual = new Array<number>(b.length + 1);
-  for (let j = 0; j <= b.length; j += 1) anterior[j] = j;
-
-  for (let i = 1; i <= a.length; i += 1) {
-    actual[0] = i;
-    for (let j = 1; j <= b.length; j += 1) {
-      const costo = a[i - 1] === b[j - 1] ? 0 : 1;
-      actual[j] = Math.min(actual[j - 1] + 1, anterior[j] + 1, anterior[j - 1] + costo);
-    }
-    for (let j = 0; j <= b.length; j += 1) anterior[j] = actual[j];
-  }
-
-  return anterior[b.length];
 }

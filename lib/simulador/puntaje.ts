@@ -43,6 +43,21 @@ export type DesempenoTema = {
   porcentaje: number;
 };
 
+/**
+ * El puntaje no baja de cero.
+ *
+ * DECISIÓN, no dato: el instructivo no dice qué pasa por debajo de cero, y no
+ * lo dice porque no le hace falta —el examen ya está perdido mucho antes—.
+ * Sin piso, alguien que se queda a mitad del tipeo ve «−4225 / 100», que no
+ * es un puntaje: es ruido. La escala es de 0 a 100 y abajo de 0 el número
+ * deja de querer decir algo.
+ *
+ * No cambia ningún aprobado ni ningún desaprobado: el mínimo es 60 y todo
+ * esto pasa muy por debajo. Si algún día se confirma que el examen real
+ * informa negativos, se saca de acá y de ningún otro lado.
+ */
+const conPiso = (puntaje: number) => Math.max(0, puntaje);
+
 export function corregir(
   respuestas: readonly RespuestaCorregida[],
   reglas: ReglasPuntaje,
@@ -52,15 +67,12 @@ export function corregir(
   const incorrectas = respuestas.filter((r) => r.correcta === false).length;
   const enBlanco = total - correctas - incorrectas;
 
-  // Sin piso. Con −10 por error, ocho de diez mal da un número negativo, y
-  // ponerle un cero de oficio sería inventar una regla que el instructivo no
-  // dice. Si algún día se confirma que el examen real no baja de cero, se
-  // agrega acá y se documenta.
-  const puntaje =
+  const puntaje = conPiso(
     reglas.puntajeInicial +
-    correctas * reglas.puntosCorrecta +
-    incorrectas * reglas.puntosIncorrecta +
-    enBlanco * reglas.puntosBlanco;
+      correctas * reglas.puntosCorrecta +
+      incorrectas * reglas.puntosIncorrecta +
+      enBlanco * reglas.puntosBlanco,
+  );
 
   return {
     correctas,
@@ -80,7 +92,7 @@ export function corregir(
  * y cada error descuenta `puntosIncorrecta`, que en el MPD son 100 y −5.
  */
 export function corregirTipeo(errores: number, reglas: ReglasPuntaje): Resultado {
-  const puntaje = reglas.puntajeInicial + errores * reglas.puntosIncorrecta;
+  const puntaje = conPiso(reglas.puntajeInicial + errores * reglas.puntosIncorrecta);
   return {
     correctas: 0,
     incorrectas: errores,

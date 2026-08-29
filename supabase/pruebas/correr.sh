@@ -48,5 +48,13 @@ done
 
 correr /tmp/01-datos.sql
 
+# Las preguntas, dos veces por lo mismo: tienen que actualizarse, no
+# duplicarse. Va después de 01-datos porque ahí se le fija el id al examen del
+# MPD y una clave foránea ya apuntando lo impediría.
+cp "$RAIZ"/supabase/preguntas.sql /tmp/ && chmod 644 /tmp/preguntas.sql
+correr /tmp/preguntas.sql
+correr /tmp/preguntas.sql
+echo "  OK  preguntas.sql (dos corridas)"
+
 su postgres -c "psql -p $PUERTO -d nexo -f /tmp/02-seguridad.sql"
 su postgres -c "psql -p $PUERTO -d nexo -f /tmp/03-estructura.sql"

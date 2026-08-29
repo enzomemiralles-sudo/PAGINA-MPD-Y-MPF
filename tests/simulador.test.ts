@@ -1,6 +1,6 @@
 import { describe, expect, it } from "vitest";
 import { corregir, corregirTipeo, porTema, type ReglasPuntaje } from "@/lib/simulador/puntaje";
-import { compararTipeo, distanciaDeEdicion } from "@/lib/simulador/tipeo";
+import { compararTipeo, distanciaDeEdicion, erroresHastaAca } from "@/lib/simulador/tipeo";
 
 /** Las reglas reales del MPD, confirmadas contra el instructivo de la DGN. */
 const MPD: ReglasPuntaje = {
@@ -50,8 +50,10 @@ describe("puntaje de opción múltiple", () => {
     expect(corregir(resp(8, 0, 2), MPD).puntaje).toBe(80);
   });
 
-  it("no le pone un piso de cero al que contestó todo mal", () => {
-    expect(corregir(resp(0, 10, 0), MPD).puntaje).toBe(-100);
+  // El piso es una decisión de presentación, no del instructivo: abajo de
+  // cero el número deja de querer decir algo y no cambia ningún aprobado.
+  it("no baja de cero aunque conteste todo mal", () => {
+    expect(corregir(resp(0, 10, 0), MPD)).toMatchObject({ puntaje: 0, aprobado: false });
   });
 
   it("un intento sin preguntas no divide por cero", () => {
@@ -69,6 +71,12 @@ describe("puntaje del tipeo", () => {
   it("ocho errores aprueba y nueve no", () => {
     expect(corregirTipeo(8, TIPEO)).toMatchObject({ puntaje: 60, aprobado: true });
     expect(corregirTipeo(9, TIPEO)).toMatchObject({ puntaje: 55, aprobado: false });
+  });
+
+  // Quien entrega a mitad de camino acumula un error por cada carácter que
+  // falta. Sin piso eso daba «−4225 / 100» en pantalla.
+  it("muchísimos errores quedan en cero y no en un número absurdo", () => {
+    expect(corregirTipeo(865, TIPEO)).toMatchObject({ puntaje: 0, aprobado: false });
   });
 });
 
@@ -139,5 +147,38 @@ describe("comparación del tipeo", () => {
     expect(distanciaDeEdicion("gato", "pato")).toBe(distanciaDeEdicion("pato", "gato"));
     expect(distanciaDeEdicion("", "hola")).toBe(4);
     expect(distanciaDeEdicion("hola", "")).toBe(4);
+  });
+});
+
+/**
+ * Durante el examen se cuentan los errores cometidos; al entregar, el texto
+ * entero. Los dos números son distintos a propósito y los dos son ciertos.
+ */
+describe("errores mientras se escribe", () => {
+  const original =
+    "El Ministerio Público de la Defensa es una institución de defensa y protección de derechos humanos.";
+
+  it("copiar bien la mitad no acusa ningún error", () => {
+    expect(erroresHastaAca(original, original.slice(0, 50))).toBe(0);
+  });
+
+  // Es el caso que motivó la función: la distancia contra el texto entero
+  // decía 49 errores donde había uno solo.
+  it("un error en la mitad copiada es un error, no todo lo que falta", () => {
+    const mitad = original.slice(0, 50) + "X";
+    expect(erroresHastaAca(original, mitad)).toBe(1);
+    expect(compararTipeo(original, mitad).errores).toBeGreaterThan(40);
+  });
+
+  it("sin escribir nada no hay errores todavía", () => {
+    expect(erroresHastaAca(original, "")).toBe(0);
+  });
+
+  // Al terminar, los dos números tienen que coincidir: si no, el contador
+  // saltaría en el último carácter.
+  it("con el texto completo coincide con la corrección final", () => {
+    const conFalla = original.replace("Público", "Publico");
+    expect(erroresHastaAca(original, conFalla)).toBe(compararTipeo(original, conFalla).errores);
+    expect(erroresHastaAca(original, original)).toBe(0);
   });
 });

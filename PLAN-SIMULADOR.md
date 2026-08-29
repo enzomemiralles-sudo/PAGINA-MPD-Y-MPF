@@ -259,14 +259,49 @@ puntaje es orientativo hasta confirmar la metodología.
 
 | # | Qué | Bloquea | Por qué |
 |---|---|---|---|
-| 1 | **Decisión: cómo se revisan las 259 preguntas.** ¿Te armo una pantalla de revisión para tildarlas de a lotes, o preferís el Table Editor? | S-03, S-05 y en los hechos toda la tanda | Sin `revisada = true` el simulador no muestra ninguna |
-| 2 | **Decisión: los temas.** ¿Las etiqueto con la taxonomía del Drive del MPF —género, MPF, historia, formación ética, constitucional, CPPF— o sacamos el desglose por tema de esta versión? | S-12 | Ninguna de las 259 tiene `tema`, y sin tema no hay «desempeño por tema» |
+| 1 | **Decisión: cómo se revisan las 259 preguntas.** ¿Te armo una pantalla de revisión para tildarlas de a lotes, o preferís el Table Editor? | que el simulador muestre alguna pregunta | Sin `revisada = true` la política no las deja salir. El motor anda igual: la instancia dice que todavía no hay preguntas y no ofrece botón. |
+| 2 | **Decisión: los temas.** ¿Las etiqueto con la taxonomía del Drive del MPF —género, MPF, historia, formación ética, constitucional, CPPF— o dejamos el desglose apagado? | el desglose por tema de S-12 | Ninguna de las 259 tiene `tema`. **Ya no bloquea**: la sección aparece si hay temas y no aparece si no los hay. |
 | 3 | **`SUPABASE_SERVICE_ROLE_KEY` en Vercel.** | corregir cualquier examen | La respuesta correcta no la puede leer el navegador; corregir necesita el cliente de servicio |
 | 4 | **Metodología del tipeo**: caracteres, criterio de error, si los 30 minutos son de todo el examen, y un texto de ejemplo real. | S-06 | §6 |
-| 5 | **Cuántas preguntas sirve el práctico del MPF.** | S-04 | Tengo 14 y el oficial no publica el número |
+| 5 | **Cuántos ejercicios sirve el práctico del MPF.** | S-04 | Tengo 14 y el oficial no publica el número. Mientras tanto sirve 10, cargado en `exams`. |
 
 Los puntos 1 y 2 son decisiones de una línea. El 3 son cinco minutos en el
 panel. El 4 es el único que depende de conseguir información.
+
+---
+
+## 10. Lo que se decidió al construirlo
+
+Cosas que el plan no había previsto y que se resolvieron con el código
+andando. Van acá para que se puedan discutir, no para darlas por cerradas.
+
+**Las cuatro instancias quedan en la misma escala: 0 a 100, se aprueba con
+60.** El instructivo del MPD dice «Máximo 100». Con veinte preguntas a +10 el
+MPF daba un máximo de 200 y el mínimo de 60 dejaba de querer decir lo mismo en
+los dos organismos. Ahora el MPF teórico reparte los cien puntos entre las
+veinte que sirve: +5 y −5.
+
+**El puntaje tiene piso en cero.** El instructivo no dice qué pasa por debajo,
+y no lo dice porque no le hace falta: el examen ya está perdido mucho antes.
+Sin piso, quien se queda a mitad del tipeo veía «−4225 / 100», que no es un
+puntaje. No cambia ningún aprobado ni ningún desaprobado.
+
+**Mientras se escribe, el tipeo cuenta los errores cometidos, no los
+caracteres que faltan.** Comparar contra el texto entero decía «865 errores»
+cuando había uno solo y faltaba escribir el resto. Al entregar sí se cuenta
+todo, y la pantalla lo avisa.
+
+**Las preguntas se cargan con un `.sql` que se pega en el panel, no con un
+script.** Insertar en `questions` necesita saltarse RLS, o sea la service
+role, y esa clave no tiene por qué estar en una máquina de desarrollo.
+`supabase/preguntas.sql` sale de `scripts/preguntas_a_sql.py` y se puede
+correr las veces que haga falta: actualiza en vez de duplicar, y **no pisa el
+tilde de `revisada`** de una pregunta ya revisada a mano.
+
+**El texto del tipeo es de práctica y está escrito para esto.** No sale de
+ninguna fuente oficial —el examen real no publica sus textos—. Va con
+`revisada = true` porque no hay nada que revisar: lo que hay que copiar es lo
+mismo que se muestra. La pantalla dice que la metodología está sin confirmar.
 
 ---
 
