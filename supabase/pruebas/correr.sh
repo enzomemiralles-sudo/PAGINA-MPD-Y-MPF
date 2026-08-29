@@ -37,6 +37,15 @@ for f in "$RAIZ"/supabase/migrations/*.sql; do
   correr "/tmp/$(basename "$f")"
   echo "  OK  $(basename "$f")"
 done
+
+# Otra vez, todas. Quien las corre lo hace desde el SQL Editor y apretar Run
+# dos veces es normal: si una migración no aguanta eso, se rompe acá y no en
+# producción.
+for f in "$RAIZ"/supabase/migrations/*.sql; do
+  correr "/tmp/$(basename "$f")"
+  echo "  OK  $(basename "$f")  (segunda corrida)"
+done
+
 correr /tmp/01-datos.sql
 
 su postgres -c "psql -p $PUERTO -d nexo -f /tmp/02-seguridad.sql"

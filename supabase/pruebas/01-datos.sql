@@ -7,10 +7,13 @@ insert into profiles (user_id, tipo_perfil, marca, consent_datos)
 values ('11111111-1111-1111-1111-111111111111','estudiante','nexo',true),
        ('22222222-2222-2222-2222-222222222222','abogado','na',true);
 
-insert into exams (id, concurso_id, titulo, duracion_minutos, cantidad_preguntas,
-  puntos_correcta, puntos_incorrecta, puntaje_minimo, tipo, publicado, revisado)
-select '33333333-3333-3333-3333-333333333333', id, 'Simulacro MPD', 30, 10, 10, -10, 60,
-  'oficial_reconstruido', true, true from concursos where organismo='mpd';
+-- El examen ya no lo inventa la prueba: desde 0005 hay una fila por instancia
+-- y modalidad, y la prueba usa la misma que existe en producción. Se le fija
+-- el id para que el resto de las pruebas lo pueda nombrar.
+update exams e set id = '33333333-3333-3333-3333-333333333333'
+  from concursos c
+ where c.id = e.concurso_id and c.organismo = 'mpd'
+   and e.instancia = 'teorico' and e.modalidad = 'multiple_choice';
 
 insert into questions (id, exam_id, orden, enunciado, opciones, respuesta_correcta, explicacion, revisada)
 values ('44444444-4444-4444-4444-444444444444','33333333-3333-3333-3333-333333333333',1,

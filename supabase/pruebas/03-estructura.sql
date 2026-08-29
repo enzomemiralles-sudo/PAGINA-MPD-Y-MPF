@@ -24,3 +24,12 @@ select string_agg(column_name, ', ' order by ordinal_position) as columnas
 \echo '=== RLS activo en todas las tablas ==='
 select tablename, rowsecurity from pg_tables
  where schemaname='public' order by tablename;
+\echo ''
+\echo '=== las cuatro instancias de 0005 (una fila por modalidad) ==='
+select c.organismo, e.instancia, e.modalidad, e.duracion_minutos, e.cantidad_preguntas,
+       e.puntos_correcta, e.puntos_incorrecta, e.puntaje_inicial, e.puntaje_minimo
+  from exams e join concursos c on c.id = e.concurso_id
+ order by c.organismo, e.instancia;
+\echo ''
+\echo '=== correr 0005 dos veces no duplica exámenes (tienen que seguir siendo 4) ==='
+select count(*) as exams from exams;
