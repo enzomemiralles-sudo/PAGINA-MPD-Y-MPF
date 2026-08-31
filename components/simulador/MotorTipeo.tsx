@@ -28,6 +28,7 @@ export function MotorTipeo({ intento, segundos }: { intento: Intento; segundos: 
   const [escrito, setEscrito] = useState(guardada?.respuesta ?? "");
   const [entregando, setEntregando] = useState(false);
   const [expiro, setExpiro] = useState(false);
+  const [problema, setProblema] = useState("");
   const pendiente = useRef<ReturnType<typeof setTimeout> | null>(null);
   const entregada = useRef(false);
   const ultimo = useRef(escrito);
@@ -63,6 +64,7 @@ export function MotorTipeo({ intento, segundos }: { intento: Intento; segundos: 
     }
     entregada.current = false;
     setEntregando(false);
+    setProblema(r.motivo === "sin_clave" ? tr.sinClave : tr.sinCorregir);
   }, [intento.id, pregunta, router]);
 
   const seAcaboElTiempo = useCallback(() => {
@@ -129,6 +131,12 @@ export function MotorTipeo({ intento, segundos }: { intento: Intento; segundos: 
       <button className="btn btn-p rend-entregar" type="button" onClick={cerrar} disabled={entregando}>
         {entregando ? tr.entregando : t.entregar}
       </button>
+
+      {problema ? (
+        <p className="auth-error" role="alert">
+          {problema}
+        </p>
+      ) : null}
 
       <div className="tip-supuesto">
         <p>{t.faltante}</p>

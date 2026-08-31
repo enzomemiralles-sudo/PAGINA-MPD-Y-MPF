@@ -19,6 +19,9 @@ export function Revisor({ inicial }: { inicial: Cola }) {
   const [frenando, setFrenando] = useState(false);
 
   const pregunta = cola.pregunta;
+  // «hay» y sin pregunta no debería pasar; si pasa, el cartel neutro es el
+  // único que no afirma algo falso.
+  const vacio = cola.estado === "hay" ? t.vacio.todo_revisado : t.vacio[cola.estado];
 
   // Cada pregunta arranca con lo que traía cargado. Cambiarlo es la excepción,
   // no el trámite: si hubiera que elegir todo de cero en cada una, revisar 259
@@ -133,8 +136,8 @@ export function Revisor({ inicial }: { inicial: Cola }) {
 
       {!pregunta ? (
         <section className="rev-vacio tarjeta-app">
-          <p className="rev-vacio-titulo">{t.terminado}</p>
-          <p>{t.terminadoTexto}</p>
+          <p className="rev-vacio-titulo">{vacio.titulo}</p>
+          <p>{vacio.texto}</p>
         </section>
       ) : (
         <>

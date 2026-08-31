@@ -34,6 +34,7 @@ export function MotorPreguntas({
     ),
   );
   const [guardando, setGuardando] = useState<"quieto" | "guardando" | "guardado" | "error">("quieto");
+  const [problema, setProblema] = useState("");
   const [confirmando, setConfirmando] = useState(false);
   const [entregando, setEntregando] = useState(false);
   const [expiro, setExpiro] = useState(false);
@@ -97,7 +98,7 @@ export function MotorPreguntas({
     entregada.current = false;
     setEntregando(false);
     setConfirmando(false);
-    setGuardando("error");
+    setProblema(r.motivo === "sin_clave" ? t.sinClave : t.sinCorregir);
   }, [intento.id, marcas, router]);
 
   const seAcaboElTiempo = useCallback(() => {
@@ -137,6 +138,12 @@ export function MotorPreguntas({
       {expiro ? (
         <p className="rend-expiro" role="status">
           {t.seAcabo}
+        </p>
+      ) : null}
+
+      {problema ? (
+        <p className="auth-error" role="alert">
+          {problema}
         </p>
       ) : null}
 

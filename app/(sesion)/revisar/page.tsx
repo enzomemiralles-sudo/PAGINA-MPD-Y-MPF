@@ -16,12 +16,17 @@ export const dynamic = "force-dynamic";
  * Devuelve 404 y no un «no tenés permiso» a quien no es revisor: para el
  * resto del mundo esta ruta no existe, y decir «existe pero no podés» es
  * contar de más.
+ *
+ * El contenedor se llama `revision` y no `rev`: `.rev` es la clase del sistema
+ * de movimiento de la portada, que arranca en `opacity: 0` y sólo se ve cuando
+ * el observador de scroll le agrega `.on`. Reusarla dejaba esta página
+ * renderizada entera, devolviendo 200, y completamente invisible.
  */
 export default async function Revisar() {
   if (!(await esRevisor())) notFound();
 
   return (
-    <main className="env app-cuerpo rev">
+    <main className="env app-cuerpo revision">
       <Revisor inicial={await traerCola()} />
     </main>
   );
