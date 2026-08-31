@@ -1068,6 +1068,8 @@ html[data-marca="nexo"] .sim-cierre-titulo { --h2-estilo: italic; }
 
 /* ============================================================
    REVISIÓN DE PREGUNTAS
+   El contenedor se llama .revision y no .rev: .rev es del sistema de
+   movimiento de la portada y arranca invisible.
    Pantalla de trabajo, no de lectura: densa, con los atajos a la vista y
    todo lo que se decide en una sola pantalla sin scroll en escritorio.
    ============================================================ */
