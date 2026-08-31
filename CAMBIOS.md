@@ -117,19 +117,17 @@
 ## TANDA 6 · Pestaña Inscripción  `/inscripcion`
 > Página nueva. El manual del MPD es la base: se traduce a una experiencia web más clara. Después se replica la misma estructura para el MPF.
 
-- [ ] **I-01** Hero de inscripción.
-- [ ] **I-02** Selector MPD / MPF.
-- [ ] **I-03** Checklist previa (qué necesitás antes de empezar).
-- [ ] **I-04** Guía completa paso a paso. Cada paso con texto en lenguaje sencillo, capturas, advertencias y video.
-  - Paso 2 · Crear o validar tu usuario — registro, contraseña y validación del correo.
-  - Paso 3 · Completar tus datos personales — qué pide el formulario y cómo cargarlo.
-  - Paso 4 · Adjuntar la documentación — formatos, errores frecuentes, cómo verificar que quedó cargada.
-  - Paso 5 · Confirmar la inscripción — qué revisar antes de enviar y cómo comprobar que se realizó.
-- [ ] **I-05** Sección **Errores frecuentes**: "No me llega el mail de confirmación" · "No puedo adjuntar un archivo" · "Completé todo, ¿cómo sé si terminé?". Alimentable desde el asistente.
-- [ ] **I-06** **Biblioteca de videos**: sección propia, con videos cortos por momento del trámite. Nada de un video de 20 minutos.
-- [ ] **I-07** Cierre "¿Te trabaste en algún paso?" con acceso directo al asistente.
-- [ ] **I-08** La estructura visual del MPD y la del MPF son idénticas, para que se sientan parte del mismo sitio.
-- [ ] **I-09** Bloque de inscripción en la pestaña de muestra, encabezado por la frase fuerte **"Inscribite sin perderte."** / "Todo lo que necesitás para completar tu inscripción al MPD o al MPF, explicado paso a paso." Con las dos tarjetas de concurso, los cuatro destacados (📋 Guías detalladas · 🖥️ Capturas de pantalla · 🎥 Videos explicativos · ⚠️ Errores frecuentes) y el cierre "¿Te quedó alguna duda?" hacia el asistente.
+- [x] **I-01** Hero de inscripción.
+- [x] **I-02** Selector MPD / MPF.
+- [x] **I-03** Checklist previa (qué necesitás antes de empezar).
+- [ ] **I-04** Guía completa paso a paso. Cada paso con texto en lenguaje sencillo, capturas, advertencias y video. → **El texto y las advertencias están hechos y verificados; las capturas y los videos no, porque no existen** (ver B-07 y B-08). El hueco está armado en cada paso y no se dibuja mientras esté vacío. Queda sin tildar hasta que llegue el material.
+  - Los pasos quedaron los cuatro del manual, no los cuatro de acá: **1 · Instalar la aplicación CONCURSOS** (la trampa de la PC con Windows, que esta lista se salteaba) · **2 · Registrarte** · **3 · Cargar el CV** (nueve páginas) · **4 · Inscribirte al examen y confirmar**.
+  - No hay paso de adjuntar documentación: el manual dice textual que «no se sube ningún documento, en ningún formato digital». Esa sorpresa está en Errores frecuentes, como «No encuentro dónde subir los documentos».
+- [x] **I-05** Sección **Errores frecuentes**: "No me llega el mail de confirmación" · "No puedo adjuntar un archivo" · "Completé todo, ¿cómo sé si terminé?". Alimentable desde el asistente. → El segundo cambió de nombre a «No encuentro dónde subir los documentos»: no es que no se pueda adjuntar, es que no se adjunta nada. Dejarlo como estaba mandaba a buscar la solución de un problema que no existe.
+- [x] **I-06** **Biblioteca de videos**: sección propia, con videos cortos por momento del trámite. Nada de un video de 20 minutos.
+- [x] **I-07** Cierre "¿Te trabaste en algún paso?" con acceso directo al asistente.
+- [x] **I-08** La estructura visual del MPD y la del MPF son idénticas, para que se sientan parte del mismo sitio.
+- [x] **I-09** Bloque de inscripción en la pestaña de muestra, encabezado por la frase fuerte **"Inscribite sin perderte."** / "Todo lo que necesitás para completar tu inscripción al MPD o al MPF, explicado paso a paso." Con las dos tarjetas de concurso, los cuatro destacados (📋 Guías detalladas · 🖥️ Capturas de pantalla · 🎥 Videos explicativos · ⚠️ Errores frecuentes) → **se muestran sólo los que hoy son ciertos**, que son guías y errores: anunciar capturas y videos que no existen es el placeholder que las reglas prohíben. Cada destacado dice de qué depende y aparecen solos cuando se carguen. Lo mismo con las tarjetas de concurso: una por guía cargada, hoy la del MPD y el cierre "¿Te quedó alguna duda?" hacia el asistente.
 
 ---
 
@@ -157,6 +155,8 @@ Criterio: la muestra es **visual, dinámica, atractiva, demostrativa**. Menos te
 - [ ] **B-03** **Manual y preguntero del MPF**. Bloquea S-03 y la carga del simulador del MPF.
 - [x] **B-04** **Mail de Nueva Abogacía**. Bloquea L-07. → `abogacianueva@gmail.com`
 - [ ] **B-05** **Capturas reales del simulador** para la muestra. Bloquea toda la Tanda 7, y por eso va última.
+- [ ] **B-07** **Las capturas del sistema de inscripción del MPD.** El manual que llegó al repo es `material/mpd-inscripcion.md`, que es texto: no trae ninguna imagen, y el PDF no está. Bloquea la parte de capturas de I-04. El hueco ya está hecho: alcanza con poner los archivos en `public/` y sumarlos a `capturas` en `content/inscripcion/mpd.ts`.
+- [ ] **B-08** **Los videos cortos del trámite.** La biblioteca (I-06) está armada y lee de la tabla `videos`; hoy está vacía. Con insertar filas con `publicado = true` aparece sola, sin tocar código.
 - [ ] **B-06** Tiempos y criterios de evaluación de ambos exámenes, para cargar en `exams`.
 
 ---

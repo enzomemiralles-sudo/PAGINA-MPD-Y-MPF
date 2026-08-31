@@ -90,22 +90,37 @@ export const asistenteSeccion = {
   ],
 } as const;
 
+/**
+ * I-09. El bloque de inscripción en la pestaña de muestra.
+ *
+ * Los cuatro destacados que pide CAMBIOS.md prometen capturas de pantalla y
+ * videos, y hoy no hay ninguno de los dos. Anunciarlos sería el placeholder
+ * que las reglas del proyecto prohíben, así que cada destacado dice de qué
+ * depende y la página muestra sólo los que ya son ciertos. Cuando se carguen
+ * las capturas y los videos aparecen solos.
+ *
+ * Lo mismo con las tarjetas de concurso: se dibuja una por guía cargada. Hoy
+ * es una sola, la del MPD.
+ */
 export const inscripcionSeccion = {
   eyebrow: "Inscripción",
-  titulo: ["Donde más gente", "se queda afuera."],
+  titulo: ["Inscribite sin perderte."],
   texto:
-    "La inscripción al MPD tiene trampas que no están escritas en ningún lado y que se aprenden perdiendo el turno. Están todas acá, paso a paso.",
-  tarjetas: [
-    { rotulo: "Antes de empezar", titulo: "Necesitás una PC con Windows", texto: "No funciona en Mac, Linux, celular ni tablet: hay que instalar un programa y el .msi pide permisos de administrador. Resolvé la máquina ahora, no cuando abra la inscripción." },
-    { rotulo: "El error clásico", titulo: "El CV se congela al inscribirte", texto: "El sistema saca una foto de tu CV en ese instante. Si después lo corregís, el cambio no cuenta. La única forma de arreglarlo es volver a inscribirte mientras el plazo siga abierto: por eso conviene anotarse el primer día, no el último." },
-    { rotulo: "Nadie te avisa", titulo: "El MPD no manda mails", texto: "Ni comprobante de inscripción, ni listado de inscriptos, ni fecha de examen, ni resultados. Todo se publica en la ficha del examen en el portal y la carga de ir a mirar es tuya. Nosotros te avisamos cuando sale." },
+    "Todo lo que necesitás para completar tu inscripción al MPD o al MPF, explicado paso a paso.",
+  destacados: [
+    { icono: "📋", texto: "Guías detalladas", depende: "guias" },
+    { icono: "🖥️", texto: "Capturas de pantalla", depende: "capturas" },
+    { icono: "🎥", texto: "Videos explicativos", depende: "videos" },
+    { icono: "⚠️", texto: "Errores frecuentes", depende: "errores" },
   ],
-  items: [
-    { n: "01", titulo: "CUIL para inscribirte, DNI para rendir.", texto: "Son dos sistemas distintos y es el punto donde más gente se confunde." },
-    { n: "02", titulo: "Los campos de fojas van vacíos.", texto: 'Para técnico administrativo no se arma legajo físico: todo campo que diga "a fs." se deja en blanco.' },
-    { n: "03", titulo: 'El botón "confirmar asistencia" no se toca.', texto: "Aparece porque el sistema es común a otros trámites." },
-    { n: "04", titulo: "Anotate en varias jurisdicciones.", texto: "El orden de mérito solo te habilita en aquella donde te inscribiste, y rechazar una propuesta te excluye de la lista." },
-  ],
+  cta: "Ver la guía",
+  ctaHref: "/inscripcion",
+  cierre: {
+    titulo: "¿Te quedó alguna duda?",
+    texto: "Preguntale al asistente: responde con la fuente para que puedas verificarla.",
+    cta: "Ir al asistente",
+    href: "/asistente",
+  },
 } as const;
 
 export const numeros = {
