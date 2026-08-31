@@ -92,7 +92,10 @@ export const inscripcionSeccion = {
 } as const;
 
 export const numeros = {
-  preguntasMpd: "preguntas reales del MPD",
+  // «ya cargadas» y no «reales» a secas: el número sale de la base y sube cada
+  // vez que se revisa una tanda nueva. El rótulo tiene que dejar claro que es
+  // una foto de hoy, no el tamaño final del banco.
+  preguntasMpd: "preguntas del MPD ya cargadas",
   dudasMpf: "dudas resueltas del MPF",
   comunidad: "colegas en Nueva Abogacía",
   gratis: "gratis",
