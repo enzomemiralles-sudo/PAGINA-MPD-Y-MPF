@@ -7,6 +7,32 @@ simulador muestre una sola pregunta.
 
 ---
 
+## 0. Antes que nada: producción está dos tandas atrasada
+
+`peron-delta.vercel.app` **no tiene el simulador ni la pantalla de revisión**.
+Vercel está publicando desde la rama `claude/mpf-faq-extraction-8nqr6i`, cuyo
+último despliegue es del 28 de agosto. Las tandas 3 y 4 viven en
+`claude/nexo-project-structure-s68ojv` y sólo llegan a URLs de preview.
+
+Se comprueba en un segundo: `peron-delta.vercel.app/icon.svg` da 404 y
+[la de preview](https://peron-git-claude-nexo-project-struct-20bf9e-enzomemiralles-sudo.vercel.app/icon.svg)
+da 200.
+
+Dos caminos, y conviene decidirlo antes de tocar nada más:
+
+- **Recomendado** — abrir un pull request de `claude/nexo-project-structure-s68ojv`
+  a la rama que Vercel publica, revisarlo y mergearlo. Queda el historial y no
+  se pierde nada de lo que ya está publicado.
+- **Rápido** — Vercel → *Settings → Git → Production Branch* → cambiarla a
+  `claude/nexo-project-structure-s68ojv` y redesplegar. Sirve para verlo hoy,
+  pero deja el repositorio con dos ramas largas conviviendo.
+
+Mientras tanto, todo lo de acá abajo se puede probar en
+**https://peron-git-claude-nexo-project-struct-20bf9e-enzomemiralles-sudo.vercel.app**,
+que es la URL fija de la rama y se actualiza sola con cada push.
+
+---
+
 ## 1. Tuyo, cinco minutos, y es lo que desbloquea todo
 
 ### 1.1 `SUPABASE_SERVICE_ROLE_KEY` en Vercel
@@ -24,8 +50,11 @@ En Vercel → tu proyecto → **Settings → Environment Variables**:
 |---|---|---|
 | `SUPABASE_SERVICE_ROLE_KEY` | la clave `service_role` | Supabase → Settings → API Keys |
 
-Marcala para **Production, Preview y Development**, y **redesplegá** después:
-las variables se leen en el build.
+Marcala para **Production, Preview y Development**. Las tres, no sólo
+Production: mientras la rama no sea la de producción, el simulador vive en una
+URL de preview, y una variable que no está marcada para Preview ahí no existe.
+
+Después **redesplegá**: las variables se leen en el build, no en cada visita.
 
 > **No me la pases por el chat ni la pongas en el repo.** Saltea toda la
 > seguridad de la base: quien la tiene puede leer y borrar cualquier fila de
@@ -76,7 +105,8 @@ no.
 
 ## 2. Tuyo, y no lo puede hacer nadie más: revisar las preguntas
 
-Andá a **`/revisar`**. Tu cuenta (`enzomemiralles@gmail.com`) ya tiene el rol.
+Andá a **`/revisar`** —hoy, en la URL de preview del punto 0—. Tu cuenta
+(`enzomemiralles@gmail.com`) ya tiene el rol.
 
 La pantalla trae de a una pregunta, con la respuesta que venía marcada ya
 elegida y el tema ya propuesto. Vos confirmás, corregís o frenás.
@@ -97,8 +127,13 @@ Tres consejos para que no sea una tarde perdida:
    encontrás después filtrando por «Baja».
 
 En `material/preguntas/REVISAR.md` están anotados los problemas que ya
-encontramos: al menos **una respuesta marcada que está mal** y **una pregunta
-cortada**. Esas dos merecen ir primero.
+encontramos. Los cuatro, con el número que les toca en la pantalla:
+
+| N.º | Qué pasa |
+|---|---|
+| **4003** | *«Para fomentar la inmigración europea…»* — el preguntero marca «Vivienda, navegación y Aduanas»; el manual marca «Educación laica, Matrimonio Civil y Registro Civil», que es la histórica. **La marcada está mal.** |
+| **4020** | *«…¿de qué modo específico se ejerce violencia»* — el enunciado se corta ahí en el PDF original. Sin el texto completo no se puede responder: frenala con nota. |
+| **3022** y **3127** | La misma pregunta sobre principios del sistema acusatorio, con opciones distintas. Conviene quedarse con una. |
 
 **Hasta que revises, el simulador funciona y no muestra ninguna pregunta.** No
 es un error: es la regla del proyecto haciendo lo que tiene que hacer.
