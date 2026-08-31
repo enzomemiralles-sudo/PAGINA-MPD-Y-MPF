@@ -114,6 +114,52 @@ describe("las preguntas que la gente hace de verdad encuentran su entrada", () =
 });
 
 /** Cuando el documento y la memoria del chat difieren, se muestran los dos. */
+/**
+ * El error que más caro sale: contestar con seguridad algo que no se preguntó.
+ *
+ * Todos estos casos daban una respuesta —varios en verde— apoyados en una sola
+ * palabra en común. «¿Cómo es el sistema de evaluación?» contestaba con la
+ * entrada de inscripción del MPF porque alguien, en el chat, escribió «¿ya
+ * está en el sistema???». Preferimos el rojo: para eso está A-12.
+ */
+describe("una palabra suelta en común no alcanza para responder", () => {
+  const enRojo: [string, "mpd" | "mpf"][] = [
+    ["¿Cómo es el sistema de evaluación?", "mpd"],
+    ["¿Cómo es el sistema de evaluación?", "mpf"],
+    ["¿Qué documentación necesito?", "mpd"],
+    ["¿Qué diferencias hay entre MPD y MPF?", "mpd"],
+  ];
+
+  for (const [consulta, ambito] of enRojo) {
+    it(`«${consulta}» en ${ambito} no inventa una respuesta`, () => {
+      expect(responder(consulta, ambito).certeza).toBe("sin_respuesta");
+    });
+  }
+
+  it("pero una consulta que sí coincide se responde", () => {
+    expect(responder("¿Qué pasa si respondo mal?", "mpd").certeza).not.toBe("sin_respuesta");
+  });
+});
+
+/**
+ * Las variantes son citas textuales del chat y algunas son párrafos enteros.
+ * Una de treinta palabras que menciona el tema al pasar no puede valer lo
+ * mismo que una de cuatro que habla exactamente de eso.
+ */
+describe("el largo de la variante cuenta", () => {
+  it("una consulta encuentra su entrada aunque otras la mencionen al pasar", () => {
+    const r = buscar("cuanto dura el examen del mpd", "mpd");
+    expect(r[0]?.entrada.id).toBe("of-mpd-tiempo");
+  });
+
+  it("el orden no depende de en qué posición del archivo quedó la entrada", () => {
+    const una = buscar("como me inscribo al mpf", "mpf").map((r) => r.entrada.id);
+    const otra = buscar("como me inscribo al mpf", "mpf").map((r) => r.entrada.id);
+    expect(una).toEqual(otra);
+    expect(una.length).toBeGreaterThan(0);
+  });
+});
+
 describe("contradicciones", () => {
   it("las registradas apuntan a entradas que existen", () => {
     for (const c of CONTRADICCIONES) {

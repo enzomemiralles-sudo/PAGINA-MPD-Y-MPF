@@ -42,12 +42,40 @@ export function palabras(texto: string): string[] {
   return normalizar(texto).split(" ").filter((p) => p.length > 2 && !VACIAS.has(p));
 }
 
-/** Qué proporción de la consulta cubre una frase suelta. */
-function cobertura(buscadas: Set<string>, frase: string): number {
+type Cruce = {
+  /** Qué proporción de la consulta cubre la frase. */
+  deLaConsulta: number;
+  /** Qué proporción de la frase usa la consulta. */
+  deLaFrase: number;
+  /** Cuántas palabras coinciden, en crudo. */
+  cuantas: number;
+};
+
+const SIN_CRUCE: Cruce = { deLaConsulta: 0, deLaFrase: 0, cuantas: 0 };
+
+function cruzar(buscadas: Set<string>, frase: string): Cruce {
   const enFrase = new Set(palabras(frase));
-  let encontradas = 0;
-  for (const p of buscadas) if (enFrase.has(p)) encontradas += 1;
-  return encontradas / buscadas.size;
+  if (enFrase.size === 0) return SIN_CRUCE;
+  let cuantas = 0;
+  for (const p of buscadas) if (enFrase.has(p)) cuantas += 1;
+  return {
+    deLaConsulta: cuantas / buscadas.size,
+    deLaFrase: cuantas / enFrase.size,
+    cuantas,
+  };
+}
+
+/**
+ * Cuánto vale que una frase coincida con la consulta.
+ *
+ * Manda cuánto de la consulta cubre, pero cuánto de la frase se usa también
+ * pesa un poco: las variantes son citas textuales del chat y algunas son
+ * párrafos enteros. Sin esto, un mensaje de treinta palabras sobre otro tema
+ * que de casualidad dice «sistema» valía tanto como una variante de cuatro
+ * palabras que habla exactamente de eso.
+ */
+function valor(c: Cruce): number {
+  return c.deLaConsulta * (0.75 + 0.25 * c.deLaFrase);
 }
 
 /**
@@ -69,15 +97,26 @@ export function puntaje(consulta: string, e: Entrada): number {
   const buscadas = new Set(palabras(consulta));
   if (buscadas.size === 0) return 0;
 
-  const porPregunta = cobertura(buscadas, e.pregunta);
-  const porVariante = Math.max(0, ...e.variantes.map((v) => cobertura(buscadas, v)));
+  const cruces = [cruzar(buscadas, e.pregunta), ...e.variantes.map((v) => cruzar(buscadas, v))];
+
+  // Cuántas palabras de la consulta encontró la mejor formulación. Es el
+  // control que evita la respuesta segura y equivocada: sin él, «¿cómo es el
+  // sistema de evaluación?» —dos palabras que cuentan— pasaba el umbral con
+  // sólo una de las dos, y contestaba con la entrada de inscripción porque
+  // alguien escribió «sistema» en el chat. Una palabra suelta no es respaldo.
+  const coincidencias = Math.max(...cruces.map((c) => c.cuantas));
+  if (coincidencias < Math.min(2, buscadas.size)) return 0;
+
   // La pregunta gana los empates contra una variante: es la formulación que la
   // entrada elige para sí misma.
-  const frase = Math.max(porPregunta, porVariante * 0.95);
+  const frase = Math.max(
+    valor(cruces[0] ?? SIN_CRUCE),
+    Math.max(0, ...cruces.slice(1).map(valor)) * 0.95,
+  );
 
   const contexto = Math.max(
-    cobertura(buscadas, e.respuesta),
-    cobertura(buscadas, e.categoria),
+    cruzar(buscadas, e.respuesta).deLaConsulta,
+    cruzar(buscadas, e.categoria).deLaConsulta,
   );
 
   // Lo oficial gana los empates: si el documento y la memoria del chat dicen
