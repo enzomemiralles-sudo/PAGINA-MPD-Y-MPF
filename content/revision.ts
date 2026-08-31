@@ -15,8 +15,31 @@ export const revision = {
 
   progreso: (pendientes: number, revisadas: number) =>
     `${pendientes} sin revisar · ${revisadas} listas`,
-  terminado: "No queda ninguna pregunta sin revisar.",
-  terminadoTexto: "Cuando se carguen preguntas nuevas van a aparecer acá.",
+  /**
+   * Un cartel por cada razón real. El que estaba decía «no queda nada por
+   * revisar» en los cuatro casos, incluido el de «falta una variable de
+   * entorno», que es justo el que nadie puede adivinar mirando la pantalla.
+   */
+  vacio: {
+    sin_clave: {
+      titulo: "Falta la clave de servicio del servidor",
+      texto:
+        "La respuesta correcta de cada pregunta no la puede leer el navegador, así que revisar necesita la clave de servicio. Cargá SUPABASE_SERVICE_ROLE_KEY en Vercel (Settings → Environment Variables, marcada para Production, Preview y Development) y volvé a desplegar: las variables se leen al construir, no en cada visita.",
+    },
+    sin_preguntas: {
+      titulo: "Todavía no hay preguntas cargadas",
+      texto:
+        "La base no tiene ninguna. Pegá supabase/preguntas.sql en el SQL Editor de Supabase y apretá Run. Se puede correr las veces que haga falta: actualiza en vez de duplicar.",
+    },
+    sin_filtro: {
+      titulo: "Con este filtro no queda ninguna",
+      texto: "Probá sacando el filtro o eligiendo otro organismo.",
+    },
+    todo_revisado: {
+      titulo: "No queda ninguna pregunta sin revisar",
+      texto: "Cuando se carguen preguntas nuevas van a aparecer acá.",
+    },
+  },
 
   filtros: {
     titulo: "Mostrar",

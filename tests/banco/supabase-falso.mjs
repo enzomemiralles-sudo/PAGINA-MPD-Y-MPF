@@ -84,6 +84,13 @@ const REVISADAS = Number.parseInt(process.env.BANCO_REVISADAS ?? '0', 10) || 0;
 const ROL = process.env.BANCO_REVISOR ? 'revisor' : 'persona';
 
 /**
+ * BANCO_SIN_PREGUNTAS=1 deja la tabla vacía. Es el estado de una base recién
+ * instalada a la que todavía no se le pegó preguntas.sql, y hay que poder
+ * mirarlo: es uno de los carteles de /revisar.
+ */
+const SIN_PREGUNTAS = !!process.env.BANCO_SIN_PREGUNTAS;
+
+/**
  * Temas de mentira, para poder MIRAR el desglose por tema de la pantalla de
  * resultados. Ninguna de las 259 preguntas del repositorio tiene tema
  * cargado, así que sin esto esa sección no se puede ver andando: no se
@@ -157,6 +164,7 @@ function questionsPublic() {
 }
 
 function leer(nombre) {
+  if (SIN_PREGUNTAS && (nombre === 'questions' || nombre === 'questions_public')) return [];
   return nombre === 'questions_public' ? questionsPublic() : (tablas[nombre] ?? null);
 }
 

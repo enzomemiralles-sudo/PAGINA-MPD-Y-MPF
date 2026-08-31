@@ -21,13 +21,27 @@ export type PreguntaARevisar = {
   notaRevision: string | null;
 };
 
+/**
+ * Por qué la cola está como está.
+ *
+ * Existe porque las cuatro razones por las que no hay una pregunta en pantalla
+ * son distintas y se arreglan distinto, y mostrarlas todas como «no queda nada
+ * por revisar» es mentir: quien mira no tiene forma de saber que lo que falta
+ * es una variable de entorno.
+ */
+export type EstadoCola =
+  | "hay"
+  | "sin_clave"
+  | "sin_preguntas"
+  | "sin_filtro"
+  | "todo_revisado";
+
 export type Cola = {
   pregunta: PreguntaARevisar | null;
   pendientes: number;
   revisadas: number;
+  estado: EstadoCola;
 };
-
-const VACIA: Cola = { pregunta: null, pendientes: 0, revisadas: 0 };
 
 /**
  * Comprueba que quien pide sea revisor.
@@ -92,10 +106,19 @@ export async function traerCola(
   filtro: Filtro = {},
   saltadas: readonly string[] = [],
 ): Promise<Cola> {
-  if (!(await esRevisor())) return VACIA;
+  const nada = (estado: EstadoCola): Cola => ({
+    pregunta: null,
+    pendientes: 0,
+    revisadas: 0,
+    estado,
+  });
 
+  if (!(await esRevisor())) return nada("sin_preguntas");
+
+  // Sin la clave de servicio no se puede leer `questions`: la respuesta
+  // correcta está cortada por permiso de columna. Se dice, no se disimula.
   const admin = crearClienteAdmin();
-  if (!admin) return VACIA;
+  if (!admin) return nada("sin_clave");
 
   const contar = async (revisada: boolean) => {
     let q = admin
@@ -108,7 +131,17 @@ export async function traerCola(
     return count ?? 0;
   };
 
-  const [pendientes, revisadas] = await Promise.all([contar(false), contar(true)]);
+  const [pendientes, revisadas, cargadas] = await Promise.all([
+    contar(false),
+    contar(true),
+    // Sin filtro: distingue «no se cargó nada» de «este filtro no da nada».
+    admin
+      .from("questions")
+      .select("id", { count: "exact", head: true })
+      .then(({ count }) => count ?? 0),
+  ]);
+
+  if (cargadas === 0) return nada("sin_preguntas");
 
   let q = admin.from("questions").select(CAMPOS).eq("revisada", false);
   if (filtro.organismo) q = q.eq("exams.concursos.organismo", filtro.organismo);
@@ -119,5 +152,13 @@ export async function traerCola(
   const { data } = await q.order("orden", { ascending: true }).limit(1);
   const fila = ((data ?? []) as unknown as Fila[])[0];
 
-  return { pregunta: fila ? armar(fila) : null, pendientes, revisadas };
+  const estado: EstadoCola = fila
+    ? "hay"
+    : pendientes > 0
+      ? "sin_filtro"
+      : filtro.organismo || filtro.confianza
+        ? "sin_filtro"
+        : "todo_revisado";
+
+  return { pregunta: fila ? armar(fila) : null, pendientes, revisadas, estado };
 }

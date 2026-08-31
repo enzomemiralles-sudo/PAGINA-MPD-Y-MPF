@@ -165,6 +165,10 @@ export const rendir = {
   guardando: "Guardando…",
   guardado: "Guardado",
   sinGuardar: "No pudimos guardar. Revisá tu conexión.",
+  // Un examen sin corregir no es un problema de conexión, y decirlo así manda
+  // a la persona a mirar su wifi cuando lo que falta está en el servidor.
+  sinClave: "No podemos corregir: falta configurar la clave de servicio del servidor. Tu examen quedó guardado; probá de nuevo cuando esté resuelto.",
+  sinCorregir: "No pudimos corregir el examen. Quedó guardado: probá de nuevo.",
   confirmarTitulo: "¿Entregás el examen?",
   confirmarSinResponder: (n: number) =>
     n === 1 ? "Te queda una sin responder." : `Te quedan ${n} sin responder.`,
