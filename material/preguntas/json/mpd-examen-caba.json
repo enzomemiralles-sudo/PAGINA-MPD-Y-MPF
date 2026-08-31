@@ -25,7 +25,8 @@
     "revisada": false,
     "corroborada_por": [
       "mpd-guia-preguntas"
-    ]
+    ],
+    "tema": "Ingreso, cargos e incompatibilidades"
   },
   {
     "fuente": "mpd-examen-caba",
@@ -53,7 +54,8 @@
     "revisada": false,
     "corroborada_por": [
       "mpd-guia-preguntas"
-    ]
+    ],
+    "tema": "Deberes y derechos del personal"
   },
   {
     "fuente": "mpd-examen-caba",
@@ -81,7 +83,8 @@
     "revisada": false,
     "corroborada_por": [
       "mpd-guia-preguntas"
-    ]
+    ],
+    "tema": "Estructura y autonomía del MPD"
   },
   {
     "fuente": "mpd-examen-caba",
@@ -109,7 +112,8 @@
     "revisada": false,
     "corroborada_por": [
       "mpd-guia-preguntas"
-    ]
+    ],
+    "tema": "Estructura y autonomía del MPD"
   },
   {
     "fuente": "mpd-examen-caba",
@@ -137,7 +141,8 @@
     "revisada": false,
     "corroborada_por": [
       "mpd-guia-preguntas"
-    ]
+    ],
+    "tema": "Estructura y autonomía del MPD"
   },
   {
     "fuente": "mpd-examen-caba",
@@ -165,7 +170,8 @@
     "revisada": false,
     "corroborada_por": [
       "mpd-guia-preguntas"
-    ]
+    ],
+    "tema": "Estructura y autonomía del MPD"
   },
   {
     "fuente": "mpd-examen-caba",
@@ -193,7 +199,8 @@
     "revisada": false,
     "corroborada_por": [
       "mpd-guia-preguntas"
-    ]
+    ],
+    "tema": "Estructura y autonomía del MPD"
   },
   {
     "fuente": "mpd-examen-caba",
@@ -221,7 +228,8 @@
     "revisada": false,
     "corroborada_por": [
       "mpd-guia-preguntas"
-    ]
+    ],
+    "tema": "Defensa pública y acceso a la justicia"
   },
   {
     "fuente": "mpd-examen-caba",
@@ -249,7 +257,8 @@
     "revisada": false,
     "corroborada_por": [
       "mpd-guia-preguntas"
-    ]
+    ],
+    "tema": "Deberes y derechos del personal"
   },
   {
     "fuente": "mpd-examen-caba",
@@ -277,6 +286,7 @@
     "revisada": false,
     "corroborada_por": [
       "mpd-guia-preguntas"
-    ]
+    ],
+    "tema": "Régimen disciplinario"
   }
 ]

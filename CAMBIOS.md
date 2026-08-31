@@ -66,21 +66,21 @@
 | Teórico | Opción múltiple | Opción múltiple |
 | Práctico | Consignas de búsqueda e investigación, respondidas por opción múltiple | **Tipeo** |
 
-- [ ] **S-01** Encabezado: "Simulador de Exámenes" / "Prepará tu ingreso. Practicá. Medí tu nivel." + párrafo de presentación + botón "Comenzar a practicar".
-- [ ] **S-02** Bloque "Elegí tu examen" con dos tarjetas grandes y claramente diferenciadas: MPF y MPD. Cada una lista sus dos instancias y tiene su botón "Comenzar MPF" / "Comenzar MPD".
-- [ ] **S-03** MPF · Examen teórico: opción múltiple sobre los contenidos evaluables.
-- [ ] **S-04** MPF · Examen práctico: ejercicios basados en los recursos e insumos de la instancia práctica.
-- [ ] **S-05** MPD · Examen teórico: opción múltiple.
-- [ ] **S-06** MPD · Examen práctico de **tipeo**: instancia específica, con su propia metodología. **Requiere componente nuevo** (medición de velocidad y precisión). Ver bloque de pendientes al final.
-- [ ] **S-07** Sección "¿Cómo funciona?" en cuatro pasos: 01 Elegí tu examen · 02 Elegí qué querés practicar · 03 Resolvé · 04 Revisá tu desempeño.
-- [ ] **S-08** Sección "Una herramienta para practicar, no para adivinar el examen", con el aviso de que los resultados son orientativos y no representan resultados oficiales.
-- [ ] **S-09** **Nunca publicar la cantidad exacta de preguntas.** Usar "amplia base de preguntas", "contenido en constante actualización", "múltiples instancias de práctica". La base cambia todo el tiempo y un número fijo envejece mal.
-- [ ] **S-10** Cierre: "Tu preparación empieza acá." / "Practicá. Detectá tus errores. Volvé a intentarlo." / "El acceso al simulador es gratuito." + botón.
-- [ ] **S-11** El simulador es gratuito y se puede usar las veces que se quiera. Sin límite de intentos.
-- [ ] **S-12** Pantalla de resultados: correctas, incorrectas, porcentaje de aciertos, tiempo utilizado y desempeño por tema.
-- [ ] **S-13** Los puntajes, la duración y la cantidad de preguntas salen de la tabla `exams`. Nunca fijos en el código: MPD y MPF puntúan distinto.
-- [ ] **S-14** Reubicar acá, reformulado, el contenido sobre criterio de evaluación que se saca de la muestra (M-12). Va dentro del flujo del examen del MPD, no como sección de venta.
-- [ ] **S-15** El modelo de datos necesita distinguir instancia teórica de práctica: agregar `instancia('teorico'|'practico')` y `modalidad('multiple_choice'|'investigacion'|'tipeo')` a `exams`.
+- [x] **S-01** Encabezado: "Simulador de Exámenes" / "Prepará tu ingreso. Practicá. Medí tu nivel." + párrafo de presentación + botón "Comenzar a practicar".
+- [x] **S-02** Bloque "Elegí tu examen" con dos tarjetas grandes y claramente diferenciadas: MPF y MPD. Cada una lista sus dos instancias y tiene su botón "Comenzar MPF" / "Comenzar MPD".
+- [x] **S-03** MPF · Examen teórico: opción múltiple sobre los contenidos evaluables.
+- [ ] **S-04** MPF · Examen práctico: ejercicios basados en los recursos e insumos de la instancia práctica. → *La instancia está construida y anda; lo que falta es B-01. Cuántos ejercicios trae el práctico real no consta, así que hoy sirve 10 de los que hay, cargado en `exams` y corregible con un update.*
+- [x] **S-05** MPD · Examen teórico: opción múltiple.
+- [x] **S-06** MPD · Examen práctico de **tipeo**: instancia específica, con su propia metodología. **Requiere componente nuevo** (medición de velocidad y precisión). → *Hecho con la metodología oficial (B-02, arts. 25-29 del Reglamento de Ingreso). Los textos de práctica son propios —el examen real no publica los suyos— y tienen las 130 palabras que fija el artículo 27. Lo único que falta es comparar el formato: el reglamento lo cuenta como error y todavía no se mide, y la pantalla lo dice.*
+- [x] **S-07** Sección "¿Cómo funciona?" en cuatro pasos: 01 Elegí tu examen · 02 Elegí qué querés practicar · 03 Resolvé · 04 Revisá tu desempeño.
+- [x] **S-08** Sección "Una herramienta para practicar, no para adivinar el examen", con el aviso de que los resultados son orientativos y no representan resultados oficiales.
+- [x] **S-09** **Nunca publicar la cantidad exacta de preguntas.** Usar "amplia base de preguntas", "contenido en constante actualización", "múltiples instancias de práctica". La base cambia todo el tiempo y un número fijo envejece mal.
+- [x] **S-10** Cierre: "Tu preparación empieza acá." / "Practicá. Detectá tus errores. Volvé a intentarlo." / "El acceso al simulador es gratuito." + botón.
+- [x] **S-11** El simulador es gratuito y se puede usar las veces que se quiera. Sin límite de intentos.
+- [x] **S-12** Pantalla de resultados: correctas, incorrectas, porcentaje de aciertos, tiempo utilizado y desempeño por tema.
+- [x] **S-13** Los puntajes, la duración y la cantidad de preguntas salen de la tabla `exams`. Nunca fijos en el código: MPD y MPF puntúan distinto.
+- [x] **S-14** Reubicar acá, reformulado, el contenido sobre criterio de evaluación que se saca de la muestra (M-12). Va dentro del flujo del examen del MPD, no como sección de venta.
+- [x] **S-15** El modelo de datos necesita distinguir instancia teórica de práctica: agregar `instancia('teorico'|'practico')` y `modalidad('multiple_choice'|'investigacion'|'tipeo')` a `exams`.
 
 ---
 
@@ -153,7 +153,7 @@ Criterio: la muestra es **visual, dinámica, atractiva, demostrativa**. Menos te
 > No son tareas de Claude Code. Son cosas que faltan de mi lado y frenan ítems concretos.
 
 - [ ] **B-01** Los **dos ejemplos de parte práctica y parte teórica** mencionados no llegaron. Bloquean S-04 y S-06.
-- [ ] **B-02** **Metodología completa del examen de tipeo del MPD**: duración, cantidad de caracteres, criterio de error, umbral de aprobación. Bloquea S-06.
+- [x] **B-02** **Metodología completa del examen de tipeo del MPD**. → Está en el **Reglamento para el Ingreso de Personal al MPD** (t.o. Res. DGN 1124/15), arts. 25 a 29: **130 palabras**, la unidad de error es **la palabra** (no el carácter), −5 por palabra mal escrita y −5 por palabra no escrita, mínimo 60, y los **30 minutos son para las dos instancias juntas**. Cargado en `lib/simulador/tipeo.ts` y citado en `material/metodologia/mpd-formato-examen.md`.
 - [ ] **B-03** **Manual y preguntero del MPF**. Bloquea S-03 y la carga del simulador del MPF.
 - [x] **B-04** **Mail de Nueva Abogacía**. Bloquea L-07. → `abogacianueva@gmail.com`
 - [ ] **B-05** **Capturas reales del simulador** para la muestra. Bloquea toda la Tanda 7, y por eso va última.

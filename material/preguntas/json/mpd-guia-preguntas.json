@@ -25,7 +25,8 @@
     "revisada": false,
     "corroborada_por": [
       "mpd-examen-caba"
-    ]
+    ],
+    "tema": "Régimen disciplinario"
   },
   {
     "fuente": "mpd-guia-preguntas",
@@ -50,7 +51,8 @@
     ],
     "respuesta_correcta": "a",
     "confianza": "media",
-    "revisada": false
+    "revisada": false,
+    "tema": "Régimen disciplinario"
   },
   {
     "fuente": "mpd-guia-preguntas",
@@ -75,7 +77,8 @@
     ],
     "respuesta_correcta": "c",
     "confianza": "media",
-    "revisada": false
+    "revisada": false,
+    "tema": "Régimen disciplinario"
   },
   {
     "fuente": "mpd-guia-preguntas",
@@ -100,7 +103,8 @@
     ],
     "respuesta_correcta": "b",
     "confianza": "media",
-    "revisada": false
+    "revisada": false,
+    "tema": "Ingreso, cargos e incompatibilidades"
   },
   {
     "fuente": "mpd-guia-preguntas",
@@ -125,7 +129,8 @@
     ],
     "respuesta_correcta": "c",
     "confianza": "media",
-    "revisada": false
+    "revisada": false,
+    "tema": "Deberes y derechos del personal"
   },
   {
     "fuente": "mpd-guia-preguntas",
@@ -150,7 +155,8 @@
     ],
     "respuesta_correcta": "b",
     "confianza": "media",
-    "revisada": false
+    "revisada": false,
+    "tema": "Estructura y autonomía del MPD"
   },
   {
     "fuente": "mpd-guia-preguntas",
@@ -175,7 +181,8 @@
     ],
     "respuesta_correcta": "a",
     "confianza": "media",
-    "revisada": false
+    "revisada": false,
+    "tema": "Estructura y autonomía del MPD"
   },
   {
     "fuente": "mpd-guia-preguntas",
@@ -200,7 +207,8 @@
     ],
     "respuesta_correcta": "c",
     "confianza": "media",
-    "revisada": false
+    "revisada": false,
+    "tema": "Defensa pública y acceso a la justicia"
   },
   {
     "fuente": "mpd-guia-preguntas",
@@ -228,7 +236,8 @@
     "revisada": false,
     "corroborada_por": [
       "mpd-examen-caba"
-    ]
+    ],
+    "tema": "Ingreso, cargos e incompatibilidades"
   },
   {
     "fuente": "mpd-guia-preguntas",
@@ -253,7 +262,8 @@
     ],
     "respuesta_correcta": "b",
     "confianza": "media",
-    "revisada": false
+    "revisada": false,
+    "tema": "Estructura y autonomía del MPD"
   },
   {
     "fuente": "mpd-guia-preguntas",
@@ -281,7 +291,8 @@
     "revisada": false,
     "corroborada_por": [
       "mpd-examen-caba"
-    ]
+    ],
+    "tema": "Estructura y autonomía del MPD"
   },
   {
     "fuente": "mpd-guia-preguntas",
@@ -306,7 +317,8 @@
     ],
     "respuesta_correcta": "c",
     "confianza": "media",
-    "revisada": false
+    "revisada": false,
+    "tema": "Estructura y autonomía del MPD"
   },
   {
     "fuente": "mpd-guia-preguntas",
@@ -331,7 +343,8 @@
     ],
     "respuesta_correcta": "b",
     "confianza": "media",
-    "revisada": false
+    "revisada": false,
+    "tema": "Estructura y autonomía del MPD"
   },
   {
     "fuente": "mpd-guia-preguntas",
@@ -356,7 +369,8 @@
     ],
     "respuesta_correcta": "c",
     "confianza": "media",
-    "revisada": false
+    "revisada": false,
+    "tema": "Régimen disciplinario"
   },
   {
     "fuente": "mpd-guia-preguntas",
@@ -381,7 +395,8 @@
     ],
     "respuesta_correcta": "a",
     "confianza": "media",
-    "revisada": false
+    "revisada": false,
+    "tema": "Estructura y autonomía del MPD"
   },
   {
     "fuente": "mpd-guia-preguntas",
@@ -406,7 +421,8 @@
     ],
     "respuesta_correcta": "c",
     "confianza": "media",
-    "revisada": false
+    "revisada": false,
+    "tema": "Régimen disciplinario"
   },
   {
     "fuente": "mpd-guia-preguntas",
@@ -434,7 +450,8 @@
     "revisada": false,
     "corroborada_por": [
       "mpd-examen-caba"
-    ]
+    ],
+    "tema": "Estructura y autonomía del MPD"
   },
   {
     "fuente": "mpd-guia-preguntas",
@@ -459,7 +476,8 @@
     ],
     "respuesta_correcta": "a",
     "confianza": "media",
-    "revisada": false
+    "revisada": false,
+    "tema": "Estructura y autonomía del MPD"
   },
   {
     "fuente": "mpd-guia-preguntas",
@@ -484,7 +502,8 @@
     ],
     "respuesta_correcta": "c",
     "confianza": "media",
-    "revisada": false
+    "revisada": false,
+    "tema": "Estructura y autonomía del MPD"
   },
   {
     "fuente": "mpd-guia-preguntas",
@@ -509,7 +528,8 @@
     ],
     "respuesta_correcta": "c",
     "confianza": "media",
-    "revisada": false
+    "revisada": false,
+    "tema": "Defensa pública y acceso a la justicia"
   },
   {
     "fuente": "mpd-guia-preguntas",
@@ -534,7 +554,8 @@
     ],
     "respuesta_correcta": "c",
     "confianza": "media",
-    "revisada": false
+    "revisada": false,
+    "tema": "Estructura y autonomía del MPD"
   },
   {
     "fuente": "mpd-guia-preguntas",
@@ -559,7 +580,8 @@
     ],
     "respuesta_correcta": "c",
     "confianza": "media",
-    "revisada": false
+    "revisada": false,
+    "tema": "Estructura y autonomía del MPD"
   },
   {
     "fuente": "mpd-guia-preguntas",
@@ -584,7 +606,8 @@
     ],
     "respuesta_correcta": "b",
     "confianza": "media",
-    "revisada": false
+    "revisada": false,
+    "tema": "Régimen disciplinario"
   },
   {
     "fuente": "mpd-guia-preguntas",
@@ -609,7 +632,8 @@
     ],
     "respuesta_correcta": "a",
     "confianza": "media",
-    "revisada": false
+    "revisada": false,
+    "tema": "Estructura y autonomía del MPD"
   },
   {
     "fuente": "mpd-guia-preguntas",
@@ -634,7 +658,8 @@
     ],
     "respuesta_correcta": "a",
     "confianza": "media",
-    "revisada": false
+    "revisada": false,
+    "tema": "Régimen disciplinario"
   },
   {
     "fuente": "mpd-guia-preguntas",
@@ -659,7 +684,8 @@
     ],
     "respuesta_correcta": "c",
     "confianza": "media",
-    "revisada": false
+    "revisada": false,
+    "tema": "Ingreso, cargos e incompatibilidades"
   },
   {
     "fuente": "mpd-guia-preguntas",
@@ -687,7 +713,8 @@
     "revisada": false,
     "corroborada_por": [
       "mpd-examen-caba"
-    ]
+    ],
+    "tema": "Defensa pública y acceso a la justicia"
   },
   {
     "fuente": "mpd-guia-preguntas",
@@ -712,7 +739,8 @@
     ],
     "respuesta_correcta": "b",
     "confianza": "media",
-    "revisada": false
+    "revisada": false,
+    "tema": "Ingreso, cargos e incompatibilidades"
   },
   {
     "fuente": "mpd-guia-preguntas",
@@ -737,7 +765,8 @@
     ],
     "respuesta_correcta": "b",
     "confianza": "media",
-    "revisada": false
+    "revisada": false,
+    "tema": "Estructura y autonomía del MPD"
   },
   {
     "fuente": "mpd-guia-preguntas",
@@ -762,7 +791,8 @@
     ],
     "respuesta_correcta": "b",
     "confianza": "media",
-    "revisada": false
+    "revisada": false,
+    "tema": "Ingreso, cargos e incompatibilidades"
   },
   {
     "fuente": "mpd-guia-preguntas",
@@ -787,7 +817,8 @@
     ],
     "respuesta_correcta": "b",
     "confianza": "media",
-    "revisada": false
+    "revisada": false,
+    "tema": "Estructura y autonomía del MPD"
   },
   {
     "fuente": "mpd-guia-preguntas",
@@ -812,7 +843,8 @@
     ],
     "respuesta_correcta": "c",
     "confianza": "media",
-    "revisada": false
+    "revisada": false,
+    "tema": "Estructura y autonomía del MPD"
   },
   {
     "fuente": "mpd-guia-preguntas",
@@ -837,7 +869,8 @@
     ],
     "respuesta_correcta": "b",
     "confianza": "media",
-    "revisada": false
+    "revisada": false,
+    "tema": "Estructura y autonomía del MPD"
   },
   {
     "fuente": "mpd-guia-preguntas",
@@ -862,7 +895,8 @@
     ],
     "respuesta_correcta": "c",
     "confianza": "media",
-    "revisada": false
+    "revisada": false,
+    "tema": "Estructura y autonomía del MPD"
   },
   {
     "fuente": "mpd-guia-preguntas",
@@ -887,7 +921,8 @@
     ],
     "respuesta_correcta": "b",
     "confianza": "media",
-    "revisada": false
+    "revisada": false,
+    "tema": "Ingreso, cargos e incompatibilidades"
   },
   {
     "fuente": "mpd-guia-preguntas",
@@ -912,7 +947,8 @@
     ],
     "respuesta_correcta": "b",
     "confianza": "media",
-    "revisada": false
+    "revisada": false,
+    "tema": "Estructura y autonomía del MPD"
   },
   {
     "fuente": "mpd-guia-preguntas",
@@ -937,7 +973,8 @@
     ],
     "respuesta_correcta": "b",
     "confianza": "media",
-    "revisada": false
+    "revisada": false,
+    "tema": "Estructura y autonomía del MPD"
   },
   {
     "fuente": "mpd-guia-preguntas",
@@ -962,7 +999,8 @@
     ],
     "respuesta_correcta": "c",
     "confianza": "media",
-    "revisada": false
+    "revisada": false,
+    "tema": "Ingreso, cargos e incompatibilidades"
   },
   {
     "fuente": "mpd-guia-preguntas",
@@ -987,7 +1025,8 @@
     ],
     "respuesta_correcta": "b",
     "confianza": "media",
-    "revisada": false
+    "revisada": false,
+    "tema": "Estructura y autonomía del MPD"
   },
   {
     "fuente": "mpd-guia-preguntas",
@@ -1012,7 +1051,8 @@
     ],
     "respuesta_correcta": "b",
     "confianza": "media",
-    "revisada": false
+    "revisada": false,
+    "tema": "Estructura y autonomía del MPD"
   },
   {
     "fuente": "mpd-guia-preguntas",
@@ -1037,7 +1077,8 @@
     ],
     "respuesta_correcta": "a",
     "confianza": "media",
-    "revisada": false
+    "revisada": false,
+    "tema": "Ingreso, cargos e incompatibilidades"
   },
   {
     "fuente": "mpd-guia-preguntas",
@@ -1062,7 +1103,8 @@
     ],
     "respuesta_correcta": "b",
     "confianza": "media",
-    "revisada": false
+    "revisada": false,
+    "tema": "Estructura y autonomía del MPD"
   },
   {
     "fuente": "mpd-guia-preguntas",
@@ -1087,7 +1129,8 @@
     ],
     "respuesta_correcta": "a",
     "confianza": "media",
-    "revisada": false
+    "revisada": false,
+    "tema": "Estructura y autonomía del MPD"
   },
   {
     "fuente": "mpd-guia-preguntas",
@@ -1112,7 +1155,8 @@
     ],
     "respuesta_correcta": "b",
     "confianza": "media",
-    "revisada": false
+    "revisada": false,
+    "tema": "Estructura y autonomía del MPD"
   },
   {
     "fuente": "mpd-guia-preguntas",
@@ -1137,7 +1181,8 @@
     ],
     "respuesta_correcta": "a",
     "confianza": "media",
-    "revisada": false
+    "revisada": false,
+    "tema": "Régimen disciplinario"
   },
   {
     "fuente": "mpd-guia-preguntas",
@@ -1162,7 +1207,8 @@
     ],
     "respuesta_correcta": "a",
     "confianza": "media",
-    "revisada": false
+    "revisada": false,
+    "tema": "Ingreso, cargos e incompatibilidades"
   },
   {
     "fuente": "mpd-guia-preguntas",
@@ -1187,7 +1233,8 @@
     ],
     "respuesta_correcta": "c",
     "confianza": "media",
-    "revisada": false
+    "revisada": false,
+    "tema": "Estructura y autonomía del MPD"
   },
   {
     "fuente": "mpd-guia-preguntas",
@@ -1212,7 +1259,8 @@
     ],
     "respuesta_correcta": "c",
     "confianza": "media",
-    "revisada": false
+    "revisada": false,
+    "tema": "Deberes y derechos del personal"
   },
   {
     "fuente": "mpd-guia-preguntas",
@@ -1237,7 +1285,8 @@
     ],
     "respuesta_correcta": "b",
     "confianza": "media",
-    "revisada": false
+    "revisada": false,
+    "tema": "Estructura y autonomía del MPD"
   },
   {
     "fuente": "mpd-guia-preguntas",
@@ -1262,7 +1311,8 @@
     ],
     "respuesta_correcta": "a",
     "confianza": "media",
-    "revisada": false
+    "revisada": false,
+    "tema": "Estructura y autonomía del MPD"
   },
   {
     "fuente": "mpd-guia-preguntas",
@@ -1287,7 +1337,8 @@
     ],
     "respuesta_correcta": "c",
     "confianza": "media",
-    "revisada": false
+    "revisada": false,
+    "tema": "Régimen disciplinario"
   },
   {
     "fuente": "mpd-guia-preguntas",
@@ -1315,7 +1366,8 @@
     "revisada": false,
     "corroborada_por": [
       "mpd-examen-caba"
-    ]
+    ],
+    "tema": "Estructura y autonomía del MPD"
   },
   {
     "fuente": "mpd-guia-preguntas",
@@ -1340,7 +1392,8 @@
     ],
     "respuesta_correcta": "b",
     "confianza": "media",
-    "revisada": false
+    "revisada": false,
+    "tema": "Estructura y autonomía del MPD"
   },
   {
     "fuente": "mpd-guia-preguntas",
@@ -1365,7 +1418,8 @@
     ],
     "respuesta_correcta": "c",
     "confianza": "media",
-    "revisada": false
+    "revisada": false,
+    "tema": "Deberes y derechos del personal"
   },
   {
     "fuente": "mpd-guia-preguntas",
@@ -1390,7 +1444,8 @@
     ],
     "respuesta_correcta": "c",
     "confianza": "media",
-    "revisada": false
+    "revisada": false,
+    "tema": "Régimen disciplinario"
   },
   {
     "fuente": "mpd-guia-preguntas",
@@ -1418,7 +1473,8 @@
     "revisada": false,
     "corroborada_por": [
       "mpd-examen-caba"
-    ]
+    ],
+    "tema": "Estructura y autonomía del MPD"
   },
   {
     "fuente": "mpd-guia-preguntas",
@@ -1446,7 +1502,8 @@
     "revisada": false,
     "corroborada_por": [
       "mpd-examen-caba"
-    ]
+    ],
+    "tema": "Deberes y derechos del personal"
   },
   {
     "fuente": "mpd-guia-preguntas",
@@ -1474,7 +1531,8 @@
     "revisada": false,
     "corroborada_por": [
       "mpd-examen-caba"
-    ]
+    ],
+    "tema": "Estructura y autonomía del MPD"
   },
   {
     "fuente": "mpd-guia-preguntas",
@@ -1502,6 +1560,7 @@
     "revisada": false,
     "corroborada_por": [
       "mpd-examen-caba"
-    ]
+    ],
+    "tema": "Deberes y derechos del personal"
   }
 ]

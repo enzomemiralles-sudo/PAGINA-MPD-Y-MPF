@@ -28,6 +28,7 @@ export const miPerfil = {
   guardado: "Listo, guardamos los cambios.",
   cerrarSesion: "Cerrar sesión",
   volver: "Volver",
+  revisar: "Revisar",
   tipos: { abogado: "Abogado / Profesional", estudiante: "Estudiante de Derecho", otro: "Otro perfil" },
 } as const;
 

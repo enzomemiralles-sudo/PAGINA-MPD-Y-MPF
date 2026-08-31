@@ -25,7 +25,8 @@
     "revisada": false,
     "corroborada_por": [
       "mpf-modelos-manual"
-    ]
+    ],
+    "tema": "Sistema constitucional"
   },
   {
     "fuente": "mpf-preguntero-nexo",
@@ -53,7 +54,8 @@
     "revisada": false,
     "corroborada_por": [
       "mpf-modelos-manual"
-    ]
+    ],
+    "tema": "Historia argentina y latinoamericana"
   },
   {
     "fuente": "mpf-preguntero-nexo",
@@ -78,7 +80,8 @@
     ],
     "respuesta_correcta": "a",
     "confianza": "media",
-    "revisada": false
+    "revisada": false,
+    "tema": "Historia argentina y latinoamericana"
   },
   {
     "fuente": "mpf-preguntero-nexo",
@@ -103,7 +106,8 @@
     ],
     "respuesta_correcta": "a",
     "confianza": "media",
-    "revisada": false
+    "revisada": false,
+    "tema": "Historia argentina y latinoamericana"
   },
   {
     "fuente": "mpf-preguntero-nexo",
@@ -128,7 +132,8 @@
     ],
     "respuesta_correcta": "b",
     "confianza": "media",
-    "revisada": false
+    "revisada": false,
+    "tema": "Historia argentina y latinoamericana"
   },
   {
     "fuente": "mpf-preguntero-nexo",
@@ -153,7 +158,8 @@
     ],
     "respuesta_correcta": "a",
     "confianza": "media",
-    "revisada": false
+    "revisada": false,
+    "tema": "Ordenamiento del MPF"
   },
   {
     "fuente": "mpf-preguntero-nexo",
@@ -178,7 +184,8 @@
     ],
     "respuesta_correcta": "b",
     "confianza": "media",
-    "revisada": false
+    "revisada": false,
+    "tema": "Código Procesal Penal Federal"
   },
   {
     "fuente": "mpf-preguntero-nexo",
@@ -206,7 +213,8 @@
     "revisada": false,
     "corroborada_por": [
       "mpf-modelos-manual"
-    ]
+    ],
+    "tema": "Sistema constitucional"
   },
   {
     "fuente": "mpf-preguntero-nexo",
@@ -231,7 +239,8 @@
     ],
     "respuesta_correcta": "c",
     "confianza": "media",
-    "revisada": false
+    "revisada": false,
+    "tema": "Sistema constitucional"
   },
   {
     "fuente": "mpf-preguntero-nexo",
@@ -259,7 +268,8 @@
     "revisada": false,
     "corroborada_por": [
       "mpf-modelos-manual"
-    ]
+    ],
+    "tema": "Ordenamiento del MPF"
   },
   {
     "fuente": "mpf-preguntero-nexo",
@@ -284,7 +294,8 @@
     ],
     "respuesta_correcta": "a",
     "confianza": "media",
-    "revisada": false
+    "revisada": false,
+    "tema": "Código Procesal Penal Federal"
   },
   {
     "fuente": "mpf-preguntero-nexo",
@@ -309,7 +320,8 @@
     ],
     "respuesta_correcta": "a",
     "confianza": "media",
-    "revisada": false
+    "revisada": false,
+    "tema": "Ordenamiento del MPF"
   },
   {
     "fuente": "mpf-preguntero-nexo",
@@ -337,7 +349,8 @@
     "revisada": false,
     "corroborada_por": [
       "mpf-modelos-manual"
-    ]
+    ],
+    "tema": "Sistema constitucional"
   },
   {
     "fuente": "mpf-preguntero-nexo",
@@ -362,7 +375,8 @@
     ],
     "respuesta_correcta": "b",
     "confianza": "media",
-    "revisada": false
+    "revisada": false,
+    "tema": "Sistema constitucional"
   },
   {
     "fuente": "mpf-preguntero-nexo",
@@ -387,7 +401,8 @@
     ],
     "respuesta_correcta": "c",
     "confianza": "media",
-    "revisada": false
+    "revisada": false,
+    "tema": "Sistema constitucional"
   },
   {
     "fuente": "mpf-preguntero-nexo",
@@ -412,7 +427,8 @@
     ],
     "respuesta_correcta": "a",
     "confianza": "media",
-    "revisada": false
+    "revisada": false,
+    "tema": "Sistema constitucional"
   },
   {
     "fuente": "mpf-preguntero-nexo",
@@ -437,7 +453,8 @@
     ],
     "respuesta_correcta": "c",
     "confianza": "media",
-    "revisada": false
+    "revisada": false,
+    "tema": "Sistema constitucional"
   },
   {
     "fuente": "mpf-preguntero-nexo",
@@ -462,7 +479,8 @@
     ],
     "respuesta_correcta": "a",
     "confianza": "media",
-    "revisada": false
+    "revisada": false,
+    "tema": "Sistema constitucional"
   },
   {
     "fuente": "mpf-preguntero-nexo",
@@ -487,7 +505,8 @@
     ],
     "respuesta_correcta": "a",
     "confianza": "media",
-    "revisada": false
+    "revisada": false,
+    "tema": "Ordenamiento del MPF"
   },
   {
     "fuente": "mpf-preguntero-nexo",
@@ -512,7 +531,8 @@
     ],
     "respuesta_correcta": "a",
     "confianza": "media",
-    "revisada": false
+    "revisada": false,
+    "tema": "Problemática de género"
   },
   {
     "fuente": "mpf-preguntero-nexo",
@@ -537,7 +557,8 @@
     ],
     "respuesta_correcta": "c",
     "confianza": "media",
-    "revisada": false
+    "revisada": false,
+    "tema": "Búsqueda e investigación"
   },
   {
     "fuente": "mpf-preguntero-nexo",
@@ -562,7 +583,8 @@
     ],
     "respuesta_correcta": "b",
     "confianza": "media",
-    "revisada": false
+    "revisada": false,
+    "tema": "Búsqueda e investigación"
   },
   {
     "fuente": "mpf-preguntero-nexo",
@@ -587,6 +609,7 @@
     ],
     "respuesta_correcta": "b",
     "confianza": "media",
-    "revisada": false
+    "revisada": false,
+    "tema": "Búsqueda e investigación"
   }
 ]

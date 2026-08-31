@@ -745,3 +745,419 @@ html[data-superficie="oscura"] .cinta-fondo::before {
 .datos-cuenta dt { font-size: 0.82rem; color: var(--texto-tenue); }
 .datos-cuenta dd { font-size: 0.92rem; color: var(--texto); margin-bottom: 0.7rem; }
 @media (min-width: 520px) { .datos-cuenta dd { margin-bottom: 0; } }
+
+/* ============================================================
+   SIMULADOR
+   Superficie clara, dentro del grupo (sesion). Mobile first: todo arranca en
+   una columna y se abre cuando hay lugar. Las medidas de texto van en ch para
+   que el renglón no se estire con la pantalla.
+   ============================================================ */
+.sim { display: flex; flex-direction: column; gap: 3.5rem; }
+@media (min-width: 768px) { .sim { gap: 5rem; } }
+
+.sim-encabezado { display: flex; flex-direction: column; align-items: flex-start; gap: 0.9rem; }
+.sim-encabezado .btn { margin-top: 0.4rem; }
+.sim-bajada {
+  font-size: clamp(1.05rem, 3.4vw, 1.35rem); color: var(--texto);
+  font-variation-settings: "wdth" 100, "wght" 600; max-width: 46ch;
+}
+.sim-parrafo { color: var(--texto-tenue); max-width: 68ch; }
+.sim-subbajada { color: var(--texto-tenue); max-width: 60ch; margin-top: -0.3rem; }
+
+.sim-titulo {
+  font-size: clamp(1.35rem, 4vw, 1.9rem); line-height: 1.15; letter-spacing: -0.02em;
+  font-variation-settings: "wdth" var(--ancho-titulo), "wght" 700;
+  font-style: var(--h2-estilo, normal);
+}
+html[data-marca="nexo"] .sim-titulo { --h2-estilo: italic; }
+
+.sim-encabezado-org { gap: 0.5rem; }
+.sim-org-sigla {
+  color: var(--acento-texto); font-size: 0.7rem;
+  font-variation-settings: "wdth" 100, "wght" 700;
+}
+
+/* ---------- retomar ---------- */
+.sim-retomar {
+  display: flex; flex-direction: column; gap: 1rem; padding: 1.25rem;
+  align-items: flex-start;
+}
+.sim-retomar-titulo { font-variation-settings: "wdth" 100, "wght" 650; }
+.sim-retomar-texto { color: var(--texto-tenue); font-size: 0.92rem; }
+@media (min-width: 640px) {
+  .sim-retomar { flex-direction: row; align-items: center; justify-content: space-between; padding: 1.4rem 1.6rem; }
+}
+
+/* ---------- elegí tu examen ---------- */
+.sim-eleccion { display: flex; flex-direction: column; gap: 0.6rem; scroll-margin-top: 5rem; }
+.sim-organismos { display: grid; gap: 1rem; margin-top: 1rem; }
+@media (min-width: 860px) { .sim-organismos { grid-template-columns: 1fr 1fr; gap: 1.25rem; } }
+
+.sim-org { display: flex; flex-direction: column; gap: 1.15rem; padding: 1.5rem; }
+.sim-org-cabeza { display: flex; flex-direction: column; gap: 0.35rem; }
+.sim-org-nombre {
+  font-size: clamp(1.15rem, 3.6vw, 1.45rem); line-height: 1.2; letter-spacing: -0.02em;
+  font-variation-settings: "wdth" 100, "wght" 700;
+}
+.sim-org-instancias { list-style: none; display: flex; flex-direction: column; gap: 0.9rem; flex: 1; }
+.sim-org-instancias li {
+  display: flex; flex-direction: column; gap: 0.2rem;
+  padding-left: 0.9rem; border-left: 2px solid var(--borde);
+}
+.sim-org-instancia { font-variation-settings: "wdth" 100, "wght" 620; font-size: 0.95rem; }
+.sim-org-detalle { color: var(--texto-tenue); font-size: 0.88rem; line-height: 1.5; }
+.sim-org-cta { align-self: flex-start; }
+
+/* ---------- cómo funciona ---------- */
+.sim-pasos { display: flex; flex-direction: column; gap: 1.5rem; }
+.sim-pasos-grilla { list-style: none; display: grid; gap: 1.5rem; }
+@media (min-width: 620px) { .sim-pasos-grilla { grid-template-columns: 1fr 1fr; } }
+@media (min-width: 1024px) { .sim-pasos-grilla { grid-template-columns: repeat(4, 1fr); gap: 1.75rem; } }
+.sim-pasos-grilla li {
+  display: flex; flex-direction: column; gap: 0.4rem;
+  padding-top: 0.9rem; border-top: 2px solid var(--borde);
+}
+.sim-paso-n { color: var(--acento-texto); font-size: 0.7rem; }
+.sim-paso-titulo { font-size: 1rem; font-variation-settings: "wdth" 100, "wght" 650; }
+.sim-paso-texto { color: var(--texto-tenue); font-size: 0.9rem; line-height: 1.5; }
+
+/* ---------- el aviso ---------- */
+.sim-aviso { padding: 1.5rem; display: flex; flex-direction: column; gap: 0.8rem; }
+.sim-aviso-titulo {
+  font-size: clamp(1.1rem, 3.4vw, 1.4rem); line-height: 1.2; letter-spacing: -0.02em;
+  font-variation-settings: "wdth" 100, "wght" 700; max-width: 34ch;
+}
+.sim-aviso p { color: var(--texto-tenue); font-size: 0.92rem; line-height: 1.6; max-width: 72ch; }
+@media (min-width: 768px) { .sim-aviso { padding: 2rem; } }
+
+/* ---------- cierre ---------- */
+.sim-cierre {
+  display: flex; flex-direction: column; align-items: flex-start; gap: 0.7rem;
+  padding-top: 2.5rem; border-top: 1px solid var(--borde);
+}
+.sim-cierre-titulo {
+  font-size: clamp(1.6rem, 5.5vw, 2.6rem); line-height: 1.05; letter-spacing: -0.03em;
+  font-variation-settings: "wdth" var(--ancho-titulo), "wght" 750;
+  font-style: var(--h2-estilo, normal);
+}
+html[data-marca="nexo"] .sim-cierre-titulo { --h2-estilo: italic; }
+.sim-gratis { color: var(--texto-debil); font-size: 0.68rem; }
+.sim-cierre .btn { margin-top: 0.6rem; }
+
+/* ---------- instancias de un organismo ---------- */
+.sim-instancias { display: grid; gap: 1.25rem; }
+@media (min-width: 900px) { .sim-instancias { grid-template-columns: 1fr 1fr; align-items: start; } }
+.sim-instancia { display: flex; flex-direction: column; gap: 1rem; padding: 1.5rem; }
+.sim-instancia-titulo {
+  font-size: 1.2rem; letter-spacing: -0.015em;
+  font-variation-settings: "wdth" 100, "wght" 700;
+}
+.sim-instancia-detalle { color: var(--texto-tenue); font-size: 0.92rem; line-height: 1.55; }
+.sim-instancia-pie { display: flex; flex-direction: column; align-items: flex-start; gap: 0.6rem; margin-top: auto; }
+.sim-volver { align-self: flex-start; }
+
+/* ---------- las reglas (S-14) ---------- */
+.sim-reglas {
+  background: color-mix(in srgb, var(--texto) 3%, transparent);
+  border-radius: 12px; padding: 1rem 1.1rem;
+  display: flex; flex-direction: column; gap: 0.7rem;
+}
+.sim-reglas-titulo { color: var(--texto-debil); font-size: 0.64rem; }
+.sim-reglas-desde { font-size: 0.92rem; font-variation-settings: "wdth" 100, "wght" 620; }
+.sim-reglas-lista { display: flex; flex-direction: column; gap: 0.4rem; }
+.sim-reglas-lista > div {
+  display: flex; align-items: baseline; justify-content: space-between; gap: 1rem;
+  font-size: 0.9rem;
+}
+.sim-reglas-lista dt { color: var(--texto-tenue); }
+.sim-reglas-lista dd {
+  font-variation-settings: "wdth" 100, "wght" 650;
+  font-variant-numeric: tabular-nums; white-space: nowrap;
+}
+.sim-reglas-nota { color: var(--texto-tenue); font-size: 0.82rem; line-height: 1.5; }
+.sim-reglas-orientativo { color: var(--marca-revisar); }
+
+/* ---------- una instancia sin preguntas publicadas ---------- */
+.sim-vacio { display: flex; flex-direction: column; gap: 0.35rem; }
+.sim-vacio strong { font-variation-settings: "wdth" 100, "wght" 650; font-size: 0.95rem; }
+.sim-vacio span { color: var(--texto-tenue); font-size: 0.87rem; line-height: 1.5; }
+
+/* ---------- rendir ---------- */
+.rend { display: flex; flex-direction: column; gap: 1.25rem; }
+.rend-barra {
+  display: flex; align-items: center; justify-content: space-between; gap: 1rem;
+  flex-wrap: wrap;
+}
+.rend-pos { color: var(--texto-debil); font-size: 0.68rem; }
+.rend-cron { display: flex; align-items: baseline; gap: 0.5rem; }
+.rend-cron-rotulo { color: var(--texto-debil); font-size: 0.6rem; }
+.rend-cron-numero {
+  font-family: var(--fuente-mono), ui-monospace, monospace;
+  font-size: 1.15rem; font-variant-numeric: tabular-nums; letter-spacing: 0.02em;
+}
+.rend-cron.apurando .rend-cron-numero { color: var(--error); }
+.rend-expiro {
+  background: color-mix(in srgb, var(--marca-revisar) 14%, transparent);
+  color: var(--texto); border-radius: 10px; padding: 0.7rem 0.9rem; font-size: 0.9rem;
+}
+
+.rend-pregunta { padding: 1.35rem; display: flex; flex-direction: column; gap: 1.1rem; }
+@media (min-width: 768px) { .rend-pregunta { padding: 1.85rem; } }
+.rend-enunciado {
+  font-size: clamp(1.05rem, 3.2vw, 1.25rem); line-height: 1.4;
+  font-variation-settings: "wdth" 100, "wght" 620; max-width: 62ch;
+}
+.rend-opciones { list-style: none; display: flex; flex-direction: column; gap: 0.6rem; }
+.rend-op {
+  width: 100%; display: flex; gap: 0.75rem; align-items: flex-start; text-align: left;
+  background: transparent; border: none; font-family: inherit; font-size: 0.95rem;
+  line-height: 1.5; color: var(--texto); cursor: pointer;
+  padding: 0.85rem 1rem; border-radius: 12px;
+  box-shadow: inset 0 0 0 1px var(--borde);
+  transition: box-shadow var(--t-micro) var(--suave), background var(--t-micro) var(--suave);
+}
+.rend-op:hover { box-shadow: inset 0 0 0 1px var(--borde-fuerte); }
+/* La elegida no se distingue sólo por color: el marco engorda y la letra
+   pesa, para que se vea igual sin distinguir el acento. */
+.rend-op.elegida {
+  box-shadow: inset 0 0 0 2px var(--acento-texto);
+  background: color-mix(in srgb, var(--acento-texto) 7%, transparent);
+  font-variation-settings: "wdth" 100, "wght" 560;
+}
+.rend-op-clave {
+  color: var(--acento-texto); font-size: 0.68rem; padding-top: 0.2rem; flex-shrink: 0;
+}
+.rend-op-texto { flex: 1; }
+.rend-marcar {
+  align-self: flex-start; background: transparent; border: none; cursor: pointer;
+  font-family: inherit; font-size: 0.82rem; color: var(--texto-tenue);
+  padding: 0.35rem 0; text-decoration: underline; text-underline-offset: 3px;
+}
+.rend-marcar.si { color: var(--marca-revisar); font-variation-settings: "wdth" 100, "wght" 650; }
+
+.rend-pasos { display: flex; align-items: center; justify-content: space-between; gap: 0.75rem; }
+.rend-estado {
+  color: var(--texto-debil); font-size: 0.75rem; text-align: center; flex: 1;
+  min-height: 1.2em;
+}
+
+.rend-grilla { display: flex; flex-direction: column; gap: 0.75rem; }
+.rend-grilla ol {
+  list-style: none; display: flex; flex-wrap: wrap; gap: 0.4rem;
+}
+.rend-gq {
+  width: 2.1rem; height: 2.1rem; border-radius: 8px; border: none; cursor: pointer;
+  font-family: var(--fuente-mono), ui-monospace, monospace; font-size: 0.72rem;
+  background: transparent; color: var(--texto-tenue);
+  box-shadow: inset 0 0 0 1px var(--borde);
+  display: flex; align-items: center; justify-content: center;
+  position: relative;
+}
+.rend-gq.respondida {
+  background: color-mix(in srgb, var(--acento-texto) 12%, transparent);
+  color: var(--texto); font-variation-settings: "wght" 700;
+}
+/* El punto es lo que hace legible el estado sin depender del color. */
+.rend-gq.marcada::after {
+  content: ""; position: absolute; top: 3px; right: 3px;
+  width: 5px; height: 5px; border-radius: 50%; background: var(--marca-revisar);
+}
+.rend-gq.marcada { box-shadow: inset 0 0 0 1px var(--marca-revisar); }
+.rend-gq.act { box-shadow: inset 0 0 0 2px var(--texto); color: var(--texto); }
+.rend-leyenda { list-style: none; display: flex; flex-wrap: wrap; gap: 0.9rem; }
+.rend-leyenda li {
+  display: flex; align-items: center; gap: 0.35rem;
+  color: var(--texto-debil); font-size: 0.72rem;
+}
+.rend-leyenda i { width: 10px; height: 10px; border-radius: 3px; box-shadow: inset 0 0 0 1px var(--borde); }
+.rend-leyenda i.respondida { background: color-mix(in srgb, var(--acento-texto) 40%, transparent); }
+.rend-leyenda i.marcada { box-shadow: inset 0 0 0 2px var(--marca-revisar); }
+
+.rend-entregar { align-self: flex-start; }
+.rend-confirmar { padding: 1.25rem; display: flex; flex-direction: column; gap: 0.6rem; }
+.rend-confirmar-titulo { font-size: 1.05rem; font-variation-settings: "wdth" 100, "wght" 680; }
+.rend-confirmar-texto { color: var(--texto-tenue); font-size: 0.9rem; }
+.rend-confirmar-botones { display: flex; flex-wrap: wrap; gap: 0.6rem; margin-top: 0.4rem; }
+
+/* ---------- tipeo ---------- */
+.tip-consigna { color: var(--texto-tenue); max-width: 68ch; font-size: 0.92rem; line-height: 1.55; }
+.tip-columnas { display: grid; gap: 1rem; }
+@media (min-width: 900px) { .tip-columnas { grid-template-columns: 1fr 1fr; } }
+.tip-original, .tip-escribir { padding: 1.1rem; display: flex; flex-direction: column; gap: 0.7rem; }
+.tip-rotulo { color: var(--texto-debil); font-size: 0.62rem; }
+.tip-texto { white-space: pre-wrap; font-size: 0.92rem; line-height: 1.7; }
+/* El tope y el scroll propio son para cuando las dos columnas van al lado. En
+   una sola columna, un recuadro que scrollea aparte obliga a moverse dentro de
+   una caja mientras se escribe en la de abajo: mejor que crezca y scrollee la
+   página. */
+@media (min-width: 900px) { .tip-texto { max-height: 24rem; overflow-y: auto; } }
+.tip-area {
+  width: 100%; min-height: 14rem; resize: vertical; border: none; outline: none;
+  background: transparent; color: var(--texto); font-family: inherit;
+  font-size: 0.92rem; line-height: 1.7;
+  box-shadow: inset 0 0 0 1px var(--borde); border-radius: 10px; padding: 0.75rem;
+}
+.tip-area:focus-visible { box-shadow: inset 0 0 0 2px var(--acento-texto); outline: none; }
+@media (min-width: 900px) { .tip-area { min-height: 18rem; } }
+
+.tip-medidas { display: flex; gap: 2rem; }
+.tip-medidas > div { display: flex; flex-direction: column; gap: 0.15rem; }
+.tip-medida-rotulo { color: var(--texto-debil); font-size: 0.6rem; }
+.tip-medida {
+  font-family: var(--fuente-mono), ui-monospace, monospace; font-size: 1.15rem;
+  font-variant-numeric: tabular-nums;
+}
+.tip-medida.mal { color: var(--error); }
+.tip-barra { height: 4px; border-radius: 2px; background: var(--borde); overflow: hidden; }
+.tip-barra i { display: block; height: 100%; background: var(--acento-texto); transition: width var(--t-micro) linear; }
+.tip-supuesto {
+  display: flex; flex-direction: column; gap: 0.5rem;
+  border-left: 2px solid var(--marca-revisar); padding-left: 0.9rem;
+}
+.tip-supuesto p { color: var(--texto-tenue); font-size: 0.82rem; line-height: 1.55; max-width: 72ch; }
+
+/* ---------- resultados ---------- */
+.res { display: flex; flex-direction: column; gap: 1.75rem; }
+.res-cabeza { display: flex; flex-direction: column; gap: 0.3rem; }
+.res-examen { color: var(--texto-tenue); }
+.res-puntaje {
+  padding: 1.5rem; display: flex; flex-direction: column; gap: 0.3rem; align-items: flex-start;
+}
+.res-veredicto {
+  font-size: 0.7rem; letter-spacing: 0.09em; text-transform: uppercase;
+  font-family: var(--fuente-mono), ui-monospace, monospace;
+}
+.res-puntaje.ok .res-veredicto { color: var(--ok); }
+.res-puntaje.mal .res-veredicto { color: var(--error); }
+.res-numero {
+  font-size: clamp(2.6rem, 11vw, 4rem); line-height: 1; letter-spacing: -0.04em;
+  font-variation-settings: "wdth" 100, "wght" 750; font-variant-numeric: tabular-nums;
+}
+.res-sobre {
+  font-size: 0.35em; color: var(--texto-debil); margin-left: 0.4rem;
+  font-variation-settings: "wght" 500; letter-spacing: 0;
+}
+.res-minimo { color: var(--texto-tenue); font-size: 0.85rem; }
+
+.res-cifras { display: grid; gap: 0.75rem; grid-template-columns: repeat(2, 1fr); }
+@media (min-width: 760px) { .res-cifras { grid-template-columns: repeat(5, 1fr); } }
+.res-cifra { padding: 0.9rem 1rem; display: flex; flex-direction: column; gap: 0.3rem; }
+.res-cifra dt { color: var(--texto-debil); font-size: 0.58rem; }
+.res-cifra dd {
+  font-size: 1.35rem; font-variation-settings: "wdth" 100, "wght" 700;
+  font-variant-numeric: tabular-nums;
+}
+.res-cifra dd.ok { color: var(--ok); }
+.res-cifra dd.mal { color: var(--error); }
+
+.res-temas { display: flex; flex-direction: column; gap: 1rem; }
+.res-temas ul { list-style: none; display: flex; flex-direction: column; gap: 0.65rem; }
+.res-temas li { display: grid; grid-template-columns: 1fr auto; gap: 0.3rem 0.75rem; align-items: center; }
+.res-tema-nombre { font-size: 0.9rem; }
+.res-tema-pct {
+  font-family: var(--fuente-mono), ui-monospace, monospace; font-size: 0.75rem;
+  color: var(--texto-tenue); font-variant-numeric: tabular-nums;
+}
+.res-tema-barra {
+  grid-column: 1 / -1; height: 4px; border-radius: 2px;
+  background: var(--borde); overflow: hidden; display: block;
+}
+.res-tema-barra i { display: block; height: 100%; background: var(--acento-texto); }
+
+.res-acciones { display: flex; flex-wrap: wrap; gap: 0.7rem; }
+
+/* ============================================================
+   REVISIÓN DE PREGUNTAS
+   Pantalla de trabajo, no de lectura: densa, con los atajos a la vista y
+   todo lo que se decide en una sola pantalla sin scroll en escritorio.
+   ============================================================ */
+.rev-caja { display: flex; flex-direction: column; gap: 1.25rem; }
+.rev-cabeza { display: flex; flex-direction: column; gap: 0.6rem; }
+@media (min-width: 760px) {
+  .rev-cabeza { flex-direction: row; align-items: flex-end; justify-content: space-between; gap: 2rem; }
+}
+.rev-bajada { color: var(--texto-tenue); max-width: 62ch; font-size: 0.92rem; margin-top: 0.3rem; }
+.rev-progreso { color: var(--acento-texto); font-size: 0.7rem; white-space: nowrap; }
+
+.rev-filtros { display: flex; flex-wrap: wrap; align-items: center; gap: 0.4rem; }
+.rev-filtro-rotulo { color: var(--texto-debil); font-size: 0.6rem; margin-right: 0.2rem; }
+.rev-sep { width: 1px; height: 18px; background: var(--borde); margin: 0 0.4rem; }
+.rev-chip {
+  border: none; cursor: pointer; font-family: inherit; font-size: 0.78rem;
+  padding: 0.34rem 0.7rem; border-radius: 999px;
+  background: transparent; color: var(--texto-tenue);
+  box-shadow: inset 0 0 0 1px var(--borde);
+}
+.rev-chip:hover { box-shadow: inset 0 0 0 1px var(--borde-fuerte); }
+.rev-chip.act {
+  background: var(--texto); color: var(--fondo);
+  box-shadow: none; font-variation-settings: "wdth" 100, "wght" 600;
+}
+
+.rev-pregunta { padding: 1.35rem; display: flex; flex-direction: column; gap: 1rem; }
+@media (min-width: 768px) { .rev-pregunta { padding: 1.75rem; } }
+.rev-meta { display: flex; flex-wrap: wrap; gap: 0.9rem; color: var(--texto-debil); font-size: 0.6rem; }
+.rev-confianza.alta { color: var(--ok); }
+.rev-confianza.baja { color: var(--error); }
+.rev-confianza.media { color: var(--marca-revisar); }
+.rev-enunciado {
+  font-size: clamp(1.05rem, 3vw, 1.2rem); line-height: 1.4;
+  font-variation-settings: "wdth" 100, "wght" 620; max-width: 68ch;
+  white-space: pre-wrap;
+}
+.rev-rotulo {
+  font-size: 0.62rem; letter-spacing: 0.09em; text-transform: uppercase;
+  font-family: var(--fuente-mono), ui-monospace, monospace; color: var(--texto-debil);
+}
+.rev-opciones { list-style: none; display: flex; flex-direction: column; gap: 0.45rem; }
+.rev-op {
+  width: 100%; display: flex; gap: 0.7rem; align-items: flex-start; text-align: left;
+  background: transparent; border: none; font-family: inherit; font-size: 0.92rem;
+  line-height: 1.5; color: var(--texto); cursor: pointer;
+  padding: 0.7rem 0.85rem; border-radius: 10px;
+  box-shadow: inset 0 0 0 1px var(--borde);
+}
+.rev-op:hover { box-shadow: inset 0 0 0 1px var(--borde-fuerte); }
+/* La elegida es la que va a quedar guardada: se marca con marco grueso y
+   peso, no sólo con color. */
+.rev-op.elegida {
+  box-shadow: inset 0 0 0 2px var(--ok);
+  background: color-mix(in srgb, var(--ok) 8%, transparent);
+  font-variation-settings: "wdth" 100, "wght" 560;
+}
+.rev-op-tecla {
+  font-size: 0.6rem; color: var(--texto-debil); flex-shrink: 0; padding-top: 0.25rem;
+  min-width: 0.8rem;
+}
+.rev-op-clave { font-size: 0.66rem; color: var(--acento-texto); flex-shrink: 0; padding-top: 0.22rem; }
+.rev-ayuda { color: var(--texto-debil); font-size: 0.78rem; line-height: 1.45; }
+
+.rev-tema { display: flex; flex-direction: column; gap: 0.4rem; }
+.rev-tema select, .rev-tema input, .rev-frenar textarea {
+  width: 100%; max-width: 34rem; font-family: inherit; font-size: 0.9rem;
+  padding: 0.6rem 0.7rem; border-radius: 10px; border: none;
+  background: var(--tarjeta); color: var(--texto);
+  box-shadow: inset 0 0 0 1px var(--borde-fuerte);
+}
+.rev-frenar textarea { max-width: none; resize: vertical; }
+.rev-tema select:focus-visible, .rev-tema input:focus-visible, .rev-frenar textarea:focus-visible {
+  box-shadow: inset 0 0 0 2px var(--acento-texto); outline: none;
+}
+.rev-nota-previa {
+  color: var(--marca-revisar); font-size: 0.85rem; line-height: 1.5;
+  border-left: 2px solid var(--marca-revisar); padding-left: 0.8rem;
+}
+
+.rev-frenar { padding: 1.25rem; display: flex; flex-direction: column; gap: 0.5rem; }
+.rev-acciones { display: flex; flex-wrap: wrap; gap: 0.6rem; }
+.rev-vacio { padding: 1.75rem; display: flex; flex-direction: column; gap: 0.4rem; }
+.rev-vacio-titulo { font-size: 1.05rem; font-variation-settings: "wdth" 100, "wght" 680; }
+.rev-vacio p:last-child { color: var(--texto-tenue); font-size: 0.9rem; }
+
+.rev-atajos { list-style: none; display: flex; flex-wrap: wrap; gap: 1.1rem; }
+.rev-atajos li { color: var(--texto-debil); font-size: 0.76rem; }
+.rev-atajos kbd {
+  font-family: var(--fuente-mono), ui-monospace, monospace; font-size: 0.68rem;
+  padding: 0.12rem 0.4rem; border-radius: 5px;
+  box-shadow: inset 0 0 0 1px var(--borde-fuerte); margin-right: 0.3rem;
+}

@@ -13,11 +13,11 @@
  */
 export const PIEL_INICIAL = `(function(){try{
 var r=location.pathname;
-var clara=/^\\/(ingresar|crear-perfil|elegir-perfil|app|mi-perfil)(\\/|$)/.test(r);
+var clara=/^\\/(ingresar|crear-perfil|elegir-perfil|app|mi-perfil|simulador|revisar)(\\/|$)/.test(r);
 var d=document.documentElement;
 d.setAttribute('data-superficie',clara?'clara':'oscura');
 var m=clara?'neutro':'dual';
-if(/^\\/(app|mi-perfil)(\\/|$)/.test(r)){
+if(/^\\/(app|mi-perfil|simulador|revisar)(\\/|$)/.test(r)){
 var c=document.cookie.match(/(?:^|; )marca=(nexo|na)/);
 if(c)m=c[1];
 }
