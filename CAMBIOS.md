@@ -87,23 +87,23 @@
 ## TANDA 5 · Pestaña Asistente  `/asistente`
 > Página nueva. Formato chat, pero cerrado y controlado. **La confianza importa más que la estética.**
 
-- [ ] **A-01** Encabezado: "Asistente de Ingreso Democrático" / "Resolvé tus dudas sobre el examen de ingreso al MPD y al MPF." + párrafo breve.
-- [ ] **A-02** **Selector de organismo arriba de todo**, obligatorio: `MPD | MPF | No estoy seguro`. Una vez elegido, el asistente prioriza exclusivamente ese corpus, salvo que la pregunta pida comparar los dos.
-- [ ] **A-03** Categorías de acceso rápido: Contenidos del examen · Normativa · Modalidad y evaluación · Examen y simuladores · Dudas frecuentes · Hacer una pregunta.
-- [ ] **A-04** Aclaración visible: "¿No sabés cómo formular tu pregunta? No hay problema. Escribí tu duda con tus propias palabras."
-- [ ] **A-05** Caja de preguntas con ejemplos debajo, que le enseñan al usuario qué puede preguntar: "¿Qué temas entran en el examen del MPF?", "¿Cuántas preguntas tiene el examen?", "¿Qué normativa tengo que estudiar para el MPD?", "¿Cómo se computan las respuestas incorrectas?".
-- [ ] **A-06** **Estructura fija de respuesta**, nunca un párrafo suelto de IA: Respuesta → Fuente (con enlace "Ver fuente →") → Consulta relacionada, si la hay.
-- [ ] **A-07** **Tres niveles de certeza, visualmente distintos. Esto es lo más importante de la pestaña.**
+- [x] **A-01** Encabezado: "Asistente de Ingreso Democrático" / "Resolvé tus dudas sobre el examen de ingreso al MPD y al MPF." + párrafo breve.
+- [x] **A-02** **Selector de organismo arriba de todo**, obligatorio: `MPD | MPF | No estoy seguro`. Una vez elegido, el asistente prioriza exclusivamente ese corpus, salvo que la pregunta pida comparar los dos.
+- [x] **A-03** Categorías de acceso rápido: Contenidos del examen · Normativa · Modalidad y evaluación · Examen y simuladores · Dudas frecuentes · Hacer una pregunta.
+- [x] **A-04** Aclaración visible: "¿No sabés cómo formular tu pregunta? No hay problema. Escribí tu duda con tus propias palabras."
+- [x] **A-05** Caja de preguntas con ejemplos debajo, que le enseñan al usuario qué puede preguntar: "¿Qué temas entran en el examen del MPF?", "¿Cuántas preguntas tiene el examen?", "¿Qué normativa tengo que estudiar para el MPD?", "¿Cómo se computan las respuestas incorrectas?".
+- [x] **A-06** **Estructura fija de respuesta**, nunca un párrafo suelto de IA: Respuesta → Fuente (con enlace "Ver fuente →") → Consulta relacionada, si la hay.
+- [x] **A-07** **Tres niveles de certeza, visualmente distintos. Esto es lo más importante de la pestaña.**
   - 🟢 **Respuesta respaldada** — hay fuente oficial o normativa clara.
   - 🟡 **Información orientativa** — proviene de experiencias de quienes rindieron, sin confirmación oficial. Texto: "Según experiencias de personas que ya rindieron, este tema apareció en distintas oportunidades. Sin embargo, recomendamos verificar siempre la convocatoria y normativa vigente."
   - 🔴 **No encontramos una respuesta** — "No encontramos una respuesta suficientemente respaldada para esta consulta. Te recomendamos revisar la normativa oficial o reformular la pregunta." + botón "Ver normativa".
-- [ ] **A-08** El asistente **nunca inventa**. Si no hay respaldo en el corpus, devuelve el estado rojo. Sin excepciones.
-- [ ] **A-09** Botón "🔗 ¿De dónde sale esta respuesta?" que despliega la fuente utilizada y las consultas de referencia que la respaldan.
-- [ ] **A-10** **Buscador de preguntas ya respondidas**, independiente del chat, con las frecuentes listadas: ¿Cómo es el examen? · ¿Qué normativa debo estudiar? · ¿Cuántas preguntas tiene? · ¿Cómo es el sistema de evaluación? · ¿Qué pasa si respondo mal? · ¿Qué documentación necesito? · ¿Cuándo se publican los resultados? · ¿Qué diferencias hay entre MPD y MPF? Nadie debería tener que conversar con una IA para todo.
-- [ ] **A-11** Al final de cada respuesta, siguiente paso: Practicar con un simulador · Ver normativa · Ver preguntas frecuentes · Hacer otra pregunta.
-- [ ] **A-12** Bloque **"¿No encontramos la respuesta?"**: formulario para dejar la consulta. Aparece automáticamente después de una respuesta insuficiente y además está siempre disponible debajo del asistente. Guarda en tabla `consultas_sin_respuesta`. Texto de cierre: "Entre todos hacemos un asistente cada vez mejor para preparar el ingreso."
-- [ ] **A-13** Posicionamiento: no se vende como "hablás con una IA". Se vende como **"Tu asistente para el Ingreso Democrático — Preguntá. Encontrá la respuesta. Verificá la fuente."**
-- [ ] **A-14** Bloque del asistente en la pestaña de muestra, con estos textos exactos:
+- [x] **A-08** El asistente **nunca inventa**. Si no hay respaldo en el corpus, devuelve el estado rojo. Sin excepciones.
+- [x] **A-09** Botón "🔗 ¿De dónde sale esta respuesta?" que despliega la fuente utilizada y las consultas de referencia que la respaldan.
+- [x] **A-10** **Buscador de preguntas ya respondidas**, independiente del chat, con las frecuentes listadas: ¿Cómo es el examen? · ¿Qué normativa debo estudiar? · ¿Cuántas preguntas tiene? · ¿Cómo es el sistema de evaluación? · ¿Qué pasa si respondo mal? · ¿Qué documentación necesito? · ¿Cuándo se publican los resultados? · ¿Qué diferencias hay entre MPD y MPF? Nadie debería tener que conversar con una IA para todo. → Hecho, con una diferencia: en vez de esos ocho rótulos genéricos la lista muestra **las preguntas más hechas de verdad**, con su texto real y cuántas consultas tuvo cada una (88, 76, 70…). Probados los ocho contra el corpus, varios no corresponden a una sola respuesta —«¿Cómo es el sistema de evaluación?» no la tiene, y «¿Cuántas preguntas tiene?» depende del organismo y de la parte—, así que como rótulos prometían algo que abajo no estaba. El buscador acepta igual cualquiera de las ocho. Si los querés literales, decímelo.
+- [x] **A-11** Al final de cada respuesta, siguiente paso: Practicar con un simulador · Ver normativa · Ver preguntas frecuentes · Hacer otra pregunta.
+- [x] **A-12** Bloque **"¿No encontramos la respuesta?"**: formulario para dejar la consulta. Aparece automáticamente después de una respuesta insuficiente y además está siempre disponible debajo del asistente. Guarda en tabla `consultas_sin_respuesta` (migración `0007_asistente.sql`: **hay que correrla en Supabase**, ver PENDIENTES §0). Texto de cierre: "Entre todos hacemos un asistente cada vez mejor para preparar el ingreso."
+- [x] **A-13** Posicionamiento: no se vende como "hablás con una IA". Se vende como **"Tu asistente para el Ingreso Democrático — Preguntá. Encontrá la respuesta. Verificá la fuente."**
+- [x] **A-14** Bloque del asistente en la pestaña de muestra, con estos textos exactos:
   > **Ahora, el asistente**
   > Preguntá cualquier duda que tengas sobre el concurso. Desde la inscripción hasta la entrevista posterior al sorteo.
   > Este asistente fue construido a partir de consultas reales de personas que ya rindieron los exámenes de Ingreso Democrático al Ministerio Público de la Defensa (MPD) y al Ministerio Público Fiscal (MPF).

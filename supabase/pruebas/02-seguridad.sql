@@ -48,3 +48,18 @@ select count(*) from consultas;
 \echo '=== 12 · anon intenta borrarlas (tiene que dar PERMISO DENEGADO) ==='
 delete from consultas;
 reset role;
+\echo ''
+\echo '=== 13 · anon deja una consulta que el asistente no supo responder (tiene que ANDAR) ==='
+set role anon;
+insert into consultas_sin_respuesta (consulta, organismo, email)
+  values ('¿El examen del MPD se puede rendir desde casa?', 'mpd', 'quien@ejemplo.org');
+\echo ''
+\echo '=== 14 · y sin dejar el correo, que es opcional (tiene que ANDAR) ==='
+insert into consultas_sin_respuesta (consulta, organismo) values ('¿Cuándo abre la inscripción?', 'ambos');
+\echo ''
+\echo '=== 15 · anon intenta marcarse la consulta como resuelta (tiene que dar PERMISO DENEGADO) ==='
+insert into consultas_sin_respuesta (consulta, organismo, resuelta) values ('trampa', 'mpf', true);
+\echo ''
+\echo '=== 16 · anon intenta leer lo que dejaron otros (tiene que dar PERMISO DENEGADO) ==='
+select count(*) from consultas_sin_respuesta;
+reset role;

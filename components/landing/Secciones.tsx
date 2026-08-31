@@ -1,5 +1,6 @@
 import {
   asistenteSeccion,
+  hero,
   inscripcionSeccion,
   gratisSeccion,
 } from "@/content/landing";
@@ -19,7 +20,18 @@ function Titulo({ lineas }: { lineas: readonly string[] }) {
   );
 }
 
-export function SeccionAsistente({ dudasMpf }: { dudasMpf: number }) {
+/**
+ * A-14. El bloque del asistente en la pestaña de muestra.
+ *
+ * La caja de la derecha es una muestra, no el asistente: quien todavía no
+ * tiene cuenta no puede preguntar. Por eso el campo está deshabilitado y el
+ * botón es el enlace para crear la cuenta —hacerlo parecer usable y que no
+ * pasara nada al escribir sería peor que no mostrarlo—.
+ *
+ * Los tres sellos de abajo son el resumen de lo que hace la herramienta, y el
+ * tercero es el que la distingue: avisa cuando no sabe.
+ */
+export function SeccionAsistente() {
   const t = asistenteSeccion;
   return (
     <section className="env sec" id="asistente">
@@ -27,43 +39,31 @@ export function SeccionAsistente({ dudasMpf }: { dudasMpf: number }) {
         <Revelar indice={0}>
           <span className="eyebrow mono">{t.eyebrow}</span>
           <Titulo lineas={t.titulo} />
-          <p style={{ marginTop: "1.4rem", fontSize: ".97rem" }}>{t.textoPlantilla(dudasMpf)}</p>
-          <div className="chips">
-            {t.chipsPlantilla(dudasMpf).map((c) => (
-              <span className="chip" key={c}>
-                {c}
-              </span>
-            ))}
-          </div>
+          <p className="asis-muestra-bajada">{t.bajada}</p>
+          {t.parrafos.map((p) => (
+            <p className="asis-muestra-parrafo" key={p}>
+              {p}
+            </p>
+          ))}
         </Revelar>
 
         <Revelar indice={1}>
           <Vidrio className="tarjeta">
-            <div
-              style={{
-                fontSize: ".86rem", lineHeight: 1.5, padding: ".7rem .9rem",
-                borderRadius: 10, background: "rgba(244,242,237,.05)", marginBottom: ".8rem",
-              }}
-            >
-              {t.ejemploPregunta}
+            <p className="asis-muestra-titulo">{t.caja.titulo}</p>
+            <div className="asis-muestra-campo" aria-hidden="true">
+              {t.caja.marcador}
             </div>
-            <div
-              style={{
-                fontSize: ".86rem", lineHeight: 1.55, padding: ".75rem .9rem",
-                borderRadius: 10, boxShadow: "inset 0 0 0 1px var(--linea)",
-              }}
-            >
-              {t.ejemploRespuesta}
-              <div style={{ marginTop: ".7rem", paddingTop: ".6rem", borderTop: "1px solid var(--linea)" }}>
-                <span className="mono" style={{ color: "var(--papel-débil)" }}>
-                  {t.ejemploFuente}
-                </span>
-              </div>
-            </div>
-            <p style={{ fontSize: ".78rem", marginTop: ".9rem", color: "var(--papel-débil)", lineHeight: 1.5 }}>
-              {t.ejemploNota}
-            </p>
+            <p className="asis-muestra-ejemplo mono">{t.caja.ejemplo}</p>
+            <a className="btn btn-acento asis-muestra-cta" href={hero.ctaPrimarioHref}>
+              {t.caja.cta}
+            </a>
           </Vidrio>
+
+          <ul className="asis-muestra-sellos">
+            {t.sellos.map((s) => (
+              <li key={s}>{s}</li>
+            ))}
+          </ul>
         </Revelar>
       </div>
     </section>

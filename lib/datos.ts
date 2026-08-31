@@ -57,10 +57,15 @@ export async function traerMetricas(): Promise<Metricas> {
   if (!sb) return METRICAS_DEMO;
 
   // Solo cuenta lo publicado y revisado: es lo que una persona puede practicar.
+  //
+  // Y sólo las de opción múltiple: los textos del práctico de tipeo también
+  // viven en `questions`, pero un texto para copiar no es una pregunta. Sin
+  // este filtro la portada decía 72 donde hay 69.
   const { count: preguntasMpd } = await sb
     .from("questions_public")
     .select("id", { count: "exact", head: true })
-    .eq("organismo", "mpd");
+    .eq("organismo", "mpd")
+    .eq("tipo", "multiple_choice");
 
   const { count: dudasMpf } = await sb
     .from("resources")

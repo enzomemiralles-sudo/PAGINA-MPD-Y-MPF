@@ -59,18 +59,35 @@ export const maqueta = {
   total: 50,
 } as const;
 
+/**
+ * A-14. El bloque del asistente en la pestaña de muestra.
+ *
+ * Los textos son los que escribió el proyecto, palabra por palabra. Dicen lo
+ * que la herramienta hace —responde con cita de la fuente, y avisa cuando no
+ * sabe— sin venderla como una conversación con una inteligencia artificial,
+ * que es lo que pide A-13.
+ */
 export const asistenteSeccion = {
   eyebrow: "Asistente",
-  titulo: ["Preguntá lo que no", "te animás a preguntar", "en el grupo."],
-  textoPlantilla: (n: number) =>
-    `Está construido sobre las consultas reales de quienes ya rindieron el MPF: ${n} preguntas frecuentes ordenadas por cuántas veces se hicieron. Responde citando la fuente y, cuando el dato es dudoso o hubo respuestas contradictorias, te lo dice en lugar de inventar.`,
-  chipsPlantilla: (n: number) => [`${n} preguntas del MPF`, "10 categorías", "Marca lo que requiere verificación"],
-  ejemploPregunta: "¿Puedo rendir desde el celular?",
-  ejemploRespuesta:
-    "No: hay que rendir desde una computadora. La parte práctica obliga a abrir otra pestaña para buscar información mientras respondés, y en celular o tablet eso no funciona bien.",
-  ejemploFuente: "Fuente · mesa de ayuda MPF · confianza media",
-  ejemploNota:
-    "Lo indicó la organización y lo repitieron participantes con experiencia, pero no se citó una prohibición formal del reglamento. Verificá siempre contra la convocatoria vigente.",
+  titulo: ["Ahora, el asistente"],
+  bajada:
+    "Preguntá cualquier duda que tengas sobre el concurso. Desde la inscripción hasta la entrevista posterior al sorteo.",
+  parrafos: [
+    "Este asistente fue construido a partir de consultas reales de personas que ya rindieron los exámenes de Ingreso Democrático al Ministerio Público de la Defensa (MPD) y al Ministerio Público Fiscal (MPF).",
+    "Podés hacerle tus preguntas y recibir respuestas fundamentadas y con cita de la fuente correspondiente, para que puedas verificar la información y seguir estudiando por tu cuenta.",
+    "Y si no encontramos una respuesta, te lo vamos a decir en lugar de inventarla. Además, podés dejarnos tu consulta para que la revisemos y nos ayudes a seguir mejorando el asistente.",
+  ],
+  caja: {
+    titulo: "¿En qué podemos ayudarte?",
+    marcador: "Escribí tu pregunta…",
+    ejemplo: "Ej.: ¿Qué pasa después del sorteo?",
+    cta: "Preguntar",
+  },
+  sellos: [
+    "📚 Respuestas basadas en consultas reales",
+    "🔎 Fuentes para verificar la información",
+    "⚠️ Si no sabemos, te lo decimos",
+  ],
 } as const;
 
 export const inscripcionSeccion = {
@@ -92,7 +109,10 @@ export const inscripcionSeccion = {
 } as const;
 
 export const numeros = {
-  preguntasMpd: "preguntas reales del MPD",
+  // «ya cargadas» y no «reales» a secas: el número sale de la base y sube cada
+  // vez que se revisa una tanda nueva. El rótulo tiene que dejar claro que es
+  // una foto de hoy, no el tamaño final del banco.
+  preguntasMpd: "preguntas del MPD ya cargadas",
   dudasMpf: "dudas resueltas del MPF",
   comunidad: "colegas en Nueva Abogacía",
   gratis: "gratis",
