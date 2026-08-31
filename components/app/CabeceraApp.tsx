@@ -16,9 +16,10 @@ import type { Marca } from "@/lib/marca/tokens";
  * estés —«Mi perfil» en todos lados, «Volver» cuando ya estás en él— y eso
  * necesita la ruta. La marca sigue viniendo del servidor, del perfil.
  */
-export function CabeceraApp({ marca }: { marca: Marca }) {
+export function CabeceraApp({ marca, revisor = false }: { marca: Marca; revisor?: boolean }) {
   const cfg = configDe(marca);
-  const enPerfil = (usePathname() ?? "").startsWith("/mi-perfil");
+  const ruta = usePathname() ?? "";
+  const enPerfil = ruta.startsWith("/mi-perfil");
 
   return (
     <header className="app-cabecera">
@@ -35,6 +36,13 @@ export function CabeceraApp({ marca }: { marca: Marca }) {
         </Link>
 
         <div className="app-acciones">
+          {/* Sólo para quien revisa. Al resto la ruta ni le aparece ni le
+              responde: /revisar devuelve 404 si el rol no es revisor. */}
+          {revisor && !ruta.startsWith("/revisar") ? (
+            <Link className="btn btn-s" href="/revisar">
+              {t.revisar}
+            </Link>
+          ) : null}
           {enPerfil ? (
             <Link className="btn btn-s" href="/app">
               {t.volver}

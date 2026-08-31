@@ -23,7 +23,7 @@ function esMarca(v: string | null): v is Marca {
  * proveedor no toca nada — si lo hiciera, pisaría el valor bueno.
  */
 const PIEL_DEL_SERVIDOR = [
-  "/ingresar", "/crear-perfil", "/elegir-perfil", "/app", "/mi-perfil", "/simulador",
+  "/ingresar", "/crear-perfil", "/elegir-perfil", "/app", "/mi-perfil", "/simulador", "/revisar",
 ];
 
 export function MarcaProvider({ children }: { children: React.ReactNode }) {

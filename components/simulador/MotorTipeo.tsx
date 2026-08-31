@@ -4,7 +4,7 @@ import { useCallback, useEffect, useMemo, useRef, useState } from "react";
 import { useRouter } from "next/navigation";
 import { rendir as tr, tipeo as t } from "@/content/simulador";
 import { entregar, guardarRespuesta } from "@/lib/acciones/simulador";
-import { compararTipeo, erroresHastaAca } from "@/lib/simulador/tipeo";
+import { compararTipeo, erroresHastaAca, REGLAS_TIPEO } from "@/lib/simulador/tipeo";
 import type { Intento } from "@/lib/simulador/datos";
 import { Cronometro } from "@/components/simulador/Cronometro";
 
@@ -113,7 +113,9 @@ export function MotorTipeo({ intento, segundos }: { intento: Intento; segundos: 
       <div className="tip-medidas">
         <div>
           <span className="tip-medida-rotulo mono">{t.avance}</span>
-          <span className="tip-medida">{Math.round(comparacion.avance * 100)}%</span>
+          <span className="tip-medida">
+            {comparacion.escritas} / {comparacion.esperadas}
+          </span>
         </div>
         <div>
           <span className="tip-medida-rotulo mono">{t.erroresRotulo}</span>
@@ -130,8 +132,9 @@ export function MotorTipeo({ intento, segundos }: { intento: Intento; segundos: 
 
       <div className="tip-supuesto">
         <p>{t.faltante}</p>
-        <p>{t.supuesto}</p>
-        <p>{t.formato}</p>
+        <p>{t.reglamento}</p>
+        {REGLAS_TIPEO.comparaFormato ? null : <p>{t.formato}</p>}
+        <p>{t.sesionCompleta}</p>
       </div>
     </div>
   );

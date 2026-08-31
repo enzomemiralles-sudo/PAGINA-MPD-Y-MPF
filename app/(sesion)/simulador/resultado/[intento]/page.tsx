@@ -40,9 +40,16 @@ export default async function Resultado({ params }: Props) {
         intento.examen.reglas,
       );
 
-  const desglose = porTema(
-    intento.respuestas.map((a) => ({ correcta: a.correcta, tema: temas.get(a.questionId) ?? null })),
-  );
+  // El tipeo no tiene desglose: es un solo ejercicio y su «tema» es el tipeo.
+  // Una barra que dice «Tipeo 0/1» no informa nada.
+  const desglose = esTipeo
+    ? []
+    : porTema(
+        intento.respuestas.map((a) => ({
+          correcta: a.correcta,
+          tema: temas.get(a.questionId) ?? null,
+        })),
+      );
 
   const segundos = intento.finalizadoEn
     ? Math.max(

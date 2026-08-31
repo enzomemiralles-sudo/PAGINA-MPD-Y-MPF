@@ -5,6 +5,8 @@ import type { TipoPerfil } from "@/lib/marca/marcas";
 
 export type Perfil = {
   user_id: string;
+  /** «revisor» habilita /revisar. Se otorga a mano en la base, nunca desde acá. */
+  rol: "persona" | "revisor";
   tipo_perfil: TipoPerfil | null;
   marca: Exclude<Marca, "dual" | "neutro"> | null;
   onboarding_completado: boolean;
@@ -21,7 +23,7 @@ export type Perfil = {
 };
 
 const COLUMNAS =
-  "user_id, tipo_perfil, marca, onboarding_completado, fecha_aceptacion, anio_egreso, " +
+  "user_id, rol, tipo_perfil, marca, onboarding_completado, fecha_aceptacion, anio_egreso, " +
   "jurisdiccion, matriculado, area_ejercicio, anio_ingreso, como_conocio, trabaja_juridico, dni, telefono";
 
 /**

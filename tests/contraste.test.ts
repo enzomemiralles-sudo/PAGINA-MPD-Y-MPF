@@ -117,7 +117,7 @@ describe("las rutas de superficie clara coinciden en los tres lugares", () => {
       leer("components/marca/pielInicial.ts"),
       /var clara=\/\^\\\\\/\(([^)]+)\)/,
     );
-    for (const ruta of ["ingresar", "crear-perfil", "elegir-perfil", "app", "mi-perfil", "simulador"]) {
+    for (const ruta of ["ingresar", "crear-perfil", "elegir-perfil", "app", "mi-perfil", "simulador", "revisar"]) {
       expect(enScript, `falta ${ruta}`).toContain(ruta);
     }
   });

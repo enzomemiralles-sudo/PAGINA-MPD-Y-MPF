@@ -55,33 +55,7 @@ def cargar() -> list[dict]:
     return preguntas
 
 
-# ---------------------------------------------------------------------------
-# El texto del práctico de tipeo.
-#
-# No sale de ninguna fuente oficial: el examen real no publica sus textos. Es
-# un texto de práctica escrito para esto, del largo y el registro del que se
-# usa en el examen. Va con revisada = true porque no hay nada que revisar —lo
-# que hay que copiar es lo mismo que se muestra—, y la pantalla avisa que la
-# metodología está sin confirmar. Ver PLAN-SIMULADOR.md §6.
-# ---------------------------------------------------------------------------
-TEXTO_TIPEO = (
-    "El Ministerio Público de la Defensa es una institución de defensa y "
-    "protección de derechos humanos que garantiza el acceso a la justicia y la "
-    "asistencia jurídica integral, en casos individuales y colectivos, de "
-    "acuerdo con los principios, funciones y previsiones establecidas en la ley "
-    "orgánica. Promueve toda medida tendiente a la protección y defensa de los "
-    "derechos fundamentales de las personas, en especial de quienes se "
-    "encuentren en situación de vulnerabilidad.\n\n"
-    "En el ejercicio de sus funciones, los magistrados, funcionarios y "
-    "empleados deben observar los principios de unidad de actuación, "
-    "independencia, autonomía funcional y autarquía financiera. Ningún "
-    "integrante puede recibir instrucciones de autoridades ajenas a la "
-    "institución; tampoco puede desempeñar tareas incompatibles con el "
-    "ejercicio de su cargo, ni actividades que comprometan su imparcialidad.\n\n"
-    "La actuación se rige por los criterios de celeridad, sencillez y economía "
-    "procesal, procurando que los trámites se resuelvan en el menor plazo "
-    "posible y con el menor desgaste para quien reclama."
-)
+TEXTOS_TIPEO = RAIZ / "material" / "tipeo" / "textos.json"
 
 CABECERA = """\
 -- ============================================================
@@ -111,7 +85,7 @@ with examen as (
 )
 insert into questions (
   exam_id, orden, enunciado, tipo, opciones, respuesta_correcta,
-  fuente_normativa, confianza, revisada
+  fuente_normativa, tema, confianza, revisada
 ) values
 {filas}
 on conflict (exam_id, orden) do update set
@@ -120,9 +94,40 @@ on conflict (exam_id, orden) do update set
   opciones         = excluded.opciones,
   respuesta_correcta = excluded.respuesta_correcta,
   fuente_normativa = excluded.fuente_normativa,
+  -- El tema tampoco se pisa: si alguien lo corrigió a mano al revisar, la
+  -- propuesta de la regla no tiene por qué ganarle.
+  tema             = coalesce(questions.tema, excluded.tema),
   confianza        = excluded.confianza,
   -- revisada NO se pisa: si alguien ya revisó una pregunta a mano, volver a
   -- correr esto no le saca el tilde.
+  revisada         = questions.revisada;
+"""
+
+
+SQL_TIPEO = """\
+with examen as (
+  select e.id from exams e
+    join concursos c on c.id = e.concurso_id
+   where c.organismo = 'mpd' and c.cargo = 'Técnico administrativo' and c.anio = 2026
+     and e.instancia = 'practico' and e.modalidad = 'tipeo'
+)
+insert into questions (
+  exam_id, orden, enunciado, tipo, opciones, respuesta_correcta,
+  fuente_normativa, tema, confianza, revisada
+)
+select (select id from examen), t.orden, t.texto, 'tipeo', '[]'::jsonb, t.texto,
+       t.fuente, 'Tipeo', 'media', true
+from (values
+{filas}
+) as t(orden, texto, fuente)
+on conflict (exam_id, orden) do update set
+  enunciado        = excluded.enunciado,
+  tipo             = excluded.tipo,
+  opciones         = excluded.opciones,
+  respuesta_correcta = excluded.respuesta_correcta,
+  fuente_normativa = excluded.fuente_normativa,
+  tema             = coalesce(questions.tema, excluded.tema),
+  confianza        = excluded.confianza,
   revisada         = questions.revisada;
 """
 
@@ -133,6 +138,7 @@ def fila(q: dict) -> str:
         f"  ((select id from examen), {q['orden_estable']}, "
         f"{citar(q['enunciado'])}, 'multiple_choice', {citar(opciones)}::jsonb, "
         f"{citar(q['respuesta_correcta'])}, {citar(q['fuente'])}, "
+        f"{citar(q['tema']) if q.get('tema') else 'null'}, "
         f"'{q['confianza']}', {str(q['revisada']).lower()})"
     )
 
@@ -158,19 +164,27 @@ def construir() -> str:
             )
         )
 
+    # ---------------------------------------------------------------------
+    # Los textos del tipeo.
+    #
+    # Van con revisada = true porque no hay nada que revisar: lo que hay que
+    # copiar es lo mismo que se muestra, así que no puede haber una respuesta
+    # mal cargada. Lo que sí está sin confirmar es la metodología, y eso la
+    # pantalla lo dice. Son varios para que practicar dos veces no sea copiar
+    # el mismo párrafo: `cantidad_preguntas = 1` sortea uno por intento.
+    # ---------------------------------------------------------------------
+    textos = json.loads(TEXTOS_TIPEO.read_text(encoding="utf-8"))
     partes.append(
         "\n-- MPD · practico · tipeo\n"
-        "-- Texto de práctica, no oficial. Ver PLAN-SIMULADOR.md §6.\n"
-        + SQL_EXAMEN.format(
-            org="mpd",
-            instancia="practico",
-            modalidad="tipeo",
-            filas=(
-                "  ((select id from examen), 1, "
-                f"{citar(TEXTO_TIPEO)}, 'tipeo', '[]'::jsonb, {citar(TEXTO_TIPEO)}, "
-                "$q$texto de práctica — la metodología oficial está sin confirmar$q$, "
-                "'media', true)"
-            ),
+        f"-- {len(textos)} textos de práctica, no oficiales. Ver PLAN-SIMULADOR.md §6.\n"
+        # El texto va una sola vez y se usa dos: es lo que hay que copiar y es
+        # también la respuesta correcta. Repetirlo duplicaría el archivo y
+        # abriría la posibilidad de que las dos copias dejen de coincidir.
+        + SQL_TIPEO.format(
+            filas=",\n".join(
+                f"  ({i}, {citar(t['texto'])}, {citar('texto de práctica: ' + t['titulo'])})"
+                for i, t in enumerate(textos, start=1)
+            )
         )
     )
     return "".join(partes)
@@ -179,4 +193,5 @@ def construir() -> str:
 if __name__ == "__main__":
     SALIDA.write_text(construir(), encoding="utf-8")
     total = len(cargar())
-    print(f"{SALIDA.relative_to(RAIZ)}: {total} preguntas + 1 texto de tipeo")
+    textos = len(json.loads(TEXTOS_TIPEO.read_text(encoding="utf-8")))
+    print(f"{SALIDA.relative_to(RAIZ)}: {total} preguntas + {textos} textos de tipeo")

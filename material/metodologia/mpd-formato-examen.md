@@ -1,9 +1,15 @@
 # MPD — cómo es el examen y cómo se corrige
 
-Fuente: *Instructivo del Sistema de Evaluación para Exámenes de la Secretaría de
-Concursos*, Defensoría General de la Nación (`mpd-instructivo-examen.pdf`), más
-la captura de un examen real rendido (`../preguntas/crudo/mpd-examen-caba.pdf`),
-que confirma cada número.
+Fuentes, en orden de autoridad:
+
+1. **Reglamento para el Ingreso de Personal al Ministerio Público de la
+   Defensa**, texto ordenado conforme Res. DGN 1124/15, artículos 25 a 29
+   ([PDF oficial](https://www.mpd.gov.ar/users/concursos/REGLAMENTO%20PARA%20EL%20INGRESO%20DE%20PERSONAL%20AL%20MPD%20-texto%20ordenado%20conf%20Res%201124-15-.pdf)).
+   Es la norma: fija el puntaje, el criterio de error y la duración.
+2. *Instructivo del Sistema de Evaluación para Exámenes de la Secretaría de
+   Concursos* (`mpd-instructivo-examen.pdf`), que explica cómo se rinde.
+3. La captura de un examen real rendido
+   (`../preguntas/crudo/mpd-examen-caba.pdf`), que confirma cada número.
 
 Esto es la especificación del simulador: si algo de acá no se cumple, el
 simulador miente.
@@ -31,15 +37,33 @@ Que la incorrecta reste lo mismo que suma la correcta cambia la estrategia por
 completo: **dejar en blanco es mejor que arriesgar** cuando no se sabe. Un
 simulador que no descuente enseña a jugar mal.
 
-**Tipeo**
+**Tipeo** — artículo 27º
 
 | | |
 |---|---|
+| Largo del texto | **130 palabras** |
 | Punto de partida | 100 |
-| Cada error | **−5** |
+| Cada palabra mal escrita | **−5** |
+| Cada palabra **no escrita** | **−5** |
 | Mínimo para aprobar | 60 |
 
-O sea: **doce errores y quedás afuera.** La corrección parte del máximo y resta.
+O sea: **ocho errores y quedás afuera.** La corrección parte del máximo y resta.
+
+**La unidad de error es la palabra, no el carácter.** Tres letras mal en la
+misma palabra son un solo término erróneo. El artículo lo enumera:
+
+> No se tendrán por palabras correctamente escritas aquellas que presenten
+> errores de tipeo u ortográficos, estén duplicadas, las que no estén en el
+> texto original, las que contengan errores de acentuación, las palabras
+> cortadas o unidas indebidamente, los errores de mayúscula o minúscula y los
+> errores en el formato del texto.
+
+Y las que faltan cuentan igual:
+
+> Si el/la postulante no alcanzara a copiar la totalidad del texto, también le
+> será reducido, a partir del puntaje máximo ideal, cinco (5) puntos por cada
+> palabra no escrita. Ambos tipos de errores se sumarán para luego restarlos al
+> máximo puntaje ideal.
 
 ## El tipeo
 
@@ -62,7 +86,11 @@ a derecha, viñetas, numeración, aumentar y disminuir sangría.
 
 ## Tiempo
 
-**30 minutos**, y acá está la trampa que conviene replicar: el reloj **arranca
+**30 minutos para las dos instancias juntas**, no treinta cada una. Artículo
+29º: «Los/as aspirantes deberán completar las dos evaluaciones en un plazo
+total de treinta (30) minutos.»
+
+Y acá está la trampa que conviene replicar: el reloj **arranca
 en el horario del turno asignado, no cuando la persona se conecta**. Llegar
 diez minutos tarde es rendir en veinte. Al terminarse el turno el examen se
 envía solo, con lo que haya hasta ese momento.

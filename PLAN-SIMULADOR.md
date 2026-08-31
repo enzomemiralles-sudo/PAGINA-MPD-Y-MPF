@@ -197,61 +197,39 @@ la luz se pierde, como mucho, la última respuesta.
 
 ---
 
-## 6. El tipeo (S-06) — lo que sé y lo que no
+## 6. El tipeo (S-06) — resuelto
 
-### Lo que está confirmado
+Ya no hay supuestos. La metodología está en el **Reglamento para el Ingreso de
+Personal al Ministerio Público de la Defensa**, texto ordenado conforme
+Res. DGN 1124/15, artículos 25 a 29
+([PDF oficial](https://www.mpd.gov.ar/users/concursos/REGLAMENTO%20PARA%20EL%20INGRESO%20DE%20PERSONAL%20AL%20MPD%20-texto%20ordenado%20conf%20Res%201124-15-.pdf)).
 
-Sale del instructivo de la DGN y lo confirma la captura del examen real:
+| Lo que preguntaba el plan | Lo que dice la norma |
+|---|---|
+| Cuántos caracteres tiene el texto | **130 palabras** (art. 27) |
+| Qué cuenta como un error | **La palabra**, no el carácter (art. 27) |
+| Si los 30 minutos son de todo el examen | **De las dos instancias juntas** (art. 29) |
+| Un texto de ejemplo real | No se publica. Los de `material/tipeo/textos.json` son propios, con las 130 palabras que manda el artículo |
 
-- Se parte de **100 puntos** y se resta **5 por error**. Aprueba con **60**.
-  O sea: **doce errores y afuera**.
-- Hay que copiar un texto respetando **acentuación, puntuación, negritas,
-  subrayados, cursivas, MAYÚSCULAS y minúsculas, tabulaciones y espacios**.
-- **La marginación no cuenta.**
-- El editor real tiene barra de formato: deshacer, rehacer, negrita, cursiva,
-  subrayado, tachado, subíndice, superíndice, alineaciones, viñetas,
-  numeración y sangrías.
-- El instructivo desaconseja los atajos de teclado para el formato.
+El artículo 27 enumera qué invalida una palabra: errores de tipeo u
+ortografía, duplicadas, las que no están en el texto original, errores de
+acentuación, palabras cortadas o unidas indebidamente, errores de mayúscula o
+minúscula, y errores de formato. Cada término erróneo descuenta cinco puntos.
+Y las que no se llegan a escribir descuentan otros cinco cada una.
 
-### Lo que falta (bloquea dar S-06 por terminado)
+Que la unidad sea la palabra cambia el simulador de verdad: **tres letras mal
+en la misma palabra son un solo error, no tres.** El supuesto anterior —contar
+por carácter— exigía de más, y el que practicaba creía estar peor de lo que
+estaba.
 
-1. **Cuántos caracteres tiene el texto.** Sin esto no se puede calibrar la
-   dificultad ni decir cuánto falta.
-2. **Qué cuenta como un error.** ¿Un carácter mal es un error? ¿Una palabra mal
-   es un error? ¿Una negrita que falta es un error, o son tantos errores como
-   caracteres tenga? La diferencia es enorme: con 100 puntos y −5, doce errores
-   de carácter es un descuido y doce errores de palabra es otra cosa.
-3. **Si los 30 minutos son de todo el examen o sólo del teórico.** El
-   instructivo dice 30 minutos para la sesión; la captura muestra el
-   cronómetro corriendo durante el tipeo. Lo más probable es que sea uno solo
-   para las dos instancias, pero *probable* no alcanza para un simulador que
-   dice medir.
-4. **Un texto de ejemplo real**, con su formato. Los que hay en la captura
-   están cortados.
+La distancia de edición sobre palabras cubre los dos descuentos del artículo
+de una sola vez: la palabra cambiada es una sustitución, la duplicada y la que
+no está en el original son inserciones, y la que falta es un borrado.
 
-### Cómo lo dejo mientras tanto
-
-Componente **esbozado y parametrizable**, con los supuestos escritos en el
-código y en pantalla:
-
-```ts
-/** SUPUESTO — sin confirmar. Ver PLAN-SIMULADOR.md §6. */
-export const SUPUESTOS_TIPEO = {
-  // Un error = un carácter que no coincide. Es el criterio más duro de los
-  // posibles, así que si el real es por palabra, el simulador exige de más y
-  // no de menos: preferible a que alguien practique creyendo que aprueba.
-  unidadDeError: "caracter",
-  // El texto del ejemplo, hasta tener uno real.
-  caracteresAproximados: 900,
-  // Compartido con el teórico, hasta que se confirme.
-  minutos: 30,
-} as const;
-```
-
-En pantalla, un aviso corto: que el criterio de error es un supuesto y que el
-puntaje es orientativo hasta confirmar la metodología.
-
-**Lo que necesito que me pases** está en §7.
+**Lo único que falta**: comparar negritas, cursivas y subrayados. El
+reglamento los cuenta como error de formato; el simulador todavía compara sólo
+el texto, así que en eso exige *menos* que el examen. La pantalla lo dice en
+vez de fingir que lo mide.
 
 ---
 
@@ -262,7 +240,7 @@ puntaje es orientativo hasta confirmar la metodología.
 | 1 | **Decisión: cómo se revisan las 259 preguntas.** ¿Te armo una pantalla de revisión para tildarlas de a lotes, o preferís el Table Editor? | que el simulador muestre alguna pregunta | Sin `revisada = true` la política no las deja salir. El motor anda igual: la instancia dice que todavía no hay preguntas y no ofrece botón. |
 | 2 | **Decisión: los temas.** ¿Las etiqueto con la taxonomía del Drive del MPF —género, MPF, historia, formación ética, constitucional, CPPF— o dejamos el desglose apagado? | el desglose por tema de S-12 | Ninguna de las 259 tiene `tema`. **Ya no bloquea**: la sección aparece si hay temas y no aparece si no los hay. |
 | 3 | **`SUPABASE_SERVICE_ROLE_KEY` en Vercel.** | corregir cualquier examen | La respuesta correcta no la puede leer el navegador; corregir necesita el cliente de servicio |
-| 4 | **Metodología del tipeo**: caracteres, criterio de error, si los 30 minutos son de todo el examen, y un texto de ejemplo real. | S-06 | §6 |
+| ~~4~~ | ~~Metodología del tipeo~~ | — | **Resuelto**: está en el Reglamento de Ingreso, arts. 25-29. Ver §6. |
 | 5 | **Cuántos ejercicios sirve el práctico del MPF.** | S-04 | Tengo 14 y el oficial no publica el número. Mientras tanto sirve 10, cargado en `exams`. |
 
 Los puntos 1 y 2 son decisiones de una línea. El 3 son cinco minutos en el

@@ -44,7 +44,9 @@ export function ReglasDePuntaje({ examen }: { examen: Examen }) {
       ) : null}
       {examen.organismo === "mpf" ? (
         <p className="sim-reglas-nota sim-reglas-orientativo">{t.orientativoMpf}</p>
-      ) : null}
+      ) : (
+        <p className="sim-reglas-nota">{t.sesionCompartidaMpd}</p>
+      )}
     </div>
   );
 }

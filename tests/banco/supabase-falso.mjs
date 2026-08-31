@@ -80,6 +80,9 @@ const DESTINO = {
  */
 const REVISADAS = Number.parseInt(process.env.BANCO_REVISADAS ?? '0', 10) || 0;
 
+/** BANCO_REVISOR=1 hace revisora a cualquier cuenta, para poder ver /revisar. */
+const ROL = process.env.BANCO_REVISOR ? 'revisor' : 'persona';
+
 /**
  * Temas de mentira, para poder MIRAR el desglose por tema de la pantalla de
  * resultados. Ninguna de las 259 preguntas del repositorio tiene tema
@@ -109,24 +112,29 @@ for (const archivo of readdirSync(dirJson).sort()) {
       tema: q.tema ?? (TEMAS.length ? TEMAS[cuantas % TEMAS.length] : null),
       subtema: null, dificultad: null,
       destacada_home: false, confianza: q.confianza, revisada: cuantas < REVISADAS,
+      nota_revision: null, revisada_por: null, revisada_en: null,
       organismo: q.organismo, instancia: examen.instancia, modalidad: examen.modalidad,
+      // PostgREST devuelve los embebidos anidados; la pantalla de revisión
+      // filtra por exams.concursos.organismo.
+      exams: { concursos: { organismo: q.organismo } },
     });
   }
 }
 
-const TEXTO_TIPEO = readFileSync(resolve(RAIZ, 'supabase/preguntas.sql'), 'utf8')
-  .split('$q$')
-  .find((t) => t.startsWith('El Ministerio Público de la Defensa es una institución'));
-
 {
   const examen = examenDe('mpd', 'practico', 'tipeo');
-  tablas.questions.push({
-    id: randomUUID(), exam_id: examen.id, orden: 1,
-    enunciado: TEXTO_TIPEO, tipo: 'tipeo', opciones: [],
-    respuesta_correcta: TEXTO_TIPEO, explicacion: null,
-    fuente_normativa: 'texto de práctica', tema: null, subtema: null, dificultad: null,
-    destacada_home: false, confianza: 'media', revisada: true,
-    organismo: 'mpd', instancia: 'practico', modalidad: 'tipeo',
+  const textos = JSON.parse(readFileSync(resolve(RAIZ, 'material/tipeo/textos.json'), 'utf8'));
+  textos.forEach((t, i) => {
+    tablas.questions.push({
+      id: randomUUID(), exam_id: examen.id, orden: i + 1,
+      enunciado: t.texto, tipo: 'tipeo', opciones: [],
+      respuesta_correcta: t.texto, explicacion: null,
+      fuente_normativa: `texto de práctica: ${t.titulo}`, tema: 'Tipeo', subtema: null,
+      dificultad: null, destacada_home: false, confianza: 'media', revisada: true,
+      nota_revision: null, revisada_por: null, revisada_en: null,
+      organismo: 'mpd', instancia: 'practico', modalidad: 'tipeo',
+      exams: { concursos: { organismo: 'mpd' } },
+    });
   });
 }
 
@@ -171,6 +179,13 @@ function filtrar(filas, params) {
     } else if (op === 'in') {
       const lista = new Set(arg.replace(/^\(|\)$/g, '').split(',').map((x) => x.replace(/^"|"$/g, '')));
       salida = salida.filter((f) => lista.has(String(enCamino(f, clave))));
+    } else if (op === 'not') {
+      const [op2, ...resto] = arg.split('.');
+      const arg2 = resto.join('.');
+      if (op2 === 'in') {
+        const lista = new Set(arg2.replace(/^\(|\)$/g, '').split(',').map((x) => x.replace(/^"|"$/g, '')));
+        salida = salida.filter((f) => !lista.has(String(enCamino(f, clave))));
+      }
     } else if (op === 'is') {
       salida = salida.filter((f) => (arg === 'null' ? enCamino(f, clave) == null : true));
     }
@@ -264,7 +279,8 @@ createServer(async (req, res) => {
       perfiles.set(id, { ...(perfiles.get(id) ?? {}), ...cuerpo });
       return json(res, 200, []);
     }
-    const fila = perfiles.get(id) ?? null;
+    const guardado = perfiles.get(id) ?? null;
+    const fila = guardado ? { rol: ROL, ...guardado } : null;
     if ((req.headers.accept || '').includes('pgrst.object')) {
       return fila ? json(res, 200, fila) : json(res, 406, { code: 'PGRST116', message: 'no rows' });
     }

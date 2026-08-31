@@ -142,6 +142,10 @@ export const reglas = {
     "Responder mal descuenta. Si dudás mucho, dejarla en blanco cuesta menos que errarla.",
   orientativoMpf:
     "El MPF no publica su escala de puntaje. Usamos la del MPD, que sí está publicada, para que el resultado sea comparable. Tomalo como orientativo.",
+  // Artículo 29 del Reglamento de Ingreso del MPD. Practicar cada instancia
+  // con los treinta minutos completos enseña un ritmo que el examen no da.
+  sesionCompartidaMpd:
+    "En el examen real las dos instancias del MPD se rinden en 30 minutos en total, no 30 cada una. Acá se practican por separado.",
   comenzar: "Comenzar",
   comenzando: "Preparando el examen…",
   error: "No pudimos empezar el examen. Probá de nuevo.",
@@ -181,19 +185,19 @@ export const tipeo = {
     "Copiá el texto de abajo tal cual está: acentuación, puntuación, mayúsculas, minúsculas y espacios. La marginación no se evalúa.",
   original: "Texto a copiar",
   tuTexto: "Escribí acá",
-  avance: "Avance",
+  avance: "Palabras escritas",
   erroresRotulo: "Errores hasta acá",
   entregar: "Entregar",
-  // El supuesto va a la vista, no escondido en el código: alguien que
-  // practica tiene que saber qué parte de lo que ve está confirmado.
-  supuesto:
-    "El descuento —se parte de 100 puntos y cada error resta 5— está confirmado por el instructivo del MPD. Lo que todavía no está confirmado es qué cuenta como un error y cuánto texto trae el examen real. Acá contamos cada carácter que no coincide, que es el criterio más exigente, y el texto es de práctica. Tomá el puntaje como orientativo.",
-  formato:
-    "El examen real también evalúa negritas, cursivas y subrayados. Esta práctica compara sólo el texto.",
-  // Sin esto, el número de arriba se lee como el puntaje final y no lo es:
-  // entregar a mitad de camino descuenta por todo lo que falta.
+  // Sin esto, el número de errores se lee como el puntaje final y no lo es:
+  // el reglamento descuenta también por cada palabra que quedó sin escribir.
   faltante:
-    "El contador de arriba cuenta lo que escribiste. Lo que quede sin copiar también descuenta al entregar.",
+    "El contador de arriba cuenta lo que escribiste. Cada palabra que quede sin copiar también descuenta cinco puntos al entregar.",
+  reglamento:
+    "Se parte de 100 puntos y cada palabra descuenta 5. Una palabra cuenta como mal escrita si tiene un error de tipeo, de ortografía o de acentuación, si está duplicada, si no está en el texto original, si está cortada o unida de más, o si tiene mal la mayúscula. Es el artículo 27 del Reglamento de Ingreso del MPD.",
+  formato:
+    "El examen real también cuenta como error el formato: negritas, cursivas y subrayados. Esta práctica compara sólo el texto, así que en eso exige menos que el examen.",
+  sesionCompleta:
+    "En el examen real los 30 minutos son para el teórico y el tipeo juntos (artículo 29). Acá podés practicar cada instancia por separado con los 30 completos: tenelo en cuenta al medir tu ritmo.",
 } as const;
 
 export const resultado = {

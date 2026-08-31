@@ -1,58 +1,70 @@
 /**
- * El práctico de tipeo del MPD: copiar un texto respetando acentuación,
- * puntuación, mayúsculas, tabulaciones y espacios.
+ * El práctico de tipeo del MPD.
  *
- * TODO ESTO ES PARAMETRIZABLE A PROPÓSITO. La metodología oficial completa no
- * la tenemos todavía —ver PLAN-SIMULADOR.md §6—, así que lo que falta está
- * escrito como supuesto, en un solo lugar, y se cambia sin tocar el resto.
+ * Ya no es un esbozo con supuestos: la metodología está en el **Reglamento
+ * para el Ingreso de Personal al Ministerio Público de la Defensa** (texto
+ * ordenado conforme Res. DGN 1124/15), artículos 25 a 29. Lo que dice, en
+ * limpio, es lo que hay acá abajo.
+ *
+ * Lo único que sigue sin estar es el texto real del examen, que no se publica.
+ * Los de material/tipeo/textos.json están escritos para esto, con el largo que
+ * fija el reglamento.
  */
 
 /**
- * SUPUESTOS — sin confirmar. Ver PLAN-SIMULADOR.md §6.
+ * Lo que dice el reglamento. No son supuestos: son artículos.
  *
- * Lo que sí está confirmado por el instructivo de la DGN y por la captura del
- * examen real vive en la fila de `exams`: se parte de 100, cada error resta 5,
- * se aprueba con 60. O sea, doce errores y afuera.
+ * Art. 27º — «deberán copiar un texto de ciento treinta (130) palabras,
+ * respetando su formato». La unidad de error es **la palabra**, y una palabra
+ * no cuenta como bien escrita si tiene errores de tipeo u ortografía, está
+ * duplicada, no está en el texto original, tiene errores de acentuación, está
+ * cortada o unida indebidamente, tiene errores de mayúscula o minúscula, o
+ * tiene errores de formato. Cada término erróneo descuenta cinco puntos, y
+ * cada palabra no escrita descuenta otros cinco: los dos se suman.
+ *
+ * Art. 29º — las dos instancias, teórico y tipeo, se rinden en **treinta
+ * minutos en total**, no treinta cada una.
+ *
+ * Art. 25º — se califica de 0 a 100 y se aprueba con 60 en cada prueba.
  */
-export const SUPUESTOS_TIPEO = {
+export const REGLAS_TIPEO = {
+  /** Art. 27º: la unidad de error es la palabra, no el carácter. */
+  unidadDeError: "palabra" as const,
+  /** Art. 27º: ciento treinta palabras. */
+  palabras: 130,
+  /** Art. 29º: treinta minutos para el teórico y el tipeo juntos. */
+  minutosDeLaSesionCompleta: 30,
   /**
-   * Qué cuenta como un error. «caracter» es el criterio más duro de los
-   * posibles: si el real resulta ser por palabra, el simulador exige de más y
-   * no de menos, que es el lado seguro para equivocarse.
-   */
-  unidadDeError: "caracter" as "caracter" | "palabra",
-  /** Cuánto texto trae el ejercicio. El real no lo sabemos. */
-  caracteresAproximados: 900,
-  /** Si los 30 minutos son de toda la sesión o sólo del teórico, no consta. */
-  minutosCompartidosConElTeorico: true,
-  /**
-   * El formato (negrita, cursiva, subrayado) se pide en el examen real. Acá
-   * todavía se compara sólo el texto: comparar formato necesita saber si una
-   * negrita que falta es un error o son tantos errores como caracteres tenga.
+   * Lo único que el simulador todavía no hace: comparar negritas, cursivas y
+   * subrayados. El reglamento los cuenta como error de formato, o sea que una
+   * palabra con el formato mal es una palabra mal. Falta implementarlo, y
+   * hasta entonces la pantalla lo dice en vez de fingir que lo mide.
    */
   comparaFormato: false,
 } as const;
 
+export type UnidadDeError = "caracter" | "palabra";
+
 export type ComparacionTipeo = {
   /** Errores según la unidad configurada. Es lo que multiplica el descuento. */
   errores: number;
-  /** Caracteres escritos sobre los del texto original, de 0 a 1. */
+  /** Palabras escritas sobre las del texto original, de 0 a 1. */
   avance: number;
-  esperados: number;
-  escritos: number;
+  esperadas: number;
+  escritas: number;
 };
 
 /**
  * Distancia de edición (Levenshtein) entre dos secuencias.
  *
- * No alcanza con comparar posición por posición: un carácter de más al
- * principio correría todo el resto y contaría como error cada letra que
- * sigue, cuando en realidad hubo un solo error. La distancia de edición
- * cuenta las operaciones —agregar, borrar, cambiar—, que es lo que una
- * persona sensata llamaría «errores».
+ * No alcanza con comparar posición por posición: una palabra de más al
+ * principio correría todo el resto y contaría como error cada una de las que
+ * siguen, cuando en realidad hubo un solo error. La distancia de edición
+ * cuenta las operaciones —agregar, borrar, cambiar—, que es exactamente lo
+ * que el artículo 27º llama errores: la palabra cambiada, la duplicada, la
+ * que no está en el original y la que falta escribir.
  *
- * Es genérica porque se usa igual sobre caracteres y sobre palabras, que son
- * las dos unidades de error posibles mientras no sepamos cuál usa el examen.
+ * Es genérica porque se usa igual sobre palabras y sobre caracteres.
  *
  * Va por filas y no por matriz completa: con textos de mil caracteres la
  * matriz entera son un millón de celdas y no hacen falta.
@@ -81,11 +93,50 @@ export function distanciaDeEdicion(a: string, b: string): number {
 }
 
 /**
+ * Separa en palabras.
+ *
+ * No normaliza nada: el reglamento cuenta como error la acentuación, la
+ * mayúscula y la puntuación pegada, así que «Nación,» y «nacion» son palabras
+ * distintas de «Nación» y tienen que serlo también acá.
+ */
+export function palabras(texto: string): string[] {
+  return texto.trim().split(/\s+/).filter(Boolean);
+}
+
+/** Recorta sólo los saltos de línea que el editor mete solo al principio y al final. */
+const limpiar = (t: string) => t.replace(/^\n+|\n+$/g, "");
+
+/**
+ * Compara lo escrito contra el texto que había que copiar.
+ *
+ * Cuenta los dos descuentos del artículo 27º de una sola vez: la palabra mal
+ * escrita y la palabra no escrita son, las dos, una operación de edición.
+ */
+export function compararTipeo(
+  esperado: string,
+  escrito: string,
+  unidad: UnidadDeError = REGLAS_TIPEO.unidadDeError,
+): ComparacionTipeo {
+  const a = limpiar(esperado);
+  const b = limpiar(escrito);
+  const pa = palabras(a);
+  const pb = palabras(b);
+
+  return {
+    errores: unidad === "palabra" ? distancia(pa, pb) : distanciaDeEdicion(a, b),
+    avance: pa.length === 0 ? 0 : Math.min(1, pb.length / pa.length),
+    esperadas: pa.length,
+    escritas: pb.length,
+  };
+}
+
+/**
  * Los errores cometidos hasta acá, sin contar lo que todavía no se escribió.
  *
- * Hace falta porque durante el examen la distancia contra el texto entero no
- * informa nada: quien copió el 19% y se equivocó una vez ve «865 errores»,
- * que son los caracteres que le faltan. Verdadero al entregar, inútil
+ * Hace falta porque durante el examen la comparación contra el texto entero
+ * no informa nada: quien copió un tercio y se equivocó una vez vería ochenta
+ * y pico de errores, que son las palabras que le faltan. Es verdad al
+ * entregar —el reglamento descuenta por cada palabra no escrita— e inútil
  * mientras se escribe.
  *
  * Se resuelve comparando contra el prefijo del original que mejor encaje. La
@@ -93,9 +144,13 @@ export function distanciaDeEdicion(a: string, b: string): number {
  * pasada da todas y alcanza con quedarse con la menor. Al terminar el texto,
  * ese mínimo es la distancia completa, así que el número no salta al final.
  */
-export function erroresHastaAca(esperado: string, escrito: string): number {
-  const a = escrito.replace(/^\n+|\n+$/g, "");
-  const b = esperado.replace(/^\n+|\n+$/g, "");
+export function erroresHastaAca(
+  esperado: string,
+  escrito: string,
+  unidad: UnidadDeError = REGLAS_TIPEO.unidadDeError,
+): number {
+  const a = unidad === "palabra" ? palabras(limpiar(escrito)) : [...limpiar(escrito)];
+  const b = unidad === "palabra" ? palabras(limpiar(esperado)) : [...limpiar(esperado)];
   if (a.length === 0) return 0;
   if (b.length === 0) return a.length;
 
@@ -109,39 +164,4 @@ export function erroresHastaAca(esperado: string, escrito: string): number {
     anterior = actual;
   }
   return Math.min(...anterior);
-}
-
-/** Separa en palabras conservando la puntuación pegada, que también se evalúa. */
-function palabras(texto: string): string[] {
-  return texto.split(/\s+/).filter(Boolean);
-}
-
-/**
- * Compara lo escrito contra el texto que había que copiar.
- *
- * No normaliza nada: el examen evalúa acentuación, puntuación, mayúsculas,
- * minúsculas, tabulaciones y espacios. Lo único que se recorta son los saltos
- * de línea sobrantes del principio y del final, que es donde el editor mete
- * cosas solo. La marginación no cuenta, y la marginación es justamente lo que
- * no está en el texto.
- */
-export function compararTipeo(
-  esperado: string,
-  escrito: string,
-  unidad: "caracter" | "palabra" = SUPUESTOS_TIPEO.unidadDeError,
-): ComparacionTipeo {
-  const a = esperado.replace(/^\n+|\n+$/g, "");
-  const b = escrito.replace(/^\n+|\n+$/g, "");
-
-  const errores =
-    unidad === "palabra"
-      ? distancia(palabras(a), palabras(b))
-      : distanciaDeEdicion(a, b);
-
-  return {
-    errores,
-    avance: a.length === 0 ? 0 : Math.min(1, b.length / a.length),
-    esperados: a.length,
-    escritos: b.length,
-  };
 }

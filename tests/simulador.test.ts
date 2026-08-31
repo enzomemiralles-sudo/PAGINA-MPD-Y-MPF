@@ -1,6 +1,13 @@
 import { describe, expect, it } from "vitest";
 import { corregir, corregirTipeo, porTema, type ReglasPuntaje } from "@/lib/simulador/puntaje";
-import { compararTipeo, distanciaDeEdicion, erroresHastaAca } from "@/lib/simulador/tipeo";
+import {
+  compararTipeo,
+  distanciaDeEdicion,
+  erroresHastaAca,
+  REGLAS_TIPEO,
+} from "@/lib/simulador/tipeo";
+import { readFileSync } from "node:fs";
+import { resolve } from "node:path";
 
 /** Las reglas reales del MPD, confirmadas contra el instructivo de la DGN. */
 const MPD: ReglasPuntaje = {
@@ -106,47 +113,84 @@ describe("comparación del tipeo", () => {
     expect(compararTipeo("El Ministerio Público.", "El Ministerio Público.").errores).toBe(0);
   });
 
-  it("el acento cuenta", () => {
-    expect(compararTipeo("Público", "Publico").errores).toBe(1);
+  // Artículo 27: «las que contengan errores de acentuación» no se tienen por
+  // correctamente escritas. Una palabra, un error, cinco puntos.
+  it("el acento es un error de palabra", () => {
+    expect(compararTipeo("El Ministerio Público", "El Ministerio Publico").errores).toBe(1);
   });
 
-  it("la mayúscula cuenta", () => {
-    expect(compararTipeo("Público", "público").errores).toBe(1);
+  it("la mayúscula también", () => {
+    expect(compararTipeo("El Ministerio Público", "El ministerio Público").errores).toBe(1);
   });
 
-  // Esto es lo que justifica usar distancia de edición y no comparar posición
-  // por posición: una letra de más al principio corre todo el resto, y contar
-  // cada letra siguiente como error sería contar un error como veinte.
-  it("un carácter de más al principio es UN error, no todo el texto", () => {
-    expect(compararTipeo("Ministerio Público", "XMinisterio Público").errores).toBe(1);
+  // Lo que separa contar por palabra de contar por carácter: tres letras mal
+  // en la misma palabra siguen siendo UN término erróneo.
+  it("varias letras mal en una palabra son un solo error", () => {
+    expect(compararTipeo("el ministerio publico", "el xyzisterio publico").errores).toBe(1);
+    expect(compararTipeo("el ministerio publico", "el xyzisterio publico", "caracter").errores).toBe(3);
   });
 
-  it("un renglón entero que falta cuenta lo que ese renglón mide", () => {
-    expect(compararTipeo("uno\ndos", "uno").errores).toBe(4);
+  // Esto es lo que justifica usar distancia de edición: una palabra de más al
+  // principio corre todo el resto, y contar cada una como error sería contar
+  // un error como veinte.
+  it("una palabra de más al principio es UN error", () => {
+    expect(compararTipeo("Ministerio Público de la Defensa", "Hola Ministerio Público de la Defensa").errores).toBe(1);
   });
 
-  it("por palabra cuenta distinto que por carácter", () => {
-    const texto = "el ministerio publico de la defensa";
-    const escrito = "el ministerio público de la defensa";
-    expect(compararTipeo(texto, escrito, "caracter").errores).toBe(1);
-    expect(compararTipeo(texto, escrito, "palabra").errores).toBe(1);
-    expect(compararTipeo("abc def", "xyz def", "caracter").errores).toBe(3);
-    expect(compararTipeo("abc def", "xyz def", "palabra").errores).toBe(1);
+  it("una palabra duplicada es un error", () => {
+    expect(compararTipeo("el ministerio público", "el el ministerio público").errores).toBe(1);
   });
 
-  it("el avance no se pasa de uno aunque escriba de más", () => {
-    expect(compararTipeo("hola", "hola y mucho más").avance).toBe(1);
-    expect(compararTipeo("hola", "ho").avance).toBe(0.5);
+  // Artículo 27: «también le será reducido cinco puntos por cada palabra no
+  // escrita». En la distancia de edición eso es una operación de borrado, así
+  // que sale del mismo cálculo.
+  it("las palabras que faltan cuentan una por una", () => {
+    expect(compararTipeo("uno dos tres cuatro cinco", "uno dos").errores).toBe(3);
+  });
+
+  it("el avance se mide en palabras y no se pasa de uno", () => {
+    expect(compararTipeo("uno dos tres cuatro", "uno dos").avance).toBe(0.5);
+    expect(compararTipeo("uno dos", "uno dos tres cuatro").avance).toBe(1);
   });
 
   it("los saltos de línea del principio y del final no cuentan", () => {
     expect(compararTipeo("\nhola\n", "hola").errores).toBe(0);
   });
 
-  it("la distancia es simétrica y con el vacío es el largo", () => {
+  it("la distancia por caracteres sigue siendo simétrica", () => {
     expect(distanciaDeEdicion("gato", "pato")).toBe(distanciaDeEdicion("pato", "gato"));
     expect(distanciaDeEdicion("", "hola")).toBe(4);
-    expect(distanciaDeEdicion("hola", "")).toBe(4);
+  });
+});
+
+/**
+ * El reglamento fija el largo del texto: ciento treinta palabras. Es lo único
+ * del texto que la norma dice, así que es lo único que se puede comprobar.
+ */
+describe("los textos de práctica siguen el artículo 27", () => {
+  const textos = JSON.parse(
+    readFileSync(resolve(__dirname, "../material/tipeo/textos.json"), "utf8"),
+  ) as { titulo: string; texto: string }[];
+
+  it("hay textos cargados", () => {
+    expect(textos.length).toBeGreaterThan(0);
+  });
+
+  for (const t of textos) {
+    it(`«${t.titulo}» tiene ${REGLAS_TIPEO.palabras} palabras`, () => {
+      expect(t.texto.trim().split(/\s+/).length).toBe(REGLAS_TIPEO.palabras);
+    });
+  }
+
+  // Si copiar el texto entero sin errores no diera el máximo, el simulador
+  // estaría midiendo otra cosa que el examen.
+  it("copiar un texto entero y bien da cero errores", () => {
+    for (const t of textos) expect(compararTipeo(t.texto, t.texto).errores).toBe(0);
+  });
+
+  it("doce errores desaprueban, que es lo que dicen los artículos 25 y 27", () => {
+    expect(corregirTipeo(8, TIPEO).aprobado).toBe(true);
+    expect(corregirTipeo(9, TIPEO).aprobado).toBe(false);
   });
 });
 
@@ -156,18 +200,19 @@ describe("comparación del tipeo", () => {
  */
 describe("errores mientras se escribe", () => {
   const original =
-    "El Ministerio Público de la Defensa es una institución de defensa y protección de derechos humanos.";
+    "El Ministerio Público de la Defensa es una institución de defensa y protección de derechos humanos que garantiza el acceso a la justicia.";
+  const mitad = original.split(" ").slice(0, 10).join(" ");
 
   it("copiar bien la mitad no acusa ningún error", () => {
-    expect(erroresHastaAca(original, original.slice(0, 50))).toBe(0);
+    expect(erroresHastaAca(original, mitad)).toBe(0);
   });
 
-  // Es el caso que motivó la función: la distancia contra el texto entero
-  // decía 49 errores donde había uno solo.
+  // Es el caso que motivó la función: contra el texto entero, quien copió diez
+  // palabras de veinticuatro y se equivocó una vez vería quince errores.
   it("un error en la mitad copiada es un error, no todo lo que falta", () => {
-    const mitad = original.slice(0, 50) + "X";
-    expect(erroresHastaAca(original, mitad)).toBe(1);
-    expect(compararTipeo(original, mitad).errores).toBeGreaterThan(40);
+    const conFalla = `${mitad} XXXX`;
+    expect(erroresHastaAca(original, conFalla)).toBe(1);
+    expect(compararTipeo(original, conFalla).errores).toBeGreaterThan(10);
   });
 
   it("sin escribir nada no hay errores todavía", () => {
@@ -175,7 +220,7 @@ describe("errores mientras se escribe", () => {
   });
 
   // Al terminar, los dos números tienen que coincidir: si no, el contador
-  // saltaría en el último carácter.
+  // saltaría en la última palabra.
   it("con el texto completo coincide con la corrección final", () => {
     const conFalla = original.replace("Público", "Publico");
     expect(erroresHastaAca(original, conFalla)).toBe(compararTipeo(original, conFalla).errores);
