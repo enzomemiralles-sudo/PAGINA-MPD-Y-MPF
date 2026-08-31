@@ -42,7 +42,7 @@ const SIN_RESPUESTA: Respuesta = {
  * consigo; una del corpus, sólo si está en la tabla de respaldo, que se
  * escribió leyendo el documento.
  */
-function respaldo(entrada: Entrada): { fuente: Fuente; donde: string } | null {
+export function respaldo(entrada: Entrada): { fuente: Fuente; donde: string } | null {
   const ref = esOficial(entrada)
     ? { fuente: entrada.fuente, donde: entrada.donde }
     : RESPALDO[entrada.id];

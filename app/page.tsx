@@ -23,7 +23,7 @@ export default async function Landing() {
       <main>
         <Hero />
         <MaquetaSimulador />
-        <SeccionAsistente dudasMpf={metricas.dudasMpf} />
+        <SeccionAsistente />
         <SeccionInscripcion />
         <Numeros metricas={metricas} />
         <SeccionGratis />

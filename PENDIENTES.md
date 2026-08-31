@@ -1,6 +1,6 @@
 # Lo que falta, y quién lo puede hacer
 
-Estado al 31 de agosto de 2026, después de la tanda 4.
+Estado al 31 de agosto de 2026, después de la tanda 5.
 
 Está ordenado por urgencia real: lo primero es lo que hoy impide que el
 simulador muestre una sola pregunta.
@@ -20,6 +20,25 @@ mirar cuál es la Production Branch en ese momento.
 
 `claude/mpf-faq-extraction-8nqr6i` quedó como rama de trabajo vieja, en el
 mismo commit que `main`. Se puede borrar cuando quieras.
+
+---
+
+## 0 bis. Tuyo, dos minutos: correr la migración `0007`
+
+El formulario de «¿No encontramos la respuesta?» del asistente (A-12) guarda
+en una tabla nueva, `consultas_sin_respuesta`, que todavía no existe en
+Supabase. Hasta que se cree, el formulario valida y responde el error de
+guardado en lugar de anotar la consulta.
+
+En Supabase → **SQL Editor** → pegar el contenido de
+`supabase/migrations/0007_asistente.sql` y ejecutar. Se puede correr más de
+una vez sin romper nada.
+
+Lo que hace, y por qué está así: cualquiera puede dejar una consulta, nadie
+puede leer las de los demás. Está probado contra un PostgreSQL de verdad en
+`supabase/pruebas/02-seguridad.sql` (casos 13 a 16): insertar anda, insertar
+marcándose la consulta como resuelta da permiso denegado, y leer la lista
+también.
 
 ---
 

@@ -543,17 +543,22 @@ html[data-superficie="oscura"] .tarjeta-app { box-shadow: inset 0 0 0 1px var(--
 .campo { display: flex; flex-direction: column; gap: 0.4rem; }
 .campo label { font-size: 0.8rem; color: var(--texto-tenue); }
 .campo .opcional { color: var(--texto-debil); font-weight: 400; }
-.campo input, .campo select {
+.campo input, .campo select, .campo textarea {
   width: 100%; padding: 0.75rem 0.9rem; border-radius: 10px; border: none;
   background: color-mix(in srgb, var(--texto) 4%, transparent);
   box-shadow: inset 0 0 0 1px var(--borde-fuerte);
   color: var(--texto); font-family: inherit; font-size: 0.95rem;
 }
-.campo input::placeholder { color: var(--texto-debil); }
-.campo input:focus-visible, .campo select:focus-visible {
+.campo textarea { resize: vertical; line-height: 1.55; }
+.campo input::placeholder, .campo textarea::placeholder { color: var(--texto-debil); }
+.campo input:focus-visible, .campo select:focus-visible, .campo textarea:focus-visible {
   box-shadow: inset 0 0 0 2px var(--acento-texto); outline: none;
 }
-.campo input[aria-invalid="true"] { box-shadow: inset 0 0 0 1px var(--error); }
+.campo input[aria-invalid="true"], .campo textarea[aria-invalid="true"] {
+  box-shadow: inset 0 0 0 1px var(--error);
+}
+.campo-ayuda { font-size: 0.78rem; color: var(--texto-debil); line-height: 1.5; }
+.campo-error { font-size: 0.82rem; color: var(--error); line-height: 1.5; }
 
 .auth-divisor {
   display: flex; align-items: center; gap: 0.9rem;
@@ -1162,4 +1167,450 @@ html[data-marca="nexo"] .sim-cierre-titulo { --h2-estilo: italic; }
   font-family: var(--fuente-mono), ui-monospace, monospace; font-size: 0.68rem;
   padding: 0.12rem 0.4rem; border-radius: 5px;
   box-shadow: inset 0 0 0 1px var(--borde-fuerte); margin-right: 0.3rem;
+}
+
+/* ============================================================
+   ASISTENTE
+   Superficie clara, dentro del grupo (sesion). Mobile first.
+
+   Lo que manda acá es que los tres estados de certeza se distingan de
+   verdad (A-07): no alcanza con cambiar un color, porque quien no lo
+   distingue se queda sin el dato más importante de la pantalla. Cada
+   estado tiene además su forma —barra maciza, barra rayada, barra
+   punteada—, su ícono y su título escrito, y en el catálogo el punto es
+   relleno o hueco según tenga fuente o no.
+
+   Los tres colores son --ok, --marca-revisar y --error, que ya existen y
+   ya pasan AA en las dos superficies: tests/contraste.test.ts los mide.
+   ============================================================ */
+.asis { display: flex; flex-direction: column; gap: 2.75rem; }
+@media (min-width: 768px) { .asis { gap: 3.5rem; } }
+
+.asis-titulo {
+  font-size: clamp(1.3rem, 4vw, 1.8rem); line-height: 1.15; letter-spacing: -0.02em;
+  font-variation-settings: "wdth" var(--ancho-titulo), "wght" 700;
+  font-style: var(--h2-estilo, normal);
+}
+html[data-marca="nexo"] .asis-titulo { --h2-estilo: italic; }
+.asis-bajada { color: var(--texto-tenue); max-width: 62ch; line-height: 1.6; }
+.asis-parrafo { color: var(--texto-tenue); max-width: 60ch; line-height: 1.65; }
+.asis-rotulo {
+  font-family: var(--fuente-mono), monospace; font-size: 0.66rem;
+  letter-spacing: 0.11em; text-transform: uppercase; color: var(--texto-debil);
+}
+
+/* ---------- encabezado (A-01, A-13) ---------- */
+.asis-encabezado { display: flex; flex-direction: column; align-items: flex-start; gap: 0.7rem; }
+.asis-posicionamiento {
+  color: var(--acento-texto); font-family: var(--fuente-mono), monospace;
+  font-size: 0.68rem; letter-spacing: 0.11em; text-transform: uppercase;
+}
+.asis-bajada-fuerte {
+  font-size: clamp(1.05rem, 3.4vw, 1.3rem); color: var(--texto); max-width: 46ch;
+  font-variation-settings: "wdth" 100, "wght" 600;
+}
+.asis-pasos {
+  list-style: none; margin: 0.2rem 0 0; padding: 0;
+  display: flex; flex-wrap: wrap; gap: 0.4rem 1.1rem;
+}
+.asis-pasos li {
+  color: var(--texto-tenue); font-size: 0.92rem;
+  font-variation-settings: "wdth" 100, "wght" 620;
+}
+.asis-pasos li + li::before { content: "→"; color: var(--texto-debil); margin-right: 0.75rem; }
+
+/* ---------- selector de organismo (A-02) ---------- */
+.asis-selector {
+  padding: 1.1rem; border-radius: 14px;
+  background: var(--tarjeta); box-shadow: inset 0 0 0 1px var(--borde);
+  display: flex; flex-direction: column; gap: 0.5rem;
+}
+.asis-selector-rotulo { font-size: 1rem; font-variation-settings: "wdth" 100, "wght" 650; }
+.asis-selector-ayuda { color: var(--texto-tenue); font-size: 0.87rem; line-height: 1.5; }
+.asis-selector-aviso {
+  color: var(--texto-tenue); font-size: 0.84rem; line-height: 1.5;
+  padding-top: 0.2rem;
+}
+.asis-opciones { display: grid; gap: 0.6rem; margin-top: 0.4rem; }
+@media (min-width: 640px) { .asis-opciones { grid-template-columns: repeat(3, 1fr); } }
+
+.asis-opcion {
+  /* El radio va posicionado adentro, así que el label tiene que ser su
+     contenedor: si no, se escapa al primer ancestro posicionado. */
+  position: relative;
+  display: flex; flex-direction: column; gap: 0.15rem; cursor: pointer;
+  padding: 0.8rem 0.9rem; border-radius: 11px;
+  background: color-mix(in srgb, var(--texto) 3%, transparent);
+  box-shadow: inset 0 0 0 1px var(--borde-fuerte);
+  transition: box-shadow var(--t-elem) var(--suave), background var(--t-elem) var(--suave);
+}
+/* Mismo escondite que .sr-only: el radio sigue existiendo para el teclado y
+   para el lector de pantalla, que es de lo que depende que este selector
+   funcione. Con width:0;height:0 hay herramientas que dejan de verlo. */
+.asis-opcion input {
+  position: absolute; width: 1px; height: 1px; padding: 0; margin: -1px;
+  overflow: hidden; clip: rect(0, 0, 0, 0); white-space: nowrap; border: 0;
+}
+.asis-opcion:hover { background: color-mix(in srgb, var(--texto) 6%, transparent); }
+.asis-opcion[data-elegida="true"] {
+  background: color-mix(in srgb, var(--acento-texto) 10%, transparent);
+  box-shadow: inset 0 0 0 2px var(--acento-texto);
+}
+.asis-opcion:focus-within { box-shadow: inset 0 0 0 2px var(--acento-texto); }
+.asis-opcion-sigla { font-variation-settings: "wdth" 100, "wght" 700; font-size: 0.95rem; }
+.asis-opcion-nombre { color: var(--texto-tenue); font-size: 0.78rem; line-height: 1.4; }
+
+/* ---------- accesos rápidos (A-03) ---------- */
+.asis-chips { display: flex; flex-wrap: wrap; gap: 0.5rem; margin-top: -1.5rem; }
+.asis-chip {
+  padding: 0.5rem 0.85rem; border-radius: 999px; font-size: 0.85rem;
+  color: var(--texto); text-decoration: none;
+  box-shadow: inset 0 0 0 1px var(--borde-fuerte);
+  transition: box-shadow var(--t-elem) var(--suave), background var(--t-elem) var(--suave);
+}
+.asis-chip:hover {
+  background: color-mix(in srgb, var(--texto) 6%, transparent);
+  box-shadow: inset 0 0 0 1px var(--acento-texto);
+}
+
+/* ---------- caja de preguntas (A-04, A-05) ---------- */
+.asis-caja { display: flex; flex-direction: column; gap: 0.9rem; scroll-margin-top: 5rem; }
+.asis-caja-ayuda { color: var(--texto-tenue); line-height: 1.6; max-width: 60ch; }
+.asis-form { display: flex; flex-direction: column; gap: 0.5rem; align-items: flex-start; }
+.asis-form textarea {
+  width: 100%; padding: 0.85rem 0.95rem; border-radius: 12px; border: none;
+  background: var(--tarjeta); box-shadow: inset 0 0 0 1px var(--borde-fuerte);
+  color: var(--texto); font-family: inherit; font-size: 1rem; line-height: 1.55;
+  resize: vertical;
+}
+.asis-form textarea::placeholder { color: var(--texto-debil); }
+.asis-form textarea:focus-visible { box-shadow: inset 0 0 0 2px var(--acento-texto); outline: none; }
+.asis-form textarea[aria-invalid="true"] { box-shadow: inset 0 0 0 1px var(--error); }
+
+.asis-ejemplos { display: flex; flex-direction: column; gap: 0.5rem; }
+.asis-ejemplos-lista { display: flex; flex-wrap: wrap; gap: 0.5rem; }
+.asis-ejemplo {
+  padding: 0.5rem 0.8rem; border-radius: 999px; font: inherit; font-size: 0.85rem;
+  color: var(--texto-tenue); background: transparent; cursor: pointer;
+  box-shadow: inset 0 0 0 1px var(--borde);
+  text-align: left;
+}
+.asis-ejemplo:hover {
+  color: var(--texto); background: color-mix(in srgb, var(--texto) 5%, transparent);
+  box-shadow: inset 0 0 0 1px var(--borde-fuerte);
+}
+
+/* ---------- la respuesta (A-06, A-07) ---------- */
+.asis-salida { display: flex; flex-direction: column; gap: 1.1rem; }
+.asis-consulta { display: flex; flex-direction: column; gap: 0.2rem; }
+.asis-consulta span:last-child { color: var(--texto-tenue); font-size: 0.95rem; }
+
+.asis-respuesta {
+  display: flex; flex-direction: column; gap: 0.85rem;
+  padding: 1.1rem 1.1rem 1.2rem; border-radius: 14px;
+  background: var(--tarjeta); box-shadow: inset 0 0 0 1px var(--borde);
+  border-left: 5px solid var(--estado, var(--borde-fuerte));
+}
+@media (min-width: 768px) { .asis-respuesta { padding: 1.4rem 1.5rem 1.5rem; } }
+
+.asis-respuesta[data-certeza="respaldada"] { --estado: var(--ok); }
+.asis-respuesta[data-certeza="orientativa"] { --estado: var(--marca-revisar); }
+.asis-respuesta[data-certeza="sin_respuesta"] { --estado: var(--error); }
+
+/* La barra de la izquierda no es sólo color: cada estado tiene su trama, para
+   quien no distingue el verde del rojo. */
+.asis-respuesta[data-certeza="orientativa"] {
+  border-left-style: dashed;
+}
+.asis-respuesta[data-certeza="sin_respuesta"] {
+  border-left-style: dotted;
+}
+
+.asis-respuesta-cabeza {
+  display: flex; align-items: center; justify-content: space-between;
+  gap: 0.75rem; flex-wrap: wrap;
+}
+.asis-sello { display: flex; align-items: center; gap: 0.45rem; }
+.asis-sello-titulo {
+  font-variation-settings: "wdth" 100, "wght" 700; font-size: 0.9rem;
+  color: var(--estado, var(--texto));
+}
+.asis-sello[data-certeza="respaldada"] { --estado: var(--ok); }
+.asis-sello[data-certeza="orientativa"] { --estado: var(--marca-revisar); }
+.asis-sello[data-certeza="sin_respuesta"] { --estado: var(--error); }
+
+.asis-org-etiqueta {
+  font-family: var(--fuente-mono), monospace; font-size: 0.64rem;
+  letter-spacing: 0.12em; color: var(--acento-texto);
+  padding: 0.22rem 0.5rem; border-radius: 999px;
+  box-shadow: inset 0 0 0 1px color-mix(in srgb, var(--acento-texto) 35%, transparent);
+}
+
+.asis-respuesta-preg {
+  font-size: 1.05rem; line-height: 1.35; letter-spacing: -0.01em;
+  font-variation-settings: "wdth" 100, "wght" 680; max-width: 42ch;
+}
+.asis-respuesta-texto { line-height: 1.7; max-width: 60ch; }
+.asis-orientativa {
+  color: var(--texto-tenue); font-size: 0.88rem; line-height: 1.6; max-width: 64ch;
+  padding: 0.75rem 0.85rem; border-radius: 10px;
+  background: color-mix(in srgb, var(--marca-revisar) 10%, transparent);
+}
+.asis-respuesta[data-certeza="sin_respuesta"] .btn { align-self: flex-start; }
+
+.asis-jurisdiccion { display: flex; align-items: baseline; gap: 0.5rem; font-size: 0.88rem; }
+.asis-nota {
+  color: var(--texto-tenue); font-size: 0.86rem; line-height: 1.6; max-width: 64ch;
+  border-left: 2px solid var(--marca-revisar); padding-left: 0.8rem;
+}
+
+/* ---------- fuente (A-06) ---------- */
+.asis-fuente {
+  display: flex; flex-direction: column; gap: 0.25rem; align-items: flex-start;
+  padding-top: 0.85rem; border-top: 1px solid var(--borde);
+}
+.asis-fuente-nombre { font-size: 0.92rem; font-variation-settings: "wdth" 100, "wght" 620; }
+.asis-fuente-donde { color: var(--texto-tenue); font-variation-settings: "wdth" 100, "wght" 400; }
+.asis-fuente-enlace { color: var(--acento-texto); font-size: 0.9rem; margin-top: 0.2rem; }
+.asis-fuente-que { color: var(--texto-tenue); font-size: 0.85rem; line-height: 1.55; }
+
+/* ---------- de dónde sale (A-09) ---------- */
+.asis-origen { border-radius: 10px; background: color-mix(in srgb, var(--texto) 3%, transparent); }
+.asis-origen > summary {
+  cursor: pointer; padding: 0.65rem 0.85rem; font-size: 0.87rem;
+  color: var(--texto-tenue); list-style: none;
+}
+.asis-origen > summary::-webkit-details-marker { display: none; }
+.asis-origen > summary:hover { color: var(--texto); }
+.asis-origen > summary:focus-visible { outline: 2px solid var(--acento-texto); outline-offset: 2px; }
+.asis-origen[open] > summary { color: var(--texto); }
+.asis-origen-cuerpo {
+  display: flex; flex-direction: column; gap: 0.45rem; align-items: flex-start;
+  padding: 0 0.85rem 0.85rem;
+}
+.asis-origen-fuente { font-size: 0.9rem; font-variation-settings: "wdth" 100, "wght" 620; }
+.asis-origen-que { color: var(--texto-tenue); font-size: 0.86rem; line-height: 1.6; max-width: 62ch; }
+.asis-origen-cuerpo a { color: var(--acento-texto); font-size: 0.88rem; }
+.asis-origen-cuenta { display: flex; flex-direction: column; gap: 0.15rem; font-size: 0.85rem; color: var(--texto-tenue); }
+
+/* ---------- contradicciones ---------- */
+.asis-contraste {
+  display: flex; flex-direction: column; gap: 0.55rem;
+  padding: 0.9rem 1rem; border-radius: 12px;
+  background: color-mix(in srgb, var(--marca-revisar) 9%, transparent);
+  box-shadow: inset 0 0 0 1px color-mix(in srgb, var(--marca-revisar) 32%, transparent);
+}
+.asis-contraste-titulo {
+  color: var(--marca-revisar); font-variation-settings: "wdth" 100, "wght" 700;
+  font-size: 0.92rem;
+}
+.asis-contraste-que { font-size: 0.9rem; line-height: 1.6; max-width: 64ch; }
+.asis-contraste-otra { display: flex; flex-direction: column; gap: 0.2rem; font-size: 0.88rem; line-height: 1.6; }
+.asis-contraste-preg { font-variation-settings: "wdth" 100, "wght" 620; }
+.asis-contraste-cierre { font-size: 0.88rem; font-variation-settings: "wdth" 100, "wght" 620; }
+
+.asis-relacionada {
+  display: flex; flex-direction: column; gap: 0.2rem;
+  padding-top: 0.75rem; border-top: 1px solid var(--borde); font-size: 0.92rem;
+}
+
+/* ---------- siguiente paso (A-11) ---------- */
+.asis-siguiente { display: flex; flex-direction: column; gap: 0.55rem; }
+.asis-siguiente-opciones { display: flex; flex-wrap: wrap; gap: 0.5rem; }
+.asis-siguiente-opciones .btn { font-size: 0.85rem; padding: 0.55rem 0.9rem; }
+
+/* ---------- catálogo y buscador (A-10) ---------- */
+.asis-catalogo { display: flex; flex-direction: column; gap: 0.7rem; scroll-margin-top: 5rem; }
+.asis-filtro { display: flex; flex-direction: column; gap: 0.4rem; margin-top: 0.6rem; }
+.asis-filtro-linea { display: flex; gap: 0.5rem; align-items: stretch; }
+.asis-filtro input {
+  flex: 1; padding: 0.75rem 0.9rem; border-radius: 10px; border: none;
+  background: var(--tarjeta); box-shadow: inset 0 0 0 1px var(--borde-fuerte);
+  color: var(--texto); font-family: inherit; font-size: 0.95rem;
+}
+.asis-filtro input::placeholder { color: var(--texto-debil); }
+.asis-filtro input:focus-visible { box-shadow: inset 0 0 0 2px var(--acento-texto); outline: none; }
+.asis-filtro-cuenta {
+  display: flex; flex-wrap: wrap; gap: 0.5rem; align-items: center;
+  font-size: 0.82rem; color: var(--texto-debil); min-height: 1.2rem;
+}
+.asis-filtro-cat {
+  padding: 0.15rem 0.5rem; border-radius: 999px; color: var(--texto-tenue);
+  box-shadow: inset 0 0 0 1px var(--borde-fuerte);
+}
+
+.asis-cat { display: flex; flex-direction: column; gap: 1.6rem; margin-top: 0.9rem; }
+/* A-02: el concurso elegido esconde el otro. El filtro es duro, no una
+   preferencia: una respuesta del otro organismo no es «casi correcta». */
+.asis[data-org="mpd"] [data-para="mpf"],
+.asis[data-org="mpf"] [data-para="mpd"] { display: none; }
+/* Con los dos a la vista, cada bloque lleva su sigla arriba. Con uno solo
+   elegido sobra: ya lo dice el selector. */
+.asis-cat-org-rotulo { display: none; align-self: flex-start; }
+.asis[data-org="ambos"] .asis-cat-org-rotulo { display: inline-block; }
+.asis-cat-org[data-vacio="true"] { display: none; }
+
+.asis-cat-org { display: flex; flex-direction: column; gap: 1.4rem; }
+.asis-cat-grupo { display: flex; flex-direction: column; gap: 0.35rem; scroll-margin-top: 5rem; }
+/* Una clase con display gana contra el [hidden] del navegador. Sin esto, al
+   filtrar quedaban los títulos de categoría sin ninguna pregunta debajo. */
+.asis-cat-grupo[hidden], .asis-ficha[hidden] { display: none; }
+.asis-cat-cat {
+  font-family: var(--fuente-mono), monospace; font-size: 0.68rem;
+  letter-spacing: 0.11em; text-transform: uppercase; color: var(--texto-debil);
+  margin-bottom: 0.25rem;
+}
+.asis-cat-vacio { color: var(--texto-tenue); line-height: 1.6; max-width: 60ch; padding: 1rem 0; }
+
+.asis-ficha {
+  border-radius: 11px; background: var(--tarjeta);
+  box-shadow: inset 0 0 0 1px var(--borde);
+}
+.asis-ficha > summary {
+  display: flex; align-items: baseline; gap: 0.6rem; cursor: pointer;
+  padding: 0.75rem 0.9rem; list-style: none;
+}
+.asis-ficha > summary::-webkit-details-marker { display: none; }
+.asis-ficha > summary:hover { background: color-mix(in srgb, var(--texto) 4%, transparent); border-radius: 11px; }
+.asis-ficha > summary:focus-visible { outline: 2px solid var(--acento-texto); outline-offset: -2px; border-radius: 11px; }
+.asis-ficha-preg { font-size: 0.94rem; line-height: 1.45; }
+.asis-ficha[open] .asis-ficha-preg { font-variation-settings: "wdth" 100, "wght" 650; }
+
+/* Relleno = tiene fuente oficial. Hueco = sale de la experiencia de quienes
+   rindieron. La forma dice lo mismo que el color. */
+.asis-punto {
+  flex: none; width: 9px; height: 9px; border-radius: 50%;
+  transform: translateY(-1px);
+}
+.asis-punto[data-certeza="respaldada"] { background: var(--ok); }
+.asis-punto[data-certeza="orientativa"] {
+  background: transparent; box-shadow: inset 0 0 0 2px var(--marca-revisar);
+}
+
+.asis-ficha-cuerpo {
+  display: flex; flex-direction: column; gap: 0.6rem; align-items: flex-start;
+  padding: 0 0.9rem 0.9rem; line-height: 1.7;
+}
+.asis-ficha-cuerpo > p { max-width: 60ch; }
+.asis-ficha-fuente {
+  display: flex; flex-direction: column; gap: 0.15rem; font-size: 0.87rem;
+  padding-top: 0.6rem; border-top: 1px solid var(--borde); width: 100%;
+}
+.asis-ficha-fuente a { color: var(--acento-texto); margin-top: 0.15rem; }
+.asis-ficha-sin-fuente {
+  font-size: 0.84rem; color: var(--texto-tenue); line-height: 1.6; max-width: 62ch;
+  padding-top: 0.6rem; border-top: 1px solid var(--borde); width: 100%;
+}
+.asis-ficha-cuenta { font-size: 0.8rem; color: var(--texto-debil); }
+
+/* ---------- normativa ---------- */
+.asis-normativa { display: flex; flex-direction: column; gap: 0.6rem; scroll-margin-top: 5rem; }
+.asis-fuentes {
+  list-style: none; margin: 0.8rem 0 0; padding: 0;
+  display: grid; gap: 0.8rem;
+}
+@media (min-width: 760px) { .asis-fuentes { grid-template-columns: 1fr 1fr; } }
+.asis-fuente-item {
+  display: flex; flex-direction: column; gap: 0.3rem; align-items: flex-start;
+  padding: 1rem 1.1rem; border-radius: 12px;
+  background: var(--tarjeta); box-shadow: inset 0 0 0 1px var(--borde);
+}
+.asis-fuente-item a { color: var(--acento-texto); font-size: 0.9rem; margin-top: 0.2rem; }
+
+/* ---------- dejanos tu consulta (A-12) ---------- */
+.asis-dejar-seccion { scroll-margin-top: 5rem; }
+.asis-dejar {
+  display: flex; flex-direction: column; gap: 0.9rem; align-items: stretch;
+  max-width: 38rem;
+}
+.asis-dejar .btn { align-self: flex-start; }
+.asis-dejar[data-compacto="true"] {
+  gap: 0.7rem; margin-top: 0.4rem; padding-top: 0.9rem;
+  border-top: 1px solid var(--borde);
+}
+.asis-dejar-cierre {
+  color: var(--texto-tenue); font-size: 0.88rem; line-height: 1.6; max-width: 52ch;
+}
+.asis-dejar-gracias {
+  display: flex; flex-direction: column; gap: 0.3rem; align-items: flex-start;
+  padding: 1rem 1.1rem; border-radius: 12px; max-width: 38rem;
+  background: color-mix(in srgb, var(--ok) 12%, transparent);
+  box-shadow: inset 0 0 0 1px color-mix(in srgb, var(--ok) 38%, transparent);
+}
+.asis-dejar-ok { color: var(--ok); font-variation-settings: "wdth" 100, "wght" 680; }
+
+/* ---------- la pestaña principal: las herramientas que ya existen ---------- */
+.app-herramientas { display: flex; flex-direction: column; gap: 0.5rem; }
+.app-herramientas-bajada { color: var(--texto-tenue); max-width: 56ch; line-height: 1.6; }
+.app-herramientas-lista { display: grid; gap: 1rem; margin-top: 1.2rem; }
+@media (min-width: 760px) { .app-herramientas-lista { grid-template-columns: 1fr 1fr; } }
+.app-herramienta {
+  display: flex; flex-direction: column; gap: 0.4rem; padding: 1.4rem 1.5rem;
+  text-decoration: none; color: var(--texto);
+  transition: box-shadow var(--t-elem) var(--suave), transform var(--t-elem) var(--suave);
+}
+.app-herramienta:hover {
+  transform: translateY(-2px);
+  box-shadow: inset 0 0 0 1px var(--acento-texto), 0 8px 24px rgba(8, 9, 10, 0.08);
+}
+.app-herramienta-titulo {
+  font-size: 1.1rem; line-height: 1.25; letter-spacing: -0.015em;
+  font-variation-settings: "wdth" 100, "wght" 680;
+}
+.app-herramienta-texto { color: var(--texto-tenue); font-size: 0.92rem; line-height: 1.6; }
+.app-herramienta-cta {
+  color: var(--acento-texto); font-size: 0.88rem; margin-top: 0.35rem;
+  font-variation-settings: "wdth" 100, "wght" 620;
+}
+
+/* ---------- A-14 · el bloque del asistente en la pestaña de muestra ---------- */
+.asis-muestra-bajada { margin-top: 1.3rem; font-size: 1.02rem; line-height: 1.6; color: var(--papel); }
+.asis-muestra-parrafo { margin-top: 0.9rem; font-size: 0.94rem; line-height: 1.65; }
+.asis-muestra-titulo {
+  font-size: 1rem; font-variation-settings: "wdth" 100, "wght" 650;
+  color: var(--papel); margin-bottom: 0.8rem;
+}
+/* Una muestra, no un campo: sin cuenta no se puede preguntar, y un campo que
+   se puede tipear y no hace nada es peor que no mostrarlo. */
+.asis-muestra-campo {
+  font-size: 0.9rem; padding: 0.8rem 0.9rem; border-radius: 10px;
+  background: rgba(244, 242, 237, 0.05); color: var(--papel-débil);
+  box-shadow: inset 0 0 0 1px var(--linea);
+}
+/* Sin versalitas: el texto de A-14 va como lo escribió el proyecto, y la
+   clase .mono lo pasaba entero a mayúsculas. */
+.asis-muestra-ejemplo {
+  font-size: 0.78rem; margin-top: 0.6rem; color: var(--papel-débil);
+  text-transform: none; letter-spacing: 0;
+}
+.asis-muestra-cta { margin-top: 0.9rem; }
+.asis-muestra-sellos {
+  list-style: none; margin: 1.1rem 0 0; padding: 0;
+  display: flex; flex-direction: column; gap: 0.45rem;
+}
+.asis-muestra-sellos li { font-size: 0.86rem; line-height: 1.5; color: var(--papel-débil); }
+
+/* ---------- las más preguntadas (A-10) ---------- */
+.asis-top {
+  display: flex; flex-direction: column; gap: 0.3rem;
+  padding: 1rem 1.1rem; border-radius: 14px; margin-top: 0.9rem;
+  background: color-mix(in srgb, var(--texto) 3%, transparent);
+}
+.asis-top-titulo { font-size: 1rem; font-variation-settings: "wdth" 100, "wght" 650; }
+.asis-top-ayuda { color: var(--texto-tenue); font-size: 0.85rem; line-height: 1.5; }
+.asis-top-lista {
+  list-style: none; margin: 0.7rem 0 0; padding: 0;
+  display: flex; flex-direction: column; gap: 0.15rem;
+}
+.asis-top-item {
+  display: flex; align-items: baseline; gap: 0.55rem; width: 100%;
+  padding: 0.5rem 0.6rem; border-radius: 9px; border: none; background: transparent;
+  font: inherit; font-size: 0.92rem; color: var(--texto); text-align: left; cursor: pointer;
+}
+.asis-top-item:hover { background: color-mix(in srgb, var(--texto) 5%, transparent); }
+.asis-top-item:focus-visible { outline: 2px solid var(--acento-texto); outline-offset: -2px; }
+.asis-top-preg { flex: 1; line-height: 1.45; }
+.asis-top-veces {
+  flex: none; color: var(--texto-debil); font-size: 0.76rem;
+  font-variant-numeric: tabular-nums; white-space: nowrap;
 }
