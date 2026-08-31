@@ -7,29 +7,19 @@ simulador muestre una sola pregunta.
 
 ---
 
-## 0. Antes que nada: producción está dos tandas atrasada
+## 0. El despliegue: resuelto
 
-`peron-delta.vercel.app` **no tiene el simulador ni la pantalla de revisión**.
-Vercel está publicando desde la rama `claude/mpf-faq-extraction-8nqr6i`, cuyo
-último despliegue es del 28 de agosto. Las tandas 3 y 4 viven en
-`claude/nexo-project-structure-s68ojv` y sólo llegan a URLs de preview.
+`peron-delta.vercel.app` publica desde **`main`**, y `main` está al día. Las
+tandas 3 y 4, el simulador y la pantalla de revisión están en producción.
 
-Se comprueba en un segundo: `peron-delta.vercel.app/icon.svg` da 404 y
-[la de preview](https://peron-git-claude-nexo-project-struct-20bf9e-enzomemiralles-sudo.vercel.app/icon.svg)
-da 200.
+Queda una trampa anotada, porque ya nos costó una vuelta: **la Production
+Branch cambió a mitad de camino.** Antes era `claude/mpf-faq-extraction-8nqr6i`
+y ahora es `main`. Un pull request abierto contra la rama vieja se mergea sin
+error y no despliega nada: Vercel lo trata como preview. Antes de abrir un PR,
+mirar cuál es la Production Branch en ese momento.
 
-Dos caminos, y conviene decidirlo antes de tocar nada más:
-
-- **Recomendado** — abrir un pull request de `claude/nexo-project-structure-s68ojv`
-  a la rama que Vercel publica, revisarlo y mergearlo. Queda el historial y no
-  se pierde nada de lo que ya está publicado.
-- **Rápido** — Vercel → *Settings → Git → Production Branch* → cambiarla a
-  `claude/nexo-project-structure-s68ojv` y redesplegar. Sirve para verlo hoy,
-  pero deja el repositorio con dos ramas largas conviviendo.
-
-Mientras tanto, todo lo de acá abajo se puede probar en
-**https://peron-git-claude-nexo-project-struct-20bf9e-enzomemiralles-sudo.vercel.app**,
-que es la URL fija de la rama y se actualiza sola con cada push.
+`claude/mpf-faq-extraction-8nqr6i` quedó como rama de trabajo vieja, en el
+mismo commit que `main`. Se puede borrar cuando quieras.
 
 ---
 
