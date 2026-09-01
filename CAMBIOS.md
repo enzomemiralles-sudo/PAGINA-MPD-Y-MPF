@@ -151,16 +151,18 @@ Criterio: la muestra es **visual, dinámica, atractiva, demostrativa**. Menos te
 ## PENDIENTES BLOQUEANTES
 > No son tareas de Claude Code. Son cosas que faltan de mi lado y frenan ítems concretos.
 
-- [ ] **B-01** Los **dos ejemplos de parte práctica y parte teórica** mencionados no llegaron. Bloquean S-04 y S-06.
+- [ ] **B-01** Los **dos ejemplos de parte práctica y parte teórica** mencionados no llegaron. Bloquean S-04. (Ya no bloquean S-06: la metodología del tipeo salió del Reglamento, B-02.)
 - [x] **B-02** **Metodología completa del examen de tipeo del MPD**. → Está en el **Reglamento para el Ingreso de Personal al MPD** (t.o. Res. DGN 1124/15), arts. 25 a 29: **130 palabras**, la unidad de error es **la palabra** (no el carácter), −5 por palabra mal escrita y −5 por palabra no escrita, mínimo 60, y los **30 minutos son para las dos instancias juntas**. Cargado en `lib/simulador/tipeo.ts` y citado en `material/metodologia/mpd-formato-examen.md`.
-- [ ] **B-03** **Manual y preguntero del MPF**. Bloquea S-03 y la carga del simulador del MPF.
+- [x] **B-03** **Manual y preguntero del MPF**. → Llegaron y ya están usados: `material/preguntas/crudo/mpf-modelos-manual.pdf` y `mpf-preguntero-nexo.pdf`. De ahí salieron las 176 preguntas del teórico del MPF y los 14 ejercicios del práctico que hoy están en `supabase/preguntas.sql`. S-03 quedó tildado con eso.
 - [x] **B-04** **Mail de Nueva Abogacía**. Bloquea L-07. → `abogacianueva@gmail.com`
 - [x] **B-05** **Capturas reales del simulador** para la muestra. → Resueltas. Salieron de las pantallas del propio simulador corriendo con preguntas reales del banco, tomadas contra el build de producción: teórico del MPF, práctico del MPF, teórico del MPD, tipeo del MPD y resultados. Están en `public/muestra/`. No hacía falta pedirlas: el simulador es nuestro y corre en local.
 - [ ] **B-07** **Las capturas del sistema de inscripción del MPD.** No es que falte buscarlas: **no existen en la web y no se pueden sacar de ahí.** `concursos.mpd.gov.ar` sirve una aplicación **Adobe Flex/Flash** (`SURH - MPD`, pide Flash Player 10.1) cuyo propio código tiene `var timelimit = new Date('2020-12-24')` y desde esa fecha expulsa a todo navegador que no sea Windows XP, Chromium 68 o IE. Por eso el manual hace instalar el `.msi`: es el envoltorio de escritorio de esa misma app. Las pantallas de los pasos 2, 3 y 4 sólo pueden salir de alguien que haga el trámite en una PC con Windows y saque las capturas a mano. Bloquea la parte de capturas de I-04.
   - Mientras tanto cada paso tiene un **esquema** dibujado a partir del manual, rotulado como esquema y no como captura. No lo reemplaza: el esquema ubica —dónde cae «Título Principal» entre nueve páginas, cuál es el camino de menús— y la captura muestra. Cuando lleguen, conviven.
   - Para sumarlas: los archivos van en `public/` y se agregan a `capturas` en `content/inscripcion/mpd.ts`, cada una con su `alt` y su `pie`.
 - [ ] **B-08** **Los videos cortos del trámite.** La biblioteca (I-06) está armada y lee de la tabla `videos`; hoy está vacía. Con insertar filas con `publicado = true` aparece sola, sin tocar código.
-- [ ] **B-06** Tiempos y criterios de evaluación de ambos exámenes, para cargar en `exams`.
+- [ ] **B-06** Tiempos y criterios de evaluación de ambos exámenes, para cargar en `exams`. → **Casi resuelto.** Los del MPD salieron del Reglamento (B-02) y los del teórico del MPF coinciden con lo que reportó de forma coincidente quien rindió: 20 preguntas y 30 minutos. Falta una sola cosa, y es la que sigue abierta:
+  - **Cuántas consignas trae el práctico del MPF.** Hoy `exams` carga **10**, con el supuesto anotado en la migración 0005. Pero la entrada `mpf-040` del corpus dice **3**, y lo reporta como coincidente entre quienes rindieron. Si eso es cierto, el simulador está sirviendo más del triple de ejercicios que el examen real. Se arregla con un `update` sobre `exams`, sin tocar código, pero conviene confirmarlo antes.
+  - Aparte, sobre la ventana total del MPF el corpus registra dos versiones incompatibles —45 minutos según el correo de citación, y una hora de plataforma habilitada para las dos partes— y las muestra como contradictorias en el asistente. Eso no bloquea nada: el simulador practica cada instancia por separado.
 
 ---
 
