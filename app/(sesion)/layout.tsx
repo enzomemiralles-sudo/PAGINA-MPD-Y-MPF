@@ -2,6 +2,7 @@ import { redirect } from "next/navigation";
 import { traerPerfil } from "@/lib/perfil";
 import { AplicarPiel } from "@/components/marca/AplicarPiel";
 import { CabeceraApp } from "@/components/app/CabeceraApp";
+import { PieLegal } from "@/components/landing/PieLegal";
 
 export const dynamic = "force-dynamic";
 
@@ -28,6 +29,9 @@ export default async function LayoutSesion({ children }: { children: React.React
       <AplicarPiel marca={perfil.marca} />
       <CabeceraApp marca={perfil.marca} revisor={perfil.rol === "revisor"} />
       {children}
+      {/* El pie va acá y no en el layout raíz: el logotipo gigante lleva el
+          nombre de la agrupación, y sólo este layout sabe cuál es. */}
+      <PieLegal marca={perfil.marca} />
     </>
   );
 }

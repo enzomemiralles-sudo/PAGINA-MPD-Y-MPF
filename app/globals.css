@@ -885,14 +885,17 @@ html[data-marca="nexo"] .sim-cierre-titulo { --h2-estilo: italic; }
 }
 .rend-op:hover { box-shadow: inset 0 0 0 1px var(--borde-fuerte); }
 /* La elegida no se distingue sólo por color: el marco engorda y la letra
-   pesa, para que se vea igual sin distinguir el acento. */
+   pesa, para que se vea igual sin distinguir el color.
+   Y el color es neutro, no el de marca: en la puerta de Nexo el verde ya
+   significa «correcta», y usarlo también para «elegida» mezcla las dos
+   cosas justo donde no se puede. */
 .rend-op.elegida {
-  box-shadow: inset 0 0 0 2px var(--acento-texto);
-  background: color-mix(in srgb, var(--acento-texto) 7%, transparent);
+  box-shadow: inset 0 0 0 2px var(--texto);
+  background: color-mix(in srgb, var(--texto) 8%, transparent);
   font-variation-settings: "wdth" 100, "wght" 560;
 }
 .rend-op-clave {
-  color: var(--acento-texto); font-size: 0.68rem; padding-top: 0.2rem; flex-shrink: 0;
+  color: var(--texto-debil); font-size: 0.68rem; padding-top: 0.2rem; flex-shrink: 0;
 }
 .rend-op-texto { flex: 1; }
 .rend-marcar {
@@ -1010,6 +1013,12 @@ html[data-marca="nexo"] .sim-cierre-titulo { --h2-estilo: italic; }
 @media (min-width: 760px) { .res-cifras { grid-template-columns: repeat(5, 1fr); } }
 .res-cifra { padding: 0.9rem 1rem; display: flex; flex-direction: column; gap: 0.3rem; }
 .res-cifra dt { color: var(--texto-debil); font-size: 0.58rem; }
+/* La cifra no se distingue sólo por color: lleva ícono y le engorda el
+   borde. Es el mismo criterio que la opción elegida. */
+.res-cifra dd { display: flex; align-items: baseline; gap: 0.35rem; }
+.res-cifra dd span { font-size: 0.75em; }
+.res-cifra[data-estado="correcta"] { box-shadow: inset 0 0 0 2px var(--ok); }
+.res-cifra[data-estado="incorrecta"] { box-shadow: inset 0 0 0 2px var(--error); }
 .res-cifra dd {
   font-size: 1.35rem; font-variation-settings: "wdth" 100, "wght" 700;
   font-variant-numeric: tabular-nums;
@@ -2201,3 +2210,52 @@ html[data-marca="nexo"] .piel-titulo,
 .piel-op[data-estado="correcta"] { box-shadow: inset 0 0 0 2px var(--ok); --tono: var(--ok); }
 .piel-op[data-estado="incorrecta"] { box-shadow: inset 0 0 0 2px var(--error); --tono: var(--error); }
 .piel-nota { color: var(--texto-debil); font-size: 0.8rem; line-height: 1.55; }
+
+/* ---------- el lema y el pie de marca (conflictos 2, 3 y 4) ---------- */
+/* El lema va a la derecha del logo. Bajo 760px desaparece: ahí compite con
+   las acciones, y entre el lema y poder llegar a «Mi perfil» gana el perfil. */
+.app-lema {
+  display: none; flex: 1; text-align: right;
+  font-size: 0.6rem; letter-spacing: 0.16em; text-transform: uppercase;
+  color: var(--texto-tenue);
+}
+@media (min-width: 760px) { .app-lema { display: block; } }
+
+/* La otra agrupación, chica, al pie. En sesión el encabezado lleva un solo
+   logo; que el sitio es de las dos se sigue viendo acá. */
+.pie-coorg {
+  display: flex; align-items: center; gap: 0.6rem; margin-top: 1.4rem;
+  color: var(--texto-debil);
+}
+.pie-coorg .mono { font-size: 0.6rem; letter-spacing: 0.16em; text-transform: uppercase; }
+.pie-coorg svg { opacity: 0.75; }
+
+/* El logotipo gigante. Los valores salen de los previews: el degradé
+   recortado sobre el texto lo desvanece hacia abajo en vez de cortarlo. */
+.gigante {
+  font-variation-settings: "wdth" 125, "wght" 900;
+  /* El tamaño sale del largo del texto. El 138 está medido, no estimado: con
+     "wdth" 125 y "wght" 900 el avance medio de Archivo es 0,812em, y el
+     ancho del texto es N × 0,812 × tamaño. Se apunta a 101vw, o sea que las
+     letras tocan los dos bordes y sangran apenas: con más, se perdía la
+     primera letra entera y eso se lee como un error, no como un recurso. El
+     tope de 8.4rem es el del preview. */
+  font-size: min(calc(125vw / var(--gigante-largo, 19)), 8.4rem);
+  line-height: 0.82; letter-spacing: -0.045em;
+  white-space: nowrap; text-align: center;
+  margin: 2.5rem -6vw 0; padding-top: 0.5rem;
+  background: linear-gradient(
+    to bottom,
+    var(--acento-texto) 0%,
+    rgba(244, 242, 237, 0.1) 62%,
+    transparent 92%
+  );
+  -webkit-background-clip: text;
+  background-clip: text;
+  color: transparent;
+  -webkit-text-fill-color: transparent;
+  user-select: none;
+  transition: background var(--t-sec) var(--suave);
+}
+.pie { overflow: hidden; }
+@media (prefers-reduced-motion: reduce) { .gigante { transition: none; } }

@@ -72,20 +72,29 @@ export function PantallaResultado({ intento }: { intento: Intento }) {
       <dl className="res-cifras">
         {(esTipeo
           ? [
-              { rotulo: t.erroresRotulo, valor: String(errores), tono: "mal" },
-              { rotulo: t.tiempoRotulo, valor: t.tiempo(Math.floor(segundos / 60), segundos % 60), tono: "" },
+              { rotulo: t.erroresRotulo, valor: String(errores), tono: "mal", icono: "✕" },
+              { rotulo: t.tiempoRotulo, valor: t.tiempo(Math.floor(segundos / 60), segundos % 60), tono: "", icono: "" },
             ]
           : [
-              { rotulo: t.correctasRotulo, valor: String(r.correctas), tono: "ok" },
-              { rotulo: t.incorrectasRotulo, valor: String(r.incorrectas), tono: "mal" },
-              { rotulo: t.blancoRotulo, valor: String(r.enBlanco), tono: "" },
-              { rotulo: t.aciertosRotulo, valor: `${r.porcentajeAciertos}%`, tono: "" },
-              { rotulo: t.tiempoRotulo, valor: t.tiempo(Math.floor(segundos / 60), segundos % 60), tono: "" },
+              { rotulo: t.correctasRotulo, valor: String(r.correctas), tono: "ok", icono: "✓" },
+              { rotulo: t.incorrectasRotulo, valor: String(r.incorrectas), tono: "mal", icono: "✕" },
+              { rotulo: t.blancoRotulo, valor: String(r.enBlanco), tono: "", icono: "" },
+              { rotulo: t.aciertosRotulo, valor: `${r.porcentajeAciertos}%`, tono: "", icono: "" },
+              { rotulo: t.tiempoRotulo, valor: t.tiempo(Math.floor(segundos / 60), segundos % 60), tono: "", icono: "" },
             ]
         ).map((c) => (
-          <div key={c.rotulo} className="res-cifra tarjeta-app">
+          <div
+            key={c.rotulo}
+            className="res-cifra tarjeta-app"
+            data-estado={c.tono === "ok" ? "correcta" : c.tono === "mal" ? "incorrecta" : undefined}
+          >
             <dt className="mono">{c.rotulo}</dt>
-            <dd className={c.tono}>{c.valor}</dd>
+            <dd className={c.tono}>
+              {/* El ícono no es decoración: sin él la cifra se distingue sólo
+                  por el color, y ahí se cae para quien no lo ve. */}
+              {c.icono ? <span aria-hidden="true">{c.icono}</span> : null}
+              {c.valor}
+            </dd>
           </div>
         ))}
       </dl>

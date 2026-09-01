@@ -111,6 +111,50 @@ describe("contraste AA", () => {
   });
 });
 
+/**
+ * El primero de los cinco conflictos del brief, y el más grave: el verde de
+ * marca de Nexo choca con el verde de «respuesta correcta».
+ *
+ * La regla es que en la zona de respuestas no entra ningún color de marca.
+ * Sólo neutros y los dos semánticos, que no cambian nunca con la piel. Y la
+ * corrección no se comunica sólo por color: hay ícono y cambia el grosor del
+ * borde, que es lo que la hace legible en escala de grises y para quien no
+ * distingue el verde del rojo.
+ */
+describe("la zona de respuestas no usa color de marca", () => {
+  const globales = readFileSync(resolve(__dirname, "../app/globals.css"), "utf8");
+
+  /** Los selectores donde se lee un enunciado, se elige una opción o se ve
+      una corrección. */
+  const ZONA = ["rend-pregunta", "rend-enunciado", "rend-op", "rend-opciones", "res-cifra", "piel-op"];
+
+  const reglas = [...globales.matchAll(/([^{}]+)\{([^}]*)\}/g)]
+    .map(([, sel, cuerpo]) => ({ sel: sel!.trim(), cuerpo: cuerpo! }))
+    .filter(({ sel }) => ZONA.some((z) => sel.includes(`.${z}`)));
+
+  it("hay reglas de la zona que revisar", () => {
+    expect(reglas.length).toBeGreaterThan(5);
+  });
+
+  for (const z of ZONA) {
+    it(`.${z} no menciona --acento`, () => {
+      const culpables = reglas
+        .filter(({ sel, cuerpo }) => sel.includes(`.${z}`) && /var\(--acento/.test(cuerpo))
+        .map(({ sel }) => sel.slice(0, 60));
+      expect(culpables).toEqual([]);
+    });
+  }
+
+  it("la corrección se marca además con el grosor del borde", () => {
+    // Si mañana alguien deja sólo el color, esto avisa.
+    const conEstado = reglas.filter(({ sel }) => /data-estado="(correcta|incorrecta)"/.test(sel));
+    expect(conEstado.length, "faltan las reglas de estado de la corrección").toBeGreaterThanOrEqual(2);
+    for (const r of conEstado) {
+      expect(r.cuerpo, `${r.sel} sólo cambia el color`).toMatch(/box-shadow|border/);
+    }
+  });
+});
+
 /** Si alguien toca tokens.css y no el espejo, esto lo caza. */
 describe("el espejo de tokens coincide con el CSS", () => {
   const normalizar = (v: string) => v.toLowerCase().replace(/\s+/g, "");

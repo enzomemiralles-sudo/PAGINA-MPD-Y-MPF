@@ -18,6 +18,8 @@ const PUBLICAS = [
   "/ingresar",
   "/crear-perfil",
   "/auth",
+  "/probar-app",
+  "/pieles",  // página de control: mirar las cuatro pieles sin entrar
 ];
 
 /** Las dos puertas de entrada: con sesión ya no tienen sentido. */

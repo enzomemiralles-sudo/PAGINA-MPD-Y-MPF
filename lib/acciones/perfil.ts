@@ -5,8 +5,9 @@ import { revalidatePath } from "next/cache";
 import { z } from "zod";
 import { crearClienteServidor } from "@/lib/supabase/server";
 import { MARCA_DE_PERFIL, type TipoPerfil } from "@/lib/marca/marcas";
+import type { Marca } from "@/lib/marca/tokens";
 
-export type ResultadoPerfil = { ok: true; marca: "nexo" | "na" } | { ok: false; error: string };
+export type ResultadoPerfil = { ok: true; marca: Marca } | { ok: false; error: string };
 
 const esquema = z.enum(["abogado", "estudiante", "otro"]);
 
