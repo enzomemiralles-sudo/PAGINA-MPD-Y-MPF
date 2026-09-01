@@ -1,5 +1,6 @@
 import { guia as t } from "@/content/inscripcion/textos";
 import { Aviso } from "@/components/inscripcion/Aviso";
+import { Esquema } from "@/components/inscripcion/Esquema";
 import type { Organismo, Paso as Dato } from "@/lib/inscripcion/tipos";
 
 /**
@@ -10,8 +11,10 @@ import type { Organismo, Paso as Dato } from "@/lib/inscripcion/tipos";
  * y antes del consejo, porque son parte del instructivo; el consejo de Nexo va
  * último y se ve distinto, porque es opinión y no procedimiento.
  *
- * Las capturas se dibujan si las hay. Hoy no hay ninguna: el hueco está hecho
- * y no se dibuja nada mientras esté vacío.
+ * El esquema va antes de los avisos: primero se entiende la mecánica del paso,
+ * después las advertencias sobre ella. Las capturas reales, cuando existan,
+ * van después del esquema porque no dicen lo mismo: el esquema ubica y la
+ * captura muestra.
  */
 export function Paso({ paso, org }: { paso: Dato; org: Organismo }) {
   return (
@@ -54,6 +57,8 @@ export function Paso({ paso, org }: { paso: Dato; org: Organismo }) {
             </ol>
           </div>
         ) : null}
+
+        {paso.esquema ? <Esquema esquema={paso.esquema} /> : null}
 
         {paso.capturas.map((c) => (
           <figure key={c.archivo} className="ins-captura">

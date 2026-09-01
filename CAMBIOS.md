@@ -155,7 +155,9 @@ Criterio: la muestra es **visual, dinámica, atractiva, demostrativa**. Menos te
 - [ ] **B-03** **Manual y preguntero del MPF**. Bloquea S-03 y la carga del simulador del MPF.
 - [x] **B-04** **Mail de Nueva Abogacía**. Bloquea L-07. → `abogacianueva@gmail.com`
 - [ ] **B-05** **Capturas reales del simulador** para la muestra. Bloquea toda la Tanda 7, y por eso va última.
-- [ ] **B-07** **Las capturas del sistema de inscripción del MPD.** El manual que llegó al repo es `material/mpd-inscripcion.md`, que es texto: no trae ninguna imagen, y el PDF no está. Bloquea la parte de capturas de I-04. El hueco ya está hecho: alcanza con poner los archivos en `public/` y sumarlos a `capturas` en `content/inscripcion/mpd.ts`.
+- [ ] **B-07** **Las capturas del sistema de inscripción del MPD.** No es que falte buscarlas: **no existen en la web y no se pueden sacar de ahí.** `concursos.mpd.gov.ar` sirve una aplicación **Adobe Flex/Flash** (`SURH - MPD`, pide Flash Player 10.1) cuyo propio código tiene `var timelimit = new Date('2020-12-24')` y desde esa fecha expulsa a todo navegador que no sea Windows XP, Chromium 68 o IE. Por eso el manual hace instalar el `.msi`: es el envoltorio de escritorio de esa misma app. Las pantallas de los pasos 2, 3 y 4 sólo pueden salir de alguien que haga el trámite en una PC con Windows y saque las capturas a mano. Bloquea la parte de capturas de I-04.
+  - Mientras tanto cada paso tiene un **esquema** dibujado a partir del manual, rotulado como esquema y no como captura. No lo reemplaza: el esquema ubica —dónde cae «Título Principal» entre nueve páginas, cuál es el camino de menús— y la captura muestra. Cuando lleguen, conviven.
+  - Para sumarlas: los archivos van en `public/` y se agregan a `capturas` en `content/inscripcion/mpd.ts`, cada una con su `alt` y su `pie`.
 - [ ] **B-08** **Los videos cortos del trámite.** La biblioteca (I-06) está armada y lee de la tabla `videos`; hoy está vacía. Con insertar filas con `publicado = true` aparece sola, sin tocar código.
 - [ ] **B-06** Tiempos y criterios de evaluación de ambos exámenes, para cargar en `exams`.
 

@@ -24,13 +24,37 @@ export type Aviso = {
   texto: string;
 };
 
-/** Una captura del sistema. Hoy no hay ninguna: el molde queda hecho. */
+/**
+ * Una captura de pantalla del sistema real. Hoy no hay ninguna.
+ *
+ * Y no es que falte pedirlas: el sistema de inscripción del MPD es una
+ * aplicación Adobe Flex que se instala en Windows, y su propio código expulsa
+ * a cualquier navegador desde diciembre de 2020. Esas pantallas no están en la
+ * web, así que sólo pueden salir de alguien que haga el trámite. Ver B-07.
+ */
 export type Captura = {
   /** Ruta dentro de /public. */
   archivo: string;
   /** Qué se ve. Obligatorio: una captura sin alt no existe para quien no ve. */
   alt: string;
   /** Qué hay que mirar en ella. */
+  pie: string;
+};
+
+/**
+ * Un esquema del paso, dibujado por nosotros a partir del manual.
+ *
+ * No es una captura y se rotula como lo que es. Sirve para lo que el texto
+ * explica mal: dónde cae un campo dentro de nueve páginas de formulario, o
+ * cuál es el camino de menús. Cuando lleguen las capturas reales conviven,
+ * porque no dicen lo mismo: el esquema ubica, la captura muestra.
+ *
+ * Está hecho de marcado y no de una imagen, así que se acomoda a 375px, se
+ * puede leer en voz alta y sigue los colores de la marca.
+ */
+export type Esquema = {
+  clave: "instalar" | "registro" | "cv" | "inscribirse";
+  /** Qué muestra, en una línea. */
   pie: string;
 };
 
@@ -48,6 +72,7 @@ export type Paso = {
   avisos: Aviso[];
   /** El consejo de Nexo, en primera persona. Va aparte del instructivo. */
   consejo: string | null;
+  esquema: Esquema | null;
   capturas: Captura[];
 };
 

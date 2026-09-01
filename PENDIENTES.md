@@ -46,12 +46,25 @@ también.
 
 Las dos cosas están armadas y vacías. Ninguna necesita que toque código.
 
-**Las capturas de pantalla del sistema (B-07).** El manual que llegó al repo
-es `material/mpd-inscripcion.md`, que es texto y no trae ninguna imagen; el
-PDF no está. Cada paso de la guía tiene su hueco: poné los archivos en
-`public/` y sumalos al campo `capturas` del paso en
-`content/inscripcion/mpd.ts`, con su `alt` —qué se ve— y su `pie` —qué hay que
-mirar—. Mientras estén vacías no se dibuja nada.
+**Las capturas de pantalla del sistema (B-07).** Éstas no las puedo sacar yo,
+y no por falta de acceso: **no existen en la web.**
+
+`concursos.mpd.gov.ar` sirve una aplicación **Adobe Flex**, o sea Flash. Su
+propio código trae `var timelimit = new Date('2020-12-24')` y desde esa fecha
+echa a cualquier navegador que no sea Windows XP, Chromium 68 o Internet
+Explorer. Por eso el manual te hace instalar el `.msi`: es el envoltorio de
+escritorio de esa misma aplicación. Las pantallas de los pasos 2, 3 y 4 están
+adentro de un programa instalado, no en una página que se pueda abrir.
+
+O sea que tienen que salir de alguien que haga el trámite en una PC con
+Windows y las saque a mano. Cuando las tengas, van en `public/` y se agregan
+al campo `capturas` del paso en `content/inscripcion/mpd.ts`, cada una con su
+`alt` —qué se ve— y su `pie` —qué hay que mirar—.
+
+Mientras tanto **cada paso tiene un esquema** dibujado a partir del manual y
+rotulado como esquema, no como captura. No las reemplaza: el esquema ubica
+—dónde cae «Título Principal» entre las nueve páginas, cuál es el camino de
+menús—, la captura muestra. Cuando lleguen las capturas, conviven.
 
 **Los videos cortos (B-08).** La biblioteca lee de la tabla `videos`, que ya
 existe desde la migración 0001. Insertá una fila por video con `publicado =

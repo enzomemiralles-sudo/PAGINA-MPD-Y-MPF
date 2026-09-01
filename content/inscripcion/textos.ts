@@ -86,6 +86,16 @@ export const errores = {
   verPaso: (n: number) => `Ver el paso ${n} →`,
 } as const;
 
+/**
+ * Los esquemas de los pasos.
+ *
+ * El rótulo importa: son dibujos nuestros, no capturas del sistema. Decirlo
+ * evita que alguien busque en su pantalla algo que se ve exactamente así.
+ */
+export const esquemas = {
+  rotulo: "Esquema · no es una captura del sistema",
+} as const;
+
 /** I-06. La biblioteca queda armada aunque todavía no haya videos cargados. */
 export const videos = {
   ancla: "videos",
