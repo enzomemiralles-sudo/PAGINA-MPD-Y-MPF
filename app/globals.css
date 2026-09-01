@@ -227,44 +227,6 @@ p { color: var(--papel-tenue); }
   background: rgba(244, 242, 237, 0.04); box-shadow: inset 0 0 0 1px var(--linea); color: var(--acento-texto);
 }
 
-/* ============ MAQUETA SIMULADOR ============ */
-.maqueta { border-radius: 16px; overflow: hidden; box-shadow: inset 0 0 0 1px var(--linea); background: rgba(16, 18, 22, 0.92); }
-.maq-barra { display: flex; align-items: center; gap: 0.5rem; padding: 0.65rem 0.9rem; border-bottom: 1px solid var(--linea); }
-.luces { display: flex; gap: 0.38rem; }
-.luces i { width: 10px; height: 10px; border-radius: 50%; display: block; }
-.maq-tit { flex: 1; text-align: center; color: var(--papel-débil); font-size: 0.66rem; }
-.maq-cron { color: var(--papel); font-family: var(--fuente-mono), monospace; font-size: 0.72rem; }
-.maq-cuerpo { display: grid; grid-template-columns: 1fr; }
-@media (min-width: 900px) { .maq-cuerpo { grid-template-columns: 3fr 4fr 5fr; min-height: 430px; } }
-.maq-col { padding: 0.95rem; }
-.maq-col + .maq-col { border-top: 1px solid var(--linea); }
-@media (min-width: 900px) { .maq-col + .maq-col { border-top: none; border-left: 1px solid var(--linea); } }
-.tema { margin-bottom: 0.7rem; }
-.tema .fila { display: flex; justify-content: space-between; font-size: 0.72rem; margin-bottom: 0.28rem; color: var(--papel-tenue); }
-.barra { height: 3px; border-radius: 2px; background: rgba(244, 242, 237, 0.08); overflow: hidden; }
-.barra i { display: block; height: 100%; background: var(--acento-texto); border-radius: 2px; transition: width var(--t-sec) var(--sal), background var(--t-sec) var(--suave); }
-.grilla { display: grid; grid-template-columns: repeat(10, 1fr); gap: 4px; margin-top: 0.7rem; }
-.gq {
-  aspect-ratio: 1; border-radius: 3px; font-family: var(--fuente-mono), monospace; font-size: 0.5rem;
-  display: grid; place-items: center; color: var(--papel-débil); background: rgba(244, 242, 237, 0.04);
-  transition: background 300ms var(--suave), color 300ms var(--suave), box-shadow 300ms var(--suave);
-}
-.gq.hecha { background: rgba(244, 242, 237, 0.16); color: var(--papel); }
-.gq.marc { box-shadow: inset 0 0 0 1.2px var(--marca-revisar); color: var(--papel); }
-.gq.act { background: var(--acento-texto); color: var(--tinta); }
-.maq-preg { font-size: 0.86rem; line-height: 1.42; margin: 0.55rem 0 0.8rem; }
-.maq-op {
-  padding: 0.5rem 0.6rem; border-radius: 7px; font-size: 0.78rem;
-  background: rgba(244, 242, 237, 0.03); margin-bottom: 0.32rem; color: var(--papel-tenue); line-height: 1.35;
-}
-.maq-op.ok { box-shadow: inset 0 0 0 1px var(--ok); color: var(--papel); }
-.puntaje { display: flex; gap: 0.9rem; flex-wrap: wrap; margin-top: 0.8rem; padding-top: 0.8rem; border-top: 1px solid var(--linea); }
-.puntaje div { font-family: var(--fuente-mono), monospace; font-size: 0.62rem; color: var(--papel-débil); }
-.puntaje b {
-  display: block; font-size: 1.05rem; color: var(--papel);
-  font-family: var(--fuente-archivo); font-variation-settings: "wdth" 100, "wght" 700; margin-top: 0.15rem;
-}
-
 /* ============ GRILLAS ============ */
 .dos { display: grid; gap: 2.5rem; }
 @media (min-width: 900px) { .dos { grid-template-columns: 1fr 1fr; gap: 4rem; align-items: start; } }
@@ -2081,3 +2043,95 @@ html[data-marca="nexo"] .ins-titulo { --h2-estilo: italic; }
   content: "›"; color: var(--texto-debil); margin-right: 0.55rem; margin-left: -0.15rem;
 }
 .esq-nota { color: var(--texto-tenue); font-size: 0.8rem; line-height: 1.55; }
+
+/* ============================================================
+   TANDA 7 · el apartado del simulador en la pestaña de muestra.
+
+   Superficie oscura, como toda la portada. Manda la imagen: las capturas
+   son claras y sobre el fondo oscuro funcionan como pantallas encendidas,
+   que es justo lo que son. El marco existe para que se lean como pantallas
+   y no como recortes pegados sobre el fondo.
+   ============================================================ */
+.sim-muestra-cabeza { display: flex; flex-direction: column; align-items: flex-start; gap: 0.7rem; }
+.sim-muestra-titulo {
+  font-size: clamp(1.9rem, 6vw, 3rem); line-height: 1.05; letter-spacing: -0.03em;
+  font-variation-settings: "wdth" var(--ancho-h2), "wght" 700; color: var(--papel);
+  margin-top: 0.6rem;
+}
+.sim-muestra-bajada {
+  font-size: clamp(1.02rem, 3.4vw, 1.25rem); line-height: 1.5; max-width: 40ch; color: var(--papel);
+}
+.sim-muestra-cabeza .btn { margin-top: 0.6rem; }
+
+.sim-muestra-sub {
+  font-size: clamp(1.15rem, 3.6vw, 1.5rem); line-height: 1.2; letter-spacing: -0.02em;
+  font-variation-settings: "wdth" 100, "wght" 680; color: var(--papel);
+}
+.sim-muestra-texto { font-size: 0.94rem; line-height: 1.6; max-width: 52ch; margin-top: 0.5rem; }
+
+/* El marco de una captura. Sin esto, una imagen clara sobre el fondo oscuro
+   parece un error de recorte en lugar de una pantalla. */
+.sim-pantalla {
+  border-radius: 12px; overflow: hidden; background: #f4f2ed;
+  box-shadow: 0 1px 0 rgba(244, 242, 237, 0.14), 0 18px 50px rgba(0, 0, 0, 0.45);
+}
+.sim-pantalla img { display: block; width: 100%; height: auto; }
+
+/* ---- así se ve ---- */
+.sim-muestra-hero { margin-top: 3rem; display: flex; flex-direction: column; gap: 1.1rem; }
+.sim-muestra-frases {
+  list-style: none; margin: 0; padding: 0;
+  display: flex; flex-wrap: wrap; gap: 0.5rem 0.7rem;
+}
+.sim-muestra-frases li {
+  font-size: 0.86rem; line-height: 1.4; color: var(--papel-débil);
+  padding: 0.4rem 0.75rem; border-radius: 999px;
+  box-shadow: inset 0 0 0 1px var(--linea-fuerte);
+}
+
+/* ---- un organismo ---- */
+.sim-muestra-org { margin-top: 3.5rem; display: flex; flex-direction: column; gap: 1.4rem; }
+.sim-muestra-org-cabeza { display: flex; flex-direction: column; gap: 0.35rem; }
+.sim-muestra-instancias { display: grid; gap: 1.4rem; }
+@media (min-width: 900px) { .sim-muestra-instancias { grid-template-columns: 1fr 1fr; gap: 1.6rem; } }
+.sim-muestra-instancia { display: flex; flex-direction: column; gap: 0.5rem; }
+.sim-muestra-instancia-titulo {
+  margin-top: 0.3rem; font-size: 0.98rem; color: var(--papel);
+  font-variation-settings: "wdth" 100, "wght" 650;
+}
+.sim-muestra-instancia-texto { font-size: 0.87rem; line-height: 1.6; }
+
+/* ---- resultados ---- */
+.sim-muestra-resultados { margin-top: 3.5rem; display: flex; flex-direction: column; gap: 1.2rem; }
+@media (min-width: 1000px) {
+  .sim-muestra-resultados { flex-direction: row; align-items: center; gap: 2.5rem; }
+  .sim-muestra-resultados > div { flex: 0 0 30%; }
+  .sim-muestra-resultados > .sim-pantalla { flex: 1; }
+}
+
+/* ---- características ---- */
+.sim-muestra-caracteristicas {
+  margin-top: 3.5rem; display: flex; flex-direction: column; align-items: flex-start; gap: 0.9rem;
+}
+.sim-muestra-caracteristicas ul {
+  list-style: none; margin: 0.4rem 0 0; padding: 0;
+  display: grid; gap: 1rem; width: 100%;
+}
+@media (min-width: 760px) { .sim-muestra-caracteristicas ul { grid-template-columns: 1fr 1fr; gap: 1.2rem 2rem; } }
+.sim-muestra-caracteristicas li { display: flex; flex-direction: column; gap: 0.2rem; }
+.sim-muestra-caracteristicas b {
+  color: var(--papel); font-size: 0.95rem;
+  font-variation-settings: "wdth" 100, "wght" 650;
+}
+.sim-muestra-caracteristicas span { font-size: 0.87rem; line-height: 1.6; }
+
+/* ---- cierre ---- */
+.sim-muestra-cierre {
+  margin-top: 3.5rem; display: flex; flex-direction: column; align-items: flex-start; gap: 1rem;
+  padding-top: 2.5rem; border-top: 1px solid var(--linea);
+}
+.sim-muestra-cierre-titulo {
+  font-size: clamp(1.4rem, 4.6vw, 2.1rem); line-height: 1.15; letter-spacing: -0.025em;
+  font-variation-settings: "wdth" var(--ancho-h2), "wght" 700; color: var(--papel);
+  max-width: 20ch;
+}

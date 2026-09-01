@@ -26,47 +26,145 @@ export const hero = {
   ctaPrimarioHref: "/crear-perfil",
 } as const;
 
-export const maqueta = {
-  titulo: "Simulacro MPD — Técnico administrativo",
-  cronometroInicial: "00:41:12",
-  retomar: "Retomar simulacro",
-  temas: [
-    { nombre: "Régimen jurídico del MPD", pct: 82 },
-    { nombre: "Ley Orgánica 27.149", pct: 64 },
-    { nombre: "Constitución Nacional", pct: 71 },
-    { nombre: "Sanciones y disciplina", pct: 45 },
-    { nombre: "Expedientes y trámite", pct: 90 },
+/**
+ * TANDA 7. El apartado del simulador en la pestaña de muestra.
+ *
+ * Reemplaza a la maqueta dibujada que había acá. Iba última a propósito:
+ * muestra capturas reales de las pantallas del simulador, así que no se podía
+ * construir antes de que el simulador existiera.
+ *
+ * Criterio opuesto al de `/simulador`. Allá: directa y funcional. Acá: visual
+ * y demostrativa, menos texto y más capturas. Alguien tiene que recorrerla y
+ * pensar «quiero probar esto».
+ *
+ * Las capturas salen de las pantallas de verdad corriendo con preguntas de
+ * verdad del banco, tomadas contra el build de producción. Los alt describen
+ * lo que se ve: una captura sin alt no existe para quien no la ve, y acá las
+ * capturas son casi todo el contenido.
+ *
+ * Las de los organismos van recortadas a la barra de arriba y la tarjeta de la
+ * pregunta. A media pantalla, la captura entera dejaba el texto en ocho
+ * píxeles: se veía que era un examen pero no se leía nada, y una captura que
+ * no se lee no demuestra nada. La grande de arriba y la de resultados van
+ * enteras, que es donde el detalle se ve.
+ */
+export const simuladorSeccion = {
+  eyebrow: "Simulador",
+  // V-01
+  titulo: ["Conocé el simulador"],
+  bajada: "Así podés prepararte para tu examen de ingreso.",
+  cta: "Probar el simulador",
+  ctaHref: "/simulador",
+
+  // V-02
+  asiSeVe: {
+    titulo: "Así se ve el simulador",
+    captura: {
+      src: "/muestra/mpf-teorico.png",
+      ancho: 2240,
+      alto: 1390,
+      alt: "Pantalla de examen del simulador: arriba «Pregunta 1 de 20» y el tiempo restante, en el centro la pregunta con sus tres opciones y una elegida, y abajo la grilla de las veinte preguntas con su referencia de respondidas, marcadas y sin responder.",
+    },
+    frases: [
+      "Preguntas de opción múltiple",
+      "Practicá las veces que quieras",
+      "Poné a prueba tus conocimientos",
+      "Conocé tu resultado",
+      "Volvé a intentarlo",
+    ],
+  },
+
+  // V-03 y V-04. La misma estructura para los dos: son el mismo sitio.
+  organismos: [
+    {
+      sigla: "MPF",
+      nombre: "Ministerio Público Fiscal",
+      texto: "Dos instancias: el teórico de opción múltiple y el práctico, que se resuelve buscando en las fuentes.",
+      instancias: [
+        {
+          titulo: "Examen teórico",
+          texto: "Veinte preguntas en treinta minutos. Cada acierto suma cinco y cada error resta cinco.",
+          captura: {
+            src: "/muestra/mpf-teorico-detalle.png",
+            ancho: 2240,
+            alto: 806,
+            alt: "Pregunta del teórico del MPF: «¿Cuál de estos es un órgano judicial de la Justicia Federal Penal?», con tres opciones y la tercera elegida.",
+          },
+        },
+        {
+          titulo: "Examen práctico",
+          texto: "Consignas de búsqueda e investigación. Se responden consultando las fuentes, como en el examen real.",
+          captura: {
+            src: "/muestra/mpf-practico-detalle.png",
+            ancho: 2240,
+            alto: 974,
+            alt: "Ejercicio del práctico del MPF: pide buscar en la página del MPF la Resolución PGN 2636/15 y responder en qué se convirtió el programa de acceso a la justicia.",
+          },
+        },
+      ],
+    },
+    {
+      sigla: "MPD",
+      nombre: "Ministerio Público de la Defensa",
+      texto: "Dos instancias también, pero distintas: el teórico de opción múltiple y el práctico de tipeo.",
+      instancias: [
+        {
+          titulo: "Examen teórico",
+          texto: "Diez preguntas sobre la Constitución, la Ley 27.149 y el Régimen Jurídico del MPD.",
+          captura: {
+            src: "/muestra/mpd-teorico-detalle.png",
+            ancho: 2240,
+            alto: 806,
+            alt: "Pregunta del teórico del MPD sobre ingreso, cargos e incompatibilidades, con sus opciones y la grilla de diez preguntas abajo.",
+          },
+        },
+        {
+          titulo: "Examen práctico de tipeo",
+          texto: "Se copia un texto tal cual está. Se parte de cien puntos y cada palabra mal escrita descuenta cinco.",
+          captura: {
+            src: "/muestra/mpd-tipeo-detalle.png",
+            ancho: 2240,
+            alto: 1304,
+            alt: "Pantalla del tipeo: a la izquierda el texto a copiar, a la derecha lo que se va escribiendo, y debajo el contador de palabras escritas sobre ciento treinta y los errores que lleva hasta ahí.",
+          },
+        },
+      ],
+    },
   ],
-  resumen: "24 respondidas · 3 marcadas · 32 sin responder",
-  puntaje: [
-    { rotulo: "Puntaje", valor: "+180", tono: "ok" },
-    { rotulo: "Correctas", valor: "21", tono: "normal" },
-    { rotulo: "Erradas", valor: "3", tono: "error" },
-    { rotulo: "En blanco", valor: "32", tono: "normal" },
-  ],
-  preguntaRotulo: "Pregunta 24 · Régimen jurídico",
-  pregunta:
-    "No podrán ser nombrados/as funcionarios/as o empleados del Ministerio Público de la Defensa quienes:",
-  opciones: [
-    { texto: "a · Hayan revistado en los cinco años anteriores al ingreso en alguna fuerza de seguridad.", ok: false },
-    { texto: "b · Hayan sido separados/as de un empleo público anterior por mal desempeño fehacientemente comprobado.", ok: true },
-    { texto: "c · Ejerzan la docencia universitaria.", ok: false },
-  ],
-  cita: "Ley 27.149 · Régimen jurídico",
-  respondidas: [1,2,3,5,6,7,8,10,11,12,13,14,15,16,18,19,20,21,22,23],
-  marcadas: [4, 9, 17],
-  activa: 24,
-  total: 50,
+
+  // V-05
+  resultados: {
+    titulo: "¿Cómo te fue?",
+    texto: "Al entregar ves tu puntaje contra el mínimo para aprobar, cuántas acertaste y cuántas no, cuánto tardaste, y en qué temas te fue mejor y peor.",
+    captura: {
+      src: "/muestra/resultado.png",
+      ancho: 2240,
+      alto: 1886,
+      alt: "Pantalla de resultados: aprobado con sesenta y cinco sobre cien, mínimo sesenta; dieciséis correctas, tres incorrectas, una en blanco, ochenta por ciento de aciertos y veintidós minutos usados; y abajo el desempeño por tema con una barra por cada uno.",
+    },
+  },
+
+  // V-06
+  caracteristicas: {
+    titulo: "Una herramienta que podés volver a usar",
+    items: [
+      { titulo: "Todas las veces que quieras", texto: "No hay límite de intentos ni de tiempo entre uno y otro." },
+      { titulo: "Con las reglas de cada organismo", texto: "El formato, el tiempo y el criterio de corrección son los del examen real, y no son los mismos en el MPD que en el MPF." },
+      { titulo: "Preguntas nuevas cada vez", texto: "El banco se amplía a medida que se revisan y se publican más preguntas." },
+      { titulo: "Gratis, sin excepciones", texto: "Todo el sitio es gratuito. No hay versión paga ni funciones reservadas." },
+    ],
+    cta: "Empezar a practicar",
+    ctaHref: "/simulador",
+  },
+
+  // V-07
+  cierre: {
+    titulo: "Ahora que ya lo conocés, probalo.",
+    cta: "Comenzar a practicar",
+    ctaHref: "/simulador",
+  },
 } as const;
 
-/**
- * A-14. El bloque del asistente en la pestaña de muestra.
- *
- * Los textos son los que escribió el proyecto, palabra por palabra. Dicen lo
- * que la herramienta hace —responde con cita de la fuente, y avisa cuando no
- * sabe— sin venderla como una conversación con una inteligencia artificial,
- * que es lo que pide A-13.
- */
 export const asistenteSeccion = {
   eyebrow: "Asistente",
   titulo: ["Ahora, el asistente"],
