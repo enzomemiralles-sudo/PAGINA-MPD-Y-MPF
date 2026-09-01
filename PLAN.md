@@ -106,13 +106,14 @@ Ordenado por lo que cuesta y lo que desbloquea.
 8. El logotipo gigante del pie, con el nombre de la agrupación en la home de
    puerta y «INGRESO DEMOCRÁTICO» en la pública.
 
-**Fase C · la home de puerta**
-9. Portar `home-puerta-preview.html`: el bloque de retención —saludo, retomar
+**Fase C · la home de puerta** — hecha
+9. ✅ Portar `home-puerta-preview.html`: el bloque de retención —saludo, retomar
    donde quedaste, barras de progreso por tema— sobre datos reales del último
    intento, y la invitación al primer simulacro cuando no hay intento previo.
-10. Las tres columnas: menú, recursos y sociales. El mail de Nueva Abogacía
-    queda como `[PENDIENTE]` visible.
-11. Conectar las fotos de perspectiva, con `next/image`, AVIF con respaldo
+10. ✅ Las tres columnas: menú, recursos y sociales. El `[PENDIENTE]` no quedó
+    en el mail de Nueva Abogacía —ése llegó con B-04— sino donde de verdad
+    falta el dato: el grupo de WhatsApp y el canal de YouTube de las dos.
+11. ✅ Conectar las fotos de perspectiva, con `next/image`, AVIF con respaldo
     WebP y `sizes` correcto.
 
 **Fase D · la pestaña pública**

@@ -2178,11 +2178,10 @@ html[data-marca="nexo"] .ins-titulo { --h2-estilo: italic; }
 .piel-titulo {
   font-size: clamp(1.15rem, 3.6vw, 1.5rem); line-height: 1.15; letter-spacing: -0.02em;
   font-variation-settings: "wdth" var(--ancho-h), "wght" 700;
-  font-style: var(--ital-estilo, normal);
+  /* La itálica es de Nexo y nada más. Sale del token, no de un selector por
+     marca: `--ital-estilo` ya vale `italic` sólo en la piel de Nexo. */
+  font-style: var(--ital-estilo);
 }
-/* La itálica es de Nexo y nada más. Sale del token, no de un if. */
-html[data-marca="nexo"] .piel-titulo,
-[data-marca="nexo"] .piel-titulo { --ital-estilo: italic; }
 
 .piel-botones { display: flex; flex-wrap: wrap; gap: 0.6rem; }
 .piel-parrafo { color: var(--texto-tenue); font-size: 0.92rem; line-height: 1.65; max-width: 46ch; }
@@ -2259,3 +2258,147 @@ html[data-marca="nexo"] .piel-titulo,
 }
 .pie { overflow: hidden; }
 @media (prefers-reduced-motion: reduce) { .gigante { transition: none; } }
+
+/* ============================================================
+   HOME DE PUERTA
+   Portada de `referencia/home-puerta-preview.html`.
+
+   La foto va detrás de tres capas: el tinte enciende el color de la puerta
+   en `screen`, el velo oscurece de izquierda a derecha —que es lo que deja
+   leer el texto mientras la columnata se abre hacia el otro lado— y el
+   fundido inferior entrega el fondo al bloque de columnas.
+
+   A 820px el velo cambia de eje: en el teléfono la foto ocupa todo el
+   ancho, así que el degradé pasa a ser vertical o el texto queda sobre la
+   parte clara.
+   ============================================================ */
+.portal { position: relative; min-height: 100vh; display: flex; flex-direction: column; overflow: hidden; }
+.portal-fondo { position: absolute; inset: 0; z-index: 0; }
+
+/* next/image con `fill` deja la <img> en absoluto dentro del div. El encuadre
+   es el del preview: la fuga de la columnata queda a la derecha. */
+.portal-foto { object-fit: cover; object-position: 62% 58%; }
+@media (max-width: 820px) { .portal-foto { object-position: 70% 58%; } }
+
+.portal-tinte {
+  position: absolute; inset: 0;
+  mix-blend-mode: screen; opacity: 0.62;
+  transition: background var(--t-sec) var(--suave);
+  background:
+    radial-gradient(1100px 780px at 78% 6%, var(--glow-a) 0%, transparent 62%),
+    radial-gradient(860px 660px at 6% 88%, var(--glow-b) 0%, transparent 66%),
+    linear-gradient(to bottom, var(--fondo) 0%, var(--fondo) 42%, var(--fondo-bajo) 100%);
+  animation: latir 26s ease-in-out infinite alternate;
+}
+@keyframes latir { from { filter: brightness(1); } to { filter: brightness(1.14); } }
+
+.portal-velo {
+  position: absolute; inset: 0;
+  background:
+    linear-gradient(to right, var(--fondo) 0%, rgba(4, 10, 8, 0.88) 26%, rgba(4, 10, 8, 0.42) 52%, transparent 78%),
+    linear-gradient(to bottom, rgba(0, 0, 0, 0.42) 0%, rgba(0, 0, 0, 0) 26%, rgba(0, 0, 0, 0.3) 62%, var(--fondo-bajo) 100%);
+}
+@media (max-width: 820px) {
+  .portal-velo {
+    background: linear-gradient(to bottom, rgba(0, 0, 0, 0.5) 0%, rgba(4, 10, 8, 0.72) 40%, var(--fondo-bajo) 100%);
+  }
+}
+
+/* ---------- el bloque de retención ---------- */
+/* Sólo el padding vertical: el horizontal lo pone `.env`, que va en el mismo
+   elemento. Con el atajo de cuatro valores se lo comía —las dos reglas tienen
+   la misma especificidad y ésta va después— y en el teléfono el saludo
+   quedaba pegado al borde. */
+.portal-medio {
+  flex: 1; display: flex; flex-direction: column; justify-content: center;
+  padding-top: 3rem; padding-bottom: 1rem;
+}
+.portal-retencion { display: flex; flex-direction: column; }
+
+/* El saludo es el título más grande de la puerta y el elemento LCP, así que
+   entra en el mismo sistema que el resto: el ancho y la itálica salen de la
+   piel. El preview lo deja fijo en 108 porque es una maqueta que alterna
+   marcas con un botón; acá la diferenciación entre las dos puertas —Nexo
+   condensada e itálica, Nueva Abogacía ancha y derecha— tiene que verse
+   justo en la línea que más se mira. */
+.portal-saludo {
+  font-size: clamp(1.5rem, 3.6vw, 2.4rem);
+  font-variation-settings: "wdth" var(--ancho-h), "wght" 700;
+  font-style: var(--ital-estilo);
+  letter-spacing: -0.03em; line-height: 1.06; text-wrap: balance; max-width: 24ch;
+  margin: 0;
+}
+.portal-saludo span { color: var(--acento-texto); }
+
+/* CORRECCIÓN — el preview la rellena con rgba(244,242,237,.02), un velo casi
+   blanco que no oscurece nada: la tarjeta hereda lo que tenga la foto detrás.
+   En el teléfono el encuadre cambia y la columnata iluminada le queda justo
+   abajo, y ahí el rótulo «RETOMAR DONDE QUEDASTE» caía a 4,19:1. La tarjeta de
+   vidrio tiene que ser una superficie legible por sí sola, así que el relleno
+   pasa a ser un velo de tinta. Medido sobre la foto real, no sobre el token:
+   4,72:1 en el peor punto —375 px, piel Nexo— contra 4,19:1 antes. */
+.portal-retomar {
+  margin-top: 1.8rem; max-width: 34rem; padding: 1.1rem 1.25rem; border-radius: 14px;
+  background: rgba(8, 9, 10, 0.42);
+  backdrop-filter: blur(8px); -webkit-backdrop-filter: blur(8px);
+  box-shadow: inset 0 0 0 1px var(--linea), inset 0 1px 1px rgba(244, 242, 237, 0.1);
+  display: flex; align-items: center; justify-content: space-between; gap: 1rem; flex-wrap: wrap;
+}
+.portal-et {
+  font-size: 0.6rem; letter-spacing: 0.13em; text-transform: uppercase;
+  color: var(--texto-debil); display: block; margin-bottom: 0.35rem;
+}
+.portal-retomar b { font-size: 0.95rem; font-variation-settings: "wght" 600; }
+.portal-sub { font-size: 0.78rem; color: var(--texto-tenue); margin: 0.2rem 0 0; }
+
+.portal-barras { display: flex; gap: 1.4rem; margin-top: 1.5rem; flex-wrap: wrap; }
+.portal-barra { min-width: 132px; }
+.portal-barra-f {
+  display: flex; justify-content: space-between; gap: 0.8rem;
+  font-size: 0.72rem; color: var(--texto-tenue); margin: 0 0 0.3rem;
+}
+.portal-barra-t { display: block; height: 3px; border-radius: 2px; background: rgba(244, 242, 237, 0.1); overflow: hidden; }
+.portal-barra-t i { display: block; height: 100%; background: var(--acento-texto); border-radius: 2px; }
+
+/* ---------- las tres columnas ---------- */
+.portal-cols { display: grid; grid-template-columns: 1fr; gap: 2.2rem; padding: 2.5rem 0 3rem; }
+@media (min-width: 820px) { .portal-cols { grid-template-columns: 1.15fr 1fr 1fr; gap: 3rem; } }
+
+.portal-col-titulo {
+  font-size: 0.66rem; letter-spacing: 0.15em; text-transform: uppercase; font-weight: 400;
+  color: var(--papel); padding-bottom: 0.6rem;
+  border-bottom: 1px solid var(--linea-fuerte); margin: 0 0 1rem;
+}
+.portal-cols a {
+  display: block; color: var(--texto-tenue); font-size: 0.9rem;
+  padding: 0.32rem 0; position: relative; width: fit-content;
+}
+.portal-cols a::after {
+  content: ""; position: absolute; left: 0; right: 0; bottom: 0.18rem; height: 1px;
+  background: currentColor; transform: scaleX(0); transform-origin: left;
+  transition: transform 0.26s var(--sal);
+}
+.portal-cols a:hover { color: var(--papel); }
+.portal-cols a:hover::after { transform: scaleX(1); }
+.portal-marca { color: var(--acento-texto); }
+.portal-cols small { display: block; font-size: 0.72rem; color: var(--texto-debil); margin-top: 0.15rem; }
+
+/* Lo que falta se ve. El naranja es de Nexo y de nadie más, así que el
+   pendiente arranca en texto tenue y Nexo lo pisa. Al revés no funciona:
+   `var(--acento-2, ...)` no cae al respaldo porque el token existe — vale
+   `transparent` en las otras pieles — y el aviso quedaba invisible. */
+.portal-pend { color: var(--texto-tenue); font-size: 0.68rem; margin: 0.32rem 0; }
+html[data-marca="nexo"] .portal-pend,
+[data-marca="nexo"] .portal-pend { color: var(--acento-2); }
+
+/* El botón es un <a>, así que hay que devolverle lo que le sacó la regla de
+   la columna: vuelve a ser botón y pierde el subrayado que crece al pasar. */
+.portal-cols .portal-escribinos {
+  display: inline-flex; color: var(--texto);
+  margin-top: 0.9rem; width: fit-content;
+}
+.portal-cols .portal-escribinos::after { content: none; }
+
+@media (prefers-reduced-motion: reduce) {
+  .portal-tinte { animation: none; }
+}

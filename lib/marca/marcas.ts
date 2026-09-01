@@ -23,6 +23,17 @@ export type ConfigMarca = {
   lema: string;
   /** El nombre en versales para el logotipo gigante del pie. */
   gigante: string;
+  /**
+   * Dónde encontrar a la agrupación. `null` es un dato que todavía no
+   * tenemos y se muestra como pendiente: inventar un enlace es peor que
+   * mostrar el hueco.
+   */
+  contacto: {
+    instagram: { arroba: string; href: string };
+    mail: string;
+    whatsapp: string | null;
+    youtube: string | null;
+  };
   /** Sólo para pintar la muestra de color de las tarjetas de selección. */
   muestra: { primario: string; acento: string };
 };
@@ -36,6 +47,13 @@ export const MARCAS_CONFIG: Record<ConfigMarca["id"], ConfigMarca> = {
     para: "Para estudiantes de Derecho",
     lema: "La alternativa en Derecho",
     gigante: "NEXO DERECHO",
+    contacto: {
+      instagram: { arroba: "@nexoderecho", href: "https://instagram.com/nexoderecho" },
+      mail: "nexoderecho@gmail.com",
+      // Todavía no llegaron. Ver PENDIENTES.
+      whatsapp: null,
+      youtube: null,
+    },
     muestra: { primario: "#065D3B", acento: "#0A7F4F" },
   },
   na: {
@@ -46,6 +64,13 @@ export const MARCAS_CONFIG: Record<ConfigMarca["id"], ConfigMarca> = {
     para: "Para abogadas y abogados",
     lema: "Construyendo una nueva abogacía",
     gigante: "NUEVA ABOGACÍA",
+    contacto: {
+      instagram: { arroba: "@nueva.abogacia", href: "https://instagram.com/nueva.abogacia" },
+      // El brief lo daba por faltante, pero llegó con B-04.
+      mail: "abogacianueva@gmail.com",
+      whatsapp: null,
+      youtube: null,
+    },
     muestra: { primario: "#0B3FD0", acento: "#00B894" },
   },
 };

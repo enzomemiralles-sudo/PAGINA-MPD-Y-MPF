@@ -1,3 +1,5 @@
+import { readFileSync } from "node:fs";
+import { resolve } from "node:path";
 import { describe, expect, it } from "vitest";
 import { MARCA_DE_PERFIL, MARCAS_CONFIG, configDe, laOtra } from "@/lib/marca/marcas";
 import { MARCAS } from "@/lib/marca/tokens";
@@ -45,5 +47,51 @@ describe("los lemas y los logotipos del pie", () => {
       const esAgrupacion = m === "nexo" || m === "na";
       expect(configDe(m) !== null, `${m}`).toBe(esAgrupacion);
     }
+  });
+});
+
+/**
+ * La diferenciación del brief: las dos puertas tienen que distinguirse incluso
+ * en escala de grises. Tres marcas lo hacen y ninguna depende del color —el
+ * naranja, el ancho de los títulos y su itálica— así que se comprueban sobre
+ * el CSS, que es donde viven.
+ */
+describe("las dos puertas se distinguen sin mirar el color", () => {
+  const tokens = readFileSync(resolve(__dirname, "../styles/tokens.css"), "utf8");
+
+  /** El cuerpo de la regla de una piel. */
+  function piel(marca: string): string {
+    const m = tokens.match(new RegExp(`\\[data-marca="${marca}"\\][^{]*\\{([^}]*)\\}`));
+    if (!m?.[1]) throw new Error(`no encontré la piel ${marca}`);
+    return m[1];
+  }
+
+  function valor(marca: string, token: string): string | null {
+    return piel(marca).match(new RegExp(`--${token}:\\s*([^;]+);`))?.[1]?.trim() ?? null;
+  }
+
+  it("la itálica en títulos es sólo de Nexo", () => {
+    expect(valor("nexo", "ital-estilo")).toBe("italic");
+    for (const otra of ["na", "dual", "neutro"]) {
+      expect(valor(otra, "ital-estilo"), otra).toBe("normal");
+    }
+  });
+
+  it("el naranja es sólo de Nexo", () => {
+    expect(valor("nexo", "acento-2")).toBe("#f58220");
+    for (const otra of ["na", "dual"]) {
+      expect(valor(otra, "acento-2"), otra).toBe("transparent");
+    }
+  });
+
+  it("Nexo usa color plano y Nueva Abogacía siempre el degradé", () => {
+    expect(valor("nexo", "relleno")).toBe("#059249");
+    expect(valor("na", "relleno")).toMatch(/^linear-gradient/);
+  });
+
+  it("los títulos de Nexo son más condensados que los de Nueva Abogacía", () => {
+    const nexo = Number(valor("nexo", "ancho-h"));
+    const na = Number(valor("na", "ancho-h"));
+    expect(nexo).toBeLessThan(na);
   });
 });

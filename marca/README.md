@@ -48,6 +48,11 @@ Las dos capas de cada pantalla están siempre presentes y se cruzan por
 lenta encima —60 s en la portada, 70 s en la home— que se apaga con
 `prefers-reduced-motion`.
 
-Todavía no las usa nada: ni la portada ni `/app` tienen fotografía. Cuando se
-conecten hay que decidir cómo conviven con la cinta, que es la identidad
-compartida y hoy se retira cuando la puerta ya tiene dueño.
+Las cuatro están copiadas en `public/marca/`, que es de donde las sirve Next.
+Esta carpeta guarda el original; si alguna se reemplaza hay que copiarla de
+nuevo. `next/image` se encarga del resto: entrega AVIF con WebP de respaldo y
+el tamaño que pida el ancho de pantalla, así que en el teléfono no baja la
+versión de escritorio.
+
+La de perspectiva no lleva `priority`: **la foto nunca es el elemento LCP**.
+En la home de puerta eso lo es el saludo, y en la portada el titular.

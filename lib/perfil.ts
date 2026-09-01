@@ -5,10 +5,14 @@ import type { TipoPerfil } from "@/lib/marca/marcas";
 
 export type Perfil = {
   user_id: string;
+  /** Para saludar por el nombre en la home de la puerta. */
+  nombre: string;
   /** «revisor» habilita /revisar. Se otorga a mano en la base, nunca desde acá. */
   rol: "persona" | "revisor";
   tipo_perfil: TipoPerfil | null;
-  marca: Exclude<Marca, "dual" | "neutro"> | null;
+  /** La piel. `neutro` es de quien eligió «otro perfil»: no es de ninguna
+   *  de las dos agrupaciones y no lleva sus colores. */
+  marca: Exclude<Marca, "dual"> | null;
   onboarding_completado: boolean;
   fecha_aceptacion: string | null;
   anio_egreso: number | null;
@@ -23,7 +27,7 @@ export type Perfil = {
 };
 
 const COLUMNAS =
-  "user_id, rol, tipo_perfil, marca, onboarding_completado, fecha_aceptacion, anio_egreso, " +
+  "user_id, nombre, rol, tipo_perfil, marca, onboarding_completado, fecha_aceptacion, anio_egreso, " +
   "jurisdiccion, matriculado, area_ejercicio, anio_ingreso, como_conocio, trabaja_juridico, dni, telefono";
 
 /**

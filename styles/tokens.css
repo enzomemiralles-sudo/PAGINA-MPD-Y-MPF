@@ -92,7 +92,7 @@ html[data-marca="dual"],
   --relleno: linear-gradient(135deg, #059249, #0088c4);
   --sobre-relleno: #08090a;
   --ancho-h: 118;
-  --ital: 0;
+  --ital-estilo: normal;
 }
 
 /* ---------- neutro: crear perfil antes de elegir, y el panel ---------- */
@@ -108,7 +108,7 @@ html[data-marca="neutro"],
   --sobre-relleno: #f4f2ed;
   --sobre-acento: var(--fondo);
   --ancho-h: 112;
-  --ital: 0;
+  --ital-estilo: normal;
 }
 
 /* ---------- Nexo ----------
@@ -132,7 +132,9 @@ html[data-marca="nexo"],
   /* La letra blanca sobre este verde da 4,03:1 y no llega. Con tinta, 4,95:1. */
   --sobre-relleno: #08090a;
   --ancho-h: 78;
-  --ital: 1;
+  /* La itálica en títulos es de Nexo y de nadie más. Va como token para que
+     ningún componente tenga que preguntar de qué marca se trata. */
+  --ital-estilo: italic;
 }
 
 /* ---------- Nueva Abogacía ---------- */
@@ -158,5 +160,5 @@ html[data-marca="na"],
      los botones va clara: 5,98:1. */
   --sobre-acento: #f4f2ed;
   --ancho-h: 104;
-  --ital: 0;
+  --ital-estilo: normal;
 }
