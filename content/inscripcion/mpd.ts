@@ -77,6 +77,7 @@ export const MPD: Guia = {
         },
       ],
       consejo: null,
+      esquema: { clave: "instalar", pie: "El camino desde el navegador hasta el acceso directo en el escritorio." },
       capturas: [],
     },
     {
@@ -105,6 +106,7 @@ export const MPD: Guia = {
         },
       ],
       consejo: null,
+      esquema: { clave: "registro", pie: "Lo que pide el registro y qué llega después." },
       capturas: [],
     },
     {
@@ -152,6 +154,7 @@ export const MPD: Guia = {
       ],
       consejo:
         "Tomate tu tiempo con el CV. Lo que no conviene es dejarlo para cuando se abra la inscripción, porque los cinco días hábiles se te van entre juntar los datos, acordarte de fechas y descubrir un campo que no entendés. Sobre los antecedentes: cargá todo lo que tengas, aunque te parezca poco. Siendo estudiante eso suele ser ayudantías de cátedra o de investigación, voluntariados, pasantías y prácticas profesionales, cursos y seminarios con certificado, congresos o jornadas, publicaciones si las hay, y cualquier experiencia laboral previa aunque no sea del palo jurídico. Nadie se anota en un examen de ingreso al Estado con la carrera terminada y quince años de experiencia: no tener antecedentes no te descalifica. Cargalos igual, con los datos precisos —institución, período, rol—, porque es información que declarás bajo juramento y porque te queda cargada para la próxima vez.",
+      esquema: { clave: "cv", pie: "Las nueve páginas del formulario, y en cuál está cada cosa." },
       capturas: [],
     },
     {
@@ -193,6 +196,7 @@ export const MPD: Guia = {
       ],
       consejo:
         "Anotate el primer o el segundo día, no el último. Es el único margen de error que da el sistema: si te equivocaste en algo del CV, la única forma de arreglarlo es corregirlo y volver a inscribirte, y eso sólo se puede mientras la inscripción siga abierta. El que se anota el viernes a última hora no tiene esa segunda chance. Y una vez inscripto, tené presente que no te va a llegar ningún mail: lo más simple es guardarte la ficha del examen en favoritos y ponerte un recordatorio semanal en el celular desde que cierra la inscripción hasta que rendís.",
+      esquema: { clave: "inscribirse", pie: "El camino de menús y la única forma de confirmar que quedaste." },
       capturas: [],
     },
   ],
