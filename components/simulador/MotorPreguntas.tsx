@@ -148,23 +148,36 @@ export function MotorPreguntas({
       ) : null}
 
       <article className="rend-pregunta tarjeta-app">
-        <h2 className="rend-enunciado">{pregunta.enunciado}</h2>
+        {/* Radios de verdad dentro de un fieldset, no botones con aria-pressed.
+            Con esto el lector de pantalla dice «opción 2 de 4» y las flechas
+            recorren las opciones, dos cosas que un grupo de botones no da. El
+            enunciado va como <legend> para que se anuncie con cada opción, y
+            el <h2> queda dentro —la <legend> admite contenido de encabezado—
+            así que tampoco se pierde la navegación por títulos. */}
+        <fieldset className="rend-campo">
+          <legend>
+            <h2 className="rend-enunciado">{pregunta.enunciado}</h2>
+          </legend>
 
-        <ul className="rend-opciones">
-          {pregunta.opciones.map((o) => (
-            <li key={o.clave}>
-              <button
-                type="button"
-                className={`rend-op${marca.respuesta === o.clave ? " elegida" : ""}`}
-                onClick={() => responder(pregunta.id, o.clave)}
-                aria-pressed={marca.respuesta === o.clave}
-              >
-                <span className="rend-op-clave mono">{o.clave}</span>
-                <span className="rend-op-texto">{o.texto}</span>
-              </button>
-            </li>
-          ))}
-        </ul>
+          <ul className="rend-opciones">
+            {pregunta.opciones.map((o) => (
+              <li key={o.clave}>
+                <label className={`rend-op${marca.respuesta === o.clave ? " elegida" : ""}`}>
+                  <input
+                    className="sr-only"
+                    type="radio"
+                    name={`op-${pregunta.id}`}
+                    value={o.clave}
+                    checked={marca.respuesta === o.clave}
+                    onChange={() => responder(pregunta.id, o.clave)}
+                  />
+                  <span className="rend-op-clave mono">{o.clave}</span>
+                  <span className="rend-op-texto">{o.texto}</span>
+                </label>
+              </li>
+            ))}
+          </ul>
+        </fieldset>
 
         <button
           type="button"

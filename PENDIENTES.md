@@ -23,16 +23,28 @@ mismo commit que `main`. Se puede borrar cuando quieras.
 
 ---
 
-## 0 bis. Tuyo, dos minutos: correr la migración `0007`
+## 0 bis. Tuyo, cinco minutos: correr tres migraciones
 
-El formulario de «¿No encontramos la respuesta?» del asistente (A-12) guarda
-en una tabla nueva, `consultas_sin_respuesta`, que todavía no existe en
-Supabase. Hasta que se cree, el formulario valida y responde el error de
-guardado en lugar de anotar la consulta.
+Hay tres que todavía no corrieron en Supabase. Van en orden, y las tres se
+pueden correr más de una vez sin romper nada. En Supabase → **SQL Editor** →
+pegar el contenido del archivo y ejecutar.
 
-En Supabase → **SQL Editor** → pegar el contenido de
-`supabase/migrations/0007_asistente.sql` y ejecutar. Se puede correr más de
-una vez sin romper nada.
+**`supabase/migrations/0007_asistente.sql`.** El formulario de «¿No
+encontramos la respuesta?» del asistente (A-12) guarda en una tabla nueva,
+`consultas_sin_respuesta`, que todavía no existe. Hasta que se cree, el
+formulario valida y responde el error de guardado en lugar de anotar la
+consulta.
+
+**`supabase/migrations/0008_piel_neutra.sql`.** Agrega el valor `neutro` al
+enum de perfiles. Sin esto, quien elija «otro» no puede guardar el perfil.
+
+**`supabase/migrations/0009_mpf_practico_tres.sql`.** Corrige el práctico del
+MPF de 10 consignas a 3, que es lo que trae el examen real. Sin esto el
+simulador sirve más del triple de ejercicios que la evaluación. No toca las
+preguntas cargadas: las diez siguen en el banco y el intento sortea tres.
+
+Si preferís una sola pegada, `supabase/instalar.sql` las incluye a las tres y
+se puede volver a correr entero.
 
 Lo que hace, y por qué está así: cualquiera puede dejar una consulta, nadie
 puede leer las de los demás. Está probado contra un PostgreSQL de verdad en
@@ -231,7 +243,6 @@ Ninguna de estas frena la tanda 4. Están anotadas para no perderlas.
   sólo el texto, así que exige *menos* que el examen. La pantalla lo dice.
   Implementarlo es un editor con formato y una comparación por palabra que
   también mire los estilos.
-- **Cuántos ejercicios sirve el práctico del MPF** (ver B-01).
 - **`citext` vive en el esquema público.** Lo marca el linter de Supabase.
   Moverlo es cosmético y rompería `alertas` si se hace mal; lo dejamos como
   está a propósito.
@@ -240,12 +251,17 @@ Ninguna de estas frena la tanda 4. Están anotadas para no perderlas.
 
 ---
 
-## 5. Y después, la tanda que digas
+## 5. Las tandas: no queda ninguna
 
-Las que quedan en `CAMBIOS.md`:
+Las siete de `CAMBIOS.md` están hechas y mergeadas, y la octava —el brief de
+diseño— también. De los 101 ítems quedan **5 sin tildar**, y los cinco esperan
+material tuyo, no código:
 
-- **Tanda 5** · pestaña Asistente
-- **Tanda 6** · pestaña Inscripción
-- **Tanda 7** · la muestra de la portada, que ahora puede usar capturas reales
+- **B-01** los dos ejemplos de parte práctica y teórica (bloquea S-04)
+- **B-07** las capturas del sistema de inscripción del MPD, que hay que sacar a
+  mano en una PC con Windows porque la web es una app Flash muerta
+- **B-08** los videos cortos del trámite
+- **I-04** la guía paso a paso, que espera a B-07 y B-08
+- **S-04** el práctico del MPF, que espera a B-01
 
 Decime por cuál seguimos.

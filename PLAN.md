@@ -125,13 +125,27 @@ Ordenado por lo que cuesta y lo que desbloquea.
     `PantallaAuth`. Los tokens `--cinta-op` y `--cinta-img` ya no existían: se
     fueron con la reescritura de la fase A.
 
-**Fase E · accesibilidad y datos**
-14. Las opciones pasan a ser radios reales dentro de `fieldset` con `legend`.
-    Hoy son botones con `aria-pressed`.
-15. Perfil `otro` → piel neutra, como constante.
-16. `theme-color`, favicon y los correos de Resend tomando la piel del perfil.
-17. `/admin` para cargar preguntas pegando JSON. Hoy existe `/revisar`, que
-    revisa lo cargado pero no carga.
+**Fase E · accesibilidad y datos** — hecha
+14. ✅ Las opciones pasan a ser radios reales dentro de `fieldset` con
+    `legend`. Se ganan las flechas y el «opción 2 de 4» del lector de
+    pantalla. El enunciado va como `<legend>` con el `<h2>` adentro, que la
+    especificación permite, así que tampoco se pierde la navegación por
+    títulos. De paso el enunciado sale de la itálica: es texto para leer con
+    cuidado, no un título.
+15. ✅ Perfil `otro` → piel neutra. Ya estaba, de la fase A.
+16. ✅ `theme-color` y favicon toman la piel del perfil, resueltos en el
+    servidor con `generateViewport` y `generateMetadata`. **Los correos de
+    Resend no tenían piel que ponerse:** hay uno solo, es de texto plano y va
+    para adentro. Lo que sí hace ahora es decir de qué puerta viene quien
+    escribe, que es lo útil de esa idea.
+17. ✅ `/admin`, cargar preguntas pegando JSON. Valida el lote entero antes de
+    escribir —media carga es peor que ninguna—, no duplica si se vuelve a
+    pegar, normaliza la respuesta a la clave exacta de la opción, y **no tiene
+    manera de pedir que una pregunta entre ya revisada**.
+
+**Además**
+18. ✅ La migración `0009`: el práctico del MPF pasa de 10 consignas a 3, que
+    es lo que confirmó el brief. Era el último punto abierto de B-06.
 
 ---
 

@@ -72,10 +72,9 @@ h1 {
 h2 {
   font-size: clamp(1.75rem, 4.6vw, 3rem); line-height: 1.05; letter-spacing: -0.028em;
   font-variation-settings: "wdth" var(--ancho-h), "wght" 700;
-  font-style: var(--h2-estilo, normal);
+  font-style: var(--ital-estilo);
   transition: font-variation-settings var(--t-sec) var(--suave);
 }
-html[data-marca="nexo"] h2 { --h2-estilo: italic; }
 h3 { font-size: 1.02rem; font-variation-settings: "wdth" 100, "wght" 600; letter-spacing: -0.01em; }
 p { color: var(--papel-tenue); }
 
@@ -676,10 +675,9 @@ body { transition: background var(--t-sec) var(--suave), color var(--t-sec) var(
 .app-cuerpo h1 {
   font-size: clamp(1.7rem, 5vw, 2.4rem); line-height: 1.1; letter-spacing: -0.025em;
   font-variation-settings: "wdth" var(--ancho-h), "wght" 700;
-  font-style: var(--h2-estilo, normal); color: var(--texto);
+  font-style: var(--ital-estilo); color: var(--texto);
   transition: font-variation-settings var(--t-sec) var(--suave);
 }
-html[data-marca="nexo"] .app-cuerpo h1 { --h2-estilo: italic; }
 
 /* ============================================================
    EL FONDO DE LAS PANTALLAS DE INGRESO
@@ -770,9 +768,8 @@ html[data-marca="nexo"] .app-cuerpo h1 { --h2-estilo: italic; }
 .sim-titulo {
   font-size: clamp(1.35rem, 4vw, 1.9rem); line-height: 1.15; letter-spacing: -0.02em;
   font-variation-settings: "wdth" var(--ancho-h), "wght" 700;
-  font-style: var(--h2-estilo, normal);
+  font-style: var(--ital-estilo);
 }
-html[data-marca="nexo"] .sim-titulo { --h2-estilo: italic; }
 
 .sim-encabezado-org { gap: 0.5rem; }
 .sim-org-sigla {
@@ -841,9 +838,8 @@ html[data-marca="nexo"] .sim-titulo { --h2-estilo: italic; }
 .sim-cierre-titulo {
   font-size: clamp(1.6rem, 5.5vw, 2.6rem); line-height: 1.05; letter-spacing: -0.03em;
   font-variation-settings: "wdth" var(--ancho-h), "wght" 750;
-  font-style: var(--h2-estilo, normal);
+  font-style: var(--ital-estilo);
 }
-html[data-marca="nexo"] .sim-cierre-titulo { --h2-estilo: italic; }
 .sim-gratis { color: var(--texto-debil); font-size: 0.68rem; }
 .sim-cierre .btn { margin-top: 0.6rem; }
 
@@ -906,10 +902,31 @@ html[data-marca="nexo"] .sim-cierre-titulo { --h2-estilo: italic; }
 
 .rend-pregunta { padding: 1.35rem; display: flex; flex-direction: column; gap: 1.1rem; }
 @media (min-width: 768px) { .rend-pregunta { padding: 1.85rem; } }
+/* El enunciado es un <h2>, pero de título no tiene nada: es el texto que hay
+   que leer con cuidado para contestar. Por eso se sale de la itálica y del
+   ancho variable de los títulos —en la puerta de Nexo una consigna de cuatro
+   renglones en cursiva condensada cuesta bastante más de leer— y se queda con
+   ancho 100 y estilo normal. */
 .rend-enunciado {
   font-size: clamp(1.05rem, 3.2vw, 1.25rem); line-height: 1.4;
   font-variation-settings: "wdth" 100, "wght" 620; max-width: 62ch;
+  font-style: normal; letter-spacing: 0;
 }
+/* El fieldset no aporta nada visual: se lo deja transparente y en bloque.
+   `min-inline-size: 0` es imprescindible —el valor de fábrica es
+   `min-content`, y con él la tarjeta no puede achicarse por debajo del ancho
+   de la opción más larga y se desborda en el teléfono—. La <legend> también
+   vuelve a comportarse como un bloque común: de fábrica flota sobre el borde
+   del fieldset y ahí le estrecha el ancho a lo que sigue. */
+.rend-campo {
+  border: none; padding: 0; margin: 0; min-inline-size: 0;
+  display: flex; flex-direction: column; gap: 1.1rem;
+}
+.rend-campo > legend {
+  display: block; float: none; width: 100%; padding: 0; margin-bottom: 1.1rem;
+}
+.rend-campo > legend h2 { margin: 0; }
+
 .rend-opciones { list-style: none; display: flex; flex-direction: column; gap: 0.6rem; }
 .rend-op {
   width: 100%; display: flex; gap: 0.75rem; align-items: flex-start; text-align: left;
@@ -920,6 +937,11 @@ html[data-marca="nexo"] .sim-cierre-titulo { --h2-estilo: italic; }
   transition: box-shadow var(--t-micro) var(--suave), background var(--t-micro) var(--suave);
 }
 .rend-op:hover { box-shadow: inset 0 0 0 1px var(--borde-fuerte); }
+/* El radio va oculto con el recorte de .sr-only —sigue estando y sigue
+   recibiendo el foco—, así que el anillo lo tiene que dibujar la etiqueta.
+   Neutro, no de marca: en la zona de respuestas no entra el acento, y con el
+   verde de Nexo el anillo de foco se confundía con «correcta». */
+.rend-op:has(input:focus-visible) { outline: 2px solid var(--texto); outline-offset: 2px; }
 /* La elegida no se distingue sólo por color: el marco engorda y la letra
    pesa, para que se vea igual sin distinguir el color.
    Y el color es neutro, no el de marca: en la puerta de Nexo el verde ya
@@ -1196,9 +1218,8 @@ html[data-marca="nexo"] .sim-cierre-titulo { --h2-estilo: italic; }
 .asis-titulo {
   font-size: clamp(1.3rem, 4vw, 1.8rem); line-height: 1.15; letter-spacing: -0.02em;
   font-variation-settings: "wdth" var(--ancho-h), "wght" 700;
-  font-style: var(--h2-estilo, normal);
+  font-style: var(--ital-estilo);
 }
-html[data-marca="nexo"] .asis-titulo { --h2-estilo: italic; }
 .asis-bajada { color: var(--texto-tenue); max-width: 62ch; line-height: 1.6; }
 .asis-parrafo { color: var(--texto-tenue); max-width: 60ch; line-height: 1.65; }
 .asis-rotulo {
@@ -1641,9 +1662,8 @@ html[data-marca="nexo"] .asis-titulo { --h2-estilo: italic; }
 .ins-titulo {
   font-size: clamp(1.3rem, 4vw, 1.8rem); line-height: 1.15; letter-spacing: -0.02em;
   font-variation-settings: "wdth" var(--ancho-h), "wght" 700;
-  font-style: var(--h2-estilo, normal);
+  font-style: var(--ital-estilo);
 }
-html[data-marca="nexo"] .ins-titulo { --h2-estilo: italic; }
 .ins-bajada { color: var(--texto-tenue); max-width: 60ch; line-height: 1.6; }
 .ins-parrafo { color: var(--texto-tenue); max-width: 60ch; line-height: 1.65; }
 .ins-rotulo {
@@ -2437,4 +2457,65 @@ html[data-marca="nexo"] .portal-pend,
 
 @media (prefers-reduced-motion: reduce) {
   .portal-tinte { animation: none; }
+}
+
+/* ============================================================
+   /admin · el panel de carga
+   La trastienda, en piel neutra: no es de ninguna de las dos puertas.
+   ============================================================ */
+.adm-pantalla { padding-bottom: 4rem; }
+.adm-bajada { color: var(--texto-tenue); max-width: 58ch; line-height: 1.6; margin-top: 0.6rem; }
+.adm { display: flex; flex-direction: column; gap: 1.25rem; margin-top: 2rem; }
+
+/* El aviso de que nada se publica sin revisar. Es lo primero que se lee y no
+   se puede cerrar: es la garantía del proyecto entero. */
+.adm-aviso {
+  padding: 0.9rem 1.1rem; border-radius: 12px;
+  background: var(--tarjeta); box-shadow: inset 0 0 0 1px var(--borde-fuerte);
+  color: var(--texto-tenue); font-size: 0.88rem; line-height: 1.6; max-width: 68ch;
+}
+
+.adm-campo { display: flex; flex-direction: column; gap: 0.5rem; }
+.adm-et { font-size: 0.82rem; color: var(--texto-tenue); }
+.adm-area {
+  width: 100%; resize: vertical; min-height: 16rem;
+  padding: 0.9rem 1rem; border-radius: 12px;
+  background: var(--fondo-bajo); color: var(--texto);
+  border: none; box-shadow: inset 0 0 0 1px var(--borde);
+  font-size: 0.82rem; line-height: 1.6;
+  /* El JSON se lee por columnas: si el navegador lo corta por palabra, la
+     estructura se pierde. Se deja desbordar y scrollear. */
+  white-space: pre; overflow-wrap: normal; overflow-x: auto;
+}
+.adm-area:focus-visible { outline: 2px solid var(--acento-texto); outline-offset: 2px; }
+.adm-botones { display: flex; gap: 0.6rem; flex-wrap: wrap; }
+
+.adm-bien, .adm-mal {
+  padding: 1rem 1.1rem; border-radius: 12px; font-size: 0.9rem; line-height: 1.6;
+  display: flex; flex-direction: column; gap: 0.5rem; max-width: 68ch;
+}
+/* Los dos semánticos, que no cambian con la piel. */
+.adm-bien { box-shadow: inset 0 0 0 2px var(--ok); }
+.adm-mal { box-shadow: inset 0 0 0 2px var(--error); }
+.adm-bien a { color: var(--acento-texto); text-decoration: underline; text-underline-offset: 3px; }
+.adm-mal-rotulo { color: var(--texto-tenue); font-size: 0.82rem; }
+.adm-problemas { list-style: none; display: flex; flex-direction: column; gap: 0.4rem; font-size: 0.86rem; }
+.adm-problemas code { color: var(--texto); font-size: 0.78rem; }
+.adm-problemas li { color: var(--texto-tenue); }
+
+.adm-formato { margin-top: 1.5rem; padding-top: 1.75rem; border-top: 1px solid var(--borde); }
+.adm-formato-titulo { font-size: 1.05rem; font-variation-settings: "wdth" 100, "wght" 650; }
+.adm-formato-bajada { color: var(--texto-tenue); font-size: 0.9rem; line-height: 1.6; max-width: 58ch; margin-top: 0.4rem; }
+
+.adm-campos { display: grid; gap: 0.5rem 1.5rem; margin-top: 1.25rem; }
+@media (min-width: 720px) { .adm-campos { grid-template-columns: 1fr 1fr; } }
+.adm-campos > div { display: flex; gap: 0.7rem; align-items: baseline; font-size: 0.86rem; }
+.adm-campos dt { color: var(--acento-texto); font-size: 0.74rem; flex-shrink: 0; min-width: 7.5rem; }
+.adm-campos dd { color: var(--texto-tenue); margin: 0; line-height: 1.5; }
+
+.adm-ejemplo { margin-top: 1.5rem; display: flex; flex-direction: column; gap: 0.7rem; align-items: flex-start; }
+.adm-ejemplo pre {
+  width: 100%; padding: 1rem; border-radius: 12px; overflow-x: auto;
+  background: var(--fondo-bajo); box-shadow: inset 0 0 0 1px var(--borde);
+  color: var(--texto-tenue); font-size: 0.76rem; line-height: 1.55;
 }

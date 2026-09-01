@@ -1,0 +1,15 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 64 64" role="img" aria-label="Nueva Abogacía">
+  <!--
+    La misma balanza del icono general, en la piel de Nueva Abogacía.
+    Es elemento gráfico, así que le alcanza 3:1: el trazo es el
+    --acento-texto de la marca sobre su propio fondo.
+  -->
+  <rect width="64" height="64" rx="14" fill="#03141F"/>
+  <g stroke="#2FD3C8" stroke-width="4" stroke-linecap="round" fill="none">
+    <path d="M32 14v34"/>
+    <path d="M16 20h32"/>
+    <path d="M22 50h20"/>
+    <path d="M9 36a7 7 0 0 0 14 0l-7-16z"/>
+    <path d="M41 36a7 7 0 0 0 14 0l-7-16z"/>
+  </g>
+</svg>

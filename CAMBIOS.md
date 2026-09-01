@@ -69,7 +69,7 @@
 - [x] **S-01** Encabezado: "Simulador de Exámenes" / "Prepará tu ingreso. Practicá. Medí tu nivel." + párrafo de presentación + botón "Comenzar a practicar".
 - [x] **S-02** Bloque "Elegí tu examen" con dos tarjetas grandes y claramente diferenciadas: MPF y MPD. Cada una lista sus dos instancias y tiene su botón "Comenzar MPF" / "Comenzar MPD".
 - [x] **S-03** MPF · Examen teórico: opción múltiple sobre los contenidos evaluables.
-- [ ] **S-04** MPF · Examen práctico: ejercicios basados en los recursos e insumos de la instancia práctica. → *La instancia está construida y anda; lo que falta es B-01. Cuántos ejercicios trae el práctico real no consta, así que hoy sirve 10 de los que hay, cargado en `exams` y corregible con un update.*
+- [ ] **S-04** MPF · Examen práctico: ejercicios basados en los recursos e insumos de la instancia práctica. → *La instancia está construida y anda; lo que falta es B-01. Cuántos ejercicios trae el práctico ya no es un supuesto: son **3**, confirmados con el brief y corregidos en la migración 0009.*
 - [x] **S-05** MPD · Examen teórico: opción múltiple.
 - [x] **S-06** MPD · Examen práctico de **tipeo**: instancia específica, con su propia metodología. **Requiere componente nuevo** (medición de velocidad y precisión). → *Hecho con la metodología oficial (B-02, arts. 25-29 del Reglamento de Ingreso). Los textos de práctica son propios —el examen real no publica los suyos— y tienen las 130 palabras que fija el artículo 27. Lo único que falta es comparar el formato: el reglamento lo cuenta como error y todavía no se mide, y la pantalla lo dice.*
 - [x] **S-07** Sección "¿Cómo funciona?" en cuatro pasos: 01 Elegí tu examen · 02 Elegí qué querés practicar · 03 Resolvé · 04 Revisá tu desempeño.
@@ -148,6 +148,40 @@ Criterio: la muestra es **visual, dinámica, atractiva, demostrativa**. Menos te
 
 ---
 
+## TANDA 8 · El brief de diseño  *(acoplado sobre lo ya construido)*
+
+No estaba en la lista original: entró con el brief del proyecto y se ejecutó
+entero. El detalle de qué se encontró ya hecho, qué divergía y qué faltaba está
+en `PLAN.md`.
+
+**Fase A · la piel**
+- [x] **D-01** Un solo eje de tokens: `data-marca` en `<html>`, cuatro pieles, todo oscuro. Cada puerta trae su propio fondo, no sólo su acento.
+- [x] **D-02** El contraste se calcula, no se afirma: `lib/marca/contraste.ts` mide cada par y el test falla por debajo de 4,5:1. Las cuatro correcciones sobre los valores del preview van marcadas en `styles/tokens.css` con el motivo.
+- [x] **D-03** `/pieles`, la página de control: las cuatro pieles sobre un botón, un enlace, una tarjeta, una opción correcta, una incorrecta y un divisor.
+
+**Fase B · los cinco conflictos del brief**
+- [x] **D-04** El acento de marca queda prohibido en la zona de respuestas, con un test que falla si aparece. El verde de Nexo no puede significar «correcta».
+- [x] **D-05** La corrección no se comunica sólo por color: cambia el grosor del borde y hay ícono.
+- [x] **D-06** En sesión el encabezado lleva un solo logo, el de la agrupación del perfil; la otra va al pie en la línea de coorganización.
+- [x] **D-07** Los lemas arriba a la derecha, y el logotipo gigante al pie.
+
+**Fase C · la home de puerta**
+- [x] **D-08** El bloque de retención sobre datos reales del último intento: saludo, «retomar donde quedaste» y barras por tema. Tres estados, y ninguno esconde el bloque.
+- [x] **D-09** Las tres columnas: menú, recursos y sociales. El `[PENDIENTE]` quedó donde de verdad falta el dato —el grupo de WhatsApp y el canal de YouTube de las dos— y no en el mail de Nueva Abogacía, que llegó con B-04.
+- [x] **D-10** Las fotos de la facultad en perspectiva, con `next/image`.
+
+**Fase D · la pestaña pública**
+- [x] **D-11** La foto frontal reemplaza a la cinta argentina en el hero. En `dual` —que es el estado en que la pestaña pública está siempre— se muestran las dos partidas sobre el eje de simetría de la fachada.
+- [x] **D-12** La cinta argentina se retiró entera: componentes, CSS y archivo.
+
+**Fase E · accesibilidad y datos**
+- [x] **D-13** Las opciones del simulador pasan a ser radios reales dentro de `fieldset` con `legend`. Se ganan las flechas y el «opción 2 de 4» del lector de pantalla.
+- [x] **D-14** El perfil «otro» va a la piel neutra, como constante y con test. Antes iba a Nueva Abogacía.
+- [x] **D-15** `theme-color` y favicon toman la piel del perfil. El correo de Resend no tiene piel que ponerse —es texto plano y va para adentro— pero dice de qué puerta viene quien escribe.
+- [x] **D-16** `/admin`: cargar preguntas pegando JSON. Valida el lote entero antes de escribir, no duplica si se vuelve a pegar, y **no tiene manera de pedir que una pregunta entre ya revisada**.
+
+---
+
 ## PENDIENTES BLOQUEANTES
 > No son tareas de Claude Code. Son cosas que faltan de mi lado y frenan ítems concretos.
 
@@ -160,9 +194,9 @@ Criterio: la muestra es **visual, dinámica, atractiva, demostrativa**. Menos te
   - Mientras tanto cada paso tiene un **esquema** dibujado a partir del manual, rotulado como esquema y no como captura. No lo reemplaza: el esquema ubica —dónde cae «Título Principal» entre nueve páginas, cuál es el camino de menús— y la captura muestra. Cuando lleguen, conviven.
   - Para sumarlas: los archivos van en `public/` y se agregan a `capturas` en `content/inscripcion/mpd.ts`, cada una con su `alt` y su `pie`.
 - [ ] **B-08** **Los videos cortos del trámite.** La biblioteca (I-06) está armada y lee de la tabla `videos`; hoy está vacía. Con insertar filas con `publicado = true` aparece sola, sin tocar código.
-- [ ] **B-06** Tiempos y criterios de evaluación de ambos exámenes, para cargar en `exams`. → **Casi resuelto.** Los del MPD salieron del Reglamento (B-02) y los del teórico del MPF coinciden con lo que reportó de forma coincidente quien rindió: 20 preguntas y 30 minutos. Falta una sola cosa, y es la que sigue abierta:
-  - **Cuántas consignas trae el práctico del MPF.** Hoy `exams` carga **10**, con el supuesto anotado en la migración 0005. Pero la entrada `mpf-040` del corpus dice **3**, y lo reporta como coincidente entre quienes rindieron. Si eso es cierto, el simulador está sirviendo más del triple de ejercicios que el examen real. Se arregla con un `update` sobre `exams`, sin tocar código, pero conviene confirmarlo antes.
-  - Aparte, sobre la ventana total del MPF el corpus registra dos versiones incompatibles —45 minutos según el correo de citación, y una hora de plataforma habilitada para las dos partes— y las muestra como contradictorias en el asistente. Eso no bloquea nada: el simulador practica cada instancia por separado.
+- [x] **B-06** Tiempos y criterios de evaluación de ambos exámenes, cargados en `exams`. Los del MPD salieron del Reglamento (B-02) y los del MPF llegaron confirmados con el brief.
+  - **Cuántas consignas trae el práctico del MPF: 3, en 15 minutos.** Era el único punto que quedaba abierto. `exams` cargaba 10 con el supuesto anotado en la migración 0005 —el simulador servía más del triple de ejercicios que el examen real— y lo corrige la migración `0009_mpf_practico_tres.sql`. Las diez preguntas cargadas siguen en el banco: `cantidad_preguntas` es cuántas trae el intento, no el tamaño del banco.
+  - La ventana total del MPF también quedó confirmada en **una hora** para las dos partes, que era una de las dos versiones que el corpus registraba. La otra —45 minutos, del correo de citación— sigue mostrándose como contradicción en el asistente, que es lo que corresponde: es lo que dicen las fuentes, y no bloquea nada.
 
 ---
 
