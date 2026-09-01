@@ -133,17 +133,18 @@
 
 ## TANDA 7 · Bloque del simulador en la pestaña de muestra
 > **Va última a propósito.** Esta sección muestra capturas reales del simulador, así que no se puede construir antes de que el simulador exista.
+> Las capturas se tomaron de las pantallas de verdad corriendo con preguntas de verdad del banco, contra el build de producción. Están en `public/muestra/`. Reemplazó a la maqueta dibujada que había en la portada.
 
 Criterio: la muestra es **visual, dinámica, atractiva, demostrativa**. Menos texto, más capturas. El usuario tiene que recorrerla y pensar "quiero probar esto".
 
-- [ ] **V-01** Encabezado: "Conocé el simulador" / "Así podés prepararte para tu examen de ingreso." + botón "Probar el simulador".
-- [ ] **V-02** Captura grande y protagonista del simulador, con frases cortas alrededor: Preguntas de opción múltiple · Practicá las veces que quieras · Poné a prueba tus conocimientos · Conocé tu resultado · Volvé a intentarlo.
-- [ ] **V-03** Sección MPF: teoría + práctica, con captura de pregunta y captura de ejercicio práctico.
-- [ ] **V-04** Sección MPD: teoría + tipeo, con captura de pregunta y captura del simulador de tipeo.
-- [ ] **V-05** Sección Resultados: "¿Cómo te fue?" con captura de la pantalla de resultados.
-- [ ] **V-06** Sección "Una herramienta que podés volver a usar" + botón.
-- [ ] **V-07** Cierre limpio: "Ahora que ya lo conocés, probalo." + "Comenzar a practicar".
-- [ ] **V-08** Orden interno del apartado: Presentación → Así se ve el simulador → MPF → MPD → Resultados → Características → Llamada a la acción.
+- [x] **V-01** Encabezado: "Conocé el simulador" / "Así podés prepararte para tu examen de ingreso." + botón "Probar el simulador".
+- [x] **V-02** Captura grande y protagonista del simulador, con frases cortas alrededor: Preguntas de opción múltiple · Practicá las veces que quieras · Poné a prueba tus conocimientos · Conocé tu resultado · Volvé a intentarlo.
+- [x] **V-03** Sección MPF: teoría + práctica, con captura de pregunta y captura de ejercicio práctico.
+- [x] **V-04** Sección MPD: teoría + tipeo, con captura de pregunta y captura del simulador de tipeo.
+- [x] **V-05** Sección Resultados: "¿Cómo te fue?" con captura de la pantalla de resultados.
+- [x] **V-06** Sección "Una herramienta que podés volver a usar" + botón.
+- [x] **V-07** Cierre limpio: "Ahora que ya lo conocés, probalo." + "Comenzar a practicar".
+- [x] **V-08** Orden interno del apartado: Presentación → Así se ve el simulador → MPF → MPD → Resultados → Características → Llamada a la acción.
 
 ---
 
@@ -154,7 +155,7 @@ Criterio: la muestra es **visual, dinámica, atractiva, demostrativa**. Menos te
 - [x] **B-02** **Metodología completa del examen de tipeo del MPD**. → Está en el **Reglamento para el Ingreso de Personal al MPD** (t.o. Res. DGN 1124/15), arts. 25 a 29: **130 palabras**, la unidad de error es **la palabra** (no el carácter), −5 por palabra mal escrita y −5 por palabra no escrita, mínimo 60, y los **30 minutos son para las dos instancias juntas**. Cargado en `lib/simulador/tipeo.ts` y citado en `material/metodologia/mpd-formato-examen.md`.
 - [ ] **B-03** **Manual y preguntero del MPF**. Bloquea S-03 y la carga del simulador del MPF.
 - [x] **B-04** **Mail de Nueva Abogacía**. Bloquea L-07. → `abogacianueva@gmail.com`
-- [ ] **B-05** **Capturas reales del simulador** para la muestra. Bloquea toda la Tanda 7, y por eso va última.
+- [x] **B-05** **Capturas reales del simulador** para la muestra. → Resueltas. Salieron de las pantallas del propio simulador corriendo con preguntas reales del banco, tomadas contra el build de producción: teórico del MPF, práctico del MPF, teórico del MPD, tipeo del MPD y resultados. Están en `public/muestra/`. No hacía falta pedirlas: el simulador es nuestro y corre en local.
 - [ ] **B-07** **Las capturas del sistema de inscripción del MPD.** No es que falte buscarlas: **no existen en la web y no se pueden sacar de ahí.** `concursos.mpd.gov.ar` sirve una aplicación **Adobe Flex/Flash** (`SURH - MPD`, pide Flash Player 10.1) cuyo propio código tiene `var timelimit = new Date('2020-12-24')` y desde esa fecha expulsa a todo navegador que no sea Windows XP, Chromium 68 o IE. Por eso el manual hace instalar el `.msi`: es el envoltorio de escritorio de esa misma app. Las pantallas de los pasos 2, 3 y 4 sólo pueden salir de alguien que haga el trámite en una PC con Windows y saque las capturas a mano. Bloquea la parte de capturas de I-04.
   - Mientras tanto cada paso tiene un **esquema** dibujado a partir del manual, rotulado como esquema y no como captura. No lo reemplaza: el esquema ubica —dónde cae «Título Principal» entre nueve páginas, cuál es el camino de menús— y la captura muestra. Cuando lleguen, conviven.
   - Para sumarlas: los archivos van en `public/` y se agregan a `capturas` en `content/inscripcion/mpd.ts`, cada una con su `alt` y su `pie`.

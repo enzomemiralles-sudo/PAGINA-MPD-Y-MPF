@@ -5,7 +5,7 @@ import { Fondo } from "@/components/landing/Fondo";
 import { Cinta } from "@/components/landing/Cinta";
 import { Cabecera } from "@/components/landing/Cabecera";
 import { Hero } from "@/components/landing/Hero";
-import { MaquetaSimulador } from "@/components/landing/MaquetaSimulador";
+import { SeccionSimulador } from "@/components/landing/SeccionSimulador";
 import { Numeros } from "@/components/landing/Numeros";
 import { Cierre } from "@/components/landing/Cierre";
 import {
@@ -24,7 +24,7 @@ export default async function Landing() {
       <Cabecera />
       <main>
         <Hero />
-        <MaquetaSimulador />
+        <SeccionSimulador />
         <SeccionAsistente />
         <SeccionInscripcion hay={loQueHay(videos)} concursos={concursosConGuia()} />
         <Numeros metricas={metricas} />
