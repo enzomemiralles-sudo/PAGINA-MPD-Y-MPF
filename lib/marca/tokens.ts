@@ -132,4 +132,4 @@ export const TOKENS_DE_FONDO = ["fondo", "fondo-bajo", "tarjeta", "superficie"] 
 export const NUNCA_TEXTO = ["#059249", "#0059ba"] as const;
 
 /** Stops del gradiente del titular del hero (.brillo), sólo en la landing. */
-export const STOPS_BRILLO = ["#188B54", "#078C48", "#16A85B", "#F4F2ED", "#0088C4", "#00B9AE", "#0A8883"] as const;
+export const STOPS_BRILLO = ["#6FD39B", "#9FE0BA", "#F4F2ED", "#BFE9E4", "#3AD4C9"] as const;

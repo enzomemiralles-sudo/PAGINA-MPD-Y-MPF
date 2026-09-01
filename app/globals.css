@@ -84,11 +84,19 @@ p { color: var(--papel-tenue); }
    el tramo oscuro pasaba por todas las palabras del titular, que además es
    el LCP. Los tres stops suben en luminosidad conservando tono y saturación
    hasta 4,61:1. El recorrido de colores es el mismo. */
+/* El barrido de luz sobre «Ministerio Público».
+   Todas las paradas son claras, y no por gusto: el degradé anterior iba de
+   #188b54 a #0a8883, que sobre el negro del hero viejo pasaban raspando y
+   sobre la fotografía se caen a 2,5:1 —medido contra el píxel más claro que
+   queda detrás de la palabra—. Con la foto atrás el titular no puede tener
+   ninguna parada oscura. Las dos puntas son los --acento-texto de las dos
+   agrupaciones, así que el barrido va de verde a turquesa igual que la foto
+   partida que tiene detrás. */
 .brillo {
   background-image: linear-gradient(
     to right,
-    #188b54 0%, #078c48 12%, #16a85b 30%, #f4f2ed 50%,
-    #0088c4 70%, #00b9ae 86%, #0a8883 100%
+    #6fd39b 0%, #9fe0ba 20%, #f4f2ed 44%,
+    #bfe9e4 66%, #3ad4c9 86%, #6fd39b 100%
   );
   background-size: 200% auto;
   -webkit-background-clip: text; background-clip: text;
@@ -180,8 +188,17 @@ p { color: var(--papel-tenue); }
 .links a:hover::after, .pie-links a:hover::after { transform: scaleX(1); }
 
 /* ============ HERO ============ */
-.hero { padding-block: 3.5rem 1.5rem; text-align: center; display: flex; flex-direction: column; align-items: center; }
-@media (min-width: 768px) { .hero { padding-block: 5.5rem 2rem; } }
+/* Alto del preview: el titular va centrado sobre la fachada y con aire abajo,
+   así el edificio se ve y no queda de telón detrás del texto. El mínimo en
+   `rem` es para las pantallas apaisadas bajas, donde 92vh no alcanza para el
+   titular más la bajada. */
+.hero {
+  min-height: min(92vh, 46rem);
+  display: flex; flex-direction: column; justify-content: center; align-items: center;
+  text-align: center;
+  padding-block: 3.5rem 14vh;
+}
+@media (min-width: 768px) { .hero { padding-block: 5.5rem 18vh; } }
 
 /* La maqueta viene pegada al hero: es la foto del producto, no una sección
    aparte. Antes las separaba la tarjeta de la pregunta; sacada esa, el
@@ -381,36 +398,88 @@ p { color: var(--papel-tenue); }
 }
 .nota-prov b { color: var(--marca-revisar); font-variation-settings: "wdth" 100, "wght" 700; }
 
-/* ============ CINTA ARGENTINA ============ */
-.cinta-wrap { position: absolute; top: 0; left: 0; right: 0; height: 112vh; min-height: 640px; z-index: 1; pointer-events: none; overflow: hidden; }
-.cinta, .cinta-glint { position: absolute; inset: -8% -6%; mix-blend-mode: screen; transform-origin: 70% 55%; }
-.cinta { opacity: var(--cinta-op); animation: cintaDeriva 38s var(--suave) infinite alternate, cintaRespira 14s ease-in-out infinite; }
-.cinta img { object-fit: cover; object-position: 72% 58%; }
-@keyframes cintaDeriva {
-  from { transform: translate3d(0, 0, 0) scale(1.02) rotate(0deg); }
-  to { transform: translate3d(-2.6vw, 1.8vh, 0) scale(1.09) rotate(-1.4deg); }
+/* ============ ESCENA DEL HERO ============
+   La facultad de frente detrás del titular. Reemplaza a la cinta argentina.
+
+   Tres estados. En las dos puertas se ve una sola foto, la de esa
+   agrupación. En la pública —que es `dual` y es el estado que ve todo el
+   mundo— se ven las dos partidas al medio, y el corte cae sobre el eje de
+   simetría de la fachada.
+
+   El velo es del preview y hace todo el trabajo de legibilidad: oscurece
+   fuerte arriba, se abre en el medio para que se vea el edificio, y vuelve a
+   cerrar abajo para entregarle el fondo a la primera sección. La elipse del
+   centro es la que sostiene el titular.
+   ============================================================ */
+.escena {
+  position: absolute; top: 0; left: 0; right: 0;
+  height: 112vh; min-height: 640px;
+  z-index: 1; pointer-events: none; overflow: hidden;
 }
-@keyframes cintaRespira { 0%, 100% { filter: brightness(1); } 50% { filter: brightness(1.14); } }
-.cinta-glint {
-  opacity: var(--cinta-op);
-  -webkit-mask-image: url("/marca/cinta-argentina.jpg"); mask-image: url("/marca/cinta-argentina.jpg");
-  -webkit-mask-size: cover; mask-size: cover;
-  -webkit-mask-position: 72% 58%; mask-position: 72% 58%;
-  background: linear-gradient(105deg, transparent 38%, rgba(255,255,255,.55) 48%, rgba(255,255,255,.85) 51%, transparent 62%);
-  background-size: 260% 100%;
-  animation: cintaGlint 9s linear infinite, cintaDeriva 38s var(--suave) infinite alternate;
+.escena-capa {
+  position: absolute; inset: 0;
+  transition: opacity var(--t-sec) var(--suave);
+  animation: respira 60s ease-in-out infinite alternate;
+  -webkit-mask-image: var(--corte, none);
+  mask-image: var(--corte, none);
 }
-@keyframes cintaGlint { from { background-position: 180% 0; } to { background-position: -80% 0; } }
-.cinta-wrap::after {
-  content: ""; position: absolute; inset: 0;
-  background: radial-gradient(ellipse 62% 42% at 50% 26%, var(--tinta) 0%, rgba(8,9,10,.75) 45%, transparent 72%),
-              linear-gradient(to bottom, var(--tinta) 0%, transparent 18%, transparent 74%, var(--tinta) 100%);
+.escena-capa img { object-fit: cover; object-position: center 62%; }
+
+/* Dual: cada mitad la suya, con el cruce repartido en una banda de 12% sobre
+   el eje. Con un corte a filo el borde se lee como un error de montaje —en el
+   cielo no hay nada que lo justifique—; repartido, las dos gradaciones se
+   funden y queda un edificio iluminado desde dos lados. */
+.escena-capa[data-de="nexo"] {
+  --corte: linear-gradient(to right, #000 0%, #000 44%, transparent 56%);
 }
-.cinta, .cinta-glint { transition: opacity var(--t-sec) var(--suave); }
+.escena-capa[data-de="na"] {
+  --corte: linear-gradient(to right, transparent 44%, #000 56%, #000 100%);
+}
+
+/* Elegida una puerta, su foto toma el cuadro entero y la otra se va. */
+html[data-marca="nexo"] .escena-capa[data-de="nexo"],
+html[data-marca="na"] .escena-capa[data-de="na"] { --corte: none; }
+html[data-marca="nexo"] .escena-capa[data-de="na"],
+html[data-marca="na"] .escena-capa[data-de="nexo"] { opacity: 0; }
+
+@keyframes respira {
+  from { transform: scale(1.02) translate3d(0, 0, 0); }
+  to { transform: scale(1.06) translate3d(0, -1.4%, 0); }
+}
+
+.escena-velo {
+  position: absolute; inset: 0;
+  background:
+    linear-gradient(
+      to bottom,
+      rgba(8, 9, 10, 0.94) 0%,
+      rgba(8, 9, 10, 0.55) 26%,
+      rgba(8, 9, 10, 0.18) 48%,
+      rgba(8, 9, 10, 0.72) 82%,
+      var(--fondo) 100%
+    ),
+    radial-gradient(ellipse 70% 50% at 50% 34%, rgba(8, 9, 10, 0.72) 0%, transparent 72%);
+}
+
+/* En el teléfono la escena deja de ser fondo y pasa a ser banda.
+   La foto es 1800×734, casi 2,5:1. Estirada a un hueco de 375×909 —0,41:1—
+   `cover` se queda con una tajada de 300 px de ancho de los 1800: dos fustes
+   de columna, sin frontis, sin escalinata, sin edificio. No hay encuadre que
+   arregle esa diferencia de proporción, así que cambia el rol: arriba una
+   banda de 42vh, donde entra la mitad del ancho original y el frontis se ve, y
+   el titular abajo sobre fondo limpio. */
 @media (max-width: 640px) {
-  .cinta img { object-position: 64% 62%; }
-  .cinta-glint { -webkit-mask-position: 64% 62%; mask-position: 64% 62%; }
+  .escena { height: 42vh; min-height: 268px; max-height: 340px; }
+  .escena-capa img { object-position: center 42%; }
+  .escena-velo {
+    background:
+      linear-gradient(to bottom, rgba(8, 9, 10, 0.82) 0%, rgba(8, 9, 10, 0.28) 34%, rgba(8, 9, 10, 0.55) 72%, var(--fondo) 100%);
+  }
+  /* El titular arranca debajo de la banda. */
+  .hero { padding-block: calc(42vh - 74px) 3rem; min-height: 0; }
 }
+
+@media (prefers-reduced-motion: reduce) { .escena-capa { animation: none; } }
 
 /* ============ SISTEMA DE MOVIMIENTO ============ */
 .rev {
@@ -427,8 +496,6 @@ h1, h2 { text-wrap: balance; }
   .rev, .revelado > * { opacity: 1 !important; transform: none !important; transition: none !important; }
   .vidrio::after { display: none; }
   .mancha { animation: none !important; }
-  .cinta, .cinta-glint { animation: none !important; }
-  .cinta-glint { display: none; }
   .brillo { animation: none; background-position: 50% center; }
   html { scroll-behavior: auto; }
 }
@@ -480,8 +547,8 @@ h1, h2 { text-wrap: balance; }
   overflow: hidden;
 }
 
-/* El marco pinta el fondo. La cinta va encima con z-index 0 y el contenido
-   arriba con z-index 2: si el fondo lo pintara .auth-pantalla, taparía la cinta. */
+/* El marco pinta el fondo y el halo; el contenido va arriba con z-index 2. Si
+   el fondo lo pintara .auth-pantalla, taparía el halo. */
 .auth-marco {
   background: var(--fondo);
   color: var(--texto);
@@ -615,51 +682,20 @@ body { transition: background var(--t-sec) var(--suave), color var(--t-sec) var(
 html[data-marca="nexo"] .app-cuerpo h1 { --h2-estilo: italic; }
 
 /* ============================================================
-   LA CINTA COMO FONDO DE LAS PANTALLAS DE INGRESO
-   Sobre negro la cinta se compone con mix-blend-mode: screen. Sobre papel eso
-   no sirve: el JPEG trae el negro pegado. Se la enmascara consigo misma por
-   luminancia, así el negro cae y quedan sólo las franjas con su color real.
+   EL FONDO DE LAS PANTALLAS DE INGRESO
+   Sin fotografía, y a propósito: la arquitectura de imagen del proyecto deja
+   la facultad para la portada y para la home de cada puerta, y no la pone en
+   formularios. Antes acá iba la cinta argentina; se retiró con ella.
+
+   Queda un halo del color de la piel, que en el ingreso es la neutra. Es lo
+   justo para que la tarjeta no flote sobre un plano liso.
    ============================================================ */
-.cinta-fondo { position: fixed; inset: 0; z-index: 0; pointer-events: none; overflow: hidden; }
-.cinta-fondo::before {
+.auth-marco::before {
   content: "";
-  position: absolute; inset: -8% -6%;
-  background-image: url("/marca/cinta-argentina.jpg");
-  background-size: cover;
-  background-position: 72% 58%;
-  -webkit-mask-image: url("/marca/cinta-argentina.jpg");
-  mask-image: url("/marca/cinta-argentina.jpg");
-  -webkit-mask-size: cover; mask-size: cover;
-  -webkit-mask-position: 72% 58%; mask-position: 72% 58%;
-  -webkit-mask-repeat: no-repeat; mask-repeat: no-repeat;
-  -webkit-mask-source-type: luminance;
-  mask-mode: luminance;
-  opacity: 0.65;
-  animation: cintaDeriva 38s var(--suave) infinite alternate;
-}
-/* Sobre oscuro la cinta ya sabe componerse sola: vuelve el screen. */
-.cinta-fondo::before {
-  -webkit-mask-image: none; mask-image: none;
-  mix-blend-mode: screen;
-  opacity: 0.62;
-}
-/* Deja limpio el centro, donde va la tarjeta. */
-.cinta-fondo::after {
-  content: ""; position: absolute; inset: 0;
-  background: radial-gradient(ellipse 46% 42% at 50% 50%,
-    var(--fondo) 0%, color-mix(in srgb, var(--fondo) 82%, transparent) 48%, transparent 74%);
-}
-/* En el celular la tarjeta ocupa casi todo el ancho: si la viñeta es la misma,
-   la cinta no se ve. Se achica y se corre, para que asome arriba y al costado. */
-@media (max-width: 640px) {
-  .cinta-fondo::before { background-position: 62% 46%; -webkit-mask-position: 62% 46%; mask-position: 62% 46%; opacity: 0.8; }
-  .cinta-fondo::after {
-    background: radial-gradient(ellipse 62% 26% at 50% 52%,
-      var(--fondo) 0%, color-mix(in srgb, var(--fondo) 70%, transparent) 55%, transparent 85%);
-  }
-}
-@media (prefers-reduced-motion: reduce) {
-  .cinta-fondo::before { animation: none; }
+  position: fixed; inset: 0; z-index: 0; pointer-events: none;
+  background:
+    radial-gradient(760px 520px at 50% -10%, color-mix(in srgb, var(--mancha-b) 12%, transparent) 0%, transparent 70%),
+    radial-gradient(620px 460px at 50% 110%, color-mix(in srgb, var(--mancha-a) 10%, transparent) 0%, transparent 72%);
 }
 
 /* ---------- modal «Contanos un poco más» ---------- */

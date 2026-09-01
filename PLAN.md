@@ -116,11 +116,14 @@ Ordenado por lo que cuesta y lo que desbloquea.
 11. ✅ Conectar las fotos de perspectiva, con `next/image`, AVIF con respaldo
     WebP y `sizes` correcto.
 
-**Fase D · la pestaña pública**
-12. Portar el hero nuevo de `landing-preview.html`: la foto frontal reemplaza
-    a la cinta.
-13. Quitar la cinta argentina: `Cinta.tsx`, `CintaFondo.tsx`, `--cinta-op`,
-    `--cinta-img` y su uso en `PantallaAuth`.
+**Fase D · la pestaña pública** — hecha
+12. ✅ Portar el hero nuevo de `landing-preview.html`: la foto frontal
+    reemplaza a la cinta. El preview cruza las dos capas por `data-marca` y no
+    contempla `dual`, que es el estado en que está siempre la pestaña pública;
+    ahí se muestran las dos partidas sobre el eje de simetría de la fachada.
+13. ✅ Quitar la cinta argentina: `Cinta.tsx`, `CintaFondo.tsx` y su uso en
+    `PantallaAuth`. Los tokens `--cinta-op` y `--cinta-img` ya no existían: se
+    fueron con la reescritura de la fase A.
 
 **Fase E · accesibilidad y datos**
 14. Las opciones pasan a ser radios reales dentro de `fieldset` con `legend`.

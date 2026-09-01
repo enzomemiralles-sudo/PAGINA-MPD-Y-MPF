@@ -102,12 +102,38 @@ describe("contraste AA", () => {
     }
   });
 
-  it("cada stop del gradiente del titular llega a AA", () => {
-    const fondo = resolver(PIELES.dual.fondo, [0, 0, 0]);
+  /**
+   * El barrido de luz del titular de la portada, medido contra la fotografía
+   * y no contra el fondo del token.
+   *
+   * Desde que detrás del hero va la facultad, el titular ya no se lee sobre un
+   * negro conocido sino sobre lo que queda de la foto tras el velo. Medido en
+   * el navegador —máscara de cobertura de la palabra, 21.560 píxeles, todo el
+   * recorrido del barrido— el píxel más claro que le queda detrás es
+   * rgb(48,63,68).
+   *
+   * Medir contra `PIELES.dual.fondo` era lo correcto cuando el hero era negro
+   * plano y dejó de serlo con la foto: el degradé anterior pasaba ese test y
+   * en pantalla la palabra desaparecía durante parte del barrido.
+   */
+  const DETRAS_DEL_TITULAR = [48, 63, 68] as const;
+
+  it("cada stop del gradiente del titular llega a AA sobre la fotografía", () => {
     for (const stop of STOPS_BRILLO) {
-      const r = contraste(resolver(stop, fondo), fondo);
+      const r = contraste(resolver(stop, DETRAS_DEL_TITULAR), DETRAS_DEL_TITULAR);
       expect(r, `${stop} da ${r.toFixed(2)}:1`).toBeGreaterThanOrEqual(AA_TEXTO);
     }
+  });
+
+  it("el CSS y el espejo de TypeScript dicen los mismos colores", () => {
+    const globales = readFileSync(resolve(__dirname, "../app/globals.css"), "utf8");
+    const bloque = globales.match(/\.brillo\s*\{[^}]*\}/)?.[0] ?? "";
+    // Ordenados y sin repetir: el degradé cierra volviendo al primer color
+    // para que el barrido empalme, y esa repetición no es un color más.
+    const unicos = (xs: string[]) => [...new Set(xs)].sort();
+    const enCss = [...bloque.matchAll(/#[0-9a-f]{6}/gi)].map((m) => m[0].toUpperCase());
+    expect(enCss.length).toBeGreaterThan(0);
+    expect(unicos(enCss)).toEqual(unicos([...STOPS_BRILLO]));
   });
 });
 

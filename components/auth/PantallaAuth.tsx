@@ -1,7 +1,6 @@
 import { AplicarPiel } from "@/components/marca/AplicarPiel";
 import { LogoNexo } from "@/components/marca/LogoNexo";
 import { Tarjeta } from "@/components/marca/Tarjeta";
-import { CintaFondo } from "@/components/marca/CintaFondo";
 import { LogoNuevaAbogacia } from "@/components/marca/LogoNuevaAbogacia";
 import { pieLogos } from "@/content/auth";
 
@@ -24,11 +23,10 @@ export function PantallaAuth({
 }) {
   return (
     // La piel va en este marco, no sólo en <html>: así el ingreso se ve bien
-    // aunque el script del head no haya corrido. El marco pinta el fondo, la
-    // cinta va encima y el contenido arriba de todo.
+    // aunque el script del head no haya corrido. El marco pinta el fondo y el
+    // contenido va arriba.
     <div className="auth-marco" data-marca="neutro">
       <AplicarPiel marca="neutro" />
-      <CintaFondo />
       <main className="auth-pantalla">
         <Tarjeta className={`auth-caja${ancha ? " perfil-caja" : ""}`}>{children}</Tarjeta>
 
