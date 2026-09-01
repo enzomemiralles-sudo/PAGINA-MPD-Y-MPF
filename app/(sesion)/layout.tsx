@@ -25,7 +25,7 @@ export default async function LayoutSesion({ children }: { children: React.React
 
   return (
     <>
-      <AplicarPiel marca={perfil.marca} superficie="clara" />
+      <AplicarPiel marca={perfil.marca} />
       <CabeceraApp marca={perfil.marca} revisor={perfil.rol === "revisor"} />
       {children}
     </>

@@ -45,8 +45,6 @@ export function MarcaProvider({ children }: { children: React.ReactNode }) {
   useEffect(() => {
     if (laFijaElServidor) return;
     document.documentElement.setAttribute("data-marca", marca);
-    // Lo público es siempre oscuro: la landing se diseñó así.
-    document.documentElement.setAttribute("data-superficie", "oscura");
   }, [marca, laFijaElServidor]);
 
   const cambiar = useCallback((m: Marca) => {

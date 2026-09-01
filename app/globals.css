@@ -66,12 +66,12 @@ section { position: relative; z-index: 2; }
 /* ============ TIPOGRAFÍA ============ */
 h1 {
   font-size: clamp(2.35rem, 8.5vw, 5.1rem); line-height: 0.97; letter-spacing: -0.035em;
-  font-variation-settings: "wdth" var(--ancho-titulo), "wght" 800;
+  font-variation-settings: "wdth" var(--ancho-h), "wght" 800;
   transition: font-variation-settings var(--t-sec) var(--suave);
 }
 h2 {
   font-size: clamp(1.75rem, 4.6vw, 3rem); line-height: 1.05; letter-spacing: -0.028em;
-  font-variation-settings: "wdth" var(--ancho-h2), "wght" 700;
+  font-variation-settings: "wdth" var(--ancho-h), "wght" 700;
   font-style: var(--h2-estilo, normal);
   transition: font-variation-settings var(--t-sec) var(--suave);
 }
@@ -96,7 +96,7 @@ p { color: var(--papel-tenue); }
   animation: barrido 7s linear infinite;
 }
 @keyframes barrido { 0% { background-position: -200% center; } 100% { background-position: 200% center; } }
-.eyebrow { display: inline-flex; align-items: center; gap: 0.55rem; color: var(--papel-débil); }
+.eyebrow { display: inline-flex; align-items: center; gap: 0.55rem; color: var(--papel-debil); }
 .eyebrow::before {
   content: ""; width: 6px; height: 6px; border-radius: 50%;
   background: var(--acento-texto); transition: background var(--t-sec) var(--suave);
@@ -140,7 +140,7 @@ p { color: var(--papel-tenue); }
 .btn-p:hover:not(:disabled) { opacity: 0.9; transform: translateY(-1px); }
 .btn-s { background: transparent; color: var(--texto); box-shadow: inset 0 0 0 1px var(--borde-fuerte); }
 .btn-s:hover:not(:disabled) { background: color-mix(in srgb, var(--texto) 6%, transparent); box-shadow: inset 0 0 0 1px var(--acento-texto); }
-.btn-a { background: var(--relleno); color: #fff; }
+.btn-a { background: var(--relleno); color: var(--sobre-relleno); }
 .btn-acento { background: var(--acento); color: var(--sobre-acento); }
 :focus-visible { outline: 2px solid var(--acento-texto); outline-offset: 3px; border-radius: 4px; }
 
@@ -249,7 +249,7 @@ p { color: var(--papel-tenue); }
 .numeros {
   display: flex; flex-wrap: wrap; justify-content: center; gap: 0.6rem 1.6rem; text-align: center;
   font-family: var(--fuente-mono), monospace; font-size: 0.68rem; letter-spacing: 0.07em;
-  text-transform: uppercase; color: var(--papel-débil);
+  text-transform: uppercase; color: var(--papel-debil);
 }
 .numeros b { color: var(--papel); font-variation-settings: "wght" 500; }
 
@@ -270,13 +270,13 @@ p { color: var(--papel-tenue); }
 @media (min-width: 820px) { .puertas-grid { grid-template-columns: repeat(3, 1fr); } }
 .pcard { padding: 1.6rem; display: flex; flex-direction: column; height: 100%; }
 .pcard h3 { margin-bottom: 0.3rem; }
-.pcard .quien { font-size: 0.78rem; color: var(--papel-débil); margin-bottom: 1.1rem; }
+.pcard .quien { font-size: 0.78rem; color: var(--papel-debil); margin-bottom: 1.1rem; }
 .pcard ul { list-style: none; flex: 1; margin-bottom: 1.3rem; }
 .pcard li { display: flex; gap: 0.6rem; font-size: 0.84rem; color: var(--papel-tenue); padding: 0.42rem 0; line-height: 1.4; }
 .pcard li::before { content: ""; width: 5px; height: 5px; border-radius: 50%; background: var(--acento-texto); flex-shrink: 0; margin-top: 0.5rem; }
 .pcard.n li::before { background: #53b384; }
 .pcard.a li::before { background: #00b9ae; }
-.pcard.o li::before { background: var(--papel-débil); }
+.pcard.o li::before { background: var(--papel-debil); }
 .porque { max-width: 38rem; margin: 2.5rem auto 0; font-size: 0.86rem; line-height: 1.6; }
 
 /* ============ CAPTURA DE EMAIL ============ */
@@ -286,7 +286,7 @@ p { color: var(--papel-tenue); }
   background: rgba(244, 242, 237, 0.05); box-shadow: inset 0 0 0 1px var(--linea-fuerte);
   color: var(--papel); font-family: inherit; font-size: 0.9rem;
 }
-.captura input::placeholder { color: var(--papel-débil); }
+.captura input::placeholder { color: var(--papel-debil); }
 .captura input:focus-visible { box-shadow: inset 0 0 0 1px var(--acento-texto); }
 .captura-msg { margin-top: 0.9rem; font-size: 0.85rem; }
 .captura-msg.ok { color: var(--ok); }
@@ -314,7 +314,7 @@ p { color: var(--papel-tenue); }
 .pagina-texto li::marker { color: var(--acento-texto); }
 .pagina-texto-fecha {
   margin-top: 1.2rem; font-family: var(--fuente-mono), monospace;
-  font-size: 0.8rem; letter-spacing: 0.04em; color: var(--papel-débil);
+  font-size: 0.8rem; letter-spacing: 0.04em; color: var(--papel-debil);
 }
 .pagina-texto-firma {
   margin-top: 3.5rem; padding-top: 1.6rem; border-top: 1px solid var(--linea);
@@ -334,7 +334,7 @@ p { color: var(--papel-tenue); }
 .contacto-correos li { display: flex; flex-direction: column; gap: 0.15rem; }
 .contacto-correos .organizacion {
   font-family: var(--fuente-mono), monospace; font-size: 0.68rem;
-  letter-spacing: 0.11em; text-transform: uppercase; color: var(--papel-débil);
+  letter-spacing: 0.11em; text-transform: uppercase; color: var(--papel-debil);
 }
 .contacto-correos a { color: var(--acento-texto); font-size: 1.02rem; overflow-wrap: anywhere; }
 .contacto-redes { display: flex; flex-wrap: wrap; gap: 0.6rem; margin-top: 1.2rem; }
@@ -354,7 +354,7 @@ p { color: var(--papel-tenue); }
   outline: 2px solid var(--acento-texto); outline-offset: 2px;
 }
 .contacto-form [aria-invalid="true"] { border-color: var(--error); }
-.contacto-form-pie { font-size: 0.86rem; color: var(--papel-débil); }
+.contacto-form-pie { font-size: 0.86rem; color: var(--papel-debil); }
 
 .contacto-listo {
   margin-top: 1.4rem; padding: 1.4rem 1.5rem; border-radius: 14px; max-width: 34rem;
@@ -370,7 +370,7 @@ p { color: var(--papel-tenue); }
 
 /* ============ PIE ============ */
 .pie { border-top: 1px solid var(--linea); padding: 3rem 0 6rem; margin-top: 2rem; }
-.aviso { font-size: 0.78rem; color: var(--papel-débil); line-height: 1.6; max-width: 42rem; }
+.aviso { font-size: 0.78rem; color: var(--papel-debil); line-height: 1.6; max-width: 42rem; }
 .pie-links { display: flex; flex-wrap: wrap; gap: 1.2rem; margin-top: 1.5rem; font-size: 0.8rem; }
 .pie-links a { color: var(--papel-tenue); }
 .nota-prov {
@@ -466,19 +466,19 @@ h1, h2 { text-wrap: balance; }
 }
 
 /* ============================================================
-   LA APP — superficie clara, detrás del login.
-   Todo por tokens de rol: las mismas clases sirven en las dos
-   superficies sin duplicar reglas por marca.
+   LA APP — detrás del login.
+   Todo por tokens de rol: las mismas clases sirven en las cuatro
+   pieles sin duplicar reglas por marca.
    ============================================================ */
 .tarjeta-app {
   background: var(--tarjeta);
   border-radius: 16px;
-  box-shadow: 0 1px 2px rgba(8, 9, 10, 0.04), 0 8px 24px rgba(8, 9, 10, 0.06);
-  box-shadow: inset 0 0 0 1px var(--borde), 0 8px 24px rgba(8, 9, 10, 0.06);
+  /* Sobre fondo oscuro una sombra proyectada no se ve: lo que separa la
+     tarjeta del fondo es el borde. */
+  box-shadow: inset 0 0 0 1px var(--borde);
   position: relative;
   overflow: hidden;
 }
-html[data-superficie="oscura"] .tarjeta-app { box-shadow: inset 0 0 0 1px var(--borde); }
 
 /* El marco pinta el fondo. La cinta va encima con z-index 0 y el contenido
    arriba con z-index 2: si el fondo lo pintara .auth-pantalla, taparía la cinta. */
@@ -608,7 +608,7 @@ body { transition: background var(--t-sec) var(--suave), color var(--t-sec) var(
 .app-cuerpo { padding-block: 2.5rem 4rem; }
 .app-cuerpo h1 {
   font-size: clamp(1.7rem, 5vw, 2.4rem); line-height: 1.1; letter-spacing: -0.025em;
-  font-variation-settings: "wdth" var(--ancho-titulo), "wght" 700;
+  font-variation-settings: "wdth" var(--ancho-h), "wght" 700;
   font-style: var(--h2-estilo, normal); color: var(--texto);
   transition: font-variation-settings var(--t-sec) var(--suave);
 }
@@ -638,7 +638,7 @@ html[data-marca="nexo"] .app-cuerpo h1 { --h2-estilo: italic; }
   animation: cintaDeriva 38s var(--suave) infinite alternate;
 }
 /* Sobre oscuro la cinta ya sabe componerse sola: vuelve el screen. */
-html[data-superficie="oscura"] .cinta-fondo::before {
+.cinta-fondo::before {
   -webkit-mask-image: none; mask-image: none;
   mix-blend-mode: screen;
   opacity: 0.62;
@@ -733,7 +733,7 @@ html[data-superficie="oscura"] .cinta-fondo::before {
 
 .sim-titulo {
   font-size: clamp(1.35rem, 4vw, 1.9rem); line-height: 1.15; letter-spacing: -0.02em;
-  font-variation-settings: "wdth" var(--ancho-titulo), "wght" 700;
+  font-variation-settings: "wdth" var(--ancho-h), "wght" 700;
   font-style: var(--h2-estilo, normal);
 }
 html[data-marca="nexo"] .sim-titulo { --h2-estilo: italic; }
@@ -804,7 +804,7 @@ html[data-marca="nexo"] .sim-titulo { --h2-estilo: italic; }
 }
 .sim-cierre-titulo {
   font-size: clamp(1.6rem, 5.5vw, 2.6rem); line-height: 1.05; letter-spacing: -0.03em;
-  font-variation-settings: "wdth" var(--ancho-titulo), "wght" 750;
+  font-variation-settings: "wdth" var(--ancho-h), "wght" 750;
   font-style: var(--h2-estilo, normal);
 }
 html[data-marca="nexo"] .sim-cierre-titulo { --h2-estilo: italic; }
@@ -1143,14 +1143,14 @@ html[data-marca="nexo"] .sim-cierre-titulo { --h2-estilo: italic; }
    relleno o hueco según tenga fuente o no.
 
    Los tres colores son --ok, --marca-revisar y --error, que ya existen y
-   ya pasan AA en las dos superficies: tests/contraste.test.ts los mide.
+   ya pasan AA en las cuatro pieles: tests/contraste.test.ts los mide.
    ============================================================ */
 .asis { display: flex; flex-direction: column; gap: 2.75rem; }
 @media (min-width: 768px) { .asis { gap: 3.5rem; } }
 
 .asis-titulo {
   font-size: clamp(1.3rem, 4vw, 1.8rem); line-height: 1.15; letter-spacing: -0.02em;
-  font-variation-settings: "wdth" var(--ancho-titulo), "wght" 700;
+  font-variation-settings: "wdth" var(--ancho-h), "wght" 700;
   font-style: var(--h2-estilo, normal);
 }
 html[data-marca="nexo"] .asis-titulo { --h2-estilo: italic; }
@@ -1536,13 +1536,13 @@ html[data-marca="nexo"] .asis-titulo { --h2-estilo: italic; }
    se puede tipear y no hace nada es peor que no mostrarlo. */
 .asis-muestra-campo {
   font-size: 0.9rem; padding: 0.8rem 0.9rem; border-radius: 10px;
-  background: rgba(244, 242, 237, 0.05); color: var(--papel-débil);
+  background: rgba(244, 242, 237, 0.05); color: var(--papel-debil);
   box-shadow: inset 0 0 0 1px var(--linea);
 }
 /* Sin versalitas: el texto de A-14 va como lo escribió el proyecto, y la
    clase .mono lo pasaba entero a mayúsculas. */
 .asis-muestra-ejemplo {
-  font-size: 0.78rem; margin-top: 0.6rem; color: var(--papel-débil);
+  font-size: 0.78rem; margin-top: 0.6rem; color: var(--papel-debil);
   text-transform: none; letter-spacing: 0;
 }
 .asis-muestra-cta { margin-top: 0.9rem; }
@@ -1550,7 +1550,7 @@ html[data-marca="nexo"] .asis-titulo { --h2-estilo: italic; }
   list-style: none; margin: 1.1rem 0 0; padding: 0;
   display: flex; flex-direction: column; gap: 0.45rem;
 }
-.asis-muestra-sellos li { font-size: 0.86rem; line-height: 1.5; color: var(--papel-débil); }
+.asis-muestra-sellos li { font-size: 0.86rem; line-height: 1.5; color: var(--papel-debil); }
 
 /* ---------- las más preguntadas (A-10) ---------- */
 .asis-top {
@@ -1595,7 +1595,7 @@ html[data-marca="nexo"] .asis-titulo { --h2-estilo: italic; }
 
 .ins-titulo {
   font-size: clamp(1.3rem, 4vw, 1.8rem); line-height: 1.15; letter-spacing: -0.02em;
-  font-variation-settings: "wdth" var(--ancho-titulo), "wght" 700;
+  font-variation-settings: "wdth" var(--ancho-h), "wght" 700;
   font-style: var(--h2-estilo, normal);
 }
 html[data-marca="nexo"] .ins-titulo { --h2-estilo: italic; }
@@ -1913,13 +1913,13 @@ html[data-marca="nexo"] .ins-titulo { --h2-estilo: italic; }
 .ins-muestra-concursos { display: grid; gap: 1rem; }
 @media (min-width: 560px) { .ins-muestra-concursos { grid-template-columns: repeat(auto-fit, minmax(15rem, 1fr)); } }
 .ins-muestra-concurso { margin: 0.7rem 0 0.2rem; font-size: 1.1rem; line-height: 1.25; }
-.ins-muestra-cargo { font-size: 0.87rem; color: var(--papel-débil); }
+.ins-muestra-cargo { font-size: 0.87rem; color: var(--papel-debil); }
 .ins-muestra-cta { margin-top: 1rem; }
 .ins-muestra-destacados {
   list-style: none; margin: 2rem 0 0; padding: 0;
   display: flex; flex-wrap: wrap; gap: 0.6rem 1.6rem;
 }
-.ins-muestra-destacados li { font-size: 0.9rem; line-height: 1.5; color: var(--papel-débil); }
+.ins-muestra-destacados li { font-size: 0.9rem; line-height: 1.5; color: var(--papel-debil); }
 .ins-muestra-cierre {
   margin-top: 1rem; padding: 1.3rem 1.4rem; border-radius: 14px; max-width: 34rem;
   background: rgba(244, 242, 237, 0.04); box-shadow: inset 0 0 0 1px var(--linea);
@@ -2055,7 +2055,7 @@ html[data-marca="nexo"] .ins-titulo { --h2-estilo: italic; }
 .sim-muestra-cabeza { display: flex; flex-direction: column; align-items: flex-start; gap: 0.7rem; }
 .sim-muestra-titulo {
   font-size: clamp(1.9rem, 6vw, 3rem); line-height: 1.05; letter-spacing: -0.03em;
-  font-variation-settings: "wdth" var(--ancho-h2), "wght" 700; color: var(--papel);
+  font-variation-settings: "wdth" var(--ancho-h), "wght" 700; color: var(--papel);
   margin-top: 0.6rem;
 }
 .sim-muestra-bajada {
@@ -2084,7 +2084,7 @@ html[data-marca="nexo"] .ins-titulo { --h2-estilo: italic; }
   display: flex; flex-wrap: wrap; gap: 0.5rem 0.7rem;
 }
 .sim-muestra-frases li {
-  font-size: 0.86rem; line-height: 1.4; color: var(--papel-débil);
+  font-size: 0.86rem; line-height: 1.4; color: var(--papel-debil);
   padding: 0.4rem 0.75rem; border-radius: 999px;
   box-shadow: inset 0 0 0 1px var(--linea-fuerte);
 }
@@ -2132,6 +2132,72 @@ html[data-marca="nexo"] .ins-titulo { --h2-estilo: italic; }
 }
 .sim-muestra-cierre-titulo {
   font-size: clamp(1.4rem, 4.6vw, 2.1rem); line-height: 1.15; letter-spacing: -0.025em;
-  font-variation-settings: "wdth" var(--ancho-h2), "wght" 700; color: var(--papel);
+  font-variation-settings: "wdth" var(--ancho-h), "wght" 700; color: var(--papel);
   max-width: 20ch;
 }
+
+/* ============================================================
+   /pieles · la página de control.
+   Cada bloque declara su propia data-marca, así que las cuatro pieles
+   conviven en la misma pantalla y se comparan sin recargar.
+   ============================================================ */
+.pieles { display: flex; flex-direction: column; gap: 2rem; }
+.pieles-cabeza { display: flex; flex-direction: column; gap: 0.6rem; }
+.pieles-bajada { color: var(--texto-tenue); max-width: 58ch; line-height: 1.6; }
+.pieles-nota { color: var(--texto-debil); font-size: 0.86rem; max-width: 58ch; line-height: 1.6; }
+
+.pieles-grilla { display: grid; gap: 1.25rem; }
+@media (min-width: 900px) { .pieles-grilla { grid-template-columns: 1fr 1fr; } }
+
+.piel {
+  background: var(--fondo); color: var(--texto);
+  border-radius: 16px; overflow: hidden;
+  box-shadow: inset 0 0 0 1px var(--borde);
+}
+.piel-cabeza {
+  display: flex; align-items: baseline; gap: 0.7rem;
+  padding: 0.9rem 1.1rem; border-bottom: 1px solid var(--borde);
+  background: var(--fondo-bajo);
+}
+.piel-marca { color: var(--acento-texto); font-size: 0.68rem; }
+.piel-donde { color: var(--texto-debil); font-size: 0.8rem; }
+
+.piel-cuerpo { display: flex; flex-direction: column; gap: 1.4rem; padding: 1.25rem 1.1rem 1.5rem; }
+.piel-bloque { display: flex; flex-direction: column; gap: 0.5rem; }
+.piel-rotulo { color: var(--texto-debil); font-size: 0.62rem; letter-spacing: 0.11em; text-transform: uppercase; }
+
+.piel-titulo {
+  font-size: clamp(1.15rem, 3.6vw, 1.5rem); line-height: 1.15; letter-spacing: -0.02em;
+  font-variation-settings: "wdth" var(--ancho-h), "wght" 700;
+  font-style: var(--ital-estilo, normal);
+}
+/* La itálica es de Nexo y nada más. Sale del token, no de un if. */
+html[data-marca="nexo"] .piel-titulo,
+[data-marca="nexo"] .piel-titulo { --ital-estilo: italic; }
+
+.piel-botones { display: flex; flex-wrap: wrap; gap: 0.6rem; }
+.piel-parrafo { color: var(--texto-tenue); font-size: 0.92rem; line-height: 1.65; max-width: 46ch; }
+.piel-parrafo a { color: var(--acento-texto); }
+
+.piel-tarjeta { display: flex; flex-direction: column; gap: 0.3rem; padding: 1rem 1.1rem; }
+.piel-tarjeta-rotulo { color: var(--acento-texto); font-size: 0.62rem; letter-spacing: 0.11em; text-transform: uppercase; }
+.piel-tarjeta-cabeza { font-size: 1rem; font-variation-settings: "wdth" 100, "wght" 650; }
+.piel-divisor { border: none; height: 1px; background: var(--borde-fuerte); margin: 0; }
+
+/* ---- la zona de corrección ----
+   Acá el acento de marca está prohibido: sólo neutros y los dos semánticos.
+   Y el estado nunca se comunica sólo por color — hay ícono y cambia el
+   grosor del borde, que es lo que hace que funcione en escala de grises y
+   para quien no distingue el verde del rojo. */
+.piel-opciones { list-style: none; margin: 0; padding: 0; display: flex; flex-direction: column; gap: 0.4rem; }
+.piel-op {
+  display: flex; align-items: center; gap: 0.7rem;
+  padding: 0.65rem 0.8rem; border-radius: 10px;
+  background: var(--tarjeta); box-shadow: inset 0 0 0 1px var(--borde);
+  font-size: 0.9rem; line-height: 1.4;
+}
+.piel-op-clave { color: var(--texto-debil); font-size: 0.7rem; }
+.piel-op-marca { margin-left: auto; font-size: 1rem; color: var(--tono); }
+.piel-op[data-estado="correcta"] { box-shadow: inset 0 0 0 2px var(--ok); --tono: var(--ok); }
+.piel-op[data-estado="incorrecta"] { box-shadow: inset 0 0 0 2px var(--error); --tono: var(--error); }
+.piel-nota { color: var(--texto-debil); font-size: 0.8rem; line-height: 1.55; }
