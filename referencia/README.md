@@ -14,3 +14,13 @@ extraerlos en vez de reeditarlos aparte.
 
 El mapeo completo de sus tokens está en `PLAN.md` §3, y los cinco puntos donde
 choca con las reglas de contraste y rendimiento, en §4.
+
+## Lo que falta
+
+| Archivo | Qué sería | Estado |
+|---|---|---|
+| `home-puerta-preview.html` | El diseño de la home de cada puerta, o sea lo que ve alguien con sesión iniciada según haya entrado por Nexo o por Nueva Abogacía | **No llegó.** Se pidió como `preview-home-puerta.html` |
+
+Sin ese archivo, la pestaña principal (`/app`) se armó con el sistema de la
+landing en superficie clara: las mismas fichas y los mismos tokens, sin un
+diseño propio. Si el preview aparece, es la referencia para rehacerla.
