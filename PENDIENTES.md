@@ -1,6 +1,6 @@
 # Lo que falta, y quién lo puede hacer
 
-Estado al 31 de agosto de 2026, después de la tanda 5.
+Estado al 31 de agosto de 2026, después de la tanda 6.
 
 Está ordenado por urgencia real: lo primero es lo que hoy impide que el
 simulador muestre una sola pregunta.
@@ -39,6 +39,34 @@ puede leer las de los demás. Está probado contra un PostgreSQL de verdad en
 `supabase/pruebas/02-seguridad.sql` (casos 13 a 16): insertar anda, insertar
 marcándose la consulta como resuelta da permiso denegado, y leer la lista
 también.
+
+---
+
+## 0 ter. Tuyo: el material que le falta a la pestaña de inscripción
+
+Las dos cosas están armadas y vacías. Ninguna necesita que toque código.
+
+**Las capturas de pantalla del sistema (B-07).** El manual que llegó al repo
+es `material/mpd-inscripcion.md`, que es texto y no trae ninguna imagen; el
+PDF no está. Cada paso de la guía tiene su hueco: poné los archivos en
+`public/` y sumalos al campo `capturas` del paso en
+`content/inscripcion/mpd.ts`, con su `alt` —qué se ve— y su `pie` —qué hay que
+mirar—. Mientras estén vacías no se dibuja nada.
+
+**Los videos cortos (B-08).** La biblioteca lee de la tabla `videos`, que ya
+existe desde la migración 0001. Insertá una fila por video con `publicado =
+true` y aparecen solos:
+
+```sql
+insert into videos (titulo, youtube_id, organismo, orden, publicado)
+values ('Instalar la aplicación CONCURSOS', 'ID_DE_YOUTUBE', 'mpd', 1, true);
+```
+
+Mientras la tabla esté vacía la sección entera no se renderiza, así que no hay
+ningún cartel de «próximamente» esperando.
+
+Cuando estén las dos, se puede tildar I-04 y los destacados de capturas y
+videos aparecen solos en la portada.
 
 ---
 

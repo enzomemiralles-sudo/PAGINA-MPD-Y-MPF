@@ -1614,3 +1614,359 @@ html[data-marca="nexo"] .asis-titulo { --h2-estilo: italic; }
   flex: none; color: var(--texto-debil); font-size: 0.76rem;
   font-variant-numeric: tabular-nums; white-space: nowrap;
 }
+
+/* ============================================================
+   INSCRIPCIÓN
+   Superficie clara, dentro del grupo (sesion). Mobile first.
+
+   La jerarquía la manda el contenido: los avisos de tono «trampa» —lo que
+   hace perder el turno— pesan más que el texto del paso que los contiene.
+   Es a propósito. Quien pasa la vista rápido tiene que llevarse eso y no
+   el procedimiento, que va a volver a leer cuando lo esté haciendo.
+
+   La estructura es la misma para los dos organismos (I-08): no hay una sola
+   regla que dependa de cuál se esté mirando, salvo la que esconde el que no
+   corresponde.
+   ============================================================ */
+.ins { display: flex; flex-direction: column; gap: 2.75rem; }
+@media (min-width: 768px) { .ins { gap: 3.5rem; } }
+
+.ins-titulo {
+  font-size: clamp(1.3rem, 4vw, 1.8rem); line-height: 1.15; letter-spacing: -0.02em;
+  font-variation-settings: "wdth" var(--ancho-titulo), "wght" 700;
+  font-style: var(--h2-estilo, normal);
+}
+html[data-marca="nexo"] .ins-titulo { --h2-estilo: italic; }
+.ins-bajada { color: var(--texto-tenue); max-width: 60ch; line-height: 1.6; }
+.ins-parrafo { color: var(--texto-tenue); max-width: 60ch; line-height: 1.65; }
+.ins-rotulo {
+  font-family: var(--fuente-mono), monospace; font-size: 0.66rem;
+  letter-spacing: 0.11em; text-transform: uppercase; color: var(--texto-debil);
+}
+
+/* ---------- encabezado (I-01) ---------- */
+.ins-encabezado { display: flex; flex-direction: column; align-items: flex-start; gap: 0.7rem; }
+.ins-bajada-fuerte {
+  font-size: clamp(1.05rem, 3.4vw, 1.3rem); color: var(--texto); max-width: 44ch;
+  font-variation-settings: "wdth" 100, "wght" 600;
+}
+
+/* ---------- selector (I-02) ---------- */
+.ins-selector {
+  padding: 1.1rem; border-radius: 14px;
+  background: var(--tarjeta); box-shadow: inset 0 0 0 1px var(--borde);
+  display: flex; flex-direction: column; gap: 0.5rem;
+}
+.ins-selector-rotulo { font-size: 1rem; font-variation-settings: "wdth" 100, "wght" 650; }
+.ins-selector-ayuda { color: var(--texto-tenue); font-size: 0.87rem; line-height: 1.5; }
+.ins-opciones { display: grid; gap: 0.6rem; margin-top: 0.4rem; }
+@media (min-width: 640px) { .ins-opciones { grid-template-columns: 1fr 1fr; } }
+.ins-opcion {
+  position: relative;
+  display: flex; flex-direction: column; gap: 0.15rem; cursor: pointer;
+  padding: 0.8rem 0.9rem; border-radius: 11px;
+  background: color-mix(in srgb, var(--texto) 3%, transparent);
+  box-shadow: inset 0 0 0 1px var(--borde-fuerte);
+  transition: box-shadow var(--t-elem) var(--suave), background var(--t-elem) var(--suave);
+}
+.ins-opcion input {
+  position: absolute; width: 1px; height: 1px; padding: 0; margin: -1px;
+  overflow: hidden; clip: rect(0, 0, 0, 0); white-space: nowrap; border: 0;
+}
+.ins-opcion:hover { background: color-mix(in srgb, var(--texto) 6%, transparent); }
+.ins-opcion[data-elegida="true"] {
+  background: color-mix(in srgb, var(--acento-texto) 10%, transparent);
+  box-shadow: inset 0 0 0 2px var(--acento-texto);
+}
+.ins-opcion:focus-within { box-shadow: inset 0 0 0 2px var(--acento-texto); }
+.ins-opcion-sigla { font-variation-settings: "wdth" 100, "wght" 700; font-size: 0.95rem; }
+.ins-opcion-nombre { color: var(--texto-tenue); font-size: 0.78rem; line-height: 1.4; }
+
+/* El concurso elegido esconde el otro. Hoy hay una sola guía y esto no hace
+   nada; existe para que el día que entre la del MPF ya esté resuelto. */
+.ins[data-org="mpd"] [data-para="mpf"],
+.ins[data-org="mpf"] [data-para="mpd"] { display: none; }
+
+.ins-guia { display: flex; flex-direction: column; gap: 2.75rem; }
+@media (min-width: 768px) { .ins-guia { gap: 3.5rem; } }
+
+/* ---------- estado del trámite ---------- */
+.ins-estado {
+  display: flex; flex-direction: column; align-items: flex-start; gap: 0.3rem;
+  padding: 1rem 1.1rem; border-radius: 12px;
+  background: color-mix(in srgb, var(--texto) 3%, transparent);
+  border-left: 4px solid var(--borde-fuerte);
+}
+.ins-estado[data-estado="inscripcion_abierta"] { border-left-color: var(--ok); }
+.ins-estado[data-estado="fecha_confirmada"] { border-left-color: var(--marca-revisar); }
+.ins-estado-titulo { font-size: 1rem; font-variation-settings: "wdth" 100, "wght" 650; }
+.ins-estado-texto { color: var(--texto-tenue); font-size: 0.9rem; line-height: 1.6; max-width: 60ch; }
+.ins-estado-fecha { font-size: 0.9rem; font-variation-settings: "wdth" 100, "wght" 620; }
+.ins-estado a { color: var(--acento-texto); font-size: 0.88rem; margin-top: 0.25rem; }
+
+/* ---------- qué necesitás antes (I-03) ---------- */
+.ins-checklist { display: flex; flex-direction: column; gap: 0.5rem; }
+.ins-checklist-lista {
+  list-style: none; margin: 1rem 0 0; padding: 0;
+  display: grid; gap: 0.8rem;
+}
+@media (min-width: 760px) { .ins-checklist-lista { grid-template-columns: 1fr 1fr; } }
+.ins-checklist-lista li {
+  display: flex; flex-direction: column; gap: 0.25rem;
+  padding: 1rem 1.1rem; border-radius: 12px;
+  background: var(--tarjeta); box-shadow: inset 0 0 0 1px var(--borde);
+}
+.ins-punto-titulo { font-size: 0.95rem; font-variation-settings: "wdth" 100, "wght" 650; line-height: 1.35; }
+.ins-punto-texto { color: var(--texto-tenue); font-size: 0.89rem; line-height: 1.6; }
+
+/* ---------- lo más importante ---------- */
+.ins-destacado {
+  display: flex; flex-direction: column; gap: 0.6rem;
+  padding: 1.3rem 1.4rem; border-radius: 14px;
+  background: color-mix(in srgb, var(--acento-texto) 8%, transparent);
+  box-shadow: inset 0 0 0 1px color-mix(in srgb, var(--acento-texto) 28%, transparent);
+}
+.ins-destacado-titulo {
+  font-size: clamp(1.15rem, 3.6vw, 1.45rem); line-height: 1.2; letter-spacing: -0.02em;
+  font-variation-settings: "wdth" 100, "wght" 700; color: var(--acento-texto);
+}
+.ins-destacado p { line-height: 1.65; max-width: 60ch; }
+
+/* ---------- las trampas ---------- */
+.ins-trampas { display: flex; flex-direction: column; gap: 0.5rem; }
+.ins-trampas-lista {
+  list-style: none; margin: 1rem 0 0; padding: 0;
+  display: grid; gap: 0.8rem;
+}
+@media (min-width: 860px) { .ins-trampas-lista { grid-template-columns: 1fr 1fr; } }
+.ins-trampa {
+  display: flex; flex-direction: column; align-items: flex-start; gap: 0.3rem;
+  padding: 1rem 1.1rem; border-radius: 12px;
+  background: color-mix(in srgb, var(--error) 7%, transparent);
+  box-shadow: inset 0 0 0 1px color-mix(in srgb, var(--error) 30%, transparent);
+}
+.ins-trampa-titulo {
+  font-size: 0.98rem; line-height: 1.3;
+  font-variation-settings: "wdth" 100, "wght" 700; color: var(--error);
+}
+.ins-trampa-texto { color: var(--texto); font-size: 0.89rem; line-height: 1.6; }
+.ins-trampa-ir { color: var(--acento-texto); font-size: 0.83rem; margin-top: 0.2rem; }
+
+/* ---------- los pasos (I-04) ---------- */
+.ins-pasos { display: flex; flex-direction: column; gap: 0.5rem; }
+.ins-indice { margin-top: 1rem; }
+.ins-indice ol {
+  list-style: none; margin: 0; padding: 0;
+  display: flex; flex-direction: column; gap: 0.15rem;
+}
+.ins-indice a {
+  display: flex; align-items: baseline; gap: 0.7rem;
+  padding: 0.55rem 0.7rem; border-radius: 9px;
+  color: var(--texto); text-decoration: none; font-size: 0.93rem; line-height: 1.4;
+}
+.ins-indice a:hover { background: color-mix(in srgb, var(--texto) 5%, transparent); }
+.ins-indice-n {
+  flex: none; width: 1.4rem; text-align: center;
+  color: var(--texto-debil); font-variant-numeric: tabular-nums; font-size: 0.82rem;
+}
+
+.ins-pasos-lista { display: flex; flex-direction: column; gap: 1.25rem; margin-top: 1.25rem; }
+.ins-paso {
+  display: flex; flex-direction: column; gap: 0.9rem;
+  padding: 1.2rem 1.1rem 1.3rem; border-radius: 14px;
+  background: var(--tarjeta); box-shadow: inset 0 0 0 1px var(--borde);
+  scroll-margin-top: 5rem;
+}
+@media (min-width: 768px) { .ins-paso { padding: 1.5rem 1.6rem 1.6rem; } }
+.ins-paso-cabeza { display: flex; align-items: flex-start; gap: 0.85rem; }
+.ins-paso-n {
+  flex: none; display: grid; place-items: center;
+  width: 2rem; height: 2rem; border-radius: 50%;
+  background: var(--texto); color: var(--fondo);
+  font-variant-numeric: tabular-nums; font-size: 0.95rem;
+  font-variation-settings: "wdth" 100, "wght" 700;
+}
+.ins-paso-titulos { display: flex; flex-direction: column; gap: 0.15rem; }
+.ins-paso-titulo {
+  font-size: clamp(1.1rem, 3.4vw, 1.35rem); line-height: 1.25; letter-spacing: -0.015em;
+  font-variation-settings: "wdth" 100, "wght" 700;
+}
+.ins-paso-resumen { color: var(--texto-tenue); font-size: 0.9rem; line-height: 1.5; }
+.ins-paso-cuerpo { display: flex; flex-direction: column; gap: 0.85rem; }
+.ins-paso-cuerpo > p { line-height: 1.7; max-width: 60ch; }
+.ins-paso-donde { display: flex; align-items: baseline; gap: 0.55rem; flex-wrap: wrap; font-size: 0.88rem; }
+.ins-paso-donde span:last-child { font-family: var(--fuente-mono), monospace; font-size: 0.85rem; }
+
+.ins-puntos {
+  display: flex; flex-direction: column; gap: 0.5rem;
+  padding: 0.9rem 1rem; border-radius: 11px;
+  background: color-mix(in srgb, var(--texto) 3%, transparent);
+}
+.ins-puntos-titulo { font-size: 0.93rem; font-variation-settings: "wdth" 100, "wght" 650; }
+.ins-puntos-lista {
+  list-style: none; margin: 0; padding: 0;
+  display: flex; flex-direction: column; gap: 0.7rem; counter-reset: punto;
+}
+.ins-puntos-lista li { counter-increment: punto; display: flex; flex-direction: column; gap: 0.2rem; }
+.ins-puntos-lista .ins-punto-titulo::before {
+  content: counter(punto) ". "; color: var(--texto-debil); font-variant-numeric: tabular-nums;
+}
+
+.ins-captura { margin: 0; display: flex; flex-direction: column; gap: 0.4rem; }
+.ins-captura img { width: 100%; border-radius: 10px; box-shadow: inset 0 0 0 1px var(--borde); }
+.ins-captura figcaption { color: var(--texto-tenue); font-size: 0.83rem; line-height: 1.55; }
+
+/* Los avisos. El tono «trampa» pesa más que el texto del paso a propósito. */
+.ins-aviso {
+  display: flex; flex-direction: column; gap: 0.25rem;
+  padding: 0.85rem 1rem; border-radius: 11px;
+  border-left: 4px solid var(--tono, var(--borde-fuerte));
+  background: color-mix(in srgb, var(--tono, var(--texto)) 7%, transparent);
+}
+.ins-aviso[data-tono="trampa"] { --tono: var(--error); }
+.ins-aviso[data-tono="ojo"] { --tono: var(--marca-revisar); }
+.ins-aviso[data-tono="dato"] { --tono: var(--texto); border-left-style: dashed; }
+.ins-aviso-titulo {
+  font-size: 0.95rem; line-height: 1.35;
+  font-variation-settings: "wdth" 100, "wght" 700; color: var(--tono, var(--texto));
+}
+.ins-aviso[data-tono="dato"] .ins-aviso-titulo { color: var(--texto); font-size: 0.9rem; }
+.ins-aviso-texto { font-size: 0.89rem; line-height: 1.65; max-width: 60ch; }
+
+.ins-consejo {
+  display: flex; flex-direction: column; gap: 0.35rem;
+  padding-left: 0.95rem; border-left: 2px solid var(--acento-texto);
+}
+.ins-consejo p:last-child {
+  color: var(--texto-tenue); font-size: 0.89rem; line-height: 1.7; max-width: 60ch;
+}
+
+/* ---------- después de inscribirte ---------- */
+.ins-despues { display: flex; flex-direction: column; gap: 0.5rem; }
+.ins-secciones { display: flex; flex-direction: column; gap: 1.25rem; margin-top: 1.25rem; }
+.ins-seccion {
+  display: flex; flex-direction: column; gap: 0.7rem;
+  padding: 1.2rem 1.1rem 1.3rem; border-radius: 14px;
+  background: var(--tarjeta); box-shadow: inset 0 0 0 1px var(--borde);
+  scroll-margin-top: 5rem;
+}
+@media (min-width: 768px) { .ins-seccion { padding: 1.5rem 1.6rem 1.6rem; } }
+.ins-seccion-titulo {
+  font-size: clamp(1.1rem, 3.4vw, 1.35rem); line-height: 1.25; letter-spacing: -0.015em;
+  font-variation-settings: "wdth" 100, "wght" 700;
+}
+.ins-seccion-bajada { color: var(--texto-tenue); font-size: 0.92rem; line-height: 1.55; max-width: 58ch; }
+
+/* ---------- errores frecuentes (I-05) ---------- */
+.ins-errores { display: flex; flex-direction: column; gap: 0.5rem; scroll-margin-top: 5rem; }
+.ins-errores-lista { display: flex; flex-direction: column; gap: 0.5rem; margin-top: 1rem; }
+.ins-error { border-radius: 11px; background: var(--tarjeta); box-shadow: inset 0 0 0 1px var(--borde); }
+.ins-error > summary {
+  cursor: pointer; padding: 0.85rem 1rem; list-style: none;
+  font-size: 0.95rem; font-variation-settings: "wdth" 100, "wght" 620;
+}
+.ins-error > summary::-webkit-details-marker { display: none; }
+.ins-error > summary:hover { background: color-mix(in srgb, var(--texto) 4%, transparent); border-radius: 11px; }
+.ins-error > summary:focus-visible { outline: 2px solid var(--acento-texto); outline-offset: -2px; border-radius: 11px; }
+.ins-error-cuerpo {
+  display: flex; flex-direction: column; align-items: flex-start; gap: 0.6rem;
+  padding: 0 1rem 1rem; line-height: 1.7;
+}
+.ins-error-cuerpo > p { max-width: 60ch; }
+.ins-error-cuerpo a { color: var(--acento-texto); font-size: 0.88rem; }
+
+/* ---------- videos (I-06) ---------- */
+.ins-videos { display: flex; flex-direction: column; gap: 0.5rem; scroll-margin-top: 5rem; }
+.ins-videos-lista {
+  list-style: none; margin: 1rem 0 0; padding: 0;
+  display: grid; gap: 0.9rem;
+}
+@media (min-width: 640px) { .ins-videos-lista { grid-template-columns: repeat(auto-fill, minmax(15rem, 1fr)); } }
+.ins-video {
+  display: flex; flex-direction: column; gap: 0.4rem;
+  padding: 0.6rem; border-radius: 12px; text-decoration: none; color: var(--texto);
+  background: var(--tarjeta); box-shadow: inset 0 0 0 1px var(--borde);
+}
+.ins-video:hover { box-shadow: inset 0 0 0 1px var(--acento-texto); }
+.ins-video-miniatura { width: 100%; border-radius: 8px; aspect-ratio: 16 / 9; object-fit: cover; }
+.ins-video-titulo { font-size: 0.92rem; line-height: 1.4; font-variation-settings: "wdth" 100, "wght" 620; }
+.ins-video-ver { color: var(--acento-texto); font-size: 0.83rem; }
+
+/* ---------- repaso y enlaces ---------- */
+.ins-repaso { display: flex; flex-direction: column; gap: 0.5rem; scroll-margin-top: 5rem; }
+.ins-repaso-grupos { display: grid; gap: 1rem; margin-top: 1rem; }
+@media (min-width: 860px) { .ins-repaso-grupos { grid-template-columns: repeat(3, 1fr); } }
+.ins-repaso-grupo {
+  display: flex; flex-direction: column; gap: 0.5rem;
+  padding: 1rem 1.1rem; border-radius: 12px;
+  background: var(--tarjeta); box-shadow: inset 0 0 0 1px var(--borde);
+}
+.ins-repaso-titulo { font-size: 0.92rem; font-variation-settings: "wdth" 100, "wght" 650; line-height: 1.35; }
+.ins-repaso-grupo ul { list-style: none; margin: 0; padding: 0; display: flex; flex-direction: column; gap: 0.45rem; }
+.ins-repaso-grupo li {
+  display: flex; gap: 0.55rem; color: var(--texto-tenue); font-size: 0.87rem; line-height: 1.55;
+}
+.ins-repaso-grupo li::before {
+  content: ""; flex: none; margin-top: 0.42em;
+  width: 0.62rem; height: 0.62rem; border-radius: 3px;
+  box-shadow: inset 0 0 0 1.5px var(--borde-fuerte);
+}
+
+.ins-enlaces { display: flex; flex-direction: column; gap: 0.5rem; }
+.ins-enlaces-lista {
+  list-style: none; margin: 1rem 0 0; padding: 0;
+  display: flex; flex-direction: column; gap: 0.1rem;
+}
+.ins-enlaces-lista li {
+  display: flex; flex-direction: column; gap: 0.1rem;
+  padding: 0.6rem 0; border-bottom: 1px solid var(--borde);
+}
+@media (min-width: 640px) {
+  .ins-enlaces-lista li { flex-direction: row; align-items: baseline; justify-content: space-between; gap: 1rem; }
+}
+.ins-enlace-que { font-size: 0.92rem; font-variation-settings: "wdth" 100, "wght" 620; }
+.ins-enlaces-lista a { color: var(--acento-texto); font-size: 0.89rem; overflow-wrap: anywhere; }
+.ins-enlace-donde { color: var(--texto-tenue); font-size: 0.86rem; line-height: 1.5; }
+
+.ins-fuente {
+  display: flex; flex-direction: column; gap: 0.25rem;
+  color: var(--texto-debil); font-size: 0.82rem; line-height: 1.6; max-width: 66ch;
+}
+
+/* ---------- cierre hacia el asistente (I-07) ---------- */
+.ins-cierre {
+  display: flex; flex-direction: column; align-items: flex-start; gap: 0.5rem;
+  padding: 1.4rem 1.5rem; border-radius: 14px;
+  background: color-mix(in srgb, var(--texto) 3%, transparent);
+}
+.ins-cierre-titulo {
+  font-size: clamp(1.15rem, 3.6vw, 1.45rem); line-height: 1.2; letter-spacing: -0.02em;
+  font-variation-settings: "wdth" 100, "wght" 700;
+}
+.ins-cierre-texto { color: var(--texto-tenue); line-height: 1.6; max-width: 56ch; }
+.ins-cierre .btn { margin-top: 0.5rem; }
+
+/* ---------- I-09 · el bloque de inscripción en la pestaña de muestra ---------- */
+.ins-muestra-texto { margin-top: 1.3rem; font-size: 1.02rem; line-height: 1.6; color: var(--papel); }
+.ins-muestra-concursos { display: grid; gap: 1rem; }
+@media (min-width: 560px) { .ins-muestra-concursos { grid-template-columns: repeat(auto-fit, minmax(15rem, 1fr)); } }
+.ins-muestra-concurso { margin: 0.7rem 0 0.2rem; font-size: 1.1rem; line-height: 1.25; }
+.ins-muestra-cargo { font-size: 0.87rem; color: var(--papel-débil); }
+.ins-muestra-cta { margin-top: 1rem; }
+.ins-muestra-destacados {
+  list-style: none; margin: 2rem 0 0; padding: 0;
+  display: flex; flex-wrap: wrap; gap: 0.6rem 1.6rem;
+}
+.ins-muestra-destacados li { font-size: 0.9rem; line-height: 1.5; color: var(--papel-débil); }
+.ins-muestra-cierre {
+  margin-top: 1rem; padding: 1.3rem 1.4rem; border-radius: 14px; max-width: 34rem;
+  background: rgba(244, 242, 237, 0.04); box-shadow: inset 0 0 0 1px var(--linea);
+  display: flex; flex-direction: column; align-items: flex-start; gap: 0.3rem;
+}
+.ins-muestra-cierre-titulo {
+  font-size: 1.05rem; color: var(--papel);
+  font-variation-settings: "wdth" 100, "wght" 680;
+}
+.ins-muestra-cierre-texto { font-size: 0.9rem; line-height: 1.6; }
+.ins-muestra-cierre { max-width: none; }
+.ins-muestra-cierre .btn { margin-top: 0.8rem; }

@@ -1,4 +1,6 @@
 import { traerMetricas } from "@/lib/datos";
+import { traerVideos } from "@/lib/inscripcion/datos";
+import { concursosConGuia, loQueHay } from "@/lib/inscripcion/muestra";
 import { Fondo } from "@/components/landing/Fondo";
 import { Cinta } from "@/components/landing/Cinta";
 import { Cabecera } from "@/components/landing/Cabecera";
@@ -13,7 +15,7 @@ import {
 } from "@/components/landing/Secciones";
 
 export default async function Landing() {
-  const metricas = await traerMetricas();
+  const [metricas, videos] = await Promise.all([traerMetricas(), traerVideos()]);
 
   return (
     <>
@@ -24,7 +26,7 @@ export default async function Landing() {
         <Hero />
         <MaquetaSimulador />
         <SeccionAsistente />
-        <SeccionInscripcion />
+        <SeccionInscripcion hay={loQueHay(videos)} concursos={concursosConGuia()} />
         <Numeros metricas={metricas} />
         <SeccionGratis />
         <Cierre />

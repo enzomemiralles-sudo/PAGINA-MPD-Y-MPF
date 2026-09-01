@@ -70,44 +70,71 @@ export function SeccionAsistente() {
   );
 }
 
-export function SeccionInscripcion() {
+/**
+ * I-09. El bloque de inscripción en la pestaña de muestra.
+ *
+ * Sólo anuncia lo que existe. Los cuatro destacados que pide CAMBIOS.md
+ * incluyen capturas de pantalla y videos, y hoy no hay ninguno de los dos:
+ * mostrarlos igual sería prometer una sección vacía. Cada uno dice de qué
+ * depende y `loQueHay` cuenta los datos, así que aparecen solos el día que se
+ * carguen.
+ *
+ * Lo mismo con las tarjetas de concurso: una por guía cargada.
+ */
+export function SeccionInscripcion({
+  hay,
+  concursos,
+}: {
+  hay: Record<string, boolean>;
+  concursos: { sigla: string; nombre: string; cargo: string }[];
+}) {
   const t = inscripcionSeccion;
+  const destacados = t.destacados.filter((d) => hay[d.depende]);
+
   return (
     <section className="env sec" id="inscripcion">
-      <Revelar indice={0}>
-        <div style={{ maxWidth: "38rem" }}>
+      <div className="dos">
+        <Revelar indice={0}>
           <span className="eyebrow mono">{t.eyebrow}</span>
           <Titulo lineas={t.titulo} />
-          <p style={{ marginTop: "1.4rem", fontSize: ".97rem" }}>{t.texto}</p>
-        </div>
-      </Revelar>
+          <p className="ins-muestra-texto">{t.texto}</p>
 
-      <div className="tres" style={{ marginTop: "2.5rem" }}>
-        {t.tarjetas.map((c, i) => (
-          <Revelar indice={i + 1} key={c.titulo}>
-            <Vidrio className="tarjeta">
-              {/* El rótulo usa --marca-revisar y no --acento-2: con --acento-2
-                  quedaba transparente en las marcas dual y na. PLAN.md §4c. */}
-              <span className="mono eyebrow-revisar">{c.rotulo}</span>
-              <h3 style={{ margin: ".7rem 0 .6rem" }}>{c.titulo}</h3>
-              <p style={{ fontSize: ".85rem", lineHeight: 1.55 }}>{c.texto}</p>
-            </Vidrio>
-          </Revelar>
-        ))}
+          {destacados.length > 0 ? (
+            <ul className="ins-muestra-destacados">
+              {destacados.map((d) => (
+                <li key={d.texto}>
+                  <span aria-hidden="true">{d.icono}</span> {d.texto}
+                </li>
+              ))}
+            </ul>
+          ) : null}
+        </Revelar>
+
+        <Revelar indice={1}>
+          {concursos.length > 0 ? (
+            <div className="ins-muestra-concursos">
+              {concursos.map((c) => (
+                <Vidrio className="tarjeta" key={c.sigla}>
+                  <span className="mono eyebrow-revisar">{c.sigla}</span>
+                  <h3 className="ins-muestra-concurso">{c.nombre}</h3>
+                  <p className="ins-muestra-cargo">{c.cargo}</p>
+                  <a className="btn btn-acento ins-muestra-cta" href={t.ctaHref}>
+                    {t.cta}
+                  </a>
+                </Vidrio>
+              ))}
+            </div>
+          ) : null}
+
+          <div className="ins-muestra-cierre">
+            <p className="ins-muestra-cierre-titulo">{t.cierre.titulo}</p>
+            <p className="ins-muestra-cierre-texto">{t.cierre.texto}</p>
+            <a className="btn btn-s" href={t.cierre.href}>
+              {t.cierre.cta}
+            </a>
+          </div>
+        </Revelar>
       </div>
-
-      <Revelar indice={4}>
-        <ul className="lista" style={{ marginTop: "2.5rem", maxWidth: "46rem" }}>
-          {t.items.map((i) => (
-            <li key={i.n}>
-              <span className="n">{i.n}</span>
-              <span>
-                <b>{i.titulo}</b> {i.texto}
-              </span>
-            </li>
-          ))}
-        </ul>
-      </Revelar>
     </section>
   );
 }
