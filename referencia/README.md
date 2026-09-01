@@ -15,12 +15,23 @@ extraerlos en vez de reeditarlos aparte.
 El mapeo completo de sus tokens está en `PLAN.md` §3, y los cinco puntos donde
 choca con las reglas de contraste y rendimiento, en §4.
 
-## Lo que falta
+## Los tres archivos
 
-| Archivo | Qué sería | Estado |
-|---|---|---|
-| `home-puerta-preview.html` | El diseño de la home de cada puerta, o sea lo que ve alguien con sesión iniciada según haya entrado por Nexo o por Nueva Abogacía | **No llegó.** Se pidió como `preview-home-puerta.html` |
+| Archivo | Qué define |
+|---|---|
+| `landing-preview.html` | La pestaña pública. Hero con la fotografía de la facultad y tres secciones: simulador, asistente e inscripción |
+| `landing-preview-v1.html` | La versión anterior de esa misma pestaña, con la cinta en el hero y una sección más, «norma» |
+| `home-puerta-preview.html` | La home de cada puerta: lo que ve alguien con la sesión ya iniciada, saludado por su nombre y con el estado de su simulacro |
 
-Sin ese archivo, la pestaña principal (`/app`) se armó con el sistema de la
-landing en superficie clara: las mismas fichas y los mismos tokens, sin un
-diseño propio. Si el preview aparece, es la referencia para rehacerla.
+`landing-preview.html` reemplazó a la v1 y va ganando: su h1 y los títulos de
+sus tres secciones son los que hoy están en producción. La v1 se conserva
+igual, porque trae la sección «norma» que la nueva no tiene y porque es de
+donde salió la landing que está publicada.
+
+El hero cambió entre una y otra: la v1 usa la cinta argentina, la nueva usa la
+fotografía de la facultad virada al color de cada puerta. Las dos versiones de
+cada foto están en `marca/`, extraídas de estos mismos archivos.
+
+`home-puerta-preview.html` es el que faltaba. Con él, `/app` —que hoy se armó
+con el sistema de la landing en superficie clara— tiene por fin un diseño
+propio de referencia.
