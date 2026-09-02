@@ -1,0 +1,42 @@
+# Las cuatro comprobaciones que hasta ahora se corrían a mano.
+#
+# Van juntas y en un solo trabajo a propósito: son rápidas, comparten la
+# instalación de dependencias y lo que importa es que ninguna se olvide, no
+# tenerlas en paralelo. `npm ci` y no `npm install` para que el lockfile mande.
+name: Verificar
+
+on:
+  push:
+    branches: [main]
+  pull_request:
+
+jobs:
+  verificar:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+
+      - uses: actions/setup-node@v4
+        with:
+          node-version: 22
+          cache: npm
+
+      - run: npm ci
+
+      # El orden es el de lo que cuesta arreglar: primero los tipos, que dicen
+      # dónde está el error; después el lint; después los tests; y el build al
+      # final, que es el más lento y el que menos veces falla solo.
+      - name: Tipos
+        run: npm run typecheck
+
+      - name: Lint
+        run: npm run lint
+
+      - name: Tests
+        run: npm test
+
+      # Sin variables de entorno: el build tiene que salir sin Supabase ni
+      # Resend configurados, porque así es como corre la primera vez que
+      # alguien clona el repositorio.
+      - name: Build
+        run: npm run build

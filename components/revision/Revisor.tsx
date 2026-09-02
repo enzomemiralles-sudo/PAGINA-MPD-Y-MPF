@@ -3,7 +3,7 @@
 import { useCallback, useEffect, useRef, useState } from "react";
 import { revision as t, TEMAS } from "@/content/revision";
 import { aprobar, frenar, siguiente } from "@/lib/acciones/revision";
-import type { Cola, Filtro, PreguntaARevisar } from "@/lib/revision/datos";
+import type { Cola, Filtro } from "@/lib/revision/datos";
 
 type Estado = "quieto" | "guardando" | "error";
 
