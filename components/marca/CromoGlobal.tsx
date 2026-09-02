@@ -26,7 +26,8 @@ const SIN_PIE = ["/ingresar", "/crear-perfil", "/elegir-perfil"];
  * dos pies.
  */
 const PIE_DE_OTRO_LAYOUT = [
-  "/app", "/mi-perfil", "/simulador", "/asistente", "/inscripcion", "/revisar",
+  "/app", "/mi-perfil", "/simulador", "/asistente", "/inscripcion", "/guia-inscripcion",
+  "/insumos", "/revisar", "/nexo", "/na",
 ];
 
 export function CromoGlobal({ pie }: { pie: React.ReactNode }) {

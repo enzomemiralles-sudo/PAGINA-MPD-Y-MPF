@@ -2,6 +2,7 @@ import type { Metadata } from "next";
 import { notFound } from "next/navigation";
 import { esRevisor, traerCola } from "@/lib/revision/datos";
 import { Revisor } from "@/components/revision/Revisor";
+import { VolverAlPerfil } from "@/components/app/VolverAlPerfil";
 
 export const metadata: Metadata = { title: "Revisión de preguntas" };
 export const dynamic = "force-dynamic";
@@ -27,6 +28,7 @@ export default async function Revisar() {
 
   return (
     <main className="env app-cuerpo revision">
+      <VolverAlPerfil />
       <Revisor inicial={await traerCola()} />
     </main>
   );

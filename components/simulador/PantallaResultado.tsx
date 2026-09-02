@@ -3,6 +3,7 @@ import { resultado as t } from "@/content/simulador";
 import type { Intento } from "@/lib/simulador/datos";
 import { corregir, corregirTipeo, porTema } from "@/lib/simulador/puntaje";
 import { compararTipeo } from "@/lib/simulador/tipeo";
+import { VolverAlPerfil } from "@/components/app/VolverAlPerfil";
 
 /**
  * Cómo te fue (S-12).
@@ -53,6 +54,7 @@ export function PantallaResultado({ intento }: { intento: Intento }) {
 
   return (
     <main className="env app-cuerpo res">
+      <VolverAlPerfil />
       <header className="res-cabeza">
         <h1>{t.titulo}</h1>
         <p className="res-examen">{intento.examen.titulo}</p>

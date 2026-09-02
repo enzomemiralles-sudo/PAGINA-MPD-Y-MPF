@@ -10,11 +10,6 @@ export const pie = {
     { href: "/politica-de-privacidad", texto: "Política de Privacidad" },
     { href: "/contacto", texto: "Contacto" },
   ],
-  // El logo de Nueva Abogacía ya es el definitivo, así que de la nota queda
-  // sólo la parte que sigue siendo cierta: el criterio de revisión.
-  notaProvisoriaTitulo: "Cómo se cargan las preguntas.",
-  notaProvisoriaTexto:
-    " Ninguna se publica sin revisar a mano: una respuesta mal cargada le enseña algo falso a alguien que se juega un puesto de trabajo.",
 } as const;
 
 export const meta = {

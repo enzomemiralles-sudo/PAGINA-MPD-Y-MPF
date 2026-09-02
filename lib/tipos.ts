@@ -20,8 +20,3 @@ export type Concurso = {
   url_oficial: string | null;
 };
 
-export type Metricas = {
-  preguntasMpd: number;
-  dudasMpf: number;
-  comunidadNuevaAbogacia: number;
-};

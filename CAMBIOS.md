@@ -182,6 +182,40 @@ en `PLAN.md`.
 
 ---
 
+## TANDA 9 · Vaciar la muestra, ordenar el perfil, reescribir la guía
+
+Los prefijos son los de siempre: **M** la pestaña de muestra, **P** el perfil,
+**I** la inscripción.
+
+### Eliminaciones en la muestra
+- [x] **M-15** Sacar la franja de métricas (69 preguntas, 0 dudas, 20.000 colegas, 100% gratis). Se fueron también el componente `Numeros`, la consulta `traerMetricas` y el tipo `Metricas`: no los usaba nadie más.
+- [x] **M-16** Sacar las tres tarjetas de acceso —Nexo, Nueva Abogacía y Recursos abiertos— con sus bajadas, listas y botones. **El camino a cada puerta sigue existiendo:** «Empezar gratis» en el encabezado lleva a crear el perfil, y ahí se elige agrupación. Las tarjetas lo duplicaban.
+- [x] **M-17** Sacar el párrafo «¿Por qué es gratis?».
+- [x] **M-18** Sacar el bloque de cierre con la lista de espera: titular, párrafo, campo de mail, botón, los dos consentimientos y «Practicar ahora». **La infraestructura queda entera** —tabla `alertas`, su política RLS, la acción `suscribirAlerta` y el envío— y `<CapturaEmail>` queda exportado y **huérfano**, documentado como tal en el propio componente, a la espera de una ubicación nueva.
+- [x] **M-19** Sacar el recuadro «Cómo se cargan las preguntas». Salió del pie, así que se fue de la muestra y del perfil de una vez. **La regla de producto sigue vigente:** nada se publica con `revisada = false` y no se tocó una línea de esa lógica.
+
+### El perfil
+- [x] **P-07** «Contanos un poco más» se veía translúcido. **La causa no era la que parecía:** el título mide 15,9:1 y ningún ancestro aporta opacidad ni filtro. Lo que se veía translúcido era la tarjeta entera —`--tarjeta` es papel al 4% y la fotografía de la facultad se veía a través de todo el formulario—. Se agregó el token `--tarjeta-solida`, opaco y propio de cada piel, para las superficies que pueden quedar sobre la foto.
+- [x] **P-08** El saludo decía «Hola, null». La migración 0003 hizo `nombre` nullable, nada en el código lo escribe nunca, y el tipo declaraba `string` con un `as Perfil` que tapaba la diferencia. Ahora el tipo dice la verdad y **sin nombre no hay saludo**: no hay «Hola, usuario» ni «Hola, » a secas.
+- [x] **P-09** Sacar «Grupos de WhatsApp» de Recursos, en las dos puertas.
+- [x] **P-10** Sacar «Biblioteca de videos» como recurso suelto. Los videos viven embebidos dentro de la guía de inscripción, que es donde sirven.
+- [x] **P-11** Los canales de YouTube, corregidos y centralizados en `lib/marca/marcas.ts` junto con el resto de lo que depende de la marca: `@nexoderecho4917` y `@nuevaabogacia`.
+- [x] **P-12** `<VolverAlPerfil />`, en las nueve herramientas que se abren desde el perfil. Dentro del flujo y arriba a la izquierda, con flecha y no ícono de casa. **En el simulacro en curso pregunta antes**, porque salir abandona el intento.
+- [x] **P-13** «Insumos de estudio» reemplaza a «Manuales y normativa»: selector de organismo primero, después la lista agrupada por eje. Los archivos se sirven del bucket público `insumos` de Storage (migración 0010). Un eje sin material no se renderiza, y un material sin archivo subido se muestra sin botón en vez de con un botón que lleva a un 404.
+- [x] **P-14** «Conocé Nueva Abogacía» llevaba al contacto. Ahora lleva a `/na/quienes-somos`, con el texto que mandaron, sin resumir.
+- [x] **P-15** Recurso nuevo «Página web» en las dos puertas: `/nexo/pagina-web` con las cinco herramientas del sitio, y `/na/pagina-web` con misión, visión y objetivo.
+
+### La guía de inscripción
+- [x] **I-10** Reescrita entera en `/guia-inscripcion`, con pantalla previa para elegir organismo. Cada tarjeta muestra el estado real del concurso reutilizando el componente que ya lo resolvía, no una copia de esa lógica.
+- [x] **I-11** Una sola plantilla parametrizada, dos archivos de contenido. La estructura ① a ⑨ vive en el tipo, así que las dos guías no pueden divergir sin que deje de compilar.
+- [x] **I-12** El contenido del MPF, verificado contra las cuatro páginas oficiales que se citan al pie.
+- [x] **I-13** El del MPD **se deriva** del material que ya estaba en el repositorio, no se transcribe: 383 líneas de prosa copiadas a mano se desincronizan el día que alguien corrija el original.
+- [x] **I-14** La experiencia: barra de progreso, pasos en acordeón con el pendiente abierto, check «Ya lo hice» que persiste en `localStorage` por organismo, y checklist final que es el reflejo de lo marcado. El orden dentro de cada paso lo impone la plantilla: explicación → captura → video → advertencia.
+- [x] **I-15** `<Advertencia>` con peso visual propio: marco, rótulo y signo, no un párrafo en negrita. El estado no se comunica sólo por color.
+- [x] **I-16** `<Captura>` y `<VideoSlot>`: con contenido renderizan; sin contenido y en preview muestran el hueco con su id; **sin contenido y en producción no renderizan nada**. Lo controla `NEXT_PUBLIC_MOSTRAR_PLACEHOLDERS`, que por defecto está apagada.
+
+---
+
 ## PENDIENTES BLOQUEANTES
 > No son tareas de Claude Code. Son cosas que faltan de mi lado y frenan ítems concretos.
 

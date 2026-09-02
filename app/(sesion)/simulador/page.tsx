@@ -11,6 +11,7 @@ import { traerIntentoEnCurso } from "@/lib/simulador/datos";
 import { TarjetaOrganismo } from "@/components/simulador/TarjetaOrganismo";
 import { ComoFunciona } from "@/components/simulador/ComoFunciona";
 import { AvisoOrientativo } from "@/components/simulador/AvisoOrientativo";
+import { VolverAlPerfil } from "@/components/app/VolverAlPerfil";
 
 export const metadata: Metadata = {
   title: "Simulador de Exámenes — Nexo Derecho × Nueva Abogacía",
@@ -32,6 +33,7 @@ export default async function Simulador() {
 
   return (
     <main className="env app-cuerpo sim">
+      <VolverAlPerfil />
       <header className="sim-encabezado">
         <h1>{encabezado.titulo}</h1>
         <p className="sim-bajada">{encabezado.bajada}</p>

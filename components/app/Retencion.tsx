@@ -19,7 +19,7 @@ import type { EstadoHome } from "@/lib/simulador/home";
  * servidor, pero la pantalla de rendir no lo muestra —la respuesta correcta no
  * viaja al cliente hasta entregar— y mostrarlo acá contradiría eso.
  */
-export function Retencion({ nombre, estado }: { nombre: string; estado: EstadoHome }) {
+export function Retencion({ nombre, estado }: { nombre: string | null; estado: EstadoHome }) {
   const { retomar, temas, terminados } = estado;
   const faltan = retomar ? retomar.total - retomar.respondidas : 0;
 
@@ -31,8 +31,13 @@ export function Retencion({ nombre, estado }: { nombre: string; estado: EstadoHo
 
   return (
     <div className="portal-retencion">
+      {/* Sin nombre no hay saludo, y no hay tampoco «Hola, usuario»: la frase
+          de estado se queda sola al frente, que sigue siendo el titular y el
+          elemento LCP. Hoy es lo que pasa siempre —nada escribe el nombre
+          todavía— pero la regla vale igual cuando lo escriba algo. */}
       <h1 className="portal-saludo">
-        {saludo.hola(nombre)} <span>{segunda}</span>
+        {nombre ? <>{saludo.hola(nombre)} </> : null}
+        <span>{segunda}</span>
       </h1>
 
       {retomar ? (

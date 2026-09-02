@@ -70,11 +70,6 @@ export function PieLegal({ marca = "dual" }: { marca?: Marca }) {
             {otra.id === "nexo" ? <LogoNexo alto={14} /> : <LogoNuevaAbogacia alto={16} />}
           </p>
         ) : null}
-
-        <div className="nota-prov">
-          <b>{pie.notaProvisoriaTitulo}</b>
-          {pie.notaProvisoriaTexto}
-        </div>
       </div>
 
       <Gigante texto={propia ? propia.gigante : pie.gigantePublica} />
