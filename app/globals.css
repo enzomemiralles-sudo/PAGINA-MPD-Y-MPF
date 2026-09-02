@@ -66,16 +66,15 @@ section { position: relative; z-index: 2; }
 /* ============ TIPOGRAFÍA ============ */
 h1 {
   font-size: clamp(2.35rem, 8.5vw, 5.1rem); line-height: 0.97; letter-spacing: -0.035em;
-  font-variation-settings: "wdth" var(--ancho-titulo), "wght" 800;
+  font-variation-settings: "wdth" var(--ancho-h), "wght" 800;
   transition: font-variation-settings var(--t-sec) var(--suave);
 }
 h2 {
   font-size: clamp(1.75rem, 4.6vw, 3rem); line-height: 1.05; letter-spacing: -0.028em;
-  font-variation-settings: "wdth" var(--ancho-h2), "wght" 700;
-  font-style: var(--h2-estilo, normal);
+  font-variation-settings: "wdth" var(--ancho-h), "wght" 700;
+  font-style: var(--ital-estilo);
   transition: font-variation-settings var(--t-sec) var(--suave);
 }
-html[data-marca="nexo"] h2 { --h2-estilo: italic; }
 h3 { font-size: 1.02rem; font-variation-settings: "wdth" 100, "wght" 600; letter-spacing: -0.01em; }
 p { color: var(--papel-tenue); }
 
@@ -84,11 +83,19 @@ p { color: var(--papel-tenue); }
    el tramo oscuro pasaba por todas las palabras del titular, que además es
    el LCP. Los tres stops suben en luminosidad conservando tono y saturación
    hasta 4,61:1. El recorrido de colores es el mismo. */
+/* El barrido de luz sobre «Ministerio Público».
+   Todas las paradas son claras, y no por gusto: el degradé anterior iba de
+   #188b54 a #0a8883, que sobre el negro del hero viejo pasaban raspando y
+   sobre la fotografía se caen a 2,5:1 —medido contra el píxel más claro que
+   queda detrás de la palabra—. Con la foto atrás el titular no puede tener
+   ninguna parada oscura. Las dos puntas son los --acento-texto de las dos
+   agrupaciones, así que el barrido va de verde a turquesa igual que la foto
+   partida que tiene detrás. */
 .brillo {
   background-image: linear-gradient(
     to right,
-    #188b54 0%, #078c48 12%, #16a85b 30%, #f4f2ed 50%,
-    #0088c4 70%, #00b9ae 86%, #0a8883 100%
+    #6fd39b 0%, #9fe0ba 20%, #f4f2ed 44%,
+    #bfe9e4 66%, #3ad4c9 86%, #6fd39b 100%
   );
   background-size: 200% auto;
   -webkit-background-clip: text; background-clip: text;
@@ -96,7 +103,7 @@ p { color: var(--papel-tenue); }
   animation: barrido 7s linear infinite;
 }
 @keyframes barrido { 0% { background-position: -200% center; } 100% { background-position: 200% center; } }
-.eyebrow { display: inline-flex; align-items: center; gap: 0.55rem; color: var(--papel-débil); }
+.eyebrow { display: inline-flex; align-items: center; gap: 0.55rem; color: var(--papel-debil); }
 .eyebrow::before {
   content: ""; width: 6px; height: 6px; border-radius: 50%;
   background: var(--acento-texto); transition: background var(--t-sec) var(--suave);
@@ -140,7 +147,7 @@ p { color: var(--papel-tenue); }
 .btn-p:hover:not(:disabled) { opacity: 0.9; transform: translateY(-1px); }
 .btn-s { background: transparent; color: var(--texto); box-shadow: inset 0 0 0 1px var(--borde-fuerte); }
 .btn-s:hover:not(:disabled) { background: color-mix(in srgb, var(--texto) 6%, transparent); box-shadow: inset 0 0 0 1px var(--acento-texto); }
-.btn-a { background: var(--relleno); color: #fff; }
+.btn-a { background: var(--relleno); color: var(--sobre-relleno); }
 .btn-acento { background: var(--acento); color: var(--sobre-acento); }
 :focus-visible { outline: 2px solid var(--acento-texto); outline-offset: 3px; border-radius: 4px; }
 
@@ -180,8 +187,17 @@ p { color: var(--papel-tenue); }
 .links a:hover::after, .pie-links a:hover::after { transform: scaleX(1); }
 
 /* ============ HERO ============ */
-.hero { padding-block: 3.5rem 1.5rem; text-align: center; display: flex; flex-direction: column; align-items: center; }
-@media (min-width: 768px) { .hero { padding-block: 5.5rem 2rem; } }
+/* Alto del preview: el titular va centrado sobre la fachada y con aire abajo,
+   así el edificio se ve y no queda de telón detrás del texto. El mínimo en
+   `rem` es para las pantallas apaisadas bajas, donde 92vh no alcanza para el
+   titular más la bajada. */
+.hero {
+  min-height: min(92vh, 46rem);
+  display: flex; flex-direction: column; justify-content: center; align-items: center;
+  text-align: center;
+  padding-block: 3.5rem 14vh;
+}
+@media (min-width: 768px) { .hero { padding-block: 5.5rem 18vh; } }
 
 /* La maqueta viene pegada al hero: es la foto del producto, no una sección
    aparte. Antes las separaba la tarjeta de la pregunta; sacada esa, el
@@ -249,7 +265,7 @@ p { color: var(--papel-tenue); }
 .numeros {
   display: flex; flex-wrap: wrap; justify-content: center; gap: 0.6rem 1.6rem; text-align: center;
   font-family: var(--fuente-mono), monospace; font-size: 0.68rem; letter-spacing: 0.07em;
-  text-transform: uppercase; color: var(--papel-débil);
+  text-transform: uppercase; color: var(--papel-debil);
 }
 .numeros b { color: var(--papel); font-variation-settings: "wght" 500; }
 
@@ -270,13 +286,13 @@ p { color: var(--papel-tenue); }
 @media (min-width: 820px) { .puertas-grid { grid-template-columns: repeat(3, 1fr); } }
 .pcard { padding: 1.6rem; display: flex; flex-direction: column; height: 100%; }
 .pcard h3 { margin-bottom: 0.3rem; }
-.pcard .quien { font-size: 0.78rem; color: var(--papel-débil); margin-bottom: 1.1rem; }
+.pcard .quien { font-size: 0.78rem; color: var(--papel-debil); margin-bottom: 1.1rem; }
 .pcard ul { list-style: none; flex: 1; margin-bottom: 1.3rem; }
 .pcard li { display: flex; gap: 0.6rem; font-size: 0.84rem; color: var(--papel-tenue); padding: 0.42rem 0; line-height: 1.4; }
 .pcard li::before { content: ""; width: 5px; height: 5px; border-radius: 50%; background: var(--acento-texto); flex-shrink: 0; margin-top: 0.5rem; }
 .pcard.n li::before { background: #53b384; }
 .pcard.a li::before { background: #00b9ae; }
-.pcard.o li::before { background: var(--papel-débil); }
+.pcard.o li::before { background: var(--papel-debil); }
 .porque { max-width: 38rem; margin: 2.5rem auto 0; font-size: 0.86rem; line-height: 1.6; }
 
 /* ============ CAPTURA DE EMAIL ============ */
@@ -286,7 +302,7 @@ p { color: var(--papel-tenue); }
   background: rgba(244, 242, 237, 0.05); box-shadow: inset 0 0 0 1px var(--linea-fuerte);
   color: var(--papel); font-family: inherit; font-size: 0.9rem;
 }
-.captura input::placeholder { color: var(--papel-débil); }
+.captura input::placeholder { color: var(--papel-debil); }
 .captura input:focus-visible { box-shadow: inset 0 0 0 1px var(--acento-texto); }
 .captura-msg { margin-top: 0.9rem; font-size: 0.85rem; }
 .captura-msg.ok { color: var(--ok); }
@@ -314,7 +330,7 @@ p { color: var(--papel-tenue); }
 .pagina-texto li::marker { color: var(--acento-texto); }
 .pagina-texto-fecha {
   margin-top: 1.2rem; font-family: var(--fuente-mono), monospace;
-  font-size: 0.8rem; letter-spacing: 0.04em; color: var(--papel-débil);
+  font-size: 0.8rem; letter-spacing: 0.04em; color: var(--papel-debil);
 }
 .pagina-texto-firma {
   margin-top: 3.5rem; padding-top: 1.6rem; border-top: 1px solid var(--linea);
@@ -334,7 +350,7 @@ p { color: var(--papel-tenue); }
 .contacto-correos li { display: flex; flex-direction: column; gap: 0.15rem; }
 .contacto-correos .organizacion {
   font-family: var(--fuente-mono), monospace; font-size: 0.68rem;
-  letter-spacing: 0.11em; text-transform: uppercase; color: var(--papel-débil);
+  letter-spacing: 0.11em; text-transform: uppercase; color: var(--papel-debil);
 }
 .contacto-correos a { color: var(--acento-texto); font-size: 1.02rem; overflow-wrap: anywhere; }
 .contacto-redes { display: flex; flex-wrap: wrap; gap: 0.6rem; margin-top: 1.2rem; }
@@ -354,7 +370,7 @@ p { color: var(--papel-tenue); }
   outline: 2px solid var(--acento-texto); outline-offset: 2px;
 }
 .contacto-form [aria-invalid="true"] { border-color: var(--error); }
-.contacto-form-pie { font-size: 0.86rem; color: var(--papel-débil); }
+.contacto-form-pie { font-size: 0.86rem; color: var(--papel-debil); }
 
 .contacto-listo {
   margin-top: 1.4rem; padding: 1.4rem 1.5rem; border-radius: 14px; max-width: 34rem;
@@ -370,7 +386,7 @@ p { color: var(--papel-tenue); }
 
 /* ============ PIE ============ */
 .pie { border-top: 1px solid var(--linea); padding: 3rem 0 6rem; margin-top: 2rem; }
-.aviso { font-size: 0.78rem; color: var(--papel-débil); line-height: 1.6; max-width: 42rem; }
+.aviso { font-size: 0.78rem; color: var(--papel-debil); line-height: 1.6; max-width: 42rem; }
 .pie-links { display: flex; flex-wrap: wrap; gap: 1.2rem; margin-top: 1.5rem; font-size: 0.8rem; }
 .pie-links a { color: var(--papel-tenue); }
 .nota-prov {
@@ -381,36 +397,88 @@ p { color: var(--papel-tenue); }
 }
 .nota-prov b { color: var(--marca-revisar); font-variation-settings: "wdth" 100, "wght" 700; }
 
-/* ============ CINTA ARGENTINA ============ */
-.cinta-wrap { position: absolute; top: 0; left: 0; right: 0; height: 112vh; min-height: 640px; z-index: 1; pointer-events: none; overflow: hidden; }
-.cinta, .cinta-glint { position: absolute; inset: -8% -6%; mix-blend-mode: screen; transform-origin: 70% 55%; }
-.cinta { opacity: var(--cinta-op); animation: cintaDeriva 38s var(--suave) infinite alternate, cintaRespira 14s ease-in-out infinite; }
-.cinta img { object-fit: cover; object-position: 72% 58%; }
-@keyframes cintaDeriva {
-  from { transform: translate3d(0, 0, 0) scale(1.02) rotate(0deg); }
-  to { transform: translate3d(-2.6vw, 1.8vh, 0) scale(1.09) rotate(-1.4deg); }
+/* ============ ESCENA DEL HERO ============
+   La facultad de frente detrás del titular. Reemplaza a la cinta argentina.
+
+   Tres estados. En las dos puertas se ve una sola foto, la de esa
+   agrupación. En la pública —que es `dual` y es el estado que ve todo el
+   mundo— se ven las dos partidas al medio, y el corte cae sobre el eje de
+   simetría de la fachada.
+
+   El velo es del preview y hace todo el trabajo de legibilidad: oscurece
+   fuerte arriba, se abre en el medio para que se vea el edificio, y vuelve a
+   cerrar abajo para entregarle el fondo a la primera sección. La elipse del
+   centro es la que sostiene el titular.
+   ============================================================ */
+.escena {
+  position: absolute; top: 0; left: 0; right: 0;
+  height: 112vh; min-height: 640px;
+  z-index: 1; pointer-events: none; overflow: hidden;
 }
-@keyframes cintaRespira { 0%, 100% { filter: brightness(1); } 50% { filter: brightness(1.14); } }
-.cinta-glint {
-  opacity: var(--cinta-op);
-  -webkit-mask-image: url("/marca/cinta-argentina.jpg"); mask-image: url("/marca/cinta-argentina.jpg");
-  -webkit-mask-size: cover; mask-size: cover;
-  -webkit-mask-position: 72% 58%; mask-position: 72% 58%;
-  background: linear-gradient(105deg, transparent 38%, rgba(255,255,255,.55) 48%, rgba(255,255,255,.85) 51%, transparent 62%);
-  background-size: 260% 100%;
-  animation: cintaGlint 9s linear infinite, cintaDeriva 38s var(--suave) infinite alternate;
+.escena-capa {
+  position: absolute; inset: 0;
+  transition: opacity var(--t-sec) var(--suave);
+  animation: respira 60s ease-in-out infinite alternate;
+  -webkit-mask-image: var(--corte, none);
+  mask-image: var(--corte, none);
 }
-@keyframes cintaGlint { from { background-position: 180% 0; } to { background-position: -80% 0; } }
-.cinta-wrap::after {
-  content: ""; position: absolute; inset: 0;
-  background: radial-gradient(ellipse 62% 42% at 50% 26%, var(--tinta) 0%, rgba(8,9,10,.75) 45%, transparent 72%),
-              linear-gradient(to bottom, var(--tinta) 0%, transparent 18%, transparent 74%, var(--tinta) 100%);
+.escena-capa img { object-fit: cover; object-position: center 62%; }
+
+/* Dual: cada mitad la suya, con el cruce repartido en una banda de 12% sobre
+   el eje. Con un corte a filo el borde se lee como un error de montaje —en el
+   cielo no hay nada que lo justifique—; repartido, las dos gradaciones se
+   funden y queda un edificio iluminado desde dos lados. */
+.escena-capa[data-de="nexo"] {
+  --corte: linear-gradient(to right, #000 0%, #000 44%, transparent 56%);
 }
-.cinta, .cinta-glint { transition: opacity var(--t-sec) var(--suave); }
+.escena-capa[data-de="na"] {
+  --corte: linear-gradient(to right, transparent 44%, #000 56%, #000 100%);
+}
+
+/* Elegida una puerta, su foto toma el cuadro entero y la otra se va. */
+html[data-marca="nexo"] .escena-capa[data-de="nexo"],
+html[data-marca="na"] .escena-capa[data-de="na"] { --corte: none; }
+html[data-marca="nexo"] .escena-capa[data-de="na"],
+html[data-marca="na"] .escena-capa[data-de="nexo"] { opacity: 0; }
+
+@keyframes respira {
+  from { transform: scale(1.02) translate3d(0, 0, 0); }
+  to { transform: scale(1.06) translate3d(0, -1.4%, 0); }
+}
+
+.escena-velo {
+  position: absolute; inset: 0;
+  background:
+    linear-gradient(
+      to bottom,
+      rgba(8, 9, 10, 0.94) 0%,
+      rgba(8, 9, 10, 0.55) 26%,
+      rgba(8, 9, 10, 0.18) 48%,
+      rgba(8, 9, 10, 0.72) 82%,
+      var(--fondo) 100%
+    ),
+    radial-gradient(ellipse 70% 50% at 50% 34%, rgba(8, 9, 10, 0.72) 0%, transparent 72%);
+}
+
+/* En el teléfono la escena deja de ser fondo y pasa a ser banda.
+   La foto es 1800×734, casi 2,5:1. Estirada a un hueco de 375×909 —0,41:1—
+   `cover` se queda con una tajada de 300 px de ancho de los 1800: dos fustes
+   de columna, sin frontis, sin escalinata, sin edificio. No hay encuadre que
+   arregle esa diferencia de proporción, así que cambia el rol: arriba una
+   banda de 42vh, donde entra la mitad del ancho original y el frontis se ve, y
+   el titular abajo sobre fondo limpio. */
 @media (max-width: 640px) {
-  .cinta img { object-position: 64% 62%; }
-  .cinta-glint { -webkit-mask-position: 64% 62%; mask-position: 64% 62%; }
+  .escena { height: 42vh; min-height: 268px; max-height: 340px; }
+  .escena-capa img { object-position: center 42%; }
+  .escena-velo {
+    background:
+      linear-gradient(to bottom, rgba(8, 9, 10, 0.82) 0%, rgba(8, 9, 10, 0.28) 34%, rgba(8, 9, 10, 0.55) 72%, var(--fondo) 100%);
+  }
+  /* El titular arranca debajo de la banda. */
+  .hero { padding-block: calc(42vh - 74px) 3rem; min-height: 0; }
 }
+
+@media (prefers-reduced-motion: reduce) { .escena-capa { animation: none; } }
 
 /* ============ SISTEMA DE MOVIMIENTO ============ */
 .rev {
@@ -427,8 +495,6 @@ h1, h2 { text-wrap: balance; }
   .rev, .revelado > * { opacity: 1 !important; transform: none !important; transition: none !important; }
   .vidrio::after { display: none; }
   .mancha { animation: none !important; }
-  .cinta, .cinta-glint { animation: none !important; }
-  .cinta-glint { display: none; }
   .brillo { animation: none; background-position: 50% center; }
   html { scroll-behavior: auto; }
 }
@@ -466,22 +532,22 @@ h1, h2 { text-wrap: balance; }
 }
 
 /* ============================================================
-   LA APP — superficie clara, detrás del login.
-   Todo por tokens de rol: las mismas clases sirven en las dos
-   superficies sin duplicar reglas por marca.
+   LA APP — detrás del login.
+   Todo por tokens de rol: las mismas clases sirven en las cuatro
+   pieles sin duplicar reglas por marca.
    ============================================================ */
 .tarjeta-app {
   background: var(--tarjeta);
   border-radius: 16px;
-  box-shadow: 0 1px 2px rgba(8, 9, 10, 0.04), 0 8px 24px rgba(8, 9, 10, 0.06);
-  box-shadow: inset 0 0 0 1px var(--borde), 0 8px 24px rgba(8, 9, 10, 0.06);
+  /* Sobre fondo oscuro una sombra proyectada no se ve: lo que separa la
+     tarjeta del fondo es el borde. */
+  box-shadow: inset 0 0 0 1px var(--borde);
   position: relative;
   overflow: hidden;
 }
-html[data-superficie="oscura"] .tarjeta-app { box-shadow: inset 0 0 0 1px var(--borde); }
 
-/* El marco pinta el fondo. La cinta va encima con z-index 0 y el contenido
-   arriba con z-index 2: si el fondo lo pintara .auth-pantalla, taparía la cinta. */
+/* El marco pinta el fondo y el halo; el contenido va arriba con z-index 2. Si
+   el fondo lo pintara .auth-pantalla, taparía el halo. */
 .auth-marco {
   background: var(--fondo);
   color: var(--texto);
@@ -608,58 +674,26 @@ body { transition: background var(--t-sec) var(--suave), color var(--t-sec) var(
 .app-cuerpo { padding-block: 2.5rem 4rem; }
 .app-cuerpo h1 {
   font-size: clamp(1.7rem, 5vw, 2.4rem); line-height: 1.1; letter-spacing: -0.025em;
-  font-variation-settings: "wdth" var(--ancho-titulo), "wght" 700;
-  font-style: var(--h2-estilo, normal); color: var(--texto);
+  font-variation-settings: "wdth" var(--ancho-h), "wght" 700;
+  font-style: var(--ital-estilo); color: var(--texto);
   transition: font-variation-settings var(--t-sec) var(--suave);
 }
-html[data-marca="nexo"] .app-cuerpo h1 { --h2-estilo: italic; }
 
 /* ============================================================
-   LA CINTA COMO FONDO DE LAS PANTALLAS DE INGRESO
-   Sobre negro la cinta se compone con mix-blend-mode: screen. Sobre papel eso
-   no sirve: el JPEG trae el negro pegado. Se la enmascara consigo misma por
-   luminancia, así el negro cae y quedan sólo las franjas con su color real.
+   EL FONDO DE LAS PANTALLAS DE INGRESO
+   Sin fotografía, y a propósito: la arquitectura de imagen del proyecto deja
+   la facultad para la portada y para la home de cada puerta, y no la pone en
+   formularios. Antes acá iba la cinta argentina; se retiró con ella.
+
+   Queda un halo del color de la piel, que en el ingreso es la neutra. Es lo
+   justo para que la tarjeta no flote sobre un plano liso.
    ============================================================ */
-.cinta-fondo { position: fixed; inset: 0; z-index: 0; pointer-events: none; overflow: hidden; }
-.cinta-fondo::before {
+.auth-marco::before {
   content: "";
-  position: absolute; inset: -8% -6%;
-  background-image: url("/marca/cinta-argentina.jpg");
-  background-size: cover;
-  background-position: 72% 58%;
-  -webkit-mask-image: url("/marca/cinta-argentina.jpg");
-  mask-image: url("/marca/cinta-argentina.jpg");
-  -webkit-mask-size: cover; mask-size: cover;
-  -webkit-mask-position: 72% 58%; mask-position: 72% 58%;
-  -webkit-mask-repeat: no-repeat; mask-repeat: no-repeat;
-  -webkit-mask-source-type: luminance;
-  mask-mode: luminance;
-  opacity: 0.65;
-  animation: cintaDeriva 38s var(--suave) infinite alternate;
-}
-/* Sobre oscuro la cinta ya sabe componerse sola: vuelve el screen. */
-html[data-superficie="oscura"] .cinta-fondo::before {
-  -webkit-mask-image: none; mask-image: none;
-  mix-blend-mode: screen;
-  opacity: 0.62;
-}
-/* Deja limpio el centro, donde va la tarjeta. */
-.cinta-fondo::after {
-  content: ""; position: absolute; inset: 0;
-  background: radial-gradient(ellipse 46% 42% at 50% 50%,
-    var(--fondo) 0%, color-mix(in srgb, var(--fondo) 82%, transparent) 48%, transparent 74%);
-}
-/* En el celular la tarjeta ocupa casi todo el ancho: si la viñeta es la misma,
-   la cinta no se ve. Se achica y se corre, para que asome arriba y al costado. */
-@media (max-width: 640px) {
-  .cinta-fondo::before { background-position: 62% 46%; -webkit-mask-position: 62% 46%; mask-position: 62% 46%; opacity: 0.8; }
-  .cinta-fondo::after {
-    background: radial-gradient(ellipse 62% 26% at 50% 52%,
-      var(--fondo) 0%, color-mix(in srgb, var(--fondo) 70%, transparent) 55%, transparent 85%);
-  }
-}
-@media (prefers-reduced-motion: reduce) {
-  .cinta-fondo::before { animation: none; }
+  position: fixed; inset: 0; z-index: 0; pointer-events: none;
+  background:
+    radial-gradient(760px 520px at 50% -10%, color-mix(in srgb, var(--mancha-b) 12%, transparent) 0%, transparent 70%),
+    radial-gradient(620px 460px at 50% 110%, color-mix(in srgb, var(--mancha-a) 10%, transparent) 0%, transparent 72%);
 }
 
 /* ---------- modal «Contanos un poco más» ---------- */
@@ -733,10 +767,9 @@ html[data-superficie="oscura"] .cinta-fondo::before {
 
 .sim-titulo {
   font-size: clamp(1.35rem, 4vw, 1.9rem); line-height: 1.15; letter-spacing: -0.02em;
-  font-variation-settings: "wdth" var(--ancho-titulo), "wght" 700;
-  font-style: var(--h2-estilo, normal);
+  font-variation-settings: "wdth" var(--ancho-h), "wght" 700;
+  font-style: var(--ital-estilo);
 }
-html[data-marca="nexo"] .sim-titulo { --h2-estilo: italic; }
 
 .sim-encabezado-org { gap: 0.5rem; }
 .sim-org-sigla {
@@ -804,10 +837,9 @@ html[data-marca="nexo"] .sim-titulo { --h2-estilo: italic; }
 }
 .sim-cierre-titulo {
   font-size: clamp(1.6rem, 5.5vw, 2.6rem); line-height: 1.05; letter-spacing: -0.03em;
-  font-variation-settings: "wdth" var(--ancho-titulo), "wght" 750;
-  font-style: var(--h2-estilo, normal);
+  font-variation-settings: "wdth" var(--ancho-h), "wght" 750;
+  font-style: var(--ital-estilo);
 }
-html[data-marca="nexo"] .sim-cierre-titulo { --h2-estilo: italic; }
 .sim-gratis { color: var(--texto-debil); font-size: 0.68rem; }
 .sim-cierre .btn { margin-top: 0.6rem; }
 
@@ -870,10 +902,31 @@ html[data-marca="nexo"] .sim-cierre-titulo { --h2-estilo: italic; }
 
 .rend-pregunta { padding: 1.35rem; display: flex; flex-direction: column; gap: 1.1rem; }
 @media (min-width: 768px) { .rend-pregunta { padding: 1.85rem; } }
+/* El enunciado es un <h2>, pero de título no tiene nada: es el texto que hay
+   que leer con cuidado para contestar. Por eso se sale de la itálica y del
+   ancho variable de los títulos —en la puerta de Nexo una consigna de cuatro
+   renglones en cursiva condensada cuesta bastante más de leer— y se queda con
+   ancho 100 y estilo normal. */
 .rend-enunciado {
   font-size: clamp(1.05rem, 3.2vw, 1.25rem); line-height: 1.4;
   font-variation-settings: "wdth" 100, "wght" 620; max-width: 62ch;
+  font-style: normal; letter-spacing: 0;
 }
+/* El fieldset no aporta nada visual: se lo deja transparente y en bloque.
+   `min-inline-size: 0` es imprescindible —el valor de fábrica es
+   `min-content`, y con él la tarjeta no puede achicarse por debajo del ancho
+   de la opción más larga y se desborda en el teléfono—. La <legend> también
+   vuelve a comportarse como un bloque común: de fábrica flota sobre el borde
+   del fieldset y ahí le estrecha el ancho a lo que sigue. */
+.rend-campo {
+  border: none; padding: 0; margin: 0; min-inline-size: 0;
+  display: flex; flex-direction: column; gap: 1.1rem;
+}
+.rend-campo > legend {
+  display: block; float: none; width: 100%; padding: 0; margin-bottom: 1.1rem;
+}
+.rend-campo > legend h2 { margin: 0; }
+
 .rend-opciones { list-style: none; display: flex; flex-direction: column; gap: 0.6rem; }
 .rend-op {
   width: 100%; display: flex; gap: 0.75rem; align-items: flex-start; text-align: left;
@@ -884,15 +937,23 @@ html[data-marca="nexo"] .sim-cierre-titulo { --h2-estilo: italic; }
   transition: box-shadow var(--t-micro) var(--suave), background var(--t-micro) var(--suave);
 }
 .rend-op:hover { box-shadow: inset 0 0 0 1px var(--borde-fuerte); }
+/* El radio va oculto con el recorte de .sr-only —sigue estando y sigue
+   recibiendo el foco—, así que el anillo lo tiene que dibujar la etiqueta.
+   Neutro, no de marca: en la zona de respuestas no entra el acento, y con el
+   verde de Nexo el anillo de foco se confundía con «correcta». */
+.rend-op:has(input:focus-visible) { outline: 2px solid var(--texto); outline-offset: 2px; }
 /* La elegida no se distingue sólo por color: el marco engorda y la letra
-   pesa, para que se vea igual sin distinguir el acento. */
+   pesa, para que se vea igual sin distinguir el color.
+   Y el color es neutro, no el de marca: en la puerta de Nexo el verde ya
+   significa «correcta», y usarlo también para «elegida» mezcla las dos
+   cosas justo donde no se puede. */
 .rend-op.elegida {
-  box-shadow: inset 0 0 0 2px var(--acento-texto);
-  background: color-mix(in srgb, var(--acento-texto) 7%, transparent);
+  box-shadow: inset 0 0 0 2px var(--texto);
+  background: color-mix(in srgb, var(--texto) 8%, transparent);
   font-variation-settings: "wdth" 100, "wght" 560;
 }
 .rend-op-clave {
-  color: var(--acento-texto); font-size: 0.68rem; padding-top: 0.2rem; flex-shrink: 0;
+  color: var(--texto-debil); font-size: 0.68rem; padding-top: 0.2rem; flex-shrink: 0;
 }
 .rend-op-texto { flex: 1; }
 .rend-marcar {
@@ -1010,6 +1071,12 @@ html[data-marca="nexo"] .sim-cierre-titulo { --h2-estilo: italic; }
 @media (min-width: 760px) { .res-cifras { grid-template-columns: repeat(5, 1fr); } }
 .res-cifra { padding: 0.9rem 1rem; display: flex; flex-direction: column; gap: 0.3rem; }
 .res-cifra dt { color: var(--texto-debil); font-size: 0.58rem; }
+/* La cifra no se distingue sólo por color: lleva ícono y le engorda el
+   borde. Es el mismo criterio que la opción elegida. */
+.res-cifra dd { display: flex; align-items: baseline; gap: 0.35rem; }
+.res-cifra dd span { font-size: 0.75em; }
+.res-cifra[data-estado="correcta"] { box-shadow: inset 0 0 0 2px var(--ok); }
+.res-cifra[data-estado="incorrecta"] { box-shadow: inset 0 0 0 2px var(--error); }
 .res-cifra dd {
   font-size: 1.35rem; font-variation-settings: "wdth" 100, "wght" 700;
   font-variant-numeric: tabular-nums;
@@ -1143,17 +1210,16 @@ html[data-marca="nexo"] .sim-cierre-titulo { --h2-estilo: italic; }
    relleno o hueco según tenga fuente o no.
 
    Los tres colores son --ok, --marca-revisar y --error, que ya existen y
-   ya pasan AA en las dos superficies: tests/contraste.test.ts los mide.
+   ya pasan AA en las cuatro pieles: tests/contraste.test.ts los mide.
    ============================================================ */
 .asis { display: flex; flex-direction: column; gap: 2.75rem; }
 @media (min-width: 768px) { .asis { gap: 3.5rem; } }
 
 .asis-titulo {
   font-size: clamp(1.3rem, 4vw, 1.8rem); line-height: 1.15; letter-spacing: -0.02em;
-  font-variation-settings: "wdth" var(--ancho-titulo), "wght" 700;
-  font-style: var(--h2-estilo, normal);
+  font-variation-settings: "wdth" var(--ancho-h), "wght" 700;
+  font-style: var(--ital-estilo);
 }
-html[data-marca="nexo"] .asis-titulo { --h2-estilo: italic; }
 .asis-bajada { color: var(--texto-tenue); max-width: 62ch; line-height: 1.6; }
 .asis-parrafo { color: var(--texto-tenue); max-width: 60ch; line-height: 1.65; }
 .asis-rotulo {
@@ -1536,13 +1602,13 @@ html[data-marca="nexo"] .asis-titulo { --h2-estilo: italic; }
    se puede tipear y no hace nada es peor que no mostrarlo. */
 .asis-muestra-campo {
   font-size: 0.9rem; padding: 0.8rem 0.9rem; border-radius: 10px;
-  background: rgba(244, 242, 237, 0.05); color: var(--papel-débil);
+  background: rgba(244, 242, 237, 0.05); color: var(--papel-debil);
   box-shadow: inset 0 0 0 1px var(--linea);
 }
 /* Sin versalitas: el texto de A-14 va como lo escribió el proyecto, y la
    clase .mono lo pasaba entero a mayúsculas. */
 .asis-muestra-ejemplo {
-  font-size: 0.78rem; margin-top: 0.6rem; color: var(--papel-débil);
+  font-size: 0.78rem; margin-top: 0.6rem; color: var(--papel-debil);
   text-transform: none; letter-spacing: 0;
 }
 .asis-muestra-cta { margin-top: 0.9rem; }
@@ -1550,7 +1616,7 @@ html[data-marca="nexo"] .asis-titulo { --h2-estilo: italic; }
   list-style: none; margin: 1.1rem 0 0; padding: 0;
   display: flex; flex-direction: column; gap: 0.45rem;
 }
-.asis-muestra-sellos li { font-size: 0.86rem; line-height: 1.5; color: var(--papel-débil); }
+.asis-muestra-sellos li { font-size: 0.86rem; line-height: 1.5; color: var(--papel-debil); }
 
 /* ---------- las más preguntadas (A-10) ---------- */
 .asis-top {
@@ -1595,10 +1661,9 @@ html[data-marca="nexo"] .asis-titulo { --h2-estilo: italic; }
 
 .ins-titulo {
   font-size: clamp(1.3rem, 4vw, 1.8rem); line-height: 1.15; letter-spacing: -0.02em;
-  font-variation-settings: "wdth" var(--ancho-titulo), "wght" 700;
-  font-style: var(--h2-estilo, normal);
+  font-variation-settings: "wdth" var(--ancho-h), "wght" 700;
+  font-style: var(--ital-estilo);
 }
-html[data-marca="nexo"] .ins-titulo { --h2-estilo: italic; }
 .ins-bajada { color: var(--texto-tenue); max-width: 60ch; line-height: 1.6; }
 .ins-parrafo { color: var(--texto-tenue); max-width: 60ch; line-height: 1.65; }
 .ins-rotulo {
@@ -1913,13 +1978,13 @@ html[data-marca="nexo"] .ins-titulo { --h2-estilo: italic; }
 .ins-muestra-concursos { display: grid; gap: 1rem; }
 @media (min-width: 560px) { .ins-muestra-concursos { grid-template-columns: repeat(auto-fit, minmax(15rem, 1fr)); } }
 .ins-muestra-concurso { margin: 0.7rem 0 0.2rem; font-size: 1.1rem; line-height: 1.25; }
-.ins-muestra-cargo { font-size: 0.87rem; color: var(--papel-débil); }
+.ins-muestra-cargo { font-size: 0.87rem; color: var(--papel-debil); }
 .ins-muestra-cta { margin-top: 1rem; }
 .ins-muestra-destacados {
   list-style: none; margin: 2rem 0 0; padding: 0;
   display: flex; flex-wrap: wrap; gap: 0.6rem 1.6rem;
 }
-.ins-muestra-destacados li { font-size: 0.9rem; line-height: 1.5; color: var(--papel-débil); }
+.ins-muestra-destacados li { font-size: 0.9rem; line-height: 1.5; color: var(--papel-debil); }
 .ins-muestra-cierre {
   margin-top: 1rem; padding: 1.3rem 1.4rem; border-radius: 14px; max-width: 34rem;
   background: rgba(244, 242, 237, 0.04); box-shadow: inset 0 0 0 1px var(--linea);
@@ -2055,7 +2120,7 @@ html[data-marca="nexo"] .ins-titulo { --h2-estilo: italic; }
 .sim-muestra-cabeza { display: flex; flex-direction: column; align-items: flex-start; gap: 0.7rem; }
 .sim-muestra-titulo {
   font-size: clamp(1.9rem, 6vw, 3rem); line-height: 1.05; letter-spacing: -0.03em;
-  font-variation-settings: "wdth" var(--ancho-h2), "wght" 700; color: var(--papel);
+  font-variation-settings: "wdth" var(--ancho-h), "wght" 700; color: var(--papel);
   margin-top: 0.6rem;
 }
 .sim-muestra-bajada {
@@ -2084,7 +2149,7 @@ html[data-marca="nexo"] .ins-titulo { --h2-estilo: italic; }
   display: flex; flex-wrap: wrap; gap: 0.5rem 0.7rem;
 }
 .sim-muestra-frases li {
-  font-size: 0.86rem; line-height: 1.4; color: var(--papel-débil);
+  font-size: 0.86rem; line-height: 1.4; color: var(--papel-debil);
   padding: 0.4rem 0.75rem; border-radius: 999px;
   box-shadow: inset 0 0 0 1px var(--linea-fuerte);
 }
@@ -2132,6 +2197,325 @@ html[data-marca="nexo"] .ins-titulo { --h2-estilo: italic; }
 }
 .sim-muestra-cierre-titulo {
   font-size: clamp(1.4rem, 4.6vw, 2.1rem); line-height: 1.15; letter-spacing: -0.025em;
-  font-variation-settings: "wdth" var(--ancho-h2), "wght" 700; color: var(--papel);
+  font-variation-settings: "wdth" var(--ancho-h), "wght" 700; color: var(--papel);
   max-width: 20ch;
+}
+
+/* ============================================================
+   /pieles · la página de control.
+   Cada bloque declara su propia data-marca, así que las cuatro pieles
+   conviven en la misma pantalla y se comparan sin recargar.
+   ============================================================ */
+.pieles { display: flex; flex-direction: column; gap: 2rem; }
+.pieles-cabeza { display: flex; flex-direction: column; gap: 0.6rem; }
+.pieles-bajada { color: var(--texto-tenue); max-width: 58ch; line-height: 1.6; }
+.pieles-nota { color: var(--texto-debil); font-size: 0.86rem; max-width: 58ch; line-height: 1.6; }
+
+.pieles-grilla { display: grid; gap: 1.25rem; }
+@media (min-width: 900px) { .pieles-grilla { grid-template-columns: 1fr 1fr; } }
+
+.piel {
+  background: var(--fondo); color: var(--texto);
+  border-radius: 16px; overflow: hidden;
+  box-shadow: inset 0 0 0 1px var(--borde);
+}
+.piel-cabeza {
+  display: flex; align-items: baseline; gap: 0.7rem;
+  padding: 0.9rem 1.1rem; border-bottom: 1px solid var(--borde);
+  background: var(--fondo-bajo);
+}
+.piel-marca { color: var(--acento-texto); font-size: 0.68rem; }
+.piel-donde { color: var(--texto-debil); font-size: 0.8rem; }
+
+.piel-cuerpo { display: flex; flex-direction: column; gap: 1.4rem; padding: 1.25rem 1.1rem 1.5rem; }
+.piel-bloque { display: flex; flex-direction: column; gap: 0.5rem; }
+.piel-rotulo { color: var(--texto-debil); font-size: 0.62rem; letter-spacing: 0.11em; text-transform: uppercase; }
+
+.piel-titulo {
+  font-size: clamp(1.15rem, 3.6vw, 1.5rem); line-height: 1.15; letter-spacing: -0.02em;
+  font-variation-settings: "wdth" var(--ancho-h), "wght" 700;
+  /* La itálica es de Nexo y nada más. Sale del token, no de un selector por
+     marca: `--ital-estilo` ya vale `italic` sólo en la piel de Nexo. */
+  font-style: var(--ital-estilo);
+}
+
+.piel-botones { display: flex; flex-wrap: wrap; gap: 0.6rem; }
+.piel-parrafo { color: var(--texto-tenue); font-size: 0.92rem; line-height: 1.65; max-width: 46ch; }
+.piel-parrafo a { color: var(--acento-texto); }
+
+.piel-tarjeta { display: flex; flex-direction: column; gap: 0.3rem; padding: 1rem 1.1rem; }
+.piel-tarjeta-rotulo { color: var(--acento-texto); font-size: 0.62rem; letter-spacing: 0.11em; text-transform: uppercase; }
+.piel-tarjeta-cabeza { font-size: 1rem; font-variation-settings: "wdth" 100, "wght" 650; }
+.piel-divisor { border: none; height: 1px; background: var(--borde-fuerte); margin: 0; }
+
+/* ---- la zona de corrección ----
+   Acá el acento de marca está prohibido: sólo neutros y los dos semánticos.
+   Y el estado nunca se comunica sólo por color — hay ícono y cambia el
+   grosor del borde, que es lo que hace que funcione en escala de grises y
+   para quien no distingue el verde del rojo. */
+.piel-opciones { list-style: none; margin: 0; padding: 0; display: flex; flex-direction: column; gap: 0.4rem; }
+.piel-op {
+  display: flex; align-items: center; gap: 0.7rem;
+  padding: 0.65rem 0.8rem; border-radius: 10px;
+  background: var(--tarjeta); box-shadow: inset 0 0 0 1px var(--borde);
+  font-size: 0.9rem; line-height: 1.4;
+}
+.piel-op-clave { color: var(--texto-debil); font-size: 0.7rem; }
+.piel-op-marca { margin-left: auto; font-size: 1rem; color: var(--tono); }
+.piel-op[data-estado="correcta"] { box-shadow: inset 0 0 0 2px var(--ok); --tono: var(--ok); }
+.piel-op[data-estado="incorrecta"] { box-shadow: inset 0 0 0 2px var(--error); --tono: var(--error); }
+.piel-nota { color: var(--texto-debil); font-size: 0.8rem; line-height: 1.55; }
+
+/* ---------- el lema y el pie de marca (conflictos 2, 3 y 4) ---------- */
+/* El lema va a la derecha del logo. Bajo 760px desaparece: ahí compite con
+   las acciones, y entre el lema y poder llegar a «Mi perfil» gana el perfil. */
+.app-lema {
+  display: none; flex: 1; text-align: right;
+  font-size: 0.6rem; letter-spacing: 0.16em; text-transform: uppercase;
+  color: var(--texto-tenue);
+}
+@media (min-width: 760px) { .app-lema { display: block; } }
+
+/* La otra agrupación, chica, al pie. En sesión el encabezado lleva un solo
+   logo; que el sitio es de las dos se sigue viendo acá. */
+.pie-coorg {
+  display: flex; align-items: center; gap: 0.6rem; margin-top: 1.4rem;
+  color: var(--texto-debil);
+}
+.pie-coorg .mono { font-size: 0.6rem; letter-spacing: 0.16em; text-transform: uppercase; }
+.pie-coorg svg { opacity: 0.75; }
+
+/* El logotipo gigante. Los valores salen de los previews: el degradé
+   recortado sobre el texto lo desvanece hacia abajo en vez de cortarlo. */
+.gigante {
+  font-variation-settings: "wdth" 125, "wght" 900;
+  /* El tamaño sale del largo del texto. El 138 está medido, no estimado: con
+     "wdth" 125 y "wght" 900 el avance medio de Archivo es 0,812em, y el
+     ancho del texto es N × 0,812 × tamaño. Se apunta a 101vw, o sea que las
+     letras tocan los dos bordes y sangran apenas: con más, se perdía la
+     primera letra entera y eso se lee como un error, no como un recurso. El
+     tope de 8.4rem es el del preview. */
+  font-size: min(calc(125vw / var(--gigante-largo, 19)), 8.4rem);
+  line-height: 0.82; letter-spacing: -0.045em;
+  white-space: nowrap; text-align: center;
+  margin: 2.5rem -6vw 0; padding-top: 0.5rem;
+  background: linear-gradient(
+    to bottom,
+    var(--acento-texto) 0%,
+    rgba(244, 242, 237, 0.1) 62%,
+    transparent 92%
+  );
+  -webkit-background-clip: text;
+  background-clip: text;
+  color: transparent;
+  -webkit-text-fill-color: transparent;
+  user-select: none;
+  transition: background var(--t-sec) var(--suave);
+}
+.pie { overflow: hidden; }
+@media (prefers-reduced-motion: reduce) { .gigante { transition: none; } }
+
+/* ============================================================
+   HOME DE PUERTA
+   Portada de `referencia/home-puerta-preview.html`.
+
+   La foto va detrás de tres capas: el tinte enciende el color de la puerta
+   en `screen`, el velo oscurece de izquierda a derecha —que es lo que deja
+   leer el texto mientras la columnata se abre hacia el otro lado— y el
+   fundido inferior entrega el fondo al bloque de columnas.
+
+   A 820px el velo cambia de eje: en el teléfono la foto ocupa todo el
+   ancho, así que el degradé pasa a ser vertical o el texto queda sobre la
+   parte clara.
+   ============================================================ */
+.portal { position: relative; min-height: 100vh; display: flex; flex-direction: column; overflow: hidden; }
+.portal-fondo { position: absolute; inset: 0; z-index: 0; }
+
+/* next/image con `fill` deja la <img> en absoluto dentro del div. El encuadre
+   es el del preview: la fuga de la columnata queda a la derecha. */
+.portal-foto { object-fit: cover; object-position: 62% 58%; }
+@media (max-width: 820px) { .portal-foto { object-position: 70% 58%; } }
+
+.portal-tinte {
+  position: absolute; inset: 0;
+  mix-blend-mode: screen; opacity: 0.62;
+  transition: background var(--t-sec) var(--suave);
+  background:
+    radial-gradient(1100px 780px at 78% 6%, var(--glow-a) 0%, transparent 62%),
+    radial-gradient(860px 660px at 6% 88%, var(--glow-b) 0%, transparent 66%),
+    linear-gradient(to bottom, var(--fondo) 0%, var(--fondo) 42%, var(--fondo-bajo) 100%);
+  animation: latir 26s ease-in-out infinite alternate;
+}
+@keyframes latir { from { filter: brightness(1); } to { filter: brightness(1.14); } }
+
+.portal-velo {
+  position: absolute; inset: 0;
+  background:
+    linear-gradient(to right, var(--fondo) 0%, rgba(4, 10, 8, 0.88) 26%, rgba(4, 10, 8, 0.42) 52%, transparent 78%),
+    linear-gradient(to bottom, rgba(0, 0, 0, 0.42) 0%, rgba(0, 0, 0, 0) 26%, rgba(0, 0, 0, 0.3) 62%, var(--fondo-bajo) 100%);
+}
+@media (max-width: 820px) {
+  .portal-velo {
+    background: linear-gradient(to bottom, rgba(0, 0, 0, 0.5) 0%, rgba(4, 10, 8, 0.72) 40%, var(--fondo-bajo) 100%);
+  }
+}
+
+/* ---------- el bloque de retención ---------- */
+/* Sólo el padding vertical: el horizontal lo pone `.env`, que va en el mismo
+   elemento. Con el atajo de cuatro valores se lo comía —las dos reglas tienen
+   la misma especificidad y ésta va después— y en el teléfono el saludo
+   quedaba pegado al borde. */
+.portal-medio {
+  flex: 1; display: flex; flex-direction: column; justify-content: center;
+  padding-top: 3rem; padding-bottom: 1rem;
+}
+.portal-retencion { display: flex; flex-direction: column; }
+
+/* El saludo es el título más grande de la puerta y el elemento LCP, así que
+   entra en el mismo sistema que el resto: el ancho y la itálica salen de la
+   piel. El preview lo deja fijo en 108 porque es una maqueta que alterna
+   marcas con un botón; acá la diferenciación entre las dos puertas —Nexo
+   condensada e itálica, Nueva Abogacía ancha y derecha— tiene que verse
+   justo en la línea que más se mira. */
+.portal-saludo {
+  font-size: clamp(1.5rem, 3.6vw, 2.4rem);
+  font-variation-settings: "wdth" var(--ancho-h), "wght" 700;
+  font-style: var(--ital-estilo);
+  letter-spacing: -0.03em; line-height: 1.06; text-wrap: balance; max-width: 24ch;
+  margin: 0;
+}
+.portal-saludo span { color: var(--acento-texto); }
+
+/* CORRECCIÓN — el preview la rellena con rgba(244,242,237,.02), un velo casi
+   blanco que no oscurece nada: la tarjeta hereda lo que tenga la foto detrás.
+   En el teléfono el encuadre cambia y la columnata iluminada le queda justo
+   abajo, y ahí el rótulo «RETOMAR DONDE QUEDASTE» caía a 4,19:1. La tarjeta de
+   vidrio tiene que ser una superficie legible por sí sola, así que el relleno
+   pasa a ser un velo de tinta. Medido sobre la foto real, no sobre el token:
+   4,72:1 en el peor punto —375 px, piel Nexo— contra 4,19:1 antes. */
+.portal-retomar {
+  margin-top: 1.8rem; max-width: 34rem; padding: 1.1rem 1.25rem; border-radius: 14px;
+  background: rgba(8, 9, 10, 0.42);
+  backdrop-filter: blur(8px); -webkit-backdrop-filter: blur(8px);
+  box-shadow: inset 0 0 0 1px var(--linea), inset 0 1px 1px rgba(244, 242, 237, 0.1);
+  display: flex; align-items: center; justify-content: space-between; gap: 1rem; flex-wrap: wrap;
+}
+.portal-et {
+  font-size: 0.6rem; letter-spacing: 0.13em; text-transform: uppercase;
+  color: var(--texto-debil); display: block; margin-bottom: 0.35rem;
+}
+.portal-retomar b { font-size: 0.95rem; font-variation-settings: "wght" 600; }
+.portal-sub { font-size: 0.78rem; color: var(--texto-tenue); margin: 0.2rem 0 0; }
+
+.portal-barras { display: flex; gap: 1.4rem; margin-top: 1.5rem; flex-wrap: wrap; }
+.portal-barra { min-width: 132px; }
+.portal-barra-f {
+  display: flex; justify-content: space-between; gap: 0.8rem;
+  font-size: 0.72rem; color: var(--texto-tenue); margin: 0 0 0.3rem;
+}
+.portal-barra-t { display: block; height: 3px; border-radius: 2px; background: rgba(244, 242, 237, 0.1); overflow: hidden; }
+.portal-barra-t i { display: block; height: 100%; background: var(--acento-texto); border-radius: 2px; }
+
+/* ---------- las tres columnas ---------- */
+.portal-cols { display: grid; grid-template-columns: 1fr; gap: 2.2rem; padding: 2.5rem 0 3rem; }
+@media (min-width: 820px) { .portal-cols { grid-template-columns: 1.15fr 1fr 1fr; gap: 3rem; } }
+
+.portal-col-titulo {
+  font-size: 0.66rem; letter-spacing: 0.15em; text-transform: uppercase; font-weight: 400;
+  color: var(--papel); padding-bottom: 0.6rem;
+  border-bottom: 1px solid var(--linea-fuerte); margin: 0 0 1rem;
+}
+.portal-cols a {
+  display: block; color: var(--texto-tenue); font-size: 0.9rem;
+  padding: 0.32rem 0; position: relative; width: fit-content;
+}
+.portal-cols a::after {
+  content: ""; position: absolute; left: 0; right: 0; bottom: 0.18rem; height: 1px;
+  background: currentColor; transform: scaleX(0); transform-origin: left;
+  transition: transform 0.26s var(--sal);
+}
+.portal-cols a:hover { color: var(--papel); }
+.portal-cols a:hover::after { transform: scaleX(1); }
+.portal-marca { color: var(--acento-texto); }
+.portal-cols small { display: block; font-size: 0.72rem; color: var(--texto-debil); margin-top: 0.15rem; }
+
+/* Lo que falta se ve. El naranja es de Nexo y de nadie más, así que el
+   pendiente arranca en texto tenue y Nexo lo pisa. Al revés no funciona:
+   `var(--acento-2, ...)` no cae al respaldo porque el token existe — vale
+   `transparent` en las otras pieles — y el aviso quedaba invisible. */
+.portal-pend { color: var(--texto-tenue); font-size: 0.68rem; margin: 0.32rem 0; }
+html[data-marca="nexo"] .portal-pend,
+[data-marca="nexo"] .portal-pend { color: var(--acento-2); }
+
+/* El botón es un <a>, así que hay que devolverle lo que le sacó la regla de
+   la columna: vuelve a ser botón y pierde el subrayado que crece al pasar. */
+.portal-cols .portal-escribinos {
+  display: inline-flex; color: var(--texto);
+  margin-top: 0.9rem; width: fit-content;
+}
+.portal-cols .portal-escribinos::after { content: none; }
+
+@media (prefers-reduced-motion: reduce) {
+  .portal-tinte { animation: none; }
+}
+
+/* ============================================================
+   /admin · el panel de carga
+   La trastienda, en piel neutra: no es de ninguna de las dos puertas.
+   ============================================================ */
+.adm-pantalla { padding-bottom: 4rem; }
+.adm-bajada { color: var(--texto-tenue); max-width: 58ch; line-height: 1.6; margin-top: 0.6rem; }
+.adm { display: flex; flex-direction: column; gap: 1.25rem; margin-top: 2rem; }
+
+/* El aviso de que nada se publica sin revisar. Es lo primero que se lee y no
+   se puede cerrar: es la garantía del proyecto entero. */
+.adm-aviso {
+  padding: 0.9rem 1.1rem; border-radius: 12px;
+  background: var(--tarjeta); box-shadow: inset 0 0 0 1px var(--borde-fuerte);
+  color: var(--texto-tenue); font-size: 0.88rem; line-height: 1.6; max-width: 68ch;
+}
+
+.adm-campo { display: flex; flex-direction: column; gap: 0.5rem; }
+.adm-et { font-size: 0.82rem; color: var(--texto-tenue); }
+.adm-area {
+  width: 100%; resize: vertical; min-height: 16rem;
+  padding: 0.9rem 1rem; border-radius: 12px;
+  background: var(--fondo-bajo); color: var(--texto);
+  border: none; box-shadow: inset 0 0 0 1px var(--borde);
+  font-size: 0.82rem; line-height: 1.6;
+  /* El JSON se lee por columnas: si el navegador lo corta por palabra, la
+     estructura se pierde. Se deja desbordar y scrollear. */
+  white-space: pre; overflow-wrap: normal; overflow-x: auto;
+}
+.adm-area:focus-visible { outline: 2px solid var(--acento-texto); outline-offset: 2px; }
+.adm-botones { display: flex; gap: 0.6rem; flex-wrap: wrap; }
+
+.adm-bien, .adm-mal {
+  padding: 1rem 1.1rem; border-radius: 12px; font-size: 0.9rem; line-height: 1.6;
+  display: flex; flex-direction: column; gap: 0.5rem; max-width: 68ch;
+}
+/* Los dos semánticos, que no cambian con la piel. */
+.adm-bien { box-shadow: inset 0 0 0 2px var(--ok); }
+.adm-mal { box-shadow: inset 0 0 0 2px var(--error); }
+.adm-bien a { color: var(--acento-texto); text-decoration: underline; text-underline-offset: 3px; }
+.adm-mal-rotulo { color: var(--texto-tenue); font-size: 0.82rem; }
+.adm-problemas { list-style: none; display: flex; flex-direction: column; gap: 0.4rem; font-size: 0.86rem; }
+.adm-problemas code { color: var(--texto); font-size: 0.78rem; }
+.adm-problemas li { color: var(--texto-tenue); }
+
+.adm-formato { margin-top: 1.5rem; padding-top: 1.75rem; border-top: 1px solid var(--borde); }
+.adm-formato-titulo { font-size: 1.05rem; font-variation-settings: "wdth" 100, "wght" 650; }
+.adm-formato-bajada { color: var(--texto-tenue); font-size: 0.9rem; line-height: 1.6; max-width: 58ch; margin-top: 0.4rem; }
+
+.adm-campos { display: grid; gap: 0.5rem 1.5rem; margin-top: 1.25rem; }
+@media (min-width: 720px) { .adm-campos { grid-template-columns: 1fr 1fr; } }
+.adm-campos > div { display: flex; gap: 0.7rem; align-items: baseline; font-size: 0.86rem; }
+.adm-campos dt { color: var(--acento-texto); font-size: 0.74rem; flex-shrink: 0; min-width: 7.5rem; }
+.adm-campos dd { color: var(--texto-tenue); margin: 0; line-height: 1.5; }
+
+.adm-ejemplo { margin-top: 1.5rem; display: flex; flex-direction: column; gap: 0.7rem; align-items: flex-start; }
+.adm-ejemplo pre {
+  width: 100%; padding: 1rem; border-radius: 12px; overflow-x: auto;
+  background: var(--fondo-bajo); box-shadow: inset 0 0 0 1px var(--borde);
+  color: var(--texto-tenue); font-size: 0.76rem; line-height: 1.55;
 }

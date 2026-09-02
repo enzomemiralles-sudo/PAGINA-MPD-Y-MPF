@@ -1,4 +1,8 @@
 export const pie = {
+  /** El logotipo gigante del pie. En la pública dice qué es el sitio; en la
+   *  home de cada puerta, el nombre de la agrupación. */
+  gigantePublica: "INGRESO DEMOCRÁTICO",
+  coorganizacion: "Con",
   aviso:
     "Iniciativa independiente de Nexo Derecho y Nueva Abogacía. Sin vínculo institucional con el Ministerio Público de la Defensa ni con el Ministerio Público Fiscal. Verificá siempre la información oficial en las fuentes de cada organismo.",
   links: [

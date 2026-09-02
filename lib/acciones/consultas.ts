@@ -3,6 +3,8 @@
 import { z } from "zod";
 import { crearClienteServidor } from "@/lib/supabase/server";
 import { contacto } from "@/content/contacto";
+import { traerPerfil } from "@/lib/perfil";
+import { configDe } from "@/lib/marca/marcas";
 
 const MOTIVOS = contacto.motivos.map((m) => m.valor) as [string, ...string[]];
 
@@ -28,8 +30,13 @@ export type ResultadoConsulta =
  * configurar, la consulta igual queda en la base, que es lo que no se puede
  * perder. Un aviso que no sale es una molestia; una consulta que se pierde es
  * alguien que escribió y nunca supo nada.
+ *
+ * El correo es de texto plano y va para adentro, así que no tiene piel que
+ * ponerse. Lo que sí lleva es de qué puerta viene quien escribió, cuando
+ * escribe con la sesión abierta: quien conteste sabe si le está respondiendo
+ * a alguien de Nexo o de Nueva Abogacía antes de abrir nada.
  */
-async function avisar(datos: z.infer<typeof esquema>): Promise<void> {
+async function avisar(datos: z.infer<typeof esquema>, puerta: string | null): Promise<void> {
   const clave = process.env.RESEND_API_KEY;
   const de = process.env.RESEND_FROM;
   if (!clave || !de) return;
@@ -47,11 +54,12 @@ async function avisar(datos: z.infer<typeof esquema>): Promise<void> {
         // Para poder responder apretando «responder» y que le llegue a quien
         // escribió, en vez de a nosotros mismos.
         reply_to: datos.email,
-        subject: `[${etiqueta}] consulta de ${datos.nombre}`,
+        subject: `[${etiqueta}]${puerta ? ` [${puerta}]` : ""} consulta de ${datos.nombre}`,
         text:
           `Motivo: ${etiqueta}\n` +
           `Nombre: ${datos.nombre}\n` +
-          `Correo: ${datos.email}\n\n` +
+          `Correo: ${datos.email}\n` +
+          `Puerta: ${puerta ?? "sin sesión iniciada"}\n\n` +
           datos.mensaje,
       }),
     });
@@ -91,6 +99,11 @@ export async function enviarConsulta(entrada: {
 
   if (error) return { ok: false, campo: null };
 
-  await avisar(parseo.data);
+  // No bloquea nada: si no hay sesión, o si la consulta viene de la pestaña
+  // pública, el aviso sale igual y dice que no había sesión.
+  const perfil = await traerPerfil();
+  const puerta = perfil?.marca ? (configDe(perfil.marca)?.nombre ?? null) : null;
+
+  await avisar(parseo.data, puerta);
   return { ok: true };
 }

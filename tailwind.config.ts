@@ -14,7 +14,7 @@ const config: Config = {
         papel: {
           DEFAULT: "var(--papel)",
           tenue: "var(--papel-tenue)",
-          debil: "var(--papel-débil)",
+          debil: "var(--papel-debil)",
         },
         linea: { DEFAULT: "var(--linea)", fuerte: "var(--linea-fuerte)" },
         acento: { DEFAULT: "var(--acento)", texto: "var(--acento-texto)" },

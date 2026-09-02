@@ -4,7 +4,7 @@ import { useState } from "react";
 import { useRouter } from "next/navigation";
 import { elegirPerfil } from "@/lib/acciones/perfil";
 import { seleccion as t } from "@/content/perfil";
-import { MARCAS_CONFIG, MARCA_DE_PERFIL, type TipoPerfil } from "@/lib/marca/marcas";
+import { configDe, MARCA_DE_PERFIL, type TipoPerfil } from "@/lib/marca/marcas";
 
 export function SeleccionPerfil() {
   const router = useRouter();
@@ -35,7 +35,8 @@ export function SeleccionPerfil() {
       <h1>{t.titulo}</h1>
       <div className="perfil-lista">
         {t.opciones.map((o) => {
-          const cfg = MARCAS_CONFIG[MARCA_DE_PERFIL[o.id]];
+          // «otro» no tiene agrupación: su tarjeta va sin muestra de color.
+          const cfg = configDe(MARCA_DE_PERFIL[o.id]);
           return (
             <button
               key={o.id}
@@ -46,10 +47,12 @@ export function SeleccionPerfil() {
             >
               <span className="etiqueta">{o.etiqueta}</span>
               <span className="quien">{o.quien}</span>
-              <span className="perfil-muestra" aria-hidden="true">
-                <i style={{ background: cfg.muestra.primario }} />
-                <i style={{ background: cfg.muestra.acento }} />
-              </span>
+              {cfg ? (
+                <span className="perfil-muestra" aria-hidden="true">
+                  <i style={{ background: cfg.muestra.primario }} />
+                  <i style={{ background: cfg.muestra.acento }} />
+                </span>
+              ) : null}
             </button>
           );
         })}

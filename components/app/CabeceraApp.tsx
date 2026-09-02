@@ -35,6 +35,10 @@ export function CabeceraApp({ marca, revisor = false }: { marca: Marca; revisor?
           )}
         </Link>
 
+        {/* El lema de la agrupación. Va a la derecha del logo y desaparece
+            en pantallas angostas, donde compite con las acciones. */}
+        {cfg ? <span className="app-lema mono">{cfg.lema}</span> : null}
+
         <div className="app-acciones">
           {/* Sólo para quien revisa. Al resto la ruta ni le aparece ni le
               responde: /revisar devuelve 404 si el rol no es revisor. */}

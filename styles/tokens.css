@@ -1,99 +1,85 @@
 /* ============================================================
    TOKENS
-   Dos ejes independientes. Normalmente van en <html>, pero cualquier
-   elemento puede declararlos: así una pantalla puede traer su piel puesta
-   desde el servidor y verse bien aunque el JavaScript no haya corrido.
+   Un solo eje: `data-marca`, en <html>. Cualquier elemento puede
+   declararlo, así una pantalla puede traer su piel puesta desde el
+   servidor y verse bien aunque el JavaScript no haya corrido.
 
-     data-superficie = "oscura" | "clara"   -> fondo, texto, bordes, tarjeta
-     data-marca      = "dual" | "neutro" | "nexo" | "na"  -> los acentos
+     data-marca = "dual" | "neutro" | "nexo" | "na"
 
-   La landing es oscura; la app, detrás del login, es clara. La misma marca
-   necesita acentos distintos en cada superficie: el verde #065D3B se lee
-   perfecto sobre papel (7,12:1) y desaparece sobre negro (2,50:1).
+   Todo el sitio es oscuro. Cada puerta trae su propio fondo, no sólo su
+   acento: el verde de Nexo vive sobre #04150D y el azul de Nueva Abogacía
+   sobre #03141F. Ningún componente conoce la marca; usan las variables.
 
-   Cinco valores de la landing se apartan del preview y están marcados
-   CORRECCIÓN. El motivo de cada uno está en PLAN.md §4.
+   Los valores salen de los dos previews de `referencia/`. Cuando los dos
+   discrepan gana `home-puerta-preview.html`, que es el más nuevo: la
+   pública define --acento-texto #53B384 y #00B9AE, la home #7FD6A4 y
+   #2FD3C8, y son estos últimos los que quedan.
+
+   Lo que se aparta del preview va marcado CORRECCIÓN, con el motivo. Son
+   siempre de contraste: tests/contraste.test.ts mide los pares y falla por
+   debajo de 4,5:1, así que un token que no llegue no entra.
    ============================================================ */
 
 :root {
-  /* Constantes de las que se derivan las dos superficies. */
+  /* ---------- constantes ---------- */
   --tinta: #08090a;
   --tinta-alta: #101216;
   --papel: #f4f2ed;
-  --ok: #4ade80;
-  --error: #e64d52;
 
-  /* Movimiento: no depende de la superficie ni de la marca. */
+  /* Semánticos. NO cambian nunca con la piel: el verde de "correcta" no
+     puede ser el verde de Nexo, o en la puerta verde deja de significar
+     algo. Es el primero de los cinco conflictos del brief. */
+  --ok: #4ade80;
+  /* CORRECCIÓN 3 — el preview dice #E5484D y sobre la tarjeta de Nexo queda
+     en 4,18:1. Aclarado lo mínimo para pasar AA en las cuatro pieles: 4,98:1
+     en el peor caso. */
+  --error: #ec5f63;
+
+  /* ---------- movimiento ---------- */
   --sal: cubic-bezier(0.22, 1, 0.36, 1);
   --suave: cubic-bezier(0.4, 0, 0.2, 1);
   --t-micro: 150ms;
   --t-elem: 420ms;
   --t-sec: 700ms;
-}
 
-/* ---------- superficie oscura: la landing ---------- */
-:root,
-html[data-superficie="oscura"],
-[data-superficie="oscura"] {
-  --fondo: var(--tinta);
+  /* ---------- la superficie, que es una sola ---------- */
   --texto: var(--papel);
 
-  /* CORRECCIÓN 1 — el preview usa .55 y .35. A .35 el texto daba 2,93:1
-     contra el fondo y lo usa, entre otros, el aviso legal del pie. */
+  /* CORRECCIÓN 1 — los previews usan .55/.58 y .34. A .34 el texto queda
+     en 2,9:1 contra el fondo y lo usa, entre otros, el aviso legal del
+     pie. Subidos a .70 y .50, que es lo mínimo que pasa AA. */
   --texto-tenue: rgba(244, 242, 237, 0.7);
   --texto-debil: rgba(244, 242, 237, 0.5);
 
-  --borde: rgba(244, 242, 237, 0.1);
-  --borde-fuerte: rgba(244, 242, 237, 0.2);
+  --borde: rgba(244, 242, 237, 0.12);
+  --borde-fuerte: rgba(244, 242, 237, 0.24);
   --tarjeta: rgba(244, 242, 237, 0.04);
   --sobre-acento: #08090a;
   --sobre-acento-2: #08090a;
-  /* El marcador de "revisar" es funcional, no de marca: el mismo en las tres
-     pieles. Antes era el naranja de Nexo, que ya no existe en la paleta. */
+
+  /* Funcional, no de marca: el mismo en las cuatro pieles. */
   --marca-revisar: #c8a27a;
-  /* Los logos van a color. El verde de marca en las dos superficies: sobre
-     oscuro da 4,95:1 contra el fondo y sobre claro 7,12:1 contra el papel.
-     Los dos pasan holgados el 3:1 que pide un elemento gráfico. */
+  /* Los logos van a color. Es elemento gráfico, le alcanza 3:1. */
   --logo-nexo: #059249;
 
-  /* Nombres viejos que usa el CSS de la landing. */
+  /* Alias que usa el CSS venido de los previews. */
   --papel-tenue: var(--texto-tenue);
-  --papel-débil: var(--texto-debil);
+  --papel-debil: var(--texto-debil);
   --linea: var(--borde);
   --linea-fuerte: var(--borde-fuerte);
-}
 
-/* ---------- superficie clara: la app ---------- */
-html[data-superficie="clara"],
-[data-superficie="clara"] {
-  --fondo: var(--papel);
-  --texto: var(--tinta);
-  --texto-tenue: rgba(8, 9, 10, 0.75);
-  --texto-debil: rgba(8, 9, 10, 0.62);
-  --borde: rgba(8, 9, 10, 0.12);
-  --borde-fuerte: rgba(8, 9, 10, 0.22);
-  --tarjeta: #ffffff;
-  --sobre-acento: #ffffff;
-  --sobre-acento-2: #08090a;
-  --marca-revisar: #8f6533;
-  --logo-nexo: #065d3b;
-  /* El verde y el rojo funcionales cambian con la superficie. Los de arriba
-     son claros para leerse sobre negro y sobre papel no llegan a AA: #4ade80
-     da 1,56:1. Estos dan 6,08:1 y 6,54:1 sobre la tarjeta. */
-  --ok: #14713a;
-  --error: #b3261e;
-
-  --papel-tenue: var(--texto-tenue);
-  --papel-débil: var(--texto-debil);
-  --linea: var(--borde);
-  --linea-fuerte: var(--borde-fuerte);
+  /* Fondo por defecto. Cada marca lo pisa con el suyo. */
+  --fondo: var(--tinta);
+  --fondo-bajo: #040507;
+  --glow-a: transparent;
+  --glow-b: transparent;
 }
 
 /* ============================================================
-   ACENTOS POR MARCA — cambian con la superficie
+   LAS CUATRO PIELES
    ============================================================ */
 
-/* ---------- dual: la landing sin puerta elegida ---------- */
+/* ---------- dual: la pestaña pública, las dos marcas conviven ---------- */
 :root,
 html[data-marca="dual"],
 [data-marca="dual"] {
@@ -104,13 +90,12 @@ html[data-marca="dual"],
   --mancha-a: #059249;
   --mancha-b: #0088c4;
   --relleno: linear-gradient(135deg, #059249, #0088c4);
-  --ancho-titulo: 118;
-  --ancho-h2: 112;
-  --ital-h2: 0;
-  --cinta-op: 0.62;
+  --sobre-relleno: #08090a;
+  --ancho-h: 118;
+  --ital-estilo: normal;
 }
 
-/* ---------- neutro: ingreso y selección de perfil ---------- */
+/* ---------- neutro: crear perfil antes de elegir, y el panel ---------- */
 html[data-marca="neutro"],
 [data-marca="neutro"] {
   --acento: var(--texto);
@@ -120,80 +105,60 @@ html[data-marca="neutro"],
   --mancha-a: #8a8987;
   --mancha-b: #c9c7c2;
   --relleno: linear-gradient(135deg, #3a3a38, #6b6b68);
+  --sobre-relleno: #f4f2ed;
   --sobre-acento: var(--fondo);
-  --ancho-titulo: 112;
-  --ancho-h2: 108;
-  --ital-h2: 0;
-  --cinta-op: 0;
+  --ancho-h: 112;
+  --ital-estilo: normal;
 }
 
-/* ---------- Nexo ---------- */
+/* ---------- Nexo ----------
+   El naranja es SÓLO de Nexo, y la itálica condensada en títulos también.
+   Con eso y con el color plano —Nueva Abogacía usa siempre el degradé— las
+   dos puertas se distinguen incluso en escala de grises. */
 html[data-marca="nexo"],
 [data-marca="nexo"] {
-  /* Nexo es todo verde. El naranja salió de la paleta: --acento-2 es ahora un
-     segundo verde y el marcador de revisar dejó de ser un color de marca. */
-  --acento-2: #16a85b;
-  --ancho-titulo: 76;
-  --ancho-h2: 76;
-  --ital-h2: 1;
-  --cinta-op: 0.16;
-}
-html[data-marca="nexo"][data-superficie="oscura"],
-[data-marca="nexo"][data-superficie="oscura"] {
   --acento: #059249;
-  --acento-texto: #53b384;
+  --acento-texto: #7fd6a4;
+  --acento-2: #f58220;
+  --fondo: #04150d;
+  --fondo-bajo: #020b07;
+  --glow-a: rgba(5, 146, 73, 0.55);
+  --glow-b: rgba(22, 168, 91, 0.28);
   --superficie: rgba(31, 72, 56, 0.3);
   --mancha-a: #059249;
   --mancha-b: #0d6b3c;
-  --relleno: linear-gradient(135deg, #059249, #0d7a3d);
-}
-html[data-marca="nexo"][data-superficie="clara"],
-[data-marca="nexo"][data-superficie="clara"] {
-  /* El verde de marca. Sobre papel llega a 7,12:1, así que sirve para texto
-     y para fondo de botón con letra blanca (7,96:1). */
-  --acento: #065d3b;
-  --acento-texto: #065d3b;
-  --acento-2: #0a7f4f;
-  /* Sobre este verde la letra va blanca (5,05:1); con tinta no llegaba. */
-  --sobre-acento-2: #ffffff;
-  --superficie: var(--tarjeta);
-  --mancha-a: #065d3b;
-  --mancha-b: #0a7f4f;
-  --relleno: linear-gradient(135deg, #065d3b, #0a7f4f);
+  /* Color plano, no degradé: es parte de la diferenciación. */
+  --relleno: #059249;
+  /* La letra blanca sobre este verde da 4,03:1 y no llega. Con tinta, 4,95:1. */
+  --sobre-relleno: #08090a;
+  --ancho-h: 78;
+  /* La itálica en títulos es de Nexo y de nadie más. Va como token para que
+     ningún componente tenga que preguntar de qué marca se trata. */
+  --ital-estilo: italic;
 }
 
 /* ---------- Nueva Abogacía ---------- */
 html[data-marca="na"],
 [data-marca="na"] {
-  --acento-2: transparent;
-  --ancho-titulo: 104;
-  --ancho-h2: 100;
-  --ital-h2: 0;
-  --cinta-op: 0.16;
-}
-html[data-marca="na"][data-superficie="oscura"],
-[data-marca="na"][data-superficie="oscura"] {
   --acento: #0059ba;
-  /* La tinta sobre este azul da 2,98:1. La letra va clara: 5,98:1. */
-  --sobre-acento: #f4f2ed;
-  --acento-texto: #00b9ae;
+  --acento-texto: #2fd3c8;
+  --acento-2: transparent;
+  --fondo: #03141f;
+  --fondo-bajo: #010a11;
+  --glow-a: rgba(0, 89, 186, 0.62);
+  --glow-b: rgba(0, 185, 174, 0.32);
   --superficie: rgba(0, 136, 196, 0.07);
   --mancha-a: #0059ba;
   --mancha-b: #00b9ae;
-  --relleno: linear-gradient(135deg, #0059ba, #0088c4, #00b9ae);
-}
-html[data-marca="na"][data-superficie="clara"],
-[data-marca="na"][data-superficie="clara"] {
-  /* El degradé azul -> turquesa sale del isotipo. Va en el botón principal y
-     en detalles; nunca de fondo de un bloque grande. */
-  --acento: #0b3fd0;
-  --acento-texto: #0b3fd0;
-  --acento-2: #00b894;
-  --superficie: var(--tarjeta);
-  --mancha-a: #0b3fd0;
-  --mancha-b: #00b894;
-  /* El degradé del botón oscurece el extremo turquesa: con #00B894 la letra
-     blanca daba 2,54:1 sobre esa punta. Así el botón entero llega a 4,65:1.
-     El turquesa brillante sigue siendo --acento-2 para detalles chicos. */
-  --relleno: linear-gradient(135deg, #0b3fd0, #00846b);
+  /* Siempre el degradé azul -> turquesa. Es lo que la distingue de Nexo.
+     CORRECCIÓN 4 — el preview llega a #00B9AE y sobre esa punta la letra
+     blanca da 2,46:1. Bajadas las dos paradas claras lo justo para que el
+     botón entero pase: 4,71:1 en el peor punto. */
+  --relleno: linear-gradient(135deg, #0059ba, #0a6ea8, #0a7970);
+  --sobre-relleno: #f4f2ed;
+  /* CORRECCIÓN 2 — la tinta sobre el azul de marca da 2,98:1. La letra de
+     los botones va clara: 5,98:1. */
+  --sobre-acento: #f4f2ed;
+  --ancho-h: 104;
+  --ital-estilo: normal;
 }

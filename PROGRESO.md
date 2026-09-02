@@ -212,9 +212,41 @@ lee la respuesta, que es quien corrige.
 confirmación, Google. Eso necesita el proyecto de Supabase, que va atado a una
 cuenta y no se puede crear desde acá.
 
+## El brief de diseño, acoplado
+
+El brief llegó escrito como si el proyecto empezara de cero; `PLAN.md` lo cruza
+contra lo construido y separa qué ya estaba, qué divergía y qué faltaba. Se
+ejecutó entero, en cinco fases (A a E, detalladas en la tanda 8 de
+`CAMBIOS.md`). Lo que dejó como aprendizaje:
+
+- **Un solo eje de tokens.** `data-marca` en `<html>` y nada más. Pasar el sitio
+  entero de claro a oscuro no necesitó tocar CSS de ninguna página.
+- **El contraste se mide, no se afirma.** Además de los tests sobre tokens, lo
+  que va sobre fotografía se midió en el navegador con máscara de cobertura:
+  ahí aparecieron dos defectos que ningún test sobre tokens podía ver —el
+  rótulo de la tarjeta de retomar a 4,19:1 en el teléfono, y el degradé del
+  titular cayendo a 2,5:1 sobre la facultad—. El test del degradé ahora mide
+  contra el píxel más claro de la foto, no contra el fondo del token.
+- **Las listas de rutas escritas a mano son una trampa.** `MarcaProvider` se
+  apartaba en las pantallas con piel de servidor mirando una lista de prefijos;
+  cada pantalla nueva había que acordarse de anotarla. Ahora la señal viaja con
+  `<AplicarPiel>`.
+- **`useEffect` corre después del pintado.** Al navegar de la portada a la app
+  se veía un cuadro con la piel anterior. Es efecto de layout.
+- **El preview no contempla `dual`,** que es el estado en el que la pestaña
+  pública está siempre: cruza las dos capas de la fotografía por `data-marca` y
+  en dual no mostraría ninguna. Se muestran las dos, partidas sobre el eje de
+  simetría de la fachada.
+- **Una foto de 2,5:1 no entra en un hueco de 0,41:1.** En el teléfono `cover`
+  se quedaba con 300 px de los 1800: dos fustes de columna, sin edificio. La
+  escena pasa a ser banda arriba y el titular va abajo, sobre fondo limpio.
+
 ## Pendiente
 
-- Bloque 2: auth por magic link, registro con perfil, panel `/admin`.
+- Nada de código en la lista de tandas: las ocho están hechas. Lo que queda son
+  cinco ítems de `CAMBIOS.md` esperando material —capturas, videos y los dos
+  ejemplos de examen— y tres migraciones por correr en Supabase (`0007`, `0008`
+  y `0009`), detalladas en `PENDIENTES.md`.
 
 ## Decisiones
 

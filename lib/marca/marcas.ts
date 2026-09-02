@@ -19,6 +19,21 @@ export type ConfigMarca = {
   logo: string;
   /** Para quién es. Se muestra en la selección de perfil. */
   para: string;
+  /** El lema, arriba a la derecha en la home de puerta. */
+  lema: string;
+  /** El nombre en versales para el logotipo gigante del pie. */
+  gigante: string;
+  /**
+   * Dónde encontrar a la agrupación. `null` es un dato que todavía no
+   * tenemos y se muestra como pendiente: inventar un enlace es peor que
+   * mostrar el hueco.
+   */
+  contacto: {
+    instagram: { arroba: string; href: string };
+    mail: string;
+    whatsapp: string | null;
+    youtube: string | null;
+  };
   /** Sólo para pintar la muestra de color de las tarjetas de selección. */
   muestra: { primario: string; acento: string };
 };
@@ -30,6 +45,15 @@ export const MARCAS_CONFIG: Record<ConfigMarca["id"], ConfigMarca> = {
     nombreCorto: "Nexo",
     logo: "/logos/nexo.png",
     para: "Para estudiantes de Derecho",
+    lema: "La alternativa en Derecho",
+    gigante: "NEXO DERECHO",
+    contacto: {
+      instagram: { arroba: "@nexoderecho", href: "https://instagram.com/nexoderecho" },
+      mail: "nexoderecho@gmail.com",
+      // Todavía no llegaron. Ver PENDIENTES.
+      whatsapp: null,
+      youtube: null,
+    },
     muestra: { primario: "#065D3B", acento: "#0A7F4F" },
   },
   na: {
@@ -38,16 +62,37 @@ export const MARCAS_CONFIG: Record<ConfigMarca["id"], ConfigMarca> = {
     nombreCorto: "Nueva Abogacía",
     logo: "/logos/nueva-abogacia.png",
     para: "Para abogadas y abogados",
+    lema: "Construyendo una nueva abogacía",
+    gigante: "NUEVA ABOGACÍA",
+    contacto: {
+      instagram: { arroba: "@nueva.abogacia", href: "https://instagram.com/nueva.abogacia" },
+      // El brief lo daba por faltante, pero llegó con B-04.
+      mail: "abogacianueva@gmail.com",
+      whatsapp: null,
+      youtube: null,
+    },
     muestra: { primario: "#0B3FD0", acento: "#00B894" },
   },
 };
 
-/** Qué marca activa cada perfil. */
-export const MARCA_DE_PERFIL: Record<TipoPerfil, ConfigMarca["id"]> = {
+/**
+ * Qué marca activa cada perfil.
+ *
+ * `otro` va a la piel neutra: quien no se reconoce ni en una agrupación ni en
+ * la otra no tiene por qué llevar los colores de ninguna.
+ */
+export const MARCA_DE_PERFIL: Record<TipoPerfil, Marca> = {
   abogado: "na",
   estudiante: "nexo",
-  otro: "na",
+  otro: "neutro",
 };
+
+/** La otra agrupación, la que va al pie en la línea de coorganización. */
+export function laOtra(marca: Marca): ConfigMarca | null {
+  if (marca === "nexo") return MARCAS_CONFIG.na;
+  if (marca === "na") return MARCAS_CONFIG.nexo;
+  return null;
+}
 
 export function configDe(marca: Marca): ConfigMarca | null {
   return marca === "nexo" || marca === "na" ? MARCAS_CONFIG[marca] : null;

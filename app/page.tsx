@@ -2,7 +2,7 @@ import { traerMetricas } from "@/lib/datos";
 import { traerVideos } from "@/lib/inscripcion/datos";
 import { concursosConGuia, loQueHay } from "@/lib/inscripcion/muestra";
 import { Fondo } from "@/components/landing/Fondo";
-import { Cinta } from "@/components/landing/Cinta";
+import { EscenaFrontal } from "@/components/landing/EscenaFrontal";
 import { Cabecera } from "@/components/landing/Cabecera";
 import { Hero } from "@/components/landing/Hero";
 import { SeccionSimulador } from "@/components/landing/SeccionSimulador";
@@ -20,7 +20,7 @@ export default async function Landing() {
   return (
     <>
       <Fondo />
-      <Cinta />
+      <EscenaFrontal />
       <Cabecera />
       <main>
         <Hero />
