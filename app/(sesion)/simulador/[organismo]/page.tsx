@@ -5,6 +5,7 @@ import { organismos, reglas as t, vacio } from "@/content/simulador";
 import { traerInstancias } from "@/lib/simulador/datos";
 import { ReglasDePuntaje } from "@/components/simulador/ReglasDePuntaje";
 import { BotonComenzar } from "@/components/simulador/BotonComenzar";
+import { VolverAlPerfil } from "@/components/app/VolverAlPerfil";
 
 export const dynamic = "force-dynamic";
 
@@ -40,6 +41,7 @@ export default async function Organismo({ params }: Props) {
 
   return (
     <main className="env app-cuerpo sim">
+      <VolverAlPerfil />
       <header className="sim-encabezado sim-encabezado-org">
         <span className="sim-org-sigla mono">{org.sigla}</span>
         <h1>{org.nombre}</h1>

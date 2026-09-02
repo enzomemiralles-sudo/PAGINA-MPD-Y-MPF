@@ -43,6 +43,10 @@ MPF de 10 consignas a 3, que es lo que trae el examen real. Sin esto el
 simulador sirve más del triple de ejercicios que la evaluación. No toca las
 preguntas cargadas: las diez siguen en el banco y el intento sortea tres.
 
+**`supabase/migrations/0010_insumos.sql`.** Crea el bucket público `insumos`
+de Storage, de sólo lectura. Sin esto la pestaña de insumos lista el material
+pero los botones de descarga no llevan a ningún archivo.
+
 Si preferís una sola pegada, `supabase/instalar.sql` las incluye a las tres y
 se puede volver a correr entero.
 
@@ -51,6 +55,17 @@ puede leer las de los demás. Está probado contra un PostgreSQL de verdad en
 `supabase/pruebas/02-seguridad.sql` (casos 13 a 16): insertar anda, insertar
 marcándose la consulta como resuelta da permiso denegado, y leer la lista
 también.
+
+---
+
+## 0 quater. Tuyo: subir los insumos de estudio
+
+La pestaña de insumos ya lista los 21 materiales del MPF y los 2 del MPD,
+agrupados por eje. Lo que falta es subir los archivos al bucket `insumos` de
+Supabase Storage, con las rutas que están en `content/insumos.ts` —`mpf/…` y
+`mpd/…`—. Un material cuyo archivo no esté subido se muestra igual, con su
+título y su eje, pero sin botón de descarga: se ve qué entra en el examen
+aunque el PDF todavía no esté.
 
 ---
 

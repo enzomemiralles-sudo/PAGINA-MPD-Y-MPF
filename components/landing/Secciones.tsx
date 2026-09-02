@@ -2,7 +2,6 @@ import {
   asistenteSeccion,
   hero,
   inscripcionSeccion,
-  gratisSeccion,
 } from "@/content/landing";
 import { Vidrio } from "@/components/marca/Vidrio";
 import { Revelar } from "@/components/marca/Revelar";
@@ -135,46 +134,6 @@ export function SeccionInscripcion({
           </div>
         </Revelar>
       </div>
-    </section>
-  );
-}
-
-export function SeccionGratis() {
-  const t = gratisSeccion;
-  return (
-    <section className="env sec gratis">
-      <Revelar indice={0}>
-        <div className="agua" aria-label={t.agua.join(" ")}>
-          <span className="l1" aria-hidden="true">{t.agua[0]}</span>
-          <span className="l2" aria-hidden="true">{t.agua[1]}</span>
-        </div>
-      </Revelar>
-
-      <div className="puertas-grid">
-        {t.puertas.map((p, i) => (
-          <Revelar indice={i + 1} key={p.titulo}>
-            <Vidrio className={`pcard ${p.clase}`}>
-              <h3>{p.titulo}</h3>
-              <span className="quien">{p.quien}</span>
-              <ul>
-                {p.items.map((it) => (
-                  <li key={it}>{it}</li>
-                ))}
-              </ul>
-              <a className="btn btn-s" style={{ width: "100%" }} href={p.href}>
-                {p.cta}
-              </a>
-            </Vidrio>
-          </Revelar>
-        ))}
-      </div>
-
-      <Revelar indice={4}>
-        <p className="porque">
-          <b style={{ color: "var(--papel)" }}>{t.porqueTitulo}</b>
-          {t.porqueTexto}
-        </p>
-      </Revelar>
     </section>
   );
 }

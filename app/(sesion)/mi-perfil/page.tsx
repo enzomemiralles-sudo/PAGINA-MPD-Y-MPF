@@ -6,6 +6,7 @@ import { Tarjeta } from "@/components/marca/Tarjeta";
 import { FormularioMiPerfil } from "@/components/app/FormularioMiPerfil";
 import { textosDe } from "@/lib/marca/marcas";
 import { miPerfil as t } from "@/content/onboarding";
+import { VolverAlPerfil } from "@/components/app/VolverAlPerfil";
 
 export const metadata: Metadata = { title: "Mi perfil — Nexo Derecho × Nueva Abogacía" };
 export const dynamic = "force-dynamic";
@@ -45,6 +46,7 @@ export default async function MiPerfil() {
     <>
 
       <main className="env app-cuerpo" style={{ maxWidth: "40rem" }}>
+      <VolverAlPerfil />
         <h1>{t.titulo}</h1>
         <p style={{ marginTop: "0.8rem", color: "var(--texto-tenue)" }}>{t.bajada}</p>
 

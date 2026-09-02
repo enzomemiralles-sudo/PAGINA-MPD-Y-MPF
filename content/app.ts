@@ -7,6 +7,11 @@
  */
 
 export const saludo = {
+  /**
+   * Sólo se llama con un nombre de verdad. Sin nombre no hay saludo: no existe
+   * «Hola, usuario» ni «Hola, » a secas. Un saludo genérico es peor que
+   * ninguno, porque suena a formulario mal llenado.
+   */
   hola: (nombre: string) => `Hola, ${nombre}.`,
   /** Con un examen a medias, el saludo dice cuánto falta. */
   faltan: (n: number) =>
@@ -55,27 +60,46 @@ export const columnas = {
     items: [
       { texto: "Simulador de exámenes", destino: "/simulador", propio: true },
       { texto: "Asistente", destino: "/asistente", propio: true },
-      { texto: "Guía de inscripción", destino: "/inscripcion", propio: true },
+      { texto: "Guía de inscripción", destino: "/guia-inscripcion", propio: true },
       { texto: "Contacto", destino: "/contacto", propio: false },
     ],
     conocer: (nombre: string) => `Conocé ${nombre}`,
   },
+  /**
+   * Quedaron dos.
+   *
+   * «Manuales y normativa» y la vieja «Insumos de estudio» eran lo mismo
+   * apuntando al mismo ancla: se unifican en la pestaña propia de insumos.
+   * La biblioteca de videos deja de ser un recurso suelto —los videos que
+   * haya viven embebidos dentro de la guía de inscripción, que es donde
+   * sirven— y el grupo de WhatsApp se retira.
+   */
   recursos: {
     titulo: "Recursos",
     items: [
-      { texto: "Manuales y normativa", destino: "/asistente#normativa", nota: null },
-      { texto: "Insumos de estudio", destino: "/asistente#normativa", nota: "PDF descargables" },
-      { texto: "Biblioteca de videos", destino: "/inscripcion#videos", nota: null },
+      { texto: "Insumos de estudio", destino: "/insumos", nota: "Material por eje temático" },
     ],
-    whatsapp: (nombre: string) => `Grupo de WhatsApp ${nombre}`,
+    /** El destino depende de la agrupación, así que sale de marcas.ts. */
+    paginaWeb: "Página web",
   },
   sociales: {
     titulo: "Sociales",
     youtube: "Canal de YouTube",
     mail: "Mail",
-    pendiente: "[PENDIENTE]",
-    faltaWhatsapp: "Grupo de WhatsApp",
-    faltaYoutube: "Canal de YouTube",
     escribinos: "Escribinos",
   },
+} as const;
+
+/**
+ * La vuelta al menú del perfil.
+ *
+ * Flecha y no ícono de casa: la casa es ambigua —¿la portada, el perfil?— y la
+ * flecha con la palabra «menú» dice exactamente adónde lleva.
+ */
+export const volver = {
+  texto: "Volver al menú",
+  ayuda: "Volver al menú de tu perfil",
+  aviso: "Si salís ahora perdés el simulacro en curso. ¿Querés salir igual?",
+  seguir: "Seguir practicando",
+  salir: "Salir",
 } as const;

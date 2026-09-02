@@ -19,8 +19,8 @@ export function Fondo() {
         </svg>
       </div>
 
-      <div className="guia izq" aria-hidden="true" />
-      <div className="guia der" aria-hidden="true" />
+      <div className="riel izq" aria-hidden="true" />
+      <div className="riel der" aria-hidden="true" />
     </>
   );
 }

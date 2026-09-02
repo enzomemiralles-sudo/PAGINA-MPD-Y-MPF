@@ -7,18 +7,13 @@ import type { Marca } from "@/lib/marca/tokens";
  * Las tres columnas del pie de la home: menú, recursos y sociales.
  *
  * Lo que cambia entre puertas —el nombre de la agrupación, su Instagram, su
- * mail— sale de `marcas.ts`. Lo que todavía no tenemos se muestra como
- * pendiente y no se inventa: hoy eso es el grupo de WhatsApp y el canal de
- * YouTube de las dos.
+ * canal, su sitio— sale de `marcas.ts`, que es la única fuente de lo que
+ * depende de la marca.
+ *
+ * Ya no hay pendientes a la vista: lo que falta simplemente no se renderiza,
+ * como manda la regla del proyecto. Hoy eso es el sitio de Nueva Abogacía, que
+ * todavía no tenemos.
  */
-function Pendiente({ que }: { que: string }) {
-  return (
-    <p className="portal-pend">
-      {que} <span className="mono">{t.sociales.pendiente}</span>
-    </p>
-  );
-}
-
 export function ColumnasHome({ marca }: { marca: Marca }) {
   const cfg = configDe(marca);
 
@@ -31,7 +26,9 @@ export function ColumnasHome({ marca }: { marca: Marca }) {
             {i.texto}
           </Link>
         ))}
-        {cfg ? <Link href="/contacto">{t.menu.conocer(cfg.nombre)}</Link> : null}
+        {/* Llevaba a «¿Tenés alguna duda?», que es el contacto. Ahora lleva a
+            quiénes son. */}
+        {cfg ? <Link href={cfg.quienesSomos}>{t.menu.conocer(cfg.nombre)}</Link> : null}
       </section>
 
       <section>
@@ -42,13 +39,7 @@ export function ColumnasHome({ marca }: { marca: Marca }) {
             {i.nota ? <small>{i.nota}</small> : null}
           </Link>
         ))}
-        {cfg?.contacto.whatsapp ? (
-          <a href={cfg.contacto.whatsapp} target="_blank" rel="noopener noreferrer">
-            {t.recursos.whatsapp(cfg.nombre)}
-          </a>
-        ) : (
-          <Pendiente que={t.sociales.faltaWhatsapp} />
-        )}
+        {cfg ? <Link href={cfg.sitio.pagina}>{t.recursos.paginaWeb}</Link> : null}
       </section>
 
       <section>
@@ -62,9 +53,7 @@ export function ColumnasHome({ marca }: { marca: Marca }) {
               <a href={cfg.contacto.youtube} target="_blank" rel="noopener noreferrer">
                 {t.sociales.youtube}
               </a>
-            ) : (
-              <Pendiente que={t.sociales.faltaYoutube} />
-            )}
+            ) : null}
             <a href={`mailto:${cfg.contacto.mail}`}>{cfg.contacto.mail}</a>
           </>
         ) : null}

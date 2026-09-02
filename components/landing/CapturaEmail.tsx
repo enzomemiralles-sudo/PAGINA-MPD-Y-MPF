@@ -6,6 +6,14 @@ import { suscribirAlerta } from "@/lib/acciones/alertas";
 import type { Organismo } from "@/lib/tipos";
 
 /**
+ * El formulario de la lista de espera.
+ *
+ * HUÉRFANO A PROPÓSITO. La tanda 9 retiró el bloque de cierre de la portada,
+ * que era el único lugar donde estaba montado, y este componente quedó sin
+ * uso a la espera de una ubicación nueva. No se borra: la tabla `alertas`, su
+ * política RLS y la acción `suscribirAlerta` siguen enteras, así que volver a
+ * montarlo es una línea de JSX. Borrarlo obligaría a reescribirlo.
+ *
  * Consentimientos separados y sin tildar por defecto: los datos por un lado,
  * WhatsApp por otro. No se pide DNI, CUIL, domicilio ni nada sensible.
  */

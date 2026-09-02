@@ -46,11 +46,11 @@ a { color: var(--acento-texto); text-decoration: none; }
 @keyframes derivaA { to { transform: translate3d(9vw, 7vh, 0) scale(1.12); } }
 @keyframes derivaB { to { transform: translate3d(-8vw, -6vh, 0) scale(1.08); } }
 .grano { position: absolute; inset: 0; opacity: 0.035; mix-blend-mode: overlay; }
-.guia { display: none; }
+.riel { display: none; }
 @media (min-width: 1180px) {
-  .guia { display: block; position: fixed; top: 0; bottom: 0; width: 1px; background: var(--linea); z-index: 1; pointer-events: none; }
-  .guia.izq { left: calc(50% - 36rem); }
-  .guia.der { left: calc(50% + 36rem); }
+  .riel { display: block; position: fixed; top: 0; bottom: 0; width: 1px; background: var(--linea); z-index: 1; pointer-events: none; }
+  .riel.izq { left: calc(50% - 36rem); }
+  .riel.der { left: calc(50% + 36rem); }
 }
 
 /* ============ LAYOUT ============ */
@@ -384,19 +384,6 @@ p { color: var(--papel-tenue); }
 }
 .contacto-listo .btn { margin-top: 0.9rem; }
 
-/* ============ PIE ============ */
-.pie { border-top: 1px solid var(--linea); padding: 3rem 0 6rem; margin-top: 2rem; }
-.aviso { font-size: 0.78rem; color: var(--papel-debil); line-height: 1.6; max-width: 42rem; }
-.pie-links { display: flex; flex-wrap: wrap; gap: 1.2rem; margin-top: 1.5rem; font-size: 0.8rem; }
-.pie-links a { color: var(--papel-tenue); }
-.nota-prov {
-  margin-top: 2rem; padding: 1rem 1.15rem; border-radius: 10px;
-  background: color-mix(in srgb, var(--marca-revisar) 10%, transparent);
-  box-shadow: inset 0 0 0 1px color-mix(in srgb, var(--marca-revisar) 32%, transparent);
-  font-size: 0.8rem; color: var(--texto-tenue); line-height: 1.6;
-}
-.nota-prov b { color: var(--marca-revisar); font-variation-settings: "wdth" 100, "wght" 700; }
-
 /* ============ ESCENA DEL HERO ============
    La facultad de frente detrás del titular. Reemplaza a la cinta argentina.
 
@@ -708,8 +695,15 @@ body { transition: background var(--t-sec) var(--suave), color var(--t-sec) var(
   color: var(--texto);
 }
 .modal::backdrop { background: rgba(8, 9, 10, 0.62); }
+/* Opaca, no un velo del 4%.
+   El modal se abre sobre la home de la puerta, que tiene la fotografía de la
+   facultad de fondo: con `--tarjeta` la columnata se veía a través del
+   formulario entero y todo el bloque se leía desenfocado. El título nunca
+   tuvo el problema —mide 15,9:1— pero eso no salva a la tarjeta.
+   Y va opaca en vez de con blur a propósito: la arquitectura de imagen del
+   proyecto no pone fotografía en formularios. */
 .modal-caja {
-  background: var(--tarjeta); border-radius: 16px;
+  background: var(--tarjeta-solida); border-radius: 16px;
   box-shadow: inset 0 0 0 1px var(--borde), 0 18px 50px rgba(8, 9, 10, 0.22);
   padding: 1.5rem 1.35rem 1.6rem;
   max-height: calc(100dvh - 2rem); overflow-y: auto;
@@ -2439,14 +2433,6 @@ body { transition: background var(--t-sec) var(--suave), color var(--t-sec) var(
 .portal-marca { color: var(--acento-texto); }
 .portal-cols small { display: block; font-size: 0.72rem; color: var(--texto-debil); margin-top: 0.15rem; }
 
-/* Lo que falta se ve. El naranja es de Nexo y de nadie más, así que el
-   pendiente arranca en texto tenue y Nexo lo pisa. Al revés no funciona:
-   `var(--acento-2, ...)` no cae al respaldo porque el token existe — vale
-   `transparent` en las otras pieles — y el aviso quedaba invisible. */
-.portal-pend { color: var(--texto-tenue); font-size: 0.68rem; margin: 0.32rem 0; }
-html[data-marca="nexo"] .portal-pend,
-[data-marca="nexo"] .portal-pend { color: var(--acento-2); }
-
 /* El botón es un <a>, así que hay que devolverle lo que le sacó la regla de
    la columna: vuelve a ser botón y pierde el subrayado que crece al pasar. */
 .portal-cols .portal-escribinos {
@@ -2519,3 +2505,356 @@ html[data-marca="nexo"] .portal-pend,
   background: var(--fondo-bajo); box-shadow: inset 0 0 0 1px var(--borde);
   color: var(--texto-tenue); font-size: 0.76rem; line-height: 1.55;
 }
+
+/* ============================================================
+   VOLVER AL MENÚ
+   En cada herramienta que se abre desde el perfil. Dentro del flujo y arriba
+   a la izquierda: una pastilla flotante tapa contenido en el teléfono y se
+   pierde justo cuando alguien la busca.
+   ============================================================ */
+.volver {
+  display: inline-flex; align-items: center; gap: 0.4rem;
+  align-self: flex-start;
+  margin-bottom: 1.6rem;
+  padding: 0.4rem 0.75rem 0.4rem 0.5rem; border-radius: 999px;
+  background: none; border: none; font-family: inherit; cursor: pointer;
+  font-size: 0.84rem; color: var(--texto-tenue);
+  transition: color var(--t-micro) var(--suave), background var(--t-micro) var(--suave);
+}
+.volver:hover { color: var(--texto); background: color-mix(in srgb, var(--texto) 6%, transparent); }
+.volver:focus-visible { outline: 2px solid var(--acento-texto); outline-offset: 2px; }
+.volver span { font-size: 1rem; line-height: 1; }
+
+/* La confirmación del simulacro en curso. No es un <dialog> porque tiene que
+   convivir con el cronómetro corriendo detrás y no robarle el foco al examen
+   más de lo necesario. */
+.volver-velo {
+  position: fixed; inset: 0; z-index: 80;
+  display: grid; place-items: center; padding: 1.25rem;
+  background: rgba(8, 9, 10, 0.72);
+}
+.volver-caja {
+  width: min(26rem, 100%);
+  padding: 1.4rem 1.35rem 1.25rem; border-radius: 16px;
+  background: var(--tarjeta-solida);
+  box-shadow: inset 0 0 0 1px var(--borde-fuerte), 0 18px 50px rgba(8, 9, 10, 0.45);
+  color: var(--texto);
+}
+.volver-caja p { color: var(--texto); font-size: 0.95rem; line-height: 1.55; margin: 0; }
+.volver-botones { display: flex; gap: 0.6rem; margin-top: 1.2rem; flex-wrap: wrap; }
+.volver-botones .btn { flex: 1; min-width: 9rem; }
+
+/* ============================================================
+   INSUMOS DE ESTUDIO
+   ============================================================ */
+.insumo-elegi {
+  display: block; margin-top: 2.25rem; margin-bottom: 1rem;
+  font-size: 0.66rem; letter-spacing: 0.15em; text-transform: uppercase;
+  color: var(--texto-tenue);
+}
+.insumo-puertas { display: grid; gap: 1rem; }
+@media (min-width: 720px) { .insumo-puertas { grid-template-columns: 1fr 1fr; } }
+
+.insumo-puerta {
+  display: flex; flex-direction: column; gap: 0.35rem;
+  padding: 1.4rem 1.35rem; border-radius: 16px;
+  background: var(--tarjeta); box-shadow: inset 0 0 0 1px var(--borde);
+  color: var(--texto); text-decoration: none;
+  transition: box-shadow var(--t-micro) var(--suave), transform var(--t-micro) var(--suave);
+}
+.insumo-puerta:hover { box-shadow: inset 0 0 0 1px var(--borde-fuerte); transform: translateY(-1px); }
+.insumo-puerta:focus-visible { outline: 2px solid var(--acento-texto); outline-offset: 2px; }
+.insumo-sigla { font-size: 0.68rem; letter-spacing: 0.13em; color: var(--acento-texto); }
+.insumo-nombre { font-size: 1.05rem; font-variation-settings: "wdth" 100, "wght" 650; }
+.insumo-cuenta { font-size: 0.8rem; color: var(--texto-tenue); }
+.insumo-cta { font-size: 0.84rem; color: var(--acento-texto); margin-top: 0.6rem; }
+
+.insumo-cambiar {
+  display: inline-block; margin-bottom: 1.2rem;
+  font-size: 0.7rem; letter-spacing: 0.1em; text-transform: uppercase;
+  color: var(--texto-tenue); text-decoration: none;
+}
+.insumo-cambiar:hover { color: var(--texto); }
+
+.insumo-ejes { display: flex; flex-direction: column; gap: 2.25rem; margin-top: 2.25rem; }
+.insumo-eje-titulo {
+  font-size: 1rem; font-variation-settings: "wdth" 100, "wght" 650;
+  padding-bottom: 0.6rem; border-bottom: 1px solid var(--borde-fuerte); color: var(--texto);
+}
+.insumo-lista { list-style: none; display: flex; flex-direction: column; margin: 0.9rem 0 0; padding: 0; }
+.insumo-lista li {
+  display: flex; align-items: baseline; gap: 0.85rem;
+  padding: 0.7rem 0; border-bottom: 1px solid var(--borde);
+  font-size: 0.92rem; line-height: 1.5; flex-wrap: wrap;
+}
+.insumo-lista li:last-child { border-bottom: none; }
+.insumo-tipo { font-size: 0.62rem; letter-spacing: 0.1em; color: var(--texto-debil); flex-shrink: 0; min-width: 3.6rem; }
+.insumo-titulo { flex: 1; min-width: 12rem; color: var(--texto-tenue); }
+.insumo-bajar {
+  flex-shrink: 0; font-size: 0.82rem; color: var(--acento-texto);
+  text-decoration: underline; text-underline-offset: 3px;
+}
+.insumo-bajar:hover { color: var(--texto); }
+
+/* ============================================================
+   GUÍA DE INSCRIPCIÓN
+   Una plantilla, dos organismos. El movimiento respeta el sistema: dos curvas,
+   tres duraciones, y las transiciones entre pasos usan la media.
+   ============================================================ */
+.guia-bajada { color: var(--texto-tenue); max-width: 58ch; line-height: 1.6; margin-top: 0.6rem; }
+
+/* ---------- pantalla 0 ---------- */
+.guia-elegi {
+  display: block; margin-top: 2.25rem; margin-bottom: 1rem;
+  font-size: 0.66rem; letter-spacing: 0.15em; text-transform: uppercase; color: var(--texto-tenue);
+}
+.guia-puertas { display: grid; gap: 1rem; }
+@media (min-width: 780px) { .guia-puertas { grid-template-columns: 1fr 1fr; } }
+.guia-puerta {
+  display: flex; flex-direction: column; gap: 0.6rem;
+  padding: 1.5rem 1.4rem; border-radius: 16px;
+  background: var(--tarjeta); box-shadow: inset 0 0 0 1px var(--borde);
+}
+.guia-puerta-sigla { font-size: 0.68rem; letter-spacing: 0.13em; color: var(--acento-texto); }
+.guia-puerta-nombre { font-size: 1.15rem; font-variation-settings: "wdth" 100, "wght" 650; color: var(--texto); }
+.guia-puerta-cta { margin-top: 0.5rem; align-self: flex-start; }
+.guia-puerta .ins-estado { margin: 0.3rem 0 0; }
+
+.guia-cambiar {
+  display: inline-block; margin-bottom: 1.2rem;
+  font-size: 0.7rem; letter-spacing: 0.1em; text-transform: uppercase;
+  color: var(--texto-tenue); text-decoration: none;
+}
+.guia-cambiar:hover { color: var(--texto); }
+
+/* ---------- las secciones ---------- */
+.guia-seccion { margin-top: 3rem; scroll-margin-top: 1.5rem; }
+.guia-seccion-titulo {
+  font-size: clamp(1.15rem, 3.4vw, 1.45rem); line-height: 1.2;
+  font-variation-settings: "wdth" 100, "wght" 680; color: var(--texto);
+  padding-bottom: 0.7rem; border-bottom: 1px solid var(--borde-fuerte); margin-bottom: 1.25rem;
+}
+.guia-seccion p { color: var(--texto-tenue); line-height: 1.7; max-width: 68ch; margin-bottom: 0.9rem; }
+.guia-items { list-style: none; display: flex; flex-direction: column; gap: 0.6rem; margin: 0.4rem 0 1.2rem; padding: 0; }
+.guia-items li {
+  color: var(--texto-tenue); line-height: 1.6; max-width: 68ch;
+  padding-left: 1.1rem; position: relative;
+}
+.guia-items li::before {
+  content: ""; position: absolute; left: 0; top: 0.62em;
+  width: 5px; height: 5px; border-radius: 50%; background: var(--acento-texto);
+}
+
+.guia-enlaces { display: flex; flex-wrap: wrap; gap: 1.1rem; margin-top: 0.4rem; }
+.guia-enlace {
+  display: inline-block; font-size: 0.88rem; color: var(--acento-texto);
+  text-decoration: underline; text-underline-offset: 3px;
+}
+.guia-enlace:hover { color: var(--texto); }
+
+/* ---------- advertencias ----------
+   Semánticas, no de marca: el mismo color en las cuatro pieles. Y el estado no
+   se comunica sólo por color — hay signo, rótulo y grosor de borde. */
+.adv {
+  display: grid; grid-template-columns: auto 1fr; gap: 0.35rem 0.7rem;
+  padding: 0.9rem 1.05rem; border-radius: 12px; margin: 0 0 0.9rem;
+  background: var(--tarjeta); max-width: 68ch;
+}
+.adv[data-peso="alta"] { box-shadow: inset 0 0 0 2px var(--error); }
+.adv[data-peso="media"] { box-shadow: inset 0 0 0 1px var(--borde-fuerte); }
+.adv-signo {
+  grid-row: span 2; align-self: start;
+  width: 1.25rem; height: 1.25rem; border-radius: 50%;
+  display: grid; place-items: center; font-size: 0.78rem;
+  font-variation-settings: "wdth" 100, "wght" 700;
+}
+.adv[data-peso="alta"] .adv-signo { background: var(--error); color: var(--tinta); }
+.adv[data-peso="media"] .adv-signo { background: var(--borde-fuerte); color: var(--texto); }
+.adv-rotulo { font-size: 0.6rem; letter-spacing: 0.13em; text-transform: uppercase; color: var(--texto-debil); }
+.adv-texto { color: var(--texto); font-size: 0.92rem; line-height: 1.6; }
+
+/* ---------- el progreso ---------- */
+.guia-progreso { display: flex; align-items: center; gap: 0.9rem; margin-bottom: 1.5rem; }
+.guia-barra { flex: 1; height: 4px; border-radius: 2px; background: rgba(244, 242, 237, 0.1); overflow: hidden; }
+.guia-barra i {
+  display: block; height: 100%; border-radius: 2px; background: var(--acento-texto);
+  transition: width var(--t-elem) var(--sal);
+}
+.guia-progreso-texto { font-size: 0.72rem; color: var(--texto-tenue); flex-shrink: 0; }
+
+/* ---------- los pasos ---------- */
+.guia-pasos { list-style: none; display: flex; flex-direction: column; gap: 0.7rem; margin: 0; padding: 0; }
+.guia-paso {
+  border-radius: 14px; background: var(--tarjeta);
+  box-shadow: inset 0 0 0 1px var(--borde); overflow: hidden;
+  transition: box-shadow var(--t-elem) var(--suave);
+}
+.guia-paso[data-hecho="si"] { box-shadow: inset 0 0 0 1px var(--ok); }
+.guia-paso-cabeza { margin: 0; }
+.guia-paso-boton {
+  width: 100%; display: grid; grid-template-columns: 1fr auto; gap: 0.2rem 1rem;
+  padding: 1rem 1.15rem; background: none; border: none; cursor: pointer;
+  font-family: inherit; text-align: left; color: var(--texto);
+}
+.guia-paso-boton:hover { background: color-mix(in srgb, var(--texto) 4%, transparent); }
+.guia-paso-boton:focus-visible { outline: 2px solid var(--acento-texto); outline-offset: -2px; }
+.guia-paso-n { grid-column: 1; font-size: 0.62rem; letter-spacing: 0.12em; text-transform: uppercase; color: var(--acento-texto); }
+.guia-paso-titulo { grid-column: 1; font-size: 1.02rem; font-variation-settings: "wdth" 100, "wght" 650; }
+.guia-paso-resumen { grid-column: 1; font-size: 0.85rem; color: var(--texto-tenue); }
+.guia-paso-flecha {
+  grid-column: 2; grid-row: 1 / span 3; align-self: center;
+  font-size: 1.3rem; line-height: 1; color: var(--texto-tenue);
+}
+.guia-paso[data-hecho="si"] .guia-paso-n::after { content: " ✓"; color: var(--ok); }
+
+.guia-paso-cuerpo { padding: 0 1.15rem 1.15rem; }
+.guia-paso-cuerpo p { color: var(--texto-tenue); line-height: 1.7; max-width: 68ch; margin-bottom: 0.9rem; }
+
+.guia-hecho {
+  display: inline-flex; align-items: center; gap: 0.6rem; cursor: pointer;
+  margin-top: 1rem; padding: 0.5rem 0.9rem 0.5rem 0.7rem; border-radius: 999px;
+  background: color-mix(in srgb, var(--texto) 5%, transparent);
+  font-size: 0.85rem; color: var(--texto);
+}
+.guia-hecho input { width: 1rem; height: 1rem; accent-color: var(--ok); cursor: pointer; }
+.guia-hecho:has(input:focus-visible) { outline: 2px solid var(--acento-texto); outline-offset: 2px; }
+
+/* ---------- capturas y videos ---------- */
+.guia-captura { margin: 0 0 1.1rem; }
+.guia-captura img {
+  width: 100%; height: auto; border-radius: 12px;
+  box-shadow: inset 0 0 0 1px var(--borde);
+}
+.guia-captura figcaption { font-size: 0.8rem; color: var(--texto-debil); margin-top: 0.5rem; line-height: 1.5; }
+
+.guia-video { margin: 0 0 1.1rem; max-width: 46rem; }
+.guia-video iframe {
+  width: 100%; aspect-ratio: 16 / 9; border: none; border-radius: 12px;
+  box-shadow: inset 0 0 0 1px var(--borde); background: var(--fondo-bajo);
+}
+.guia-video-titulo { font-size: 0.82rem; color: var(--texto-debil); margin-top: 0.45rem; }
+
+/* ---------- los huecos, sólo en preview ---------- */
+.hueco {
+  display: flex; flex-direction: column; gap: 0.35rem;
+  margin: 0 0 1.1rem; padding: 1.1rem 1.15rem; border-radius: 12px;
+  border: 1px dashed var(--borde-fuerte); background: transparent; max-width: 46rem;
+}
+.hueco-rotulo { font-size: 0.6rem; letter-spacing: 0.13em; text-transform: uppercase; color: var(--marca-revisar); }
+.hueco-id { font-size: 0.74rem; color: var(--texto); }
+.hueco-que { font-size: 0.84rem; color: var(--texto-tenue); line-height: 1.5; margin: 0; }
+
+/* ---------- preguntas frecuentes ---------- */
+.guia-faq { display: flex; flex-direction: column; }
+.guia-faq details { border-bottom: 1px solid var(--borde); }
+.guia-faq summary {
+  cursor: pointer; padding: 0.9rem 0; font-size: 0.95rem; color: var(--texto);
+  font-variation-settings: "wdth" 100, "wght" 600; list-style: none;
+  display: flex; align-items: baseline; gap: 0.7rem;
+}
+.guia-faq summary::-webkit-details-marker { display: none; }
+.guia-faq summary::before { content: "+"; color: var(--acento-texto); font-size: 1.05rem; line-height: 1; }
+.guia-faq details[open] summary::before { content: "−"; }
+.guia-faq summary:focus-visible { outline: 2px solid var(--acento-texto); outline-offset: 2px; border-radius: 4px; }
+.guia-faq details p { color: var(--texto-tenue); line-height: 1.7; max-width: 68ch; padding: 0 0 1rem 1.6rem; margin: 0; }
+
+/* ---------- el checklist final ---------- */
+.guia-checklist { display: grid; gap: 1.8rem; margin: 1.4rem 0; }
+@media (min-width: 720px) { .guia-checklist { grid-template-columns: 1fr 1fr; } }
+.guia-checklist-titulo {
+  font-size: 0.64rem; letter-spacing: 0.14em; text-transform: uppercase;
+  color: var(--texto-tenue); font-weight: 400;
+  padding-bottom: 0.5rem; border-bottom: 1px solid var(--borde); margin-bottom: 0.8rem;
+}
+.guia-checklist ul { list-style: none; display: flex; flex-direction: column; gap: 0.5rem; margin: 0; padding: 0; }
+.guia-checklist li {
+  display: flex; gap: 0.6rem; align-items: baseline;
+  font-size: 0.9rem; line-height: 1.5; color: var(--texto-tenue);
+}
+.guia-checklist li[data-hecho="si"] { color: var(--texto); }
+.guia-checklist li[data-hecho="si"] span { color: var(--ok); }
+.guia-faltan { color: var(--texto); font-size: 0.92rem; margin-bottom: 1rem; min-height: 1.4em; }
+
+/* ---------- el pie de la guía ---------- */
+.guia-fuentes { margin-top: 3.5rem; padding-top: 1.6rem; border-top: 1px solid var(--borde); }
+.guia-fuentes-titulo {
+  font-size: 0.64rem; letter-spacing: 0.14em; text-transform: uppercase;
+  color: var(--texto-tenue); font-weight: 400; margin-bottom: 0.8rem;
+}
+.guia-fuentes ul { list-style: none; display: flex; flex-direction: column; gap: 0.4rem; margin: 0; padding: 0; }
+.guia-fuentes a { font-size: 0.85rem; color: var(--acento-texto); text-decoration: underline; text-underline-offset: 3px; }
+.guia-verificar { font-size: 0.8rem; color: var(--texto-debil); line-height: 1.6; margin-top: 1.1rem; max-width: 62ch; }
+
+/* Imprimir el checklist: se va todo lo que no es el checklist. */
+@media print {
+  .volver, .guia-cambiar, .guia-progreso, .guia-pasos, .guia-faq,
+  .guia-fuentes, .cabecera-app, .pie { display: none !important; }
+  .guia-seccion:not(#checklist) { display: none !important; }
+  .guia-checklist li { color: #000; }
+}
+
+/* ============================================================
+   PÁGINAS DE LAS AGRUPACIONES
+   «¿Quiénes somos?» y las dos que presentan los sitios propios.
+   ============================================================ */
+
+/* ---------- página de lectura ---------- */
+/* Medida de línea entre 60 y 75 caracteres: más ancha, el ojo pierde el
+   renglón al volver; más angosta, corta la frase cada tres palabras. */
+.lectura h1 { max-width: 18ch; }
+.lectura-cuerpo { margin-top: 2rem; display: flex; flex-direction: column; gap: 1.3rem; }
+.lectura-cuerpo p {
+  color: var(--texto-tenue); font-size: 1.02rem; line-height: 1.75;
+  /* Medido, no estimado: `ch` es el ancho del cero, más ancho que la letra
+     media de esta tipografía, así que 68ch daban 77 caracteres por renglón.
+     62ch dan 70, dentro del rango de 60 a 75 que se lee sin perder la línea
+     al volver. */
+  max-width: 62ch; text-wrap: pretty;
+}
+/* El cierre destacado. La línea de arriba es el degradé de la marca usado
+   como filete —que es lo que puede— y no como fondo de párrafo. */
+.lectura-cierre {
+  margin-top: 2.5rem; padding-top: 1.6rem;
+  font-size: clamp(1.25rem, 4vw, 1.75rem); line-height: 1.25;
+  font-variation-settings: "wdth" var(--ancho-h), "wght" 700;
+  font-style: var(--ital-estilo);
+  color: var(--texto); max-width: 20ch; position: relative;
+}
+.lectura-cierre::before {
+  content: ""; position: absolute; top: 0; left: 0;
+  width: 4.5rem; height: 3px; border-radius: 2px; background: var(--relleno);
+}
+
+/* ---------- páginas de sitio ---------- */
+.org-bajada { color: var(--texto-tenue); max-width: 62ch; line-height: 1.65; margin-top: 0.7rem; font-size: 1rem; }
+.org-url {
+  display: inline-block; margin-top: 0.9rem; font-size: 0.88rem;
+  color: var(--acento-texto); text-decoration: underline; text-underline-offset: 3px;
+}
+
+.org-herramientas { display: flex; flex-direction: column; gap: 2.75rem; margin-top: 3rem; }
+.org-herramienta-titulo {
+  font-size: clamp(1.1rem, 3.4vw, 1.35rem); line-height: 1.25;
+  font-variation-settings: "wdth" 100, "wght" 650; color: var(--texto);
+}
+.org-herramienta-bajada {
+  color: var(--texto-tenue); line-height: 1.65; max-width: 62ch;
+  margin: 0.5rem 0 1.1rem;
+}
+
+.org-bloques { display: flex; flex-direction: column; gap: 2.25rem; margin-top: 2.5rem; }
+.org-bloque-titulo {
+  font-size: clamp(1.05rem, 3.2vw, 1.3rem);
+  font-variation-settings: "wdth" 100, "wght" 650; color: var(--texto);
+  padding-bottom: 0.6rem; border-bottom: 1px solid var(--borde-fuerte); margin-bottom: 0.9rem;
+}
+.org-bloque p { color: var(--texto-tenue); line-height: 1.75; max-width: 68ch; text-wrap: pretty; }
+
+.org-cierre { margin-top: 3.5rem; padding-top: 2rem; border-top: 1px solid var(--borde); }
+.org-cierre-titulo {
+  font-size: clamp(1.2rem, 3.6vw, 1.5rem);
+  font-variation-settings: "wdth" var(--ancho-h), "wght" 700;
+  font-style: var(--ital-estilo); color: var(--texto);
+}
+.org-cierre p { color: var(--texto-tenue); line-height: 1.7; max-width: 62ch; margin: 0.8rem 0 1.6rem; }
+.org-visitar { margin-top: 2.5rem; }

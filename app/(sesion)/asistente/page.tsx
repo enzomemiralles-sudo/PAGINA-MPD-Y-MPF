@@ -7,6 +7,7 @@ import { Caja } from "@/components/asistente/Caja";
 import { Catalogo } from "@/components/asistente/Catalogo";
 import { Normativa } from "@/components/asistente/Normativa";
 import { DejarConsulta } from "@/components/asistente/DejarConsulta";
+import { VolverAlPerfil } from "@/components/app/VolverAlPerfil";
 
 export const metadata: Metadata = {
   title: "Asistente de Ingreso Democrático — Nexo Derecho × Nueva Abogacía",
@@ -33,6 +34,7 @@ export const metadata: Metadata = {
 export default function Asistente() {
   return (
     <main className="env app-cuerpo">
+      <VolverAlPerfil />
       <Marco>
         <header className="asis-encabezado">
           <p className="asis-posicionamiento">{encabezado.posicionamiento}</p>

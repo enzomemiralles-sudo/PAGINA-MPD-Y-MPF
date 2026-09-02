@@ -212,7 +212,7 @@ export const inscripcionSeccion = {
     { icono: "⚠️", texto: "Errores frecuentes", depende: "errores" },
   ],
   cta: "Ver la guía",
-  ctaHref: "/inscripcion",
+  ctaHref: "/guia-inscripcion",
   cierre: {
     titulo: "¿Te quedó alguna duda?",
     texto: "Preguntale al asistente: responde con la fuente para que puedas verificarla.",
@@ -221,37 +221,14 @@ export const inscripcionSeccion = {
   },
 } as const;
 
-export const numeros = {
-  // «ya cargadas» y no «reales» a secas: el número sale de la base y sube cada
-  // vez que se revisa una tanda nueva. El rótulo tiene que dejar claro que es
-  // una foto de hoy, no el tamaño final del banco.
-  preguntasMpd: "preguntas del MPD ya cargadas",
-  dudasMpf: "dudas resueltas del MPF",
-  comunidad: "colegas en Nueva Abogacía",
-  gratis: "gratis",
-} as const;
-
-// SUPUESTO: /nexo, /na y /recursos son del Bloque 3. Hasta entonces los tres
-// botones llevan a lo que sí existe hoy en la landing.
-export const gratisSeccion = {
-  agua: ["Gratis.", "Siempre."],
-  puertas: [
-    { clase: "n", titulo: "Nexo Derecho", quien: "Para estudiantes de derecho", items: ["Guía del cero absoluto", "Simulacros de técnico administrativo", "Inscripción paso a paso", "Comunidad de estudio"], cta: "Entrar", href: "/#avisame" },
-    { clase: "a", titulo: "Nueva Abogacía", quien: "Para abogadas y abogados", items: ["Simulacros completos cronometrados", "Análisis del examen del MPF", "Banco de normativa por tema", "Estadísticas por tema"], cta: "Entrar", href: "/#avisame" },
-    { clase: "o", titulo: "Recursos abiertos", quien: "Sin registro", items: ["Normativa consolidada", "Guía de inscripción", "Videos tutoriales", "Estado de los concursos"], cta: "Ver recursos", href: "/#inscripcion" },
-  ],
-  porqueTitulo: "¿Por qué es gratis?",
-  porqueTexto:
-    " Porque el ingreso al Ministerio Público se define por concurso público y abierto, y prepararse no debería depender de quién puede pagar un curso. Nexo Derecho y Nueva Abogacía sostenemos esta plataforma. No hay planes pagos, no hay publicidad y no vendemos los datos de nadie.",
-} as const;
-
-export const cierre = {
-  titulo: ["Cuando salga la convocatoria del MPD,", "que te encuentre listo."],
-  texto:
-    "Todavía no hay fecha. Dejanos tu mail y te avisamos apenas se publique. Mientras tanto, practicá con las preguntas reales que ya tenemos cargadas.",
-  ctaSecundario: "Practicar ahora",
-} as const;
-
+/**
+ * Los textos del formulario de lista de espera.
+ *
+ * Se conservan aunque el formulario no esté montado en ninguna pantalla: el
+ * bloque de cierre de la portada se retiró en la tanda 9 y <CapturaEmail>
+ * quedó huérfano, a la espera de una ubicación nueva. La tabla, la política
+ * RLS, la acción de alta y el envío por Resend siguen enteros.
+ */
 export const captura = {
   placeholder: "tu@mail.com",
   boton: "Avisame cuando salga",

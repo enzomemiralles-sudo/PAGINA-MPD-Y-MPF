@@ -5,8 +5,17 @@ import type { TipoPerfil } from "@/lib/marca/marcas";
 
 export type Perfil = {
   user_id: string;
-  /** Para saludar por el nombre en la home de la puerta. */
-  nombre: string;
+  /**
+   * Para saludar por el nombre en la home de la puerta.
+   *
+   * Es nullable, y hoy es null SIEMPRE: la migración 0003 le sacó el `not
+   * null` porque la fila se crea al registrarse, antes de que la persona haya
+   * dicho cómo se llama, y ninguna pantalla lo pide todavía. El tipo decía
+   * `string` y el `as Perfil` de abajo tapaba la diferencia, así que la home
+   * saludaba «Hola, null.». Declarado como es, el compilador obliga a
+   * contemplar el caso en cada lugar donde se usa.
+   */
+  nombre: string | null;
   /** «revisor» habilita /revisar. Se otorga a mano en la base, nunca desde acá. */
   rol: "persona" | "revisor";
   tipo_perfil: TipoPerfil | null;

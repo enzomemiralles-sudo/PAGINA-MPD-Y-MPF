@@ -3,6 +3,7 @@ import { notFound, redirect } from "next/navigation";
 import { segundosRestantes, traerIntento } from "@/lib/simulador/datos";
 import { MotorPreguntas } from "@/components/simulador/MotorPreguntas";
 import { MotorTipeo } from "@/components/simulador/MotorTipeo";
+import { VolverAlPerfil } from "@/components/app/VolverAlPerfil";
 
 export const metadata: Metadata = { title: "Rindiendo — Simulador de Exámenes" };
 export const dynamic = "force-dynamic";
@@ -33,6 +34,8 @@ export default async function Rendir({ params }: Props) {
 
   return (
     <main className="env app-cuerpo">
+      {/* El único que pregunta antes de irse: salir de acá abandona el intento. */}
+      <VolverAlPerfil confirmar />
       {intento.examen.modalidad === "tipeo" ? (
         <MotorTipeo intento={intento} segundos={segundos} />
       ) : (

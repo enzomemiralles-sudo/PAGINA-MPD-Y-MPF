@@ -54,6 +54,12 @@
   --borde: rgba(244, 242, 237, 0.12);
   --borde-fuerte: rgba(244, 242, 237, 0.24);
   --tarjeta: rgba(244, 242, 237, 0.04);
+  /* La tarjeta normal es un velo del 4%: alcanza sobre un fondo plano y no
+     alcanza sobre una fotografía, que es lo que hay detrás de la home de cada
+     puerta. Para las superficies que pueden quedar sobre la foto —el modal de
+     datos, sobre todo, que es un formulario— va ésta, que es opaca. Cada piel
+     la pisa con su propio fondo levantado. */
+  --tarjeta-solida: #111316;
   --sobre-acento: #08090a;
   --sobre-acento-2: #08090a;
 
@@ -98,6 +104,7 @@ html[data-marca="dual"],
 /* ---------- neutro: crear perfil antes de elegir, y el panel ---------- */
 html[data-marca="neutro"],
 [data-marca="neutro"] {
+  --tarjeta-solida: #141519;
   --acento: var(--texto);
   --acento-texto: var(--texto);
   --acento-2: transparent;
@@ -117,6 +124,7 @@ html[data-marca="neutro"],
    dos puertas se distinguen incluso en escala de grises. */
 html[data-marca="nexo"],
 [data-marca="nexo"] {
+  --tarjeta-solida: #0a1f15;
   --acento: #059249;
   --acento-texto: #7fd6a4;
   --acento-2: #f58220;
@@ -140,6 +148,7 @@ html[data-marca="nexo"],
 /* ---------- Nueva Abogacía ---------- */
 html[data-marca="na"],
 [data-marca="na"] {
+  --tarjeta-solida: #081e2b;
   --acento: #0059ba;
   --acento-texto: #2fd3c8;
   --acento-2: transparent;

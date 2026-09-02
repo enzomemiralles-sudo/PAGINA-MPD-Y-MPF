@@ -25,15 +25,18 @@ export type ConfigMarca = {
   gigante: string;
   /**
    * Dónde encontrar a la agrupación. `null` es un dato que todavía no
-   * tenemos y se muestra como pendiente: inventar un enlace es peor que
-   * mostrar el hueco.
+   * tenemos: inventar un enlace es peor que no mostrar nada, y una entrada
+   * sin destino no se renderiza.
    */
   contacto: {
     instagram: { arroba: string; href: string };
     mail: string;
-    whatsapp: string | null;
     youtube: string | null;
   };
+  /** El sitio propio de la agrupación, y la pestaña que lo presenta. */
+  sitio: { url: string | null; pagina: string };
+  /** La pestaña que cuenta quiénes son. */
+  quienesSomos: string;
   /** Sólo para pintar la muestra de color de las tarjetas de selección. */
   muestra: { primario: string; acento: string };
 };
@@ -50,10 +53,12 @@ export const MARCAS_CONFIG: Record<ConfigMarca["id"], ConfigMarca> = {
     contacto: {
       instagram: { arroba: "@nexoderecho", href: "https://instagram.com/nexoderecho" },
       mail: "nexoderecho@gmail.com",
-      // Todavía no llegaron. Ver PENDIENTES.
-      whatsapp: null,
-      youtube: null,
+      youtube: "https://www.youtube.com/@nexoderecho4917",
     },
+    sitio: { url: "https://nexoderecho.com.ar", pagina: "/nexo/pagina-web" },
+    // Nexo todavía no tiene página propia de «quiénes somos»: su presentación
+    // es la de su sitio, así que «Conocé Nexo Derecho» lleva ahí.
+    quienesSomos: "/nexo/pagina-web",
     muestra: { primario: "#065D3B", acento: "#0A7F4F" },
   },
   na: {
@@ -68,9 +73,13 @@ export const MARCAS_CONFIG: Record<ConfigMarca["id"], ConfigMarca> = {
       instagram: { arroba: "@nueva.abogacia", href: "https://instagram.com/nueva.abogacia" },
       // El brief lo daba por faltante, pero llegó con B-04.
       mail: "abogacianueva@gmail.com",
-      whatsapp: null,
-      youtube: null,
+      youtube: "https://www.youtube.com/@nuevaabogacia",
     },
+    // PENDIENTE: la URL del sitio de Nueva Abogacía no llegó. Queda declarada
+    // en null y la pestaña que la presenta no muestra el botón de visita: no
+    // se inventa una dirección.
+    sitio: { url: null, pagina: "/na/pagina-web" },
+    quienesSomos: "/na/quienes-somos",
     muestra: { primario: "#0B3FD0", acento: "#00B894" },
   },
 };
