@@ -201,7 +201,9 @@ Los prefijos son los de siempre: **M** la pestaña de muestra, **P** el perfil,
 - [x] **P-10** Sacar «Biblioteca de videos» como recurso suelto. Los videos viven embebidos dentro de la guía de inscripción, que es donde sirven.
 - [x] **P-11** Los canales de YouTube, corregidos y centralizados en `lib/marca/marcas.ts` junto con el resto de lo que depende de la marca: `@nexoderecho4917` y `@nuevaabogacia`.
 - [x] **P-12** `<VolverAlPerfil />`, en las nueve herramientas que se abren desde el perfil. Dentro del flujo y arriba a la izquierda, con flecha y no ícono de casa. **En el simulacro en curso pregunta antes**, porque salir abandona el intento.
-- [x] **P-13** «Insumos de estudio» reemplaza a «Manuales y normativa»: selector de organismo primero, después la lista agrupada por eje. Los archivos se sirven del bucket público `insumos` de Storage (migración 0010). Un eje sin material no se renderiza, y un material sin archivo subido se muestra sin botón en vez de con un botón que lleva a un 404.
+- [x] **P-13** «Insumos de estudio» reemplaza a «Manuales y normativa»: selector de organismo primero, después la lista agrupada por eje. Un eje sin material no se renderiza.
+- [x] **P-16** Los archivos salen de las carpetas de Drive de cada agrupación, no de Storage: cada eje enlaza a su carpeta y un material nuevo aparece con sólo subirlo, sin tocar código. El listado de cada eje es el programa del examen, no un índice del Drive, así que sigue siendo cierto aunque un archivo no esté. El eje del MPD va sin botón porque su carpeta está vacía.
+- [x] **P-17** El grupo de WhatsApp vuelve, pero por examen y no por agrupación: quien estudia para el MPF quiere el grupo del MPF, no el de Nexo.
 - [x] **P-14** «Conocé Nueva Abogacía» llevaba al contacto. Ahora lleva a `/na/quienes-somos`, con el texto que mandaron, sin resumir.
 - [x] **P-15** Recurso nuevo «Página web» en las dos puertas: `/nexo/pagina-web` con las cinco herramientas del sitio, y `/na/pagina-web` con misión, visión y objetivo.
 

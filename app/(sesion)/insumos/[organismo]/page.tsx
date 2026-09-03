@@ -3,7 +3,7 @@ import Link from "next/link";
 import { notFound } from "next/navigation";
 import { VolverAlPerfil } from "@/components/app/VolverAlPerfil";
 import { textos as t } from "@/content/insumos";
-import { archivosSubidos, ejesDe, esOrganismo, urlDe } from "@/lib/insumos/datos";
+import { ejesDe, esOrganismo, grupoDe } from "@/lib/insumos/datos";
 
 type Props = { params: Promise<{ organismo: string }> };
 
@@ -17,24 +17,24 @@ export async function generateMetadata({ params }: Props): Promise<Metadata> {
 /**
  * El material de un organismo, agrupado por eje.
  *
- * Los ejes salen de los materiales, no de una lista aparte, así que un eje sin
- * material no puede aparecer. Y un material cuyo archivo todavía no está en
- * Storage se muestra sin botón en vez de con un botón que lleva a un 404: se
- * ve qué material entra en el examen aunque el PDF no esté subido.
+ * Cada eje enlaza a su carpeta de Drive, y debajo dice qué hay adentro. El
+ * listado es el programa del examen, no un índice del Drive: sigue siendo
+ * cierto aunque un archivo todavía no esté subido, y así se puede conseguir
+ * por otro lado.
  *
- * Qué está subido se pregunta al bucket, una vez por pantalla y no una vez por
- * material.
+ * Un eje sin carpeta se muestra sin botón. Mandar a alguien a una carpeta
+ * vacía es peor que no mandarlo.
  */
-export const dynamic = "force-dynamic";
 export default async function InsumosDeOrganismo({ params }: Props) {
   const { organismo } = await params;
   const o = organismo.toUpperCase();
   if (!esOrganismo(o)) notFound();
 
-  const ejes = ejesDe(o);
-  if (ejes.length === 0) notFound();
+  const lista = ejesDe(o);
+  if (lista.length === 0) notFound();
 
-  const subidos = await archivosSubidos();
+  const grupo = grupoDe(o);
+  const hayCarpetas = lista.some((e) => e.carpeta !== null);
 
   return (
     <main className="env app-cuerpo">
@@ -45,31 +45,43 @@ export default async function InsumosDeOrganismo({ params }: Props) {
 
       <h1>{t.organismos[o].nombre}</h1>
       <p className="ins-bajada">{t.bajada}</p>
+      {hayCarpetas ? <p className="insumo-donde">{t.dondeEsta}</p> : null}
+
+      {grupo ? (
+        <aside className="insumo-grupo">
+          <span className="insumo-grupo-rotulo mono">{t.grupo.rotulo}</span>
+          <p className="insumo-grupo-titulo">{t.grupo.titulo(t.organismos[o].corto)}</p>
+          <p className="insumo-grupo-texto">{t.grupo.texto}</p>
+          <a className="btn btn-a" href={grupo} target="_blank" rel="noopener noreferrer">
+            {t.grupo.cta}
+          </a>
+        </aside>
+      ) : null}
 
       <div className="insumo-ejes">
-        {ejes.map((e) => (
-          <section key={e.eje} className="insumo-eje">
-            <h2 className="insumo-eje-titulo">{e.eje}</h2>
+        {lista.map((e) => (
+          <section key={e.id} className="insumo-eje">
+            <div className="insumo-eje-cabeza">
+              <h2 className="insumo-eje-titulo">{e.nombre}</h2>
+              {e.carpeta ? (
+                <a
+                  className="btn btn-s insumo-abrir"
+                  href={e.carpeta}
+                  target="_blank"
+                  rel="noopener noreferrer"
+                >
+                  {t.abrirCarpeta} ↗
+                </a>
+              ) : (
+                <span className="insumo-sin-carpeta">{t.sinCarpeta}</span>
+              )}
+            </div>
+
+            <h3 className="insumo-incluye mono">{t.incluye}</h3>
             <ul className="insumo-lista">
-              {e.materiales.map((m) => {
-                const url = urlDe(m, subidos);
-                return (
-                  <li key={m.id}>
-                    <span className="insumo-tipo mono">{t.tipo[m.tipo]}</span>
-                    <span className="insumo-titulo">{m.titulo}</span>
-                    {url ? (
-                      <a
-                        className="insumo-bajar"
-                        href={url}
-                        target="_blank"
-                        rel="noopener noreferrer"
-                      >
-                        {t.descargar}
-                      </a>
-                    ) : null}
-                  </li>
-                );
-              })}
+              {e.materiales.map((m) => (
+                <li key={m}>{m}</li>
+              ))}
             </ul>
           </section>
         ))}
