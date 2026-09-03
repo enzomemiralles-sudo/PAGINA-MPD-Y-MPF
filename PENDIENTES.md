@@ -23,49 +23,37 @@ mismo commit que `main`. Se puede borrar cuando quieras.
 
 ---
 
-## 0 bis. Tuyo, cinco minutos: correr tres migraciones
+## 0 bis. Las migraciones: hechas
 
-Hay tres que todavía no corrieron en Supabase. Van en orden, y las tres se
-pueden correr más de una vez sin romper nada. En Supabase → **SQL Editor** →
-pegar el contenido del archivo y ejecutar.
+Las diez corrieron. Verificado consultando el esquema, no la tabla de
+migraciones —que sólo registra dos, porque el resto entró por el SQL Editor y
+eso no queda anotado—:
 
-**`supabase/migrations/0007_asistente.sql`.** El formulario de «¿No
-encontramos la respuesta?» del asistente (A-12) guarda en una tabla nueva,
-`consultas_sin_respuesta`, que todavía no existe. Hasta que se cree, el
-formulario valida y responde el error de guardado en lugar de anotar la
-consulta.
+| Migración | Qué comprueba | Estado |
+|---|---|---|
+| `0007_asistente` | existe `consultas_sin_respuesta` | ✅ |
+| `0008_piel_neutra` | el enum de perfiles tiene `neutro` | ✅ |
+| `0009_mpf_practico_tres` | el práctico del MPF trae 3 consignas | ✅ |
+| `0010_insumos` | el bucket `insumos` existe, es público y tiene su política de lectura | ✅ |
 
-**`supabase/migrations/0008_piel_neutra.sql`.** Agrega el valor `neutro` al
-enum de perfiles. Sin esto, quien elija «otro» no puede guardar el perfil.
+Y las 262 preguntas están revisadas, así que el simulador sirve el banco
+entero.
 
-**`supabase/migrations/0009_mpf_practico_tres.sql`.** Corrige el práctico del
-MPF de 10 consignas a 3, que es lo que trae el examen real. Sin esto el
-simulador sirve más del triple de ejercicios que la evaluación. No toca las
-preguntas cargadas: las diez siguen en el banco y el intento sortea tres.
-
-**`supabase/migrations/0010_insumos.sql`.** Crea el bucket público `insumos`
-de Storage, de sólo lectura. Sin esto la pestaña de insumos lista el material
-pero los botones de descarga no llevan a ningún archivo.
-
-Si preferís una sola pegada, `supabase/instalar.sql` las incluye a las tres y
-se puede volver a correr entero.
-
-Lo que hace, y por qué está así: cualquiera puede dejar una consulta, nadie
-puede leer las de los demás. Está probado contra un PostgreSQL de verdad en
-`supabase/pruebas/02-seguridad.sql` (casos 13 a 16): insertar anda, insertar
-marcándose la consulta como resuelta da permiso denegado, y leer la lista
-también.
+Lo único que le falta a la base es contenido, no estructura: **0 archivos en el
+bucket** y **0 videos publicados**.
 
 ---
 
 ## 0 quater. Tuyo: subir los insumos de estudio
 
-La pestaña de insumos ya lista los 21 materiales del MPF y los 2 del MPD,
-agrupados por eje. Lo que falta es subir los archivos al bucket `insumos` de
-Supabase Storage, con las rutas que están en `content/insumos.ts` —`mpf/…` y
-`mpd/…`—. Un material cuyo archivo no esté subido se muestra igual, con su
-título y su eje, pero sin botón de descarga: se ve qué entra en el examen
-aunque el PDF todavía no esté.
+La pestaña de insumos ya lista los 20 materiales del MPF y los 2 del MPD,
+agrupados por eje, y el bucket ya está creado. Lo que falta es subir los
+archivos, con las rutas que están en `content/insumos.ts` —`mpf/…` y `mpd/…`—.
+
+La pestaña le pregunta al bucket qué hay subido de verdad, así que **los
+botones aparecen solos a medida que subís cada archivo**, sin tocar código. Un
+material que todavía no está se muestra igual, con su título y su eje: se ve
+qué entra en el examen aunque el PDF no esté.
 
 ---
 
