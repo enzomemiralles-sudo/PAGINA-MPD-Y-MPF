@@ -1,92 +1,152 @@
 /**
  * INSUMOS DE ESTUDIO
  *
- * El material de lectura de cada organismo, agrupado por eje temático. Los
- * archivos viven en Supabase Storage, en el bucket público `insumos`; acá va
- * el registro de qué hay y dónde.
+ * El material de lectura de cada organismo, agrupado por eje temático.
  *
- * Va como archivo y no como tabla a propósito: es una lista que cambia cuando
- * cambia el programa del examen —o sea, casi nunca— y ponerla en la base
- * obligaría a una migración por cada PDF nuevo. El día que haya que cargarlos
- * desde el panel, la forma del tipo ya es la de una fila.
+ * Los archivos NO se sirven desde acá: viven en las carpetas de Drive de cada
+ * agrupación, y esta pestaña enlaza a la carpeta del eje. Es a propósito, y no
+ * por comodidad: subir cada PDF a Storage obligaba a mantener el mismo archivo
+ * en dos lados y a acordarse de sincronizarlos. Enlazando la carpeta, un
+ * material nuevo aparece en cuanto se lo sube al Drive, sin tocar código.
  *
- * `archivo` es la ruta DENTRO del bucket, no una URL: la URL la arma
- * `lib/insumos/datos.ts` con la del proyecto, así que mudar de proveedor toca
- * un archivo y no ciento.
+ * `materiales` es el programa del examen, no un índice del Drive. Dice qué hay
+ * que leer aunque el archivo todavía no esté subido, que es la mitad útil de la
+ * pestaña: se puede conseguir por otro lado.
+ *
+ * `carpeta` en null significa que la carpeta está vacía o no existe todavía. Un
+ * eje así se muestra —el programa sigue siendo cierto— pero sin botón: mandar a
+ * alguien a una carpeta vacía es peor que no mandarlo.
  */
 
 export type OrganismoInsumo = "MPF" | "MPD";
 
-export type Insumo = {
+export type Eje = {
   id: string;
   organismo: OrganismoInsumo;
-  /** El eje temático del examen. Agrupa la lista. */
-  eje: string;
-  /** Nombre legible del material. */
-  titulo: string;
-  /** Ruta dentro del bucket de Storage. */
-  archivo: string;
-  tipo: "pdf" | "xlsx";
-  orden: number;
+  nombre: string;
+  /** La carpeta de Drive del eje. */
+  carpeta: string | null;
+  /** Qué entra en el examen por este eje. */
+  materiales: string[];
 };
 
-export const insumos: readonly Insumo[] = [
+const DRIVE = "https://drive.google.com/drive/folders/";
+
+export const ejes: readonly Eje[] = [
   // ---------------- MPF ----------------
-  // Sistema constitucional
-  { id: "mpf-const-01", organismo: "MPF", eje: "Sistema constitucional", titulo: "Constitución de la Nación Argentina", archivo: "mpf/constitucion-nacional.pdf", tipo: "pdf", orden: 1 },
-  { id: "mpf-const-02", organismo: "MPF", eje: "Sistema constitucional", titulo: "Convención Americana sobre Derechos Humanos (Pacto de San José de Costa Rica)", archivo: "mpf/pacto-san-jose.pdf", tipo: "pdf", orden: 2 },
-
-  // Nuevo Código Procesal Penal Federal
-  { id: "mpf-cppf-01", organismo: "MPF", eje: "Nuevo Código Procesal Penal Federal", titulo: "Código Procesal Penal Federal (Ley 27.150 y modificatoria 27.482)", archivo: "mpf/cppf-ley-27150.pdf", tipo: "pdf", orden: 1 },
-  { id: "mpf-cppf-02", organismo: "MPF", eje: "Nuevo Código Procesal Penal Federal", titulo: "Código Procesal Penal Federal — MPF, sistema acusatorio", archivo: "mpf/cppf-sistema-acusatorio.pdf", tipo: "pdf", orden: 2 },
-  { id: "mpf-cppf-03", organismo: "MPF", eje: "Nuevo Código Procesal Penal Federal", titulo: "Ley 26.791 — tipificación del homicidio agravado de mujeres", archivo: "mpf/ley-26791.pdf", tipo: "pdf", orden: 3 },
-
-  // Ministerio Público Fiscal
-  // La lista de origen repetía tres veces el Reglamento PGN 128/2010 y dos la
-  // Resolución PGN 507/14. Va un registro por norma.
-  { id: "mpf-org-01", organismo: "MPF", eje: "Ministerio Público Fiscal", titulo: "Ley Orgánica del Ministerio Público Fiscal", archivo: "mpf/ley-organica-mpf.pdf", tipo: "pdf", orden: 1 },
-  { id: "mpf-org-02", organismo: "MPF", eje: "Ministerio Público Fiscal", titulo: "Resolución PGN 507/2014", archivo: "mpf/pgn-507-2014.pdf", tipo: "pdf", orden: 2 },
-  { id: "mpf-org-03", organismo: "MPF", eje: "Ministerio Público Fiscal", titulo: "Resolución PGN 128/2010 — Reglamento de funcionarios y empleados del MPF", archivo: "mpf/pgn-128-2010.pdf", tipo: "pdf", orden: 3 },
-  { id: "mpf-org-04", organismo: "MPF", eje: "Ministerio Público Fiscal", titulo: "Ley 22.431 — Sistema de Protección Integral de los Discapacitados", archivo: "mpf/ley-22431.pdf", tipo: "pdf", orden: 4 },
-  { id: "mpf-org-05", organismo: "MPF", eje: "Ministerio Público Fiscal", titulo: "Ley 26.681", archivo: "mpf/ley-26681.pdf", tipo: "pdf", orden: 5 },
-
-  // Historia argentina
-  { id: "mpf-hist-01", organismo: "MPF", eje: "Historia argentina", titulo: "Breve Historia Argentina — José Luis Romero", archivo: "mpf/romero-breve-historia-argentina.pdf", tipo: "pdf", orden: 1 },
-
-  // Historia argentina y latinoamericana
-  { id: "mpf-hlat-01", organismo: "MPF", eje: "Historia argentina y latinoamericana", titulo: "Zanatta — Historia de América Latina desde la Colonia hasta el siglo XXI", archivo: "mpf/zanatta-america-latina.pdf", tipo: "pdf", orden: 1 },
-  { id: "mpf-hlat-02", organismo: "MPF", eje: "Historia argentina y latinoamericana", titulo: "Historia política: el largo camino de la democracia", archivo: "mpf/largo-camino-democracia.pdf", tipo: "pdf", orden: 2 },
-  { id: "mpf-hlat-03", organismo: "MPF", eje: "Historia argentina y latinoamericana", titulo: "Gallego, Eggers-Brass, Lozano — Historia Latinoamericana", archivo: "mpf/gallego-historia-latinoamericana.pdf", tipo: "pdf", orden: 3 },
-  { id: "mpf-hlat-04", organismo: "MPF", eje: "Historia argentina y latinoamericana", titulo: "Historia de América Latina: recorridos temáticos e historiográficos", archivo: "mpf/recorridos-tematicos.pdf", tipo: "pdf", orden: 4 },
-  { id: "mpf-hlat-05", organismo: "MPF", eje: "Historia argentina y latinoamericana", titulo: "Democracia, 40 años", archivo: "mpf/democracia-40-anios.pdf", tipo: "pdf", orden: 5 },
-  { id: "mpf-hlat-06", organismo: "MPF", eje: "Historia argentina y latinoamericana", titulo: "América Latina: episodios", archivo: "mpf/america-latina-episodios.pdf", tipo: "pdf", orden: 6 },
-
-  // Género
-  { id: "mpf-gen-01", organismo: "MPF", eje: "Género", titulo: "Género y diversidades", archivo: "mpf/genero-y-diversidades.xlsx", tipo: "xlsx", orden: 1 },
-
-  // Formación ética y ciudadana
-  { id: "mpf-etica-01", organismo: "MPF", eje: "Formación ética y ciudadana", titulo: "Primer cuatrimestre — Cívica", archivo: "mpf/civica-primer-cuatrimestre.pdf", tipo: "pdf", orden: 1 },
-  { id: "mpf-etica-02", organismo: "MPF", eje: "Formación ética y ciudadana", titulo: "Formación ética y ciudadana, parte 01", archivo: "mpf/formacion-etica-01.pdf", tipo: "pdf", orden: 2 },
+  // Verificados contra el Drive: la carpeta de cada eje existe y su contenido
+  // es el que está acá.
+  {
+    id: "mpf-constitucional",
+    organismo: "MPF",
+    nombre: "Sistema constitucional",
+    carpeta: `${DRIVE}1CdVJVt8t2iiBWZMPpXsg2EMhnmxvWyfd`,
+    materiales: [
+      "Constitución de la Nación Argentina",
+      "Convención Americana sobre Derechos Humanos (Pacto de San José de Costa Rica)",
+    ],
+  },
+  {
+    id: "mpf-cppf",
+    organismo: "MPF",
+    nombre: "Nuevo Código Procesal Penal Federal",
+    carpeta: `${DRIVE}1vNECkT93wzIaqoWNBsplnTnh4XEJKsu_`,
+    materiales: [
+      "Código Procesal Penal Federal (Ley 27.150 y modificatoria 27.482)",
+      "Código Procesal Penal Federal — MPF, sistema acusatorio",
+      "Ley 26.791 — tipificación del homicidio agravado de mujeres",
+    ],
+  },
+  {
+    id: "mpf-organico",
+    organismo: "MPF",
+    nombre: "Ministerio Público Fiscal",
+    carpeta: `${DRIVE}1PyTUPg10wT2FsHnTRNFRx9LDDoLkpIU6`,
+    materiales: [
+      "Ley Orgánica del Ministerio Público Fiscal",
+      "Resolución PGN 507/2014",
+      "Resolución PGN 128/2010 — Reglamento de funcionarios y empleados del MPF",
+      "Ley 22.431 — Sistema de Protección Integral de los Discapacitados",
+      "Ley 26.681",
+    ],
+  },
+  {
+    id: "mpf-historia",
+    organismo: "MPF",
+    nombre: "Historia argentina y latinoamericana",
+    carpeta: `${DRIVE}18fCoxTIEp_cW7Q9VBf_Gy8caHvdwfCB2`,
+    materiales: [
+      "Breve Historia Argentina — José Luis Romero",
+      "Zanatta — Historia de América Latina desde la Colonia hasta el siglo XXI",
+      "Historia política: el largo camino de la democracia",
+      "Gallego, Eggers-Brass, Lozano — Historia Latinoamericana",
+      "Historia de América Latina: recorridos temáticos e historiográficos",
+      "Democracia, 40 años",
+      "América Latina: episodios",
+      "Videos de historia argentina",
+    ],
+  },
+  {
+    id: "mpf-genero",
+    organismo: "MPF",
+    nombre: "Género",
+    carpeta: `${DRIVE}1uI9buhOlagCrj8vhyT0by6FKlkJmFJpA`,
+    materiales: ["Género y diversidades (planilla)"],
+  },
+  {
+    id: "mpf-etica",
+    organismo: "MPF",
+    nombre: "Formación ética y ciudadana",
+    carpeta: `${DRIVE}1Rl0DIC_Uhi0RG6Ek0VzaKTJehKIbWU_q`,
+    materiales: ["Primer cuatrimestre — Cívica", "Formación ética y ciudadana, parte 01"],
+  },
 
   // ---------------- MPD ----------------
-  // Arranca con menos material porque todavía no hay convocatoria. La vista no
-  // rellena con nada: se ve corta porque es corta.
-  { id: "mpd-reg-01", organismo: "MPD", eje: "Régimen jurídico del MPD", titulo: "Ley Orgánica del Ministerio Público de la Defensa de la Nación", archivo: "mpd/ley-organica-mpd.pdf", tipo: "pdf", orden: 1 },
-  { id: "mpd-reg-02", organismo: "MPD", eje: "Régimen jurídico del MPD", titulo: "Constitución de la Nación Argentina", archivo: "mpd/constitucion-nacional.pdf", tipo: "pdf", orden: 2 },
+  // La carpeta existe y es pública, pero está VACÍA. Va en null hasta que
+  // tenga algo: el eje se ve, el botón no.
+  {
+    id: "mpd-regimen",
+    organismo: "MPD",
+    nombre: "Régimen jurídico del MPD",
+    carpeta: null,
+    materiales: [
+      "Ley Orgánica del Ministerio Público de la Defensa de la Nación",
+      "Constitución de la Nación Argentina",
+    ],
+  },
 ];
+
+/**
+ * El grupo de WhatsApp de cada examen.
+ *
+ * Es por organismo y no por agrupación: quien estudia para el MPF quiere el
+ * grupo del MPF, no el de Nexo ni el de Nueva Abogacía.
+ */
+export const grupos: Record<OrganismoInsumo, string | null> = {
+  MPF: "https://chat.whatsapp.com/C6UNCx4qB3ZJhPMagV4HFa",
+  MPD: "https://chat.whatsapp.com/BAuLDIJyix4Jr2miKR4EPi",
+};
 
 export const textos = {
   titulo: "Insumos de estudio",
   bajada: "El material de lectura de cada organismo, ordenado por eje temático.",
   elegi: "Elegí el organismo",
   volverAOrganismos: "Cambiar de organismo",
-  descargar: "Descargar",
-  ver: "Ver",
+  abrirCarpeta: "Abrir la carpeta",
+  incluye: "Lo que incluye",
+  sinCarpeta: "Todavía no está subido a la carpeta compartida.",
+  grupo: {
+    rotulo: "Grupo de estudio",
+    titulo: (org: string) => `Grupo de WhatsApp del ${org}`,
+    texto: "Para preguntar dudas y enterarte de las novedades del concurso.",
+    cta: "Unirme al grupo",
+  },
+  dondeEsta:
+    "Los archivos están en el Drive de la agrupación. Se abren en una pestaña nueva y no hace falta cuenta de Google para verlos.",
   organismos: {
     MPF: { nombre: "Ministerio Público Fiscal", corto: "MPF", cta: "Ver el material del MPF" },
     MPD: { nombre: "Ministerio Público de la Defensa", corto: "MPD", cta: "Ver el material del MPD" },
   },
-  cuantos: (n: number) => (n === 1 ? "1 material" : `${n} materiales`),
   cuantosEjes: (n: number) => (n === 1 ? "1 eje" : `${n} ejes`),
-  tipo: { pdf: "PDF", xlsx: "Planilla" },
+  cuantos: (n: number) => (n === 1 ? "1 material" : `${n} materiales`),
 } as const;

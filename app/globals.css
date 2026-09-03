@@ -178,6 +178,13 @@ p { color: var(--papel-tenue); }
 .links a { color: var(--papel-tenue); font-size: 0.85rem; transition: color 0.2s; }
 .links a:hover { color: var(--papel); }
 .nav-cta { display: flex; align-items: center; gap: 0.6rem; }
+/* Los tres enlaces legales del pie salían pegados —«Términos y
+   CondicionesPolítica de PrivacidadContacto»— en todas las páginas del sitio:
+   había regla para el subrayado que crece al pasar por encima, pero ninguna
+   que los separara. JSX come el espacio entre etiquetas hermanas, así que sin
+   layout propio quedan uno contra el otro. */
+.pie-links { display: flex; flex-wrap: wrap; gap: 0.5rem 1.4rem; }
+
 .links a, .pie-links a { position: relative; }
 .links a::after, .pie-links a::after {
   content: ""; position: absolute; left: 0; right: 0; bottom: -3px; height: 1px;
@@ -2570,7 +2577,7 @@ body { transition: background var(--t-sec) var(--suave), color var(--t-sec) var(
 .insumo-cta { font-size: 0.84rem; color: var(--acento-texto); margin-top: 0.6rem; }
 
 .insumo-cambiar {
-  display: inline-block; margin-bottom: 1.2rem;
+  display: block; width: fit-content; margin-bottom: 1.2rem;
   font-size: 0.7rem; letter-spacing: 0.1em; text-transform: uppercase;
   color: var(--texto-tenue); text-decoration: none;
 }
@@ -2578,23 +2585,45 @@ body { transition: background var(--t-sec) var(--suave), color var(--t-sec) var(
 
 .insumo-ejes { display: flex; flex-direction: column; gap: 2.25rem; margin-top: 2.25rem; }
 .insumo-eje-titulo {
-  font-size: 1rem; font-variation-settings: "wdth" 100, "wght" 650;
-  padding-bottom: 0.6rem; border-bottom: 1px solid var(--borde-fuerte); color: var(--texto);
+  font-size: 1.02rem; font-variation-settings: "wdth" 100, "wght" 650; color: var(--texto);
+  margin: 0;
 }
-.insumo-lista { list-style: none; display: flex; flex-direction: column; margin: 0.9rem 0 0; padding: 0; }
+/* Dónde están los archivos. Va una vez arriba y no repetido por eje. */
+.insumo-donde { color: var(--texto-debil); font-size: 0.86rem; line-height: 1.6; max-width: 62ch; margin-top: 0.5rem; }
+
+/* El grupo de estudio. Es del examen, no de la agrupación. */
+.insumo-grupo {
+  display: flex; flex-direction: column; gap: 0.3rem; align-items: flex-start;
+  margin-top: 2rem; padding: 1.25rem 1.3rem; border-radius: 14px;
+  background: var(--tarjeta); box-shadow: inset 0 0 0 1px var(--borde);
+}
+.insumo-grupo-rotulo { font-size: 0.62rem; letter-spacing: 0.13em; text-transform: uppercase; color: var(--acento-texto); }
+.insumo-grupo-titulo { font-size: 1.02rem; font-variation-settings: "wdth" 100, "wght" 650; color: var(--texto); margin: 0; }
+.insumo-grupo-texto { color: var(--texto-tenue); font-size: 0.9rem; line-height: 1.55; margin: 0.15rem 0 0.9rem; max-width: 52ch; }
+
+/* La cabeza de cada eje: el nombre a la izquierda, el botón a la derecha, y
+   en el teléfono uno debajo del otro. */
+.insumo-eje-cabeza {
+  display: flex; align-items: baseline; justify-content: space-between;
+  gap: 0.9rem 1.2rem; flex-wrap: wrap;
+  padding-bottom: 0.6rem; border-bottom: 1px solid var(--borde-fuerte);
+}
+.insumo-abrir { flex-shrink: 0; padding: 0.5rem 1rem; font-size: 0.82rem; }
+.insumo-sin-carpeta { font-size: 0.8rem; color: var(--texto-debil); flex-shrink: 0; }
+
+.insumo-incluye {
+  font-size: 0.62rem; letter-spacing: 0.13em; text-transform: uppercase; font-weight: 400;
+  color: var(--texto-debil); margin: 1rem 0 0.5rem;
+}
+.insumo-lista { list-style: none; display: flex; flex-direction: column; gap: 0.45rem; margin: 0; padding: 0; }
 .insumo-lista li {
-  display: flex; align-items: baseline; gap: 0.85rem;
-  padding: 0.7rem 0; border-bottom: 1px solid var(--borde);
-  font-size: 0.92rem; line-height: 1.5; flex-wrap: wrap;
+  color: var(--texto-tenue); font-size: 0.92rem; line-height: 1.55;
+  padding-left: 1.1rem; position: relative; max-width: 66ch;
 }
-.insumo-lista li:last-child { border-bottom: none; }
-.insumo-tipo { font-size: 0.62rem; letter-spacing: 0.1em; color: var(--texto-debil); flex-shrink: 0; min-width: 3.6rem; }
-.insumo-titulo { flex: 1; min-width: 12rem; color: var(--texto-tenue); }
-.insumo-bajar {
-  flex-shrink: 0; font-size: 0.82rem; color: var(--acento-texto);
-  text-decoration: underline; text-underline-offset: 3px;
+.insumo-lista li::before {
+  content: ""; position: absolute; left: 0; top: 0.6em;
+  width: 5px; height: 5px; border-radius: 50%; background: var(--acento-texto);
 }
-.insumo-bajar:hover { color: var(--texto); }
 
 /* ============================================================
    GUÍA DE INSCRIPCIÓN
@@ -2621,7 +2650,7 @@ body { transition: background var(--t-sec) var(--suave), color var(--t-sec) var(
 .guia-puerta .ins-estado { margin: 0.3rem 0 0; }
 
 .guia-cambiar {
-  display: inline-block; margin-bottom: 1.2rem;
+  display: block; width: fit-content; margin-bottom: 1.2rem;
   font-size: 0.7rem; letter-spacing: 0.1em; text-transform: uppercase;
   color: var(--texto-tenue); text-decoration: none;
 }
