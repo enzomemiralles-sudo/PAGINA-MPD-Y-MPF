@@ -75,10 +75,7 @@ export const MARCAS_CONFIG: Record<ConfigMarca["id"], ConfigMarca> = {
       mail: "abogacianueva@gmail.com",
       youtube: "https://www.youtube.com/@nuevaabogacia",
     },
-    // PENDIENTE: la URL del sitio de Nueva Abogacía no llegó. Queda declarada
-    // en null y la pestaña que la presenta no muestra el botón de visita: no
-    // se inventa una dirección.
-    sitio: { url: null, pagina: "/na/pagina-web" },
+    sitio: { url: "https://nueva-abogacia.org", pagina: "/na/pagina-web" },
     quienesSomos: "/na/quienes-somos",
     muestra: { primario: "#0B3FD0", acento: "#00B894" },
   },

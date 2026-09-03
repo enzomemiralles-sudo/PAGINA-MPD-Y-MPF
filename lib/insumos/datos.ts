@@ -1,4 +1,5 @@
 import { insumos, type Insumo, type OrganismoInsumo } from "@/content/insumos";
+import { crearClienteServidor } from "@/lib/supabase/server";
 
 /**
  * El bucket público donde viven los PDF. De sólo lectura: la política de la
@@ -6,16 +7,47 @@ import { insumos, type Insumo, type OrganismoInsumo } from "@/content/insumos";
  */
 const BUCKET = "insumos";
 
+/** Las carpetas del bucket, una por organismo. */
+const CARPETAS = ["mpf", "mpd"] as const;
+
 /**
- * La URL pública de un insumo.
+ * Qué archivos están subidos de verdad.
  *
- * Devuelve null si el proyecto no está configurado, y con eso la lista no
- * renderiza el enlace: un botón de descarga que lleva a un 404 es peor que no
- * tener botón.
+ * Hace falta preguntarlo, no alcanza con que el proyecto esté configurado. El
+ * registro de `content/insumos.ts` dice qué material entra en el examen —eso
+ * se sabe desde que salió el programa— pero los archivos se suben cuando se
+ * suben. Sin esta consulta la pestaña muestra veintidós botones de descarga y
+ * los veintidós llevan a un 404, que es peor que no tener botón: parece que
+ * algo se rompió.
+ *
+ * Si la consulta falla, devuelve el conjunto vacío y no se muestra ningún
+ * botón. Es el lado seguro: se sigue viendo qué material entra en el examen,
+ * que es la mitad útil de la pestaña, y no se promete una descarga que no se
+ * puede cumplir.
  */
-export function urlDe(insumo: Insumo): string | null {
+export async function archivosSubidos(): Promise<Set<string>> {
+  const sb = await crearClienteServidor();
+  if (!sb) return new Set();
+
+  const listas = await Promise.all(
+    CARPETAS.map(async (carpeta) => {
+      const { data, error } = await sb.storage.from(BUCKET).list(carpeta, { limit: 200 });
+      if (error || !data) return [];
+      return data.map((o) => `${carpeta}/${o.name}`);
+    }),
+  );
+  return new Set(listas.flat());
+}
+
+/**
+ * La URL pública de un insumo, o null si el archivo todavía no está subido.
+ *
+ * `subidos` sale de `archivosSubidos()`. Se pasa en vez de consultarse acá
+ * para no disparar una consulta por material: son veintidós.
+ */
+export function urlDe(insumo: Insumo, subidos: Set<string>): string | null {
   const base = process.env.NEXT_PUBLIC_SUPABASE_URL;
-  if (!base) return null;
+  if (!base || !subidos.has(insumo.archivo)) return null;
   return `${base}/storage/v1/object/public/${BUCKET}/${insumo.archivo}`;
 }
 

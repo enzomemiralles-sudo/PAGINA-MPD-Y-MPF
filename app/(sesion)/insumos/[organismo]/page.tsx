@@ -3,7 +3,7 @@ import Link from "next/link";
 import { notFound } from "next/navigation";
 import { VolverAlPerfil } from "@/components/app/VolverAlPerfil";
 import { textos as t } from "@/content/insumos";
-import { ejesDe, esOrganismo, urlDe } from "@/lib/insumos/datos";
+import { archivosSubidos, ejesDe, esOrganismo, urlDe } from "@/lib/insumos/datos";
 
 type Props = { params: Promise<{ organismo: string }> };
 
@@ -21,7 +21,11 @@ export async function generateMetadata({ params }: Props): Promise<Metadata> {
  * material no puede aparecer. Y un material cuyo archivo todavía no está en
  * Storage se muestra sin botón en vez de con un botón que lleva a un 404: se
  * ve qué material entra en el examen aunque el PDF no esté subido.
+ *
+ * Qué está subido se pregunta al bucket, una vez por pantalla y no una vez por
+ * material.
  */
+export const dynamic = "force-dynamic";
 export default async function InsumosDeOrganismo({ params }: Props) {
   const { organismo } = await params;
   const o = organismo.toUpperCase();
@@ -29,6 +33,8 @@ export default async function InsumosDeOrganismo({ params }: Props) {
 
   const ejes = ejesDe(o);
   if (ejes.length === 0) notFound();
+
+  const subidos = await archivosSubidos();
 
   return (
     <main className="env app-cuerpo">
@@ -46,7 +52,7 @@ export default async function InsumosDeOrganismo({ params }: Props) {
             <h2 className="insumo-eje-titulo">{e.eje}</h2>
             <ul className="insumo-lista">
               {e.materiales.map((m) => {
-                const url = urlDe(m);
+                const url = urlDe(m, subidos);
                 return (
                   <li key={m.id}>
                     <span className="insumo-tipo mono">{t.tipo[m.tipo]}</span>
