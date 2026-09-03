@@ -201,6 +201,9 @@ export const MPF: Guia = {
       ],
       capturas: [
         {
+          // Va difuminada en los dos lugares donde el sistema saluda por
+          // nombre: la captura se sacó con sesión iniciada y es la única de las
+          // veintiuna que mostraba datos de una persona real.
           id: "mpf-paso4-menu-01",
           descripcion:
             "La pantalla principal con la solapa Concursos desplegada y sus tres opciones: Con Inscripción abierta, En trámite y Finalizados",
