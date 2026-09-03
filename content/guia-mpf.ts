@@ -134,8 +134,9 @@ export const MPF: Guia = {
         },
         {
           id: "mpf-paso2-registro-02",
-          descripcion: "Formulario de registro con los campos de datos y la contraseña",
-          src: null,
+          descripcion:
+            "Formulario de registro: apellido, nombre, correo repetido dos veces, número de DNI, contraseña repetida, y un código de verificación que hay que copiar de la imagen",
+          src: "/capturas/mpf-registro-formulario.png",
         },
       ],
       videos: [
@@ -160,13 +161,15 @@ export const MPF: Guia = {
       capturas: [
         {
           id: "mpf-paso3-antecedentes-01",
-          descripcion: "Solapa Antecedentes con la lista de categorías",
-          src: null,
+          descripcion:
+            "La solapa Antecedentes desplegada, con sus nueve categorías: Datos Personales, Informe de antecedentes penales, Capacitación en Género (Ley Micaela), Experiencia Laboral, Formación Académica, Docencia e Investigación, Becas y Premios, Publicaciones y Visualización",
+          src: "/capturas/mpf-antecedentes-menu.png",
         },
         {
           id: "mpf-paso3-antecedentes-02",
-          descripcion: "Formulario de un antecedente con el botón Adjuntar documento",
-          src: null,
+          descripcion:
+            "El bloque de adjuntos: foto, DNI de los dos lados y título de los dos lados, cada uno aclarando que el antecedente se invalida sin ese respaldo",
+          src: "/capturas/mpf-antecedentes-adjuntos.png",
         },
       ],
       videos: [
@@ -198,14 +201,22 @@ export const MPF: Guia = {
       ],
       capturas: [
         {
+          id: "mpf-paso4-menu-01",
+          descripcion:
+            "La pantalla principal con la solapa Concursos desplegada y sus tres opciones: Con Inscripción abierta, En trámite y Finalizados",
+          src: "/capturas/mpf-menu-concursos.png",
+        },
+        {
           id: "mpf-paso4-concursos-01",
-          descripcion: "Solapa Concursos con la lista de concursos con inscripción abierta",
-          src: null,
+          descripcion:
+            "La lista de concursos con inscripción abierta: número de concurso, resolución, máximo de vacantes y fecha de cierre",
+          src: "/capturas/mpf-concursos-abiertos.png",
         },
         {
           id: "mpf-paso4-ciudades-01",
-          descripcion: "Pantalla de selección de ciudades antes de confirmar la inscripción",
-          src: null,
+          descripcion:
+            "La ficha de un concurso con sus fechas arriba y, debajo, las vacantes agrupadas por ciudad",
+          src: "/capturas/mpf-concurso-ciudades.png",
         },
       ],
       videos: [

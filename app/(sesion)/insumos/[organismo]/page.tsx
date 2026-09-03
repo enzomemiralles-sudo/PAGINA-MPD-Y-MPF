@@ -2,6 +2,7 @@ import type { Metadata } from "next";
 import Link from "next/link";
 import { notFound } from "next/navigation";
 import { VolverAlPerfil } from "@/components/app/VolverAlPerfil";
+import { traerPerfil } from "@/lib/perfil";
 import { textos as t } from "@/content/insumos";
 import { ejesDe, esOrganismo, grupoDe } from "@/lib/insumos/datos";
 
@@ -33,7 +34,9 @@ export default async function InsumosDeOrganismo({ params }: Props) {
   const lista = ejesDe(o);
   if (lista.length === 0) notFound();
 
-  const grupo = grupoDe(o);
+  // El grupo depende de la piel: los dos son de Nexo.
+  const perfil = await traerPerfil();
+  const grupo = grupoDe(o, perfil?.marca ?? null);
   const hayCarpetas = lista.some((e) => e.carpeta !== null);
 
   return (
@@ -51,7 +54,9 @@ export default async function InsumosDeOrganismo({ params }: Props) {
         <aside className="insumo-grupo">
           <span className="insumo-grupo-rotulo mono">{t.grupo.rotulo}</span>
           <p className="insumo-grupo-titulo">{t.grupo.titulo(t.organismos[o].corto)}</p>
-          <p className="insumo-grupo-texto">{t.grupo.texto}</p>
+          <p className="insumo-grupo-texto">
+            {t.grupo.texto} {t.grupo.dice}
+          </p>
           <a className="btn btn-a" href={grupo} target="_blank" rel="noopener noreferrer">
             {t.grupo.cta}
           </a>
