@@ -249,6 +249,25 @@ las 176 preguntas del MPF teórico y las 14 del práctico.
 
 ---
 
+## 3 bis. El lint ya corre
+
+`npm run lint` no hacía nada: el repositorio tenía ESLint y `eslint-config-next`
+instalados pero ningún archivo de configuración, así que `next lint` abría un
+asistente interactivo y en un servidor se colgaba. Ahora hay `.eslintrc.json` y
+el script llama a la CLI de ESLint directamente, no a `next lint`, que Next 16
+elimina.
+
+Las reglas del proyecto que antes vivían sólo en la cabeza ahora las comprueba
+la máquina: nada de `any`, nada de importaciones sin usar, `===` en vez de `==`
+y `const` cuando la variable no se reasigna. Encontró dos importaciones muertas
+de verdad, ya sacadas.
+
+Y hay CI: `.github/workflows/verificar.yml` corre tipos, lint, tests y build en
+cada push a `main` y en cada pull request. Hasta ahora esas cuatro cosas se
+corrían a mano y dependían de que alguien se acordara.
+
+---
+
 ## 4. Lo que queda en el código, para cuando digas
 
 Ninguna de estas frena la tanda 4. Están anotadas para no perderlas.
