@@ -117,15 +117,23 @@ export const ejes: readonly Eje[] = [
 ];
 
 /**
- * El grupo de WhatsApp de cada examen.
+ * Los grupos de WhatsApp, que son DE NEXO.
  *
- * Es por organismo y no por agrupación: quien estudia para el MPF quiere el
- * grupo del MPF, no el de Nexo ni el de Nueva Abogacía.
+ * Los dos, uno por examen. Por eso están acá y no en `marcas.ts`: no es que
+ * cada agrupación tenga el suyo, es que Nexo tiene uno para cada concurso.
+ *
+ * Y por eso sólo se muestran en la piel de Nexo. A alguien que entró por
+ * Nueva Abogacía ofrecerle el grupo de otra agrupación es mandarlo a un lugar
+ * que no es el suyo; cuando Nueva Abogacía tenga los propios, se agregan acá
+ * con su marca y la pantalla no cambia.
  */
 export const grupos: Record<OrganismoInsumo, string | null> = {
   MPF: "https://chat.whatsapp.com/C6UNCx4qB3ZJhPMagV4HFa",
   MPD: "https://chat.whatsapp.com/BAuLDIJyix4Jr2miKR4EPi",
 };
+
+/** De quién son los grupos de arriba. */
+export const GRUPOS_SON_DE = "nexo" as const;
 
 export const textos = {
   titulo: "Insumos de estudio",
@@ -138,6 +146,7 @@ export const textos = {
   grupo: {
     rotulo: "Grupo de estudio",
     titulo: (org: string) => `Grupo de WhatsApp del ${org}`,
+    dice: "Lo organiza Nexo Derecho.",
     texto: "Para preguntar dudas y enterarte de las novedades del concurso.",
     cta: "Unirme al grupo",
   },

@@ -40,7 +40,7 @@ export const paginaNexo = {
       captura: {
         id: "nexo-web-calendario",
         descripcion: "El calendario académico de la página de Nexo Derecho",
-        src: null,
+        src: "/capturas/nexo-web-calendario.png",
       },
     },
     {
@@ -49,7 +49,7 @@ export const paginaNexo = {
       captura: {
         id: "nexo-web-cuadros",
         descripcion: "Los cuadros de orientación del CPO",
-        src: null,
+        src: "/capturas/nexo-web-cuadros.png",
       },
     },
     {
@@ -58,7 +58,7 @@ export const paginaNexo = {
       captura: {
         id: "nexo-web-correlativas",
         descripcion: "El chequeador de correlativas",
-        src: null,
+        src: "/capturas/nexo-web-correlativas.png",
       },
     },
     {
@@ -67,7 +67,7 @@ export const paginaNexo = {
       captura: {
         id: "nexo-web-promedio",
         descripcion: "El seguimiento de promedio y progreso de la carrera",
-        src: null,
+        src: "/capturas/nexo-web-promedio.png",
       },
     },
     {
@@ -76,7 +76,7 @@ export const paginaNexo = {
       captura: {
         id: "nexo-web-mapa",
         descripcion: "El mapa interactivo de la Facultad de Derecho",
-        src: null,
+        src: "/capturas/nexo-web-mapa.png",
       },
     },
   ] as const satisfies readonly BloqueHerramienta[],
@@ -93,7 +93,7 @@ export const paginaNa = {
   captura: {
     id: "na-web-principal",
     descripcion: "La página principal del sitio de Nueva Abogacía",
-    src: null,
+    src: "/capturas/na-web-principal.png",
   } satisfies Captura,
   bloques: [
     {

@@ -28,6 +28,76 @@ function comoAdvertencia(a: Aviso): Advertencia {
   };
 }
 
+/**
+ * Las capturas del sistema del MPD, por paso.
+ *
+ * Resuelven B-07, que estaba anotado como imposible: el sistema es una
+ * aplicación Adobe Flex que se instala en Windows y cuyo propio código expulsa
+ * a todo navegador desde diciembre de 2020, así que estas pantallas no existen
+ * en la web. Salieron de hacer el trámite a mano en una PC con Windows.
+ *
+ * Van acá y no en `content/inscripcion/mpd.ts` —el material viejo, del que
+ * este archivo deriva— porque el tipo de allá describe capturas que viven en
+ * /public con otra forma. Cuando ese material se retire, esto viaja con la
+ * guía.
+ */
+const CAPTURAS_MPD: Record<number, { id: string; descripcion: string; src: string }[]> = {
+  1: [
+    {
+      id: "mpd-paso1-descargar",
+      descripcion:
+        "La página de concursos.mpd.gov.ar con el botón «Descargar la webapp Concursos para Microsoft Windows»",
+      src: "/capturas/mpd-descargar-webapp.png",
+    },
+    {
+      id: "mpd-paso1-escritorio",
+      descripcion: "El acceso directo azul CONCURSOS, ya instalado en el escritorio",
+      src: "/capturas/mpd-acceso-escritorio.png",
+    },
+  ],
+  2: [
+    {
+      id: "mpd-paso2-registro",
+      descripcion:
+        "El formulario de registro del SURH, con sus tres campos: CUIL, correo electrónico y contraseña",
+      src: "/capturas/mpd-registro-formulario.png",
+    },
+    {
+      id: "mpd-paso2-validacion",
+      descripcion: "El correo de validación que llega después de registrarse",
+      src: "/capturas/mpd-mail-validacion.png",
+    },
+  ],
+  3: [
+    {
+      id: "mpd-paso3-datos",
+      descripcion:
+        "La primera pantalla del CV dentro de la aplicación de escritorio: tipo y número de documento, apellido, nombres, género, fecha de nacimiento, nacionalidad, nombres de los padres, CUIL y estado civil",
+      src: "/capturas/mpd-cv-datos-personales.png",
+    },
+    {
+      id: "mpd-paso3-nacionalidad",
+      descripcion: "El desplegable de nacionalidad, con «Argentino nativo» elegido",
+      src: "/capturas/mpd-cv-nacionalidad.png",
+    },
+    {
+      id: "mpd-paso3-fs",
+      descripcion: "El campo «Copia de documento a fs.», que es el que más se pasa por alto",
+      src: "/capturas/mpd-cv-campo-fs.png",
+    },
+    {
+      id: "mpd-paso3-regular",
+      descripcion: "La fila donde se declara ser estudiante regular de la carrera",
+      src: "/capturas/mpd-cv-estudiante-regular.png",
+    },
+    {
+      id: "mpd-paso3-guardado",
+      descripcion: "El aviso de que el currículum se guardó correctamente",
+      src: "/capturas/mpd-cv-guardado.png",
+    },
+  ],
+};
+
 /** Un paso del material viejo, con la forma de la guía nueva. */
 function comoPaso(p: PasoViejo): PasoGuia {
   const puntos = p.puntos ? p.puntos.items.map((i) => `${i.titulo}. ${i.texto}`) : [];
@@ -36,14 +106,16 @@ function comoPaso(p: PasoViejo): PasoGuia {
     titulo: p.titulo,
     resumen: p.resumen,
     cuerpo: [...p.cuerpo, ...puntos, ...(p.consejo ? [p.consejo] : [])],
-    // Las capturas del MPD no existen y no pueden existir sin que alguien haga
-    // el trámite en una PC con Windows: el sistema es una aplicación Adobe
-    // Flex que expulsa a todo navegador desde diciembre de 2020. Ver B-07.
-    capturas: p.capturas.map((c, i) => ({
-      id: `mpd-paso${p.n}-${i + 1}`,
-      descripcion: c.alt,
-      src: c.archivo,
-    })),
+    // Las de arriba, más las que el material viejo trajera. Un paso sin
+    // capturas devuelve la lista vacía y no renderiza nada.
+    capturas: [
+      ...(CAPTURAS_MPD[p.n] ?? []),
+      ...p.capturas.map((c, i) => ({
+        id: `mpd-paso${p.n}-extra-${i + 1}`,
+        descripcion: c.alt,
+        src: c.archivo,
+      })),
+    ],
     videos: [],
     advertencias: p.avisos.map(comoAdvertencia),
     enlace: p.donde && p.donde.includes(".") ? { texto: p.donde, url: `https://${p.donde}` } : null,
