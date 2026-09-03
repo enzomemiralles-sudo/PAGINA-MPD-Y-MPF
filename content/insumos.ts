@@ -34,8 +34,9 @@ const DRIVE = "https://drive.google.com/drive/folders/";
 
 export const ejes: readonly Eje[] = [
   // ---------------- MPF ----------------
-  // Verificados contra el Drive: la carpeta de cada eje existe y su contenido
-  // es el que está acá.
+  // Verificados contra el Drive el 3 de septiembre de 2026, abriendo cada
+  // carpeta: existen, son públicas y su contenido es el que está acá. Historia
+  // guarda los suyos en dos subcarpetas; la carpeta del eje las muestra.
   {
     id: "mpf-constitucional",
     organismo: "MPF",
@@ -83,7 +84,6 @@ export const ejes: readonly Eje[] = [
       "Historia de América Latina: recorridos temáticos e historiográficos",
       "Democracia, 40 años",
       "América Latina: episodios",
-      "Videos de historia argentina",
     ],
   },
   {
@@ -102,16 +102,16 @@ export const ejes: readonly Eje[] = [
   },
 
   // ---------------- MPD ----------------
-  // La carpeta existe y es pública, pero está VACÍA. Va en null hasta que
-  // tenga algo: el eje se ve, el botón no.
+  // Una sola carpeta, sin subcarpetas por eje: así está armada del otro lado.
   {
     id: "mpd-regimen",
     organismo: "MPD",
     nombre: "Régimen jurídico del MPD",
-    carpeta: null,
+    carpeta: `${DRIVE}1Cetf622l_4iwmPdSGYq56LtfNGVsFNpk`,
     materiales: [
-      "Ley Orgánica del Ministerio Público de la Defensa de la Nación",
       "Constitución de la Nación Argentina",
+      "Ley Orgánica del Ministerio Público de la Defensa de la Nación",
+      "Régimen jurídico del MPD",
     ],
   },
 ];

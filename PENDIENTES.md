@@ -1,6 +1,6 @@
 # Lo que falta, y quién lo puede hacer
 
-Estado al 31 de agosto de 2026, después de la tanda 6.
+Estado al 3 de septiembre de 2026.
 
 Está ordenado por urgencia real: lo primero es lo que hoy impide que el
 simulador muestre una sola pregunta.
@@ -39,30 +39,37 @@ eso no queda anotado—:
 Y las 262 preguntas están revisadas, así que el simulador sirve el banco
 entero.
 
-Lo único que le falta a la base es contenido, no estructura: **0 archivos en el
-bucket** y **0 videos publicados**.
+Lo único que le falta a la base es contenido, no estructura: **0 videos
+publicados**. Los insumos de estudio ya no dependen de ella —van por Drive, ver
+abajo—, así que el bucket quedó sin uso.
 
 ---
 
-## 0 quater. Tuyo: subir los insumos de estudio
+## 0 quater. Los insumos de estudio: resuelto
 
-La pestaña de insumos ya lista los 20 materiales del MPF y los 2 del MPD,
-agrupados por eje, y el bucket ya está creado. Lo que falta es subir los
-archivos, con las rutas que están en `content/insumos.ts` —`mpf/…` y `mpd/…`—.
+Ya no hay nada que subir. Los archivos viven en las carpetas de Drive de las
+agrupaciones y la pestaña enlaza a la carpeta del eje, así que **un material
+nuevo aparece en cuanto lo subís al Drive, sin tocar código ni avisarme**.
 
-La pestaña le pregunta al bucket qué hay subido de verdad, así que **los
-botones aparecen solos a medida que subís cada archivo**, sin tocar código. Un
-material que todavía no está se muestra igual, con su título y su eje: se ve
-qué entra en el examen aunque el PDF no esté.
+Las siete carpetas están llenas y verificadas una por una el 3 de septiembre:
+**20 materiales del MPF** repartidos en seis ejes y **3 del MPD** en una sola
+carpeta. Las siete son públicas: se abren sin cuenta de Google.
+
+Lo que sigue en `content/insumos.ts` es el **programa del examen**, no un índice
+del Drive. Dice qué hay que leer aunque el archivo no esté subido, que es la
+mitad útil de la pestaña: lo que falta se consigue por otro lado.
 
 ---
 
-## 0 ter. Tuyo: el material que le falta a la pestaña de inscripción
+## 0 ter. Tuyo: lo que le falta a la pestaña de inscripción
 
-Las dos cosas están armadas y vacías. Ninguna necesita que toque código.
+De las dos cosas que faltaban queda una, los videos. Ninguna necesita que toque
+código.
 
-**Las capturas de pantalla del sistema (B-07).** Éstas no las puedo sacar yo,
-y no por falta de acceso: **no existen en la web.**
+**Las capturas de pantalla del sistema (B-07): llegaron.** Nueve, sacadas a
+mano en una PC con Windows, y conectadas a los pasos 1, 2 y 3 de la guía del
+MPD. Lo que sigue queda anotado como el registro de por qué no había otro
+camino: **no existen en la web.**
 
 `concursos.mpd.gov.ar` sirve una aplicación **Adobe Flex**, o sea Flash. Su
 propio código trae `var timelimit = new Date('2020-12-24')` y desde esa fecha
@@ -71,15 +78,18 @@ Explorer. Por eso el manual te hace instalar el `.msi`: es el envoltorio de
 escritorio de esa misma aplicación. Las pantallas de los pasos 2, 3 y 4 están
 adentro de un programa instalado, no en una página que se pueda abrir.
 
-O sea que tienen que salir de alguien que haga el trámite en una PC con
-Windows y las saque a mano. Cuando las tengas, van en `public/` y se agregan
-al campo `capturas` del paso en `content/inscripcion/mpd.ts`, cada una con su
-`alt` —qué se ve— y su `pie` —qué hay que mirar—.
+Por eso salieron de alguien que hizo el trámite en una PC con Windows y las
+sacó a mano. Están en `public/capturas/` y conectadas paso por paso. Si en
+algún momento sacás más, van en la misma carpeta y se agregan al paso que
+corresponda en `content/guia-mpd.ts`, cada una con su descripción.
 
-Mientras tanto **cada paso tiene un esquema** dibujado a partir del manual y
-rotulado como esquema, no como captura. No las reemplaza: el esquema ubica
-—dónde cae «Título Principal» entre las nueve páginas, cuál es el camino de
-menús—, la captura muestra. Cuando lleguen las capturas, conviven.
+El **esquema** de cada paso sigue ahí y convive con la captura: el esquema
+ubica —dónde cae «Título Principal» entre las nueve páginas, cuál es el camino
+de menús— y la captura muestra.
+
+Una nota sobre las capturas: **la del menú de Concursos del MPF va difuminada**
+donde aparecía tu nombre. Era tu sesión real. Cualquier captura nueva que
+mandes, si está sacada con sesión iniciada, hay que mirarla antes de subirla.
 
 **Los videos cortos (B-08).** La biblioteca lee de la tabla `videos`, que ya
 existe desde la migración 0001. Insertá una fila por video con `publicado =
@@ -93,8 +103,8 @@ values ('Instalar la aplicación CONCURSOS', 'ID_DE_YOUTUBE', 'mpd', 1, true);
 Mientras la tabla esté vacía la sección entera no se renderiza, así que no hay
 ningún cartel de «próximamente» esperando.
 
-Cuando estén las dos, se puede tildar I-04 y los destacados de capturas y
-videos aparecen solos en la portada.
+Cuando estén los videos se puede tildar I-04 y el destacado aparece solo en la
+portada.
 
 ---
 
