@@ -9,7 +9,7 @@ export const nav = {
     { href: "#inscripcion", texto: "Inscripción" },
     { href: "#asistente", texto: "Asistente" },
   ],
-  cta: "Empezar gratis",
+  cta: "Empezar",
   ctaHref: "/crear-perfil",
 } as const;
 
@@ -22,7 +22,7 @@ export const hero = {
   tituloBrillo: "Ministerio Público",
   bajada:
     "Prepará tu examen con simuladores de exámenes, un asistente para responder todas tus dudas, la normativa ordenada y todo lo que necesitás saber para la inscripción en un solo lugar.",
-  ctaPrimario: "Empezar gratis",
+  ctaPrimario: "Empezar",
   ctaPrimarioHref: "/crear-perfil",
 } as const;
 

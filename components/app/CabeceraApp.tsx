@@ -20,13 +20,28 @@ export function CabeceraApp({ marca, revisor = false }: { marca: Marca; revisor?
   const cfg = configDe(marca);
   const ruta = usePathname() ?? "";
   const enPerfil = ruta.startsWith("/mi-perfil");
+  // El instructivo del MPD tiene fondo verde propio (`.instructivo-mpd-claro`,
+  // en app/globals.css): la cabecera necesita su propia variante para no
+  // quedar transparente sobre ese verde. Sólo cambia acá, no en el resto de
+  // las pantallas de Nexo.
+  const enGuiaMpd = ruta.startsWith("/guia-inscripcion/mpd");
 
   return (
-    <header className="app-cabecera">
+    <header className={`app-cabecera${enGuiaMpd ? " app-cabecera-mpd" : ""}`}>
       <div className="env app-nav">
+        {/* Este botón siempre lleva al menú principal (/app), tenga uno o
+            los dos logos. */}
         <Link href="/app" className="app-marca" aria-label={cfg?.nombre ?? "Inicio"}>
           {marca === "nexo" ? (
-            <LogoNexo alto={18} />
+            <>
+              <LogoNexo alto={18} />
+              {enGuiaMpd ? (
+                <>
+                  <span className="sep-v-marca" aria-hidden="true" />
+                  <LogoNuevaAbogacia alto={22} />
+                </>
+              ) : null}
+            </>
           ) : (
             <>
               <LogoNuevaAbogacia alto={20} />

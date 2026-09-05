@@ -1,6 +1,7 @@
 import type { Metadata } from "next";
 import Link from "next/link";
 import { notFound } from "next/navigation";
+import { CheckCircle2 } from "lucide-react";
 import { traerConcursos } from "@/lib/datos";
 import { VolverAlPerfil } from "@/components/app/VolverAlPerfil";
 import { Estado } from "@/components/inscripcion/Estado";
@@ -39,13 +40,9 @@ export default async function GuiaDeOrganismo({ params }: Props) {
   const concursos = await traerConcursos();
   const concurso = concursos.find((c) => c.organismo === g.organismo) ?? null;
 
-  return (
-    <main className="env app-cuerpo">
-      <VolverAlPerfil />
-      <Link className="guia-cambiar mono" href="/guia-inscripcion">
-        ← {t.elegi}
-      </Link>
-
+  const esMpd = g.organismo === "mpd";
+  const contenido = (
+    <>
       <h1>
         {t.titulo} · {g.sigla}
       </h1>
@@ -72,13 +69,27 @@ export default async function GuiaDeOrganismo({ params }: Props) {
       {/* ② Antes de empezar */}
       <SeccionGuia seccion={g.antes} id="antes" />
 
-      {/* ③ Lo que tenés que saber antes */}
+      {/* ③ Lo que tenés que saber antes.
+          En el instructivo del MPD no son advertencias —nada de tono de
+          alarma—, son información importante: mismos datos, presentados
+          como una lista de puntos a favor de llegar preparado. */}
       {g.saber.length > 0 ? (
         <section className="guia-seccion" id="saber">
-          <h2 className="guia-seccion-titulo">{t.secciones.saber}</h2>
-          {g.saber.map((a) => (
-            <Advertencia key={a.texto} {...a} />
-          ))}
+          <h2 className="guia-seccion-titulo">
+            {esMpd ? "Información importante antes de arrancar" : t.secciones.saber}
+          </h2>
+          {esMpd ? (
+            <ul className="info-importante">
+              {g.saber.map((a) => (
+                <li key={a.texto} className="info-importante-item">
+                  <CheckCircle2 className="info-importante-icono" aria-hidden="true" />
+                  <span>{a.texto}</span>
+                </li>
+              ))}
+            </ul>
+          ) : (
+            g.saber.map((a) => <Advertencia key={a.texto} {...a} />)
+          )}
         </section>
       ) : null}
 
@@ -116,6 +127,17 @@ export default async function GuiaDeOrganismo({ params }: Props) {
         </ul>
         <p className="guia-verificar">{t.verificar}</p>
       </footer>
+    </>
+  );
+
+  return (
+    <main className={`env app-cuerpo${esMpd ? " instructivo-mpd-claro" : ""}`}>
+      <VolverAlPerfil />
+      <Link className="guia-cambiar mono" href="/guia-inscripcion">
+        ← {t.elegi}
+      </Link>
+
+      {esMpd ? <div className="instructivo-mpd-tarjeta">{contenido}</div> : contenido}
     </main>
   );
 }

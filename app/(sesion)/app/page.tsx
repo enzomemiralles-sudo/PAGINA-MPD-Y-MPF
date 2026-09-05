@@ -2,6 +2,7 @@ import type { Metadata } from "next";
 import { redirect } from "next/navigation";
 import { traerPerfil } from "@/lib/perfil";
 import { traerEstadoHome } from "@/lib/simulador/home";
+import { HerramientasHome } from "@/components/app/HerramientasHome";
 import { ModalDatos } from "@/components/app/ModalDatos";
 import { Retencion } from "@/components/app/Retencion";
 import { ColumnasHome } from "@/components/app/ColumnasHome";
@@ -46,6 +47,7 @@ export default async function App() {
 
       <div className="env portal-medio">
         <Retencion nombre={perfil.nombre} estado={estado} />
+        <HerramientasHome />
       </div>
 
       <div className="env">

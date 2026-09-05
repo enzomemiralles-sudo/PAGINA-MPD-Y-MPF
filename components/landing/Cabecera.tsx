@@ -1,3 +1,4 @@
+import Link from "next/link";
 import { nav } from "@/content/landing";
 import { LogoNexo } from "@/components/marca/LogoNexo";
 import { LogoNuevaAbogacia } from "@/components/marca/LogoNuevaAbogacia";
@@ -6,11 +7,13 @@ export function Cabecera() {
   return (
     <header className="cabecera">
       <div className="env nav">
-        <div className="marcas">
+        {/* El logo también es un botón: lleva siempre al inicio, como en la
+            cabecera de sesión (CabeceraApp), que ya hace lo mismo con /app. */}
+        <Link href="/" className="marcas" aria-label="Inicio">
           <LogoNexo />
           <span className="sep-v" aria-hidden="true" />
           <LogoNuevaAbogacia />
-        </div>
+        </Link>
 
         <nav className="links" aria-label="Secciones">
           {nav.links.map((l) => (

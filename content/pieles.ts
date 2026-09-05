@@ -7,7 +7,7 @@ export const pieles = {
   muestras: {
     boton: {
       titulo: "Botones",
-      principal: "Empezar gratis",
+      principal: "Empezar",
       // El de marca es donde se ve la diferenciación: Nexo va en color plano
       // y Nueva Abogacía siempre con el degradé azul → turquesa.
       marca: "Practicar",

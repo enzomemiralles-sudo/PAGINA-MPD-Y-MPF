@@ -45,7 +45,54 @@ export const primerSimulacro = {
 export const temas = { rotulo: "Cómo venís por tema" } as const;
 
 /**
- * Las tres columnas del pie de la home.
+ * Las tres herramientas principales, como tarjetas arriba de todo en la home.
+ *
+ * Antes vivían como texto plano en el pie (las «tres columnas»), mezcladas
+ * con Contacto y las redes. Son lo que alguien usa de verdad en la app, así que
+ * ahora tienen su propio lugar, bien arriba. El pie se queda sólo con lo
+ * secundario.
+ */
+export const herramientasHome = {
+  items: [
+    {
+      id: "simulador",
+      titulo: "Simulador de exámenes",
+      texto: "Practicá con exámenes cronometrados de años anteriores.",
+      destino: "/simulador",
+    },
+    {
+      id: "asistente",
+      titulo: "Asistente",
+      texto: "Resolvé dudas puntuales sobre la inscripción y el examen.",
+      destino: "/asistente",
+    },
+    {
+      id: "guia",
+      titulo: "Guía de inscripción",
+      texto: "El paso a paso completo para anotarte en el concurso.",
+      destino: "/guia-inscripcion",
+    },
+    {
+      id: "insumos",
+      titulo: "Insumos de estudio",
+      texto: "Material organizado por eje temático.",
+      destino: "/insumos",
+    },
+  ],
+} as const;
+
+/**
+ * Lo que queda del pie de la home, después de que «Menú» y «Recursos» se
+ * mudaran: las herramientas están arriba, en `HerramientasHome`, y acá abajo
+ * queda una sola columna con contacto, redes y el sitio de la agrupación.
+ *
+ * Lo que cambia entre puertas —el nombre de la agrupación, su Instagram, su
+ * canal, su sitio— sale de `marcas.ts`, que es la única fuente de lo que
+ * depende de la marca.
+ *
+ * Ya no hay pendientes a la vista: lo que falta simplemente no se renderiza,
+ * como manda la regla del proyecto. Hoy eso es el canal de YouTube de Nueva
+ * Abogacía.
  *
  * Lo que depende de la agrupación —«Conocé Nexo Derecho», el grupo de
  * WhatsApp, el Instagram, el mail— se resuelve con los datos de marcas.ts.
@@ -55,37 +102,14 @@ export const temas = { rotulo: "Cómo venís por tema" } as const;
  * El mail de Nueva Abogacía sí lo tenemos: llegó con B-04.
  */
 export const columnas = {
-  menu: {
-    titulo: "Menú",
-    items: [
-      { texto: "Simulador de exámenes", destino: "/simulador", propio: true },
-      { texto: "Asistente", destino: "/asistente", propio: true },
-      { texto: "Guía de inscripción", destino: "/guia-inscripcion", propio: true },
-      { texto: "Contacto", destino: "/contacto", propio: false },
-    ],
-    conocer: (nombre: string) => `Conocé ${nombre}`,
-  },
-  /**
-   * Quedaron dos.
-   *
-   * «Manuales y normativa» y la vieja «Insumos de estudio» eran lo mismo
-   * apuntando al mismo ancla: se unifican en la pestaña propia de insumos.
-   * La biblioteca de videos deja de ser un recurso suelto —los videos que
-   * haya viven embebidos dentro de la guía de inscripción, que es donde
-   * sirven— y el grupo de WhatsApp se retira.
-   */
-  recursos: {
-    titulo: "Recursos",
-    items: [
-      { texto: "Insumos de estudio", destino: "/insumos", nota: "Material por eje temático" },
-    ],
-    /** El destino depende de la agrupación, así que sale de marcas.ts. */
-    paginaWeb: "Página web",
-  },
   sociales: {
     titulo: "Sociales",
     youtube: "Canal de YouTube",
     mail: "Mail",
+    /** El destino depende de la agrupación, así que sale de marcas.ts. */
+    paginaWeb: "Página web",
+    contacto: "Contacto",
+    conocer: (nombre: string) => `Conocé ${nombre}`,
     escribinos: "Escribinos",
   },
 } as const;
