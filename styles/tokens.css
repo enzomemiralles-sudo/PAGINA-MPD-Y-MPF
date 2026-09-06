@@ -124,24 +124,22 @@ html[data-marca="neutro"],
    dos puertas se distinguen incluso en escala de grises. */
 html[data-marca="nexo"],
 [data-marca="nexo"] {
-  --tarjeta-solida: #0a1f15;
+  --texto-debil: rgba(244, 242, 237, 0.62);
+  --error: #ff8079;
+  --tarjeta-solida: #1f6e33;
   --acento: #059249;
   --acento-texto: #7fd6a4;
   --acento-2: #f58220;
-  --fondo: #04150d;
-  --fondo-bajo: #020b07;
+  --fondo: #0f3a1f;
+  --fondo-bajo: #081f11;
   --glow-a: rgba(5, 146, 73, 0.55);
   --glow-b: rgba(22, 168, 91, 0.28);
-  --superficie: rgba(31, 72, 56, 0.3);
+  --superficie: rgba(15, 70, 42, 0.18);
   --mancha-a: #059249;
   --mancha-b: #0d6b3c;
-  /* Color plano, no degradé: es parte de la diferenciación. */
   --relleno: #059249;
-  /* La letra blanca sobre este verde da 4,03:1 y no llega. Con tinta, 4,95:1. */
   --sobre-relleno: #08090a;
   --ancho-h: 78;
-  /* La itálica en títulos es de Nexo y de nadie más. Va como token para que
-     ningún componente tenga que preguntar de qué marca se trata. */
   --ital-estilo: italic;
 }
 

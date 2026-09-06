@@ -83,15 +83,15 @@ export const PIELES: Record<Marca, Piel> = {
   },
   nexo: {
     ...BASE,
+    "texto-debil": "rgba(244,242,237,0.62)",
+    error: "#ff8079",
     relleno: ["#059249"],
     "sobre-relleno": "#08090a",
-    fondo: "#04150d",
-    "fondo-bajo": "#020b07",
-    superficie: "rgba(31,72,56,0.3)",
+    fondo: "#0f3a1f",
+    "fondo-bajo": "#081f11",
+    superficie: "rgba(15,70,42,0.18)",
     acento: "#059249",
     "acento-texto": "#7fd6a4",
-    // El naranja es sólo de Nexo. Es una de las tres reglas que distinguen
-    // las puertas incluso en escala de grises.
     "acento-2": "#f58220",
   },
   na: {

@@ -21,9 +21,14 @@ export function HerramientasHome() {
         const Icono = ICONOS[h.id];
         return (
           <Link key={h.destino} href={h.destino} className="herramienta-card">
-            <Icono className="herramienta-icono" aria-hidden="true" />
+            <span className="herramienta-icono-fondo">
+              <Icono className="herramienta-icono" aria-hidden="true" />
+            </span>
             <span className="herramienta-titulo">{h.titulo}</span>
             <span className="herramienta-texto">{h.texto}</span>
+            <span className="herramienta-entrar" aria-hidden="true">
+              Entrar →
+            </span>
           </Link>
         );
       })}
