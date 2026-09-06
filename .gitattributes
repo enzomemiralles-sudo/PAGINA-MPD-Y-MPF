@@ -1,0 +1,20 @@
+# Finales de línea: LF en todas las plataformas.
+#
+# Git para Windows se instala con core.autocrlf=true y convierte a CRLF al
+# hacer checkout. Eso ponía diez tests en rojo en una máquina recién clonada,
+# sin haber tocado una línea: tests/instalar.test.ts busca dentro de
+# instalar.sql el encabezado «-- 0001_esquema.sql\n», y con CRLF ese \n no
+# está. El diff mostraba migraciones enteras como faltantes, que despista
+# todavía más.
+#
+# `eol=lf` fuerza LF también en el árbol de trabajo, no sólo en el
+# repositorio: el archivo que abrís es el mismo en Windows, macOS y Linux.
+* text=auto eol=lf
+
+# Binarios: que git no intente convertir nada adentro.
+#
+# Los .html de referencia/ NO van acá: file(1) los reporta como binarios por
+# las líneas largas, pero son texto y conviene poder diffearlos.
+*.png binary
+*.jpg binary
+*.pdf binary

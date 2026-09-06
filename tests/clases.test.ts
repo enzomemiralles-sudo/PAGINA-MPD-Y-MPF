@@ -1,28 +1,44 @@
 import { describe, expect, it } from "vitest";
-import { readFileSync } from "node:fs";
-import { resolve } from "node:path";
-import { execFileSync } from "node:child_process";
+import { readdirSync, readFileSync } from "node:fs";
+import { relative, resolve, sep } from "node:path";
 
 const raiz = resolve(__dirname, "..");
 const css = readFileSync(resolve(raiz, "app/globals.css"), "utf8");
 
+/**
+ * Los `page.tsx` y `layout.tsx` de `app/`, recorriendo la carpeta.
+ *
+ * Esto salía de `execFileSync("find", ...)`, y en Windows `find` es
+ * `C:\Windows\System32\find.exe`, que es otro programa: la llamada tiraba
+ * excepción, el archivo entero moría al cargarse y vitest lo contaba como
+ * archivo fallado con CERO tests corridos. Los treinta de acá desaparecían
+ * del total sin que nadie los extrañara.
+ *
+ * Las rutas salen siempre con `/` para que el nombre de cada test sea el
+ * mismo en Windows que en Linux, y ordenadas, que `find` no garantizaba.
+ */
+function archivosDePagina(dir: string): string[] {
+  const salida: string[] = [];
+  for (const entrada of readdirSync(dir, { withFileTypes: true })) {
+    const camino = resolve(dir, entrada.name);
+    if (entrada.isDirectory()) salida.push(...archivosDePagina(camino));
+    else if (entrada.name === "page.tsx" || entrada.name === "layout.tsx") salida.push(camino);
+  }
+  return salida;
+}
+
 /** Las páginas del sitio, con sus className de nivel raíz. */
 function paginas(): { archivo: string; clases: string[] }[] {
-  const encontrados = execFileSync(
-    "find",
-    ["app", "-name", "page.tsx", "-o", "-name", "layout.tsx"],
-    { cwd: raiz, encoding: "utf8" },
-  )
-    .split("\n")
-    .filter(Boolean);
-
-  return encontrados.map((archivo) => {
-    const fuente = readFileSync(resolve(raiz, archivo), "utf8");
-    const clases = [...fuente.matchAll(/className="([^"]+)"/g)].flatMap((m) =>
-      m[1]!.split(/\s+/).filter(Boolean),
-    );
-    return { archivo, clases };
-  });
+  return archivosDePagina(resolve(raiz, "app"))
+    .map((absoluto) => relative(raiz, absoluto).split(sep).join("/"))
+    .sort()
+    .map((archivo) => {
+      const fuente = readFileSync(resolve(raiz, archivo), "utf8");
+      const clases = [...fuente.matchAll(/className="([^"]+)"/g)].flatMap((m) =>
+        m[1]!.split(/\s+/).filter(Boolean),
+      );
+      return { archivo, clases };
+    });
 }
 
 /**
@@ -63,12 +79,20 @@ function clasesInvisibles(): string[] {
 
 describe("ninguna página usa una clase que nace invisible", () => {
   const invisibles = new Set(clasesInvisibles());
+  const lasPaginas = paginas();
 
   it("el CSS tiene alguna clase así, si no el test no comprueba nada", () => {
     expect(invisibles.size).toBeGreaterThan(0);
   });
 
-  for (const { archivo, clases } of paginas()) {
+  it("encontró las páginas, si no esto tampoco comprueba nada", () => {
+    // El `for` de abajo genera un test por página. Si el recorrido devuelve
+    // una lista vacía no genera ninguno y el archivo pasa en verde sin haber
+    // mirado nada, que es la peor forma de fallar: en silencio.
+    expect(lasPaginas.length).toBeGreaterThan(15);
+  });
+
+  for (const { archivo, clases } of lasPaginas) {
     const malas = clases.filter((c) => invisibles.has(c));
     it(`${archivo}`, () => {
       expect(
