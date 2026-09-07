@@ -2775,17 +2775,50 @@ body { transition: background var(--t-sec) var(--suave), color var(--t-sec) var(
   padding: 1.5rem 1.4rem; border-radius: 16px;
   background: var(--tarjeta); box-shadow: inset 0 0 0 1px var(--borde);
 }
-.guia-puerta-sigla { font-size: 0.68rem; letter-spacing: 0.13em; color: var(--acento-texto); }
 .guia-puerta-nombre { font-size: 1.15rem; font-variation-settings: "wdth" 100, "wght" 650; color: var(--texto); }
-.guia-puerta-cta { margin-top: 0.5rem; align-self: flex-start; }
-.guia-puerta .ins-estado { margin: 0.3rem 0 0; }
-
-.guia-cambiar {
-  display: block; width: fit-content; margin-bottom: 1.2rem;
-  font-size: 0.7rem; letter-spacing: 0.1em; text-transform: uppercase;
-  color: var(--texto-tenue); text-decoration: none;
+.guia-puerta-icono-fondo { display: inline-flex; align-items: center; justify-content: center; }
+.guia-puerta-icono { width: 22px; height: 22px; flex-shrink: 0; color: var(--acento-texto); }
+.guia-puerta-cta {
+  display: inline-flex; align-items: center; gap: 0.3rem;  margin-top: 0.5rem; align-self: flex-start;
+  padding: 0.55rem 1.1rem;
+  border-radius: 999px;
+  font-variation-settings: "wdth" 100, "wght" 650;
+  background: var(--acento-texto);
+  color: var(--fondo);
+  transition: transform var(--t-micro) var(--suave), opacity var(--t-micro) var(--suave);
 }
-.guia-cambiar:hover { color: var(--texto); }
+.guia-puerta-cta:hover { opacity: 0.92; transform: translateY(-1px); }
+.guia-puerta .ins-estado { margin: 0.3rem 0 0; }
+/* La pantalla de elegir organismo (MPD/MPF) de Nexo: mismo tratamiento que
+   las tarjetas de herramientas del menú principal —tarjeta blanca, ícono en
+   una placa verde clara, texto oscuro adentro, sin el recuadro de fondo en
+   el estado del trámite—. Se pisan los tokens de texto/borde/acento, así
+   lo de adentro (el estado del concurso incluido) se acomoda solo. */
+[data-marca="nexo"] .guia-puerta {
+  background: #ffffff;
+  box-shadow: 0 14px 32px rgba(4, 12, 7, 0.35);
+  --texto: #0d1117;
+  --texto-tenue: rgba(13, 17, 23, 0.68);
+  --texto-debil: rgba(13, 17, 23, 0.55);
+  --borde: rgba(13, 17, 23, 0.12);
+  --borde-fuerte: rgba(13, 17, 23, 0.24);
+  --acento-texto: #3d9140;
+  color: var(--texto);
+}
+[data-marca="nexo"] .guia-puerta-icono-fondo {
+  width: 52px;
+  height: 52px;
+  border-radius: 14px;
+  background: #e8f5e9;
+}
+[data-marca="nexo"] .guia-puerta .ins-estado {
+  background: none;
+  border-left: none;
+  padding: 0;
+}[data-marca="nexo"] .guia-puerta .ins-esado-titulo {
+  color: #0d1117;
+  font-variation-settings: "wdth" 100, "wght" 750;
+}
 
 /* ---------- las secciones ---------- */
 .guia-seccion { margin-top: 3rem; scroll-margin-top: 1.5rem; }
@@ -2892,10 +2925,10 @@ body { transition: background var(--t-sec) var(--suave), color var(--t-sec) var(
   display: block;
 }
 .guia-captura figcaption { font-size: 0.8rem; color: var(--texto-debil); margin-top: 0.5rem; line-height: 1.5; }
-/* El recorte del campo «fs.» del CV es una tira angosta (227×33px real): a
-   width:100% se estira a todo el ancho de la tarjeta y se pixela. Se achica
-   al tamaño real, más un margen chico de aire, y se centra. */
-.guia-captura img[src*="mpd-cv-campo-fs"] { width: auto; max-width: 260px; margin: 0 auto; display: block; }
+/* La primera captura del paso 3 del MPF (el menú de Antecedentes) a
+   width:100% quedaba enorme. Se achica y se centra, igual que el recorte
+   de arriba. */
+.guia-captura img[src*="mpf-antecedentes-menu"] { max-width: 480px; margin: 0 auto; display: block; }
 
 .guia-video { margin: 0 0 1.1rem; max-width: 46rem; }
 .guia-video iframe {
@@ -3082,3 +3115,155 @@ body { transition: background var(--t-sec) var(--suave), color var(--t-sec) var(
 }
 .org-cierre p { color: var(--texto-tenue); line-height: 1.7; max-width: 62ch; margin: 0.8rem 0 1.6rem; }
 .org-visitar { margin-top: 2.5rem; }
+/* Los dos colores de la pantalla de elegir organismo que se piden a mano:
+   la etiqueta del botón en blanco sobre el verde, y el titular del estado
+   del trámite en negro sobre la tarjeta blanca. Van al final del archivo y
+   con la tarjeta (.guia-puerta) en el selector a propósito: así ganan sobre
+   cualquier regla anterior sin depender de en qué orden quedaron. */
+[data-marca="nexo"] .guia-puerta .guia-puerta-cta { color: #ffffff; }
+[data-marca="nexo"] .guia-puerta .ins-estado-titulo { color: #000000; }
+/* Las dos tarjetas ya miden lo mismo de alto (la grilla las estira), pero el
+   MPF tiene menos texto que el MPD, así que su botón quedaba flotando a media
+   altura. En vez de mover el botón —eso correría también el del MPD— se deja
+   que el bloque del estado absorba el espacio sobrante: el MPD no tiene
+   sobrante y no se mueve, y el del MPF baja hasta quedar a la misma altura. */
+[data-marca="nexo"] .guia-puerta .ins-estado { flex-grow: 1; }
+/* ---------- insumos: la misma tarjeta que la guía de inscripción ---------- */
+/* Base, en todas las pieles: la placa del ícono. El tamaño de la placa lo
+   pone la piel, porque sólo en Nexo la tarjeta es blanca y la placa se ve. */
+.insumo-icono-fondo { display: inline-flex; align-items: center; justify-content: center; }
+.insumo-icono { width: 22px; height: 22px; flex-shrink: 0; color: var(--acento-texto); }
+
+/* Nexo: tarjeta blanca, ícono en placa verde clara y botón verde con letra
+   blanca. Son los mismos valores que .guia-puerta a propósito —las dos
+   pantallas son el mismo gesto («elegí el organismo») y tienen que leerse
+   como hermanas, no como dos diseños parecidos. */
+[data-marca="nexo"] .insumo-puerta {
+  background: #ffffff;
+  box-shadow: 0 14px 32px rgba(4, 12, 7, 0.35);
+  gap: 0.6rem;
+  padding: 1.5rem 1.4rem;
+  --texto: #0d1117;
+  --texto-tenue: rgba(13, 17, 23, 0.68);
+  --texto-debil: rgba(13, 17, 23, 0.55);
+  --borde: rgba(13, 17, 23, 0.12);
+  --borde-fuerte: rgba(13, 17, 23, 0.24);
+  --acento-texto: #3d9140;
+  color: var(--texto);
+}
+[data-marca="nexo"] .insumo-puerta:hover {
+  box-shadow: 0 18px 38px rgba(4, 12, 7, 0.42);
+  transform: translateY(-2px);
+}
+[data-marca="nexo"] .insumo-icono-fondo {
+  width: 52px; height: 52px; border-radius: 14px; background: #e8f5e9;
+}
+/* El renglón del conteo se come el espacio sobrante, así los dos botones
+   quedan a la misma altura aunque un nombre ocupe dos renglones y el otro uno. */
+[data-marca="nexo"] .insumo-puerta .insumo-cuenta { flex-grow: 1; }
+[data-marca="nexo"] .insumo-puerta .insumo-cta {
+  align-self: flex-start;
+  padding: 0.55rem 1.1rem;
+  border-radius: 999px;
+  font-variation-settings: "wdth" 100, "wght" 650;
+  background: #3d9140;
+  color: #ffffff;
+}
+/* Los botones adentro de la tarjeta blanca de insumos: todo lo que lleva a
+   algún lado va en verde nexo con letra blanca —el grupo de WhatsApp y la
+   carpeta de Drive de cada eje—. Se apunta a `.insumo-tarjeta` y no a
+   `.instructivo-mpd-tarjeta`, que es la clase que comparten: el instructivo
+   tiene sus propios enlaces y no se toca. */
+.insumo-tarjeta .btn-a,
+.insumo-tarjeta .insumo-abrir {
+  background: #3d9140;
+  color: #ffffff;
+  box-shadow: none;
+}
+.insumo-tarjeta .btn-a:hover:not(:disabled),
+.insumo-tarjeta .insumo-abrir:hover:not(:disabled) {
+  background: #358038;
+  color: #ffffff;
+  box-shadow: none;
+  transform: translateY(-1px);
+}
+/* ---------- el hub del simulador: la tercera pantalla de elegir ---------- */
+/* Base, en todas las pieles: la placa del ícono del organismo. */
+.sim-org-icono-fondo { display: inline-flex; align-items: center; justify-content: center; }
+.sim-org-icono { width: 22px; height: 22px; flex-shrink: 0; color: var(--acento-texto); }
+
+/* Nexo: las tarjetas del hub van blancas como las de la guía y las de
+   insumos. Se nombran las tres del hub —organismo, retomar y aviso— en vez de
+   `.tarjeta-app` a secas, que es una clase de todo el sitio y arrastraría
+   pantallas que no estamos tocando. Los pasos de «cómo funciona» y el cierre
+   no son tarjetas y siguen sobre el verde, como la bajada de las otras
+   pantallas de elegir. */
+[data-marca="nexo"] .sim-org,
+[data-marca="nexo"] .sim-retomar,
+[data-marca="nexo"] .sim-aviso {
+  background: #ffffff;
+  box-shadow: 0 14px 32px rgba(4, 12, 7, 0.35);
+  --texto: #0d1117;
+  --texto-tenue: rgba(13, 17, 23, 0.68);
+  --texto-debil: rgba(13, 17, 23, 0.55);
+  --borde: rgba(13, 17, 23, 0.12);
+  --borde-fuerte: rgba(13, 17, 23, 0.24);
+  --acento-texto: #3d9140;
+  color: var(--texto);
+}
+[data-marca="nexo"] .sim-org-icono-fondo {
+  width: 52px; height: 52px; border-radius: 14px; background: #e8f5e9;
+}
+/* El botón primario adentro de una tarjeta blanca sería casi negro (`.btn-p`
+   se pinta con --texto): acá va el verde nexo con letra blanca, como el resto
+   de los botones que llevan a algún lado. Sólo adentro de las tarjetas —los
+   botones del encabezado y del cierre siguen sobre el verde y no se tocan. */
+[data-marca="nexo"] .sim-org .btn-p,
+[data-marca="nexo"] .sim-retomar .btn-p {
+  background: #3d9140;
+  color: #ffffff;
+}
+/* ---------- simulador: elegir instancia (/simulador/mpf y /simulador/mpd) ---------- */
+/* Mismo tratamiento que el hub: la tarjeta de cada instancia va blanca sobre
+   el verde y el botón de comenzar en verde nexo con letra blanca. El
+   encabezado —sigla y nombre del organismo— queda sobre el verde, como el
+   título de las otras pantallas de elegir. */
+[data-marca="nexo"] .sim-instancia {
+  background: #ffffff;
+  box-shadow: 0 14px 32px rgba(4, 12, 7, 0.35);
+  --texto: #0d1117;
+  --texto-tenue: rgba(13, 17, 23, 0.68);
+  --texto-debil: rgba(13, 17, 23, 0.55);
+  --borde: rgba(13, 17, 23, 0.12);
+  --borde-fuerte: rgba(13, 17, 23, 0.24);
+  --acento-texto: #3d9140;
+  /* El tostado de «revisar» (#c8a27a) está pensado para fondo oscuro: sobre
+     blanco no se lee. Se oscurece sólo acá adentro, y la nota naranja de las
+     reglas del MPF lo toma sola, porque sale de este mismo token. */
+  --marca-revisar: #8a5a1f;
+  color: var(--texto);
+}
+[data-marca="nexo"] .sim-instancia .btn-p {
+  background: #3d9140;
+  color: #ffffff;
+}
+/* ---------- simulador: el examen de tipeo ---------- */
+/* Las dos columnas del tipeo —el texto original y el recinto donde se
+   escribe— son lo único que se mira fijo durante veinte minutos, así que van
+   blancas: negro sobre blanco es lo que menos cansa para copiar y comparar
+   letra por letra. El cronómetro, las medidas y la barra de avance quedan
+   sobre el verde, donde estaban, porque son del marco del examen y no del
+   texto. El área de escritura se acomoda sola: ya tomaba su color y su borde
+   de los tokens de la tarjeta. */
+[data-marca="nexo"] .tip-original,
+[data-marca="nexo"] .tip-escribir {
+  background: #ffffff;
+  box-shadow: 0 14px 32px rgba(4, 12, 7, 0.35);
+  --texto: #0d1117;
+  --texto-tenue: rgba(13, 17, 23, 0.68);
+  --texto-debil: rgba(13, 17, 23, 0.55);
+  --borde: rgba(13, 17, 23, 0.12);
+  --borde-fuerte: rgba(13, 17, 23, 0.24);
+  --acento-texto: #3d9140;
+  color: var(--texto);
+}

@@ -33,9 +33,9 @@ export const metadata: Metadata = {
  */
 export default function Asistente() {
   return (
-    <main className="env app-cuerpo">
+    <main className="env app-cuerpo instructivo-mpd-claro">
       <VolverAlPerfil />
-      <Marco>
+      <div className="instructivo-mpd-tarjeta asis-tarjeta"><div className="instructivo-mpd-tarjeta asis-tarjeta"><Marco>
         <header className="asis-encabezado">
           <p className="asis-posicionamiento">{encabezado.posicionamiento}</p>
           <h1>{encabezado.titulo}</h1>
@@ -57,7 +57,7 @@ export default function Asistente() {
         <section className="asis-dejar-seccion" id={sinRespuesta.ancla}>
           <DejarConsulta origen="formulario" />
         </section>
-      </Marco>
+      </Marco></div></div>
     </main>
   );
 }

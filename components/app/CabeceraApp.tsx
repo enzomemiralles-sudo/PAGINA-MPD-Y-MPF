@@ -20,28 +20,24 @@ export function CabeceraApp({ marca, revisor = false }: { marca: Marca; revisor?
   const cfg = configDe(marca);
   const ruta = usePathname() ?? "";
   const enPerfil = ruta.startsWith("/mi-perfil");
-  // El instructivo del MPD tiene fondo verde propio (`.instructivo-mpd-claro`,
-  // en app/globals.css): la cabecera necesita su propia variante para no
-  // quedar transparente sobre ese verde. Sólo cambia acá, no en el resto de
-  // las pantallas de Nexo.
-  const enGuiaMpd = ruta.startsWith("/guia-inscripcion/mpd");
+  // Las pantallas de fondo verde claro (`.instructivo-mpd-claro`, en
+  // app/globals.css): el instructivo de cada organismo y su material de
+  // estudio. La cabecera necesita su propia variante para no quedar
+  // transparente sobre ese verde; en el resto de Nexo no cambia nada. La
+  // barra final de "/insumos/" es lo que separa la pantalla de un organismo
+  // del listado que los elige, que va con el fondo de siempre.
+  const fondoClaro =
+    ruta.startsWith("/guia-inscripcion/mpd") ||
+    ruta.startsWith("/guia-inscripcion/mpf") ||
+    ruta.startsWith("/insumos/");
 
   return (
-    <header className={`app-cabecera${enGuiaMpd ? " app-cabecera-mpd" : ""}`}>
+    <header className={`app-cabecera${fondoClaro ? " app-cabecera-mpd" : ""}`}>
       <div className="env app-nav">
-        {/* Este botón siempre lleva al menú principal (/app), tenga uno o
-            los dos logos. */}
+        {/* Este botón siempre lleva al menú principal (/app). */}
         <Link href="/app" className="app-marca" aria-label={cfg?.nombre ?? "Inicio"}>
           {marca === "nexo" ? (
-            <>
-              <LogoNexo alto={18} />
-              {enGuiaMpd ? (
-                <>
-                  <span className="sep-v-marca" aria-hidden="true" />
-                  <LogoNuevaAbogacia alto={22} />
-                </>
-              ) : null}
-            </>
+            <LogoNexo alto={18} />
           ) : (
             <>
               <LogoNuevaAbogacia alto={20} />

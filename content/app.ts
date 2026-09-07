@@ -82,33 +82,20 @@ export const herramientasHome = {
 } as const;
 
 /**
- * Lo que queda del pie de la home, después de que «Menú» y «Recursos» se
- * mudaran: las herramientas están arriba, en `HerramientasHome`, y acá abajo
- * queda una sola columna con contacto, redes y el sitio de la agrupación.
+ * Lo que queda del pie de la home, ya sin «Menú» ni «Recursos»: las
+ * herramientas se fueron a las tarjetas de arriba (`herramientasHome`) y lo
+ * que sobra —redes y el contacto— vive todo junto acá abajo.
  *
- * Lo que cambia entre puertas —el nombre de la agrupación, su Instagram, su
- * canal, su sitio— sale de `marcas.ts`, que es la única fuente de lo que
- * depende de la marca.
- *
- * Ya no hay pendientes a la vista: lo que falta simplemente no se renderiza,
- * como manda la regla del proyecto. Hoy eso es el canal de YouTube de Nueva
- * Abogacía.
- *
- * Lo que depende de la agrupación —«Conocé Nexo Derecho», el grupo de
- * WhatsApp, el Instagram, el mail— se resuelve con los datos de marcas.ts.
+ * Lo que depende de la agrupación —«Conocé Nexo Derecho», el Instagram, el
+ * canal— se resuelve con los datos de marcas.ts.
  *
  * Lo que no tenemos se muestra como pendiente en lugar de inventarse, y hoy
- * eso es el grupo de WhatsApp y el canal de YouTube de las dos agrupaciones.
- * El mail de Nueva Abogacía sí lo tenemos: llegó con B-04.
+ * eso es el canal de YouTube de Nueva Abogacía.
  */
 export const columnas = {
   sociales: {
     titulo: "Sociales",
     youtube: "Canal de YouTube",
-    mail: "Mail",
-    /** El destino depende de la agrupación, así que sale de marcas.ts. */
-    paginaWeb: "Página web",
-    contacto: "Contacto",
     conocer: (nombre: string) => `Conocé ${nombre}`,
     escribinos: "Escribinos",
   },

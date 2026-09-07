@@ -1,11 +1,10 @@
 import type { Metadata } from "next";
 import Link from "next/link";
 import { notFound } from "next/navigation";
-import { CheckCircle2 } from "lucide-react";
 import { traerConcursos } from "@/lib/datos";
 import { VolverAlPerfil } from "@/components/app/VolverAlPerfil";
+import { CheckCircle2 } from "lucide-react";
 import { Estado } from "@/components/inscripcion/Estado";
-import { Advertencia } from "@/components/guia/Advertencia";
 import { SeccionGuia } from "@/components/guia/Seccion";
 import { Pasos } from "@/components/guia/Pasos";
 import { Preguntas } from "@/components/guia/Preguntas";
@@ -29,6 +28,11 @@ export async function generateMetadata({ params }: Props): Promise<Metadata> {
  * componente garantizaba que tarde o temprano las dos guías se vieran
  * distintas sin que nadie lo hubiera decidido.
  *
+ * La estética (fondo verde institucional, tarjeta blanca, cabecera propia) es
+ * la misma para los dos organismos — antes era sólo del MPD, ahora es de
+ * cualquier instructivo, así que ninguno de los dos queda con un tratamiento
+ * "de segunda".
+ *
  * Las secciones que el material de un organismo no cubre devuelven null y no
  * se renderizan.
  */
@@ -40,7 +44,6 @@ export default async function GuiaDeOrganismo({ params }: Props) {
   const concursos = await traerConcursos();
   const concurso = concursos.find((c) => c.organismo === g.organismo) ?? null;
 
-  const esMpd = g.organismo === "mpd";
   const contenido = (
     <>
       <h1>
@@ -70,26 +73,20 @@ export default async function GuiaDeOrganismo({ params }: Props) {
       <SeccionGuia seccion={g.antes} id="antes" />
 
       {/* ③ Lo que tenés que saber antes.
-          En el instructivo del MPD no son advertencias —nada de tono de
-          alarma—, son información importante: mismos datos, presentados
-          como una lista de puntos a favor de llegar preparado. */}
+          En los instructivos no son advertencias —nada de tono de alarma—,
+          son información importante: mismos datos, presentados como una
+          lista de puntos a favor de llegar preparado. */}
       {g.saber.length > 0 ? (
         <section className="guia-seccion" id="saber">
-          <h2 className="guia-seccion-titulo">
-            {esMpd ? "Información importante antes de arrancar" : t.secciones.saber}
-          </h2>
-          {esMpd ? (
-            <ul className="info-importante">
-              {g.saber.map((a) => (
-                <li key={a.texto} className="info-importante-item">
-                  <CheckCircle2 className="info-importante-icono" aria-hidden="true" />
-                  <span>{a.texto}</span>
-                </li>
-              ))}
-            </ul>
-          ) : (
-            g.saber.map((a) => <Advertencia key={a.texto} {...a} />)
-          )}
+          <h2 className="guia-seccion-titulo">Información importante antes de arrancar</h2>
+          <ul className="info-importante">
+            {g.saber.map((a) => (
+              <li key={a.texto} className="info-importante-item">
+                <CheckCircle2 className="info-importante-icono" aria-hidden="true" />
+                <span>{a.texto}</span>
+              </li>
+            ))}
+          </ul>
         </section>
       ) : null}
 
@@ -131,13 +128,13 @@ export default async function GuiaDeOrganismo({ params }: Props) {
   );
 
   return (
-    <main className={`env app-cuerpo${esMpd ? " instructivo-mpd-claro" : ""}`}>
+    <main className="env app-cuerpo instructivo-mpd-claro">
       <VolverAlPerfil />
       <Link className="guia-cambiar mono" href="/guia-inscripcion">
         ← {t.elegi}
       </Link>
 
-      {esMpd ? <div className="instructivo-mpd-tarjeta">{contenido}</div> : contenido}
+      <div className="instructivo-mpd-tarjeta">{contenido}</div>
     </main>
   );
 }

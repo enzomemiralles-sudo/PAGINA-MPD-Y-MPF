@@ -34,9 +34,15 @@ export const viewport: Viewport = {
 export default function RootLayout({ children }: { children: React.ReactNode }) {
   return (
     <html lang="es-AR" data-marca="dual" className={`${archivo.variable} ${mono.variable}`}>
-      {/* Antes del <body>: React lo iza al <head> y corre antes del primer
-          pintado, así no hay salto de oscuro a claro al entrar al ingreso. */}
-      <script dangerouslySetInnerHTML={{ __html: PIEL_INICIAL }} />
+      {/* Antes del <body>, adentro del <head>: corre antes del primer
+          pintado, así no hay salto de oscuro a claro al entrar al ingreso.
+          Un <script> como hijo directo de <html> (sin <head> de por medio)
+          no es HTML válido, y React lo marca como error de hidratación —de
+          ahí que a veces la pantalla quedara sin responder a los clics: la
+          hidratación se cortaba antes de conectar los botones. */}
+      <head>
+        <script dangerouslySetInnerHTML={{ __html: PIEL_INICIAL }} />
+      </head>
       <body>
         <MarcaProvider>
           {children}
