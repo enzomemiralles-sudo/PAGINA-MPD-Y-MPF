@@ -46,7 +46,7 @@ export default async function InsumosDeOrganismo({ params }: Props) {
         ← {t.volverAOrganismos}
       </Link>
 
-      <h1>{t.organismos[o].nombre}</h1>
+      <div className="instructivo-mpd-tarjeta insumo-tarjeta"><h1>{t.organismos[o].nombre}</h1>
       <p className="ins-bajada">{t.bajada}</p>
       {hayCarpetas ? <p className="insumo-donde">{t.dondeEsta}</p> : null}
 
@@ -91,6 +91,6 @@ export default async function InsumosDeOrganismo({ params }: Props) {
           </section>
         ))}
       </div>
-    </main>
+    </div></main>
   );
 }

@@ -1,7 +1,16 @@
 import Link from "next/link";
+import { ClipboardList, BookOpen } from "lucide-react";
 import type { organismos } from "@/content/simulador";
 
 type Org = (typeof organismos)[number];
+
+/**
+ * Un ícono por organismo, el mismo que en la guía de inscripción y en los
+ * insumos: el portapapeles es el MPF y el libro es el MPD en todo el sitio.
+ * Son las tres pantallas donde hay que elegir organismo, y conviene que se
+ * reconozca por la misma marca visual en las tres.
+ */
+const ICONOS = { mpf: ClipboardList, mpd: BookOpen } as const;
 
 /**
  * La tarjeta grande de un organismo (S-02).
@@ -13,10 +22,14 @@ type Org = (typeof organismos)[number];
  * No dice cuántas preguntas hay (S-09).
  */
 export function TarjetaOrganismo({ org }: { org: Org }) {
+  const Icono = ICONOS[org.clave];
+
   return (
     <article className="sim-org tarjeta-app">
       <div className="sim-org-cabeza">
-        <span className="sim-org-sigla mono">{org.sigla}</span>
+        <span className="sim-org-icono-fondo">
+          <Icono className="sim-org-icono" aria-hidden="true" />
+        </span>
         <h3 className="sim-org-nombre">{org.nombre}</h3>
       </div>
 

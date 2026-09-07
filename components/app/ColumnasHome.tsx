@@ -33,14 +33,11 @@ export function ColumnasHome({ marca }: { marca: Marca }) {
                 {t.sociales.youtube}
               </a>
             ) : null}
-            <a href={`mailto:${cfg.contacto.mail}`}>{cfg.contacto.mail}</a>
-            <Link href={cfg.sitio.pagina}>{t.sociales.paginaWeb}</Link>
             {/* Llevaba a «¿Tenés alguna duda?», que es el contacto. Ahora
                 lleva a quiénes son. */}
             <Link href={cfg.quienesSomos}>{t.sociales.conocer(cfg.nombre)}</Link>
           </>
         ) : null}
-        <Link href="/contacto">{t.sociales.contacto}</Link>
         <Link className="btn btn-s portal-escribinos" href="/contacto">
           {t.sociales.escribinos}
         </Link>
