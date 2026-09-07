@@ -1,55 +1,38 @@
-import type { Metadata } from "next";
-import Link from "next/link";
-import { ClipboardList, BookOpen } from "lucide-react";
-import { traerConcursos } from "@/lib/datos";
-import { VolverAlPerfil } from "@/components/app/VolverAlPerfil";
-import { Estado } from "@/components/inscripcion/Estado";
-import { GUIAS } from "@/lib/guia/registro";
-import { guia as t } from "@/content/guia";
-
-export const metadata: Metadata = { title: "Guía de inscripción" };
-export const dynamic = "force-dynamic";
-
-/** Un ícono por organismo, igual en espíritu a `HerramientasHome`. */
-const ICONOS = { mpf: ClipboardList, mpd: BookOpen } as const;
+import { traerVideos } from "@/lib/inscripcion/datos";
+import { concursosConGuia, loQueHay } from "@/lib/inscripcion/muestra";
+import { Fondo } from "@/components/landing/Fondo";
+import { EscenaFrontal } from "@/components/landing/EscenaFrontal";
+import { Cabecera } from "@/components/landing/Cabecera";
+import { Hero } from "@/components/landing/Hero";
+import { SeccionSimulador } from "@/components/landing/SeccionSimulador";
+import { SeccionAsistente, SeccionInscripcion } from "@/components/landing/Secciones";
 
 /**
- * Pantalla 0: elegí el organismo.
+ * La pestaña de muestra.
  *
- * Las dos tarjetas tienen la misma jerarquía a propósito. Cada una muestra el
- * estado real de su concurso, y ese estado sale del mismo componente que lo
- * resuelve en el resto del sitio: la lógica de qué significa
- * «sin_convocatoria» vive en un solo lugar, no en dos.
+ * Quedó en cuatro bloques: el hero, y las tres cosas que la plataforma hace.
+ * Se retiraron la franja de métricas, las tres tarjetas de acceso, el párrafo
+ * de «¿por qué es gratis?» y el bloque de lista de espera; el detalle de cada
+ * uno está en la tanda 9 de CAMBIOS.md.
+ *
+ * El camino a cada puerta queda en el encabezado —«Empezar gratis» lleva a
+ * crear el perfil, y ahí se elige agrupación— que es donde estaba antes de que
+ * las tarjetas lo duplicaran.
  */
-export default async function ElegirGuia() {
-  const concursos = await traerConcursos();
+export default async function Landing() {
+  const videos = await traerVideos();
 
   return (
-    <main className="env app-cuerpo">
-      <VolverAlPerfil />
-      <h1>{t.titulo}</h1>
-      <p className="guia-bajada">{t.bajada}</p>
-
-      <h2 className="guia-elegi mono">{t.elegi}</h2>
-      <div className="guia-puertas">
-        {Object.values(GUIAS).map((g) => {
-          const Icono = ICONOS[g.organismo];
-          return (
-            <article key={g.organismo} className="guia-puerta">
-              <span className="guia-puerta-icono-fondo">
-                <Icono className="guia-puerta-icono" aria-hidden="true" />
-              </span>
-              <h3 className="guia-puerta-nombre">{g.nombre}</h3>
-
-              <Estado concurso={concursos.find((c) => c.organismo === g.organismo) ?? null} />
-
-              <Link className="guia-puerta-cta" href={`/guia-inscripcion/${g.organismo}`}>
-                {t.entrar}
-              </Link>
-            </article>
-          );
-        })}
-      </div>
-    </main>
+    <>
+      <Fondo />
+      <EscenaFrontal />
+      <Cabecera />
+      <main>
+        <Hero />
+        <SeccionSimulador />
+        <SeccionAsistente />
+        <SeccionInscripcion hay={loQueHay(videos)} concursos={concursosConGuia()} />
+      </main>
+    </>
   );
 }
