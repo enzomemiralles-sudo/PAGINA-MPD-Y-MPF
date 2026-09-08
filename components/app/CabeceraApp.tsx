@@ -40,7 +40,7 @@ export function CabeceraApp({ marca, revisor = false }: { marca: Marca; revisor?
             <LogoNexo alto={18} />
           ) : (
             <>
-              <LogoNuevaAbogacia alto={20} />
+              <LogoNuevaAbogacia alto={45} />
               <span className="nombre">{cfg?.nombre}</span>
             </>
           )}
