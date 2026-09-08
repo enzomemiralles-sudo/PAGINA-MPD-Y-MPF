@@ -3672,3 +3672,438 @@ html[data-marca="na"] body {
   box-shadow: none;
   opacity: 1;
 }
+/* ---------- Los párrafos vuelven a escuchar a la tarjeta que los contiene ---------- */
+/* Bug de fondo, no de esta pantalla.
+   `p { color: var(--papel-tenue) }` (línea 79) y, en tokens.css:
+
+     --papel-tenue: var(--texto-tenue);
+
+   Un alias declarado en `:root` que apunta a otra variable se resuelve DONDE
+   SE DECLARA, no donde se usa. Así que `--papel-tenue` queda congelada en el
+   valor del root —rgba(244,242,237,0.7), casi blanco— y deja de escuchar a
+   quien la pise más abajo.
+
+   Todas las tarjetas blancas pisan `--texto-tenue` para oscurecer su texto.
+   Ese cambio nunca llegaba a los párrafos: seguían saliendo blancos sobre
+   blanco. Se veía en «Tenés un examen empezado» del simulador, y pasaba
+   igual en cualquier <p> sin color propio adentro de una tarjeta clara.
+
+   Por qué el subtítulo de al lado sí se leía: `.sim-retomar-texto` pide
+   `var(--texto-tenue)` directo, sin pasar por el alias.
+
+   Pedir el token real arregla todas de una. En el root los dos valen lo
+   mismo, así que fuera de las tarjetas no cambia nada. */
+p { color: var(--texto-tenue); }
+
+/* El título de la tarjeta va a color pleno, no al tenue de los párrafos.
+   Nunca declaró el suyo: heredaba el `color: var(--texto)` de `.sim-retomar`,
+   y la regla de `p` se lo pisaba —primero con el alias congelado, y ahora con
+   el tenue—. Un título no es texto de apoyo, así que lo pide él. */
+.sim-retomar-titulo { color: var(--texto); }
+
+/* ---------- Outfit en todo el sitio, menos la puerta de Nueva Abogacía ---------- */
+/* Se nombran las tres pieles una por una en vez de poner la familia en
+   `body` a secas, porque así Nueva Abogacía se queda con la suya sin tener
+   que volver a pisarla después:
+
+     dual ..... la portada pública, donde conviven las dos agrupaciones
+     neutro ... ingresar, crear perfil, elegir perfil y el panel de admin
+     nexo ..... toda la puerta de Nexo con sesión iniciada
+
+   Va sobre `body` y no sobre el <html>: `body` declara la familia a mano
+   —`var(--fuente-archivo)`— y le ganaría a cualquier regla puesta más
+   arriba. De ahí cae por herencia a todo, botones incluidos, porque `.btn`
+   usa `font-family: inherit`.
+
+   Ningún peso hay que traducir: Outfit es variable en el eje `wght`, así que
+   el `font-variation-settings` que usa todo el sistema la mueve sola.
+
+   Los rótulos monoespaciados (`.mono`) no se tocan: declaran su propia
+   familia y siguen en JetBrains Mono. */
+html[data-marca="dual"] body,
+html[data-marca="neutro"] body,
+html[data-marca="nexo"] body {
+  font-family: var(--fuente-outfit), system-ui, sans-serif;
+}
+
+/* Los títulos de Nexo van derechos.
+   `--ital-estilo: italic` viene de tokens.css, y con Outfit —que no tiene
+   itálica— el navegador la falsifica inclinando la recta. En una geométrica
+   pesada eso se ve mal, y en nexoderecho.com.ar los títulos van derechos.
+   Se apaga acá y no en tokens.css, que tiene un test espejo contra
+   tokens.ts. Las otras tres pieles ya vienen en `normal`.
+
+   El eje de ancho se pierde solo en las tres: Outfit no lo declara y el
+   navegador ignora los ejes que la fuente no tiene. Eso alcanza a
+   `--ancho-h` (118 en la portada, 112 en el ingreso, 78 en Nexo) y al 125
+   del logotipo gigante de la portada, que va a dejar de verse expandido. */
+html[data-marca="nexo"] { --ital-estilo: normal; }
+
+/* ---------- Nexo: el lema de la cabecera ---------- */
+/* «Nadie se recibe solo» va como en nexoderecho.com.ar: Outfit, mayúsculas,
+   peso alto y tracking corto. El texto sale de `marcas.ts` en caja normal y
+   lo pasa a mayúsculas el CSS, que es como ya venía.
+
+   Se perdía por tres motivos a la vez, no por el tamaño solo: iba en
+   JetBrains Mono —que a cuerpo chico pesa menos que una grotesca—, en
+   `--texto-tenue`, y a 0,6 rem. Se corrigen los tres.
+
+   La familia hay que pedirla a mano porque el elemento lleva la clase
+   `.mono`, que declara la suya y si no le gana.
+
+   El tracking baja de 0,16em a 0,02em. Esa separación estaba calculada para
+   una monoespaciada a cuerpo chico; con Outfit a peso 900 la frase necesita
+   ir apretada, que es como se ve en el sitio de la agrupación.
+
+   Sigue oculto abajo de 760px, donde compite con «Mi perfil» y gana el
+   botón. */
+html[data-marca="nexo"] .app-lema {
+  font-family: var(--fuente-outfit), system-ui, sans-serif;
+  font-size: 0.94rem;
+  font-variation-settings: "wght" 900;
+  letter-spacing: 0.01em;
+  color: var(--texto);
+}
+
+/* ---------- Nexo: el saludo y el botón de retomar ---------- */
+/* El saludo, entero en blanco. Ya venía casi blanco por herencia de --texto;
+   lo que desentonaba era la parte resaltada, que sale en --acento-texto
+   (#7fd6a4, verde agua).
+
+   Y un 30% más chico: las tres paradas del clamp bajan a 0,7 de lo que
+   eran —1,5/3,6/2,4 pasan a 1,05/2,52/1,68—. Se bajan las tres y no sólo el
+   máximo, o en pantallas medianas el tamaño no cambiaría. */
+html[data-marca="nexo"] .portal-saludo,
+html[data-marca="nexo"] .portal-saludo span {
+  color: #ffffff;
+}
+html[data-marca="nexo"] .portal-saludo {
+  font-size: clamp(1.05rem, 2.52vw, 1.68rem);
+}
+
+/* El botón «Retomar» es `.btn-p`, que se pinta con --texto de fondo y
+   --fondo de letra: era un botón blanco con letra verde oscura.
+
+   El verde de marca (#059249) con letra blanca da 4,03:1, por debajo del
+   4,5:1 que sostiene el proyecto. #068744 es el verde más claro de esa misma
+   familia que sí llega —4,61:1— y a ojo es el mismo color.
+
+   Queda además más claro que la tarjeta que lo contiene (#1f6e33), así que
+   el botón resalta por sí solo y no necesita anillo. */
+html[data-marca="nexo"] .portal-retomar .btn-p,
+html[data-marca="nexo"] .portal-retomar .btn-a {
+  background: #068744;
+  color: #ffffff;
+  box-shadow: none;
+}
+html[data-marca="nexo"] .portal-retomar .btn-p:hover:not(:disabled),
+html[data-marca="nexo"] .portal-retomar .btn-a:hover:not(:disabled) {
+  background: #05713a;
+  color: #ffffff;
+  box-shadow: none;
+  opacity: 1;
+}
+
+/* ---------- Nexo: el botón «Escribinos» del pie ---------- */
+/* Mismo defecto que ya arreglamos en Nueva Abogacía: `.portal-cols a` fija
+   `padding: 0.32rem 0` para los enlaces de la columna y, por especificidad,
+   le gana al `.btn`, que traía `0.8rem 1.35rem`. El botón se quedaba sin
+   padding horizontal y la etiqueta tocaba los dos bordes, así que no parecía
+   centrada: no había aire a los lados que centrar.
+
+   Se le devuelve el padding, con los mismos valores que en la otra puerta
+   para que los dos pies se vean iguales. `line-height` explícito porque el
+   heredado del cuerpo (1.55) descentra el texto en vertical dentro de una
+   caja de esta altura. */
+html[data-marca="nexo"] .portal-cols .portal-escribinos {
+  padding: 0.5rem 1.05rem;
+  font-size: 0.82rem;
+  line-height: 1.2;
+}
+
+/* ---------- Nexo: centrar el bloque del menú ---------- */
+/* `.env` mide 72rem y la grilla de herramientas 64rem, así que en pantalla
+   ancha sobraban ~5,5rem que se acumulaban todos a la derecha: la grilla no
+   estaba centrada, estaba pegada a la izquierda.
+
+   `margin-inline: auto` reparte ese sobrante en dos y la centra.
+
+   El bloque de retención recibe el mismo ancho máximo y el mismo centrado,
+   que es lo que hace que el saludo y la tarjeta de retomar arranquen en la
+   misma vertical que la primera tarjeta. Adentro siguen alineados a la
+   izquierda —el saludo tiene su tope de 24ch y la tarjeta el suyo de 34rem—,
+   así que no se centran ellos: se centra la caja que los contiene.
+
+   Abajo de 64rem de ancho esto no hace nada: el tope no llega a aplicarse y
+   `auto` no tiene sobrante que repartir. Es un cambio que sólo se ve en
+   pantallas anchas, que es donde estaba el problema. */
+html[data-marca="nexo"] .portal-medio .herramientas-home,
+html[data-marca="nexo"] .portal-medio .portal-retencion {
+  width: 100%;
+  max-width: 64rem;
+  margin-inline: auto;
+}
+
+/* ---------- Nexo: la barra del pie, centrada y más fina ---------- */
+/* Centrado: el aviso con `text-align`, y los enlaces legales y la línea de
+   coorganización con `justify-content`, porque esos dos son `flex` y el
+   `text-align` no los mueve.
+
+   Más fina: el aviso baja de 1rem a 0,78rem con el interlineado de 1,55 a
+   1,45, los enlaces a 0,82rem, y la separación de la línea de coorganización
+   de 1,4rem a 0,85rem. Entre las tres, la barra pierde cerca de un 20% de lo
+   que se puede recortar.
+
+   El piso lo pone el logotipo de Nueva Abogacía, que va a 48px por `alto` en
+   el JSX y no se toca. Son 48 de los ~145px de la barra, o sea un tercio que
+   queda fijo: por eso el recorte sale del texto y de los márgenes, que es
+   todo lo demás que hay.
+
+   Al aviso le pongo un tope de 92ch centrado. Sin tope se estira hasta los
+   72rem del contenedor y una línea de 235 caracteres cansa de leer; con 92ch
+   sigue entrando en dos renglones y queda como un bloque. */
+html[data-marca="nexo"] .pie {
+  text-align: center;
+  /* `.pie` no traía padding vertical, así que el aviso arrancaba pegado a lo
+     que tuviera encima. Un rem de aire arriba alcanza para despegarlo sin
+     devolverle a la barra el alto que le acabamos de sacar. */
+  padding-top: 1rem;
+}
+html[data-marca="nexo"] .pie .aviso {
+  font-size: 0.78rem;
+  line-height: 1.45;
+  max-width: 92ch;
+  margin-inline: auto;
+}
+html[data-marca="nexo"] .pie .pie-links {
+  justify-content: center;
+  font-size: 0.82rem;
+  margin-top: 0.5rem;
+}
+html[data-marca="nexo"] .pie .pie-coorg {
+  justify-content: center;
+  margin-top: 0.85rem;
+}
+
+/* ---------- El encabezado del simulador: bajada, párrafo y botón juntos ---------- */
+/* El <div className="sim-intro"> agrupa los tres. Sin esta regla base el
+   envoltorio rompería el ritmo vertical en las pieles que no lo dibujan: los
+   tres eran hijos directos de `.sim-encabezado` y tomaban su `gap` de 0,9rem;
+   metidos en un div, ese gap ya no los alcanza. Acá se lo devuelve, así Nueva
+   Abogacía y la piel neutra quedan exactamente como estaban. */
+.sim-intro {
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+  gap: 0.9rem;
+  width: 100%;
+}
+
+/* Nexo: el recuadro va en el punto medio entre el verde de marca (#059249) y
+   el verde de fondo (#0f3a1f). Canal por canal: (5,146,73) y (15,58,31) dan
+   (10,102,52) = #0a6634.
+
+   Contra el fondo de la pantalla queda en 1,5:1 —se lee como un panel y no
+   como un parche—, y el anillo de 1px termina de separarlo. */
+html[data-marca="nexo"] .sim-intro {
+  max-width: 72ch;
+  padding: 1.4rem 1.5rem;
+  border-radius: 16px;
+  background: #0a6634;
+  box-shadow: inset 0 0 0 1px rgba(255, 255, 255, 0.22);
+}
+
+/* El párrafo largo, en blanco pleno.
+   Venía en `--texto-tenue`, que es blanco al 70%: sobre este verde da 3,95:1
+   y no llega al piso de 4,5:1 del proyecto. En blanco pleno da 7,08:1. La
+   bajada de arriba ya usa --texto, que sobre este fondo da 6,6:1. */
+html[data-marca="nexo"] .sim-intro .sim-parrafo {
+  color: #ffffff;
+}
+
+/* El botón «Comenzar a practicar» es `.btn-p`, que se pinta con --texto de
+   fondo y --fondo de letra: era blanco con letra verde oscura.
+
+   Va en #068744, el más claro de la familia de Nexo que sostiene letra
+   blanca —4,61:1—. El de marca (#059249) se queda en 4,03:1.
+
+   Y más chico que un botón normal: 0,85rem de letra contra 0,9, y 0,55/1,1
+   de padding contra 0,8/1,35. */
+html[data-marca="nexo"] .sim-intro .btn-p {
+  background: #068744;
+  color: #ffffff;
+  font-size: 0.85rem;
+  padding: 0.55rem 1.1rem;
+}
+html[data-marca="nexo"] .sim-intro .btn-p:hover:not(:disabled) {
+  background: #05713a;
+  color: #ffffff;
+  opacity: 1;
+}
+
+/* ---------- Nexo: el ritmo vertical del simulador ---------- */
+/* `.sim` separa todas sus secciones con `gap: 3.5rem`. Con el encabezado ya
+   metido en un recuadro y los pasos en cajas, esa distancia quedó de más:
+   las cajas ya se separan solas por su propio borde. Baja a 2,5rem.
+
+   Los dos valores están atados y hay que moverlos juntos. `.volver` trae
+   `margin-bottom: 1.6rem` y encima recibe el gap, así que para pegarlo al
+   título se compensa con un margen negativo. Contra 3,5rem ese número era
+   -3,1; contra 2,5rem pasa a -2,1, que deja los mismos 0,4rem de separación
+   real.
+
+   Si algún día se vuelve a tocar el gap, este segundo número se recalcula
+   así: margen = 0,4 - gap. */
+html[data-marca="nexo"] .sim {
+  gap: 2.5rem;
+}
+html[data-marca="nexo"] .sim > .volver {
+  margin-bottom: -2.1rem;
+}
+
+/* ---------- Nexo: los cuatro pasos, cada uno en su rectángulo ---------- */
+/* Antes cada paso tenía sólo `border-top: 2px` y `padding-top`: una línea
+   arriba y nada más, así que la información quedaba suelta debajo de una
+   raya. Ahora la raya se cierra en un rectángulo que la contiene.
+
+   La línea de arriba se apaga con `border: none` en vez de dejarla: si no,
+   se sumaría al anillo y el borde superior quedaría del doble de grosor que
+   los otros tres.
+
+   El anillo es el mismo que el del recuadro del encabezado —1px blanco al
+   22%— para que las dos cajas de la pantalla se lean como del mismo sistema.
+   El relleno es apenas un velo del 4%: alcanza para despegar el paso del
+   fondo sin competir con las tarjetas blancas de elegir organismo, que son
+   las que llevan el clic. */
+html[data-marca="nexo"] .sim-pasos-grilla li {
+  border: none;
+  padding: 1.15rem 1.25rem;
+  border-radius: 14px;
+  background: rgba(255, 255, 255, 0.04);
+  box-shadow: inset 0 0 0 1px rgba(255, 255, 255, 0.22);
+}
+
+/* ---------- Nexo: el rótulo «CÓMO SE CORRIGE» ---------- */
+/* Tres cosas lo apagaban a la vez: iba en JetBrains Mono por la clase
+   `.mono`, a 0,64rem, y en `--texto-debil`, que adentro de la tarjeta blanca
+   es negro al 55%.
+
+   Ahora va en Outfit, a 0,76rem, peso 800 y en `--texto` —negro pleno,
+   #0d1117 sobre la tarjeta, 18:1—.
+
+   La familia hay que pedirla a mano porque `.mono` declara la suya; el
+   selector con `[data-marca]` le gana en especificidad. Las mayúsculas y el
+   `font-variant-numeric` los sigue poniendo `.mono`, así que el rótulo no
+   pierde su forma: sólo cambia de letra y de peso.
+
+   El tracking baja de 0,09em a 0,06em: a peso 800 las letras ya ocupan más y
+   la separación de una monoespaciada chica desarma la frase. */
+html[data-marca="nexo"] .sim-reglas-titulo {
+  font-family: var(--fuente-outfit), system-ui, sans-serif;
+  font-size: 0.76rem;
+  font-variation-settings: "wght" 800;
+  letter-spacing: 0.06em;
+  color: var(--texto);
+}
+
+/* ---------- Nexo: la pantalla del examen de tipeo ---------- */
+/* Todo va colgado de `.tip`, que es la clase que sólo lleva esta pantalla
+   —el wrapper es `<div className="rend tip">`—. Así el examen de preguntas,
+   que comparte varias de estas clases, no se toca. */
+
+/* 1. El título. Era `.rend-pos.mono`: monoespaciada, 0,68rem y en
+   `--texto-debil`, o sea un rótulo de posición, no un título. Pasa a Outfit
+   a 1,15rem y peso 800.
+
+   Le saco las mayúsculas que impone `.mono`: a este cuerpo, «EXAMEN PRÁCTICO
+   DE TIPEO» grita. El tracking vuelve a 0 por lo mismo. */
+html[data-marca="nexo"] .tip .rend-pos {
+  font-family: var(--fuente-outfit), system-ui, sans-serif;
+  font-size: 1.15rem;
+  font-variation-settings: "wght" 800;
+  text-transform: none;
+  letter-spacing: 0;
+  color: var(--texto);
+}
+
+/* 2. La consigna, en blanco pleno. Venía en `--texto-tenue` —blanco al 70%—
+   y es la instrucción de qué hay que hacer: no es texto de apoyo. */
+html[data-marca="nexo"] .tip .tip-consigna {
+  color: #ffffff;
+}
+
+/* 3. El botón «Entregar». Es `.btn-p`, que se pinta con --texto de fondo y
+   --fondo de letra: era blanco con letra verde oscura.
+
+   Va en #068744, el más claro de la familia de Nexo que sostiene letra
+   blanca —4,61:1—. El de marca (#059249) se queda en 4,03:1. */
+html[data-marca="nexo"] .tip .rend-entregar {
+  background: #068744;
+  color: #ffffff;
+}
+html[data-marca="nexo"] .tip .rend-entregar:hover:not(:disabled) {
+  background: #05713a;
+  color: #ffffff;
+  opacity: 1;
+}
+
+/* 4. La nota de abajo, de raya a recuadro.
+   Tenía sólo `border-left: 2px` y sangría: una barra al costado. Ahora la
+   caja la rodea entera, con el mismo verde intermedio del recuadro del hub
+   —#0a6634, el punto medio entre el verde de marca y el del fondo— y el
+   mismo anillo blanco. Las dos cajas de la herramienta quedan hermanas.
+
+   Se va el tostado `--marca-revisar`, que era la marca de «esto es
+   orientativo». Ese sentido ahora lo carga el texto, que lo dice con
+   palabras; el borde deja de duplicarlo.
+
+   Los párrafos suben de 0,82rem a 0,92rem: es la letra más chica de la
+   pantalla y es justamente la que explica en qué se diferencia del examen
+   real. Blanco sobre este verde da 7,09:1. */
+html[data-marca="nexo"] .tip .tip-supuesto {
+  border-left: none;
+  padding: 1rem 1.15rem;
+  border-radius: 14px;
+  background: #0a6634;
+  box-shadow: inset 0 0 0 1px rgba(255, 255, 255, 0.22);
+}
+/* El texto ocupa el ancho entero de la caja y va justificado.
+   `max-width: none` es imprescindible: la regla base le pone un tope de 72ch
+   y sin sacarlo el párrafo cortaría antes del borde, con lo cual justificar
+   no se notaría.
+   `hyphens: auto` no es un adorno: justificado sin partir palabras abre
+   huecos enormes entre palabras —los famosos ríos blancos—. El <html> ya
+   declara `lang="es-AR"`, así que el navegador parte según las reglas del
+   castellano. */
+html[data-marca="nexo"] .tip .tip-supuesto p {
+  color: #ffffff;
+  font-size: 0.92rem;
+  line-height: 1.6;
+  max-width: none;
+  text-align: justify;
+  hyphens: auto;
+}
+
+/* 5. Los dos rótulos de las columnas: «El texto a copiar» y «Escribí acá».
+   Iban en `--texto-debil` —negro al 55% dentro de la tarjeta blanca, o sea
+   gris claro— y a 0,62rem, que es el cuerpo más chico de la pantalla.
+
+   Pasan a negro al 78% y a 0,74rem. Sigue siendo gris, como pediste, pero
+   con peso suficiente para que se lean de un vistazo: 9,6:1 contra el blanco
+   de la tarjeta, contra los 4,9:1 de antes.
+
+   Se quedan en monoespaciada: son rótulos de sección, no títulos, y la
+   diferencia de letra es lo que los mantiene en su lugar de la jerarquía. */
+html[data-marca="nexo"] .tip .tip-rotulo {
+  color: rgba(13, 17, 23, 0.78);
+  font-size: 0.74rem;
+  /* Subrayado en el verde de marca. Va con `width: fit-content` para que la
+     línea termine donde termina la palabra: el <h2> es de bloque y sin eso
+     el borde cruzaría la columna entera, que se lee como un divisor y no
+     como un subrayado.
+     #059249 sobre la tarjeta blanca da 4,03:1 — de sobra para el 3:1 que le
+     corresponde a un elemento gráfico. */
+  width: fit-content;
+  padding-bottom: 0.35rem;
+  border-bottom: 2px solid #059249;
+}

@@ -1,7 +1,6 @@
 import type { Metadata } from "next";
 import Link from "next/link";
 import {
-  cierre,
   eleccion,
   encabezado,
   organismos,
@@ -36,11 +35,18 @@ export default async function Simulador() {
       <VolverAlPerfil />
       <header className="sim-encabezado">
         <h1>{encabezado.titulo}</h1>
-        <p className="sim-bajada">{encabezado.bajada}</p>
-        <p className="sim-parrafo">{encabezado.parrafo}</p>
-        <a className="btn btn-p" href={`#${encabezado.ancla}`}>
-          {encabezado.cta}
-        </a>
+        {/* Los tres van juntos adentro de una sola caja: la bajada, el
+            párrafo que la explica y el botón que arranca. Es un bloque, no
+            tres cosas sueltas, y en la piel de Nexo se dibuja como recuadro
+            —`.sim-intro` en app/globals.css—. El <h1> queda afuera: es el
+            título de la pantalla, no parte del bloque. */}
+        <div className="sim-intro">
+          <p className="sim-bajada">{encabezado.bajada}</p>
+          <p className="sim-parrafo">{encabezado.parrafo}</p>
+          <a className="btn btn-p" href={`#${encabezado.ancla}`}>
+            {encabezado.cta}
+          </a>
+        </div>
       </header>
 
       {enCurso ? (
@@ -67,15 +73,7 @@ export default async function Simulador() {
 
       <ComoFunciona />
       <AvisoOrientativo />
-
-      <section className="sim-cierre">
-        <h2 className="sim-cierre-titulo">{cierre.titulo}</h2>
-        <p className="sim-bajada">{cierre.bajada}</p>
-        <p className="sim-gratis mono">{cierre.gratis}</p>
-        <a className="btn btn-p" href={`#${encabezado.ancla}`}>
-          {cierre.cta}
-        </a>
-      </section>
+
     </main>
   );
 }
