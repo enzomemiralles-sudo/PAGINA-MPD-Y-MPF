@@ -48,7 +48,7 @@ export const MARCAS_CONFIG: Record<ConfigMarca["id"], ConfigMarca> = {
     nombreCorto: "Nexo",
     logo: "/logos/nexo.png",
     para: "Para estudiantes de Derecho",
-    lema: "La alternativa en Derecho",
+    lema: "Nadie se recibe solo",
     gigante: "NEXO DERECHO",
     contacto: {
       instagram: { arroba: "@nexoderecho", href: "https://instagram.com/nexoderecho" },

@@ -33,7 +33,7 @@ describe("la coorganización del pie", () => {
 describe("los lemas y los logotipos del pie", () => {
   it("cada agrupación tiene el suyo, y son distintos", () => {
     const lemas = Object.values(MARCAS_CONFIG).map((c) => c.lema);
-    expect(lemas).toEqual(["La alternativa en Derecho", "Construyendo una nueva abogacía"]);
+    expect(lemas).toEqual(["Nadie se recibe solo", "Construyendo una nueva abogacía"]);
     expect(new Set(lemas).size).toBe(2);
   });
 
