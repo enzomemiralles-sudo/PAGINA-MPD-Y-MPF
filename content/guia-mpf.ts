@@ -236,9 +236,16 @@ export const MPF: Guia = {
     },
   ],
 
+  // El MPF todavía no tiene una guía del examen paso a paso como la parte 2
+  // del MPD. Las listas van vacías y sus etapas 2 y 3 se siguen mostrando
+  // como las secciones de texto de abajo.
+  pasosIngreso: [],
+  pasosExamen: [],
+  introIngreso: [],
+
   // ---------------- ⑤ después de inscribirte ----------------
   despues: {
-    titulo: "Después de inscribirte",
+    titulo: "Etapa 2: Ingreso a plataforma de examen",
     cuerpo: ["El proceso sigue así:"],
     items: [
       "Cierra la inscripción.",
@@ -259,7 +266,7 @@ export const MPF: Guia = {
 
   // ---------------- ⑥ el día del examen ----------------
   examen: {
-    titulo: "El día del examen",
+    titulo: "Etapa 3: Examen",
     cuerpo: [
       "Para Técnico Administrativo la evaluación es a distancia, por plataforma Moodle, y tiene dos partes.",
       "La parte teórica son 20 preguntas de opción múltiple en 30 minutos. Los contenidos son historia argentina y latinoamericana, sistema constitucional, problemática de género, ordenamiento institucional y jurídico del MPF, y nuevo Código Procesal Penal Federal.",

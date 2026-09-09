@@ -3039,6 +3039,21 @@ body { transition: background var(--t-sec) var(--suave), color var(--t-sec) var(
    un texto de este cuerpo. En blanco da 5,9:1. El subrayado es lo que avisa
    que son enlaces ahora que perdieron el color. */
 .guia-estado { margin-top: 0.6rem; }
+/* Toda la franja en blanco pleno. Sobre la tarjeta blanca del resto de la
+   guía, el 82 % y el 80 % de negro de los tokens son grises de apoyo y están
+   bien; acá, sobre el verde, esos mismos tokens son blancos rebajados y la
+   franja entera —el rótulo, la recomendación y la fecha— quedaba apagada al
+   lado del titular.
+   Se pisan los dos tokens en la sección, como en las etapas, y no cada
+   selector: lo que se agregue después nace en blanco.
+   `var(--texto)` acá no se congela: la sección no redeclara `--texto`, así
+   que hereda el #ffffff de `.instructivo-mpd-claro` y eso es lo que copia.
+   Blanco sobre la caja de la franja —blanco al 3 % sobre el verde— da
+   5,9:1. */
+#estado {
+  --texto-tenue: var(--texto);
+  --texto-debil: var(--texto);
+}
 #estado .ins-estado a {
   color: #ffffff;
   text-decoration: underline;
@@ -3062,21 +3077,54 @@ body { transition: background var(--t-sec) var(--suave), color var(--t-sec) var(
    sumarle aire los separaba en cuatro tarjetas sueltas en vez de una lista. */
 .guia-plegables { list-style: none; margin: 0.4rem 0 0; padding: 0; max-width: 68ch; }
 
-/* ---------- ②, la tarjeta apretada ----------
-   «Antes de empezar necesitás tener» es la única sección que, plegada, es
-   apenas un título y cuatro renglones. Con el relleno de tarjeta que usan
-   las demás —hasta 3rem por lado— el recuadro le quedaba enorme al lado de
-   lo poco que tiene adentro: era una caja grande con aire, no una sección
-   compacta.
-   El relleno baja a un tercio y el título deja de reservar el 1,25rem de
-   separación que necesita una sección larga.
-   Va por id y no por clase porque es la única de las cinco secciones de
-   texto que se pliega, y `SeccionGuia` es el mismo componente para todas:
-   una clase habría que pasársela por prop y sólo la usaría ésta. El id ya
-   existe, es el ancla de la sección. */
-#antes.instructivo-mpd-tarjeta { padding: clamp(1.1rem, 2.4vw, 1.5rem); }
-#antes .guia-seccion-titulo { margin-bottom: 0.7rem; padding-bottom: 0.55rem; }
+/* ---------- las tres tarjetas apretadas ----------
+   ②, ③ y ⑨ son las secciones cortas: plegadas, la ② es un título y cuatro
+   renglones, la ③ es sólo su solapa y el ⑨ es un título y cuatro marcas. Con
+   el relleno que usan las demás —hasta 3rem por lado— el blanco alrededor
+   medía más que el contenido: eran cajas grandes con aire adentro, no
+   secciones compactas.
+   El relleno baja a la mitad larga y el título deja de reservar el 1,25rem de
+   separación que necesita una sección larga. Nada se achica: lo que se achica
+   es el margen blanco que las rodea.
+   Van por id y no por clase porque las tres salen de componentes distintos
+   —dos de `SeccionGuia`, que es el mismo para las cinco secciones de texto, y
+   el ⑨ de `Pasos`—: una clase habría que pasarla por prop en cada uno. El id
+   ya existe, es el ancla de cada sección. */
+#antes.instructivo-mpd-tarjeta,
+#saber.instructivo-mpd-tarjeta,
+#resultados.instructivo-mpd-tarjeta,
+#checklist.instructivo-mpd-tarjeta {
+  padding: clamp(1.1rem, 2.4vw, 1.5rem);
+}
+#antes .guia-seccion-titulo,
+#checklist .guia-seccion-titulo {
+  margin-bottom: 0.7rem;
+  padding-bottom: 0.55rem;
+}
 #antes .guia-plegables { margin-top: 0; }
+/* La ③ es un <details>: su raya vive en el <summary>, no en el título. Y
+   cerrada no hay nada debajo, así que el aire de la lista lo pone la lista
+   recién cuando se abre. */
+#saber .guia-seccion-resumen,
+#resultados .guia-seccion-resumen { padding-bottom: 0.55rem; }
+#saber .info-importante { margin-top: 0.85rem; }
+/* El primer párrafo de la ⑦ arranca pegado a la solapa: adentro de un
+   <details> el contenido no hereda el margen que el título le daba a la
+   sección cuando el título era un <h2> suelto. */
+#resultados[open] > p:first-of-type { margin-top: 0.85rem; }
+
+/* La ⑦, en negro. Es el mismo caso que el ④: acá se explica cómo se arma el
+   orden de mérito y cuánto valen las notas, que es de lo más importante de la
+   guía, y en el 70 % de negro se leía como una nota al pie. Se pisan los dos
+   tokens de gris en la sección, no cada selector, para que lo que se agregue
+   después nazca en negro.
+   `var(--texto)` no se congela: `.instructivo-mpd-tarjeta` lo declara en este
+   mismo elemento —la sección ES la tarjeta—, así que resuelve al negro de la
+   tarjeta y no al blanco del fondo verde. */
+#resultados {
+  --texto-tenue: var(--texto);
+  --texto-debil: var(--texto);
+}
 /* La línea entre punto y punto, menos en el último. `border-top` en vez de
    `border-bottom` para que la primera no quede pegada a la bajada de arriba. */
 .guia-plegables li + li .guia-plegable { border-top: 1px solid var(--borde); }
@@ -3127,6 +3175,33 @@ body { transition: background var(--t-sec) var(--suave), color var(--t-sec) var(
 }
 .guia-enlace:hover { color: var(--texto); }
 
+/* ---------- el botón de acción de una sección ----------
+   Hoy, «Practicá con el simulador» al final de la Etapa 3. Es un botón y no
+   un `.guia-enlace` porque no lleva a una fuente para leer sino a una
+   herramienta para usar, y esa diferencia tiene que verse antes de leer la
+   etiqueta.
+
+   El fondo sale de `--acento-texto` y no de un verde escrito a mano. Ese
+   token, adentro de la tarjeta blanca, es #1f6e33 en Nexo y #0a5aa8 en Nueva
+   Abogacía, así que el mismo botón funciona en las dos puertas sin repetir la
+   regla. Con letra blanca dan 6,4:1 y 7,0:1 —los dos calculados—; el verde de
+   marca (#059249) se queda en 4,03:1 y no llega al 4,5:1 que pide un texto de
+   este cuerpo, que es por lo que no se usa acá.
+
+   `align-self: flex-start` no serviría: la sección no es flex. `width:
+   fit-content` es lo que impide que el <a>, que es de bloque, se estire de
+   punta a punta de la tarjeta. */
+.guia-accion {
+  display: inline-flex; align-items: center; gap: 0.4rem;
+  width: fit-content; margin-top: 1.1rem;
+  padding: 0.6rem 1.15rem; border-radius: 999px;
+  background: var(--acento-texto); color: #ffffff;
+  font-size: 0.92rem; font-variation-settings: "wdth" 100, "wght" 650;
+  transition: transform var(--t-micro) var(--suave), opacity var(--t-micro) var(--suave);
+}
+.guia-accion:hover { color: #ffffff; opacity: 0.92; transform: translateY(-1px); }
+.guia-accion:focus-visible { outline: 2px solid var(--acento-texto); outline-offset: 3px; }
+
 /* ---------- advertencias ----------
    Semánticas, no de marca: el mismo color en las cuatro pieles. Y el estado no
    se comunica sólo por color — hay signo, rótulo y grosor de borde. */
@@ -3145,18 +3220,23 @@ body { transition: background var(--t-sec) var(--suave), color var(--t-sec) var(
 }
 .adv[data-peso="alta"] .adv-signo { background: var(--error); color: var(--tinta); }
 .adv[data-peso="media"] .adv-signo { background: var(--borde-fuerte); color: var(--texto); }
+/* Las de peso alto ya no tienen rótulo, así que el signo no tiene dos filas
+   que cruzar: sin esto el `span 2` inventaba una segunda fila vacía y la
+   advertencia quedaba con un renglón de aire abajo. */
+.adv[data-peso="alta"] .adv-signo { grid-row: auto; }
 .adv-rotulo { font-size: 0.6rem; letter-spacing: 0.13em; text-transform: uppercase; color: var(--texto-debil); }
 .adv-texto { color: var(--texto); font-size: 0.92rem; line-height: 1.6; }
 
-/* ---------- ④, todo en negro ----------
-   En el paso a paso no hay texto de apoyo: el resumen de cada paso, el
-   cuerpo, el pie de cada captura y la cuenta del progreso son todos cosas que
-   hay que leer para hacer el trámite. En gris —el 70 % y el 62 % de negro que
-   traen los tokens— se leían como aclaraciones al margen.
+/* ---------- las tres etapas, todo en negro ----------
+   En las etapas no hay texto de apoyo: el resumen de cada paso, el cuerpo, el
+   pie de cada captura, la cuenta del progreso y las listas de lo que pasa
+   después son todas cosas que hay que leer para hacer el trámite. En gris
+   —el 70 % y el 62 % de negro que traen los tokens— se leían como
+   aclaraciones al margen.
 
    Se pisan los dos tokens y no una lista de selectores. Es una regla en vez
-   de seis, y sobre todo alcanza a lo que se agregue mañana: cualquier cosa
-   nueva adentro de esta sección nace en negro sin que haya que acordarse.
+   de seis por sección, y sobre todo alcanza a lo que se agregue mañana:
+   cualquier cosa nueva adentro nace en negro sin que haya que acordarse.
 
    `var(--texto)` acá no se congela: `.instructivo-mpd-tarjeta` declara
    `--texto` en este mismo elemento —la sección ES la tarjeta—, así que
@@ -3164,7 +3244,9 @@ body { transition: background var(--t-sec) var(--suave), color var(--t-sec) var(
 
    El rótulo «PASO 1 DE 4» queda en verde: no es gris, es el acento que
    ordena la lista. */
-#pasos {
+#pasos,
+#despues,
+#examen {
   --texto-tenue: var(--texto);
   --texto-debil: var(--texto);
 }
@@ -3176,7 +3258,16 @@ body { transition: background var(--t-sec) var(--suave), color var(--t-sec) var(
   display: block; height: 100%; border-radius: 2px; background: var(--acento-texto);
   transition: width var(--t-elem) var(--sal);
 }
-.guia-progreso-texto { font-size: 0.72rem; color: var(--texto-tenue); flex-shrink: 0; }
+/* «0 de 4 pasos» en la letra de la página. `.mono` le imponía la
+   monoespaciada y, de paso, mayúsculas y tracking, que acá no hacían falta:
+   es una cuenta, no un rótulo. Con la proporcional el cuerpo sube un punto
+   —una mono ocupa más por letra— y las cifras van tabulares para que el
+   renglón no cambie de ancho cada vez que avanza el contador. */
+.guia-progreso-texto {
+  font-family: inherit;
+  font-size: 0.8rem; font-variant-numeric: tabular-nums;
+  color: var(--texto-tenue); flex-shrink: 0;
+}
 
 /* ---------- los pasos ---------- */
 .guia-pasos { list-style: none; display: flex; flex-direction: column; gap: 0.7rem; margin: 0; padding: 0; }
@@ -3194,7 +3285,23 @@ body { transition: background var(--t-sec) var(--suave), color var(--t-sec) var(
 }
 .guia-paso-boton:hover { background: color-mix(in srgb, var(--texto) 4%, transparent); }
 .guia-paso-boton:focus-visible { outline: 2px solid var(--acento-texto); outline-offset: -2px; }
-.guia-paso-n { grid-column: 1; font-size: 0.62rem; letter-spacing: 0.12em; text-transform: uppercase; color: var(--acento-texto); }
+/* «PASO 1 DE 4» en la letra de la página, no en la monoespaciada. Es el mismo
+   tratamiento que los rótulos del asistente y los «Elegí el organismo»:
+   `font-family: inherit` para que caiga la del <body> —Outfit en Nexo,
+   Archivo en Nueva Abogacía— sin repetir la regla por piel.
+   Las dos medidas que estaban calibradas para la mono se reacomodan: el
+   cuerpo sube de 0,62 a 0,72rem, porque una mono ocupa más por letra y al
+   mismo tamaño nominal la proporcional se ve más chica; y el tracking baja
+   de 0,12 a 0,05em, que era la apertura que necesitan las versalitas de una
+   mono angosta. El peso 600 reemplaza al grosor que la mono traía de fábrica. */
+.guia-paso-n {
+  grid-column: 1;
+  font-family: inherit;
+  font-size: 0.72rem; letter-spacing: 0.05em; text-transform: uppercase;
+  font-variation-settings: "wdth" 100, "wght" 600;
+  font-weight: 600;
+  color: var(--acento-texto);
+}
 .guia-paso-titulo { grid-column: 1; font-size: 1.02rem; font-variation-settings: "wdth" 100, "wght" 650; }
 .guia-paso-resumen { grid-column: 1; font-size: 0.85rem; color: var(--texto-tenue); }
 .guia-paso-flecha {
@@ -3243,6 +3350,22 @@ body { transition: background var(--t-sec) var(--suave), color var(--t-sec) var(
 .guia-captura img[src*="mpd-cv-campo-fs"] {
   width: auto;
   max-width: 227px;
+  margin: 0 auto;
+  display: block;
+}
+/* El bloque «Inscripciones vigentes» del menú: 452 × 233 px reales. */
+.guia-captura img[src*="mpd-inscripciones-vigentes"] {
+  width: auto;
+  max-width: 452px;
+  margin: 0 auto;
+  display: block;
+}
+/* La pantalla de acceso al sistema de examen: 398 px de ancho real. Las otras
+   cuatro capturas de las etapas 2 y 3 rondan los 720 px —el ancho de la
+   columna— y no necesitan tope. */
+.guia-captura img[src*="mpd-examen-login"] {
+  width: auto;
+  max-width: 398px;
   margin: 0 auto;
   display: block;
 }
@@ -3428,6 +3551,24 @@ body { transition: background var(--t-sec) var(--suave), color var(--t-sec) var(
   font-size: 0.95rem; font-variant-numeric: tabular-nums;
   font-variation-settings: "wdth" 100, "wght" 650;
 }
+
+/* ---------- las marcas al pie de una etapa ----------
+   La misma fila, pero adentro de la tarjeta de la etapa 2 o la 3 y sin
+   título. El ④ tiene su checklist en tarjeta aparte porque resume un trámite
+   que dura días y se mira solo; acá el resumen está a dos centímetros de los
+   pasos que resume, así que anunciarlo sería repetir lo que ya se ve.
+   Va más chica que la del ④ por lo mismo: es una nota al pie de la etapa, no
+   una sección.
+   La raya de arriba es lo único que la separa del último paso, ahora que no
+   hay un título que marque el corte. */
+.guia-checklist-pie {
+  gap: 1.1rem;
+  margin-top: 1.2rem;
+  padding-top: 0.9rem;
+  border-top: 1px solid var(--borde);
+}
+.guia-checklist-pie .guia-checklist-marca { font-size: 0.85rem; }
+.guia-checklist-pie .guia-checklist-n { font-size: 0.8rem; }
 
 /* ---------- el pie de la guía ----------
    No es una tarjeta blanca como las nueve secciones: es una caja apenas más

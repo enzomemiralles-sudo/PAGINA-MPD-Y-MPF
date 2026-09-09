@@ -6,7 +6,7 @@ import { VolverAlPerfil } from "@/components/app/VolverAlPerfil";
 import { CheckCircle2 } from "lucide-react";
 import { Estado } from "@/components/inscripcion/Estado";
 import { SeccionGuia } from "@/components/guia/Seccion";
-import { Pasos } from "@/components/guia/Pasos";
+import { Pasos, PasosEtapa } from "@/components/guia/Pasos";
 import { Preguntas } from "@/components/guia/Preguntas";
 import { guiaDe } from "@/lib/guia/registro";
 import { guia as t } from "@/content/guia";
@@ -126,10 +126,45 @@ export default async function GuiaDeOrganismo({ params }: Props) {
           eso el título del ④ se mudó al componente. */}
       {g.pasos.length > 0 ? <Pasos guia={g} clave={g.organismo} /> : null}
 
-      {/* ⑤ ⑥ ⑦ */}
+      {/* ⑤ y ⑥. Cada organismo cubre estas dos etapas de una de dos formas y
+          la página muestra la que tenga: el acordeón cuando trae pasos —el
+          MPD, con la parte 2 de la guía de Nexo— y la sección de texto cuando
+          no —el MPF, que todavía la tiene como texto corrido—. Los dos
+          componentes devuelven null si les toca la lista vacía o el null, así
+          que no hace falta preguntar acá cuál corresponde. */}
+      <PasosEtapa
+        titulo={t.secciones.despues}
+        id="despues"
+        clave={g.organismo}
+        pasos={g.pasosIngreso}
+        intro={g.introIngreso}
+      />
       <SeccionGuia seccion={g.despues} id="despues" />
-      <SeccionGuia seccion={g.examen} id="examen" />
-      <SeccionGuia seccion={g.resultados} id="resultados" />
+
+      <PasosEtapa
+        titulo={t.secciones.examen}
+        id="examen"
+        clave={g.organismo}
+        pasos={g.pasosExamen}
+        accion={{ texto: t.practicar, url: `/simulador/${g.organismo}` }}
+      />
+      {/* El simulador se ofrece acá y no en otra sección: es donde se termina
+          de leer cómo se rinde, y practicar es lo único que se puede hacer al
+          respecto.
+          Va directo al simulador del organismo de esta guía y no al hub, que
+          volvería a preguntar MPD o MPF cuando la respuesta ya está en la
+          pantalla donde se hizo clic. `g.organismo` es la misma clave que usa
+          la ruta del simulador. */}
+      <SeccionGuia
+        seccion={g.examen}
+        id="examen"
+        accion={{ texto: t.practicar, url: `/simulador/${g.organismo}` }}
+      />
+
+      {/* ⑦ va plegada: es lo que pasa después de rendir, o sea lo único de la
+          guía que no se lee mientras se hace el trámite. Cerrada deja de
+          empujar el pie y sigue estando a un clic. */}
+      <SeccionGuia seccion={g.resultados} id="resultados" plegable />
 
       {/* ⑧ Preguntas frecuentes */}
       {g.preguntas.length > 0 ? (

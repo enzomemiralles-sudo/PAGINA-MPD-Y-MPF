@@ -49,6 +49,19 @@ export type Captura = {
    * tiene URL, y ahí un enlace prometería algo que no existe.
    */
   url?: string;
+  /**
+   * Después de qué párrafo del paso va, contando desde 1.
+   *
+   * Sin esto, todas las capturas caen juntas al final de la explicación, que
+   * es el orden por defecto de la plantilla. Sirve mientras las capturas de
+   * un paso ilustren la explicación entera; deja de servir cuando una muestra
+   * lo que dice un párrafo puntual y el paso sigue hablando de otra cosa
+   * después —ahí la captura queda lejos de lo que ilustra—.
+   *
+   * Un número más grande que la cantidad de párrafos la deja al final, igual
+   * que si no se declarara.
+   */
+  trasParrafo?: number;
 };
 
 /** Un video. `youtubeId` en null es un hueco declarado, igual que la captura. */
@@ -120,8 +133,25 @@ export type Guia = {
   /** ③ Sólo advertencias: es la sección que existe para eso. */
   saber: Advertencia[];
 
-  /** ④ Los cuatro pasos. */
+  /** ④ Los cuatro pasos de la inscripción. Alimentan el ⑨. */
   pasos: PasoGuia[];
+
+  /**
+   * ⑤ y ⑥ en versión paso a paso: entrar a la plataforma del examen, y
+   * rendirlo.
+   *
+   * Un organismo cubre cada etapa de una de las dos formas, nunca de las dos:
+   * con estos pasos, o con la sección de texto de abajo. La página muestra el
+   * acordeón cuando la lista tiene algo y la sección de texto cuando no, así
+   * que llenar las dos dejaría una etapa escrita dos veces.
+   *
+   * El MPD las trae como pasos, de la parte 2 de la guía de Nexo. El MPF
+   * todavía las tiene como texto corrido y pasa las listas vacías.
+   */
+  pasosIngreso: PasoGuia[];
+  pasosExamen: PasoGuia[];
+  /** La bajada del ⑤ cuando va como pasos: el acordeón no tiene `cuerpo`. */
+  introIngreso: string[];
 
   /** ⑤ a ⑦. `null` cuando el material del organismo no lo cubre. */
   despues: SeccionTexto | null;

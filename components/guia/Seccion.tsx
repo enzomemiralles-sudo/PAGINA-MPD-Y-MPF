@@ -1,3 +1,4 @@
+import Link from "next/link";
 import type { SeccionTexto } from "@/lib/guia/tipos";
 import { Advertencia } from "./Advertencia";
 
@@ -16,14 +17,32 @@ import { Advertencia } from "./Advertencia";
  * no un <div> envolvente en la página: el que decide si una sección existe es
  * este componente, y un envoltorio afuera dibujaría una tarjeta vacía cuando
  * devuelve null.
+ *
+ * Con `plegable`, la sección entera es un <details> y el título hace de
+ * solapa. El cuerpo se arma una sola vez y se mete en una envoltura o en la
+ * otra: duplicarlo en dos ramas del JSX garantizaba que algún día una se
+ * actualizara y la otra no.
+ *
+ * `accion` es un botón al final: lleva a otra pantalla del sitio, no a una
+ * fuente externa. Va aparte de `enlaces` —que son las fuentes oficiales y se
+ * ven como enlaces subrayados— porque no es lo mismo «acá está el documento»
+ * que «hacé esto ahora», y el botón es lo único que lo dice sin explicarlo.
  */
-export function SeccionGuia({ seccion, id }: { seccion: SeccionTexto | null; id: string }) {
+export function SeccionGuia({
+  seccion,
+  id,
+  plegable = false,
+  accion,
+}: {
+  seccion: SeccionTexto | null;
+  id: string;
+  plegable?: boolean;
+  accion?: { texto: string; url: string };
+}) {
   if (!seccion) return null;
 
-  return (
-    <section className="guia-seccion instructivo-mpd-tarjeta" id={id}>
-      <h2 className="guia-seccion-titulo">{seccion.titulo}</h2>
-
+  const cuerpo = (
+    <>
       {seccion.cuerpo.map((c) => (
         <p key={c}>{c}</p>
       ))}
@@ -76,6 +95,31 @@ export function SeccionGuia({ seccion, id }: { seccion: SeccionTexto | null; id:
           ))}
         </div>
       ) : null}
+
+      {accion ? (
+        <Link className="guia-accion" href={accion.url}>
+          {accion.texto}
+        </Link>
+      ) : null}
+    </>
+  );
+
+  if (plegable) {
+    return (
+      <details className="guia-seccion instructivo-mpd-tarjeta guia-seccion-plegable" id={id}>
+        <summary className="guia-seccion-resumen">
+          <h2 className="guia-seccion-titulo">{seccion.titulo}</h2>
+          <span className="guia-seccion-flecha" aria-hidden="true" />
+        </summary>
+        {cuerpo}
+      </details>
+    );
+  }
+
+  return (
+    <section className="guia-seccion instructivo-mpd-tarjeta" id={id}>
+      <h2 className="guia-seccion-titulo">{seccion.titulo}</h2>
+      {cuerpo}
     </section>
   );
 }

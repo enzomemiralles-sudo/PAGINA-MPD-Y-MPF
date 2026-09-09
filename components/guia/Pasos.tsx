@@ -1,6 +1,7 @@
 "use client";
 
-import { useCallback, useEffect, useState } from "react";
+import { Fragment, useCallback, useEffect, useState } from "react";
+import Link from "next/link";
 import { guia as t } from "@/content/guia";
 import type { Guia, PasoGuia } from "@/lib/guia/tipos";
 import { Advertencia } from "./Advertencia";
@@ -31,8 +32,20 @@ import { Captura, VideoSlot } from "./Huecos";
  * Un paso a la vez, en acordeón: el actual abierto y el resto cerrado, pero
  * cualquiera se puede abrir. Nada obliga a seguir el orden.
  */
-export function Pasos({ guia, clave }: { guia: Guia; clave: string }) {
-  const total = guia.pasos.length;
+/**
+ * Lo que comparten los tres acordeones: qué pasos están hechos, cuál está
+ * abierto, y la memoria de lo marcado.
+ *
+ * Está acá y no repetido en cada componente porque la parte delicada —leer
+ * localStorage después del primer render, y no romperse cuando el navegador
+ * lo bloquea— es exactamente la misma para los tres, y dos copias de eso
+ * terminan divergiendo en la que nadie vuelve a mirar.
+ *
+ * `clave` separa las memorias: alguien puede estar inscribiéndose a los dos
+ * organismos, y su avance en la etapa 2 del MPD no es su avance en la 3 ni en
+ * el MPF.
+ */
+function useAvance(clave: string, pasos: PasoGuia[]) {
   const [hechos, setHechos] = useState<Set<number>>(new Set());
   const [abierto, setAbierto] = useState<number | null>(null);
   const [cargado, setCargado] = useState(false);
@@ -48,14 +61,14 @@ export function Pasos({ guia, clave }: { guia: Guia; clave: string }) {
       const set = new Set(Array.isArray(nums) ? nums.filter((n) => typeof n === "number") : []);
       setHechos(set);
       // Se abre el primero que falta, que es donde quedó.
-      const primero = guia.pasos.find((p) => !set.has(p.n));
+      const primero = pasos.find((p) => !set.has(p.n));
       setAbierto(primero ? primero.n : null);
     } catch {
       // Modo privado o storage bloqueado: la guía funciona igual, sin memoria.
-      setAbierto(guia.pasos[0]?.n ?? null);
+      setAbierto(pasos[0]?.n ?? null);
     }
     setCargado(true);
-  }, [almacen, guia.pasos]);
+  }, [almacen, pasos]);
 
   const alternar = useCallback(
     (n: number) => {
@@ -74,6 +87,37 @@ export function Pasos({ guia, clave }: { guia: Guia; clave: string }) {
     [almacen],
   );
 
+  return { hechos, abierto, setAbierto, cargado, alternar };
+}
+
+/** La fila de marcas: un número por paso, con su tilde cuando está hecho. */
+function Marcas({ pasos, hechos, clase }: { pasos: PasoGuia[]; hechos: Set<number>; clase?: string }) {
+  return (
+    <ol className={clase ? `guia-checklist-fila ${clase}` : "guia-checklist-fila"}>
+      {pasos.map((p) => (
+        <li key={p.n} data-hecho={hechos.has(p.n) ? "si" : "no"}>
+          <span className="guia-checklist-marca" aria-hidden="true">
+            {hechos.has(p.n) ? "✓" : "○"}
+          </span>
+          <span className="guia-checklist-n" aria-hidden="true">
+            {p.n}
+          </span>
+          {/* Un número suelto no dice nada leído en voz alta. Acá va lo que se
+              ve —el paso, su nombre y si está hecho— para quien usa lector de
+              pantalla. */}
+          <span className="sr-only">
+            {t.paso(p.n)}: {p.titulo}. {hechos.has(p.n) ? t.checklistHecho : t.checklistPendiente}
+          </span>
+        </li>
+      ))}
+    </ol>
+  );
+}
+
+export function Pasos({ guia, clave }: { guia: Guia; clave: string }) {
+  const total = guia.pasos.length;
+  const { hechos, abierto, setAbierto, cargado, alternar } = useAvance(clave, guia.pasos);
+
   return (
     <>
       {/* ④ Con su tarjeta y su título. El título vivía en la página, que
@@ -89,7 +133,8 @@ export function Pasos({ guia, clave }: { guia: Guia; clave: string }) {
           <div className="guia-barra">
             <i style={{ width: `${cargado ? (hechos.size / total) * 100 : 0}%` }} />
           </div>
-          <span className="guia-progreso-texto mono">
+          {/* Sin `.mono`, igual que el rótulo del paso. */}
+          <span className="guia-progreso-texto">
             {cargado ? t.progreso(hechos.size, total) : t.progreso(0, total)}
           </span>
         </div>
@@ -100,6 +145,7 @@ export function Pasos({ guia, clave }: { guia: Guia; clave: string }) {
               key={p.n}
               paso={p}
               total={total}
+              prefijo="pasos"
               hecho={hechos.has(p.n)}
               abierto={abierto === p.n}
               onAbrir={() => setAbierto(abierto === p.n ? null : p.n)}
@@ -116,53 +162,121 @@ export function Pasos({ guia, clave }: { guia: Guia; clave: string }) {
         {/* Un solo renglón: los cuatro pasos por su número y su marca, nada
             más. Sigue reflejando lo mismo que antes —el estado sale del mismo
             `hechos` que el acordeón de arriba—, pero ya no repite los títulos
-            de los pasos, que están completos dos bloques más arriba.
-            <ol> y no <ul>: el orden es el dato, es lo que dicen los números.
-            El número va en un <span> y no como viñeta automática de la lista
-            para poder ponerlo al lado de la marca y no antes del renglón. */}
-        <ol className="guia-checklist-fila">
-          {guia.pasos.map((p) => (
-            <li key={p.n} data-hecho={hechos.has(p.n) ? "si" : "no"}>
-              <span className="guia-checklist-marca" aria-hidden="true">
-                {hechos.has(p.n) ? "✓" : "○"}
-              </span>
-              <span className="guia-checklist-n" aria-hidden="true">
-                {p.n}
-              </span>
-              {/* Un número suelto no dice nada leído en voz alta. Acá va lo
-                  que se ve —el paso, su nombre y si está hecho— para quien
-                  usa lector de pantalla. */}
-              <span className="sr-only">
-                {t.paso(p.n)}: {p.titulo}. {hechos.has(p.n) ? t.checklistHecho : t.checklistPendiente}
-              </span>
-            </li>
-          ))}
-        </ol>
+            de los pasos, que están completos dos bloques más arriba. */}
+        <Marcas pasos={guia.pasos} hechos={hechos} />
       </section>
     </>
   );
 }
 
-/** Un paso del acordeón. El orden de composición es fijo y lo impone acá. */
+/**
+ * Una etapa que va como acordeón: las etapas 2 y 3 del MPD.
+ *
+ * Comparte el `Paso` y la memoria de lo marcado con el ④, así que los tres
+ * acordeones se ven, se tocan y se acuerdan igual. Lo que no comparte es la
+ * barra de progreso ni la tarjeta aparte del checklist: acá las marcas van
+ * al pie de la misma tarjeta, chicas y sin título. El ④ necesita esa tarjeta
+ * porque su checklist resume un trámite que dura días y se mira solo; estas
+ * dos etapas se leen de una sentada y el resumen es apenas el recordatorio de
+ * por dónde ibas.
+ *
+ * `id` es el ancla de la sección y también la clave con que se guarda el
+ * avance, y el `<h2>` sale de acá y no de la página por el mismo motivo que el
+ * del ④: la sección entera es este componente.
+ */
+export function PasosEtapa({
+  titulo,
+  id,
+  clave,
+  pasos,
+  intro = [],
+  accion,
+}: {
+  titulo: string;
+  id: string;
+  clave: string;
+  pasos: PasoGuia[];
+  intro?: string[];
+  accion?: { texto: string; url: string };
+}) {
+  const { hechos, abierto, setAbierto, alternar } = useAvance(`${clave}-${id}`, pasos);
+
+  if (pasos.length === 0) return null;
+
+  return (
+    <section className="guia-seccion instructivo-mpd-tarjeta" id={id}>
+      <h2 className="guia-seccion-titulo">{titulo}</h2>
+
+      {intro.map((p) => (
+        <p key={p}>{p}</p>
+      ))}
+
+      <ol className="guia-pasos">
+        {pasos.map((p) => (
+          <Paso
+            key={p.n}
+            paso={p}
+            total={pasos.length}
+            prefijo={id}
+            hecho={hechos.has(p.n)}
+            abierto={abierto === p.n}
+            onAbrir={() => setAbierto(abierto === p.n ? null : p.n)}
+            onHecho={() => alternar(p.n)}
+          />
+        ))}
+      </ol>
+
+      {/* Las marcas al pie, sin título: acá no hace falta anunciar que es un
+          checklist, porque está a dos centímetros de los pasos que resume. */}
+      <Marcas pasos={pasos} hechos={hechos} clase="guia-checklist-pie" />
+
+      {/* El mismo botón que `SeccionGuia` pone al final de una sección: la
+          etapa cambió de forma, pero sigue terminando en el mismo lugar y con
+          la misma oferta. */}
+      {accion ? (
+        <Link className="guia-accion" href={accion.url}>
+          {accion.texto}
+        </Link>
+      ) : null}
+    </section>
+  );
+}
+
+/**
+ * Un paso del acordeón. El orden de composición es fijo y lo impone acá.
+ *
+ * `onHecho` es opcional: sin él no se dibuja la casilla de «Ya lo hice». La
+ * inscripción es un trámite que se hace de a ratos durante días y marcar el
+ * avance sirve; entrar a la plataforma y rendir pasan de una sentada, y una
+ * casilla ahí sería una promesa de que algo se guarda cuando no hay nada que
+ * guardar.
+ */
 function Paso({
   paso,
   total,
-  hecho,
+  prefijo,
+  hecho = false,
   abierto,
   onAbrir,
   onHecho,
 }: {
   paso: PasoGuia;
   total: number;
-  hecho: boolean;
+  prefijo: string;
+  hecho?: boolean;
   abierto: boolean;
   onAbrir: () => void;
-  onHecho: () => void;
+  onHecho?: () => void;
 }) {
-  const idCuerpo = `paso-${paso.n}-cuerpo`;
+  // El prefijo es obligatorio porque hay tres acordeones en la misma página y
+  // los tres numeran desde 1: sin él habría tres elementos con id "paso-1", el
+  // `aria-controls` apuntaría al cuerpo equivocado y el ancla llevaría siempre
+  // al primero.
+  const idPaso = `${prefijo}-paso-${paso.n}`;
+  const idCuerpo = `${idPaso}-cuerpo`;
 
   return (
-    <li className="guia-paso" data-hecho={hecho ? "si" : "no"} id={`paso-${paso.n}`}>
+    <li className="guia-paso" data-hecho={hecho ? "si" : "no"} id={idPaso}>
       <h3 className="guia-paso-cabeza">
         <button
           type="button"
@@ -171,7 +285,10 @@ function Paso({
           aria-expanded={abierto}
           aria-controls={idCuerpo}
         >
-          <span className="guia-paso-n mono">{t.deCuantos(paso.n, total)}</span>
+          {/* Sin `.mono`: el rótulo va en la letra de la página. De esa clase
+              sólo quedaba en pie la familia; el cuerpo, el tracking y las
+              mayúsculas ya los pisa `.guia-paso-n`. */}
+          <span className="guia-paso-n">{t.deCuantos(paso.n, total)}</span>
           <span className="guia-paso-titulo">{paso.titulo}</span>
           <span className="guia-paso-resumen">{paso.resumen}</span>
           <span className="guia-paso-flecha" aria-hidden="true">
@@ -181,14 +298,26 @@ function Paso({
       </h3>
 
       <div className="guia-paso-cuerpo" id={idCuerpo} hidden={!abierto}>
-        {/* explicación → captura → video → advertencia, siempre en este orden */}
-        {paso.cuerpo.map((c) => (
-          <p key={c}>{c}</p>
+        {/* explicación → captura → video → advertencia, siempre en este orden.
+            Una captura puede pedir un lugar dentro de la explicación con
+            `trasParrafo`; el resto sigue cayendo junto, después del último
+            párrafo. */}
+        {paso.cuerpo.map((c, i) => (
+          <Fragment key={c}>
+            <p>{c}</p>
+            {paso.capturas
+              .filter((cap) => cap.trasParrafo === i + 1)
+              .map((cap) => (
+                <Captura key={cap.id} {...cap} />
+              ))}
+          </Fragment>
         ))}
 
-        {paso.capturas.map((c) => (
-          <Captura key={c.id} {...c} />
-        ))}
+        {paso.capturas
+          .filter((c) => c.trasParrafo === undefined || c.trasParrafo > paso.cuerpo.length)
+          .map((c) => (
+            <Captura key={c.id} {...c} />
+          ))}
 
         {paso.videos.map((v) => (
           <VideoSlot key={v.id} {...v} />
@@ -209,10 +338,12 @@ function Paso({
           </a>
         ) : null}
 
-        <label className="guia-hecho">
-          <input type="checkbox" checked={hecho} onChange={onHecho} />
-          <span>{hecho ? t.desmarcar : t.hecho}</span>
-        </label>
+        {onHecho ? (
+          <label className="guia-hecho">
+            <input type="checkbox" checked={hecho} onChange={onHecho} />
+            <span>{hecho ? t.desmarcar : t.hecho}</span>
+          </label>
+        ) : null}
       </div>
     </li>
   );
