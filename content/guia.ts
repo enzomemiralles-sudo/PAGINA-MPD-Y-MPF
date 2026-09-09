@@ -16,17 +16,28 @@ export const guia = {
   sinGuia: "Todavía no hay guía cargada",
 
   // ---- las nueve secciones ----
+  // Ojo: cuatro de estos títulos —antes, despues, examen y resultados— hoy no
+  // los lee nadie. Esas secciones salen de `SeccionGuia`, que muestra el
+  // `titulo` que trae cada material, así que los de verdad están escritos en
+  // `guia-mpd.ts` y `guia-mpf.ts`. Se mantienen sincronizados a mano para que
+  // el día que alguien los enchufe no arranquen diciendo otra cosa.
   secciones: {
     estado: "Estado de inscripción",
     antes: "Antes de empezar",
     saber: "Lo que conviene saber",
-    pasos: "Paso a paso",
-    despues: "Después de inscribirte",
-    examen: "El día del examen",
+    pasos: "Etapa 1: Inscripción",
+    despues: "Etapa 2: Ingreso a plataforma de examen",
+    examen: "Etapa 3: Examen",
     resultados: "Resultados y orden de mérito",
     preguntas: "Preguntas frecuentes",
     checklist: "Checklist",
   },
+
+  // ---- el botón de la etapa 3 ----
+  // Lleva al simulador desde la sección del examen: es el momento en que
+  // alguien termina de leer cómo se rinde y lo único que puede hacer al
+  // respecto es practicar.
+  practicar: "Practicá con el simulador",
 
   // ---- el acordeón y el progreso ----
   paso: (n: number) => `Paso ${n}`,
@@ -46,7 +57,8 @@ export const guia = {
   checklistPendiente: "Pendiente",
 
   // ---- advertencias ----
-  ojo: "Ojo",
+  // Sólo las de peso medio llevan rótulo. Las de peso alto decían «OJO» y se
+  // fue: el marco rojo y el signo ya avisan.
   tenerEnCuenta: "Tené en cuenta",
 
   // ---- huecos de material ----

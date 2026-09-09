@@ -1,6 +1,7 @@
 import { MPD as fuente } from "@/content/inscripcion/mpd";
 import type { Aviso, Paso as PasoViejo, Seccion as SeccionVieja } from "@/lib/inscripcion/tipos";
 import type { Advertencia, Guia, PasoGuia, SeccionTexto } from "@/lib/guia/tipos";
+import { INTRO_INGRESO, PASOS_EXAMEN, PASOS_INGRESO } from "@/content/guia-mpd-examen";
 
 /**
  * LA GUÍA DE INSCRIPCIÓN DEL MPD
@@ -43,7 +44,7 @@ function comoAdvertencia(a: Aviso): Advertencia {
  */
 const CAPTURAS_MPD: Record<
   number,
-  { id: string; descripcion: string; src: string; url?: string }[]
+  { id: string; descripcion: string; src: string; url?: string; trasParrafo?: number }[]
 > = {
   1: [
     {
@@ -102,6 +103,18 @@ const CAPTURAS_MPD: Record<
       id: "mpd-paso3-guardado",
       descripcion: "El aviso de que el currículum se guardó correctamente",
       src: "/capturas/mpd-cv-guardado.png",
+    },
+  ],
+  4: [
+    {
+      id: "mpd-paso4-vigentes",
+      descripcion:
+        "El bloque «Inscripciones vigentes» del Menú Principal, con los agrupamientos: Concursos, Exámenes Técnico Jurídico, Exámenes Técnico Administrativo, Exámenes Servicios Auxiliares y Otros",
+      src: "/capturas/mpd-inscripciones-vigentes.png",
+      // Después del tercer párrafo y no al final del paso: el cuarto es el
+      // consejo de Nexo, que ya no habla del menú, y la captura ahí abajo
+      // quedaba huérfana de lo que ilustra.
+      trasParrafo: 3,
     },
   ],
 };
@@ -206,9 +219,17 @@ export const MPDGuia: Guia = {
   // ④ Los cuatro pasos, uno a uno.
   pasos: fuente.pasos.map(comoPaso),
 
-  // ⑤ a ⑦
-  despues: comoSeccion("Después de inscribirte", ["usuario-para-rendir"]),
-  examen: comoSeccion("El día del examen", ["el-dia-del-examen", "que-se-estudia"]),
+  // ⑤ y ⑥ como pasos, de la parte 2 de la guía de Nexo. Ese PDF es la fuente
+  // única de las dos etapas: reemplaza a lo que el material viejo decía en
+  // «usuario-para-rendir», «el-dia-del-examen» y «que-se-estudia», que
+  // quedaba a medio camino y sin capturas.
+  pasosIngreso: PASOS_INGRESO,
+  pasosExamen: PASOS_EXAMEN,
+  introIngreso: INTRO_INGRESO,
+  despues: null,
+  examen: null,
+
+  // ⑦
   resultados: comoSeccion("Resultados y orden de mérito", ["resultados"]),
 
   // ⑧ Los errores frecuentes del material viejo ya están escritos como

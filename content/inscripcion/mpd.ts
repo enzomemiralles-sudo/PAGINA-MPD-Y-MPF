@@ -29,16 +29,12 @@ export const MPD: Guia = {
       {
         titulo: "Una PC con Windows",
         texto:
-          "No es una recomendación: hay que instalar un programa. No funciona en Mac, Linux, celular ni tablet. Si no tenés, conseguí una prestada antes.",
+          "Es un requisito obligatorio para poder instalar la aplicación Concursos. No funciona ni en Linux ni en Mac.",
       },
       {
-        titulo: "Tu CUIL, sin guiones ni puntos",
+        titulo: "Tu CUIL o CUIT, sin guiones ni puntos",
         texto:
-          "Para inscribirte se usa el CUIL. Para rendir, después, se usa el DNI. Son dos sistemas distintos y es donde más gente se confunde.",
-      },
-      {
-        titulo: "Un mail que revises de verdad",
-        texto: "Incluida la carpeta de spam: ahí caen el enlace de validación y el usuario para rendir.",
+          "Para la inscripción en la aplicación se utiliza CUIL o CUIT, luego para rendir se utiliza DNI.",
       },
       {
         titulo: "Secundario completo",
@@ -82,10 +78,10 @@ export const MPD: Guia = {
     {
       n: 2,
       titulo: "Registrarte",
-      resumen: "Creás tu usuario con el CUIL y validás el correo.",
+      resumen: "Creás tu usuario con el CUIL o CUIT y validás el correo.",
       donde: "La aplicación CONCURSOS",
       cuerpo: [
-        "Abrí la aplicación y elegí la opción de registrarte por primera vez. Te pide el CUIL sin guiones ni puntos, tu correo electrónico y una contraseña.",
+        "Abrí la aplicación y elegí la opción de registrarte por primera vez. Te pide el CUIL o CUIT sin guiones ni puntos, tu correo electrónico y una contraseña.",
         "La contraseña necesita ocho caracteres como mínimo, con al menos un número, una minúscula, una mayúscula y un carácter no alfanumérico (por ejemplo $).",
         "Te llega un mail con un enlace. Abrilo desde la misma PC donde instalaste la aplicación. Ahí completás apellidos, nombres, fecha de nacimiento, género y nacionalidad.",
       ],
@@ -93,9 +89,9 @@ export const MPD: Guia = {
       avisos: [
         {
           tono: "trampa",
-          titulo: "CUIL para inscribirte, DNI para rendir",
+          titulo: "CUIL o CUIT para inscribirte, DNI para rendir",
           texto:
-            "Son dos sistemas distintos, con dos usuarios distintos. Acá va el CUIL. El día que rendís, en la otra plataforma, el usuario es tu número de DNI. Es el punto donde más gente se confunde.",
+            "Son dos sistemas distintos, con dos usuarios distintos. Acá va el CUIL o el CUIT. El día que rendís, en la otra plataforma, el usuario es tu número de DNI. Es el punto donde más gente se confunde.",
         },
         {
           tono: "ojo",
@@ -152,7 +148,7 @@ export const MPD: Guia = {
         },
       ],
       consejo:
-        "Tomate tu tiempo con el CV. Lo que no conviene es dejarlo para cuando se abra la inscripción, porque los cinco días hábiles se te van entre juntar los datos, acordarte de fechas y descubrir un campo que no entendés. Sobre los antecedentes: cargá todo lo que tengas, aunque te parezca poco. Siendo estudiante eso suele ser ayudantías de cátedra o de investigación, voluntariados, pasantías y prácticas profesionales, cursos y seminarios con certificado, congresos o jornadas, publicaciones si las hay, y cualquier experiencia laboral previa aunque no sea del palo jurídico. Nadie se anota en un examen de ingreso al Estado con la carrera terminada y quince años de experiencia: no tener antecedentes no te descalifica. Cargalos igual, con los datos precisos —institución, período, rol—, porque es información que declarás bajo juramento y porque te queda cargada para la próxima vez.",
+        "Tomate tu tiempo con el CV. Lo que no conviene es dejarlo para cuando se abra la inscripción, porque los cinco días hábiles se te van entre juntar los datos, acordarte de fechas y descubrir un campo que no entendés. Sobre los antecedentes: cargá todo lo que tengas, aunque te parezca poco. Siendo estudiante eso suele ser ayudantías de cátedra o de investigación, voluntariados, pasantías y prácticas profesionales, cursos y seminarios con certificado, congresos o jornadas, publicaciones si las hay, y cualquier experiencia laboral previa aunque no sea del ámbito jurídico. No tener antecedentes no te descalifica. Cargalos igual, con los datos precisos —institución, período, rol—, porque es información que declarás bajo juramento y porque te queda cargada para la próxima vez.",
       esquema: { clave: "cv", pie: "Las nueve páginas del formulario, y en cuál está cada cosa." },
       capturas: [],
     },
@@ -176,12 +172,6 @@ export const MPD: Guia = {
         },
         {
           tono: "trampa",
-          titulo: "No te llega ningún comprobante",
-          texto:
-            "No se emite número de inscripción ni se manda un mail. La única forma de verificar que quedaste inscripto es entrar a «Mis Inscripciones» dentro de la aplicación.",
-        },
-        {
-          tono: "trampa",
           titulo: "El MPD no manda mails de notificación",
           texto:
             "Ni listado de inscriptos, ni fecha y hora de examen, ni resultados. Todo se publica en la ficha del examen en el portal, y la carga de ir a mirar es tuya.",
@@ -194,7 +184,7 @@ export const MPD: Guia = {
         },
       ],
       consejo:
-        "Anotate el primer o el segundo día, no el último. Es el único margen de error que da el sistema: si te equivocaste en algo del CV, la única forma de arreglarlo es corregirlo y volver a inscribirte, y eso sólo se puede mientras la inscripción siga abierta. El que se anota el viernes a última hora no tiene esa segunda chance. Y una vez inscripto, tené presente que no te va a llegar ningún mail: lo más simple es guardarte la ficha del examen en favoritos y ponerte un recordatorio semanal en el celular desde que cierra la inscripción hasta que rendís.",
+        "Recomendamos anotarse en los primeros días para, si ocurre algún error, poder remediarlo, como por ejemplo corregir el CV.",
       esquema: { clave: "inscribirse", pie: "El camino de menús y la única forma de confirmar que quedaste." },
       capturas: [],
     },
@@ -211,14 +201,7 @@ export const MPD: Guia = {
         "Entrá antes del día del examen y cambiá la contraseña: mismos requisitos que antes, ocho caracteres, número, minúscula, mayúscula y símbolo. Si el mail no llega o no podés entrar, usá «¿Olvidó su nombre de usuario o contraseña?». El enlace de recuperación vale 240 minutos.",
       ],
       puntos: null,
-      avisos: [
-        {
-          tono: "trampa",
-          titulo: "Si el problema aparece el día del examen, ya es tarde",
-          texto:
-            "La Secretaría atiende de lunes a viernes de 9 a 15 h. La ventana de 72 a 48 horas existe justamente para que tengas tiempo de resolver un problema. Entrá, cambiá la clave, verificá que ves el menú principal y cerrá sesión.",
-        },
-      ],
+      avisos: [],
       consejo: null,
     },
     {
@@ -328,7 +311,7 @@ export const MPD: Guia = {
         items: [
           "Conseguir acceso a una PC con Windows",
           "Instalar la aplicación CONCURSOS",
-          "Registrarte con tu CUIL",
+          "Registrarte con tu CUIL o CUIT",
           "Cargar las nueve páginas del CV",
           "Verificar que cargaste «Estudiante regular de la carrera» en Título Principal",
           "Empezar a estudiar los tres textos",
