@@ -20,7 +20,6 @@ export const encabezado = {
     "Está armado con las consultas reales de quienes ya rindieron y con la normativa de cada organismo. Cada respuesta te dice de dónde sale, para que puedas verificarla por tu cuenta. Y cuando no hay con qué respaldarla, te lo decimos en lugar de inventar.",
   // A-13. Los tres verbos son el posicionamiento, no un eslogan decorativo:
   // describen exactamente lo que hace la pantalla, en orden.
-  posicionamiento: "Tu asistente para el Ingreso Democrático",
   pasos: ["Preguntá.", "Encontrá la respuesta.", "Verificá la fuente."],
 } as const;
 
@@ -60,6 +59,10 @@ export const categorias = {
 
 export const caja = {
   ancla: "preguntar",
+  /* El encabezado del bloque de preguntar: elegir concurso, los atajos y
+     la caja. Los otros tres bloques de la pantalla ya tenían el suyo y
+     éste no, así que se leía como tres cosas sueltas. */
+  titulo: "¿Qué querés preguntar?",
   // A-04, textual.
   ayuda: "¿No sabés cómo formular tu pregunta? No hay problema. Escribí tu duda con tus propias palabras.",
   rotulo: "Tu pregunta",
@@ -163,7 +166,7 @@ export const siguiente = {
  */
 export const frecuentes = {
   ancla: "frecuentes",
-  titulo: "Preguntas que ya respondimos",
+  titulo: "Preguntas frecuentes",
   bajada:
     "Buscá acá primero. Están ordenadas por cuánta gente las hizo, y cada una abre con su respuesta y su nivel de respaldo.",
   buscador: {
@@ -201,8 +204,6 @@ export const secciones = {
   normativa: {
     ancla: "normativa",
     titulo: "Normativa y fuentes oficiales",
-    bajada:
-      "Los documentos con los que se arman las respuestas verdes. Están acá para que puedas leerlos vos.",
   },
 } as const;
 

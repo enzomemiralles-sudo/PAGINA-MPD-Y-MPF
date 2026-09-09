@@ -30,6 +30,9 @@ export function Filtro() {
     if (!raiz) return;
 
     const buscadas = normalizar(filtro).split(" ").filter(Boolean);
+    // Con el buscador vacío y sin categoría elegida, el catálogo está en
+    // reposo: los grupos vuelven a estar plegados.
+    const buscando = buscadas.length > 0 || categoria !== null;
     let visibles = 0;
 
     for (const org of raiz.querySelectorAll<HTMLElement>(".asis-cat-org")) {
@@ -48,6 +51,10 @@ export function Filtro() {
       for (const grupo of org.querySelectorAll<HTMLElement>(".asis-cat-grupo")) {
         const quedaAlguna = grupo.querySelector<HTMLElement>(".asis-ficha:not([hidden])");
         grupo.hidden = quedaAlguna === null;
+        // Los grupos están plegados, así que esconder las fichas que no
+        // entran no alcanzaría: nadie vería el resultado sin abrir catorce
+        // categorías a mano. Mientras se busca, el que tiene algo se abre.
+        if (grupo instanceof HTMLDetailsElement) grupo.open = buscando && !grupo.hidden;
       }
       org.dataset.vacio = String(org.querySelector(".asis-cat-grupo:not([hidden])") === null);
     }
@@ -55,7 +62,7 @@ export function Filtro() {
     const vacio = raiz.querySelector<HTMLElement>(".asis-cat-vacio");
     if (vacio) vacio.hidden = visibles > 0;
 
-    setCuantas(buscadas.length > 0 || categoria !== null ? visibles : null);
+    setCuantas(buscando ? visibles : null);
   }, [filtro, categoria, ambito]);
 
   const limpiar = () => {

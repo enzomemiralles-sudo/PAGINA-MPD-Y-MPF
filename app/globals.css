@@ -1248,8 +1248,12 @@ body { transition: background var(--t-sec) var(--suave), color var(--t-sec) var(
 .asis { display: flex; flex-direction: column; gap: 2.75rem; }
 @media (min-width: 768px) { .asis { gap: 3.5rem; } }
 
+/* Las tres paradas del clamp bajan un 17%. Sin las cajas alrededor los
+   títulos pesan más de lo que pesaban —el recuadro los contenía— y a 1,8rem
+   competían con el <h1> del encabezado, que es el único título de la
+   pantalla. */
 .asis-titulo {
-  font-size: clamp(1.3rem, 4vw, 1.8rem); line-height: 1.15; letter-spacing: -0.02em;
+  font-size: clamp(1.08rem, 3.3vw, 1.5rem); line-height: 1.15; letter-spacing: -0.02em;
   font-variation-settings: "wdth" var(--ancho-h), "wght" 700;
   font-style: var(--ital-estilo);
 }
@@ -1262,10 +1266,6 @@ body { transition: background var(--t-sec) var(--suave), color var(--t-sec) var(
 
 /* ---------- encabezado (A-01, A-13) ---------- */
 .asis-encabezado { display: flex; flex-direction: column; align-items: flex-start; gap: 0.7rem; }
-.asis-posicionamiento {
-  color: var(--acento-texto); font-family: var(--fuente-mono), monospace;
-  font-size: 0.68rem; letter-spacing: 0.11em; text-transform: uppercase;
-}
 .asis-bajada-fuerte {
   font-size: clamp(1.05rem, 3.4vw, 1.3rem); color: var(--texto); max-width: 46ch;
   font-variation-settings: "wdth" 100, "wght" 600;
@@ -1322,7 +1322,12 @@ body { transition: background var(--t-sec) var(--suave), color var(--t-sec) var(
 .asis-opcion-nombre { color: var(--texto-tenue); font-size: 0.78rem; line-height: 1.4; }
 
 /* ---------- accesos rápidos (A-03) ---------- */
-.asis-chips { display: flex; flex-wrap: wrap; gap: 0.5rem; margin-top: -1.5rem; }
+/* El `margin-top: -1.5rem` que tenía era de cuando los chips colgaban
+   directamente del encabezado y había que subirlos a mano. Ahora viven dentro
+   de `.asis-preguntar`, que es un flex con `gap: 1.1rem`: ese margen negativo
+   se comía el gap entero y 0,4rem más, así que la fila trepaba por encima del
+   selector de organismo. El gap del contenedor ya los separa solo. */
+.asis-chips { display: flex; flex-wrap: wrap; gap: 0.5rem; }
 .asis-chip {
   padding: 0.5rem 0.85rem; border-radius: 999px; font-size: 0.85rem;
   color: var(--texto); text-decoration: none;
@@ -1483,6 +1488,19 @@ body { transition: background var(--t-sec) var(--suave), color var(--t-sec) var(
 /* ---------- catálogo y buscador (A-10) ---------- */
 .asis-catalogo { display: flex; flex-direction: column; gap: 0.7rem; scroll-margin-top: 5rem; }
 .asis-filtro { display: flex; flex-direction: column; gap: 0.4rem; margin-top: 0.6rem; }
+/* «Buscar entre las preguntas respondidas» sale de `.asis-rotulo`, que es
+   monoespaciada. Es el único rótulo de esa clase que queda a la vista junto a
+   los títulos de categoría, y con éstos ya pasados a la letra de la página
+   quedaba solo con la letra vieja.
+
+   Va colgado de `.asis-filtro` a propósito: `.asis-rotulo` la usan también
+   los «Fuente:» y «Jurisdicción:» de adentro de cada ficha, y ahí la
+   monoespaciada está bien —son etiquetas de dato, no títulos—. */
+.asis-filtro .asis-rotulo {
+  font-family: inherit; font-size: 0.76rem; letter-spacing: 0.05em;
+  font-variation-settings: "wdth" 100, "wght" 600;
+  font-weight: 600;
+}
 .asis-filtro-linea { display: flex; gap: 0.5rem; align-items: stretch; }
 .asis-filtro input {
   flex: 1; padding: 0.75rem 0.9rem; border-radius: 10px; border: none;
@@ -1511,15 +1529,90 @@ body { transition: background var(--t-sec) var(--suave), color var(--t-sec) var(
 .asis[data-org="ambos"] .asis-cat-org-rotulo { display: inline-block; }
 .asis-cat-org[data-vacio="true"] { display: none; }
 
-.asis-cat-org { display: flex; flex-direction: column; gap: 1.4rem; }
-.asis-cat-grupo { display: flex; flex-direction: column; gap: 0.35rem; scroll-margin-top: 5rem; }
+/* Los grupos ya no son bloques altos separados por aire: cerrados son
+   renglones, y 1,4rem entre uno y otro los desarmaba como lista. Baja a
+   0,5rem. */
+.asis-cat-org { display: flex; flex-direction: column; gap: 0.5rem; }
+
+/* ---------- Las categorías, plegadas ---------- */
+/* El catálogo trae las 104 preguntas de las 14 categorías, y las arma enteras
+   para los dos organismos. Abierto de entrada, eso es una tira de varias
+   pantallas: el título de la sección siguiente queda a un scroll largo y el
+   índice de temas —que es lo que uno mira primero— no se ve nunca junto. Ese
+   era el problema, no el tamaño de la letra.
+
+   Cada categoría pasa a ser un <details> cerrado: se ven catorce renglones y
+   se abre el que interesa. Las fichas ya eran <details>, así que no se suma
+   un mecanismo nuevo, es el mismo gesto una vez más arriba. */
+.asis-cat-grupo { scroll-margin-top: 5rem; }
 /* Una clase con display gana contra el [hidden] del navegador. Sin esto, al
    filtrar quedaban los títulos de categoría sin ninguna pregunta debajo. */
 .asis-cat-grupo[hidden], .asis-ficha[hidden] { display: none; }
+
+/* El renglón que se toca. `list-style: none` más el pseudo de WebKit para
+   sacar el triangulito del sistema, que no sabe girar: es el mismo par de
+   reglas que ya usa `.asis-ficha > summary`. */
+.asis-cat-resumen {
+  display: flex; align-items: center; gap: 0.55rem; cursor: pointer;
+  padding: 0.5rem 0.3rem; list-style: none; border-radius: 9px;
+}
+.asis-cat-resumen::-webkit-details-marker { display: none; }
+.asis-cat-resumen:hover { background: color-mix(in srgb, var(--texto) 4%, transparent); }
+.asis-cat-resumen:focus-visible { outline: 2px solid var(--acento-texto); outline-offset: -2px; }
+
+/* La flecha, dibujada con bordes para no depender de una fuente de íconos.
+   Va en `currentColor` y hereda el gris del rótulo, así no hay que repetirla
+   por piel. Gira 90° al abrir. */
+.asis-cat-flecha {
+  flex: none; width: 0; height: 0; color: var(--texto-debil);
+  border-left: 5px solid currentColor;
+  border-top: 4px solid transparent; border-bottom: 4px solid transparent;
+  transition: transform 0.15s ease;
+}
+.asis-cat-grupo[open] .asis-cat-flecha { transform: rotate(90deg); }
+
+/* El <h3> ahora vive adentro del <summary>: el margen de abajo que tenía
+   cuando era el título suelto del bloque acá descolocaría la fila entera. */
+/* La letra es la de la página, no la monoespaciada.
+   `font-family: inherit` y no el nombre de una familia: así cae la que puso
+   el <body>, que es Outfit en Nexo y Archivo en Nueva Abogacía. Escribir
+   Outfit acá obligaría a repetir la regla por piel y dejaría a NA con una
+   letra que no es la suya.
+
+   Con el cambio de familia hay que reacomodar dos medidas que estaban
+   calculadas para la mono: el cuerpo sube de 0,68 a 0,8rem —una mono ocupa
+   más por letra, así que al mismo tamaño nominal la proporcional se ve más
+   chica— y el tracking baja de 0,11 a 0,05em, que era la separación que
+   necesitan las mayúsculas de una mono angosta y acá abriría la palabra de
+   más.
+
+   El peso lo pide el rol: cerrado, este rótulo no es el título de un bloque
+   sino el bloque entero. Va por `font-variation-settings` como el resto del
+   sistema —las dos familias son variables— con `font-weight` de respaldo por
+   si la variable no llegó a cargar. */
 .asis-cat-cat {
-  font-family: var(--fuente-mono), monospace; font-size: 0.68rem;
-  letter-spacing: 0.11em; text-transform: uppercase; color: var(--texto-debil);
-  margin-bottom: 0.25rem;
+  font-family: inherit; font-size: 0.8rem;
+  letter-spacing: 0.05em; text-transform: uppercase; color: var(--texto-debil);
+  margin-bottom: 0;
+  font-variation-settings: "wdth" 100, "wght" 700;
+  font-weight: 700;
+}
+.asis-cat-grupo[open] .asis-cat-cat { color: var(--texto-tenue); }
+
+/* Cuántas preguntas hay adentro. Cerrado es lo único que se puede saber del
+   grupo, y es justo el dato que decide si vale la pena abrirlo.
+   Acompaña al rótulo en la misma familia: dos letras distintas en un renglón
+   de dos elementos se leen como dos cosas sin relación. */
+.asis-cat-cuenta {
+  flex: none; font-family: inherit; font-size: 0.72rem;
+  color: var(--texto-debil); padding: 0.1rem 0.45rem; border-radius: 999px;
+  box-shadow: inset 0 0 0 1px var(--borde);
+}
+
+/* El aire entre fichas, que antes ponía el grupo cuando era flex. */
+.asis-cat-lista {
+  display: flex; flex-direction: column; gap: 0.35rem;
+  padding: 0.35rem 0 0.7rem;
 }
 .asis-cat-vacio { color: var(--texto-tenue); line-height: 1.6; max-width: 60ch; padding: 1rem 0; }
 
@@ -1652,13 +1745,30 @@ body { transition: background var(--t-sec) var(--suave), color var(--t-sec) var(
 .asis-muestra-sellos li { font-size: 0.86rem; line-height: 1.5; color: var(--papel-debil); }
 
 /* ---------- las más preguntadas (A-10) ---------- */
+/* Plegado, igual que las categorías: cerrado es un renglón, abierto es el
+   bloque de siempre.
+   Deja de ser flex —adentro de un <details> el contenedor tiene que dejar al
+   <summary> hacer de fila propia— y con eso se va el `gap` que separaba
+   título, ayuda y lista: el título se mudó adentro del summary y los otros
+   dos ponen su propio margen. El relleno baja de 1rem a 0,5rem porque ahora
+   la fila trae el suyo. */
 .asis-top {
-  display: flex; flex-direction: column; gap: 0.3rem;
-  padding: 1rem 1.1rem; border-radius: 14px; margin-top: 0.9rem;
+  display: block;
+  padding: 0.5rem 0.7rem; border-radius: 14px; margin-top: 0.9rem;
   background: color-mix(in srgb, var(--texto) 3%, transparent);
 }
+/* El renglón reusa `.asis-cat-resumen`: la flecha, el marcador del sistema
+   escondido, el hover y el foco ya están resueltos ahí. Acá sólo se corrige
+   lo que cambia —el título es de cuerpo 1rem y no un rótulo en versalitas,
+   así que la fila necesita algo más de aire—. */
+.asis-top-resumen { padding: 0.35rem 0.25rem; }
 .asis-top-titulo { font-size: 1rem; font-variation-settings: "wdth" 100, "wght" 650; }
-.asis-top-ayuda { color: var(--texto-tenue); font-size: 0.85rem; line-height: 1.5; }
+.asis-top-ayuda {
+  color: var(--texto-tenue); font-size: 0.85rem; line-height: 1.5;
+  /* Cerrado esto no existe; abierto tiene que despegarse del renglón que lo
+     abrió, y alinearse con el texto del summary y no con el borde. */
+  margin-top: 0.5rem; padding: 0 0.25rem;
+}
 .asis-top-lista {
   list-style: none; margin: 0.7rem 0 0; padding: 0;
   display: flex; flex-direction: column; gap: 0.15rem;
@@ -2685,9 +2795,24 @@ body { transition: background var(--t-sec) var(--suave), color var(--t-sec) var(
 /* ============================================================
    INSUMOS DE ESTUDIO
    ============================================================ */
+/* «Elegí el organismo» va en la letra de la página, no en la monoespaciada.
+   `font-family: inherit` y no una familia escrita a mano: así cae la que puso
+   el <body>, que es Outfit en Nexo y Archivo en Nueva Abogacía, sin repetir
+   la regla por piel.
+   El elemento ya no lleva la clase `.mono` —se la saqué en el TSX, porque no
+   aportaba nada que esta regla no pisara igual—, así que la familia no hay
+   que disputársela a nadie.
+   Las dos medidas que quedaban calibradas para la mono se reacomodan: el
+   cuerpo sube de 0,66 a 0,76rem (una mono ocupa más por letra, así que al
+   mismo tamaño nominal la proporcional se ve más chica) y el tracking baja de
+   0,15 a 0,05em, que era la apertura que necesitan las versalitas de una mono
+   angosta. Es el mismo tratamiento que los rótulos del asistente. */
 .insumo-elegi {
   display: block; margin-top: 2.25rem; margin-bottom: 1rem;
-  font-size: 0.66rem; letter-spacing: 0.15em; text-transform: uppercase;
+  font-family: inherit;
+  font-size: 0.76rem; letter-spacing: 0.05em; text-transform: uppercase;
+  font-variation-settings: "wdth" 100, "wght" 600;
+  font-weight: 600;
   color: var(--texto-tenue);
 }
 .insumo-puertas { display: grid; gap: 1rem; }
@@ -2762,11 +2887,29 @@ body { transition: background var(--t-sec) var(--suave), color var(--t-sec) var(
    tres duraciones, y las transiciones entre pasos usan la media.
    ============================================================ */
 .guia-bajada { color: var(--texto-tenue); max-width: 58ch; line-height: 1.6; margin-top: 0.6rem; }
+/* El encabezado de la guía de un organismo. Va sin tarjeta, sobre el verde:
+   no es una sección más sino el nombre de todo lo que viene abajo. La letra
+   sale blanca sola, porque sin la clase de la tarjeta manda el `--texto` de
+   `.instructivo-mpd-claro`.
+   El margen de abajo lo separa de la primera tarjeta; la de arriba ya trae
+   su propio `margin-top`, así que acá no hace falta. */
+.guia-encabezado { margin-bottom: 2rem; }
 
 /* ---------- pantalla 0 ---------- */
+/* «Elegí el organismo» en la letra de la página, igual que el de insumos:
+   son el mismo rótulo en dos pantallas gemelas y tienen que leerse igual.
+   `font-family: inherit` para que caiga la del <body> —Outfit en Nexo,
+   Archivo en Nueva Abogacía— sin escribir la regla por piel. La clase `.mono`
+   se la saqué en el TSX; no aportaba nada que esta regla no pisara.
+   Cuerpo de 0,66 a 0,76rem y tracking de 0,15 a 0,05em: las dos medidas
+   estaban calibradas para una monoespaciada angosta en versalitas. */
 .guia-elegi {
   display: block; margin-top: 2.25rem; margin-bottom: 1rem;
-  font-size: 0.66rem; letter-spacing: 0.15em; text-transform: uppercase; color: var(--texto-tenue);
+  font-family: inherit;
+  font-size: 0.76rem; letter-spacing: 0.05em; text-transform: uppercase;
+  font-variation-settings: "wdth" 100, "wght" 600;
+  font-weight: 600;
+  color: var(--texto-tenue);
 }
 .guia-puertas { display: grid; gap: 1rem; }
 @media (min-width: 780px) { .guia-puertas { grid-template-columns: 1fr 1fr; } }
@@ -2821,13 +2964,86 @@ body { transition: background var(--t-sec) var(--suave), color var(--t-sec) var(
 }
 
 /* ---------- las secciones ---------- */
+/* Los 3rem son de cuando todas vivían adentro de una sola tarjeta y el aire
+   era lo único que las separaba. Ahora cada una es su propia tarjeta blanca
+   y la separación la da el borde; el margen que corresponde es el de la
+   tarjeta. `scroll-margin-top` sube a 5rem: los enlaces internos aterrizaban
+   con el título pegado al borde de arriba de la ventana. */
 .guia-seccion { margin-top: 3rem; scroll-margin-top: 1.5rem; }
+.guia-seccion.instructivo-mpd-tarjeta { margin-top: 1.5rem; scroll-margin-top: 5rem; }
 .guia-seccion-titulo {
   font-size: clamp(1.15rem, 3.4vw, 1.45rem); line-height: 1.2;
   font-variation-settings: "wdth" 100, "wght" 680; color: var(--texto);
   padding-bottom: 0.7rem; border-bottom: 1px solid var(--borde-fuerte); margin-bottom: 1.25rem;
 }
+/* ---------- una sección entera, plegable ----------
+   El título hace de solapa y la sección se abre al tocarlo. Hoy la usa «Lo
+   que conviene saber».
+   La raya de abajo se muda del <h2> al <summary>. Adentro de una fila de
+   flex el <h2> mide lo que mide su texto, así que la raya le habría quedado
+   del ancho del título en vez de cruzar la tarjeta, y eso se lee como un
+   subrayado y no como el corte entre el título y su contenido.
+   El margen de 1,25rem del título también se va: cerrada no hay nada debajo
+   que separar, y abierta esa separación la pone la lista con su propio
+   margen. */
+.guia-seccion-resumen {
+  display: flex; align-items: center; gap: 0.7rem; cursor: pointer;
+  list-style: none;
+  padding-bottom: 0.7rem;
+  border-bottom: 1px solid var(--borde-fuerte);
+}
+.guia-seccion-resumen::-webkit-details-marker { display: none; }
+.guia-seccion-resumen:focus-visible { outline: 2px solid var(--acento-texto); outline-offset: 4px; }
+.guia-seccion-resumen .guia-seccion-titulo {
+  flex: 1;
+  padding-bottom: 0;
+  border-bottom: none;
+  margin-bottom: 0;
+}
+/* La flecha, dibujada con bordes para no depender de una fuente de íconos.
+   Más grande que la de las listas plegables porque acá abre una sección
+   entera, no un renglón. */
+.guia-seccion-flecha {
+  flex: none; width: 0; height: 0; color: var(--acento-texto);
+  border-left: 7px solid currentColor;
+  border-top: 5.5px solid transparent; border-bottom: 5.5px solid transparent;
+  transition: transform 0.15s ease;
+}
+.guia-seccion-plegable[open] .guia-seccion-flecha { transform: rotate(90deg); }
+
 .guia-seccion p { color: var(--texto-tenue); line-height: 1.7; max-width: 68ch; margin-bottom: 0.9rem; }
+/* La franja de estado, adentro de una sección de la guía, venía altísima y no
+   por su propio diseño: `.ins-estado` separa sus renglones con `gap: 0.3rem`,
+   pero la regla de arriba le sumaba a cada <p> 0,9rem de margen abajo. Cuatro
+   renglones × 1,2rem de separación real es el doble de lo que pedía la caja.
+   El margen se va y queda el `gap`, que es el que la franja diseñó para sí
+   misma. También se acorta el relleno: es un aviso de estado, no una sección.
+   Va colgado de `.guia-seccion` para no tocar la misma franja en la pantalla
+   de elegir organismo, donde la caja hace de cuerpo de la tarjeta y ese aire
+   sí le corresponde. */
+.guia-seccion .ins-estado { padding: 0.85rem 1rem; }
+.guia-seccion .ins-estado p { margin-bottom: 0; }
+
+/* ---------- ①, la franja sola sobre el verde ----------
+   Es la única sección sin tarjeta blanca: la franja de estado va directo
+   sobre el fondo. No hace falta pintarle nada, porque se pinta con los
+   tokens de la piel —el fondo es `--texto` al 3 %, o sea blanco al 3 % sobre
+   el verde, y ahí el mismo `color-mix` que sobre la tarjeta daba gris claro
+   da un verde apenas más claro—.
+   El margen sí: `.guia-seccion` trae 3rem, pensados para cuando todo vivía
+   en una caja sola, y acá la franja tiene que quedar pegada al encabezado
+   que la explica.
+   Los enlaces del <a> de adentro pasan a blanco. Iban en `--acento-texto`,
+   que en Nexo es el verde agua #7fd6a4: sobre la tarjeta blanca daba de
+   sobra, pero sobre este verde queda en 3,5:1, por debajo del 4,5:1 que pide
+   un texto de este cuerpo. En blanco da 5,9:1. El subrayado es lo que avisa
+   que son enlaces ahora que perdieron el color. */
+.guia-estado { margin-top: 0.6rem; }
+#estado .ins-estado a {
+  color: #ffffff;
+  text-decoration: underline;
+  text-underline-offset: 3px;
+}
 .guia-items { list-style: none; display: flex; flex-direction: column; gap: 0.6rem; margin: 0.4rem 0 1.2rem; padding: 0; }
 .guia-items li {
   color: var(--texto-tenue); line-height: 1.6; max-width: 68ch;
@@ -2836,6 +3052,72 @@ body { transition: background var(--t-sec) var(--suave), color var(--t-sec) var(
 .guia-items li::before {
   content: ""; position: absolute; left: 0; top: 0.62em;
   width: 5px; height: 5px; border-radius: 50%; background: var(--acento-texto);
+}
+
+/* ---------- la lista plegada ----------
+   La variante de `.guia-items` donde cada punto trae un párrafo detrás: se
+   ven los titulares y la explicación se abre al tocar. Hoy la usa «Antes de
+   empezar necesitás tener», del MPD.
+   Sin `gap`: cada renglón ya trae su propio relleno y su línea divisoria, y
+   sumarle aire los separaba en cuatro tarjetas sueltas en vez de una lista. */
+.guia-plegables { list-style: none; margin: 0.4rem 0 0; padding: 0; max-width: 68ch; }
+
+/* ---------- ②, la tarjeta apretada ----------
+   «Antes de empezar necesitás tener» es la única sección que, plegada, es
+   apenas un título y cuatro renglones. Con el relleno de tarjeta que usan
+   las demás —hasta 3rem por lado— el recuadro le quedaba enorme al lado de
+   lo poco que tiene adentro: era una caja grande con aire, no una sección
+   compacta.
+   El relleno baja a un tercio y el título deja de reservar el 1,25rem de
+   separación que necesita una sección larga.
+   Va por id y no por clase porque es la única de las cinco secciones de
+   texto que se pliega, y `SeccionGuia` es el mismo componente para todas:
+   una clase habría que pasársela por prop y sólo la usaría ésta. El id ya
+   existe, es el ancla de la sección. */
+#antes.instructivo-mpd-tarjeta { padding: clamp(1.1rem, 2.4vw, 1.5rem); }
+#antes .guia-seccion-titulo { margin-bottom: 0.7rem; padding-bottom: 0.55rem; }
+#antes .guia-plegables { margin-top: 0; }
+/* La línea entre punto y punto, menos en el último. `border-top` en vez de
+   `border-bottom` para que la primera no quede pegada a la bajada de arriba. */
+.guia-plegables li + li .guia-plegable { border-top: 1px solid var(--borde); }
+
+.guia-plegable-resumen {
+  display: flex; align-items: baseline; gap: 0.6rem; cursor: pointer;
+  padding: 0.7rem 0.3rem; list-style: none; border-radius: 8px;
+}
+/* El triangulito del sistema no sabe girar: se esconde y lo reemplaza el
+   nuestro. Chrome y Safari lo dibujan con este pseudo, no con `list-style`. */
+.guia-plegable-resumen::-webkit-details-marker { display: none; }
+.guia-plegable-resumen:hover { background: color-mix(in srgb, var(--texto) 4%, transparent); }
+.guia-plegable-resumen:focus-visible { outline: 2px solid var(--acento-texto); outline-offset: -2px; }
+
+/* La flecha, con bordes para no depender de una fuente de íconos. En
+   `currentColor` para heredar el color del renglón y no repetirla por piel. */
+.guia-plegable-flecha {
+  flex: none; width: 0; height: 0; color: var(--acento-texto);
+  border-left: 5px solid currentColor;
+  border-top: 4px solid transparent; border-bottom: 4px solid transparent;
+  transform: translateY(-1px);
+  transition: transform 0.15s ease;
+}
+.guia-plegable[open] .guia-plegable-flecha { transform: translateY(-1px) rotate(90deg); }
+
+/* Cerrado, el titular es todo lo que hay del punto, así que va en el color
+   pleno del texto y no en el tenue de una lista común. */
+.guia-plegable-titulo {
+  color: var(--texto); line-height: 1.5;
+  font-variation-settings: "wdth" 100, "wght" 620;
+}
+/* La sangría lo alinea con el titular, no con la flecha: el párrafo se lee
+   como la explicación de ese punto y no como un renglón nuevo de la lista.
+   El selector lleva `.guia-seccion` adelante por especificidad, no por
+   scope: `.guia-seccion p` es una clase más un tipo (0,1,1) y le ganaría a
+   una clase sola, dejando el margen de 0,9rem que esa regla usa para
+   párrafos sueltos. Dos clases (0,2,0) le ganan. */
+.guia-seccion .guia-plegable-texto {
+  margin: 0 0 0.85rem; padding-left: 1.9rem;
+  color: var(--texto-tenue); line-height: 1.6; font-size: 0.94rem;
+  max-width: none;
 }
 
 .guia-enlaces { display: flex; flex-wrap: wrap; gap: 1.1rem; margin-top: 0.4rem; }
@@ -2865,6 +3147,27 @@ body { transition: background var(--t-sec) var(--suave), color var(--t-sec) var(
 .adv[data-peso="media"] .adv-signo { background: var(--borde-fuerte); color: var(--texto); }
 .adv-rotulo { font-size: 0.6rem; letter-spacing: 0.13em; text-transform: uppercase; color: var(--texto-debil); }
 .adv-texto { color: var(--texto); font-size: 0.92rem; line-height: 1.6; }
+
+/* ---------- ④, todo en negro ----------
+   En el paso a paso no hay texto de apoyo: el resumen de cada paso, el
+   cuerpo, el pie de cada captura y la cuenta del progreso son todos cosas que
+   hay que leer para hacer el trámite. En gris —el 70 % y el 62 % de negro que
+   traen los tokens— se leían como aclaraciones al margen.
+
+   Se pisan los dos tokens y no una lista de selectores. Es una regla en vez
+   de seis, y sobre todo alcanza a lo que se agregue mañana: cualquier cosa
+   nueva adentro de esta sección nace en negro sin que haya que acordarse.
+
+   `var(--texto)` acá no se congela: `.instructivo-mpd-tarjeta` declara
+   `--texto` en este mismo elemento —la sección ES la tarjeta—, así que
+   resuelve al negro de la tarjeta y no al blanco del fondo verde.
+
+   El rótulo «PASO 1 DE 4» queda en verde: no es gris, es el acento que
+   ordena la lista. */
+#pasos {
+  --texto-tenue: var(--texto);
+  --texto-debil: var(--texto);
+}
 
 /* ---------- el progreso ---------- */
 .guia-progreso { display: flex; align-items: center; gap: 0.9rem; margin-bottom: 1.5rem; }
@@ -2918,12 +3221,40 @@ body { transition: background var(--t-sec) var(--suave), color var(--t-sec) var(
   width: 100%; height: auto; border-radius: 12px;
   box-shadow: inset 0 0 0 1px var(--borde);
 }
+/* ---------- los recortes chicos ----------
+   La regla de arriba estira toda captura al ancho de la columna. Sirve para
+   las pantallas completas, y arruina los recortes: `mpd-cv-campo-fs.png` mide
+   227 × 33 px de verdad y se estaba dibujando a más del triple, o sea borroso
+   y gigante para lo que muestra —un campo de formulario—.
+   Cada uno se topea en su ancho real. `width: auto` es lo que apaga el 100%
+   de la regla base; `max-width` solo no alcanzaría. Y quedan centrados,
+   porque un recorte chico alineado a la izquierda se lee como una imagen que
+   no cargó del todo.
+   Van por nombre de archivo porque el ancho real no viaja en los datos: el
+   componente le pasa 1400 × 900 a `next/image` para todas por igual. Si esto
+   crece a cinco o seis, conviene llevar el tamaño al material y que la
+   captura se declare con el suyo. */
 .guia-captura img[src*="mpd-acceso-escritorio"] {
   width: auto;
   max-width: 220px;
   margin: 0 auto;
   display: block;
 }
+.guia-captura img[src*="mpd-cv-campo-fs"] {
+  width: auto;
+  max-width: 227px;
+  margin: 0 auto;
+  display: block;
+}
+/* La captura que además es enlace (hoy, la del portal del MPD en el paso 1).
+   `display: block` para que el <a> no deje el hueco de línea base que dejan
+   los elementos en línea debajo de una imagen, y `border-radius` propio para
+   que el anillo de foco siga la forma de la captura y no un rectángulo.
+   Al pasar el mouse, el anillo del borde se pinta del verde de acento: es lo
+   único que avisa que se puede tocar, porque la imagen no cambia. */
+.guia-captura-enlace { display: block; border-radius: 12px; }
+.guia-captura-enlace:hover img { box-shadow: inset 0 0 0 2px var(--acento-texto); }
+.guia-captura-enlace:focus-visible { outline: 2px solid var(--acento-texto); outline-offset: 3px; }
 .guia-captura figcaption { font-size: 0.8rem; color: var(--texto-debil); margin-top: 0.5rem; line-height: 1.5; }
 /* La primera captura del paso 3 del MPF (el menú de Antecedentes) a
    width:100% quedaba enorme. Se achica y se centra, igual que el recorte
@@ -2973,23 +3304,70 @@ body { transition: background var(--t-sec) var(--suave), color var(--t-sec) var(
   color: var(--texto);
 }
 
-/* La sección «Lo que tenés que saber antes» del instructivo del MPD: mismos
+/* La sección «Lo que conviene saber» del instructivo del MPD: mismos
    datos que la «Advertencia» de siempre, pero sin tono de alarma. Toma los
    colores de la tarjeta blanca de arriba (--acento-texto, --superficie), así
-   que no hace falta repetir el verde a mano acá. */
-.info-importante { list-style: none; margin: 0.9rem 0 0; padding: 0; display: flex; flex-direction: column; gap: 0.6rem; }
+   que no hace falta repetir el verde a mano acá.
+
+   Sin recuadros: es una lista y nada más. Cada punto tenía fondo, borde
+   izquierdo, esquinas redondeadas y relleno propio, o sea cuatro cajas
+   adentro de la tarjeta de la sección —caja dentro de caja, y ninguna de las
+   dos decía nada que la otra no dijera—. Se van las cuatro cosas y queda el
+   tilde haciendo de viñeta.
+
+   Sin tope de ancho: el texto llega a los dos bordes de la tarjeta. Tenía un
+   `max-width: 46ch` para dejarla angosta, y con el texto justificado esa
+   columna cortaba mucho antes que la caja y el bloque quedaba flotando.
+   La medida la pone ahora la tarjeta, que ya está acotada.
+
+   El aire entre ítems es lo que la hace leer como lista. Va en 1,15rem, que
+   es más del doble del interlineado: la separación entre dos puntos tiene
+   que ser mayor que la que hay entre dos renglones del mismo punto, si no
+   los cuatro se leen como un solo bloque de texto largo. Ésa es toda la
+   diferencia entre una lista y un párrafo partido.
+
+   El peso vuelve a normal. Estaba en 600 de cuando no había otra cosa que
+   los distinguiera de un párrafo; ahora los distingue la separación, y la
+   negrita sobre cuatro puntos seguidos deja de marcar —si todo pesa, nada
+   pesa— y encima cansa. El color se queda pleno, que es lo que los mantiene
+   al frente. */
+.info-importante {
+  list-style: none; margin: 0.9rem 0 0; padding: 0;
+  display: flex; flex-direction: column; gap: 1.15rem;
+}
 .info-importante-item {
   display: flex;
   align-items: flex-start;
-  gap: 0.65rem;
-  padding: 0.8rem 1rem;
-  border-radius: 10px;
-  background: var(--superficie);
-  border-left: 3px solid var(--acento);
+  gap: 0.55rem;
+  padding: 0;
+  border-radius: 0;
+  background: none;
+  border-left: none;
   font-size: 0.92rem;
-  line-height: 1.55;
+  line-height: 1.5;
+  color: var(--texto);
+  font-variation-settings: "wdth" 100, "wght" 400;
 }
-.info-importante-icono { width: 19px; height: 19px; color: var(--acento-texto); flex-shrink: 0; margin-top: 0.1rem; }
+/* El texto de cada punto, justificado a los dos bordes.
+   `flex: 1` primero: el <span> es un ítem de flex y sin decirle que ocupe lo
+   que queda mide lo que mide su contenido, con lo cual justificar no tendría
+   contra qué alinear el borde derecho.
+   `hyphens: auto` no es un adorno acá. Justificar una columna angosta sin
+   partir palabras abre huecos enormes entre palabra y palabra —los ríos
+   blancos—, y en castellano, con palabras largas, se nota el doble. El <html>
+   declara `lang="es-AR"`, así que el navegador parte según nuestras reglas.
+   `text-wrap` vuelve a `wrap`: el `balance` que traen los títulos del sitio
+   pelea con el justificado, porque intenta emparejar el largo de los
+   renglones justo cuando el justificado los quiere todos llenos. */
+.info-importante-item > span {
+  flex: 1;
+  text-align: justify;
+  hyphens: auto;
+  text-wrap: wrap;
+}
+/* El tilde baja de 19 a 16px. Es la viñeta, no un ícono ilustrativo: sin la
+   caja alrededor, a 19px pesaba más que la primera palabra del renglón. */
+.info-importante-icono { width: 16px; height: 16px; color: var(--acento-texto); flex-shrink: 0; margin-top: 0.18rem; }
 
 /* ---------- los huecos, sólo en preview ---------- */
 .hueco {
@@ -3015,39 +3393,93 @@ body { transition: background var(--t-sec) var(--suave), color var(--t-sec) var(
 .guia-faq summary:focus-visible { outline: 2px solid var(--acento-texto); outline-offset: 2px; border-radius: 4px; }
 .guia-faq details p { color: var(--texto-tenue); line-height: 1.7; max-width: 68ch; padding: 0 0 1rem 1.6rem; margin: 0; }
 
-/* ---------- el checklist final ---------- */
-.guia-checklist { display: grid; gap: 1.8rem; margin: 1.4rem 0; }
-@media (min-width: 720px) { .guia-checklist { grid-template-columns: 1fr 1fr; } }
-.guia-checklist-titulo {
-  font-size: 0.64rem; letter-spacing: 0.14em; text-transform: uppercase;
-  color: var(--texto-tenue); font-weight: 400;
-  padding-bottom: 0.5rem; border-bottom: 1px solid var(--borde); margin-bottom: 0.8rem;
+/* ---------- el checklist ----------
+   Cuatro marcas en un renglón. Se fueron las dos columnas, los títulos de los
+   pasos, la cuenta de lo que falta y el botón de imprimir: todo eso repetía
+   lo que está dos bloques más arriba, en el acordeón.
+   `flex-wrap: wrap` igual: en cuatro no dobla nunca, pero una guía con ocho
+   pasos en un teléfono sí, y ahí es mejor que baje de renglón a que se
+   apriete hasta no leerse. */
+/* Sin pastillas: cada paso es su marca y su número, sueltos.
+   El anillo alrededor de cada uno era un borde adentro de la tarjeta, que ya
+   es un borde. Se va, y con él el relleno y las esquinas redondeadas que
+   existían sólo para sostenerlo.
+   El aire sube de 0,6 a 1,6rem. Es lo que reemplaza al anillo: sin caja que
+   los delimite, la separación es lo único que dice dónde termina un paso y
+   empieza el otro, y con 0,6rem los cuatro se leían como una sola tira de
+   símbolos y números. */
+.guia-checklist-fila {
+  list-style: none; margin: 0; padding: 0;
+  display: flex; flex-wrap: wrap; gap: 1.6rem;
 }
-.guia-checklist ul { list-style: none; display: flex; flex-direction: column; gap: 0.5rem; margin: 0; padding: 0; }
-.guia-checklist li {
-  display: flex; gap: 0.6rem; align-items: baseline;
-  font-size: 0.9rem; line-height: 1.5; color: var(--texto-tenue);
+.guia-checklist-fila li {
+  display: flex; align-items: center; gap: 0.4rem;
+  color: var(--texto-debil);
 }
-.guia-checklist li[data-hecho="si"] { color: var(--texto); }
-.guia-checklist li[data-hecho="si"] span { color: var(--ok); }
-.guia-faltan { color: var(--texto); font-size: 0.92rem; margin-bottom: 1rem; min-height: 1.4em; }
+/* Hecho: la marca en el verde de «listo» y el número al color pleno. Sin el
+   anillo, el contraste entre el gris del pendiente y el negro del hecho es lo
+   que separa a los cuatro de un vistazo. */
+.guia-checklist-fila li[data-hecho="si"] { color: var(--texto); }
+.guia-checklist-fila li[data-hecho="si"] .guia-checklist-marca { color: var(--ok); }
+.guia-checklist-marca { font-size: 1rem; line-height: 1; }
+/* `tabular-nums` para que los cuatro números midan lo mismo y las marcas no
+   queden desalineadas por culpa del 1. */
+.guia-checklist-n {
+  font-size: 0.95rem; font-variant-numeric: tabular-nums;
+  font-variation-settings: "wdth" 100, "wght" 650;
+}
 
-/* ---------- el pie de la guía ---------- */
-.guia-fuentes { margin-top: 3.5rem; padding-top: 1.6rem; border-top: 1px solid var(--borde); }
+/* ---------- el pie de la guía ----------
+   No es una tarjeta blanca como las nueve secciones: es una caja apenas más
+   clara que el fondo, chica, para cerrar. No es contenido de la guía sino de
+   dónde salió, y con el mismo blanco pleno de las otras se leía como una
+   sección más.
+
+   El «verde más claro» es blanco al 7 % sobre el fondo, no un verde escrito a
+   mano. Dos motivos: en Nueva Abogacía este mismo pie va sobre azul y con un
+   hex fijo habría que escribir la regla dos veces, y así el tono sigue al
+   fondo si algún día cambia. El anillo es el mismo recurso al 12 %.
+
+   Blanco al 7 % sobre el verde da 5,4:1 con letra blanca —calculado, no a
+   ojo—, o sea que sostiene el cuerpo de texto con margen sobre el 4,5:1 que
+   pide la norma. */
+.guia-fuentes {
+  margin-top: 1.5rem;
+  padding: 1.1rem 1.3rem;
+  border-radius: 14px;
+  border-top: none;
+  background: rgba(255, 255, 255, 0.07);
+  box-shadow: inset 0 0 0 1px rgba(255, 255, 255, 0.12);
+}
+/* Todo en blanco, enlaces incluidos. Los enlaces iban en `--acento-texto`
+   —el verde agua de Nexo— y sobre este fondo eran lo único que no era
+   blanco. Se quedan subrayados: sin color propio, el subrayado es lo que
+   avisa que son enlaces. */
+.guia-fuentes,
+.guia-fuentes .guia-fuentes-titulo,
+.guia-fuentes a,
+.guia-fuentes .guia-verificar {
+  color: #ffffff;
+}
+/* Todo un punto más chico que antes: es el pie, no una sección. */
 .guia-fuentes-titulo {
-  font-size: 0.64rem; letter-spacing: 0.14em; text-transform: uppercase;
-  color: var(--texto-tenue); font-weight: 400; margin-bottom: 0.8rem;
+  font-size: 0.62rem; letter-spacing: 0.14em; text-transform: uppercase;
+  font-weight: 400; margin-bottom: 0.7rem;
 }
-.guia-fuentes ul { list-style: none; display: flex; flex-direction: column; gap: 0.4rem; margin: 0; padding: 0; }
-.guia-fuentes a { font-size: 0.85rem; color: var(--acento-texto); text-decoration: underline; text-underline-offset: 3px; }
-.guia-verificar { font-size: 0.8rem; color: var(--texto-debil); line-height: 1.6; margin-top: 1.1rem; max-width: 62ch; }
+.guia-fuentes ul { list-style: none; display: flex; flex-direction: column; gap: 0.35rem; margin: 0; padding: 0; }
+.guia-fuentes a { font-size: 0.8rem; text-decoration: underline; text-underline-offset: 3px; }
+.guia-verificar { font-size: 0.75rem; line-height: 1.55; margin-top: 0.9rem; max-width: 62ch; }
 
-/* Imprimir el checklist: se va todo lo que no es el checklist. */
+/* Al imprimir se va todo lo que no es el checklist.
+   Ya no hay botón de «Imprimir el checklist» —el checklist es una fila de
+   cuatro marcas y en papel no dice nada—, pero esto se queda: alguien puede
+   imprimir con Ctrl+P igual, y sin estas reglas se llevaría la guía entera
+   con los acordeones cerrados. */
 @media print {
   .volver, .guia-cambiar, .guia-progreso, .guia-pasos, .guia-faq,
   .guia-fuentes, .cabecera-app, .pie { display: none !important; }
   .guia-seccion:not(#checklist) { display: none !important; }
-  .guia-checklist li { color: #000; }
+  .guia-checklist-fila li { color: #000; }
 }
 
 /* ============================================================
@@ -3128,6 +3560,19 @@ body { transition: background var(--t-sec) var(--suave), color var(--t-sec) var(
    que el bloque del estado absorba el espacio sobrante: el MPD no tiene
    sobrante y no se mueve, y el del MPF baja hasta quedar a la misma altura. */
 [data-marca="nexo"] .guia-puerta .ins-estado { flex-grow: 1; }
+/* Eso alineó los botones, pero dejó el problema un escalón más adentro: al
+   estirarse, el bloque del estado del MPF junta todo el espacio sobrante
+   ABAJO, y «Ver en el portal oficial» —que es su último hijo— quedaba arriba,
+   pegado al texto y lejos del botón, mientras el del MPD caía justo encima
+   del suyo.
+   `margin-top: auto` en un ítem de flex se come el espacio libre que tiene
+   arriba: el enlace baja hasta el fondo de su bloque y los dos quedan a la
+   misma altura, uno arriba de cada botón.
+   En la tarjeta del MPD no hay sobrante, así que ese `auto` vale 0 y no
+   mueve nada. La separación con el texto la sigue poniendo el `gap: 0.3rem`
+   del contenedor, que es lo que reemplaza al `margin-top: 0.25rem` de la
+   regla general. */
+.guia-puerta .ins-estado a { margin-top: auto; }
 /* ---------- insumos: la misma tarjeta que la guía de inscripción ---------- */
 /* Base, en todas las pieles: la placa del ícono. El tamaño de la placa lo
    pone la piel, porque sólo en Nexo la tarjeta es blanca y la placa se ve. */
@@ -3740,28 +4185,31 @@ html[data-marca="nexo"] body {
 html[data-marca="nexo"] { --ital-estilo: normal; }
 
 /* ---------- Nexo: el lema de la cabecera ---------- */
-/* «Nadie se recibe solo» va como en nexoderecho.com.ar: Outfit, mayúsculas,
-   peso alto y tracking corto. El texto sale de `marcas.ts` en caja normal y
-   lo pasa a mayúsculas el CSS, que es como ya venía.
+/* «Nadie se recibe solo» en Outfit, en caja normal y de peso medio.
 
    Se perdía por tres motivos a la vez, no por el tamaño solo: iba en
    JetBrains Mono —que a cuerpo chico pesa menos que una grotesca—, en
    `--texto-tenue`, y a 0,6 rem. Se corrigen los tres.
 
    La familia hay que pedirla a mano porque el elemento lleva la clase
-   `.mono`, que declara la suya y si no le gana.
+   `.mono`, que declara la suya y si no le gana. Las mayúsculas también:
+   las impone `.app-lema`, así que apagarlas pide un `text-transform: none`
+   explícito. El texto sale de `marcas.ts` ya escrito en caja normal, así que
+   con eso alcanza —no hay que tocar el contenido—.
 
-   El tracking baja de 0,16em a 0,02em. Esa separación estaba calculada para
-   una monoespaciada a cuerpo chico; con Outfit a peso 900 la frase necesita
-   ir apretada, que es como se ve en el sitio de la agrupación.
+   El peso baja de 900 a 600. En mayúsculas el 900 sostenía la frase; en caja
+   normal, con las minúsculas y sus astas, ese mismo peso la vuelve un bloque
+   negro al lado del logotipo.
 
-   Sigue oculto abajo de 760px, donde compite con «Mi perfil» y gana el
-   botón. */
+   El tracking se va a 0. La separación de 0,16em original estaba calculada
+   para una monoespaciada en versalitas; en caja normal cualquier apertura
+   desarma la palabra. */
 html[data-marca="nexo"] .app-lema {
   font-family: var(--fuente-outfit), system-ui, sans-serif;
   font-size: 0.94rem;
-  font-variation-settings: "wght" 900;
-  letter-spacing: 0.01em;
+  font-variation-settings: "wght" 600;
+  text-transform: none;
+  letter-spacing: 0;
   color: var(--texto);
 }
 
@@ -4106,4 +4554,134 @@ html[data-marca="nexo"] .tip .tip-rotulo {
   width: fit-content;
   padding-bottom: 0.35rem;
   border-bottom: 2px solid #059249;
+}
+/* ---------- Los títulos del asistente que se perdían ---------- */
+.asis-selector-rotulo,
+.asis-top-titulo,
+.asis-fuente-nombre {
+  color: var(--texto);
+}
+
+.asis-preguntar {
+  display: flex;
+  flex-direction: column;
+  gap: 1.1rem;
+}
+/* ---------- Los títulos de sección, sin recuadro ---------- */
+/* Acá vivía `.asis-tarjeta .asis-titulo`, que le ponía caja a los tres
+   —«¿Qué querés preguntar?», «Preguntas frecuentes» y «Normativa y fuentes
+   oficiales»— y después un override que se la sacaba a dos. Sacada también la
+   del tercero, la regla y su excepción se anulaban entre sí: quedaba un par
+   de bloques que sumaban cero y hacían pensar que los títulos llevan caja
+   cuando no la llevan. Se van los dos.
+   Cada sección ya tiene su propia tarjeta, con su fondo y su borde: dónde
+   empieza una y termina la otra se ve por ahí, y el título no necesita
+   repetirlo con un recuadro adentro de otro.
+   Ojo con `width: fit-content`, que era de esa regla: el centrado del título
+   de Normativa dependía de él —`margin-inline: auto` no centra un bloque que
+   ocupa todo el ancho—, así que se lo devolví allá abajo, en la regla que ya
+   lo centra. */
+/* ---------- Una tarjeta por sección, no una sola para todo ---------- */
+.asis > .instructivo-mpd-tarjeta {
+  margin-top: 0;
+}
+/* El primer bloque no lleva cuadro: es el encabezado, no una sección más */
+html[data-marca="nexo"] .asis-pantalla .asis > .asis-encabezado {
+  background: none;
+  box-shadow: none;
+  padding: 0;
+  border-radius: 0;
+}
+html[data-marca="nexo"] .asis-pantalla .asis-bajada-fuerte {
+  margin-top: -0.35rem;
+}/* Todo el encabezado, en blanco pleno */
+html[data-marca="nexo"] .asis-pantalla .asis-encabezado h1,
+html[data-marca="nexo"] .asis-pantalla .asis-encabezado .asis-bajada-fuerte,
+html[data-marca="nexo"] .asis-pantalla .asis-encabezado .asis-pasos li,
+html[data-marca="nexo"] .asis-pantalla .asis-encabezado .asis-pasos li::before,
+html[data-marca="nexo"] .asis-pantalla .asis-encabezado .asis-parrafo {
+  color: #ffffff;
+}
+/* El recuadro de la intro: de «Resolvé tus dudas» hasta «en lugar de inventar» */
+html[data-marca="nexo"] .asis-pantalla .asis-intro {
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+  gap: 0.9rem;
+  padding: 1.3rem 1.5rem;
+  border-radius: 16px;
+  background: #0a6634;
+  box-shadow: inset 0 0 0 1px rgba(255, 255, 255, 0.22);
+}
+/* ---------- Los controles de «¿Qué querés preguntar?», en verde ---------- */
+html[data-marca="nexo"] .asis-pantalla .asis-preguntar .asis-opcion,
+html[data-marca="nexo"] .asis-pantalla .asis-preguntar .asis-chip,
+html[data-marca="nexo"] .asis-pantalla .asis-preguntar .btn-p,
+html[data-marca="nexo"] .asis-pantalla .asis-dejar-seccion .btn-p {
+  background: #068744;
+  color: #ffffff;
+  box-shadow: inset 0 0 0 1px rgba(255, 255, 255, 0.32);
+}
+html[data-marca="nexo"] .asis-pantalla .asis-preguntar .asis-opcion-sigla,
+html[data-marca="nexo"] .asis-pantalla .asis-preguntar .asis-opcion-nombre {
+  color: #ffffff;
+}
+html[data-marca="nexo"] .asis-pantalla .asis-preguntar .asis-opcion[data-elegida="true"] {
+  background: #05713a;
+  box-shadow: inset 0 0 0 2px #ffffff;
+}
+html[data-marca="nexo"] .asis-pantalla .asis-preguntar .asis-chip:hover,
+html[data-marca="nexo"] .asis-pantalla .asis-preguntar .btn-p:hover:not(:disabled),
+html[data-marca="nexo"] .asis-pantalla .asis-dejar-seccion .btn-p:hover:not(:disabled) {
+  background: #05713a;
+  color: #ffffff;
+  box-shadow: inset 0 0 0 1px rgba(255, 255, 255, 0.55);
+  opacity: 1;
+}
+/* ---------- Normativa: sin recuadros, más angosta y centrada ---------- */
+html[data-marca="nexo"] .asis-pantalla .asis-normativa .asis-fuentes {
+  grid-template-columns: 1fr;
+  gap: 1.4rem;
+  max-width: 68ch;
+  margin-inline: auto;
+}
+html[data-marca="nexo"] .asis-pantalla .asis-normativa .asis-fuente-item {
+  background: none;
+  box-shadow: none;
+  padding: 0;
+}
+html[data-marca="nexo"] .asis-pantalla .asis-normativa .asis-titulo {
+  /* `width` va acá porque `margin-inline: auto` no centra un bloque que ya
+     ocupa todo el ancho disponible. Lo traía la regla del recuadro, que se
+     borró junto con las cajas de los títulos. */
+  width: fit-content;
+  margin-inline: auto;
+}
+html[data-marca="nexo"] .asis-pantalla .asis-normativa .asis-titulo,
+html[data-marca="nexo"] .asis-pantalla .asis-normativa .asis-org-etiqueta,
+html[data-marca="nexo"] .asis-pantalla .asis-normativa .asis-fuente-nombre,
+html[data-marca="nexo"] .asis-pantalla .asis-normativa .asis-fuente-que,
+html[data-marca="nexo"] .asis-pantalla .asis-normativa .asis-fuente-item a {
+  color: #ffffff;
+}
+html[data-marca="nexo"] .asis-pantalla .asis-normativa .asis-fuente-nombre {
+  font-size: 0.86rem;
+}
+html[data-marca="nexo"] .asis-pantalla .asis-normativa .asis-fuente-que {
+  font-size: 0.8rem;
+  max-width: none;
+  text-align: justify;
+  hyphens: auto;
+}
+html[data-marca="nexo"] .asis-pantalla .asis-normativa .asis-fuente-item a {
+  font-size: 0.84rem;
+  text-decoration: underline;
+  text-underline-offset: 3px;
+}
+/* Normativa sin caja: el contenido se apoya directo sobre el fondo */
+html[data-marca="nexo"] .asis-pantalla .asis > .asis-caja-normativa {
+  background: none;
+  box-shadow: none;
+  padding: 0;
+  border-radius: 0;
 }

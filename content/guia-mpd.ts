@@ -41,13 +41,21 @@ function comoAdvertencia(a: Aviso): Advertencia {
  * /public con otra forma. Cuando ese material se retire, esto viaja con la
  * guía.
  */
-const CAPTURAS_MPD: Record<number, { id: string; descripcion: string; src: string }[]> = {
+const CAPTURAS_MPD: Record<
+  number,
+  { id: string; descripcion: string; src: string; url?: string }[]
+> = {
   1: [
     {
       id: "mpd-paso1-descargar",
       descripcion:
         "La página de concursos.mpd.gov.ar con el botón «Descargar la webapp Concursos para Microsoft Windows»",
       src: "/capturas/mpd-descargar-webapp.png",
+      // La captura es la puerta de entrada del trámite: se hace clic y se
+      // llega. Es la única de la guía que muestra una pantalla web —las demás
+      // son de la aplicación instalada, que no tiene dirección— y sin el
+      // enlace había que copiar la dirección a mano del párrafo de al lado.
+      url: "https://concursos.mpd.gov.ar/",
     },
     {
       id: "mpd-paso1-escritorio",
@@ -152,22 +160,37 @@ export const MPDGuia: Guia = {
 
   // ① El estado vivo sale de `concursos`, igual que en la franja de siempre.
   // Acá va sólo lo que es propio del MPD.
+  // En el MPD, el ① es la franja de estado y nada más. Lo que había acá se
+  // fue por repetido, no por recortar:
+  //
+  //  · un párrafo que decía «la convocatoria todavía no está publicada;
+  //    cuando salga son cinco días hábiles, adelantá lo que puedas», que es
+  //    palabra por palabra lo que dice la franja. Y con un agravante: la
+  //    franja sale de la base y cambia sola el día que abra la inscripción,
+  //    este párrafo no. Iban a terminar contradiciéndose, y el escrito a mano
+  //    era el que iba a quedar mintiendo.
+  //  · un «Verificá siempre en el sitio oficial», que es el mismo aviso que
+  //    cierra la guía en el pie.
+  //  · los dos enlaces oficiales, que están completos en «De dónde sale esta
+  //    guía»: éstos eran un `slice(0, 2)` de esa misma lista.
+  //
+  // El MPF sí llena las dos listas y su ① se sigue viendo entero: lo que
+  // decide qué aparece es el material de cada organismo, no la plantilla.
   estado: {
-    cuerpo: [
-      "La convocatoria del MPD todavía no está publicada. Cuando salga, la inscripción son cinco días hábiles: todo lo que se pueda adelantar —instalar la aplicación, registrarse, cargar el CV— conviene hacerlo antes.",
-      "Verificá siempre en el sitio oficial: esta guía no reemplaza la consulta a la Secretaría de Concursos.",
-    ],
-    enlaces: fuente.enlaces
-      .filter((e) => e.url !== null)
-      .slice(0, 2)
-      .map((e) => ({ texto: `${e.que} · ${e.donde}`, url: e.url as string })),
+    cuerpo: [],
+    enlaces: [],
   },
 
   // ② Es el checklist del material viejo: qué tener antes de empezar.
   antes: {
     titulo: fuente.checklist.titulo,
     cuerpo: [fuente.checklist.bajada],
-    items: fuente.checklist.items.map((i) => `${i.titulo}. ${i.texto}`),
+    // Plegada y no en `items`. Son cuatro requisitos con un párrafo cada uno
+    // —por qué hace falta la PC con Windows, por qué el CUIL y no el DNI— y
+    // desplegados ocupaban media pantalla antes del paso a paso. Así se ven
+    // los cuatro titulares juntos y el porqué está a un clic, sin recortarlo.
+    items: null,
+    plegables: fuente.checklist.items.map((i) => ({ titulo: i.titulo, texto: i.texto })),
     advertencias: [],
     enlaces: [],
     documentacion: fuente.checklist.items.map((i) => i.titulo),

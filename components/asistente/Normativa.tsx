@@ -13,7 +13,6 @@ export function Normativa() {
   return (
     <section className="asis-normativa" id={secciones.normativa.ancla}>
       <h2 className="asis-titulo">{secciones.normativa.titulo}</h2>
-      <p className="asis-bajada">{secciones.normativa.bajada}</p>
 
       <ul className="asis-fuentes">
         {FUENTES.map((f) => (

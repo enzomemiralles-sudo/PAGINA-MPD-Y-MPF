@@ -14,6 +14,16 @@ import { Captura, VideoSlot } from "./Huecos";
  * Separarlos obligaría a levantar el estado a un contexto para que dos hijos
  * lean lo mismo, y no hay un tercero que lo necesite.
  *
+ * Juntos en el archivo, separados en la página: devuelve las dos secciones
+ * como hermanas, cada una con su tarjeta blanca. Antes el componente entraba
+ * dentro de una <section> escrita en la página y el ⑨ quedaba anidado en el
+ * ④; con una tarjeta por sección eso sería un marco adentro de otro.
+ *
+ * El ⑨ es una fila de cuatro marcas y nada más. Tenía además la
+ * documentación de ②, los títulos de los pasos, cuántos faltaban y un botón
+ * para imprimir; todo eso repetía lo que ya está más arriba en la misma
+ * pantalla, y a dos bloques de distancia el resumen no resumía nada.
+ *
  * Lo marcado persiste en localStorage y por organismo: alguien puede estar
  * inscribiéndose a los dos, y su avance en el MPF no es su avance en el MPD.
  * Es lo único que la guía guarda, y no sale de este navegador.
@@ -64,73 +74,70 @@ export function Pasos({ guia, clave }: { guia: Guia; clave: string }) {
     [almacen],
   );
 
-  const documentacion = guia.antes?.documentacion ?? [];
-  const faltan = total - hechos.size;
-
   return (
     <>
-      {/* El progreso. `cargado` evita que parpadee «0 de 4» antes de leer
-          lo guardado. */}
-      <div className="guia-progreso" role="group" aria-label={t.progresoAyuda}>
-        <div className="guia-barra">
-          <i style={{ width: `${cargado ? (hechos.size / total) * 100 : 0}%` }} />
-        </div>
-        <span className="guia-progreso-texto mono">
-          {cargado ? t.progreso(hechos.size, total) : t.progreso(0, total)}
-        </span>
-      </div>
+      {/* ④ Con su tarjeta y su título. El título vivía en la página, que
+          envolvía a este componente en una <section>; ahora que cada sección
+          es una tarjeta, esa envoltura habría dejado la del checklist metida
+          adentro de la del paso a paso. Las dos salen de acá, hermanas. */}
+      <section className="guia-seccion instructivo-mpd-tarjeta" id="pasos">
+        <h2 className="guia-seccion-titulo">{t.secciones.pasos}</h2>
 
-      <ol className="guia-pasos">
-        {guia.pasos.map((p) => (
-          <Paso
-            key={p.n}
-            paso={p}
-            total={total}
-            hecho={hechos.has(p.n)}
-            abierto={abierto === p.n}
-            onAbrir={() => setAbierto(abierto === p.n ? null : p.n)}
-            onHecho={() => alternar(p.n)}
-          />
-        ))}
-      </ol>
+        {/* El progreso. `cargado` evita que parpadee «0 de 4» antes de leer
+            lo guardado. */}
+        <div className="guia-progreso" role="group" aria-label={t.progresoAyuda}>
+          <div className="guia-barra">
+            <i style={{ width: `${cargado ? (hechos.size / total) * 100 : 0}%` }} />
+          </div>
+          <span className="guia-progreso-texto mono">
+            {cargado ? t.progreso(hechos.size, total) : t.progreso(0, total)}
+          </span>
+        </div>
+
+        <ol className="guia-pasos">
+          {guia.pasos.map((p) => (
+            <Paso
+              key={p.n}
+              paso={p}
+              total={total}
+              hecho={hechos.has(p.n)}
+              abierto={abierto === p.n}
+              onAbrir={() => setAbierto(abierto === p.n ? null : p.n)}
+              onHecho={() => alternar(p.n)}
+            />
+          ))}
+        </ol>
+      </section>
 
       {/* ⑨ El checklist final */}
-      <section className="guia-seccion" id="checklist">
+      <section className="guia-seccion instructivo-mpd-tarjeta" id="checklist">
         <h2 className="guia-seccion-titulo">{t.secciones.checklist}</h2>
-        <p className="guia-bajada">{t.checklistBajada}</p>
 
-        <div className="guia-checklist">
-          {documentacion.length > 0 ? (
-            <div>
-              <h3 className="guia-checklist-titulo mono">{t.documentacion}</h3>
-              <ul>
-                {documentacion.map((d) => (
-                  <li key={d}>{d}</li>
-                ))}
-              </ul>
-            </div>
-          ) : null}
-
-          <div>
-            <h3 className="guia-checklist-titulo mono">{t.losPasos}</h3>
-            <ul>
-              {guia.pasos.map((p) => (
-                <li key={p.n} data-hecho={hechos.has(p.n) ? "si" : "no"}>
-                  <span aria-hidden="true">{hechos.has(p.n) ? "✓" : "○"}</span>
-                  {p.titulo}
-                </li>
-              ))}
-            </ul>
-          </div>
-        </div>
-
-        <p className="guia-faltan" aria-live="polite">
-          {cargado ? (faltan === 0 ? t.completo : t.faltan(faltan)) : null}
-        </p>
-
-        <button type="button" className="btn btn-s" onClick={() => window.print()}>
-          {t.imprimir}
-        </button>
+        {/* Un solo renglón: los cuatro pasos por su número y su marca, nada
+            más. Sigue reflejando lo mismo que antes —el estado sale del mismo
+            `hechos` que el acordeón de arriba—, pero ya no repite los títulos
+            de los pasos, que están completos dos bloques más arriba.
+            <ol> y no <ul>: el orden es el dato, es lo que dicen los números.
+            El número va en un <span> y no como viñeta automática de la lista
+            para poder ponerlo al lado de la marca y no antes del renglón. */}
+        <ol className="guia-checklist-fila">
+          {guia.pasos.map((p) => (
+            <li key={p.n} data-hecho={hechos.has(p.n) ? "si" : "no"}>
+              <span className="guia-checklist-marca" aria-hidden="true">
+                {hechos.has(p.n) ? "✓" : "○"}
+              </span>
+              <span className="guia-checklist-n" aria-hidden="true">
+                {p.n}
+              </span>
+              {/* Un número suelto no dice nada leído en voz alta. Acá va lo
+                  que se ve —el paso, su nombre y si está hecho— para quien
+                  usa lector de pantalla. */}
+              <span className="sr-only">
+                {t.paso(p.n)}: {p.titulo}. {hechos.has(p.n) ? t.checklistHecho : t.checklistPendiente}
+              </span>
+            </li>
+          ))}
+        </ol>
       </section>
     </>
   );

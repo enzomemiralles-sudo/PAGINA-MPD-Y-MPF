@@ -28,7 +28,7 @@ export const estados = {
   sin_convocatoria: {
     titulo: "Hoy no hay inscripción abierta",
     texto:
-      "Todo lo demás de esta guía ya se puede hacer, y conviene: instalar la aplicación, registrarte y cargar el CV lleva tiempo, y cuando abra sólo vas a tener cinco días hábiles.",
+      "Recomendamos comenzar con la primera parte; instalar la aplicación, registrarte y cargar el CV",
   },
   convocatoria_abierta: {
     titulo: "Se convocó el concurso",

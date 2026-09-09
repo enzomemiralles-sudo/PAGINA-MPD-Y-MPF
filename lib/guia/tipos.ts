@@ -39,6 +39,16 @@ export type Captura = {
   /** Qué se ve. Es el alt cuando la captura existe. */
   descripcion: string;
   src: string | null;
+  /**
+   * A dónde lleva la captura, cuando muestra una pantalla a la que se puede
+   * ir. Es para las que son la puerta de entrada de un paso —la del portal
+   * del MPD, por ejemplo—: verla y no poder tocarla obliga a copiar la
+   * dirección a mano del texto de al lado.
+   *
+   * Opcional: la mayoría son capturas de la aplicación instalada, que no
+   * tiene URL, y ahí un enlace prometería algo que no existe.
+   */
+  url?: string;
 };
 
 /** Un video. `youtubeId` en null es un hueco declarado, igual que la captura. */
@@ -75,6 +85,20 @@ export type SeccionTexto = {
   cuerpo: string[];
   /** Lista con viñetas, si el contenido la pide. */
   items: string[] | null;
+  /**
+   * Lo mismo que `items`, pero con el titular y su explicación separados para
+   * poder plegarla: se ve la lista de titulares y cada uno se abre al tocarlo.
+   *
+   * Es para las listas donde cada punto trae un párrafo detrás —«Antes de
+   * empezar necesitás tener», del MPD, son cuatro requisitos con su porqué—:
+   * desplegadas ocupan media pantalla y tapan el paso a paso, que es a donde
+   * la persona va.
+   *
+   * Cuando está, la sección la muestra en lugar de `items`. Opcional para no
+   * obligar a las secciones que no la necesitan (las del MPF pasan `items`
+   * en null y no cambian).
+   */
+  plegables?: { titulo: string; texto: string }[];
   advertencias: Advertencia[];
   enlaces: Enlace[];
 };
