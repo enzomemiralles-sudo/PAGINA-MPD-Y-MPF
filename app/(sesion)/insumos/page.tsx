@@ -33,7 +33,9 @@ export default function Insumos() {
       <h1>{t.titulo}</h1>
       <p className="ins-bajada">{t.bajada}</p>
 
-      <h2 className="insumo-elegi mono">{t.elegi}</h2>
+      {/* Sin `.mono`: el rótulo va en la letra de la página. `.insumo-elegi`
+          ya pisaba las tres propiedades que aportaba esa clase. */}
+      <h2 className="insumo-elegi">{t.elegi}</h2>
       <div className="insumo-puertas">
         {organismos.map((o) => {
           const ejes = ejesDe(o);

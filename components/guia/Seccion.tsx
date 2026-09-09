@@ -11,19 +11,43 @@ import { Advertencia } from "./Advertencia";
  * De la ⑤ para abajo no hay capturas ni videos: sólo hay material real para la
  * parte de inscripción, y un hueco de foto en «Resultados» prometería algo que
  * no va a llegar.
+ *
+ * La tarjeta blanca (`instructivo-mpd-tarjeta`) la pone la <section> de acá y
+ * no un <div> envolvente en la página: el que decide si una sección existe es
+ * este componente, y un envoltorio afuera dibujaría una tarjeta vacía cuando
+ * devuelve null.
  */
 export function SeccionGuia({ seccion, id }: { seccion: SeccionTexto | null; id: string }) {
   if (!seccion) return null;
 
   return (
-    <section className="guia-seccion" id={id}>
+    <section className="guia-seccion instructivo-mpd-tarjeta" id={id}>
       <h2 className="guia-seccion-titulo">{seccion.titulo}</h2>
 
       {seccion.cuerpo.map((c) => (
         <p key={c}>{c}</p>
       ))}
 
-      {seccion.items ? (
+      {/* Los plegables mandan sobre `items`: una sección declara uno o el
+          otro, nunca los dos, y si alguien pusiera ambos mostrar las dos
+          listas sería repetir el mismo contenido dos veces.
+          Son <details> nativos, así que se abren aunque el JavaScript no haya
+          cargado. */}
+      {seccion.plegables ? (
+        <ul className="guia-plegables">
+          {seccion.plegables.map((p) => (
+            <li key={p.titulo}>
+              <details className="guia-plegable">
+                <summary className="guia-plegable-resumen">
+                  <span className="guia-plegable-flecha" aria-hidden="true" />
+                  <span className="guia-plegable-titulo">{p.titulo}</span>
+                </summary>
+                <p className="guia-plegable-texto">{p.texto}</p>
+              </details>
+            </li>
+          ))}
+        </ul>
+      ) : seccion.items ? (
         <ul className="guia-items">
           {seccion.items.map((i) => (
             <li key={i}>{i}</li>

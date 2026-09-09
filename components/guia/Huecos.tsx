@@ -20,7 +20,7 @@ import { guia as t } from "@/content/guia";
  */
 const MOSTRAR = process.env.NEXT_PUBLIC_MOSTRAR_PLACEHOLDERS === "true";
 
-export function Captura({ id, descripcion, src }: TipoCaptura) {
+export function Captura({ id, descripcion, src, url }: TipoCaptura) {
   if (!src) {
     if (!MOSTRAR) return null;
     return (
@@ -32,9 +32,25 @@ export function Captura({ id, descripcion, src }: TipoCaptura) {
     );
   }
 
+  const imagen = (
+    <Image src={src} alt={descripcion} width={1400} height={900} sizes="(min-width: 900px) 46rem, 100vw" />
+  );
+
   return (
     <figure className="guia-captura">
-      <Image src={src} alt={descripcion} width={1400} height={900} sizes="(min-width: 900px) 46rem, 100vw" />
+      {/* Con `url`, la captura es el enlace. El texto accesible del enlace lo
+          da el `alt` de la imagen, que describe la pantalla, así que no hace
+          falta agregar un rótulo aparte para lectores de pantalla.
+          `rel="noopener noreferrer"` porque abre en otra pestaña: sin
+          `noopener` la página de destino queda con una referencia a la
+          nuestra por `window.opener`. */}
+      {url ? (
+        <a className="guia-captura-enlace" href={url} target="_blank" rel="noopener noreferrer">
+          {imagen}
+        </a>
+      ) : (
+        imagen
+      )}
       <figcaption>{descripcion}</figcaption>
     </figure>
   );

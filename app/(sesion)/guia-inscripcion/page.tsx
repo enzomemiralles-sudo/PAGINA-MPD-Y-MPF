@@ -30,7 +30,10 @@ export default async function ElegirGuia() {
       <h1>{t.titulo}</h1>
       <p className="guia-bajada">{t.bajada}</p>
 
-      <h2 className="guia-elegi mono">{t.elegi}</h2>
+      {/* Sin `.mono`: el rótulo va en la letra de la página, como el gemelo
+          de insumos. `.guia-elegi` ya pisaba las tres propiedades que esa
+          clase aportaba. */}
+      <h2 className="guia-elegi">{t.elegi}</h2>
       <div className="guia-puertas">
         {Object.values(GUIAS).map((g) => {
           const Icono = ICONOS[g.organismo];

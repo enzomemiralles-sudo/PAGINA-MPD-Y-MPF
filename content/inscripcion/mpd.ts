@@ -24,8 +24,7 @@ export const MPD: Guia = {
 
   checklist: {
     titulo: "Antes de empezar necesitás tener",
-    bajada:
-      "Conseguí esto ahora, no cuando abra la inscripción. Son cinco días hábiles y no dan para resolver una computadora prestada.",
+    bajada: "Recomendamos resolverlo antes de la fecha de inscripción",
     items: [
       {
         titulo: "Una PC con Windows",
@@ -73,7 +72,7 @@ export const MPD: Guia = {
           tono: "trampa",
           titulo: "Necesitás una PC con Windows, sí o sí",
           texto:
-            "El trámite no se hace desde el navegador: hay que instalar un .msi que pide permisos de administrador. No corre en Mac, Linux, celular ni tablet. Resolvé la máquina ahora y no cuando abra la inscripción.",
+            "El trámite no se hace desde el navegador: hay que instalar un .msi que pide permisos de administrador. No corre en Mac, Linux, celular ni tablet.",
         },
       ],
       consejo: null,

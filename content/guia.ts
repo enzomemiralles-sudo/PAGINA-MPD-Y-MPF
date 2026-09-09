@@ -19,13 +19,13 @@ export const guia = {
   secciones: {
     estado: "Estado de inscripción",
     antes: "Antes de empezar",
-    saber: "Lo que tenés que saber antes",
-    pasos: "Guía paso a paso",
+    saber: "Lo que conviene saber",
+    pasos: "Paso a paso",
     despues: "Después de inscribirte",
     examen: "El día del examen",
     resultados: "Resultados y orden de mérito",
     preguntas: "Preguntas frecuentes",
-    checklist: "Checklist final",
+    checklist: "Checklist",
   },
 
   // ---- el acordeón y el progreso ----
@@ -39,13 +39,11 @@ export const guia = {
   progresoAyuda: "Tu avance en la guía",
 
   // ---- el checklist final ----
-  checklistBajada:
-    "Se arma solo con lo que fuiste marcando. Nada de esto se manda a ningún lado: queda en este navegador.",
-  documentacion: "Documentación",
-  losPasos: "Los pasos",
-  faltan: (n: number) => (n === 1 ? "Te falta 1 cosa" : `Te faltan ${n} cosas`),
-  completo: "No te falta nada",
-  imprimir: "Imprimir el checklist",
+  // Es una fila de cuatro marcas, sin texto a la vista: los dos de acá abajo
+  // sólo los lee el lector de pantalla, que necesita saber qué significa el
+  // número suelto que ve el resto.
+  checklistHecho: "Hecho",
+  checklistPendiente: "Pendiente",
 
   // ---- advertencias ----
   ojo: "Ojo",
