@@ -30,7 +30,9 @@ export const guia = {
     examen: "Etapa 3: Examen",
     resultados: "Resultados y orden de mérito",
     preguntas: "Preguntas frecuentes",
-    checklist: "Checklist",
+    // El checklist tenía el suyo, «Checklist», de cuando era una sección
+    // aparte. Ahora es la fila de marcas al pie de la etapa 1, sin título,
+    // como en las otras dos: no hay nada que nombrar.
   },
 
   // ---- el botón de la etapa 3 ----
@@ -56,17 +58,16 @@ export const guia = {
   checklistHecho: "Hecho",
   checklistPendiente: "Pendiente",
 
-  // ---- advertencias ----
-  // Sólo las de peso medio llevan rótulo. Las de peso alto decían «OJO» y se
-  // fue: el marco rojo y el signo ya avisan.
-  tenerEnCuenta: "Tené en cuenta",
+  // Las advertencias ya no llevan rótulo: decían «OJO» las graves y «Tené en
+  // cuenta» las medias, y el marco, el signo y el propio texto ya dicen las
+  // dos cosas. Por eso acá no queda ninguno.
 
   // ---- huecos de material ----
   huecoCaptura: "Falta la captura",
   huecoVideo: "Falta el video",
 
   // ---- pie ----
-  fuentes: "De dónde sale esta guía",
+  fuentes: "Fuentes de la guía",
   verificar:
     "Verificá siempre la información en las fuentes oficiales antes de inscribirte: esta guía no reemplaza al sitio del organismo.",
 } as const;

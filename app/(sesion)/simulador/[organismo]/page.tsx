@@ -63,7 +63,6 @@ export default async function Organismo({ params }: Props) {
                 ) : (
                   <p className="sim-vacio">
                     <strong>{vacio.titulo}</strong>
-                    <span>{vacio.texto}</span>
                   </p>
                 )}
               </div>

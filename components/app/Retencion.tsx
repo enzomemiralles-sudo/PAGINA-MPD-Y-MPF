@@ -43,7 +43,7 @@ export function Retencion({ nombre, estado }: { nombre: string | null; estado: E
       {retomar ? (
         <div className="portal-retomar">
           <div>
-            <span className="portal-et mono">{t.rotulo}</span>
+            <span className="portal-et">{t.rotulo}</span>
             <b>{retomar.examen.titulo}</b>
             <p className="portal-sub">
               {retomar.segundos > 0
@@ -63,7 +63,7 @@ export function Retencion({ nombre, estado }: { nombre: string | null; estado: E
       ) : (
         <div className="portal-retomar">
           <div>
-            <span className="portal-et mono">
+            <span className="portal-et">
               {terminados > 0 ? tTemas.rotulo : primerSimulacro.rotulo}
             </span>
             <b>{terminados > 0 ? primerSimulacro.texto : primerSimulacro.titulo}</b>

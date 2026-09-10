@@ -231,14 +231,12 @@ export const resultado = {
 /**
  * Cuando no hay nada que mostrar.
  *
- * No dice «próximamente». Dice qué pasa y qué se puede hacer mientras tanto,
- * que es lo único honesto cuando el banco todavía no tiene nada revisado: una
- * pregunta sin revisar no se publica, y publicarla igual sería peor que no
- * tener la pantalla.
+ * No dice «próximamente»: dice que para esa instancia todavía no hay
+ * preguntas, y nada más. El párrafo que explicaba el proceso de revisión se
+ * retiró — es cómo trabajamos nosotros, no algo que quien entra necesite
+ * saber para decidir qué hacer.
  */
 export const vacio = {
   titulo: "Todavía no hay preguntas disponibles para esta instancia",
-  texto:
-    "Estamos revisando el material una por una antes de publicarlo. Una pregunta sin revisar no se publica, aunque eso signifique que la instancia quede vacía unos días.",
   volver: "Volver al simulador",
 } as const;

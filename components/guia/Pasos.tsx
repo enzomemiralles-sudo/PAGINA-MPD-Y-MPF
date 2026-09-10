@@ -15,15 +15,13 @@ import { Captura, VideoSlot } from "./Huecos";
  * Separarlos obligaría a levantar el estado a un contexto para que dos hijos
  * lean lo mismo, y no hay un tercero que lo necesite.
  *
- * Juntos en el archivo, separados en la página: devuelve las dos secciones
- * como hermanas, cada una con su tarjeta blanca. Antes el componente entraba
- * dentro de una <section> escrita en la página y el ⑨ quedaba anidado en el
- * ④; con una tarjeta por sección eso sería un marco adentro de otro.
- *
- * El ⑨ es una fila de cuatro marcas y nada más. Tenía además la
- * documentación de ②, los títulos de los pasos, cuántos faltaban y un botón
- * para imprimir; todo eso repetía lo que ya está más arriba en la misma
- * pantalla, y a dos bloques de distancia el resumen no resumía nada.
+ * El ⑨ es una fila de marcas al pie de esta misma tarjeta, como en las etapas
+ * 2 y 3. Llegó a ser una sección aparte, con tarjeta y título, y con dos
+ * columnas adentro: la documentación de ②, los títulos de los pasos, cuántos
+ * faltaban y un botón para imprimir. Todo eso repetía lo que ya está más
+ * arriba en la misma pantalla, y a dos bloques de distancia el resumen no
+ * resumía nada: había que subir la vista para saber a qué paso correspondía
+ * cada número.
  *
  * Lo marcado persiste en localStorage y por organismo: alguien puede estar
  * inscribiéndose a los dos, y su avance en el MPF no es su avance en el MPD.
@@ -119,53 +117,43 @@ export function Pasos({ guia, clave }: { guia: Guia; clave: string }) {
   const { hechos, abierto, setAbierto, cargado, alternar } = useAvance(clave, guia.pasos);
 
   return (
-    <>
-      {/* ④ Con su tarjeta y su título. El título vivía en la página, que
-          envolvía a este componente en una <section>; ahora que cada sección
-          es una tarjeta, esa envoltura habría dejado la del checklist metida
-          adentro de la del paso a paso. Las dos salen de acá, hermanas. */}
-      <section className="guia-seccion instructivo-mpd-tarjeta" id="pasos">
-        <h2 className="guia-seccion-titulo">{t.secciones.pasos}</h2>
+    <section className="guia-seccion instructivo-mpd-tarjeta" id="pasos">
+      <h2 className="guia-seccion-titulo">{t.secciones.pasos}</h2>
 
-        {/* El progreso. `cargado` evita que parpadee «0 de 4» antes de leer
-            lo guardado. */}
-        <div className="guia-progreso" role="group" aria-label={t.progresoAyuda}>
-          <div className="guia-barra">
-            <i style={{ width: `${cargado ? (hechos.size / total) * 100 : 0}%` }} />
-          </div>
-          {/* Sin `.mono`, igual que el rótulo del paso. */}
-          <span className="guia-progreso-texto">
-            {cargado ? t.progreso(hechos.size, total) : t.progreso(0, total)}
-          </span>
+      {/* El progreso. `cargado` evita que parpadee «0 de 4» antes de leer
+          lo guardado. */}
+      <div className="guia-progreso" role="group" aria-label={t.progresoAyuda}>
+        <div className="guia-barra">
+          <i style={{ width: `${cargado ? (hechos.size / total) * 100 : 0}%` }} />
         </div>
+        {/* Sin `.mono`, igual que el rótulo del paso. */}
+        <span className="guia-progreso-texto">
+          {cargado ? t.progreso(hechos.size, total) : t.progreso(0, total)}
+        </span>
+      </div>
 
-        <ol className="guia-pasos">
-          {guia.pasos.map((p) => (
-            <Paso
-              key={p.n}
-              paso={p}
-              total={total}
-              prefijo="pasos"
-              hecho={hechos.has(p.n)}
-              abierto={abierto === p.n}
-              onAbrir={() => setAbierto(abierto === p.n ? null : p.n)}
-              onHecho={() => alternar(p.n)}
-            />
-          ))}
-        </ol>
-      </section>
+      <ol className="guia-pasos">
+        {guia.pasos.map((p) => (
+          <Paso
+            key={p.n}
+            paso={p}
+            total={total}
+            prefijo="pasos"
+            hecho={hechos.has(p.n)}
+            abierto={abierto === p.n}
+            onAbrir={() => setAbierto(abierto === p.n ? null : p.n)}
+            onHecho={() => alternar(p.n)}
+          />
+        ))}
+      </ol>
 
-      {/* ⑨ El checklist final */}
-      <section className="guia-seccion instructivo-mpd-tarjeta" id="checklist">
-        <h2 className="guia-seccion-titulo">{t.secciones.checklist}</h2>
-
-        {/* Un solo renglón: los cuatro pasos por su número y su marca, nada
-            más. Sigue reflejando lo mismo que antes —el estado sale del mismo
-            `hechos` que el acordeón de arriba—, pero ya no repite los títulos
-            de los pasos, que están completos dos bloques más arriba. */}
-        <Marcas pasos={guia.pasos} hechos={hechos} />
-      </section>
-    </>
+      {/* Las marcas al pie, igual que en las etapas 2 y 3. Tenían tarjeta y
+          título propios; una sección entera para cuatro símbolos pesaba más
+          que lo que resumía, y a dos bloques de distancia el resumen dejaba de
+          resumir: había que subir la vista para saber a qué paso correspondía
+          cada número. Acá está pegado a lo que refleja. */}
+      <Marcas pasos={guia.pasos} hechos={hechos} clase="guia-checklist-pie" />
+    </section>
   );
 }
 

@@ -180,7 +180,9 @@ export default async function GuiaDeOrganismo({ params }: Props) {
           es la que pisa el `--texto` con el negro que necesita sobre
           blanco—, igual que el encabezado de arriba. */}
       <footer className="guia-fuentes">
-        <h2 className="guia-fuentes-titulo mono">{t.fuentes}</h2>
+        {/* Sin `.mono`: el rótulo va en la letra de la página, como los
+            demás. De esa clase sólo quedaba en pie la familia. */}
+        <h2 className="guia-fuentes-titulo">{t.fuentes}</h2>
         <ul>
           {g.fuentes.map((f) => (
             <li key={f.url}>

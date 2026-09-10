@@ -19,28 +19,43 @@ export const MPF: Guia = {
   cargo: "Técnico Administrativo",
 
   // ---------------- ① estado de inscripción ----------------
+  // Queda un solo párrafo, el que la franja de estado no puede decir: que en
+  // el MPF no hay una fecha única. Lo demás se fue por repetido, igual que en
+  // el MPD: el «esta guía no reemplaza la consulta al sitio oficial» es el
+  // mismo aviso que cierra la guía en el pie, y el enlace a Novedades está
+  // completo en «Fuentes de la guía».
   estado: {
     cuerpo: [
-      "La inscripción es por concurso, y cada concurso tiene su propia ventana de fechas: no hay una sola fecha para todo el país.",
-      "El calendario vigente se publica en la sección de novedades del sitio de Ingreso Democrático. Esta guía no reemplaza esa consulta: antes de inscribirte, verificá las fechas en el sitio oficial.",
+      "La inscripción es por concurso, y cada concurso tiene su propia ventana de fechas: no hay una sola fecha para todo el país. El calendario vigente se publica en la sección de novedades del sitio de Ingreso Democrático.",
     ],
-    enlaces: [
-      {
-        texto: "Novedades de Ingreso Democrático",
-        url: "https://www.mpf.gob.ar/ingreso-democratico/novedad/?cant=10&orderby=date",
-      },
-    ],
+    enlaces: [],
   },
 
   // ---------------- ② antes de empezar ----------------
   antes: {
-    titulo: "Antes de empezar",
-    cuerpo: [
-      "Para el agrupamiento Técnico Administrativo hacen falta tres cosas: ser mayor de edad, ser argentino o argentina —o residente permanente en el país— y tener el secundario completo.",
-      "Las tres se acreditan cargando documentación en el sistema. Para las dos primeras, DNI y partida de nacimiento o acta de ciudadanía. Para la tercera, certificado o título de estudios secundarios, terciarios o universitarios completos. Excepcionalmente se admite una constancia del establecimiento educativo que certifique que terminaste y que el título está en trámite.",
-      "El sistema tiene límites técnicos que conviene conocer antes de escanear nada: acepta JPG, GIF, PNG, TIFF, PDF o DOC, con un máximo de 2048 Kb por archivo, y admite un solo archivo por antecedente. La documentación de varias páginas hay que unificarla en un único PDF, sin perder firmas ni sellos.",
-    ],
+    titulo: "Antes de empezar necesitás tener",
+    cuerpo: ["Recomendamos resolverlo antes de la fecha de inscripción"],
+    // Plegada, como la del MPD: los tres titulares a la vista y la explicación
+    // a un clic. Es el mismo texto de antes, partido en titular y desarrollo;
+    // desplegado ocupaba media pantalla antes del paso a paso.
     items: null,
+    plegables: [
+      {
+        titulo: "Los tres requisitos del agrupamiento",
+        texto:
+          "Para el agrupamiento Técnico Administrativo hacen falta tres cosas: ser mayor de edad, ser argentino o argentina —o residente permanente en el país— y tener el secundario completo.",
+      },
+      {
+        titulo: "Con qué se acredita cada uno",
+        texto:
+          "Los tres se acreditan cargando documentación en el sistema. Para las dos primeras, DNI y partida de nacimiento o acta de ciudadanía. Para la tercera, certificado o título de estudios secundarios, terciarios o universitarios completos. Excepcionalmente se admite una constancia del establecimiento educativo que certifique que terminaste y que el título está en trámite.",
+      },
+      {
+        titulo: "Qué archivos acepta el sistema",
+        texto:
+          "Acepta JPG, GIF, PNG, TIFF, PDF o DOC, con un máximo de 2048 Kb por archivo, y admite un solo archivo por antecedente. La documentación de varias páginas hay que unificarla en un único PDF, sin perder firmas ni sellos. Conviene saberlo antes de escanear nada.",
+      },
+    ],
     advertencias: [],
     enlaces: [
       {
@@ -236,53 +251,125 @@ export const MPF: Guia = {
     },
   ],
 
-  // El MPF todavía no tiene una guía del examen paso a paso como la parte 2
-  // del MPD. Las listas van vacías y sus etapas 2 y 3 se siguen mostrando
-  // como las secciones de texto de abajo.
-  pasosIngreso: [],
-  pasosExamen: [],
-  introIngreso: [],
-
-  // ---------------- ⑤ después de inscribirte ----------------
-  despues: {
-    titulo: "Etapa 2: Ingreso a plataforma de examen",
-    cuerpo: ["El proceso sigue así:"],
-    items: [
-      "Cierra la inscripción.",
-      "Se publica la Lista Provisoria de Personas Inscriptas. Incluye a todos los anotados y no significa estar habilitado a rendir.",
-      "Se analiza la documentación presentada.",
-      "Se publica la Lista Definitiva, solo con quienes cumplieron los requisitos, dentro de los 15 días posteriores al cierre de la inscripción.",
-      "Cerca de la fecha de evaluación llegan las notificaciones con lugar, fecha y horario, dirigidas a quienes integren la lista definitiva.",
-    ],
-    advertencias: [
-      {
-        peso: "media",
-        texto:
-          "Estar en la Lista Provisoria no quiere decir que estés habilitado a rendir. Eso lo define la Lista Definitiva.",
-      },
-    ],
-    enlaces: [],
-  },
-
-  // ---------------- ⑥ el día del examen ----------------
-  examen: {
-    titulo: "Etapa 3: Examen",
-    cuerpo: [
-      "Para Técnico Administrativo la evaluación es a distancia, por plataforma Moodle, y tiene dos partes.",
-      "La parte teórica son 20 preguntas de opción múltiple en 30 minutos. Los contenidos son historia argentina y latinoamericana, sistema constitucional, problemática de género, ordenamiento institucional y jurídico del MPF, y nuevo Código Procesal Penal Federal.",
-      "La parte práctica de informática son búsquedas web en el sitio del MPF y en otros portales para localizar fallos, resoluciones y demás documentos, y responder preguntas de opción múltiple sobre lo encontrado. 15 minutos.",
-    ],
-    items: null,
-    advertencias: [],
-    enlaces: [
-      { texto: "Practicar el simulacro del MPF", url: "/simulador/mpf" },
-      { texto: "Insumos de estudio del MPF", url: "/insumos/MPF" },
-      {
+  // ---------------- ⑤ y ⑥, en el mismo formato que el MPD ----------------
+  // Las dos etapas pasan de texto corrido a acordeón. El contenido es el
+  // mismo que traían las secciones de antes, partido en pasos: cada punto de
+  // la lista del ⑤ y cada párrafo del ⑥ ya eran un momento distinto del
+  // proceso, así que la división no agrega ni saca nada.
+  //
+  // A diferencia del MPD, acá no hay capturas: el material oficial del MPF no
+  // documenta la plataforma del examen. Los pasos van sin ellas antes que con
+  // huecos que prometan una foto que no existe.
+  introIngreso: ["Una vez cerrada la inscripción, el concurso sigue este orden."],
+  pasosIngreso: [
+    {
+      n: 1,
+      titulo: "Cierra la inscripción",
+      resumen: "Se termina el plazo para anotarse.",
+      cuerpo: ["Se cierra el plazo de inscripción del concurso."],
+      capturas: [],
+      videos: [],
+      advertencias: [],
+      enlace: null,
+    },
+    {
+      n: 2,
+      titulo: "Se publica la Lista Provisoria",
+      resumen: "Están todos los anotados, sin filtrar.",
+      cuerpo: [
+        "Se publica la Lista Provisoria de Personas Inscriptas. Incluye a todos los anotados y no significa estar habilitado a rendir.",
+      ],
+      capturas: [],
+      videos: [],
+      advertencias: [
+        {
+          peso: "media",
+          texto:
+            "Estar en la Lista Provisoria no quiere decir que estés habilitado a rendir. Eso lo define la Lista Definitiva.",
+        },
+      ],
+      enlace: null,
+    },
+    {
+      n: 3,
+      titulo: "Se analiza la documentación",
+      resumen: "Se revisa lo que cada persona cargó.",
+      cuerpo: ["Se analiza la documentación presentada."],
+      capturas: [],
+      videos: [],
+      advertencias: [],
+      enlace: null,
+    },
+    {
+      n: 4,
+      titulo: "Se publica la Lista Definitiva",
+      resumen: "Dentro de los 15 días del cierre. Esta sí habilita.",
+      cuerpo: [
+        "Se publica la Lista Definitiva, solo con quienes cumplieron los requisitos, dentro de los 15 días posteriores al cierre de la inscripción.",
+      ],
+      capturas: [],
+      videos: [],
+      advertencias: [],
+      enlace: null,
+    },
+    {
+      n: 5,
+      titulo: "Llega la notificación del examen",
+      resumen: "Con lugar, fecha y horario.",
+      cuerpo: [
+        "Cerca de la fecha de evaluación llegan las notificaciones con lugar, fecha y horario, dirigidas a quienes integren la Lista Definitiva.",
+      ],
+      capturas: [],
+      videos: [],
+      advertencias: [],
+      enlace: null,
+    },
+  ],
+  pasosExamen: [
+    {
+      n: 1,
+      titulo: "Cómo se rinde",
+      resumen: "A distancia, por Moodle, en dos partes.",
+      cuerpo: [
+        "Para Técnico Administrativo la evaluación es a distancia, por plataforma Moodle, y tiene dos partes: una teórica y una práctica de informática.",
+      ],
+      capturas: [],
+      videos: [],
+      advertencias: [],
+      enlace: {
         texto: "Contenido de la evaluación (sitio oficial)",
         url: "https://www.mpf.gob.ar/ingreso-democratico/contenido-evaluacion-examen-tecnico-administrativo/",
       },
-    ],
-  },
+    },
+    {
+      n: 2,
+      titulo: "La parte teórica",
+      resumen: "20 preguntas de opción múltiple en 30 minutos.",
+      cuerpo: [
+        "Son 20 preguntas de opción múltiple en 30 minutos.",
+        "Los contenidos son historia argentina y latinoamericana, sistema constitucional, problemática de género, ordenamiento institucional y jurídico del MPF, y nuevo Código Procesal Penal Federal.",
+      ],
+      capturas: [],
+      videos: [],
+      advertencias: [],
+      enlace: { texto: "Insumos de estudio del MPF", url: "/insumos/MPF" },
+    },
+    {
+      n: 3,
+      titulo: "La parte práctica de informática",
+      resumen: "Búsquedas web y preguntas sobre lo encontrado, en 15 minutos.",
+      cuerpo: [
+        "Son búsquedas web en el sitio del MPF y en otros portales para localizar fallos, resoluciones y demás documentos, y responder preguntas de opción múltiple sobre lo encontrado.",
+        "El tiempo es de 15 minutos.",
+      ],
+      capturas: [],
+      videos: [],
+      advertencias: [],
+      enlace: null,
+    },
+  ],
+  despues: null,
+  examen: null,
 
   // ---------------- ⑦ resultados y orden de mérito ----------------
   // El sitio oficial no publica el detalle de cómo se conforma el orden de

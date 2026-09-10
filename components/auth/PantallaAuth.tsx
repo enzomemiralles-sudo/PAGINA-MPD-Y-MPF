@@ -30,10 +30,15 @@ export function PantallaAuth({
       <main className="auth-pantalla">
         <Tarjeta className={`auth-caja${ancha ? " perfil-caja" : ""}`}>{children}</Tarjeta>
 
+        {/* Los dos logotipos, un 30% más grandes que antes: 16→21px el de
+            Nexo y 26→34px el de Nueva Abogacía. Los altos van por prop y no
+            por CSS porque los dos componentes los escriben inline —uno como
+            `--logo-alto`, el otro como `height`— y el estilo inline le gana a
+            cualquier regla de la hoja. */}
         <div className="auth-firma" aria-label={pieLogos.ayuda}>
-          <LogoNexo alto={16} />
+          <LogoNexo alto={21} />
           <span className="sep-v" aria-hidden="true" />
-          <LogoNuevaAbogacia />
+          <LogoNuevaAbogacia alto={34} />
         </div>
       </main>
     </div>
