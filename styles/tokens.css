@@ -101,19 +101,55 @@ html[data-marca="dual"],
   --ital-estilo: normal;
 }
 
-/* ---------- neutro: crear perfil antes de elegir, y el panel ---------- */
+/* ---------- neutro: ingreso, crear perfil, elegir perfil, y el panel ----------
+   Los lugares comunes de las dos agrupaciones. Acá todavía no hay dueño, así
+   que no puede aparecer ni el verde de Nexo ni el azul de Nueva Abogacía;
+   antes eso se resolvía dejando el gris de :root, que es el mismo casi negro
+   de la portada y hacía que el ingreso se viera apagado en vez de neutro.
+
+   Ahora la piel entera se construye sobre un verde agua, #02897B. Sigue sin
+   ser de ninguna de las dos —no es el verde de Nexo ni el azul de Nueva
+   Abogacía, está entre los dos— pero es un color, y estas pantallas pasan a
+   tener estética propia.
+
+   El #02897B va donde se luce y donde puede: el relleno de los botones, el
+   halo de atrás del formulario, el velo de las superficies. Lo que NO puede
+   ser es el fondo, y el motivo es medible: con letra blanca da 4,31:1, abajo
+   del piso de 4,5:1, y el logotipo de Nexo (#059249) queda en 1,07:1, o sea
+   invisible. El fondo es el mismo verde bajado hasta que aguanta la letra:
+   #01332E. */
 html[data-marca="neutro"],
 [data-marca="neutro"] {
-  --tarjeta-solida: #141519;
-  --acento: var(--texto);
+  /* CORRECCIÓN 5 — sobre un fondo que no es negro, el débil al 50% cae a
+     4,25:1 y el rojo de error a 4,31:1. Los dos suben exactamente como ya lo
+     habían hecho en Nexo, por el mismo motivo y con los mismos valores. Peor
+     par de la piel después del ajuste: 4,86:1. */
+  --texto-debil: rgba(244, 242, 237, 0.62);
+  --error: #ff8079;
+  --fondo: #01332e;
+  --fondo-bajo: #012421;
+  --tarjeta-solida: #0a423b;
+  /* El verde exacto es el color de los botones. La letra que va encima es la
+     tinta, no el papel: #08090A sobre #02897B da 4,62:1, mientras que el
+     blanco se queda en 4,31:1. Es el mismo caso que --sobre-acento en Nueva
+     Abogacía, al revés. */
+  --acento: #02897b;
+  --sobre-acento: #08090a;
+  /* Para TEXTO sigue yendo el blanco: el verde sobre el fondo da 3,2:1, que
+     alcanza para un botón —es un elemento gráfico— y no para leer. */
   --acento-texto: var(--texto);
   --acento-2: transparent;
-  --superficie: var(--tarjeta);
-  --mancha-a: #8a8987;
-  --mancha-b: #c9c7c2;
-  --relleno: linear-gradient(135deg, #3a3a38, #6b6b68);
-  --sobre-relleno: #f4f2ed;
-  --sobre-acento: var(--fondo);
+  /* El velo de las superficies va teñido del verde y no blanco: es lo que
+     hace que la tarjeta del ingreso se lea como parte de la pantalla y no
+     como un recorte gris pegado encima. */
+  --superficie: rgba(2, 137, 123, 0.14);
+  /* Las manchas son el halo de `.auth-marco::before`, lo único con color que
+     hay detrás del formulario. Acá es donde el #02897B se ve entero, porque
+     el halo no lleva texto encima. */
+  --mancha-a: #02897b;
+  --mancha-b: #37c9b8;
+  --relleno: #02897b;
+  --sobre-relleno: #08090a;
   --ancho-h: 112;
   --ital-estilo: normal;
 }

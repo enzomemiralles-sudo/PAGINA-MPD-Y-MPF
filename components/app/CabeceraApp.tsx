@@ -46,9 +46,18 @@ export function CabeceraApp({ marca, revisor = false }: { marca: Marca; revisor?
           )}
         </Link>
 
-        {/* El lema de la agrupación. Va a la derecha del logo y desaparece
-            en pantallas angostas, donde compite con las acciones. */}
-        {cfg ? <span className="app-lema mono">{cfg.lema}</span> : null}
+        {/* El lema, sólo en Nexo. Va a la derecha del logo y desaparece en
+            pantallas angostas, donde compite con las acciones.
+
+            En Nueva Abogacía se retiró: su logotipo ya trae el nombre escrito
+            al lado, así que «Construyendo una nueva abogacía» quedaba como un
+            tercer texto en la misma barra, compitiendo con el nombre que está
+            dos centímetros a la izquierda. En Nexo el logotipo es sólo la
+            marca gráfica y el lema no repite nada.
+
+            El lema sigue en `marcas.ts`: es de la agrupación, no de esta
+            barra, y lo pide quien lo necesite. */}
+        {cfg && marca === "nexo" ? <span className="app-lema mono">{cfg.lema}</span> : null}
 
         <div className="app-acciones">
           {/* Sólo para quien revisa. Al resto la ruta ni le aparece ni le

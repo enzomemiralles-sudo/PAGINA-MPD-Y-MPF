@@ -71,12 +71,18 @@ export const PIELES: Record<Marca, Piel> = {
   },
   neutro: {
     ...BASE,
-    relleno: ["#3a3a38", "#6b6b68"],
-    "sobre-relleno": "#f4f2ed",
-    fondo: "#08090a",
-    "fondo-bajo": "#040507",
-    superficie: "rgba(244,242,237,0.04)",
-    acento: "#f4f2ed",
+    // El verde agua de los lugares comunes. #02897B es el color de la piel;
+    // el fondo es ese mismo verde bajado, porque el original con letra blanca
+    // da 4,31:1 y el logotipo de Nexo desaparece encima. El débil y el error
+    // suben igual que en Nexo. Ver CORRECCIÓN 5 en tokens.css.
+    "texto-debil": "rgba(244,242,237,0.62)",
+    error: "#ff8079",
+    relleno: ["#02897b"],
+    "sobre-relleno": "#08090a",
+    fondo: "#01332e",
+    "fondo-bajo": "#012421",
+    superficie: "rgba(2,137,123,0.14)",
+    acento: "#02897b",
     "acento-texto": "#f4f2ed",
     "acento-2": null,
     "sobre-acento": "#08090a",

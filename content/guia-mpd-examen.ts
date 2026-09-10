@@ -199,6 +199,6 @@ export const PASOS_EXAMEN: PasoGuia[] = [
  * PDF: que el sistema del examen es otro, y que al MPD hay que ir a mirarlo.
  */
 export const INTRO_INGRESO: string[] = [
-  "El sistema del examen es distinto del de la inscripción, con otro usuario: hay que haber completado la etapa 1 para poder entrar.",
-  "El MPD no manda mails avisando el día y la hora del examen: se publica en el portal y la carga de ir a mirar es tuya. Guardá en favoritos la ficha de tu examen en mpd.gov.ar y poné un recordatorio semanal para revisarla, desde que cierra la inscripción hasta que rendís.",
+  "El examen se rinde en otro sistema, con un usuario distinto del que usaste para inscribirte. Para entrar hay que haber completado la etapa 1.",
+  "El día y la hora se publican en el portal del MPD y no llega ningún mail avisando: la carga de ir a mirar es tuya. Guardá la ficha de tu examen en favoritos y ponete un recordatorio semanal, desde que cierra la inscripción hasta que rendís.",
 ];

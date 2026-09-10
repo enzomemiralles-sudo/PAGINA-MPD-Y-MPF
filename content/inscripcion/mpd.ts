@@ -125,7 +125,7 @@ export const MPD: Guia = {
           {
             titulo: "No se sube ningún documento",
             texto:
-              "En la tercera página no se adjunta nada, en ningún formato digital. Sólo «Siguiente». Si estabas buscando dónde subir el título o el DNI, no está: no va.",
+              "En la tercera página no se adjunta nada, en ningún formato digital. Solo «Siguiente». Si estabas buscando dónde subir el título o el DNI, no está: no va.",
           },
           {
             titulo: "«Estudiante regular de la carrera»",
@@ -155,10 +155,10 @@ export const MPD: Guia = {
     {
       n: 4,
       titulo: "Inscribirte al examen",
-      resumen: "Sólo durante los cinco días hábiles. Acá están casi todas las trampas.",
+      resumen: "Solo durante los cinco días hábiles. Acá están casi todas las trampas.",
       donde: "La aplicación CONCURSOS · Menú Principal",
       cuerpo: [
-        "Sólo se puede durante los cinco días hábiles que dura la inscripción.",
+        "Solo se puede durante los cinco días hábiles que dura la inscripción.",
         "En el Menú Principal ves la cantidad de inscripciones vigentes por agrupamiento. Entrás en Técnico Administrativo, elegís el examen de tu jurisdicción, avanzás con «Siguiente» revisando los datos que trae del CV, y cerrás con «Guardar». Tiene que aparecerte el mensaje de confirmación de que te inscribiste correctamente.",
         "Conviene anotarse en varias jurisdicciones. Pero ojo: el orden de mérito te habilita a ser propuesto únicamente en la jurisdicción en la que te inscribiste, y si más adelante te llaman y rechazás la propuesta, quedás excluido de la lista.",
       ],
@@ -260,7 +260,7 @@ export const MPD: Guia = {
       bajada: "Aprobar no te da el cargo: te da lugar en una lista que dura dos años.",
       cuerpo: [
         "Los resultados se publican en el portal cuando termina la corrección. El dictamen con calificaciones y orden de mérito provisorio sale dentro de los quince días de terminadas las evaluaciones.",
-        "Si querés impugnar tenés tres días hábiles desde la notificación, y sólo por arbitrariedad manifiesta, error material o vicio grave de procedimiento. Antes de impugnar podés pedir tu propio examen por correo para verlo corregido.",
+        "Si querés impugnar tenés tres días hábiles desde la notificación, y solo por arbitrariedad manifiesta, error material o vicio grave de procedimiento. Antes de impugnar podés pedir tu propio examen por correo para verlo corregido.",
         "Se ingresa por el cargo más bajo del agrupamiento, Auxiliar. A los seis meses de servicio efectivo, la confirmación implica el pase automático a Escribiente Auxiliar y se adquiere la estabilidad. En los ascensos, entre dos candidatos con el mismo cargo, hay preferencia obligatoria para quien tenga título de abogado/a.",
       ],
       puntos: null,

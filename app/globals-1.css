@@ -14,14 +14,10 @@
 
 * { box-sizing: border-box; margin: 0; padding: 0; }
 html { scroll-behavior: smooth; }
-/* La tipografía del sitio entero, las cuatro pieles: Outfit, la de
-   nexoderecho.com.ar. Ver la nota «una sola familia» más abajo, donde estaba
-   la regla por marca que esto reemplaza. De acá cae por herencia a todo,
-   botones incluidos, porque `.btn` usa `font-family: inherit`. */
 body {
   background: var(--fondo);
   color: var(--texto);
-  font-family: var(--fuente-outfit), system-ui, sans-serif;
+  font-family: var(--fuente-archivo), system-ui, sans-serif;
   font-variation-settings: "wdth" 100, "wght" 400;
   -webkit-font-smoothing: antialiased;
   line-height: 1.55;
@@ -33,21 +29,9 @@ body {
 }
 ::selection { background: var(--acento); color: var(--sobre-acento); }
 a { color: var(--acento-texto); text-decoration: none; }
-/* La familia deja de ser la monoespaciada: `inherit` hace caer la del
-   <body> —Outfit en Nexo, Archivo en Nueva Abogacía—, así la clase sirve en
-   las cuatro pieles sin repetir la regla por marca. Lo que la clase sigue
-   aportando es la forma de rótulo: versalitas y tracking.
-
-   Las dos medidas se reacomodan, como en todos los rótulos ya convertidos: el
-   cuerpo sube porque una mono ocupa más por letra —al mismo tamaño nominal la
-   proporcional se ve más chica— y el tracking baja, porque 0,09em era la
-   apertura que necesitan las versalitas de una mono angosta. El peso 600
-   reemplaza al grosor que la mono traía de fábrica. */
 .mono {
-  font-family: inherit;
-  font-size: 0.8rem; letter-spacing: 0.05em; text-transform: uppercase;
-  font-variation-settings: "wdth" 100, "wght" 600;
-  font-weight: 600;
+  font-family: var(--fuente-mono), ui-monospace, monospace;
+  font-size: 0.72rem; letter-spacing: 0.09em; text-transform: uppercase;
 }
 
 /* ============ FONDO ============ */
@@ -281,15 +265,14 @@ p { color: var(--papel-tenue); }
 .chip:hover { box-shadow: inset 0 0 0 1px var(--acento-texto); color: var(--papel); }
 .lista { list-style: none; margin-top: 1.2rem; }
 .lista li { display: flex; gap: 0.7rem; padding: 0.6rem 0; border-top: 1px solid var(--linea); font-size: 0.88rem; color: var(--papel-tenue); line-height: 1.45; }
-.lista li .n { font-family: inherit; font-size: 0.76rem; font-variant-numeric: tabular-nums; color: var(--acento-texto); flex-shrink: 0; padding-top: 0.15rem; }
+.lista li .n { font-family: var(--fuente-mono), monospace; font-size: 0.68rem; color: var(--acento-texto); flex-shrink: 0; padding-top: 0.15rem; }
 .lista li b { color: var(--papel); font-variation-settings: "wdth" 100, "wght" 600; }
 
 /* ============ NÚMEROS ============ */
 .numeros {
   display: flex; flex-wrap: wrap; justify-content: center; gap: 0.6rem 1.6rem; text-align: center;
-  font-family: inherit; font-size: 0.78rem; letter-spacing: 0.05em;
-  text-transform: uppercase; font-variation-settings: "wdth" 100, "wght" 600;
-  font-weight: 600; color: var(--papel-debil);
+  font-family: var(--fuente-mono), monospace; font-size: 0.68rem; letter-spacing: 0.07em;
+  text-transform: uppercase; color: var(--papel-debil);
 }
 .numeros b { color: var(--papel); font-variation-settings: "wght" 500; }
 
@@ -353,8 +336,8 @@ p { color: var(--papel-tenue); }
 .pagina-texto li { color: var(--papel-tenue); font-size: 1rem; line-height: 1.65; }
 .pagina-texto li::marker { color: var(--acento-texto); }
 .pagina-texto-fecha {
-  margin-top: 1.2rem; font-family: inherit;
-  font-size: 0.86rem; letter-spacing: 0; color: var(--papel-debil);
+  margin-top: 1.2rem; font-family: var(--fuente-mono), monospace;
+  font-size: 0.8rem; letter-spacing: 0.04em; color: var(--papel-debil);
 }
 .pagina-texto-firma {
   margin-top: 3.5rem; padding-top: 1.6rem; border-top: 1px solid var(--linea);
@@ -373,10 +356,8 @@ p { color: var(--papel-tenue); }
 }
 .contacto-correos li { display: flex; flex-direction: column; gap: 0.15rem; }
 .contacto-correos .organizacion {
-  font-family: inherit; font-size: 0.78rem;
-  letter-spacing: 0.05em; text-transform: uppercase;
-  font-variation-settings: "wdth" 100, "wght" 600; font-weight: 600;
-  color: var(--papel-debil);
+  font-family: var(--fuente-mono), monospace; font-size: 0.68rem;
+  letter-spacing: 0.11em; text-transform: uppercase; color: var(--papel-debil);
 }
 .contacto-correos a { color: var(--acento-texto); font-size: 1.02rem; overflow-wrap: anywhere; }
 .contacto-redes { display: flex; flex-wrap: wrap; gap: 0.6rem; margin-top: 1.2rem; }
@@ -641,15 +622,9 @@ select option { color: #14181a; background: #ffffff; }
 }
 
 .auth-firma { display: flex; align-items: center; justify-content: center; gap: 1.1rem; }
-/* El alto de los dos logotipos lo fija `PantallaAuth` por prop, porque los
-   componentes lo escriben inline y el inline gana. Esta regla queda como
-   respaldo, con el mismo valor, para el caso de que algún día se monte la
-   firma sin pasar el alto.
-   Se retiró `.auth-firma .na-circ`: el marcador provisorio de Nueva Abogacía
-   ya no existe —el logotipo es el archivo definitivo— y esa regla no le
-   pegaba a nada desde entonces. */
-.auth-firma .logo-nexo { --logo-alto: 21px; }
-.auth-firma .sep-v { height: 21px; background: var(--borde-fuerte); }
+.auth-firma .logo-nexo { --logo-alto: 16px; }
+.auth-firma .sep-v { height: 16px; background: var(--borde-fuerte); }
+.auth-firma .na-circ { width: 21px; height: 21px; font-size: 0.6rem; }
 
 /* ---------- selección de perfil ---------- */
 /* Las tarjetas necesitan ancho: a 34rem los títulos se parten en tres líneas. */
@@ -794,10 +769,9 @@ body { transition: background var(--t-sec) var(--suave), color var(--t-sec) var(
 
 /* ---------- Mi perfil ---------- */
 .titulo-bloque {
-  font-size: 0.8rem; letter-spacing: 0.05em; text-transform: uppercase;
-  font-family: inherit;
-  font-variation-settings: "wdth" 100, "wght" 600; font-weight: 600;
-  font-style: normal;
+  font-size: 0.72rem; letter-spacing: 0.09em; text-transform: uppercase;
+  font-family: var(--fuente-mono), ui-monospace, monospace;
+  font-variation-settings: normal; font-style: normal;
   color: var(--texto-debil); margin-bottom: 1rem;
 }
 .datos-cuenta { display: grid; gap: 0.15rem 1rem; grid-template-columns: 1fr; }
@@ -920,7 +894,7 @@ body { transition: background var(--t-sec) var(--suave), color var(--t-sec) var(
   border-radius: 12px; padding: 1rem 1.1rem;
   display: flex; flex-direction: column; gap: 0.7rem;
 }
-.sim-reglas-titulo { color: var(--texto-debil); font-size: 0.72rem; }
+.sim-reglas-titulo { color: var(--texto-debil); font-size: 0.64rem; }
 .sim-reglas-desde { font-size: 0.92rem; font-variation-settings: "wdth" 100, "wght" 620; }
 .sim-reglas-lista { display: flex; flex-direction: column; gap: 0.4rem; }
 .sim-reglas-lista > div {
@@ -946,11 +920,11 @@ body { transition: background var(--t-sec) var(--suave), color var(--t-sec) var(
   display: flex; align-items: center; justify-content: space-between; gap: 1rem;
   flex-wrap: wrap;
 }
-.rend-pos { color: var(--texto-debil); font-size: 0.76rem; }
+.rend-pos { color: var(--texto-debil); font-size: 0.68rem; }
 .rend-cron { display: flex; align-items: baseline; gap: 0.5rem; }
 .rend-cron-rotulo { color: var(--texto-debil); font-size: 0.6rem; }
 .rend-cron-numero {
-  font-family: inherit;
+  font-family: var(--fuente-mono), ui-monospace, monospace;
   font-size: 1.15rem; font-variant-numeric: tabular-nums; letter-spacing: 0.02em;
 }
 .rend-cron.apurando .rend-cron-numero { color: var(--error); }
@@ -1034,7 +1008,7 @@ body { transition: background var(--t-sec) var(--suave), color var(--t-sec) var(
 }
 .rend-gq {
   width: 2.1rem; height: 2.1rem; border-radius: 8px; border: none; cursor: pointer;
-  font-family: inherit; font-size: 0.8rem; font-variant-numeric: tabular-nums;
+  font-family: var(--fuente-mono), ui-monospace, monospace; font-size: 0.72rem;
   background: transparent; color: var(--texto-tenue);
   box-shadow: inset 0 0 0 1px var(--borde);
   display: flex; align-items: center; justify-content: center;
@@ -1071,7 +1045,7 @@ body { transition: background var(--t-sec) var(--suave), color var(--t-sec) var(
 .tip-columnas { display: grid; gap: 1rem; }
 @media (min-width: 900px) { .tip-columnas { grid-template-columns: 1fr 1fr; } }
 .tip-original, .tip-escribir { padding: 1.1rem; display: flex; flex-direction: column; gap: 0.7rem; }
-.tip-rotulo { color: var(--texto-debil); font-size: 0.7rem; }
+.tip-rotulo { color: var(--texto-debil); font-size: 0.62rem; }
 .tip-texto { white-space: pre-wrap; font-size: 0.92rem; line-height: 1.7; }
 /* El tope y el scroll propio son para cuando las dos columnas van al lado. En
    una sola columna, un recuadro que scrollea aparte obliga a moverse dentro de
@@ -1091,7 +1065,7 @@ body { transition: background var(--t-sec) var(--suave), color var(--t-sec) var(
 .tip-medidas > div { display: flex; flex-direction: column; gap: 0.15rem; }
 .tip-medida-rotulo { color: var(--texto-debil); font-size: 0.6rem; }
 .tip-medida {
-  font-family: inherit; font-size: 1.15rem;
+  font-family: var(--fuente-mono), ui-monospace, monospace; font-size: 1.15rem;
   font-variant-numeric: tabular-nums;
 }
 .tip-medida.mal { color: var(--error); }
@@ -1111,9 +1085,8 @@ body { transition: background var(--t-sec) var(--suave), color var(--t-sec) var(
   padding: 1.5rem; display: flex; flex-direction: column; gap: 0.3rem; align-items: flex-start;
 }
 .res-veredicto {
-  font-size: 0.78rem; letter-spacing: 0.05em; text-transform: uppercase;
-  font-family: inherit;
-  font-variation-settings: "wdth" 100, "wght" 700; font-weight: 700;
+  font-size: 0.7rem; letter-spacing: 0.09em; text-transform: uppercase;
+  font-family: var(--fuente-mono), ui-monospace, monospace;
 }
 .res-puntaje.ok .res-veredicto { color: var(--ok); }
 .res-puntaje.mal .res-veredicto { color: var(--error); }
@@ -1149,7 +1122,7 @@ body { transition: background var(--t-sec) var(--suave), color var(--t-sec) var(
 .res-temas li { display: grid; grid-template-columns: 1fr auto; gap: 0.3rem 0.75rem; align-items: center; }
 .res-tema-nombre { font-size: 0.9rem; }
 .res-tema-pct {
-  font-family: inherit; font-size: 0.82rem;
+  font-family: var(--fuente-mono), ui-monospace, monospace; font-size: 0.75rem;
   color: var(--texto-tenue); font-variant-numeric: tabular-nums;
 }
 .res-tema-barra {
@@ -1202,9 +1175,8 @@ body { transition: background var(--t-sec) var(--suave), color var(--t-sec) var(
   white-space: pre-wrap;
 }
 .rev-rotulo {
-  font-size: 0.72rem; letter-spacing: 0.05em; text-transform: uppercase;
-  font-family: inherit; font-variation-settings: "wdth" 100, "wght" 600;
-  font-weight: 600; color: var(--texto-debil);
+  font-size: 0.62rem; letter-spacing: 0.09em; text-transform: uppercase;
+  font-family: var(--fuente-mono), ui-monospace, monospace; color: var(--texto-debil);
 }
 .rev-opciones { list-style: none; display: flex; flex-direction: column; gap: 0.45rem; }
 .rev-op {
@@ -1254,8 +1226,7 @@ body { transition: background var(--t-sec) var(--suave), color var(--t-sec) var(
 .rev-atajos { list-style: none; display: flex; flex-wrap: wrap; gap: 1.1rem; }
 .rev-atajos li { color: var(--texto-debil); font-size: 0.76rem; }
 .rev-atajos kbd {
-  font-family: inherit; font-size: 0.76rem;
-  font-variation-settings: "wdth" 100, "wght" 600; font-weight: 600;
+  font-family: var(--fuente-mono), ui-monospace, monospace; font-size: 0.68rem;
   padding: 0.12rem 0.4rem; border-radius: 5px;
   box-shadow: inset 0 0 0 1px var(--borde-fuerte); margin-right: 0.3rem;
 }
@@ -1289,10 +1260,8 @@ body { transition: background var(--t-sec) var(--suave), color var(--t-sec) var(
 .asis-bajada { color: var(--texto-tenue); max-width: 62ch; line-height: 1.6; }
 .asis-parrafo { color: var(--texto-tenue); max-width: 60ch; line-height: 1.65; }
 .asis-rotulo {
-  font-family: inherit; font-size: 0.74rem;
-  letter-spacing: 0.05em; text-transform: uppercase;
-  font-variation-settings: "wdth" 100, "wght" 600; font-weight: 600;
-  color: var(--texto-debil);
+  font-family: var(--fuente-mono), monospace; font-size: 0.66rem;
+  letter-spacing: 0.11em; text-transform: uppercase; color: var(--texto-debil);
 }
 
 /* ---------- encabezado (A-01, A-13) ---------- */
@@ -1437,9 +1406,8 @@ body { transition: background var(--t-sec) var(--suave), color var(--t-sec) var(
 .asis-sello[data-certeza="sin_respuesta"] { --estado: var(--error); }
 
 .asis-org-etiqueta {
-  font-family: inherit; font-size: 0.72rem;
-  letter-spacing: 0.05em; color: var(--acento-texto);
-  font-variation-settings: "wdth" 100, "wght" 600; font-weight: 600;
+  font-family: var(--fuente-mono), monospace; font-size: 0.64rem;
+  letter-spacing: 0.12em; color: var(--acento-texto);
   padding: 0.22rem 0.5rem; border-radius: 999px;
   box-shadow: inset 0 0 0 1px color-mix(in srgb, var(--acento-texto) 35%, transparent);
 }
@@ -1520,19 +1488,20 @@ body { transition: background var(--t-sec) var(--suave), color var(--t-sec) var(
 /* ---------- catálogo y buscador (A-10) ---------- */
 .asis-catalogo { display: flex; flex-direction: column; gap: 0.7rem; scroll-margin-top: 5rem; }
 .asis-filtro { display: flex; flex-direction: column; gap: 0.4rem; margin-top: 0.6rem; }
-/* Los cuatro rótulos que hacen de título —«Tu pregunta» y «Por ejemplo:»
-   arriba de la caja, «Tu consulta» cuando la pantalla devuelve la respuesta,
-   y «Buscar entre las preguntas respondidas» en el filtro del catálogo— van
-   un punto más grandes que el resto.
+/* Los rótulos que hacen de título salen de `.asis-rotulo`, que es
+   monoespaciada, y quedaban con la letra vieja al lado de títulos que ya
+   están en la de la página. Son cuatro: «Tu pregunta» y «Por ejemplo:» arriba
+   de la caja, «Tu consulta» cuando la pantalla devuelve la respuesta, y
+   «Buscar entre las preguntas respondidas» en el filtro del catálogo.
 
-   La familia ya no la disputa nadie: desde que `.asis-rotulo` heredó la del
-   <body>, todos los rótulos de la pantalla están en la letra de la página. Lo
-   que queda acá es la diferencia de jerarquía: estos cuatro encabezan un
-   bloque, mientras que los «Fuente» y «Jurisdicción» de adentro de cada ficha
-   son etiquetas de dato y se quedan en el cuerpo chico.
+   Va colgado de `.asis-caja` y `.asis-filtro` a propósito, y no puesto en
+   `.asis-rotulo` a secas: esa clase la usan también los «Fuente» y
+   «Jurisdicción» de adentro de cada ficha, y ahí la monoespaciada está bien
+   —son etiquetas de dato, no títulos—.
 
    Los dos selectores comparten declaración para que no se separen: si mañana
-   alguien cambia el tamaño de uno, cambia el del otro. */
+   alguien cambia el tamaño de uno, cambia el del otro, que es lo que hace
+   falta para que todos los rótulos de la pantalla se vean iguales. */
 .asis-caja .asis-rotulo,
 .asis-filtro .asis-rotulo {
   font-family: inherit; font-size: 0.76rem; letter-spacing: 0.05em;
@@ -1848,10 +1817,8 @@ body { transition: background var(--t-sec) var(--suave), color var(--t-sec) var(
 .ins-bajada { color: var(--texto-tenue); max-width: 60ch; line-height: 1.6; }
 .ins-parrafo { color: var(--texto-tenue); max-width: 60ch; line-height: 1.65; }
 .ins-rotulo {
-  font-family: inherit; font-size: 0.74rem;
-  letter-spacing: 0.05em; text-transform: uppercase;
-  font-variation-settings: "wdth" 100, "wght" 600; font-weight: 600;
-  color: var(--texto-debil);
+  font-family: var(--fuente-mono), monospace; font-size: 0.66rem;
+  letter-spacing: 0.11em; text-transform: uppercase; color: var(--texto-debil);
 }
 
 /* ---------- encabezado (I-01) ---------- */
@@ -2005,7 +1972,7 @@ body { transition: background var(--t-sec) var(--suave), color var(--t-sec) var(
 .ins-paso-cuerpo { display: flex; flex-direction: column; gap: 0.85rem; }
 .ins-paso-cuerpo > p { line-height: 1.7; max-width: 60ch; }
 .ins-paso-donde { display: flex; align-items: baseline; gap: 0.55rem; flex-wrap: wrap; font-size: 0.88rem; }
-.ins-paso-donde span:last-child { font-family: inherit; font-size: 0.85rem; }
+.ins-paso-donde span:last-child { font-family: var(--fuente-mono), monospace; font-size: 0.85rem; }
 
 .ins-puntos {
   display: flex; flex-direction: column; gap: 0.5rem;
@@ -2194,10 +2161,8 @@ body { transition: background var(--t-sec) var(--suave), color var(--t-sec) var(
 }
 .ins-esquema figcaption { color: var(--texto-tenue); font-size: 0.83rem; line-height: 1.55; }
 .esq-rotulo {
-  font-family: inherit; font-size: 0.72rem;
-  letter-spacing: 0.05em; text-transform: uppercase;
-  font-variation-settings: "wdth" 100, "wght" 600; font-weight: 600;
-  color: var(--texto-debil);
+  font-family: var(--fuente-mono), monospace; font-size: 0.62rem;
+  letter-spacing: 0.1em; text-transform: uppercase; color: var(--texto-debil);
 }
 
 .esq-flujo, .esq-columna { display: flex; flex-direction: column; gap: 0.5rem; }
@@ -2220,10 +2185,8 @@ body { transition: background var(--t-sec) var(--suave), color var(--t-sec) var(
   background: color-mix(in srgb, var(--marca-revisar) 8%, var(--tarjeta));
 }
 .esq-caja-rotulo {
-  font-family: inherit; font-size: 0.72rem;
-  letter-spacing: 0.05em; text-transform: uppercase;
-  font-variation-settings: "wdth" 100, "wght" 600; font-weight: 600;
-  color: var(--texto-debil);
+  font-family: var(--fuente-mono), monospace; font-size: 0.62rem;
+  letter-spacing: 0.1em; text-transform: uppercase; color: var(--texto-debil);
 }
 .esq-caja-texto { font-size: 0.86rem; line-height: 1.5; }
 
@@ -2587,22 +2550,8 @@ body { transition: background var(--t-sec) var(--suave), color var(--t-sec) var(
   box-shadow: inset 0 0 0 1px var(--linea), inset 0 1px 1px rgba(244, 242, 237, 0.1);
   display: flex; align-items: center; justify-content: space-between; gap: 1rem; flex-wrap: wrap;
 }
-/* El rótulo del bloque de retención —«Tu primer simulacro», «Cómo venís por
-   tema», «Retomar donde quedaste»— en la letra de la página.
-
-   Llevaba `.mono` en el TSX y se la saqué: desde que esa clase hereda la
-   familia del <body>, lo único que le aportaba acá era el peso, y este
-   selector le disputaba el cuerpo y el tracking. Ahora las cuatro
-   propiedades del rótulo se declaran en un solo lugar.
-
-   Las dos medidas que estaban calibradas para la monoespaciada se reacomodan
-   como en todos los rótulos ya convertidos: el cuerpo sube de 0,6 a 0,72rem
-   —una mono ocupa más por letra, así que al mismo tamaño nominal la
-   proporcional se ve más chica— y el tracking baja de 0,13 a 0,05em, que era
-   la apertura que necesitan las versalitas de una mono angosta. */
 .portal-et {
-  font-size: 0.72rem; letter-spacing: 0.05em; text-transform: uppercase;
-  font-variation-settings: "wdth" 100, "wght" 600; font-weight: 600;
+  font-size: 0.6rem; letter-spacing: 0.13em; text-transform: uppercase;
   color: var(--texto-debil); display: block; margin-bottom: 0.35rem;
 }
 .portal-retomar b { font-size: 0.95rem; font-variation-settings: "wght" 600; }
@@ -4123,13 +4072,8 @@ body { transition: background var(--t-sec) var(--suave), color var(--t-sec) var(
    ============================================================ */
 
 /* ---------- la cabecera de estas pantallas ---------- */
-/* El azul es #0B4FC4, el mismo de la barra de menú y el de la tarjeta de «Mi
-   perfil». Antes acá había un #0B4FA6 apenas distinto: dos azules que nadie
-   había decidido que fueran dos, y que al pasar de una pantalla a otra se
-   notaban como un salto. Ahora Nueva Abogacía tiene un solo azul de fondo.
-   Blanco encima: 7,2:1. */
 [data-marca="na"] .app-cabecera-mpd {
-  background: #0b4fc4;
+  background: #0b4fa6;
   box-shadow: inset 0 -3px 0 #00c9a7;
 }
 
@@ -4323,80 +4267,6 @@ html[data-marca="na"] body {
   color: var(--texto);
 }
 
-/* ---------- Nueva Abogacía: «Mi perfil» ---------- */
-/* Las dos tarjetas de esta pantalla van pintadas del azul de la barra de
-   menú, opacas, en vez del velo del 5% que trae `.tarjeta-app`. Sobre el
-   celeste de la app ese velo casi no se veía: la pantalla quedaba como un
-   formulario suelto, sin caja.
-
-   Va colgado de `.perfil-tarjeta` y no de `.tarjeta-app`, que es la
-   superficie de toda la app con sesión y arrastraría pantallas que no
-   estamos tocando. La clase se agrega en el TSX de la pantalla.
-
-   El azul es #0B4FC4, la parada de la izquierda del degradé de
-   `[data-marca="na"] .app-cabecera`: la tarjeta y la barra de arriba son el
-   mismo color, no dos azules parecidos.
-
-   Los tokens de texto y borde se redeclaran acá porque el elemento cuelga de
-   `.app-cuerpo`, que los tiene en azul oscuro para fondo claro; adentro de
-   la tarjeta el fondo es oscuro y hay que invertirlos. Blanco sobre #0B4FC4
-   da 7,2:1, el tenue 5,6:1 y el débil 5,2:1. `--acento-texto` pasa de
-   #0B57C9 —pensado para fondo claro, acá invisible— a #B8DAFF, 5,0:1. */
-[data-marca="na"] .perfil-tarjeta {
-  background: #0b4fc4;
-  box-shadow:
-    inset 0 0 0 1px rgba(255, 255, 255, 0.18),
-    0 14px 32px rgba(10, 37, 64, 0.22);
-  --texto: #ffffff;
-  --texto-tenue: rgba(255, 255, 255, 0.85);
-  --texto-debil: rgba(255, 255, 255, 0.8);
-  --borde: rgba(255, 255, 255, 0.28);
-  --borde-fuerte: rgba(255, 255, 255, 0.45);
-  --linea: var(--borde);
-  --linea-fuerte: var(--borde-fuerte);
-  --acento-texto: #b8daff;
-  --tarjeta: rgba(255, 255, 255, 0.1);
-  color: var(--texto);
-}
-
-/* Los campos, en blanco con letra negra. La regla general los dibuja con un
-   velo del 4% del color de texto y la letra en `--texto`: adentro de esta
-   tarjeta eso sería blanco sobre azul translúcido, o sea escribir a ciegas.
-   Acá son papel: #0D1117 sobre blanco da 18,9:1. */
-[data-marca="na"] .perfil-tarjeta .campo input,
-[data-marca="na"] .perfil-tarjeta .campo select,
-[data-marca="na"] .perfil-tarjeta .campo textarea {
-  background: #ffffff;
-  color: #0d1117;
-  box-shadow: inset 0 0 0 1px rgba(10, 37, 64, 0.22);
-}
-[data-marca="na"] .perfil-tarjeta .campo input::placeholder,
-[data-marca="na"] .perfil-tarjeta .campo textarea::placeholder {
-  color: rgba(13, 17, 23, 0.5);
-}
-/* El foco lleva dos anillos: uno azul adentro del campo blanco y uno blanco
-   por fuera, contra el azul de la tarjeta. Con uno solo, el del color que
-   fuera, se perdía contra uno de los dos fondos. */
-[data-marca="na"] .perfil-tarjeta .campo input:focus-visible,
-[data-marca="na"] .perfil-tarjeta .campo select:focus-visible,
-[data-marca="na"] .perfil-tarjeta .campo textarea:focus-visible {
-  box-shadow: inset 0 0 0 2px #0b4fc4;
-  outline: 2px solid #ffffff;
-  outline-offset: 1px;
-}
-
-/* «Guardar» es `.btn-acento`, que se pinta con `--acento` —el azul de la
-   piel—: adentro de una tarjeta azul, azul sobre azul. Va al revés, blanco
-   con la tinta de la marca, que es lo mismo que hace Nexo cuando el botón
-   cae adentro de una tarjeta blanca, dado vuelta. */
-[data-marca="na"] .perfil-tarjeta .btn-acento {
-  background: #ffffff;
-  color: #0a2540;
-}
-[data-marca="na"] .perfil-tarjeta .btn-acento:hover:not(:disabled) {
-  background: #e8f1ff;
-}
-
 /* ---------- Nueva Abogacía: los instructivos, iguales a los de Nexo -------- */
 /* La franja institucional, en azul. Antes acá se apagaba —`background:
    transparent`, sin el `box-shadow` que la extiende de borde a borde— y el
@@ -4412,19 +4282,12 @@ html[data-marca="na"] body {
    reglas le pegan al mismo nodo y gana la de más abajo. De ahí que este
    bloque tenga que estar después de aquél y no junto al resto de la piel.
 
-   La franja va en #0B4FC4, el mismo azul de la barra de menú y de la tarjeta
-   de «Mi perfil». Antes era #0B4FA6, apenas distinto: dos azules que nadie
-   había decidido que fueran dos. Blanco encima da 7,2:1, el tenue 5,3:1 y el
-   débil 5,2:1.
-
    `--acento-texto` pasa a un celeste claro: el de la piel (#0b57c9) está
    pensado para texto oscuro sobre fondo claro y sobre este azul queda casi
-   invisible. Y no puede ser #A8D0FF, que es el que iba con el azul viejo:
-   contra este da 4,48:1, dos centésimas abajo del piso. #B8DAFF da 4,95:1 —el
-   mismo que usa la tarjeta de «Mi perfil», por el mismo motivo—, igual de
-   legible que el verde agua de Nexo contra la suya. */
+   invisible. #a8d0ff da 4,9:1 contra la franja, igual de legible que el verde
+   agua de Nexo contra la suya. */
 [data-marca="na"] .instructivo-mpd-claro {
-  --fondo: #0b4fc4;
+  --fondo: #0b4fa6;
   --texto: #ffffff;
   --texto-tenue: rgba(255, 255, 255, 0.82);
   --texto-debil: rgba(255, 255, 255, 0.8);
@@ -4432,7 +4295,7 @@ html[data-marca="na"] body {
   --borde-fuerte: rgba(255, 255, 255, 0.42);
   --linea: var(--borde);
   --linea-fuerte: var(--borde-fuerte);
-  --acento-texto: #b8daff;
+  --acento-texto: #a8d0ff;
 }
 /* ---------- Nueva Abogacía: un solo degradé para todos los botones ---------- */
 [data-marca="na"] .portal-retomar .btn-p,
@@ -4493,36 +4356,30 @@ p { color: var(--texto-tenue); }
    el tenue—. Un título no es texto de apoyo, así que lo pide él. */
 .sim-retomar-titulo { color: var(--texto); }
 
-/* ---------- Outfit en todo el sitio, las cuatro pieles ---------- */
-/* Antes acá se nombraban tres —dual, neutro y nexo— y Nueva Abogacía se
-   quedaba con Archivo. Eso dejaba a NA partida al medio: sus instructivos ya
-   iban en Outfit, porque `.instructivo-mpd-claro` declara la familia y no
-   está acotada a ninguna marca, mientras que su home, su perfil y el resto
-   seguían en Archivo. Pasar de una pantalla a otra adentro de la misma
-   puerta cambiaba de letra.
+/* ---------- Outfit en todo el sitio, menos la puerta de Nueva Abogacía ---------- */
+/* Se nombran las tres pieles una por una en vez de poner la familia en
+   `body` a secas, porque así Nueva Abogacía se queda con la suya sin tener
+   que volver a pisarla después:
 
-   Ahora es una sola familia en todo el sitio. Lo que distingue a las dos
-   puertas sigue siendo lo de siempre —el color, el degradé de los botones,
-   la itálica condensada de los títulos de Nexo—, que es lo que las separa
-   incluso en escala de grises; la tipografía no era parte de eso desde que
-   los instructivos se unificaron.
+     dual ..... la portada pública, donde conviven las dos agrupaciones
+     neutro ... ingresar, crear perfil, elegir perfil y el panel de admin
+     nexo ..... toda la puerta de Nexo con sesión iniciada
 
-   Va sobre `body` y no sobre el <html>: `body` declara la familia a mano y le
-   ganaría a cualquier regla puesta más arriba. De ahí cae por herencia a
-   todo, botones incluidos, porque `.btn` usa `font-family: inherit`.
+   Va sobre `body` y no sobre el <html>: `body` declara la familia a mano
+   —`var(--fuente-archivo)`— y le ganaría a cualquier regla puesta más
+   arriba. De ahí cae por herencia a todo, botones incluidos, porque `.btn`
+   usa `font-family: inherit`.
 
    Ningún peso hay que traducir: Outfit es variable en el eje `wght`, así que
-   el `font-variation-settings` que usa todo el sistema la mueve sola. Lo que
-   sí se pierde es el eje de ancho: Outfit no tiene `wdth`, así que
-   `--ancho-h: 104` de Nueva Abogacía deja de hacer efecto en los títulos. Es
-   la misma contrapartida que Nexo ya venía aceptando desde que pasó a Outfit.
+   el `font-variation-settings` que usa todo el sistema la mueve sola.
 
-   Los rótulos tampoco hay que exceptuarlos: `.mono` declara
-   `font-family: inherit`, así que caen igual que todo lo demás.
-
-   La familia se declara una sola vez, arriba de todo, en la regla de `body`.
-   Acá no va ninguna regla: dos `body` con familias distintas en el mismo
-   archivo es una trampa esperando a que alguien borre la de abajo. */
+   Los rótulos monoespaciados (`.mono`) no se tocan: declaran su propia
+   familia y siguen en JetBrains Mono. */
+html[data-marca="dual"] body,
+html[data-marca="neutro"] body,
+html[data-marca="nexo"] body {
+  font-family: var(--fuente-outfit), system-ui, sans-serif;
+}
 
 /* Los títulos de Nexo van derechos.
    `--ital-estilo: italic` viene de tokens.css, y con Outfit —que no tiene
@@ -4792,11 +4649,10 @@ html[data-marca="nexo"] .sim-pasos-grilla li {
    Ahora va en Outfit, a 0,76rem, peso 800 y en `--texto` —negro pleno,
    #0d1117 sobre la tarjeta, 18:1—.
 
-   La familia acá es redundante desde que `.mono` heredó la del <body>, pero
-   se deja escrita: esta regla existe para que el rótulo de Nexo sea Outfit
-   pase lo que pase con la utilidad. Las mayúsculas y el
+   La familia hay que pedirla a mano porque `.mono` declara la suya; el
+   selector con `[data-marca]` le gana en especificidad. Las mayúsculas y el
    `font-variant-numeric` los sigue poniendo `.mono`, así que el rótulo no
-   pierde su forma: sólo cambia de cuerpo y de peso.
+   pierde su forma: sólo cambia de letra y de peso.
 
    El tracking baja de 0,09em a 0,06em: a peso 800 las letras ya ocupan más y
    la separación de una monoespaciada chica desarma la frase. */
@@ -4894,10 +4750,8 @@ html[data-marca="nexo"] .tip .tip-supuesto p {
    con peso suficiente para que se lean de un vistazo: 9,6:1 contra el blanco
    de la tarjeta, contra los 4,9:1 de antes.
 
-   Van en la letra de la página como todos los demás rótulos. Lo que los
-   mantiene en su lugar de la jerarquía ya no es la familia sino el cuerpo:
-   son los más chicos de la pantalla, y eso alcanza para que se lean como
-   rótulos de sección y no como títulos. */
+   Se quedan en monoespaciada: son rótulos de sección, no títulos, y la
+   diferencia de letra es lo que los mantiene en su lugar de la jerarquía. */
 html[data-marca="nexo"] .tip .tip-rotulo {
   color: rgba(13, 17, 23, 0.78);
   font-size: 0.74rem;

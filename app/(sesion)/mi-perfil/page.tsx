@@ -50,7 +50,7 @@ export default async function MiPerfil() {
         <h1>{t.titulo}</h1>
         <p style={{ marginTop: "0.8rem", color: "var(--texto-tenue)" }}>{t.bajada}</p>
 
-        <Tarjeta className="tarjeta" style={{ marginTop: "1.8rem" }}>
+        <Tarjeta className="tarjeta perfil-tarjeta" style={{ marginTop: "1.8rem" }}>
           <h2 className="titulo-bloque">{t.cuenta}</h2>
           <dl className="datos-cuenta">
             <dt>{t.correo}</dt>
@@ -72,7 +72,7 @@ export default async function MiPerfil() {
           </form>
         </Tarjeta>
 
-        <Tarjeta className="tarjeta" style={{ marginTop: "1rem" }}>
+        <Tarjeta className="tarjeta perfil-tarjeta" style={{ marginTop: "1rem" }}>
           <h2 className="titulo-bloque">{t.tipos[perfil.tipo_perfil]}</h2>
           <FormularioMiPerfil
             tipo={perfil.tipo_perfil}
