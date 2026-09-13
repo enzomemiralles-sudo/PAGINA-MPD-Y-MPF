@@ -36,7 +36,6 @@ export function Catalogo() {
   return (
     <section className="asis-catalogo" id={t.ancla}>
       <h2 className="asis-titulo">{t.titulo}</h2>
-      <p className="asis-bajada">{t.bajada}</p>
 
       {/* El buscador va primero. Con los dos bloques de abajo plegados, quien
           viene con una duda concreta no tiene nada que mirar hasta encontrarlo,
