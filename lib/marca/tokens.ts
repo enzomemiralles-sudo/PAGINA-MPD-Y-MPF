@@ -60,14 +60,20 @@ const BASE = {
 export const PIELES: Record<Marca, Piel> = {
   dual: {
     ...BASE,
-    relleno: ["#059249", "#0088c4"],
+    // La portada pública comparte piel con el alta: el mismo verde agua. El
+    // débil y el error suben igual que en la neutra, por el mismo motivo.
+    // Ver CORRECCIÓN 5 en tokens.css.
+    "texto-debil": "rgba(244,242,237,0.62)",
+    error: "#ff8079",
+    relleno: ["#02897b"],
     "sobre-relleno": "#08090a",
-    fondo: "#08090a",
-    "fondo-bajo": "#040507",
-    superficie: "rgba(244,242,237,0.03)",
-    acento: "#f4f2ed",
+    fondo: "#01332e",
+    "fondo-bajo": "#012421",
+    superficie: "rgba(2,137,123,0.14)",
+    acento: "#02897b",
     "acento-texto": "#f4f2ed",
     "acento-2": null,
+    "sobre-acento": "#08090a",
   },
   neutro: {
     ...BASE,

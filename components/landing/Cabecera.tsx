@@ -3,6 +3,16 @@ import { nav } from "@/content/landing";
 import { LogoNexo } from "@/components/marca/LogoNexo";
 import { LogoNuevaAbogacia } from "@/components/marca/LogoNuevaAbogacia";
 
+/**
+ * La cabecera de la portada: los dos logotipos y las tres anclas.
+ *
+ * Sin botón de «Empezar». Había dos en la misma pantalla —uno acá arriba y
+ * otro abajo del titular— con el mismo texto y el mismo destino. Dos veces la
+ * misma llamada no es el doble de invitación: es una decisión que el visitante
+ * tiene que tomar dos veces, y la de arriba compite con el titular, que es lo
+ * que todavía tiene que convencerlo. Queda la del hero, que llega después de
+ * haber leído qué es esto.
+ */
 export function Cabecera() {
   return (
     <header className="cabecera">
@@ -22,12 +32,6 @@ export function Cabecera() {
             </a>
           ))}
         </nav>
-
-        <div className="nav-cta">
-          <a className="btn btn-p" href={nav.ctaHref}>
-            {nav.cta}
-          </a>
-        </div>
       </div>
     </header>
   );

@@ -179,10 +179,14 @@ p { color: var(--papel-tenue); }
 :focus-visible { outline: 2px solid var(--acento-texto); outline-offset: 3px; border-radius: 4px; }
 
 /* ============ NAV ============ */
+/* La barra va en el color comienzo, no en negro. Era un velo de #08090A al
+   72%: con el fondo de la portada en verde agua, esa franja quedaba como una
+   banda gris pegada arriba de todo. */
 .cabecera {
   position: sticky; top: 0; z-index: 40;
   backdrop-filter: blur(14px); -webkit-backdrop-filter: blur(14px);
-  background: rgba(8, 9, 10, 0.72); border-bottom: 1px solid var(--linea);
+  background: color-mix(in srgb, var(--comienzo-hondo) 72%, transparent);
+  border-bottom: 1px solid var(--linea);
 }
 .nav { display: flex; align-items: center; justify-content: space-between; gap: 1rem; height: 64px; }
 .marcas { display: flex; align-items: center; gap: 0.85rem; min-width: 0; }
@@ -204,7 +208,9 @@ p { color: var(--papel-tenue); }
 @media (min-width: 960px) { .links { display: flex; } }
 .links a { color: var(--papel-tenue); font-size: 0.85rem; transition: color 0.2s; }
 .links a:hover { color: var(--papel); }
-.nav-cta { display: flex; align-items: center; gap: 0.6rem; }
+/* Se retiró `.nav-cta`: la cabecera de la portada ya no lleva botón. La barra
+   queda con los logotipos a la izquierda y las anclas a la derecha, que es lo
+   que hace el `space-between` de `.nav` con dos hijos en vez de tres. */
 /* Los tres enlaces legales del pie salían pegados —«Términos y
    CondicionesPolítica de PrivacidadContacto»— en todas las páginas del sitio:
    había regla para el subrayado que crece al pasar por encima, pero ninguna
@@ -470,18 +476,30 @@ html[data-marca="na"] .escena-capa[data-de="nexo"] { opacity: 0; }
   to { transform: scale(1.06) translate3d(0, -1.4%, 0); }
 }
 
+/* El velo que deja leer el titular sobre la fotografía. Iba en negro puro y
+   era de dónde salía casi todo el negro de la portada: cinco paradas de
+   #08090A, la primera al 94%. Ahora es el mismo velo en color comienzo, así
+   que la foto se apaga hacia el mismo verde con el que sigue la página en vez
+   de hacia un gris que no está en ningún otro lado.
+   Las paradas y sus porcentajes no se tocan: son las que dejan el frontis
+   visible en el medio y el texto legible arriba y abajo. Lo único que cambia
+   es de qué color es la sombra. */
 .escena-velo {
   position: absolute; inset: 0;
   background:
     linear-gradient(
       to bottom,
-      rgba(8, 9, 10, 0.94) 0%,
-      rgba(8, 9, 10, 0.55) 26%,
-      rgba(8, 9, 10, 0.18) 48%,
-      rgba(8, 9, 10, 0.72) 82%,
+      color-mix(in srgb, var(--comienzo-hondo) 94%, transparent) 0%,
+      color-mix(in srgb, var(--comienzo-hondo) 55%, transparent) 26%,
+      color-mix(in srgb, var(--comienzo-hondo) 18%, transparent) 48%,
+      color-mix(in srgb, var(--comienzo-hondo) 72%, transparent) 82%,
       var(--fondo) 100%
     ),
-    radial-gradient(ellipse 70% 50% at 50% 34%, rgba(8, 9, 10, 0.72) 0%, transparent 72%);
+    radial-gradient(
+      ellipse 70% 50% at 50% 34%,
+      color-mix(in srgb, var(--comienzo-hondo) 72%, transparent) 0%,
+      transparent 72%
+    );
 }
 
 /* En el teléfono la escena deja de ser fondo y pasa a ser banda.
@@ -496,7 +514,13 @@ html[data-marca="na"] .escena-capa[data-de="nexo"] { opacity: 0; }
   .escena-capa img { object-position: center 42%; }
   .escena-velo {
     background:
-      linear-gradient(to bottom, rgba(8, 9, 10, 0.82) 0%, rgba(8, 9, 10, 0.28) 34%, rgba(8, 9, 10, 0.55) 72%, var(--fondo) 100%);
+      linear-gradient(
+        to bottom,
+        color-mix(in srgb, var(--comienzo-hondo) 82%, transparent) 0%,
+        color-mix(in srgb, var(--comienzo-hondo) 28%, transparent) 34%,
+        color-mix(in srgb, var(--comienzo-hondo) 55%, transparent) 72%,
+        var(--fondo) 100%
+      );
   }
   /* El titular arranca debajo de la banda. */
   .hero { padding-block: calc(42vh - 74px) 3rem; min-height: 0; }
@@ -540,7 +564,6 @@ h1, h2 { text-wrap: balance; }
   /* El cartel "provisorio" es una nota de obra: en móvil se come el ancho
      que necesita el CTA. Vuelve solo cuando hay lugar. */
   .prov { display: none; }
-  .nav-cta .btn { padding: 0.7rem 1rem; font-size: 0.85rem; }
   .marcas { gap: 0.6rem; }
 }
 
@@ -2913,13 +2936,35 @@ body { transition: background var(--t-sec) var(--suave), color var(--t-sec) var(
    a la izquierda: una pastilla flotante tapa contenido en el teléfono y se
    pierde justo cuando alguien la busca.
    ============================================================ */
+/* «Elegí el organismo», el enlace de vuelta del instructivo. Es el hermano de
+   «Volver al menú» —van uno al lado del otro en el mismo renglón— y hasta
+   ahora uno iba en caja normal y el otro en versalitas abiertas, que es
+   justamente el contraste que se ve. Sale de `.mono`, que ya no impone la
+   monoespaciada pero sigue poniendo mayúsculas y tracking; acá se le sacan las
+   dos y se le da el mismo cuerpo y el mismo gris que a su vecino.
+   Cuelga de la clase propia y no de `.mono`, para no tocar los pocos rótulos
+   que todavía usan esa utilidad en otras pantallas. */
+.guia-cambiar {
+  font-size: 0.9rem;
+  letter-spacing: 0;
+  text-transform: none;
+  font-variation-settings: "wdth" 100, "wght" 600;
+  font-weight: 600;
+  color: var(--texto-tenue);
+}
+
+/* «Volver al menú» con el cuerpo del texto corriente. La familia ya era la de
+   la página —nunca llevó `.mono`— pero iba a 0,84rem, que no es el tamaño de
+   nada más en pantalla: ni del texto, ni de los rótulos. A 0,9rem queda como
+   el resto. Lo que lo mantiene en segundo plano es el color, que sigue siendo
+   el tenue. */
 .volver {
   display: inline-flex; align-items: center; gap: 0.4rem;
   align-self: flex-start;
   margin-bottom: 1.6rem;
   padding: 0.4rem 0.75rem 0.4rem 0.5rem; border-radius: 999px;
   background: none; border: none; font-family: inherit; cursor: pointer;
-  font-size: 0.84rem; color: var(--texto-tenue);
+  font-size: 0.9rem; color: var(--texto-tenue);
   transition: color var(--t-micro) var(--suave), background var(--t-micro) var(--suave);
 }
 .volver:hover { color: var(--texto); background: color-mix(in srgb, var(--texto) 6%, transparent); }
@@ -2963,7 +3008,7 @@ body { transition: background var(--t-sec) var(--suave), color var(--t-sec) var(
 .insumo-elegi {
   display: block; margin-top: 2.25rem; margin-bottom: 1rem;
   font-family: inherit;
-  font-size: 0.76rem; letter-spacing: 0.05em; text-transform: uppercase;
+  font-size: 0.9rem; letter-spacing: 0; text-transform: none;
   font-variation-settings: "wdth" 100, "wght" 600;
   font-weight: 600;
   color: var(--texto-tenue);
@@ -3059,7 +3104,7 @@ body { transition: background var(--t-sec) var(--suave), color var(--t-sec) var(
 .guia-elegi {
   display: block; margin-top: 2.25rem; margin-bottom: 1rem;
   font-family: inherit;
-  font-size: 0.76rem; letter-spacing: 0.05em; text-transform: uppercase;
+  font-size: 0.9rem; letter-spacing: 0; text-transform: none;
   font-variation-settings: "wdth" 100, "wght" 600;
   font-weight: 600;
   color: var(--texto-tenue);
