@@ -167,8 +167,6 @@ export const siguiente = {
 export const frecuentes = {
   ancla: "frecuentes",
   titulo: "Preguntas frecuentes",
-  bajada:
-    "Buscá acá primero. Están ordenadas por cuánta gente las hizo, y cada una abre con su respuesta y su nivel de respaldo.",
   buscador: {
     rotulo: "Buscar entre las preguntas respondidas",
     marcador: "Buscar: tipeo, inscripción, notas…",

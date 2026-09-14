@@ -18,7 +18,18 @@ html { scroll-behavior: smooth; }
    nexoderecho.com.ar. Ver la nota «una sola familia» más abajo, donde estaba
    la regla por marca que esto reemplaza. De acá cae por herencia a todo,
    botones incluidos, porque `.btn` usa `font-family: inherit`. */
+/* La columna del documento, para que el pie llegue al fondo de la ventana.
+   Una pantalla con poco contenido —«Elegí el organismo», con dos tarjetas—
+   dejaba la barra del pie a media altura y abajo el fondo de la página hasta
+   el borde. Con el documento como columna de alto mínimo igual a la ventana y
+   el cuerpo creciendo para ocupar lo que sobre, la barra queda apoyada abajo.
+   Lo que se estira es el espacio entre el contenido y la barra, no la barra.
+   Crece `.app-cuerpo` y no cualquier hijo: los demás —la cabecera, el pie, el
+   fondo de la portada— tienen el alto que tienen. */
 body {
+  min-height: 100dvh;
+  display: flex;
+  flex-direction: column;
   background: var(--fondo);
   color: var(--texto);
   font-family: var(--fuente-outfit), system-ui, sans-serif;
@@ -722,7 +733,7 @@ body { transition: background var(--t-sec) var(--suave), color var(--t-sec) var(
   box-shadow: inset 0 0 0 1px #ffffff;
 }
 .app-cabecera-mpd .sep-v-marca { background: rgba(255, 255, 255, 0.4); }
-.app-cuerpo { padding-block: 2.5rem 4rem; }
+.app-cuerpo { padding-block: 2.5rem 4rem; flex: 1 0 auto; }
 .app-cuerpo h1 {
   font-size: clamp(1.7rem, 5vw, 2.4rem); line-height: 1.1; letter-spacing: -0.025em;
   font-variation-settings: "wdth" var(--ancho-h), "wght" 700;
@@ -1078,8 +1089,19 @@ body { transition: background var(--t-sec) var(--suave), color var(--t-sec) var(
    una caja mientras se escribe en la de abajo: mejor que crezca y scrollee la
    página. */
 @media (min-width: 900px) { .tip-texto { max-height: 24rem; overflow-y: auto; } }
+/* La caja de escritura ocupa toda la tarjeta y no se puede mover.
+   `flex: 1` es lo que la estira: la tarjeta es una columna flexible y las dos
+   columnas de la pantalla se estiran a la misma altura, así que la de la
+   izquierda —que es la que tiene el texto a copiar— manda el alto y ésta lo
+   seguía dejando un hueco blanco abajo. Ahora el sobrante se lo lleva la caja.
+   El `min-height` se queda como piso: en una sola columna, con la pantalla
+   angosta, no hay sobrante que repartir y sin él la caja quedaría de un
+   renglón.
+   `resize: none` saca el agarre de la esquina. Estirarla a mano rompía la
+   simetría de las dos columnas —y no hacía falta, porque ya ocupa todo lo que
+   hay—. */
 .tip-area {
-  width: 100%; min-height: 14rem; resize: vertical; border: none; outline: none;
+  width: 100%; min-height: 14rem; flex: 1; resize: none; border: none; outline: none;
   background: transparent; color: var(--texto); font-family: inherit;
   font-size: 0.92rem; line-height: 1.7;
   box-shadow: inset 0 0 0 1px var(--borde); border-radius: 10px; padding: 0.75rem;
@@ -1102,6 +1124,32 @@ body { transition: background var(--t-sec) var(--suave), color var(--t-sec) var(
   border-left: 2px solid var(--marca-revisar); padding-left: 0.9rem;
 }
 .tip-supuesto p { color: var(--texto-tenue); font-size: 0.82rem; line-height: 1.55; max-width: 72ch; }
+
+/* ---------- Los rótulos de las dos pantallas de examen ---------- */
+/* «Examen práctico de tipeo», «Tiempo restante», «El texto a copiar»,
+   «Escribí acá», «Avance» y «Errores» llevan la clase `.mono` en el TSX. Esa
+   clase ya no impone la monoespaciada —hereda la letra de la página— pero
+   sigue poniendo versalitas y tracking, y eso es lo que hace que un rótulo se
+   lea como de otra tipografía aunque sea la misma: una línea chica, en
+   mayúsculas y abierta no se parece a nada del resto de la pantalla.
+
+   Acá se les saca la forma y se les da el cuerpo del texto corriente. Lo que
+   los sigue distinguiendo del contenido que encabezan es el color —van en
+   `--texto-debil`— y no la caja de la letra.
+
+   Va después de las reglas base de cada uno porque empatan en especificidad
+   con ellas y con `.mono`: a empate, decide el orden. */
+.rend-pos,
+.rend-cron-rotulo,
+.tip-rotulo,
+.tip-medida-rotulo {
+  text-transform: none;
+  letter-spacing: 0;
+}
+.rend-pos { font-size: 0.95rem; }
+.tip-rotulo { font-size: 0.9rem; }
+.rend-cron-rotulo,
+.tip-medida-rotulo { font-size: 0.8rem; }
 
 /* ---------- resultados ---------- */
 .res { display: flex; flex-direction: column; gap: 1.75rem; }
@@ -1378,7 +1426,16 @@ body { transition: background var(--t-sec) var(--suave), color var(--t-sec) var(
   width: 100%; padding: 0.85rem 0.95rem; border-radius: 12px; border: none;
   background: var(--tarjeta); box-shadow: inset 0 0 0 1px var(--borde-fuerte);
   color: var(--texto); font-family: inherit; font-size: 1rem; line-height: 1.55;
-  resize: vertical;
+  /* Sin agarre para estirar: el alto lo maneja `Caja.tsx`, que lo ajusta al
+     contenido en cada tecla. Dejar las dos cosas es peor que cualquiera de
+     las dos —lo que el usuario estira, la próxima tecla se lo deshace—.
+     `max-height` es el tope: la caja crece hasta ahí y después el texto
+     scrollea adentro, así una pregunta larga no empuja el botón fuera de la
+     pantalla. `overflow-y: auto` hace que la barra aparezca sólo cuando se
+     llega al tope. */
+  resize: none;
+  max-height: 14rem;
+  overflow-y: auto;
 }
 .asis-form textarea::placeholder { color: var(--texto-debil); }
 .asis-form textarea:focus-visible { box-shadow: inset 0 0 0 2px var(--acento-texto); outline: none; }
@@ -1436,11 +1493,18 @@ body { transition: background var(--t-sec) var(--suave), color var(--t-sec) var(
 .asis-sello[data-certeza="orientativa"] { --estado: var(--marca-revisar); }
 .asis-sello[data-certeza="sin_respuesta"] { --estado: var(--error); }
 
+/* La sigla del organismo. Va en la letra de la página y con las medidas del
+   texto corriente: la familia ya la heredaba, pero seguía a 0,72rem y con
+   0,05em de separación entre letras, y eso —una sigla chica y abierta— se
+   lee como si fuera de otra tipografía aunque no lo sea. Sin tracking y a
+   0,82rem queda como el resto.
+   Las mayúsculas no salen de acá: MPF y MPD son siglas y vienen escritas así
+   desde el contenido. */
 .asis-org-etiqueta {
-  font-family: inherit; font-size: 0.72rem;
-  letter-spacing: 0.05em; color: var(--acento-texto);
+  font-family: inherit; font-size: 0.82rem;
+  letter-spacing: 0; color: var(--acento-texto);
   font-variation-settings: "wdth" 100, "wght" 600; font-weight: 600;
-  padding: 0.22rem 0.5rem; border-radius: 999px;
+  padding: 0.22rem 0.55rem; border-radius: 999px;
   box-shadow: inset 0 0 0 1px color-mix(in srgb, var(--acento-texto) 35%, transparent);
 }
 
@@ -1531,11 +1595,22 @@ body { transition: background var(--t-sec) var(--suave), color var(--t-sec) var(
    bloque, mientras que los «Fuente» y «Jurisdicción» de adentro de cada ficha
    son etiquetas de dato y se quedan en el cuerpo chico.
 
+   Van además en caja normal, no en versalitas. `.asis-rotulo` las impone con
+   `text-transform: uppercase` y las abre con tracking, y eso es lo que hacía
+   que «TU PREGUNTA» se leyera como de otra tipografía aunque la familia ya
+   fuera la de la página: unas versalitas chicas y separadas no se parecen a
+   nada del resto de la pantalla. En caja normal y sin tracking quedan como lo
+   que son, el título de lo que viene abajo.
+
+   El cuerpo sube a 0,9rem, que es el del texto corriente: a 0,76 quedaban
+   escritas en la letra correcta pero a un tamaño que ninguna otra cosa usa.
+
    Los dos selectores comparten declaración para que no se separen: si mañana
    alguien cambia el tamaño de uno, cambia el del otro. */
 .asis-caja .asis-rotulo,
 .asis-filtro .asis-rotulo {
-  font-family: inherit; font-size: 0.76rem; letter-spacing: 0.05em;
+  font-family: inherit; font-size: 0.9rem;
+  text-transform: none; letter-spacing: 0;
   font-variation-settings: "wdth" 100, "wght" 600;
   font-weight: 600;
 }
@@ -1550,6 +1625,21 @@ body { transition: background var(--t-sec) var(--suave), color var(--t-sec) var(
 .asis-filtro-cuenta {
   display: flex; flex-wrap: wrap; gap: 0.5rem; align-items: center;
   font-size: 0.82rem; color: var(--texto-debil); min-height: 1.2rem;
+}
+/* Sin nada que contar, el renglón no ocupa lugar.
+   El `min-height` de arriba está para que la lista no salte cuando aparece la
+   cuenta, pero antes de escribir en el buscador no hay nada que contar y ese
+   renglón reservado más la separación del bloque dejaban un hueco de casi
+   cincuenta píxeles entre el buscador y «Las más preguntadas».
+   El elemento se queda en el documento —no se apaga con `display: none`—
+   porque es la región `aria-live` que anuncia los resultados: apagada no
+   estaría en el árbol de accesibilidad en el momento en que el texto cambia,
+   y el lector de pantalla no diría nada. Vacío y de alto cero sí anuncia.
+   El margen negativo cancela el `gap` del contenedor, que el alto cero no
+   alcanza a sacar. */
+.asis-filtro-cuenta:empty {
+  min-height: 0;
+  margin-top: -0.4rem;
 }
 .asis-filtro-cat {
   padding: 0.15rem 0.5rem; border-radius: 999px; color: var(--texto-tenue);
@@ -1792,7 +1882,7 @@ body { transition: background var(--t-sec) var(--suave), color var(--t-sec) var(
    la fila trae el suyo. */
 .asis-top {
   display: block;
-  padding: 0.5rem 0.7rem; border-radius: 14px; margin-top: 0.9rem;
+  padding: 0.5rem 0.7rem; border-radius: 14px;
   background: color-mix(in srgb, var(--texto) 3%, transparent);
 }
 /* El renglón reusa `.asis-cat-resumen`: la flecha, el marcador del sistema
@@ -2595,13 +2685,18 @@ body { transition: background var(--t-sec) var(--suave), color var(--t-sec) var(
    selector le disputaba el cuerpo y el tracking. Ahora las cuatro
    propiedades del rótulo se declaran en un solo lugar.
 
-   Las dos medidas que estaban calibradas para la monoespaciada se reacomodan
-   como en todos los rótulos ya convertidos: el cuerpo sube de 0,6 a 0,72rem
-   —una mono ocupa más por letra, así que al mismo tamaño nominal la
-   proporcional se ve más chica— y el tracking baja de 0,13 a 0,05em, que era
-   la apertura que necesitan las versalitas de una mono angosta. */
+   Va además en caja normal, no en versalitas. Las medidas venían calibradas
+   para una monoespaciada angosta en versalitas: cuerpo 0,6rem y 0,13em de
+   separación. Con la letra de la página eso se lee como otra tipografía —una
+   línea chica, en mayúsculas y abierta no se parece a nada del resto—, así
+   que queda a 0,85rem, sin tracking y en caja normal. El texto ya viene
+   escrito así desde el contenido («Tu primer simulacro»), era el CSS el que
+   lo pasaba a mayúsculas.
+   Lo que sostiene la jerarquía contra el renglón de abajo deja de ser la
+   forma y pasa a ser el color: el rótulo va en `--texto-debil` y la línea
+   que encabeza, en el color pleno. */
 .portal-et {
-  font-size: 0.72rem; letter-spacing: 0.05em; text-transform: uppercase;
+  font-size: 0.85rem; letter-spacing: 0; text-transform: none;
   font-variation-settings: "wdth" 100, "wght" 600; font-weight: 600;
   color: var(--texto-debil); display: block; margin-bottom: 0.35rem;
 }
@@ -3980,7 +4075,7 @@ body { transition: background var(--t-sec) var(--suave), color var(--t-sec) var(
 
 /* ---------- la cabecera: banda azul y filo verde agua ---------- */
 [data-marca="na"] .app-cabecera {
-  background: linear-gradient(90deg, #0b4fc4 0%, #1565d8 100%);
+  background: #00619b;
   box-shadow: inset 0 -3px 0 #17d9a0;
 }
 
@@ -4123,13 +4218,11 @@ body { transition: background var(--t-sec) var(--suave), color var(--t-sec) var(
    ============================================================ */
 
 /* ---------- la cabecera de estas pantallas ---------- */
-/* El azul es #0B4FC4, el mismo de la barra de menú y el de la tarjeta de «Mi
-   perfil». Antes acá había un #0B4FA6 apenas distinto: dos azules que nadie
-   había decidido que fueran dos, y que al pasar de una pantalla a otra se
-   notaban como un salto. Ahora Nueva Abogacía tiene un solo azul de fondo.
-   Blanco encima: 7,2:1. */
+/* El color de Nueva Abogacía es un degradé, no un color plano: azul #0059BA a
+   turquesa. Eso es lo que la distingue de Nexo, que va siempre en plano, y por
+   eso la banda tampoco puede ser un tono solo. */
 [data-marca="na"] .app-cabecera-mpd {
-  background: #0b4fc4;
+  background: #00619b;
   box-shadow: inset 0 -3px 0 #00c9a7;
 }
 
@@ -4195,6 +4288,32 @@ body { transition: background var(--t-sec) var(--suave), color var(--t-sec) var(
 /* El tostado de «revisar» está pensado para fondo oscuro: sobre blanco no
    se lee. Se oscurece sólo acá adentro, igual que en Nexo. */
 [data-marca="na"] .sim-instancia { --marca-revisar: #8a5a1f; }
+
+/* ---------- Nueva Abogacía: los cuatro pasos, cada uno en su rectángulo ---------- */
+/* Mismo cambio que ya tenía Nexo, con la paleta de esta puerta: la línea de
+   arriba se cierra en un rectángulo en vez de quedar como una raya con la
+   información suelta debajo.
+
+   La línea se apaga con `border: none` en lugar de dejarla puesta: si no, se
+   sumaría al anillo y el borde de arriba quedaría del doble de grosor que los
+   otros tres.
+
+   El anillo es del mismo color que era la línea —rgba(10,37,64,.16), el
+   `--borde` de la puerta— y de 1px en vez de 2: cerrado en las cuatro caras,
+   el grosor que sostenía una raya suelta pesa de más.
+
+   El relleno es un velo blanco a medias y no una tarjeta blanca opaca. En
+   esta pantalla las tarjetas blancas son las de elegir organismo, que son las
+   que llevan el clic; si los pasos —que no se tocan— se dibujaran igual,
+   competirían con ellas. El velo alcanza para despegarlos de la fotografía
+   del fondo sin llegar a ser una tarjeta. */
+[data-marca="na"] .sim-pasos-grilla li {
+  border: none;
+  padding: 1.15rem 1.25rem;
+  border-radius: 14px;
+  background: rgba(255, 255, 255, 0.5);
+  box-shadow: inset 0 0 0 1px rgba(10, 37, 64, 0.16);
+}
 
 /* ---------- las placas de los íconos ---------- */
 [data-marca="na"] .guia-puerta-icono-fondo,
@@ -4271,7 +4390,7 @@ body { transition: background var(--t-sec) var(--suave), color var(--t-sec) var(
 }
 /* ---------- Nueva Abogacía: la barra del pie ---------- */
 [data-marca="na"] .pie {
-  background: linear-gradient(90deg, #0b4fc4 0%, #1565d8 100%);
+  background: #00619b;
   box-shadow: inset 0 3px 0 #17d9a0;
   padding-block: 1.1rem;
   text-align: center;
@@ -4333,20 +4452,46 @@ html[data-marca="na"] body {
    superficie de toda la app con sesión y arrastraría pantallas que no
    estamos tocando. La clase se agrega en el TSX de la pantalla.
 
-   El azul es #0B4FC4, la parada de la izquierda del degradé de
-   `[data-marca="na"] .app-cabecera`: la tarjeta y la barra de arriba son el
-   mismo color, no dos azules parecidos.
+   Va con el degradé de Nueva Abogacía, azul a turquesa, no con un tono plano:
+   el degradé es la marca. Va a 135° como los botones, que es la inclinación
+   que usa la puerta para las superficies chicas.
 
    Los tokens de texto y borde se redeclaran acá porque el elemento cuelga de
    `.app-cuerpo`, que los tiene en azul oscuro para fondo claro; adentro de
-   la tarjeta el fondo es oscuro y hay que invertirlos. Blanco sobre #0B4FC4
-   da 7,2:1, el tenue 5,6:1 y el débil 5,2:1. `--acento-texto` pasa de
-   #0B57C9 —pensado para fondo claro, acá invisible— a #B8DAFF, 5,0:1. */
-[data-marca="na"] .perfil-tarjeta {
-  background: #0b4fc4;
-  box-shadow:
-    inset 0 0 0 1px rgba(255, 255, 255, 0.18),
-    0 14px 32px rgba(10, 37, 64, 0.22);
+   la tarjeta el fondo es oscuro y hay que invertirlos. Medido en la punta más
+   floja del degradé, la turquesa: blanco 6,4:1, tenue 4,9:1, débil 4,7:1.
+   `--acento-texto` pasa de #0B57C9 —pensado para fondo claro, acá invisible—
+   a #C2E0FF, 4,7:1 en esa misma punta. */
+/* Los dos modales van en el mismo azul, y no en `--tarjeta-solida`, que en
+   esta piel es #081E2B: un azul casi negro que no aparece en ninguna otra
+   parte de la puerta. Van planos y no en degradé —son cajas chicas, ahí el
+   recorrido no se ve— y comparten la tabla de tokens de abajo con la tarjeta
+   del perfil, que es la que invierte la letra. */
+[data-marca="na"] .modal-caja {
+  background: #00619b;
+}
+/* El cartel de «si salís perdés el simulacro» va un punto más claro que el
+   resto y sin el anillo blanco.
+
+   Sin el anillo porque acá no hace falta: el cartel flota sobre un velo negro
+   que ya lo recorta, y el filo blanco competía con los dos botones, que son lo
+   único que hay que mirar.
+
+   Y más claro —#0A75B8 -porque los dos botones arrancan en #00619B: con el
+   fondo en ese mismo tono, «Salir» se fundía con la caja. Ahora la caja está
+   1,34:1 por encima de la punta del botón, que alcanza para separarlos sin
+   perder la letra: blanco encima da 4,94:1.
+   Los dos tokens de texto rebajado suben, porque contra un fondo más claro el
+   85% y el 80% no llegaban. */
+[data-marca="na"] .volver-caja {
+  background: #0a75b8;
+  box-shadow: 0 18px 50px rgba(10, 37, 64, 0.45);
+  --texto-tenue: rgba(255, 255, 255, 0.92);
+  --texto-debil: rgba(255, 255, 255, 0.9);
+}
+[data-marca="na"] .perfil-tarjeta,
+[data-marca="na"] .modal-caja,
+[data-marca="na"] .volver-caja {
   --texto: #ffffff;
   --texto-tenue: rgba(255, 255, 255, 0.85);
   --texto-debil: rgba(255, 255, 255, 0.8);
@@ -4354,9 +4499,18 @@ html[data-marca="na"] body {
   --borde-fuerte: rgba(255, 255, 255, 0.45);
   --linea: var(--borde);
   --linea-fuerte: var(--borde-fuerte);
-  --acento-texto: #b8daff;
+  --acento-texto: #c2e0ff;
   --tarjeta: rgba(255, 255, 255, 0.1);
   color: var(--texto);
+}
+/* El degradé y la sombra son sólo de la tarjeta del perfil: es la superficie
+   grande de las tres, la única donde el recorrido de un color al otro se
+   llega a ver. */
+[data-marca="na"] .perfil-tarjeta {
+  background: linear-gradient(135deg, #00619b 0%, #046b63 100%);
+  box-shadow:
+    inset 0 0 0 1px rgba(255, 255, 255, 0.18),
+    0 14px 32px rgba(10, 37, 64, 0.22);
 }
 
 /* Los campos, en blanco con letra negra. La regla general los dibuja con un
@@ -4365,13 +4519,18 @@ html[data-marca="na"] body {
    Acá son papel: #0D1117 sobre blanco da 18,9:1. */
 [data-marca="na"] .perfil-tarjeta .campo input,
 [data-marca="na"] .perfil-tarjeta .campo select,
-[data-marca="na"] .perfil-tarjeta .campo textarea {
+[data-marca="na"] .perfil-tarjeta .campo textarea,
+[data-marca="na"] .modal-caja .campo input,
+[data-marca="na"] .modal-caja .campo select,
+[data-marca="na"] .modal-caja .campo textarea {
   background: #ffffff;
   color: #0d1117;
   box-shadow: inset 0 0 0 1px rgba(10, 37, 64, 0.22);
 }
 [data-marca="na"] .perfil-tarjeta .campo input::placeholder,
-[data-marca="na"] .perfil-tarjeta .campo textarea::placeholder {
+[data-marca="na"] .perfil-tarjeta .campo textarea::placeholder,
+[data-marca="na"] .modal-caja .campo input::placeholder,
+[data-marca="na"] .modal-caja .campo textarea::placeholder {
   color: rgba(13, 17, 23, 0.5);
 }
 /* El foco lleva dos anillos: uno azul adentro del campo blanco y uno blanco
@@ -4379,8 +4538,11 @@ html[data-marca="na"] body {
    fuera, se perdía contra uno de los dos fondos. */
 [data-marca="na"] .perfil-tarjeta .campo input:focus-visible,
 [data-marca="na"] .perfil-tarjeta .campo select:focus-visible,
-[data-marca="na"] .perfil-tarjeta .campo textarea:focus-visible {
-  box-shadow: inset 0 0 0 2px #0b4fc4;
+[data-marca="na"] .perfil-tarjeta .campo textarea:focus-visible,
+[data-marca="na"] .modal-caja .campo input:focus-visible,
+[data-marca="na"] .modal-caja .campo select:focus-visible,
+[data-marca="na"] .modal-caja .campo textarea:focus-visible {
+  box-shadow: inset 0 0 0 2px #00619b;
   outline: 2px solid #ffffff;
   outline-offset: 1px;
 }
@@ -4389,11 +4551,15 @@ html[data-marca="na"] body {
    piel—: adentro de una tarjeta azul, azul sobre azul. Va al revés, blanco
    con la tinta de la marca, que es lo mismo que hace Nexo cuando el botón
    cae adentro de una tarjeta blanca, dado vuelta. */
-[data-marca="na"] .perfil-tarjeta .btn-acento {
+[data-marca="na"] .perfil-tarjeta .btn-acento,
+[data-marca="na"] .modal-caja .btn-acento,
+[data-marca="na"] .modal-caja .modal-guardar {
   background: #ffffff;
   color: #0a2540;
 }
-[data-marca="na"] .perfil-tarjeta .btn-acento:hover:not(:disabled) {
+[data-marca="na"] .perfil-tarjeta .btn-acento:hover:not(:disabled),
+[data-marca="na"] .modal-caja .btn-acento:hover:not(:disabled),
+[data-marca="na"] .modal-caja .modal-guardar:hover:not(:disabled) {
   background: #e8f1ff;
 }
 
@@ -4412,19 +4578,33 @@ html[data-marca="na"] body {
    reglas le pegan al mismo nodo y gana la de más abajo. De ahí que este
    bloque tenga que estar después de aquél y no junto al resto de la piel.
 
-   La franja va en #0B4FC4, el mismo azul de la barra de menú y de la tarjeta
-   de «Mi perfil». Antes era #0B4FA6, apenas distinto: dos azules que nadie
-   había decidido que fueran dos. Blanco encima da 7,2:1, el tenue 5,3:1 y el
-   débil 5,2:1.
+   El fondo va en el degradé de la marca, azul a turquesa, y no en un color
+   plano: es lo que distingue a Nueva Abogacía de Nexo —«Nexo va plano y Nueva
+   Abogacía siempre con degradé»— y hasta ahora esa regla valía para los
+   botones y no para la pantalla. Acá pasó por tres tonos planos (#0B4FA6,
+   #0B4FC4, #00619B) antes de que quedara claro que el problema no era cuál,
+   sino que fuera uno solo.
+
+   Las dos puntas arrancan de las del botón, que es de donde salió el pedido.
+   La azul es la misma, #00619B. La turquesa se baja de #00857A a #046B63: el
+   #00B9AE del preview de la marca deja el blanco en 2,5:1 —es la misma CORRECCIÓN 4 que ya llevan los botones en tokens.css,
+   por el mismo motivo, sólo que acá el fondo carga mucho más texto—. Medido a
+   lo largo de todo el recorrido, el peor punto es la punta turquesa: blanco
+   6,4:1, tenue 4,9:1, débil 4,7:1.
+
+   Sin parada intermedia a propósito. Con #0A6EA8 en el medio, que es lo que
+   usan los botones, el tenue cae a 4,3:1 en ese punto: el degradé del botón
+   puede permitírselo porque encima sólo lleva una palabra en blanco, y el de
+   la pantalla no.
 
    `--acento-texto` pasa a un celeste claro: el de la piel (#0b57c9) está
-   pensado para texto oscuro sobre fondo claro y sobre este azul queda casi
-   invisible. Y no puede ser #A8D0FF, que es el que iba con el azul viejo:
-   contra este da 4,48:1, dos centésimas abajo del piso. #B8DAFF da 4,95:1 —el
-   mismo que usa la tarjeta de «Mi perfil», por el mismo motivo—, igual de
-   legible que el verde agua de Nexo contra la suya. */
+   pensado para texto oscuro sobre fondo claro y sobre este fondo queda casi
+   invisible. #C2E0FF da 4,7:1 en la punta más floja.
+
+   `--fondo` se queda en la punta azul, plano: lo piden los elementos que
+   necesitan un color y no un degradé —la letra de `.btn-p`, por ejemplo—. */
 [data-marca="na"] .instructivo-mpd-claro {
-  --fondo: #0b4fc4;
+  --fondo: #00619b;
   --texto: #ffffff;
   --texto-tenue: rgba(255, 255, 255, 0.82);
   --texto-debil: rgba(255, 255, 255, 0.8);
@@ -4432,9 +4612,52 @@ html[data-marca="na"] body {
   --borde-fuerte: rgba(255, 255, 255, 0.42);
   --linea: var(--borde);
   --linea-fuerte: var(--borde-fuerte);
-  --acento-texto: #b8daff;
+  --acento-texto: #c2e0ff;
+  /* El truco de la franja de Nexo —`box-shadow: 0 0 0 100vmax var(--fondo)`,
+     que estira el color hasta los bordes— no sirve acá: una sombra no puede
+     ser un degradé. Se apaga, y el fondo lo pinta el pseudoelemento de abajo,
+     que cubre la ventana entera y no se mueve al hacer scroll. */
+  background: transparent;
+  box-shadow: none;
+  position: relative;
+  z-index: 0;
+}
+[data-marca="na"] .instructivo-mpd-claro::before {
+  content: "";
+  position: fixed;
+  inset: 0;
+  z-index: -1;
+  pointer-events: none;
+  background: linear-gradient(135deg, #00619b 0%, #046b63 100%);
+}
+
+/* Las dos cajas que apoyan directo sobre el degradé —la franja de estado
+   arriba y el pie de fuentes abajo— van en un tono plano y opaco.
+
+   Las dos se dibujaban con un velo: blanco al 3 % la franja, al 7 % el pie.
+   Sobre el verde plano de Nexo eso alcanza, porque el fondo detrás es el
+   mismo en todo el ancho y el velo se lee como una caja. Sobre un degradé no:
+   el velo deja pasar el recorrido de color, así que la caja cambia de tono de
+   punta a punta y deja de leerse como una caja. Se ve en la franja de estado,
+   que es ancha y baja: el degradé la cruza entera.
+
+   #04455A es de la misma familia y más oscuro que las dos puntas —1,6:1
+   contra cada una—, así que se recorta contra el fondo esté donde esté el
+   degradé en ese punto de la pantalla. Blanco encima, 10,5:1. */
+[data-marca="na"] .instructivo-mpd-claro .ins-estado,
+[data-marca="na"] .instructivo-mpd-claro .guia-fuentes {
+  background: #04455a;
 }
 /* ---------- Nueva Abogacía: un solo degradé para todos los botones ---------- */
+/* «Comenzar a practicar», el botón del encabezado del simulador, iba en la
+   lista desde hoy. Se dibujaba con la regla base —`.btn-p` pinta el fondo con
+   `--texto` y la letra con `--fondo`—, y en Nueva Abogacía esos dos tokens son
+   #0A2540 y #03141F: azul oscuro sobre azul casi negro, 1,3:1. El botón
+   existía y no se leía.
+   La regla base funciona en las pieles oscuras, donde `--texto` es casi
+   blanco; Nueva Abogacía es la única con fondo claro y tinta oscura, así que
+   es la única donde se da vuelta en contra. */
+[data-marca="na"] .sim-intro .btn-p,
 [data-marca="na"] .portal-retomar .btn-p,
 [data-marca="na"] .portal-retomar .btn-a,
 [data-marca="na"] .portal-cols .portal-escribinos,
@@ -4449,6 +4672,45 @@ html[data-marca="na"] body {
   color: #ffffff;
   box-shadow: none;
 }
+/* ---------- Nueva Abogacía: el resto de los botones principales ---------- */
+/* Hasta acá los botones de esta puerta se iban anotando de a uno en la lista
+   de arriba, y cada pantalla nueva nacía con un botón casi negro hasta que
+   alguien se acordaba de agregarla. Pasaron tres —«Comenzar a practicar»,
+   «Preguntar» y «Entregar»— antes de que quedara claro que la lista no era el
+   lugar.
+
+   El motivo es siempre el mismo: `.btn-p` pinta el fondo con `--texto` y la
+   letra con `--fondo`. En las pieles oscuras eso da un botón claro con letra
+   oscura, que es lo correcto; Nueva Abogacía es la única con fondo claro y
+   tinta oscura, así que ahí los dos tokens se dan vuelta en contra y queda
+   #0A2540 sobre #03141F: 1,3:1, un botón que existe y no se lee.
+
+   Así que se da vuelta el default. En las pantallas de Nueva Abogacía, todo
+   botón principal lleva el degradé de la marca, y la excepción se nombra en
+   vez de la regla.
+
+   La excepción es una sola: los instructivos. Ahí el fondo ya es el degradé,
+   así que el botón va al revés —blanco con la tinta de la marca— y eso lo
+   resuelve la regla general de `.btn-p` sin ayuda, porque adentro de
+   `.instructivo-mpd-claro` los dos tokens están invertidos y quedan a favor.
+   El `:not()` la saca del paso: la pantalla lleva las dos clases en el mismo
+   elemento —`app-cuerpo instructivo-mpd-claro`—, así que negar la segunda
+   descarta justo esas pantallas y ninguna otra. */
+[data-marca="na"] .app-cuerpo:not(.instructivo-mpd-claro) .btn-p,
+[data-marca="na"] .app-cuerpo:not(.instructivo-mpd-claro) .btn-a {
+  background: linear-gradient(135deg, #00619b 0%, #007b93 55%, #00857a 100%);
+  color: #ffffff;
+  box-shadow: none;
+}
+[data-marca="na"] .app-cuerpo:not(.instructivo-mpd-claro) .btn-p:hover:not(:disabled),
+[data-marca="na"] .app-cuerpo:not(.instructivo-mpd-claro) .btn-a:hover:not(:disabled) {
+  background: linear-gradient(135deg, #00558a 0%, #006c82 55%, #00766c 100%);
+  color: #ffffff;
+  box-shadow: none;
+  opacity: 1;
+}
+
+[data-marca="na"] .sim-intro .btn-p:hover:not(:disabled),
 [data-marca="na"] .portal-retomar .btn-p:hover:not(:disabled),
 [data-marca="na"] .portal-retomar .btn-a:hover:not(:disabled),
 [data-marca="na"] .portal-cols .portal-escribinos:hover,
@@ -4877,6 +5139,33 @@ html[data-marca="nexo"] .tip .tip-supuesto {
    huecos enormes entre palabras —los famosos ríos blancos—. El <html> ya
    declara `lang="es-AR"`, así que el navegador parte según las reglas del
    castellano. */
+/* ---------- Nueva Abogacía: el mismo recuadro, en azul claro ---------- */
+/* Mismo cambio que el de Nexo justo arriba —la barra al costado se cierra en
+   una caja— con la diferencia que impone el fondo: esta pantalla es clara, así
+   que la caja va en un azul claro con la tinta de la marca encima, y no al
+   revés.
+
+   #E6F1FF es el mismo azul de las placas de los íconos de la puerta, así que
+   no entra un color nuevo. El anillo es el azul de marca al 18%: sobre un
+   fondo que ya es celeste, sin él la caja se pierde.
+
+   #0A2540 sobre ese azul da 13,6:1. */
+[data-marca="na"] .tip .tip-supuesto {
+  border-left: none;
+  padding: 1rem 1.15rem;
+  border-radius: 14px;
+  background: #e6f1ff;
+  box-shadow: inset 0 0 0 1px rgba(11, 87, 201, 0.18);
+}
+[data-marca="na"] .tip .tip-supuesto p {
+  color: #0a2540;
+  font-size: 0.92rem;
+  line-height: 1.6;
+  max-width: none;
+  text-align: justify;
+  hyphens: auto;
+}
+
 html[data-marca="nexo"] .tip .tip-supuesto p {
   color: #ffffff;
   font-size: 0.92rem;
@@ -4994,48 +5283,110 @@ html[data-marca="nexo"] .asis-pantalla .asis-dejar-seccion .btn-p:hover:not(:dis
   box-shadow: inset 0 0 0 1px rgba(255, 255, 255, 0.55);
   opacity: 1;
 }
+
+/* ---------- Los mismos controles en Nueva Abogacía ---------- */
+/* Mismo concepto que arriba, con los colores de la otra puerta: los controles
+   de «¿Qué querés preguntar?» van pintados y con la letra en blanco, no en
+   blanco con letra oscura. Sin esto, sobre la tarjeta blanca de la pantalla
+   quedaban tres rectángulos vacíos y seis píldoras vacías, y no se veía cuál
+   era la elegida ni cuál el botón.
+
+   Las píldoras y las tres opciones van en azul plano, #00619B: es la punta
+   azul del degradé de la marca, y a este tamaño un degradé no tiene recorrido
+   donde verse —se lee como un color y le agrega ruido al render—.
+
+   «Preguntar» sí lleva el degradé, como el resto de los botones principales de
+   la puerta. Arranca en el mismo #00619B que las píldoras que tiene arriba, así
+   que no es otro color: es el mismo, estirado. Y de paso arregla lo que se veía
+   en la captura —`.btn-p` se pinta con `--texto`, que en Nueva Abogacía es
+   #0A2540: un botón casi negro en una pantalla que no tiene nada más de ese
+   color—.
+
+   Blanco sobre el azul da 6,6:1; sobre la elegida, que va más oscura, 8,8:1. */
+html[data-marca="na"] .asis-pantalla .asis-preguntar .asis-opcion,
+html[data-marca="na"] .asis-pantalla .asis-preguntar .asis-chip {
+  background: #00619b;
+  color: #ffffff;
+  box-shadow: inset 0 0 0 1px rgba(255, 255, 255, 0.32);
+}
+html[data-marca="na"] .asis-pantalla .asis-preguntar .asis-opcion-sigla,
+html[data-marca="na"] .asis-pantalla .asis-preguntar .asis-opcion-nombre {
+  color: #ffffff;
+}
+html[data-marca="na"] .asis-pantalla .asis-preguntar .asis-opcion[data-elegida="true"] {
+  background: #004e7e;
+  box-shadow: inset 0 0 0 2px #ffffff;
+}
+html[data-marca="na"] .asis-pantalla .asis-preguntar .btn-p,
+html[data-marca="na"] .asis-pantalla .asis-dejar-seccion .btn-p {
+  background: linear-gradient(135deg, #00619b 0%, #007b93 55%, #00857a 100%);
+  color: #ffffff;
+  box-shadow: none;
+}
+html[data-marca="na"] .asis-pantalla .asis-preguntar .asis-chip:hover {
+  background: #004e7e;
+  color: #ffffff;
+  box-shadow: inset 0 0 0 1px rgba(255, 255, 255, 0.55);
+  opacity: 1;
+}
+html[data-marca="na"] .asis-pantalla .asis-preguntar .btn-p:hover:not(:disabled),
+html[data-marca="na"] .asis-pantalla .asis-dejar-seccion .btn-p:hover:not(:disabled) {
+  background: linear-gradient(135deg, #00558a 0%, #006c82 55%, #00766c 100%);
+  color: #ffffff;
+  box-shadow: none;
+  opacity: 1;
+}
 /* ---------- Normativa: sin recuadros, más angosta y centrada ---------- */
-html[data-marca="nexo"] .asis-pantalla .asis-normativa .asis-fuentes {
+/* Esto era de Nexo y pasa a ser de las dos puertas: el tratamiento no tiene
+   nada de verde —es una columna en vez de dos, sin la caja de afuera ni las
+   de cada fuente, con el título centrado y todo el texto en blanco—, así que
+   colgarlo de `data-marca="nexo"` dejaba a Nueva Abogacía con el diseño viejo
+   sin que nadie lo hubiera decidido.
+   Cuelga de `.asis-pantalla`, que es la clase de esta pantalla y ya trae el
+   fondo de color de la marca que sea. El blanco se lee sobre los dos: 7,8:1
+   sobre el verde de Nexo y 6,4:1 en el punto más flojo del degradé de Nueva
+   Abogacía. */
+.asis-pantalla .asis-normativa .asis-fuentes {
   grid-template-columns: 1fr;
   gap: 1.4rem;
   max-width: 68ch;
   margin-inline: auto;
 }
-html[data-marca="nexo"] .asis-pantalla .asis-normativa .asis-fuente-item {
+.asis-pantalla .asis-normativa .asis-fuente-item {
   background: none;
   box-shadow: none;
   padding: 0;
 }
-html[data-marca="nexo"] .asis-pantalla .asis-normativa .asis-titulo {
+.asis-pantalla .asis-normativa .asis-titulo {
   /* `width` va acá porque `margin-inline: auto` no centra un bloque que ya
      ocupa todo el ancho disponible. Lo traía la regla del recuadro, que se
      borró junto con las cajas de los títulos. */
   width: fit-content;
   margin-inline: auto;
 }
-html[data-marca="nexo"] .asis-pantalla .asis-normativa .asis-titulo,
-html[data-marca="nexo"] .asis-pantalla .asis-normativa .asis-org-etiqueta,
-html[data-marca="nexo"] .asis-pantalla .asis-normativa .asis-fuente-nombre,
-html[data-marca="nexo"] .asis-pantalla .asis-normativa .asis-fuente-que,
-html[data-marca="nexo"] .asis-pantalla .asis-normativa .asis-fuente-item a {
+.asis-pantalla .asis-normativa .asis-titulo,
+.asis-pantalla .asis-normativa .asis-org-etiqueta,
+.asis-pantalla .asis-normativa .asis-fuente-nombre,
+.asis-pantalla .asis-normativa .asis-fuente-que,
+.asis-pantalla .asis-normativa .asis-fuente-item a {
   color: #ffffff;
 }
-html[data-marca="nexo"] .asis-pantalla .asis-normativa .asis-fuente-nombre {
+.asis-pantalla .asis-normativa .asis-fuente-nombre {
   font-size: 0.86rem;
 }
-html[data-marca="nexo"] .asis-pantalla .asis-normativa .asis-fuente-que {
+.asis-pantalla .asis-normativa .asis-fuente-que {
   font-size: 0.8rem;
   max-width: none;
   text-align: justify;
   hyphens: auto;
 }
-html[data-marca="nexo"] .asis-pantalla .asis-normativa .asis-fuente-item a {
+.asis-pantalla .asis-normativa .asis-fuente-item a {
   font-size: 0.84rem;
   text-decoration: underline;
   text-underline-offset: 3px;
 }
 /* Normativa sin caja: el contenido se apoya directo sobre el fondo */
-html[data-marca="nexo"] .asis-pantalla .asis > .asis-caja-normativa {
+.asis-pantalla .asis > .asis-caja-normativa {
   background: none;
   box-shadow: none;
   padding: 0;

@@ -23,18 +23,30 @@ export async function generateViewport(): Promise<Viewport> {
 }
 
 /**
- * Y la pestaña. Es la misma balanza del icono general —que es de la
- * plataforma, no de una de las dos agrupaciones— pero en la piel del perfil,
- * para que quien tenga varias pestañas abiertas reconozca la suya.
+ * Y la pestaña: el logotipo de la agrupación del perfil.
+ *
+ * Antes acá iba la misma balanza del icono general, apenas teñida con los
+ * colores de la marca. Se distinguía de la de la plataforma sólo mirándola de
+ * cerca, y en una fila de pestañas de 16 píxeles eso no es distinguirse.
+ *
+ * El de Nueva Abogacía es su logotipo tal cual, que ya es un disco. El de Nexo
+ * es la «o» de su logotipo —el círculo con la balanza— recortada sobre el
+ * verde de la marca: el logotipo entero es una palabra ancha y a ese tamaño no
+ * se lee ninguna letra.
  */
+const ICONO = {
+  nexo: "/logos/nexo-icono.png",
+  na: "/logos/nueva-abogacia.png",
+} as const;
+
 export async function generateMetadata(): Promise<Metadata> {
   const perfil = await traerPerfil();
   const marca = perfil?.marca;
   // La piel neutra —el perfil «otro»— no tiene agrupación, así que se queda
-  // con el icono general, que es el de la plataforma. Inventarle un color
+  // con el icono general, que es el de la plataforma. Ponerle uno de los dos
   // sería darle una pertenencia que esa persona dijo que no tiene.
   if (marca !== "nexo" && marca !== "na") return {};
-  return { icons: { icon: `/icono-${marca}.svg` } };
+  return { icons: { icon: ICONO[marca] } };
 }
 
 /**

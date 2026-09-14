@@ -1,11 +1,20 @@
 "use client";
 
-import { useId, useRef, useState } from "react";
+import { useEffect, useId, useLayoutEffect, useRef, useState } from "react";
 import { caja as t, certezas, respuesta as tR } from "@/content/asistente";
 import { preguntar, type Contestacion } from "@/lib/acciones/asistente";
 import { useAsistente } from "@/components/asistente/estado";
 import { Respuesta, Sello, Siguiente } from "@/components/asistente/Respuesta";
 import { DejarConsulta } from "@/components/asistente/DejarConsulta";
+
+/**
+ * `useLayoutEffect` corre antes del pintado y `useEffect` después. Acá hace
+ * falta el primero: con el segundo, la caja se ve un cuadro con el alto viejo
+ * cada vez que crece, y eso a velocidad de tecleo tiembla. En el servidor no
+ * corre ninguno y React avisa por consola si ve un efecto de layout durante el
+ * render, de ahí el alias —el mismo que usa `AplicarPiel`—.
+ */
+const enElCuadro = typeof window === "undefined" ? useEffect : useLayoutEffect;
 
 /**
  * A-04, A-05 y el lugar donde aparece la respuesta.
@@ -23,6 +32,29 @@ export function Caja() {
   const [buscando, setBuscando] = useState(false);
   const [salida, setSalida] = useState<Contestacion | null>(null);
   const [error, setError] = useState<"vacia" | "falla" | null>(null);
+
+  /**
+   * El alto de la caja sigue al contenido: crece sola a medida que se escribe
+   * y vuelve a achicarse al borrar. El agarre para estirarla a mano se retiró
+   * en el CSS —`resize: none`—; desacomodaba la pantalla y ya no hace falta.
+   *
+   * Va en un efecto y no en el `onChange` porque el texto también cambia desde
+   * afuera, al tocar uno de los ejemplos, y ahí no hay tecleo que lo dispare.
+   *
+   * El `height = "auto"` de la primera línea no sobra: sin él `scrollHeight`
+   * devuelve el alto que la caja ya tiene, así que crecería y nunca se
+   * achicaría.
+   *
+   * El tope lo pone el `max-height` del CSS. Pasado ese punto la caja deja de
+   * crecer y el texto scrollea adentro, que es lo que evita que una pregunta
+   * larga se coma la pantalla.
+   */
+  enElCuadro(() => {
+    const el = campo.current;
+    if (!el) return;
+    el.style.height = "auto";
+    el.style.height = `${el.scrollHeight}px`;
+  }, [texto]);
 
   function enfocar() {
     campo.current?.focus();
