@@ -9,8 +9,6 @@ export const nav = {
     { href: "#inscripcion", texto: "Inscripción" },
     { href: "#asistente", texto: "Asistente" },
   ],
-  cta: "Empezar",
-  ctaHref: "/crear-perfil",
 } as const;
 
 export const hero = {

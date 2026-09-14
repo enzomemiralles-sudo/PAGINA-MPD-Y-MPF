@@ -9,11 +9,19 @@ import { TextoLegal } from "./TextoLegal";
 import type { TipoPerfil } from "@/lib/marca/marcas";
 
 /**
- * «Contanos un poco más». Se abre sobre la pantalla principal la primera vez.
- * Se puede cerrar: quien lo cierre lo completa después desde «Mi perfil».
+ * «Contanos un poco más». Se abre sobre la pantalla principal la primera vez,
+ * y sólo a quien todavía no completó el alta.
  *
- * Todos los campos son opcionales. Lo único obligatorio es el checkbox:
- * mientras no esté tildado, el botón queda deshabilitado.
+ * No se puede cerrar hasta aceptar los términos. Quien usa la plataforma tiene
+ * que haberlos aceptado, así que mientras el checkbox está sin tildar no hay
+ * salida: ni la cruz —que no se dibuja— ni la tecla Escape, que en un <dialog>
+ * cierra de fábrica y hay que desactivar a mano. Sin eso la cruz escondida
+ * sería decorativa: se cerraba igual con Escape.
+ *
+ * No deja a nadie encerrado: todos los campos del formulario son opcionales,
+ * así que el camino de salida es tildar una casilla y tocar Guardar. Lo único
+ * obligatorio es esa casilla, y hasta que esté tildada el botón queda
+ * deshabilitado.
  */
 export function ModalDatos({
   tipo,
@@ -45,6 +53,17 @@ export function ModalDatos({
     dialogo.current?.close();
   }
 
+  /**
+   * Escape no cierra mientras no esté aceptado.
+   *
+   * `onCancel` es el evento que dispara el <dialog> cuando el navegador va a
+   * cerrarlo por Escape. Prevenirlo lo deja abierto. Cuando ya se aceptó se
+   * deja pasar, que es el mismo criterio que decide si se dibuja la cruz.
+   */
+  function alIntentarCerrar(e: React.SyntheticEvent<HTMLDialogElement>) {
+    if (!acepta) e.preventDefault();
+  }
+
   async function enviar(e: React.FormEvent) {
     e.preventDefault();
     setError("");
@@ -60,13 +79,17 @@ export function ModalDatos({
   }
 
   return (
-    <dialog ref={dialogo} className="modal" aria-labelledby={idTitulo}>
+    <dialog ref={dialogo} className="modal" aria-labelledby={idTitulo} onCancel={alIntentarCerrar}>
       <form className="modal-caja" onSubmit={enviar}>
         <div className="modal-encabezado">
           <h2 id={idTitulo}>{t.titulo}</h2>
-          <button type="button" className="modal-cerrar" onClick={cerrar} aria-label={t.cerrar}>
-            ✕
-          </button>
+          {/* La cruz aparece recién cuando la casilla está tildada. Antes de
+              eso no hay nada que cerrar: el alta no está hecha. */}
+          {acepta ? (
+            <button type="button" className="modal-cerrar" onClick={cerrar} aria-label={t.cerrar}>
+              ✕
+            </button>
+          ) : null}
         </div>
         <p className="modal-bajada">{bajada}</p>
 

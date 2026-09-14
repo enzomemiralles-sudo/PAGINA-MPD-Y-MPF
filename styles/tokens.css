@@ -63,6 +63,24 @@
   --sobre-acento: #08090a;
   --sobre-acento-2: #08090a;
 
+  /* ---------- el color comienzo ----------
+     El verde agua con el que empieza el recorrido: la portada y el alta. No es
+     de ninguna de las dos agrupaciones —queda entre el verde de Nexo y el azul
+     de Nueva Abogacía— y por eso puede ser el de las pantallas que todavía no
+     tienen dueño.
+
+     Dos valores, que son el mismo color a dos profundidades: `--comienzo` es
+     el que se ve —botones, halos, velos de superficie— y `--comienzo-hondo` es
+     el que puede ir de fondo, porque el primero con letra blanca da 4,31:1 y
+     no llega.
+
+     Las pieles `dual` y `neutro` repiten estos valores escritos a mano en vez
+     de pedirlos acá: `tests/contraste.test.ts` compara el CSS contra el espejo
+     de TypeScript token por token, y un `var()` lo deja sin comparar. Escritos
+     dos veces, el test avisa si alguna vez dejan de coincidir. */
+  --comienzo: #02897b;
+  --comienzo-hondo: #01332e;
+
   /* Funcional, no de marca: el mismo en las cuatro pieles. */
   --marca-revisar: #c8a27a;
   /* Los logos van a color. Es elemento gráfico, le alcanza 3:1. */
@@ -85,20 +103,48 @@
    LAS CUATRO PIELES
    ============================================================ */
 
-/* ---------- dual: la pestaña pública, las dos marcas conviven ---------- */
+/* ---------- dual: la pestaña pública ----------
+   Misma piel que la neutra: el mismo verde agua, los mismos botones. La
+   portada y el alta son las dos caras de la misma puerta de entrada —se entra
+   por una y se sigue por la otra—, y hasta ahora la primera era casi negra y
+   la segunda verde agua, así que el salto se notaba justo en el momento en que
+   alguien decide quedarse.
+
+   Lo que se pierde con el cambio, y conviene saberlo: `--relleno` era el único
+   lugar del sitio donde los dos colores de marca aparecían juntos —un degradé
+   del verde de Nexo al azul de Nueva Abogacía— y era la forma de decir «acá
+   conviven las dos» sin escribirlo. Ahora esa idea la cargan los dos logotipos
+   de la cabecera y el pie, que siguen estando. Si el degradé hiciera falta de
+   vuelta, es esta línea.
+
+   Los tokens de texto y de error NO van en el grupo que incluye `:root`: ahí
+   los heredarían también Nexo y Nueva Abogacía, que no los redeclaran todos, y
+   les cambiaría el gris del texto rebajado sin que nadie lo hubiera pedido. */
 :root,
 html[data-marca="dual"],
 [data-marca="dual"] {
-  --acento: #f4f2ed;
-  --acento-texto: #f4f2ed;
+  --fondo: #01332e;
+  --fondo-bajo: #012421;
+  --tarjeta-solida: #0a423b;
+  --acento: #02897b;
+  --sobre-acento: #08090a;
+  --acento-texto: var(--texto);
   --acento-2: transparent;
-  --superficie: rgba(244, 242, 237, 0.03);
-  --mancha-a: #059249;
-  --mancha-b: #0088c4;
-  --relleno: linear-gradient(135deg, #059249, #0088c4);
+  --superficie: rgba(2, 137, 123, 0.14);
+  --mancha-a: #02897b;
+  --mancha-b: #37c9b8;
+  --relleno: #02897b;
   --sobre-relleno: #08090a;
   --ancho-h: 118;
   --ital-estilo: normal;
+}
+/* Sobre un fondo que no es negro, el débil al 50% y el rojo de error no llegan
+   a AA. Es la misma CORRECCIÓN 5 de la piel neutra, con los mismos valores.
+   Van sin `:root` a propósito, por lo dicho arriba. */
+html[data-marca="dual"],
+[data-marca="dual"] {
+  --texto-debil: rgba(244, 242, 237, 0.62);
+  --error: #ff8079;
 }
 
 /* ---------- neutro: ingreso, crear perfil, elegir perfil, y el panel ----------
